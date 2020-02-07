@@ -1,6 +1,7 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import Text from "../components/Text";
 
 const Home: React.FC = () => {
   return (

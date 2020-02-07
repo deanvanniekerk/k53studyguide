@@ -1,8 +1,9 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 
+import Text from "./components/Text";
 import Home from "./home/Home";
 import Settings from "./settings/Settings";
 
@@ -13,31 +14,43 @@ const Container: React.FC = () => {
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName: string;
-
-            if (route.name === "Home") {
-              iconName = focused
-                ? "ios-information-circle"
-                : "ios-information-circle-outline";
-            } else if (route.name === "Settings") {
-              iconName = focused ? "ios-list-box" : "ios-list";
+          tabBarIcon: ({ color, size }) => {
+            switch (route.name) {
+              case "Study":
+                return <FontAwesome name="book" size={size} color={color} />;
+              case "Train":
+                return (
+                  <MaterialCommunityIcons
+                    name="ninja"
+                    size={size * 1.1}
+                    color={color}
+                  />
+                );
+              case "Profile":
+                return (
+                  <FontAwesome name="user-circle" size={size} color={color} />
+                );
             }
-
-            // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarLabel: ({ color }) => {
+              return <Text style={{ color: color, fontSize: 13, fontWeight: "bold" }}>{route.name}</Text>
           }
         })}
         tabBarOptions={{
-          activeTintColor: "tomato",
-          inactiveTintColor: "gray",
+          activeTintColor: "#FFFFFF",
+          inactiveTintColor: "#7a608a",
           style: {
-              backgroundColor: "red"
+            backgroundColor: "#311343"
+          },
+          tabStyle: {
+              paddingTop: 6,
+              paddingBottom: 3,
           }
         }}
       >
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Settings" component={Settings} />
+        <Tab.Screen name="Study" component={Home}  />
+        <Tab.Screen name="Train" component={Home} />
+        <Tab.Screen name="Profile" component={Settings} />
       </Tab.Navigator>
     </NavigationContainer>
   );

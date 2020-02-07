@@ -12,6 +12,7 @@
     "@react-navigation/bottom-tabs": "5.0.0",
     "@react-navigation/native": "5.0.0",
     "expo": "36.0.2",
+    "expo-font": "^8.0.0",
     "expo-linear-gradient": "8.0.0",
     "react": "16.12.0",
     "react-dom": "16.12.0",
