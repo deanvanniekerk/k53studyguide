@@ -1,22 +1,30 @@
-import React, { useEffect, useState } from "react";
 import * as Font from "expo-font";
-import Container from "./src/Container";
-import { View, Text } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Text, View } from "react-native";
 
-export default function App() {
-  const [fontLoaded, setFontLoaded] = useState(false);
-  useEffect(() => {
-    const loadFont = async () => {
-      await Font.loadAsync({
-        "Roboto Condensed": require("./assets/fonts/RobotoCondensed-Regular.ttf"),
-      });
-      setFontLoaded(true);
-    };
+import Container from "./src/ui/Container";
 
-    loadFont();
-  }, []);
+const App: React.FC = () => {
+    const [fontLoaded, setFontLoaded] = useState(false);
+    useEffect(() => {
+        const loadFont = async (): Promise<void> => {
+            await Font.loadAsync({
+                "Roboto Condensed": require("./assets/fonts/RobotoCondensed-Regular.ttf"),
+            });
+            setFontLoaded(true);
+        };
 
-  if (!fontLoaded) return <View><Text>Loading</Text></View>;
+        loadFont();
+    }, []);
 
-  return <Container />;
-}
+    if (!fontLoaded)
+        return (
+            <View>
+                <Text>Loading</Text>
+            </View>
+        );
+
+    return <Container />;
+};
+
+export default App;
