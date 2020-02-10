@@ -10,7 +10,7 @@ const output = data.reduce((p, c) => {
     const arr = c.Node.split(".");
     arr.splice(0, 2);
 
-    const key = "root." + arr.join(".");
+    const key = "nav." + arr.join(".");
 
     const d = {
         imageName: c.ImageName,
@@ -35,7 +35,7 @@ const loadParentChildLookup = () => {
         let parent = "";
 
         sections.forEach(section => {
-            if (section === "root") {
+            if (section === "nav") {
                 parent = section;
                 return;
             }

@@ -1,5 +1,5 @@
 {
-    "root.introduction": [
+    "nav.introduction": [
         {
             "imageName": "",
             "heading": "Welcome to Learn2Drive",
@@ -26,14 +26,14 @@
             "description": "The <b>Checklist</b> helps you keep track of all the tasks you&#39;ll need to do before you write your test, like booking a test date and getting photos. It explains exactly what you need to take with you."
         }
     ],
-    "root.vehicleControls": [
+    "nav.vehicleControls": [
         {
             "imageName": "rules-of-the-road/vehicleControls.png",
             "heading": "Vehicle Controls",
             "description": "<ul class='vehicle-controls numbered'><li><strong>Accelerator</strong> <span>Press the accelerator down to make the vehicle move. If you are in reverse gear you will move backwards, if you are in any of the other gears you will move forwards. The more you press down, the faster you will go. The accelerator must only ever be pressed down with the right foot. The clutch also needs to be engaged (not pressed down) for the car to move forwards.</span></li><li><strong>Brake peda</strong> <span>This brake is known as the service brake, or foot brake. Press the brake pedal down to slow the vehicle or to stop. The brake pedal must only ever be pressed with your right foot.</span></li><li><strong>Clutch pedal</strong> <span>Press the clutch pedal down when changing gears. The clutch pedal must only ever be pressed with your left foot. When you are not using it, you must rest your left foot on the floor to the left of the clutch, not on the clutch pedal. Automatic vehicles do not have a clutch pedal.</span></li><li><strong>Gear Lever</strong> <span>Use the gear lever to select or change gears. Your clutch needs to be in if you are changing gears. Reverse is a gear, and you need to be in reverse if you want to move backwards. You choose gears according to the speed at which you are travelling. When you first move off, you must be in first gear. After that, generally the faster you are going the higher the gear you use. You should use a lower gear when you are going down a hill and you don't want the vehicle to speed up too much, or when you need more power (for example when you are going up a hill). While your car is stationary you should use neutral.</span></li><li><strong>Parking brake</strong> <span>This brake is also known as the handbrake. Pull the parking brake up to keep the vehicle stationary while you are stopped or when you leave the car. Put it down again before you move off. You must only ever use the parking brake after the vehicle has come to a complete standstill, and not while you are still moving. Use the ratchet release (the button on the end of the parking brake) when putting it up or down.</span></li><li><strong>Direction indicator</strong> <span>The direction indicator stalk switches on the indicator lights on the outside of your car. It could be found on the other side of the steering wheel depending on the make of car. Push the control up or down (in the direction in which you will be turning the steering wheel) to indicate to other drivers that you want to move or turn towards the left or the right. Put the control back to the middle to cancel the signal when you have finished turning (most times the signal will cancel itself). On most cars the controls for switching the headlights on and off and for changing between main beams and dipped beams are also on this stalk.</span></li><li><strong>Rear-view mirror</strong> <span>This is the rear-view mirror, or interior mirror. Look in the mirror to check that it is safe behind your vehicle. You should check the rear-view mirror every 5-8 seconds when you are driving, as well as every time before you brake or signal.</span></li><li><strong>Side mirror</strong> <span>This is the exterior, or side mirror. Most cars have exterior mirrors on both the driver's and passenger's sides. Look in the mirrors to check that it is safe behind your vehicle. You may check these mirrors every 5-8 seconds while you are driving when you check the main rear-view mirror, but you should especially check them when you are changing direction (check the mirror in the direction in which you want to turn). Be aware that there are some areas next to your car that you can't see in these mirrors. These are called blind spots and have to be checked by turning your head and looking back through the windows.</span></li><li><strong>Speedometer</strong> <span>The speedometer shows you how fast you are travelling. Check the speedometer every now and then to ensure that you are within the speed limit. The speedometer also usually shows the mileage, or total distance that the car has travelled.</span></li><li><strong>Steering wheel</strong> <span>Turn the steering wheel to change direction. When driving, keep both hands on the steering wheel, except when changing gears or giving hand signals. At these times you must always keep at least one hand on the steering wheel, and replace the other one as quickly as you can. If the steering wheel was a clock you would place your left hand at the 10 and your right hand at the 2.</span></li><li><strong>Temperature/Oil gauge</strong> <span>The gauges give you information about your engine. Most cars have a temperature gauge telling you how hot the engine is, an oil gauge or warning light to tell you when your oil is low, a fuel gauge to tell you how much petrol you have in your car, and a rev counter to tell you how fast your engine is revolving. Most of the gauges have warning sections marked in red to show you when you are beginning to get out of the safe limits. Check the gauges every now and then to ensure that it is safe to drive or if you need to take action.</span></li><li><strong>Wiper stalk</strong> <span>The wiper stalk controls the windscreen wipers on the front windscreen. It could be found on the other side of the steering wheel depending on the make of car. You should switch your windscreen wipers on when it is raining to keep your windscreen clear and make sure you can see the road ahead. The wipers can also be used to clean the windscreen if you spray water on them first (usually with a button on the wiper stalk). If you use the wipers while the windscreen is dry they can scrape a bit and sometimes spread dust across it which makes it harder to see.</span></li></ul>"
         }
     ],
-    "root.rulesOfTheRoad.theDriver.learnerDrivers": [
+    "nav.rulesOfTheRoad.theDriver.learnerDrivers": [
         {
             "imageName": "",
             "heading": "What does the Learner&#39;s Licence entitle me to do? ",
@@ -65,7 +65,7 @@
             "description": "<ul><li>Your Learner&#39;s Licence test consists of a written theory test covering three main sections:<ul><li>Rules of the road, traffic control signals and principles of defensive driving</li><li>Road traffic signs and road markings</li><li>Motor vehicle controls</li></ul></li><li>All of the questions are multiple choice. </li><li>You need to do well in all three sections. Even if you have a high score overall if you have done badly in one of the sections you could fail. </li><li>You will receive a test booklet of questions, and a sketch booklet with pictures in it, for example road signs and situations on the road. Some of the test questions refer to pictures in the sketch booklet. </li></ul>"
         }
     ],
-    "root.rulesOfTheRoad.theDriver.driversDuties": [
+    "nav.rulesOfTheRoad.theDriver.driversDuties": [
         {
             "imageName": "",
             "heading": "Your general duties",
@@ -77,7 +77,7 @@
             "description": "<ul><li>Don&#39;t allow people or animals to obstruct your view or ability to control the vehicle or give signals clearly</li><li>Don&#39;t allow anyone to take control of the steering or controls</li><li>A passenger may not drive/steer the vehicle unless it is clear that the driver cannot control the vehicle any more</li><li>No person (or animal) can go on the roof/step/running board when the vehicle is in motion </li><li>Passengers may not have any part of the body out of the car</li><li>Make sure passengers know how to work the doors and seatbelt release</li><li>Make sure they wear seatbelts</li><li>Don&#39;t let them get in or out when the vehicle is moving or it&#39;s not safe</li><li>Passengers may only go on the back of a truck or van if the sides are at least<ul><li>450mm high if sitting (350mm in KZN) </li><li>900mm high if standing (1250mm in KZN) </li></ul></li><li>The above rule doesn&#39;t apply to people being transported for work</li><li>Don&#39;t overload passengers. Each should have at least 380mm of seat width</li></ul>"
         }
     ],
-    "root.rulesOfTheRoad.theDriver.accidents": [
+    "nav.rulesOfTheRoad.theDriver.accidents": [
         {
             "imageName": "",
             "heading": "For all accidents",
@@ -89,7 +89,7 @@
             "description": "<ul><li>Call the police immediately</li><li>Call an ambulance if necessary</li><li>Help injured people</li><li>Don&#39;t move the vehicles unless a traffic officer tells you to, or unless they&#39;re completely obstructing traffic, and only after marking their positions clearly on the road. Move them just enough to let traffic pass. </li><li>Vehicles can&#39;t be removed from the scene without permission from the driver, owner or an authorised person</li></ul>"
         }
     ],
-    "root.rulesOfTheRoad.theDriver.alcoholDrugs": [
+    "nav.rulesOfTheRoad.theDriver.alcoholDrugs": [
         {
             "imageName": "",
             "heading": "The law says",
@@ -111,14 +111,14 @@
             "description": "<ul><li>One glass table wine (125ml) </li><li>One can/bottle beer (340ml) </li><li>One shot of spirits (25ml) </li></ul>"
         }
     ],
-    "root.rulesOfTheRoad.theDriver.cellphones": [
+    "nav.rulesOfTheRoad.theDriver.cellphones": [
         {
             "imageName": "",
             "heading": "",
             "description": "<ul><li>You may not drive while holding a cellphone with a hand or any other part of your body.</li><li>Use a car phone, headset or hands free kit.</li><li>This rule applies to any communications equipment, such as hand-held radios.</li><li>It does not apply to emergency personnel on duty.</li></ul>"
         }
     ],
-    "root.rulesOfTheRoad.theRoad.damageToPublicRoads": [
+    "nav.rulesOfTheRoad.theRoad.damageToPublicRoads": [
         {
             "imageName": "",
             "heading": "Hindering traffic",
@@ -140,7 +140,7 @@
             "description": "<ul><li>You may not use or erect a lamp or lighting device which is visible from a public road in a way that endangers safety.</li>\n<li>This rule refers to lights put up alongside roads, not lights on vehicles.</li></ul>\n"
         }
     ],
-    "root.rulesOfTheRoad.theRoad.peopleOnTheRoad": [
+    "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad": [
         {
             "imageName": "",
             "heading": "Trading on public roads",
@@ -167,7 +167,7 @@
             "description": "<ul><li>Animals are not allowed to be on a public road in a place that is fenced/closed in on both sides, unless they are being:\n<ul><li>ridden</li>\n<li>used to draw a vehicle</li>\n<li>herded to another place</li></ul></li>\n<li>If you are herding animals, you must carry:\n<ul><li>A red flag 300mm square during the day</li>\n<li>A red light that can be seen 150m away during the night</li></ul></li>\n<li>If the herd is less than 10 animals, one flag/light is enough.</li>\n<li>If the herd is more than 10 animals, your warnings must be carried both ahead of and behind the herd.</li>\n<li>No animals at all are allowed on freeways.</li></ul>\n"
         }
     ],
-    "root.rulesOfTheRoad.theRoad.vehiclesOnTheRoad": [
+    "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad": [
         {
             "imageName": "",
             "heading": "Animal drawn vehicles",
@@ -184,7 +184,7 @@
             "description": "No convoys of vehicles being delivered to a dealer or other person should travel at the following times:\n<ul><li>On weekends, from 18h00 on Friday evening to 06h00 on Monday morning</li>\n<li>On long weekends, from 18h00 on Friday evening (or Thursday evening if Friday is a public holiday) to 06h00 on Monday morning (or Tuesday morning if Monday is a public holiday)</li>\n<li>Over Christmas, from 18h00 the night before Christmas Day till 06h00 the morning after the Day of Goodwill</li></ul>\n"
         }
     ],
-    "root.rulesOfTheRoad.theRoad.freeways": [
+    "nav.rulesOfTheRoad.theRoad.freeways": [
         {
             "imageName": "",
             "heading": "Vehicles not allowed on freeways",
@@ -196,14 +196,14 @@
             "description": "<ul><li>Hand signals (except in emergencies)</li>\n<li>Reversing</li>\n<li>Driving across dividers or islands</li>\n<li>Leaving animals behind or allowing them on the freeway</li>\n<li>You may not be on foot (walk), or stop your vehicle, unless:\n<ul><li>To obey a road sign or instruction from a traffic officer</li>\n<li>In a demarcated stopping/parking area</li>\n<li>For a reason beyond your control</li>\n<li>You are in the Citizen Force and you&#39;re on the left hand side of the freeway, between an offramp and an onramp</li>\n<li>To pick up or drop off  a Citizen Force member in area as per above</li>\n<li>Emergency personnel and maintenance crews on duty may stop vehicles and walk on freeways</li></ul></li></ul>\n"
         }
     ],
-    "root.rulesOfTheRoad.theCar.unauthorisedUse": [
+    "nav.rulesOfTheRoad.theCar.unauthorisedUse": [
         {
             "imageName": "",
             "heading": "",
             "description": "<ul><li>Don&#39;t drive, enter, climb on or tamper with a vehicle without the consent of the person lawfully in charge of the vehicle.</li>\n<li>Don&#39;t alter the chassis or engine number of a vehicle without consulting the registering authority.</li></ul>\n"
         }
     ],
-    "root.rulesOfTheRoad.theCar.lights": [
+    "nav.rulesOfTheRoad.theCar.lights": [
         {
             "imageName": "",
             "heading": "",
@@ -255,21 +255,21 @@
             "description": "<ul><li>All animal drawn vehicles must have white lights on both sides of the front and red lights at both sides of the back.</li>\n<li>If a person is leading an animal drawn vehicle, the person has to stand at the head of the first animal with a white light.</li></ul>\n"
         }
     ],
-    "root.rulesOfTheRoad.theCar.seatBelts": [
+    "nav.rulesOfTheRoad.theCar.seatBelts": [
         {
             "imageName": "",
             "heading": "",
             "description": "<ul><li>You may not use a vehicle on a public road unless all the seatbelts work.</li>\n<li>You may only remove seatbelts from the car for repair or replacement, and you can&#39;t use the car on a public road until the repair or replacement is complete.</li>\n<li>All seatbelts fitted in the car must be worn (front and back).</li>\n<li>If there is a seat with a seatbelt available, a passenger has to sit in it rather than sitting in a seat with no seatbelt.</li>\n<li>If a child restraint is available children must use that, otherwise they must use a seatbelt if available.</li>\n<li>If there is no seatbelt in the front passenger seat, anyone up to 14 years old (or shorter than 1.5m) must sit at the back.</li>\n<li>You don&#39;t have to wear a seatbelt if you&#39;re reversing.</li></ul>\n"
         }
     ],
-    "root.rulesOfTheRoad.theCar.tyres": [
+    "nav.rulesOfTheRoad.theCar.tyres": [
         {
             "imageName": "",
             "heading": "",
             "description": "<ul><li>The tyre tread must be deeper than 1mm all over.</li>\n<li>You must see the pattern of the tread all over the tyre.</li>\n<li>There can be no:\n<ul><li>cuts on the side walls which are more than 10% of the tyre width, or longer than 25mm, whichever is greater</li>\n<li>lumps or bulges anywhere on the tyre</li>\n<li>inner cords, canvas or steel belts showing.</li></ul></li></ul>\n"
         }
     ],
-    "root.rulesOfTheRoad.theCar.otherEquipment": [
+    "nav.rulesOfTheRoad.theCar.otherEquipment": [
         {
             "imageName": "",
             "heading": "Steering",
@@ -331,14 +331,14 @@
             "description": "<ul><li>You are not allowed to use a car on a public road if the hooter is not working.</li>\n<li>It must be audible for at least 90m.</li>\n<li>It may not have a variable tone (tune).</li>\n<li>You may only use it to prevent an accident.</li></ul>\n"
         }
     ],
-    "root.rulesOfTheRoad.theCar.emergencyTriangles": [
+    "nav.rulesOfTheRoad.theCar.emergencyTriangles": [
         {
             "imageName": "",
             "heading": "",
             "description": "<ul><li>There must be a double edged red and white reflective triangle in all:\n<ul><li>Bakkies</li>\n<li>Trailers</li>\n<li>Caravans</li>\n<li>Vans</li>\n<li>Trucks</li>\n<li>Minibuses</li>\n<li>Buses</li></ul></li>\n<li>Use it when your vehicle is stationary on the roadway (unless in a designated area or stopped because of other traffic and with the driver still in it).</li>\n<li>Display it at least 45 m from your car in the direction from which traffic will approach, with the reflective side facing them.</li></ul>\n"
         }
     ],
-    "root.rulesOfTheRoad.theCar.transportingGoods": [
+    "nav.rulesOfTheRoad.theCar.transportingGoods": [
         {
             "imageName": "",
             "heading": "General rules for transporting goods on a vehicle",
@@ -350,14 +350,14 @@
             "description": "<ul><li>Any load that projects more than 150mm from the sides of the vehicle or 300mm from the back must carry warning markings.</li>\n<li>If the load is less than 600mm wide it must be marked with:\n<ul><li>In the day, a single red flag (300mm square)</li>\n<li>At night, a single red reflector</li></ul></li>\n<li>If the load is more than 600mm wide it must be marked with:\n<ul><li>In the day, red flags (300mm square) at each corner</li>\n<li>At night, white reflectors/lights on each corner at the front</li>\n<li>At night, red reflectors/lights on each corner at the back</li>\n<li>At night, yellow reflectors/lights on each side.</li></ul></li></ul>\n"
         }
     ],
-    "root.rulesOfTheRoad.theCar.numberOfPassengers": [
+    "nav.rulesOfTheRoad.theCar.numberOfPassengers": [
         {
             "imageName": "",
             "heading": "",
             "description": "<ul><li>The number of people that can be carried in a vehicle depends on seat space.</li>\n<li>Each person must have at least 380mm of seat space.</li>\n<li>Children under 3 don&#39;t count.</li>\n<li>Children 3-6 can go on laps.</li></ul>\n"
         }
     ],
-    "root.rulesOfTheRoad.driving.speedLimits": [
+    "nav.rulesOfTheRoad.driving.speedLimits": [
         {
             "imageName": "",
             "heading": "For light motor vehicles ",
@@ -369,7 +369,7 @@
             "description": "<ul><li>Minibuses carrying paying passengers and passenger buses must never go faster than 100km/h.</li>\n<li>Vehicles with a gross vehicle mass of over 9 000kg (large trucks) must never go faster than 80km/h.</li>\n<li>Tractors on public roads may not go faster than 35km/h.</li></ul>\n"
         }
     ],
-    "root.rulesOfTheRoad.driving.stopping": [
+    "nav.rulesOfTheRoad.driving.stopping": [
         {
             "imageName": "",
             "heading": "<span class=\"contentHeading2\">You must stop:</span>",
@@ -411,7 +411,7 @@
             "description": "The above rules don&#39;t apply:\n<ul><li>If you need to stop to avoid an accident or for circumstances beyond your control.</li>\n<li>To emergency/construction/police vehicles on duty displaying the correct identification lights.</li></ul>\n"
         }
     ],
-    "root.rulesOfTheRoad.driving.parking": [
+    "nav.rulesOfTheRoad.driving.parking": [
         {
             "imageName": "",
             "heading": "",
@@ -468,21 +468,21 @@
             "description": "<ul><li>The above rules don&#39;t apply to emergency/construction/police vehicles on duty displaying the correct identification lights.</li></ul>"
         }
     ],
-    "root.rulesOfTheRoad.driving.dividedRoads": [
+    "nav.rulesOfTheRoad.driving.dividedRoads": [
         {
             "imageName": "",
             "heading": "",
             "description": "<ul><li>These are roads that have been divided into more than one area by a line or barrier.</li>\n<li>Keep to the left of a divided road (unless it is a one way).</li>\n<li>Cross the divider only at an opening or intersection, or where a road marking or police officer says you can.</li></ul>"
         }
     ],
-    "root.rulesOfTheRoad.driving.changingLanes": [
+    "nav.rulesOfTheRoad.driving.changingLanes": [
         {
             "imageName": "",
             "heading": "",
             "description": "<ul><li>Keep within your lane. Don&#39;t straddle lanes (when your vehicle is in more than one lane).</li>\n<li>Change lanes only if road markings or signs allow you to.</li>\n<li>Signal early when intending to change lanes.</li>\n<li>Change lanes only if it is safe.</li>\n<li>The last thing you must do before changing lanes is to check your blind spots.</li>\n<li>If changing more than one lane, recheck your blind spots for each lane.</li></ul>"
         }
     ],
-    "root.rulesOfTheRoad.driving.intersections": [
+    "nav.rulesOfTheRoad.driving.intersections": [
         {
             "imageName": "",
             "heading": "Stop streets and traffic lights",
@@ -514,7 +514,7 @@
             "description": "<ul><li>If your vehicle will block traffic flow.</li>\n<li>Don&#39;t cross or turn into roads unless there is enough clear space on the other side to get completely across without endangering or obstructing traffic.</li>\n<li>Don&#39;t cross over box junctions unless you have enough space on the other side to get completely clear of the junction before stopping.</li></ul>"
         }
     ],
-    "root.rulesOfTheRoad.driving.signalling": [
+    "nav.rulesOfTheRoad.driving.signalling": [
         {
             "imageName": "",
             "heading": "Signal lights",
@@ -531,7 +531,7 @@
             "description": "<ul><li>If you have to do an emergency stop don&#39;t signal. Keep both hands on the wheel.</li></ul>"
         }
     ],
-    "root.rulesOfTheRoad.driving.overtaking": [
+    "nav.rulesOfTheRoad.driving.overtaking": [
         {
             "imageName": "",
             "heading": "General",
@@ -563,7 +563,7 @@
             "description": "<ul><li>If you&#39;re in the &#34;fast&#34; lane (furthest right lane going in your direction) on a freeway and you want to overtake someone in front of you, you can flash your headlights at them.</li>\n<li>If you&#39;re in the fast lane and someone flashes you to show they want to overtake, move to the left as soon as it is safe to do so.</li></ul>"
         }
     ],
-    "root.rulesOfTheRoad.driving.towing": [
+    "nav.rulesOfTheRoad.driving.towing": [
         {
             "imageName": "",
             "heading": "General rules",
@@ -580,7 +580,7 @@
             "description": "<ul><li>You may go over 30km/h if there are no passengers (only semi-trailers may be towed at over 30km/h carrying passengers).</li>\n<li>The towed vehicle does not need a driver.</li>\n<li>You must use a solid tow bar for towing vehicles with weak brakes.</li></ul>"
         }
     ],
-    "root.defensiveDriving.introToK53": [
+    "nav.defensiveDriving.introToK53": [
         {
             "imageName": "",
             "heading": "",
@@ -592,7 +592,7 @@
             "description": "To drive defensively you need to:\n<ul><li>Know how to use your vehicle controls.</li>\n<li>Be on the lookout all the time, by observing. This means looking around your car, including in your mirrors and your blind spots.</li>\n<li>Be able to recognize hazards (dangers).</li>\n<li>Know how to deal with hazards.</li>\n<li>Give yourself enough time to react to hazards, by keeping a good following distance and keeping safe clear space all around your vehicle all the time.</li>\n<li>Know the basic K53 procedure: the 10 steps used for most driving procedures (eg turning, overtaking, etc).</li></ul>\n"
         }
     ],
-    "root.defensiveDriving.typesOfHazards": [
+    "nav.defensiveDriving.typesOfHazards": [
         {
             "imageName": "",
             "heading": "",
@@ -614,7 +614,7 @@
             "description": "<ul><li>Changing hazards mostly have to do with weather conditions, and include:\n<ul><li>Wind</li>\n<li>Dust</li>\n<li>Rain</li>\n<li>Mist/fog</li>\n<li>Snow/ice</li>\n<li>Sun (especially the setting/rising sun)</li></ul></li>\n<li>They are dangerous because: \n<ul><li>They make it hard to see ahead</li>\n<li>They could cause your vehicle to move or slip on the road.</li></ul></li></ul>\n"
         }
     ],
-    "root.defensiveDriving.dealingWithHazards": [
+    "nav.defensiveDriving.dealingWithHazards": [
         {
             "imageName": "",
             "heading": "",
@@ -646,7 +646,7 @@
             "description": "<ul><li>Carry out the action your have decided on.</li></ul>"
         }
     ],
-    "root.defensiveDriving.clearSpace": [
+    "nav.defensiveDriving.clearSpace": [
         {
             "imageName": "",
             "heading": "Clear space",
@@ -673,7 +673,7 @@
             "description": "<ul><li>When you hit the brakes, the car doesn&#39;t stop immediately. </li>\n<li>The faster you are going, and the heavier your car, the longer it takes to stop.</li>\n<li>At 65km/h the risk of crashing is double the risk at 60km/h.</li>\n<li>At 60km/h it will take you 45m to stop.</li>\n<li>If you were going 65km/h then by the 45m mark you would still be going 32km/h.</li>\n<li>Pace out 45m on a roadway. Think about the fact that if a child ran out into the road in front of your car just before that mark you would not be able to stop in time, even if you were only doing 60 km/h.</li>\n<li>At 100km/h your stopping distance is 100m.</li>\n<li>At 120km/h your stopping distance is 130m.</li></ul>\n"
         }
     ],
-    "root.defensiveDriving.observing": [
+    "nav.defensiveDriving.observing": [
         {
             "imageName": "",
             "heading": "General observation",
@@ -690,7 +690,7 @@
             "description": "<ul><li>Sit in a parked car (in the driver&#39;s seat).</li>\n<li>Get someone to walk towards the car from the back. They should walk in a line 2m away from the driver&#39;s side of the car.</li>\n<li>Watch them in your driver&#39;s side mirror.</li>\n<li>When they disappear, they&#39;re in the blind spot. Tell them to stop.</li>\n<li>Turn your head and see how far back you have to look to see them.</li>\n<li>Imagine a mark on the inside of your car that tells you where you have to look to.</li>\n<li>Repeat this on the passenger&#39;s side.</li></ul>\n"
         }
     ],
-    "root.defensiveDriving.generalK53Procedure": [
+    "nav.defensiveDriving.generalK53Procedure": [
         {
             "imageName": "",
             "heading": "",
@@ -712,7 +712,7 @@
             "description": "7. Blind spot (in the direction in which you are turning, to make sure it is safe. This is always the last thing you do before manoeuvering.)<br/>\n8. Steer<br/>\n9. Accelerate<br/>\n10. Cancel signal\n"
         }
     ],
-    "root.roadMarkings.guidanceMarkings": [
+    "nav.roadMarkings.guidanceMarkings": [
         {
             "imageName": "road-signs/GM1.2.gif",
             "heading": "Lane line",
@@ -754,7 +754,7 @@
             "description": "This tells you that there is kerbing (pavement lip or edge) on the edge of the roadway."
         }
     ],
-    "root.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings": [
+    "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings": [
         {
             "imageName": "road-signs/RM1.gif",
             "heading": "No overtaking",
@@ -846,7 +846,7 @@
             "description": "Only vehicles transporting disabled people may park here."
         }
     ],
-    "root.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings": [
+    "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings": [
         {
             "imageName": "road-signs/RTM1.gif",
             "heading": "Stop line",
@@ -868,7 +868,7 @@
             "description": "Yield, slow down and stop if necessary for pedestrians in the crossing who are in your half of the road or about to enter it."
         }
     ],
-    "root.roadMarkings.warningMarkings": [
+    "nav.roadMarkings.warningMarkings": [
         {
             "imageName": "road-signs/WM1.gif",
             "heading": "Railway crossing",
@@ -930,7 +930,7 @@
             "description": "This warns you that an exclusive use lane has ended, and that the lane may now be used by all vehicles."
         }
     ],
-    "root.roadSignals.regulatorySignals.otherRegulatorySignals.flagSignals": [
+    "nav.roadSignals.regulatorySignals.otherRegulatorySignals.flagSignals": [
         {
             "imageName": "road-signs/SS2A.gif",
             "heading": "Stop",
@@ -942,7 +942,7 @@
             "description": "You may proceed."
         }
     ],
-    "root.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals": [
+    "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals": [
         {
             "imageName": "road-signs/SS1A.gif",
             "heading": "Stop (from front)",
@@ -964,7 +964,7 @@
             "description": "You may proceed."
         }
     ],
-    "root.roadSignals.regulatorySignals.overheadLaneDirectionControlSignals": [
+    "nav.roadSignals.regulatorySignals.overheadLaneDirectionControlSignals": [
         {
             "imageName": "road-signs/S16.gif",
             "heading": "Steady green downward pointing arrow",
@@ -986,7 +986,7 @@
             "description": "This signal will be suspended above a lane. You are being warned that the lane you are in is going to end ahead, and you should move to the right lane as soon as it is safe."
         }
     ],
-    "root.roadSignals.regulatorySignals.redFlashingSignals": [
+    "nav.roadSignals.regulatorySignals.redFlashingSignals": [
         {
             "imageName": "road-signs/FRD.gif",
             "heading": "Red flashing signal",
@@ -998,7 +998,7 @@
             "description": "The railway crossing red flashing signal flashes alternately when a train is approaching. You must stop and wait until the signal stops flashing, then proceed if it is safe to go."
         }
     ],
-    "root.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals": [
+    "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals": [
         {
             "imageName": "road-signs/S11.gif",
             "heading": "Steady man",
@@ -1020,7 +1020,7 @@
             "description": "FLASHING RED PEDAL CYCLE or FLASHING GREEN PEDAL CYCLE both mean that cyclists who have not begun to cross the road yet must stop, and not cross until the steady green pedal cycle is displayed. Cyclists already in the road should continue, but be aware that the steady red pedal cycle will be displayed soon."
         }
     ],
-    "root.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals": [
+    "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals": [
         {
             "imageName": "road-signs/S1.gif",
             "heading": "Steady discs",
@@ -1067,7 +1067,7 @@
             "description": "If you want to go in the direction of the arrow you may, and may cross the path of other traffic because it is being stopped."
         }
     ],
-    "root.roadSignals.warningSignals": [
+    "nav.roadSignals.warningSignals": [
         {
             "imageName": null,
             "heading": "Warning flashing signal",
@@ -1079,7 +1079,7 @@
             "description": "The warning flag signal warns you to proceed slowly and be alert."
         }
     ],
-    "root.signs.guidance.diagrammaticSigns": [
+    "nav.signs.guidance.diagrammaticSigns": [
         {
             "imageName": "road-signs/GS501.gif",
             "heading": "Arrestor bed pre-advance exit",
@@ -1131,7 +1131,7 @@
             "description": ""
         }
     ],
-    "root.signs.guidance.directionSigns": [
+    "nav.signs.guidance.directionSigns": [
         {
             "imageName": "road-signs/GD2.gif",
             "heading": "Stack-type direction",
@@ -1148,7 +1148,7 @@
             "description": ""
         }
     ],
-    "root.signs.guidance.freewayDirectionSigns": [
+    "nav.signs.guidance.freewayDirectionSigns": [
         {
             "imageName": "road-signs/GA2.gif",
             "heading": "Advance exit direction",
@@ -1185,7 +1185,7 @@
             "description": ""
         }
     ],
-    "root.signs.guidance.locationSigns": [
+    "nav.signs.guidance.locationSigns": [
         {
             "imageName": "road-signs/GL1.gif",
             "heading": "Street name",
@@ -1227,7 +1227,7 @@
             "description": ""
         }
     ],
-    "root.signs.guidance.routeMarkerSigns": [
+    "nav.signs.guidance.routeMarkerSigns": [
         {
             "imageName": "road-signs/GE9.gif",
             "heading": "Advance transport trailblazer",
@@ -1249,7 +1249,7 @@
             "description": ""
         }
     ],
-    "root.signs.guidance.tourismDirectionSigns": [
+    "nav.signs.guidance.tourismDirectionSigns": [
         {
             "imageName": "road-signs/GF1.gif",
             "heading": "Freeway advance exit",
@@ -1296,7 +1296,7 @@
             "description": ""
         }
     ],
-    "root.signs.information": [
+    "nav.signs.information": [
         {
             "imageName": "road-signs/IN3.gif",
             "heading": "Countdown",
@@ -1368,7 +1368,7 @@
             "description": "There is a toll booth ahead. This sign shows the toll fees for each class of vehicle."
         }
     ],
-    "root.signs.regulatory.command": [
+    "nav.signs.regulatory.command": [
         {
             "imageName": "road-signs/R101.gif",
             "heading": "Minimum speed",
@@ -1565,7 +1565,7 @@
             "description": "Buses, trams and minibuses must only use this road or this part of the road.  No other road users allowed."
         }
     ],
-    "root.signs.regulatory.comprehensive": [
+    "nav.signs.regulatory.comprehensive": [
         {
             "imageName": "road-signs/R401.gif",
             "heading": "Dual-carriageway freeway begins",
@@ -1582,7 +1582,7 @@
             "description": "You are now entering a residential area.  Vehicles that weigh more than 3500 kg or have more than 10 passenger seats may not enter, except for local access or deliveries.  Give way to all pedestrians.  Maximum speed limit is 30 km per hour.  Do not drive through the area without stopping and breaking the journey."
         }
     ],
-    "root.signs.regulatory.control": [
+    "nav.signs.regulatory.control": [
         {
             "imageName": "road-signs/R1.gif",
             "heading": "Stop",
@@ -1644,14 +1644,14 @@
             "description": "Give way to oncoming traffic.  Only go when it is safe."
         }
     ],
-    "root.signs.regulatory.derestriction": [
+    "nav.signs.regulatory.derestriction": [
         {
             "imageName": "road-signs/R600.gif",
             "heading": "Derestriction sign",
             "description": "This cross appears drawn over a regulatory sign. It means you no longer have to obey the restriction under the cross."
         }
     ],
-    "root.signs.regulatory.exclusive": [
+    "nav.signs.regulatory.exclusive": [
         {
             "imageName": "road-signs/R501.gif",
             "heading": "One period time limit",
@@ -1733,7 +1733,7 @@
             "description": "The regulatory sign with which this is displayed applies to vehicles carrying dangerous goods only."
         }
     ],
-    "root.signs.regulatory.prohibition": [
+    "nav.signs.regulatory.prohibition": [
         {
             "imageName": "road-signs/R201.gif",
             "heading": "Speed limit",
@@ -1930,7 +1930,7 @@
             "description": "No hawkers allowed within 75 metres on either side on this sign"
         }
     ],
-    "root.signs.regulatory.reservations": [
+    "nav.signs.regulatory.reservations": [
         {
             "imageName": "road-signs/R302.gif",
             "heading": "Bus lane reservation",
@@ -2312,7 +2312,7 @@
             "description": "Parking area is reserved for bus, midibuses and minibuses only."
         }
     ],
-    "root.signs.warning.advancedWarningSigns.directionOfMovementSigns": [
+    "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns": [
         {
             "imageName": "road-signs/W201.gif",
             "heading": "Traffic circle",
@@ -2394,7 +2394,7 @@
             "description": "There are concealed driveways ahead on both sides. Vehicles may enter the roadway in front of you from these driveways. Proceed carefully."
         }
     ],
-    "root.signs.warning.advancedWarningSigns.roadLayoutSigns": [
+    "nav.signs.warning.advancedWarningSigns.roadLayoutSigns": [
         {
             "imageName": "road-signs/W101.gif",
             "heading": "Crossroad",
@@ -2466,7 +2466,7 @@
             "description": "You are on a road where traffic is moving in both directions at the moment. A dual roadway is about to start, and traffic will only be moving in one direction on the side you are on."
         }
     ],
-    "root.signs.warning.advancedWarningSigns.symbolicSigns": [
+    "nav.signs.warning.advancedWarningSigns.symbolicSigns": [
         {
             "imageName": "road-signs/W301.gif",
             "heading": "Traffic signal ahead",
@@ -2778,7 +2778,7 @@
             "description": "You are on a gravel road. This is about to end, and will become tar, concrete or asphalt."
         }
     ],
-    "root.signs.warning.hazardMarkerSigns": [
+    "nav.signs.warning.hazardMarkerSigns": [
         {
             "imageName": "road-signs/W401.gif",
             "heading": "Danger plate",
