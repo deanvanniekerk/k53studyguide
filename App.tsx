@@ -1,8 +1,13 @@
 import * as Font from "expo-font";
 import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
+import { Provider } from "react-redux";
+
+import { configureStore } from "@/state/configureStore";
 
 import Container from "./src/ui/Container";
+
+const store = configureStore();
 
 const App: React.FC = () => {
     const [fontLoaded, setFontLoaded] = useState(false);
@@ -24,7 +29,11 @@ const App: React.FC = () => {
             </View>
         );
 
-    return <Container />;
+    return (
+        <Provider store={store}>
+            <Container />
+        </Provider>
+    );
 };
 
 export default App;

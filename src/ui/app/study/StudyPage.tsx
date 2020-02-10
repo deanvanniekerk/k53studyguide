@@ -1,34 +1,41 @@
 import * as React from "react";
 import { View } from "react-native";
+import { connect } from "react-redux";
 
+import { STUDY_BACKGROUND_COLORS } from "@/data/branding";
+import { RootState } from "@/state";
+import { currentNavigationItemsSelector } from "@/state/study/navigation";
+import { translationsSelector } from "@/state/translations/selectors";
 import { Text } from "@/ui/components";
 import { Page } from "@/ui/components/Page";
 
-const backgroundColors = [
-    "#d16ba5",
-    "#c777b9",
-    "#ba83ca",
-    "#aa8fd8",
-    "#9a9ae1",
-    "#8aa7ec",
-    "#79b3f4",
-    "#69bff8",
-    "#52cffe",
-    "#41dfff",
-    "#46eefa",
-    "#5ffbf1",
-].reverse();
+type Props = PropsFromState;
 
-const StudyPage: React.FC = () => {
+const StudyPageComponent: React.FC<Props> = props => {
     return (
-        <Page backgroundColors={backgroundColors}>
+        <Page backgroundColors={STUDY_BACKGROUND_COLORS}>
             <View
                 style={{ flex: 1, width: "100%", alignItems: "center", justifyContent: "center" }}
             >
-                <Text>Study!</Text>
+                {props.navigationItems.map(n => {
+                    return <Text key={n}>{props.translations[n]}</Text>;
+                })}
             </View>
         </Page>
     );
 };
+
+type PropsFromState = ReturnType<typeof mapStateToProps>;
+const mapStateToProps = (state: RootState) => {
+    const navigationItems = currentNavigationItemsSelector(state);
+    const translations = translationsSelector(state);
+
+    return {
+        navigationItems,
+        translations,
+    };
+};
+
+const StudyPage = connect(mapStateToProps)(StudyPageComponent);
 
 export { StudyPage };
