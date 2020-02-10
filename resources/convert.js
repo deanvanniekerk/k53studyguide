@@ -1,8 +1,10 @@
 const fs = require("fs");
 
-const buffer = fs.readFileSync("./contentOriginal.json");
 
-const data = JSON.parse(buffer.toString("utf8"));
+// CONTENT
+let buffer = fs.readFileSync("./original/content.json");
+
+let data = JSON.parse(buffer.toString("utf8"));
 
 const output = data.reduce((p, c) => {
     if (c.Node.startsWith("rootNavigation.driver")) return p;
@@ -13,7 +15,7 @@ const output = data.reduce((p, c) => {
     const key = "nav." + arr.join(".");
 
     const d = {
-        imageName: c.ImageName,
+        imageName: c.ImageName || "",
         heading: c.Heading,
         description: c.Description,
     };
@@ -26,6 +28,9 @@ const output = data.reduce((p, c) => {
 
 fs.writeFileSync("./content.json", JSON.stringify(output, null, 4));
 
+
+
+// NAV
 const keys = Object.keys(output);
 const parentChildLookup = {};
 
@@ -52,14 +57,44 @@ const loadParentChildLookup = () => {
     });
 };
 
-function uuidv4() {
-    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
-        var r = (Math.random() * 16) | 0,
-            v = c == "x" ? r : (r & 0x3) | 0x8;
-        return v.toString(16);
-    });
-}
-
 loadParentChildLookup();
 
 fs.writeFileSync("./navigationLookup.json", JSON.stringify(parentChildLookup, null, 4));
+
+
+// STRINGS
+buffer = fs.readFileSync("./original/strings.json");
+data = JSON.parse(buffer.toString("utf8"));
+
+const translations = {}
+
+data.forEach(d => {
+
+    if (!d.Name.startsWith("rootNavigation.learner"))
+        return;
+
+    translations[d.Name.replace("rootNavigation.learner", "nav")] = d.Value;
+});
+
+fs.writeFileSync("./strings.json", JSON.stringify(translations, null, 4));
+
+
+
+
+
+
+
+//QUESTIONS
+buffer = fs.readFileSync("./original/questions.json");
+data = JSON.parse(buffer.toString("utf8"));
+
+const questions = {}
+
+data.forEach(d => {
+
+    const nav = d.navPath.replace("rootNavigation.learner", "nav");
+
+    questions[nav] = Array.isArray(d.question) ? d.question : [d.question];
+});
+
+fs.writeFileSync("./questions.json", JSON.stringify(questions, null, 4));
