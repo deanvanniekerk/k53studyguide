@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { ProfilePage } from "@/ui/app/profile/ProfilePage";
-import { StudyPage } from "@/ui/app/study/StudyPage";
+import { StudyContainer } from "@/ui/app/study/StudyContainer";
 import { TrainPage } from "@/ui/app/train/TrainPage";
 import { Text } from "@/ui/components";
 import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
@@ -49,8 +49,12 @@ const TabNavigator: React.FC = () => {
     };
 
     return (
-        <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
-            <Tab.Screen name="Study" component={StudyPage} />
+        <Tab.Navigator
+            initialRouteName="Study"
+            screenOptions={screenOptions}
+            tabBarOptions={tabBarOptions}
+        >
+            <Tab.Screen name="Study" component={StudyContainer} />
             <Tab.Screen name="Train" component={TrainPage} />
             <Tab.Screen name="Profile" component={ProfilePage} />
         </Tab.Navigator>

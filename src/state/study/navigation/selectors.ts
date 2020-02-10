@@ -22,3 +22,8 @@ export const currentNavigationItemsSelector: (state: RootState) => string[] = cr
     currentNavigationKeySelector,
     (data, key) => data[key]
 );
+
+export const rootNavigationItemsSelector: (state: RootState) => string[] = createSelector(
+    navigationDataSelector,
+    data => data["nav"]
+);
