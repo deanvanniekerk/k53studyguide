@@ -14,7 +14,7 @@ const ProgressBar: React.FC<Props> = props => {
                 <View
                     style={[
                         StyleSheet.absoluteFill,
-                        { borderRadius: 5, backgroundColor: "rgba(255, 255, 255, 0.8)", width },
+                        { borderRadius: 5, backgroundColor: "rgba(255, 255, 255, 0.4)", width },
                     ]}
                 />
             </View>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         height: 4,
         width: "100%",
-        backgroundColor: "rgba(255, 255, 255, 0.2)",
+        backgroundColor: "rgba(255, 255, 255, 0.1)",
         borderRadius: 4,
     },
 });

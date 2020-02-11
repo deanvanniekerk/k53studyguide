@@ -6,3 +6,8 @@ interface RecieveCurrentNavigationKeyAction {
 }
 
 export type NavigationActions = RecieveCurrentNavigationKeyAction;
+
+export const recieveCurrentNavigationKey = (key: string): RecieveCurrentNavigationKeyAction => ({
+    type: STUDY_NAV_RECIEVE_CURRENT_NAVIGATION_KEY,
+    payload: key,
+});

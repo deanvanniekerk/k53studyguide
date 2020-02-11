@@ -13,6 +13,15 @@ type Props = {
     onPress: (navigationItemKey: string) => void;
 } & PropsFromState;
 
+const hidden: Animatable.CustomAnimation = {
+    from: {
+        opacity: 0,
+    },
+    to: {
+        opacity: 0,
+    },
+};
+
 const animate = (
     ref: React.RefObject<Animatable.View>,
     animation: Animatable.Animation,
@@ -20,11 +29,20 @@ const animate = (
     delay: number = 0
 ) => {
     if (!ref || !ref.current) return;
-    ref.current![animation]!(duration);
+
+    setTimeout(() => {
+        ref.current![animation]!(duration);
+    }, delay);
 };
 
 const NavigationItemComponent: React.FC<Props> = props => {
     let navigationIcon = props.navigationIcons[props.navigationItemKey];
+
+    if (!navigationIcon)
+        navigationIcon = {
+            type: "ant-design",
+            name: "right",
+        };
 
     let iconLeftRef = React.createRef<Animatable.View>();
     let textRef = React.createRef<Animatable.View>();
@@ -32,10 +50,10 @@ const NavigationItemComponent: React.FC<Props> = props => {
     let iconRightRef = React.createRef<Animatable.View>();
 
     useEffect(() => {
-        animate(iconLeftRef, "fadeInLeft", 500);
-        animate(textRef, "slideInUp", 1000);
-        animate(progressRef, "slideInUp", 1000);
-        animate(iconRightRef, "fadeInRight", 500);
+        animate(iconLeftRef, "fadeIn", 800);
+        animate(textRef, "slideInLeft", 500);
+        animate(progressRef, "fadeInLeft", 400, 300);
+        animate(iconRightRef, "fadeIn", 800);
     }, []);
 
     return (
@@ -47,25 +65,26 @@ const NavigationItemComponent: React.FC<Props> = props => {
                     height: 60,
                 }}
             >
-                {navigationIcon && (
-                    <View style={{ width: 50, justifyContent: "center" }}>
-                        <Animatable.View ref={iconLeftRef}>
-                            <Icon
-                                type={navigationIcon.type}
-                                name={navigationIcon.name}
-                                style={{ marginLeft: 15, marginRight: 10 }}
-                                size={22}
-                                color={"#FFFFFF"}
-                            />
-                        </Animatable.View>
-                    </View>
-                )}
+                <View style={{ width: 50, justifyContent: "center" }}>
+                    <Animatable.View ref={iconLeftRef} animation={hidden}>
+                        <Icon
+                            type={navigationIcon.type}
+                            name={navigationIcon.name}
+                            style={{ marginLeft: 15, marginRight: 10 }}
+                            size={22}
+                            color={"#FFFFFF"}
+                        />
+                    </Animatable.View>
+                </View>
                 <View style={{ flex: 1, justifyContent: "center", overflow: "hidden" }}>
-                    <Animatable.View ref={textRef}>
-                        <Text>{props.translations[props.navigationItemKey]}</Text>
+                    <Animatable.View ref={textRef} animation={hidden}>
+                        <Text style={{ fontWeight: "bold" }}>
+                            {props.translations[props.navigationItemKey]}
+                        </Text>
                     </Animatable.View>
                     <Animatable.View
                         ref={progressRef}
+                        animation={hidden}
                         style={{
                             width: 150,
                             paddingTop: 6,
@@ -87,7 +106,7 @@ const NavigationItemComponent: React.FC<Props> = props => {
                     </Animatable.View>
                 </View>
                 <View style={{ justifyContent: "center" }}>
-                    <Animatable.View ref={iconRightRef}>
+                    <Animatable.View ref={iconRightRef} animation={hidden}>
                         <Icon
                             type="ant-design"
                             style={{ marginLeft: 10, marginRight: 15 }}
