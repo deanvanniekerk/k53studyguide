@@ -1,8 +1,7 @@
 import * as React from "react";
 
-import { AntDesign, FontAwesome } from "@expo/vector-icons";
-
-type IconType = "ant-design" | "font-awesome";
+import { IconType } from "@/data";
+import { AntDesign, Feather, FontAwesome } from "@expo/vector-icons";
 
 type Props = {
     type: IconType;
@@ -26,6 +25,15 @@ const Icon: React.FC<Props> = props => {
         case "font-awesome":
             return (
                 <FontAwesome
+                    name={props.name}
+                    style={props.style}
+                    color={props.color}
+                    size={props.size}
+                />
+            );
+        case "feather":
+            return (
+                <Feather
                     name={props.name}
                     style={props.style}
                     color={props.color}

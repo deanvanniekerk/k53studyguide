@@ -10,7 +10,6 @@ const translations: Translations = {
         "Overhead lane direction control signals",
     "nav.roadSignals.warningFlashingSignal": "Warning flashing signal",
     "nav.roadSignals.warningFlagSignal": "Warning flag signal",
-    nav: "Learners",
     "nav.introduction": "Introduction",
     "nav.motorBikeControls": "Bike Controls",
     "nav.roadMarkings": "Road markings",
@@ -90,20 +89,8 @@ const translations: Translations = {
     "nav.signs.guidance.freewayDirectionSigns": "Freeway direction signs",
     "nav.signs.guidance.tourismDirectionSigns": "Tourism direction signs",
     "nav.signs.guidance.diagrammaticSigns": "Diagrammatic signs",
-    "nav.tests.AnsweredHeading": "ANSWERED",
-    "nav.tests.correctHeading": "CORRECT",
-    "nav.tests.DateHeading": "DATE",
-    "nav.tests.markButton": "Mark",
-    "nav.tests.noQuestions": "There are no questions available for this section!",
-    "nav.tests.percentHeading": "PERCENT",
-    "nav.tests.previousHeading": "PREVIOUS TESTS",
-    "nav.tests.testNo": "TEST NO.",
-    "nav.tests.view": "View",
-    "nav.tests.viewResults": "View Results",
-    "nav.truckControls": "Truck Controls",
     "nav.vehicleControls": "Vehicle Controls",
     "nav.vehicleControls.motorcarControls": "Motorcar Controls",
-    "navs.tests.heading": "TEST",
     "nav.roadSignals.regulatorySignals.trafficSignals": "Traffic signals",
     "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals":
         "Vehicular light signals",
@@ -121,7 +108,6 @@ const translations: Translations = {
     "nav.defensiveDriving.generalK53Procedure": "General K53 procedure",
     "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals":
         "Pedestrian/pedal cycle light signals",
-    "nav.mockTest": "Mock Test",
 };
 
 export { translations };

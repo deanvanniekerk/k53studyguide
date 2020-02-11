@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 
-import { NavigationData } from "@/data";
+import { NavigationData, NavigationIcons } from "@/data";
 import { RootState } from "@/state/rootReducer";
 
 import { NavigationState } from "./reducer";
@@ -26,4 +26,9 @@ export const currentNavigationItemsSelector: (state: RootState) => string[] = cr
 export const rootNavigationItemsSelector: (state: RootState) => string[] = createSelector(
     navigationDataSelector,
     data => data["nav"]
+);
+
+export const navigationIconsSelector: (state: RootState) => NavigationIcons = createSelector(
+    rootSelector,
+    root => root.navigationIcons
 );
