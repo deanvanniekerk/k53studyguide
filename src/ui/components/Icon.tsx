@@ -51,5 +51,8 @@ const Icon: React.FC<Props> = props => {
             );
     }
 };
+Icon.defaultProps = {
+    color: "#FFFFFF",
+};
 
 export { Icon };

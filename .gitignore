@@ -57,4 +57,4 @@ buck-out/
 
 # Exoo
 .expo/web
-.web-build/
+web-build/

@@ -7,33 +7,12 @@ import { RootState } from "@/state";
 import { navigationIconsSelector } from "@/state/study/navigation";
 import { translationsSelector } from "@/state/translations/selectors";
 import { Icon, ProgressBar, Text } from "@/ui/components";
+import { animate, hidden } from "@/ui/utils/animation";
 
 type Props = {
     navigationItemKey: string;
     onPress: (navigationItemKey: string) => void;
 } & PropsFromState;
-
-const hidden: Animatable.CustomAnimation = {
-    from: {
-        opacity: 0,
-    },
-    to: {
-        opacity: 0,
-    },
-};
-
-const animate = (
-    ref: React.RefObject<Animatable.View>,
-    animation: Animatable.Animation,
-    duration: number,
-    delay: number = 0
-) => {
-    if (!ref || !ref.current) return;
-
-    setTimeout(() => {
-        ref.current![animation]!(duration);
-    }, delay);
-};
 
 const NavigationItemComponent: React.FC<Props> = props => {
     let navigationIcon = props.navigationIcons[props.navigationItemKey];
@@ -86,7 +65,7 @@ const NavigationItemComponent: React.FC<Props> = props => {
                         ref={progressRef}
                         animation={hidden}
                         style={{
-                            width: 150,
+                            width: 70,
                             paddingTop: 6,
                             flexDirection: "row",
                             alignItems: "stretch",
