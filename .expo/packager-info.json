@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 9980,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "packagerPid": 20364,
+  "expoServerNgrokUrl": "https://sj-6tt.deanvn.k53ninja.exp.direct",
+  "packagerNgrokUrl": "https://packager.sj-6tt.deanvn.k53ninja.exp.direct",
+  "ngrokPid": 13380,
   "webpackServerPort": 19006
 }

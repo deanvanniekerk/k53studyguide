@@ -2,8 +2,8 @@
   "name": "k53ninja",
   "displayName": "K53 Ninja",
   "expo": {
-    "name": "k53ninja",
-    "slug": "expo-template-bare",
+    "name": "K53 Ninja",
+    "slug": "k53-ninja",
     "privacy": "unlisted",
     "sdkVersion": "36.0.0",
     "version": "1.0.0",
@@ -12,6 +12,10 @@
       "ios",
       "android",
       "web"
-    ]
+    ],
+    "android": {
+      "package": "com.deanvn.k53ninja",
+      "versionCode": 1
+    }
   }
 }
