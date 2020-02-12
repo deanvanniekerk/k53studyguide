@@ -1,6 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
 import * as React from "react";
-import { View } from "react-native";
+import { SafeAreaView } from "react-native";
 
 type Props = {
     backgroundColors: string[];
@@ -8,7 +8,7 @@ type Props = {
 
 const Page: React.FC<Props> = props => {
     return (
-        <View style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1 }}>
             <LinearGradient
                 colors={props.backgroundColors}
                 start={{
@@ -22,7 +22,7 @@ const Page: React.FC<Props> = props => {
             >
                 {props.children}
             </LinearGradient>
-        </View>
+        </SafeAreaView>
     );
 };
 

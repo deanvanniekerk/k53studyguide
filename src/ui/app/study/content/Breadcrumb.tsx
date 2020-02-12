@@ -14,7 +14,7 @@ const BreadcrumbComponent: React.FC<Props> = props => {
         <View
             style={{
                 flexDirection: "row",
-                paddingTop: 15,
+                paddingTop: 8,
             }}
         >
             {props.breadcrumb.map((b, i) => {

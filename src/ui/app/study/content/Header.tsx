@@ -19,7 +19,7 @@ const HeaderComponent: React.FC<Props> = props => {
                 width: "100%",
                 alignItems: "flex-start",
                 justifyContent: "center",
-                paddingTop: 40,
+                paddingTop: 50,
                 paddingBottom: 10,
             }}
         >

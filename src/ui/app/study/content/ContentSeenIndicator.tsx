@@ -30,7 +30,7 @@ const ContentSeenIndicatorComponent: React.FC<Props> = ({ navigationKey, seenTot
         // Only animate if going to unseen -> seen
         if (!lastSeen && currentSeen) {
             setAnimateData({
-                animation: "flash",
+                animation: "flipInY",
                 duration: 1000,
             });
         }

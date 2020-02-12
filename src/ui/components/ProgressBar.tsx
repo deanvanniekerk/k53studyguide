@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
+import React, { useEffect, useRef } from "react";
+import { Animated, Easing, StyleSheet, View } from "react-native";
 
 import { TEXT_COLOR } from "@/data/theme";
 
@@ -15,7 +15,21 @@ type Props = {
 };
 
 const ProgressBar: React.FC<Props> = props => {
-    const width = `${props.progress}%`;
+    const animation = useRef(new Animated.Value(0));
+
+    useEffect(() => {
+        Animated.timing(animation.current, {
+            toValue: props.progress,
+            duration: props.progress === 0 ? 0 : 600,
+            easing: Easing.inOut(Easing.ease),
+        }).start();
+    }, [props.progress]);
+
+    const width = animation.current.interpolate({
+        inputRange: [0, 100],
+        outputRange: ["0%", "100%"],
+        extrapolate: "clamp",
+    });
 
     return (
         <View style={styles.container}>
@@ -31,7 +45,7 @@ const ProgressBar: React.FC<Props> = props => {
                     },
                 ]}
             >
-                <View
+                <Animated.View
                     style={[
                         StyleSheet.absoluteFill,
                         {
