@@ -6,6 +6,7 @@
         "web:nocache": "expo start --web -c",
         "start": "react-native start",
         "test": "jest",
+        "test:watch": "jest --watch",
         "lint": "npm run lint:tsc && npm run lint:scripts",
         "lint:tsc": "npm run tsc",
         "lint:scripts": "eslint --max-warnings=10 \"src/**/*.{js,ts,tsx}\"",

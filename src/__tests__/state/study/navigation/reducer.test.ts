@@ -1,17 +1,29 @@
-describe("sign in reducer", () => {
-    it("should handle AUTH_SIGNIN_FETCHING", () => {
-        // const actualState = reducer(defaultState, {
-        //     type: "AUTH_SIGNIN_FETCHING",
-        // });
+import { navigationData, navigationIcons } from "@/data";
+import { NavigationState, reducer } from "@/state/study/navigation/reducer";
 
-        // const expectedState = {
-        //     ...defaultState,
-        //     fetching: true,
-        // };
+describe("state > study > navigation > reducer", () => {
+    const defaultState: NavigationState = {
+        navigationData: navigationData,
+        currentNavigationKey: "nav",
+        navigationIcons: navigationIcons,
+    };
 
-        const test: boolean = true;
+    it("should handle STUDY_NAV_RECIEVE_CURRENT_NAVIGATION_KEY", () => {
+        const state: NavigationState = {
+            ...defaultState,
+            currentNavigationKey: "oldKey",
+        };
 
-        //expect(actualState).toEqual(expectedState);
-        expect(test).toEqual(true);
+        const actualState = reducer(state, {
+            type: "STUDY_NAV_RECIEVE_CURRENT_NAVIGATION_KEY",
+            payload: "newKey",
+        });
+
+        const expectedState = {
+            ...defaultState,
+            currentNavigationKey: "newKey",
+        };
+
+        expect(actualState).toEqual(expectedState);
     });
 });

@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
+import { TEXT_COLOR } from "@/data/theme";
+
 import { hexToRgb } from "../utils/color";
 
 type Props = {
@@ -21,9 +23,9 @@ const ProgressBar: React.FC<Props> = props => {
                 style={[
                     styles.progressBar,
                     {
-                        backgroundColor: `rgba(${hexToRgb(props.backgroundColor!).join(",")}, ${
-                            props.backgroundOpacity
-                        })`,
+                        backgroundColor: `rgba(${hexToRgb(props.backgroundColor || TEXT_COLOR).join(
+                            ","
+                        )}, ${props.backgroundOpacity})`,
                         height: props.height,
                         borderRadius: props.height,
                     },
@@ -33,9 +35,9 @@ const ProgressBar: React.FC<Props> = props => {
                     style={[
                         StyleSheet.absoluteFill,
                         {
-                            backgroundColor: `rgba(${hexToRgb(props.foregroundColor!).join(",")}, ${
-                                props.foregroundOpacity
-                            })`,
+                            backgroundColor: `rgba(${hexToRgb(
+                                props.foregroundColor || TEXT_COLOR
+                            ).join(",")}, ${props.foregroundOpacity})`,
                             width,
                             borderRadius: props.height,
                         },
@@ -47,9 +49,9 @@ const ProgressBar: React.FC<Props> = props => {
 };
 ProgressBar.defaultProps = {
     backgroundOpacity: 0.1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: TEXT_COLOR,
     foregroundOpacity: 0.4,
-    foregroundColor: "#FFFFFF",
+    foregroundColor: TEXT_COLOR,
     height: 4,
 };
 

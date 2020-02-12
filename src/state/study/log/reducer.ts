@@ -1,5 +1,5 @@
 import { SeenContent } from "../";
-import { LogActions, recieveSeenContentKey } from "./actions";
+import { LogActions } from "./actions";
 
 export type LogState = {
     readonly seenContent: SeenContent;

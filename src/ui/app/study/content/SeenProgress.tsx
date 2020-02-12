@@ -1,8 +1,7 @@
 import * as React from "react";
-import { TextStyle, View } from "react-native";
+import { View } from "react-native";
 import { connect } from "react-redux";
 
-import { RootState } from "@/state";
 import { Icon, ProgressBar, Text } from "@/ui/components";
 
 type Props = PropsFromState;
@@ -45,7 +44,7 @@ const SeenProgressComponent: React.FC<Props> = props => {
 };
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
-const mapStateToProps = (state: RootState) => {
+const mapStateToProps = () => {
     return {
         seenCurrent: 3, //currentNavigationSeenProgressSelector(state),
         seenTotal: 13, //currentNavigationSeenProgressSelector(state),

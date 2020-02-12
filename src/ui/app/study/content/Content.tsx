@@ -2,7 +2,6 @@ import * as React from "react";
 import { View } from "react-native";
 import HTML from "react-native-render-html";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
 
 import { FONT_FAMILY, FONT_SIZE, TEXT_COLOR } from "@/data/theme";
 import { RootState } from "@/state";
@@ -72,7 +71,7 @@ const mapStateToProps = (state: RootState) => {
 };
 
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = () => {
     return {
         //...bindActionCreators({ recieveCurrentNavigationKey }, dispatch),
     };

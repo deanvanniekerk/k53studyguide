@@ -1,4 +1,5 @@
-import * as React from "react";
+import React from "react";
+import { TextStyle } from "react-native";
 
 import { IconType } from "@/data";
 import { FONT_SIZE, TEXT_COLOR } from "@/data/theme";
@@ -12,11 +13,11 @@ type Props = {
     size?: number;
     color?: string;
     opacity?: number;
-    style?: any;
+    style?: TextStyle;
 };
 
 const Icon: React.FC<Props> = props => {
-    const color = `rgba(${hexToRgb(props.color!).join(",")}, ${props.opacity})`;
+    const color = `rgba(${hexToRgb(props.color || TEXT_COLOR).join(",")}, ${props.opacity})`;
 
     switch (props.type) {
         case "ant-design":

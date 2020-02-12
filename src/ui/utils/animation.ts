@@ -13,11 +13,17 @@ export const animate = (
     ref: React.RefObject<Animatable.View>,
     animation: Animatable.Animation,
     duration: number,
-    delay: number = 0
+    delay = 0
 ) => {
     if (!ref || !ref.current) return;
 
     setTimeout(() => {
-        ref.current![animation]!(duration);
+        if (!ref || !ref.current) return;
+
+        const animate = ref.current[animation];
+
+        if (!animate) return;
+
+        animate(duration);
     }, delay);
 };
