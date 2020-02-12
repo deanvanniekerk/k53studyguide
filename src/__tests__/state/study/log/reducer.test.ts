@@ -2,7 +2,7 @@ import { LogState, reducer } from "@/state/study/log";
 
 describe("state > study > log > reducer", () => {
     const defaultState: LogState = {
-        seenContent: {
+        seenContentKeys: {
             key1: true,
         },
     };
@@ -15,8 +15,8 @@ describe("state > study > log > reducer", () => {
 
         const expectedState = {
             ...defaultState,
-            seenContent: {
-                ...defaultState.seenContent,
+            seenContentKeys: {
+                ...defaultState.seenContentKeys,
                 key2: true,
             },
         };
@@ -27,8 +27,8 @@ describe("state > study > log > reducer", () => {
     it("should handle STUDY_NAV_RECIEVE_CURRENT_NAVIGATION_KEY - already seen", () => {
         const state = {
             ...defaultState,
-            seenContent: {
-                ...defaultState.seenContent,
+            seenContentKeys: {
+                ...defaultState.seenContentKeys,
                 key2: true,
             },
         };

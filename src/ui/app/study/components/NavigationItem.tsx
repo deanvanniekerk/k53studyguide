@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 
 import { PAGE_MARGIN } from "@/data/theme";
 import { RootState } from "@/state";
+import { seenTotalsSelector } from "@/state/study/log";
 import { navigationIconsSelector } from "@/state/study/navigation";
 import { translationsSelector } from "@/state/translations/selectors";
 import { Icon, ProgressBar, Text } from "@/ui/components";
@@ -22,6 +23,9 @@ const NavigationItemComponent: React.FC<Props> = props => {
             type: "ant-design",
             name: "right",
         };
+
+    const seenTotal = props.seenTotals[props.navigationItemKey];
+    const seenProgress = seenTotal ? Math.floor((seenTotal.seen / seenTotal.total) * 100) : 0;
 
     return (
         <TouchableHighlight onPress={() => props.onPress(props.navigationItemKey)}>
@@ -60,10 +64,15 @@ const NavigationItemComponent: React.FC<Props> = props => {
                         }}
                     >
                         <View style={{ flex: 1, marginRight: 5 }}>
-                            <ProgressBar progress={50} />
+                            <ProgressBar progress={seenProgress} />
                         </View>
                         <View>
-                            <Icon type="ant-design" name="eye" size={8} opacity={0.5} />
+                            <Icon
+                                type="material"
+                                name={seenProgress === 100 ? "visibility" : "visibility-off"}
+                                size={10}
+                                opacity={seenProgress === 100 ? 1 : 0.5}
+                            />
                         </View>
                     </Animatable.View>
                 </View>
@@ -88,6 +97,7 @@ const mapStateToProps = (state: RootState) => {
     return {
         translations: translationsSelector(state),
         navigationIcons: navigationIconsSelector(state),
+        seenTotals: seenTotalsSelector(state),
     };
 };
 

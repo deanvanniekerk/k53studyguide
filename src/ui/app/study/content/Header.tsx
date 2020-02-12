@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { View } from "react-native";
 import { connect } from "react-redux";
 
@@ -27,7 +27,7 @@ const HeaderComponent: React.FC<Props> = props => {
                 {props.translations[props.currentNavigationKey]}
             </Text>
             <Breadcrumb />
-            <SeenProgress />
+            <SeenProgress navigationKey={props.currentNavigationKey} />
         </View>
     );
 };

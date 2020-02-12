@@ -1,12 +1,22 @@
-import * as React from "react";
+import React from "react";
 import { View } from "react-native";
 import { connect } from "react-redux";
 
+import { RootState } from "@/state";
+import { seenTotalsSelector } from "@/state/study/log";
 import { Icon, ProgressBar, Text } from "@/ui/components";
 
-type Props = PropsFromState;
+type Props = {
+    navigationKey: string;
+} & PropsFromState;
 
 const SeenProgressComponent: React.FC<Props> = props => {
+    const total = props.seenTotals[props.navigationKey];
+
+    if (!total) return <React.Fragment />;
+
+    const seenProgress = Math.floor((total.seen / total.total) * 100);
+
     return (
         <View
             style={{
@@ -27,16 +37,23 @@ const SeenProgressComponent: React.FC<Props> = props => {
                         backgroundColor="#000000"
                         backgroundOpacity={0.2}
                         height={8}
-                        progress={Math.floor((props.seenCurrent / props.seenTotal) * 100)}
+                        progress={seenProgress}
                     />
                 </View>
                 <View>
-                    <Icon type="ant-design" name="eye" size={12} opacity={0.6} />
+                    <Icon
+                        type="material"
+                        name={seenProgress === 100 ? "visibility" : "visibility-off"}
+                        size={12}
+                        opacity={seenProgress === 100 ? 1 : 0.6}
+                    />
                 </View>
             </View>
             <View>
                 <Text style={{ opacity: 0.9, fontSize: 13, marginTop: 5 }}>
-                    {props.seenCurrent}/{props.seenTotal} Seen
+                    {total.seen}
+                    {" / "}
+                    {total.total} Seen
                 </Text>
             </View>
         </View>
@@ -44,10 +61,9 @@ const SeenProgressComponent: React.FC<Props> = props => {
 };
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
-const mapStateToProps = () => {
+const mapStateToProps = (state: RootState) => {
     return {
-        seenCurrent: 3, //currentNavigationSeenProgressSelector(state),
-        seenTotal: 13, //currentNavigationSeenProgressSelector(state),
+        seenTotals: seenTotalsSelector(state),
     };
 };
 

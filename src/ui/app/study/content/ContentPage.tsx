@@ -1,10 +1,10 @@
-import * as React from "react";
+import React from "react";
 import { ScrollView } from "react-native";
 
 import { PAGE_MARGIN, STUDY_NAVIGATOR_BACKGROUND_COLORS } from "@/data/theme";
 import { HorizontalRule, Page } from "@/ui/components";
 
-import { Content } from "./Content";
+import { ContentList } from "./ContentList";
 import { Header } from "./Header";
 import { Navigator } from "./Navigator";
 
@@ -15,7 +15,7 @@ const ContentPage: React.FC = () => {
                 <Header />
                 <HorizontalRule paddingBottom={5} />
                 <Navigator />
-                <Content />
+                <ContentList />
             </ScrollView>
         </Page>
     );

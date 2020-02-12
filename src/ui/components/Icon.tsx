@@ -3,7 +3,7 @@ import { TextStyle } from "react-native";
 
 import { IconType } from "@/data";
 import { FONT_SIZE, TEXT_COLOR } from "@/data/theme";
-import { AntDesign, Feather, FontAwesome } from "@expo/vector-icons";
+import { AntDesign, Feather, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 
 import { hexToRgb } from "../utils/color";
 
@@ -36,6 +36,15 @@ const Icon: React.FC<Props> = props => {
         case "feather":
             return (
                 <Feather name={props.name} style={props.style} color={color} size={props.size} />
+            );
+        case "material":
+            return (
+                <MaterialIcons
+                    name={props.name}
+                    style={props.style}
+                    color={color}
+                    size={props.size}
+                />
             );
         default:
             return (

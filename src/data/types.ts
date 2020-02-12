@@ -44,7 +44,7 @@ export type NavigationIcons = {
     [key: string]: Icon;
 };
 
-export type IconType = "ant-design" | "font-awesome" | "feather";
+export type IconType = "ant-design" | "font-awesome" | "feather" | "material";
 
 export type Icon = {
     type: IconType;
