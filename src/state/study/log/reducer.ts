@@ -1,12 +1,12 @@
-import { SeenContent } from "../";
+import { SeenContentKeys } from "./";
 import { LogActions } from "./actions";
 
 export type LogState = {
-    readonly seenContent: SeenContent;
+    readonly seenContentKeys: SeenContentKeys;
 };
 
 export const defaultState: LogState = {
-    seenContent: {},
+    seenContentKeys: {},
 };
 
 export const reducer = (state: LogState = defaultState, action: LogActions): LogState => {
@@ -14,8 +14,8 @@ export const reducer = (state: LogState = defaultState, action: LogActions): Log
         case "STUDY_LOG_RECIEVE_CONTENT_SEEN_KEY":
             return {
                 ...state,
-                seenContent: {
-                    ...state.seenContent,
+                seenContentKeys: {
+                    ...state.seenContentKeys,
                     [action.payload]: true,
                 },
             };

@@ -41,11 +41,11 @@ describe("state > study > content > selectors", () => {
             },
         ],
     };
-    //-----------------------------------------------------------
 
     const defaultState: ContentState = {
         contentData: contentData,
     };
+    //-----------------------------------------------------------
 
     it("contentDataSelector", () => {
         const actual = selectors.contentDataSelector.resultFunc(defaultState);

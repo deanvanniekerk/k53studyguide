@@ -1,4 +1,4 @@
-import { NavigationData, NavigationIcons } from "@/data";
+import { ContentData, NavigationData, NavigationIcons } from "@/data";
 import { NavigationState } from "@/state/study/navigation";
 import * as selectors from "@/state/study/navigation/selectors";
 
@@ -39,13 +39,52 @@ describe("state > study > navigation > selectors", () => {
             name: "alert-triangle",
         },
     };
-    //-----------------------------------------------------------
+
+    const contentData: ContentData = {
+        "nav.roadSignals.warningSignals": [
+            {
+                imageName: "",
+                heading: "1",
+                description: "description 1",
+            },
+            {
+                imageName: "",
+                heading: "2",
+                description: "description 2",
+            },
+        ],
+        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.flagSignals": [
+            {
+                imageName: "rules-of-the-road/vehicleControls.png",
+                heading: "1",
+                description: "description 1",
+            },
+        ],
+        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals": [
+            {
+                imageName: "",
+                heading: "1",
+                description: "description 1",
+            },
+            {
+                imageName: "",
+                heading: "2",
+                description: "description 2",
+            },
+            {
+                imageName: "",
+                heading: "3",
+                description: "description 3",
+            },
+        ],
+    };
 
     const defaultState: NavigationState = {
         navigationData: navigationData,
         currentNavigationKey: "nav",
         navigationIcons: navigationIcons,
     };
+    //-----------------------------------------------------------
 
     it("navigationDataSelector", () => {
         const actual = selectors.navigationDataSelector.resultFunc(defaultState);
