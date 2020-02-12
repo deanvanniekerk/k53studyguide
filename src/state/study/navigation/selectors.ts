@@ -1,4 +1,4 @@
-import { createSelector } from "reselect";
+import { createSelector, OutputSelector, Selector } from "reselect";
 
 import { NavigationData, NavigationIcons } from "@/data";
 import { RootState } from "@/state/rootReducer";
@@ -7,57 +7,64 @@ import { NavigationState } from "./reducer";
 
 const rootNavigationItemName = "nav";
 
-const rootSelector = (state: RootState): NavigationState => state.study.navigation;
+const rootSelector: Selector<RootState, NavigationState> = (state: RootState): NavigationState =>
+    state.study.navigation;
 
-export const navigationDataSelector: (state: RootState) => NavigationData = createSelector(
-    rootSelector,
-    root => root.navigationData
-);
+export const navigationDataSelector: OutputSelector<
+    RootState,
+    NavigationData,
+    (state: NavigationState) => NavigationData
+> = createSelector(rootSelector, root => root.navigationData);
 
-export const currentNavigationKeySelector: (state: RootState) => string = createSelector(
-    rootSelector,
-    root => root.currentNavigationKey
-);
+export const currentNavigationKeySelector: OutputSelector<
+    RootState,
+    string,
+    (state: NavigationState) => string
+> = createSelector(rootSelector, root => root.currentNavigationKey);
 
-export const currentNavigationItemsSelector: (
-    state: RootState
-) => string[] = createSelector(navigationDataSelector, currentNavigationKeySelector, (data, key) =>
+export const currentNavigationItemsSelector: OutputSelector<
+    RootState,
+    string[],
+    (data: NavigationData, key: string) => string[]
+> = createSelector(navigationDataSelector, currentNavigationKeySelector, (data, key) =>
     data[key] ? data[key] : []
 );
 
-export const rootNavigationItemsSelector: (state: RootState) => string[] = createSelector(
-    navigationDataSelector,
-    data => data[rootNavigationItemName]
-);
+export const rootNavigationItemsSelector: OutputSelector<
+    RootState,
+    string[],
+    (data: NavigationData) => string[]
+> = createSelector(navigationDataSelector, data => data[rootNavigationItemName]);
 
-export const navigationIconsSelector: (state: RootState) => NavigationIcons = createSelector(
-    rootSelector,
-    root => root.navigationIcons
-);
+export const navigationIconsSelector: OutputSelector<
+    RootState,
+    NavigationIcons,
+    (state: NavigationState) => NavigationIcons
+> = createSelector(rootSelector, root => root.navigationIcons);
 
-export const currentNavigationBreadcrumbSelector: (state: RootState) => string[] = createSelector(
-    navigationDataSelector,
-    currentNavigationKeySelector,
-    (data, key) => {
-        let breadcrumb: string[] = [];
+export const currentNavigationBreadcrumbSelector: OutputSelector<
+    RootState,
+    string[],
+    (data: NavigationData, key: string) => string[]
+> = createSelector(navigationDataSelector, currentNavigationKeySelector, (data, key) => {
+    let breadcrumb: string[] = [];
 
-        const walk = (node: string, items: string[]) => {
-            items.push(node);
+    const walk = (node: string, items: string[]) => {
+        items.push(node);
 
-            if (node === key) {
-                breadcrumb = items;
-                return;
-            }
+        if (node === key) {
+            breadcrumb = items;
+            return;
+        }
 
-            const children = data[node];
+        const children = data[node];
 
-            if (!children) return;
+        if (!children) return;
 
-            children.forEach(c => walk(c, [...items]));
-        };
+        children.forEach(c => walk(c, [...items]));
+    };
 
-        walk(rootNavigationItemName, []);
+    walk(rootNavigationItemName, []);
 
-        return breadcrumb;
-    }
-);
+    return breadcrumb;
+});

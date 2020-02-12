@@ -1,7 +1,7 @@
 import * as actions from "@/state/study/navigation/actions";
 
 describe("state > study > navigation > actions", () => {
-    it("should dispatch API when fetchClient is called", () => {
+    it("recieveCurrentNavigationKey", () => {
         const expectedAction = {
             type: "STUDY_NAV_RECIEVE_CURRENT_NAVIGATION_KEY",
             payload: "99",
