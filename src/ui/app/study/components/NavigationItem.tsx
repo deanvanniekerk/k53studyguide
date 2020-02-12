@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { TouchableHighlight, View } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { connect } from "react-redux";
 
+import { PAGE_MARGIN } from "@/data/theme";
 import { RootState } from "@/state";
 import { navigationIconsSelector } from "@/state/study/navigation";
 import { translationsSelector } from "@/state/translations/selectors";
 import { Icon, ProgressBar, Text } from "@/ui/components";
-import { animate, hidden } from "@/ui/utils/animation";
 
 type Props = {
     navigationItemKey: string;
@@ -23,18 +23,6 @@ const NavigationItemComponent: React.FC<Props> = props => {
             name: "right",
         };
 
-    let iconLeftRef = React.createRef<Animatable.View>();
-    let textRef = React.createRef<Animatable.View>();
-    let progressRef = React.createRef<Animatable.View>();
-    let iconRightRef = React.createRef<Animatable.View>();
-
-    useEffect(() => {
-        animate(iconLeftRef, "fadeIn", 800);
-        animate(textRef, "slideInLeft", 500);
-        animate(progressRef, "fadeInLeft", 400, 300);
-        animate(iconRightRef, "fadeIn", 800);
-    }, []);
-
     return (
         <TouchableHighlight onPress={() => props.onPress(props.navigationItemKey)}>
             <View
@@ -44,26 +32,26 @@ const NavigationItemComponent: React.FC<Props> = props => {
                     height: 60,
                 }}
             >
-                <View style={{ width: 50, justifyContent: "center" }}>
-                    <Animatable.View ref={iconLeftRef} animation={hidden}>
+                <View style={{ justifyContent: "center" }}>
+                    <Animatable.View animation="fadeIn" duration={800}>
                         <Icon
                             type={navigationIcon.type}
                             name={navigationIcon.name}
-                            style={{ marginLeft: 15, marginRight: 10 }}
+                            style={{ marginRight: PAGE_MARGIN }}
                             size={22}
-                            color={"#FFFFFF"}
                         />
                     </Animatable.View>
                 </View>
                 <View style={{ flex: 1, justifyContent: "center", overflow: "hidden" }}>
-                    <Animatable.View ref={textRef} animation={hidden}>
+                    <Animatable.View animation="slideInUp" duration={500}>
                         <Text style={{ fontWeight: "bold" }}>
                             {props.translations[props.navigationItemKey]}
                         </Text>
                     </Animatable.View>
                     <Animatable.View
-                        ref={progressRef}
-                        animation={hidden}
+                        animation="fadeInLeft"
+                        duration={400}
+                        delay={300}
                         style={{
                             width: 70,
                             paddingTop: 6,
@@ -75,26 +63,21 @@ const NavigationItemComponent: React.FC<Props> = props => {
                             <ProgressBar progress={50} />
                         </View>
                         <View>
-                            <Icon
-                                type="ant-design"
-                                name="eye"
-                                size={8}
-                                color="rgba(255, 255, 255, 0.5)"
-                            />
+                            <Icon type="ant-design" name="eye" size={8} opacity={0.5} />
                         </View>
                     </Animatable.View>
                 </View>
-                <View style={{ justifyContent: "center" }}>
-                    <Animatable.View ref={iconRightRef} animation={hidden}>
+                {/* <View style={{ justifyContent: "center" }}>
+                    <Animatable.View animation="fadeIn" duration={800}>
                         <Icon
                             type="ant-design"
                             style={{ marginLeft: 10, marginRight: 15 }}
                             name="rightcircleo"
                             size={22}
-                            color="rgba(255, 255, 255, 0.8)"
+                            opacity={0.8}
                         />
                     </Animatable.View>
-                </View>
+                </View> */}
             </View>
         </TouchableHighlight>
     );

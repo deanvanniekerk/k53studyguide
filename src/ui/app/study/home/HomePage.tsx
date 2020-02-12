@@ -1,9 +1,9 @@
 import * as React from "react";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 
-import { STUDY_HOME_BACKGROUND_COLORS } from "@/data/branding";
+import { PAGE_MARGIN, STUDY_HOME_BACKGROUND_COLORS } from "@/data/theme";
 import { RootState } from "@/state";
 import { recieveCurrentNavigationKey, rootNavigationItemsSelector } from "@/state/study/navigation";
 import { Page } from "@/ui/components";
@@ -25,12 +25,18 @@ const HomePageComponent: React.FC<Props> = props => {
 
     return (
         <Page backgroundColors={STUDY_HOME_BACKGROUND_COLORS}>
-            <Header />
-            <View>
-                {props.navigationItems.map(n => (
-                    <NavigationItem key={n} navigationItemKey={n} onPress={onNavigationItemPress} />
-                ))}
-            </View>
+            <ScrollView style={{ paddingLeft: PAGE_MARGIN, paddingRight: PAGE_MARGIN }}>
+                <Header />
+                <View>
+                    {props.navigationItems.map(n => (
+                        <NavigationItem
+                            key={n}
+                            navigationItemKey={n}
+                            onPress={onNavigationItemPress}
+                        />
+                    ))}
+                </View>
+            </ScrollView>
         </Page>
     );
 };

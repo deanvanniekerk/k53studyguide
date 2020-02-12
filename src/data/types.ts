@@ -1,3 +1,5 @@
+import { ImageRequireSource } from "react-native";
+
 export type ContentData = {
     [key: string]: ContentItem[];
 };
@@ -54,4 +56,14 @@ export type Icon = {
 
 export type IconStyle = {
     [key: string]: string;
+};
+
+export type Images = {
+    [key: string]: ImageData;
+};
+
+export type ImageData = {
+    width: number;
+    height: number;
+    source: ImageRequireSource;
 };

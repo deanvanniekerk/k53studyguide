@@ -14,13 +14,16 @@ const BreadcrumbComponent: React.FC<Props> = props => {
         <View
             style={{
                 flexDirection: "row",
-                paddingTop: 30,
+                paddingTop: 15,
             }}
         >
             {props.breadcrumb.map((b, i) => {
                 const isLast = i === props.breadcrumb.length - 1;
+
+                if (isLast) return;
+
                 const style: TextStyle = {
-                    opacity: isLast ? 0.6 : 0.3,
+                    opacity: 0.6,
                     fontSize: 12,
                 };
 

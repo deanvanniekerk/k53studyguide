@@ -19,13 +19,15 @@ const HeaderComponent: React.FC<Props> = props => {
                 width: "100%",
                 alignItems: "flex-start",
                 justifyContent: "center",
+                paddingTop: 40,
+                paddingBottom: 10,
             }}
         >
-            <Text style={{ fontSize: 24, fontWeight: "bold", marginTop: 40 }}>
+            <Text style={{ fontSize: 24, fontWeight: "bold" }}>
                 {props.translations[props.currentNavigationKey]}
             </Text>
-            <SeenProgress />
             <Breadcrumb />
+            <SeenProgress />
         </View>
     );
 };

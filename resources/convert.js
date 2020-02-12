@@ -1,4 +1,5 @@
 const fs = require("fs");
+var sizeOf = require('image-size');
 
 
 // CONTENT
@@ -6,7 +7,7 @@ let buffer = fs.readFileSync("./original/content.json");
 
 let data = JSON.parse(buffer.toString("utf8"));
 
-const output = data.reduce((p, c) => {
+let output = data.reduce((p, c) => {
     if (c.Node.startsWith("rootNavigation.driver")) return p;
 
     const arr = c.Node.split(".");
@@ -27,6 +28,35 @@ const output = data.reduce((p, c) => {
 }, {});
 
 fs.writeFileSync("./content.json", JSON.stringify(output, null, 4));
+
+
+
+
+
+
+// IMAGES
+buffer = fs.readFileSync("./original/content.json");
+data = JSON.parse(buffer.toString("utf8"));
+
+output = data.reduce((p, c) => {
+    if (!c.ImageName) return p;
+
+    var dimensions = sizeOf(`./original/images/${c.ImageName}`);
+    //console.log(dimensions);
+
+    p = p + `"${c.ImageName}": {
+        width: ${dimensions.width},
+        height: ${dimensions.height},
+        source: require('./${c.ImageName}'),
+    },`
+
+    return p;
+}, "export const images = {");
+
+output = output + "}"
+
+
+fs.writeFileSync("./images.ts", output);
 
 
 
@@ -60,6 +90,9 @@ const loadParentChildLookup = () => {
 loadParentChildLookup();
 
 fs.writeFileSync("./navigationLookup.json", JSON.stringify(parentChildLookup, null, 4));
+
+
+
 
 
 // STRINGS

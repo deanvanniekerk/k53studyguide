@@ -32,7 +32,7 @@ const SeenProgressComponent: React.FC<Props> = props => {
                     />
                 </View>
                 <View>
-                    <Icon type="ant-design" name="eye" size={12} color="rgba(255, 255, 255, 0.6)" />
+                    <Icon type="ant-design" name="eye" size={12} opacity={0.6} />
                 </View>
             </View>
             <View>

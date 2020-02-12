@@ -1005,17 +1005,17 @@
             "description": "STEADY RED MAN: pedestrians must stop, and may not cross the road till the steady green man is displayed.<br/>STEADY GREEN MAN: pedestrians may cross the road within the pedestrian crossing lines, and cars must yield to them."
         },
         {
-            "imageName": null,
+            "imageName": "",
             "heading": "Flashing man",
             "description": "FLASHING RED MAN or FLASHING GREEN MAN both mean that pedestrians who have not begun to cross the road yet must stop, and not cross until the steady green man is displayed. Pedestrians already in the road should continue, but be aware that the steady red man will be displayed soon."
         },
         {
-            "imageName": null,
+            "imageName": "",
             "heading": "Steady pedal cycle",
             "description": "STEADY RED PEDAL CYCLE: cyclists must stop, and may not cross the road till the steady green pedal cycle is displayed.<br/>STEADY GREEN PEDAL CYCLE: cyclists may cross the road within the cycle crossing lines, and cars must yield to them."
         },
         {
-            "imageName": null,
+            "imageName": "",
             "heading": "Flashing pedal cycle",
             "description": "FLASHING RED PEDAL CYCLE or FLASHING GREEN PEDAL CYCLE both mean that cyclists who have not begun to cross the road yet must stop, and not cross until the steady green pedal cycle is displayed. Cyclists already in the road should continue, but be aware that the steady red pedal cycle will be displayed soon."
         }
@@ -1037,7 +1037,7 @@
             "description": "STEADY RED TRAM DISC: trams must stop behind the line and not go until a green tram disc comes on and it is safe to go. If there is no pedestrian light signal provided, then pedestrians must also stop. <br/>STEADY YELLOW TRAM: trams must stop behind the stop line and not go until a green disc comes on and it is safe to go. However, if it would be dangerous to stop because the tram is so close to the line it may go. If there is no pedestrian light signal provided, then pedestrians must also stop. <br/>STEADY GREEN TRAM DISC: trams may go, but should yield to any vehicles or pedestrians already in the intersection. If there is no pedestrian light signal provided, then pedestrians may also go. "
         },
         {
-            "imageName": null,
+            "imageName": "",
             "heading": "Flashing discs",
             "description": "FLASHING RED DISC: acts as a 4-way stop. Cars must stop and yield to pedestrians, and to any cars which were stopped before them. <br/>FLASHING YELLOW DISC: this acts as a yield sign. Cars must slow down and only go if it is safe, yielding to pedestrians. A flashing yellow indicates to pedestrians that they can cross the road. "
         },
@@ -1069,7 +1069,7 @@
     ],
     "nav.roadSignals.warningSignals": [
         {
-            "imageName": null,
+            "imageName": "",
             "heading": "Warning flashing signal",
             "description": "A yellow flashing signal (single yellow disc light) warns you that there is a hazard or traffic control device present."
         },
