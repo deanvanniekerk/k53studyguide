@@ -1,0 +1,17 @@
+ion-content {
+    --background: linear-gradient(
+        to left bottom,
+        #2c146c,
+        #43136e,
+        #56116f,
+        #68106f,
+        #780f6f,
+        #8c116e,
+        #9e176c,
+        #af2069,
+        #c63264,
+        #d9465e,
+        #e85c58,
+        #f47452
+    );
+}
