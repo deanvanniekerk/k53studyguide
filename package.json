@@ -1,73 +1,47 @@
 {
-    "scripts": {
-        "android": "react-native run-android",
-        "ios": "react-native run-ios",
-        "web": "expo start --web",
-        "web:nocache": "expo start --web -c",
-        "start": "react-native start",
-        "test": "jest",
-        "test:watch": "jest --watch",
-        "lint": "npm run lint:tsc && npm run lint:scripts",
-        "lint:tsc": "npm run tsc",
-        "lint:scripts": "eslint --max-warnings=10 \"src/**/*.{js,ts,tsx}\"",
-        "lint-fix": "npm run lint-fix:script",
-        "lint-fix:script": "npm run lint:script -- --fix",
-        "tsc": "tsc"
-    },
-    "dependencies": {
-        "@expo/vector-icons": "10.0.6",
-        "@react-native-community/masked-view": "0.1.6",
-        "@react-navigation/bottom-tabs": "5.0.1",
-        "@react-navigation/core": "5.1.0",
-        "@react-navigation/native": "5.0.1",
-        "@react-navigation/stack": "5.0.1",
-        "expo": "36.0.2",
-        "expo-font": "8.0.0",
-        "expo-linear-gradient": "8.0.0",
-        "html-entities": "1.2.1",
-        "react": "16.12.0",
-        "react-dom": "16.12.0",
-        "react-native": "0.61.4",
-        "react-native-animatable": "1.3.3",
-        "react-native-gesture-handler": "1.5.6",
-        "react-native-reanimated": "1.4.0",
-        "react-native-render-html": "4.2.0",
-        "react-native-safe-area-context": "0.7.2",
-        "react-native-screens": "2.0.0-alpha.12",
-        "react-native-unimodules": "0.7.0",
-        "react-native-web": "0.11.7",
-        "react-native-webview": "8.0.6",
-        "react-redux": "7.1.3",
-        "redux": "4.0.5",
-        "reselect": "4.0.0"
-    },
-    "devDependencies": {
-        "@babel/core": "7.8.4",
-        "@types/html-entities": "1.2.16",
-        "@types/jest": "25.1.2",
-        "@types/react": "16.9.19",
-        "@types/react-native": "0.61.11",
-        "@types/react-redux": "7.1.7",
-        "@typescript-eslint/eslint-plugin": "2.19.0",
-        "@typescript-eslint/parser": "2.19.0",
-        "babel-jest": "25.1.0",
-        "babel-preset-expo": "8.0.0",
-        "eslint": "6.8.0",
-        "eslint-config-prettier": "6.9.0",
-        "eslint-plugin-prettier": "3.1.2",
-        "eslint-plugin-react": "7.18.0",
-        "jest-expo": "36.0.1",
-        "prettier": "1.19.1",
-        "pretty-quick": "2.0.1",
-        "typescript": "3.7.5"
-    },
-    "jest": {
-        "preset": "react-native"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "pretty-quick --staged"
-        }
-    },
-    "private": true
+  "name": "k53ninja",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@ionic/react": "^5.0.0",
+    "@ionic/react-router": "^5.0.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^8.0.3",
+    "@types/jest": "^24.0.25",
+    "@types/node": "^12.12.24",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-router": "^5.1.4",
+    "@types/react-router-dom": "^5.1.3",
+    "ionicons": "^5.0.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.3.0",
+    "typescript": "3.7.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "description": "K53 Ninja App"
 }
