@@ -1,9 +1,18 @@
 import { compose, createStore } from "redux";
 
-import rootReducer from "./rootReducer";
+import createRootReducer from "./rootReducer";
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const enhancers = [] as any;
+if (window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"]) {
+    enhancers.push(window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"]());
+}
 
 export const configureStore = () => {
-    return createStore(rootReducer, composeEnhancers);
+    const store = createStore(
+        createRootReducer(),
+        undefined, // preloaded state
+        compose(...enhancers)
+    );
+
+    return store;
 };

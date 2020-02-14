@@ -1,15 +1,37 @@
 import "./StudyPage.css";
 
 import React from "react";
+import { connect } from "react-redux";
+import { RootState } from "src/state";
+import { rootNavigationItemsSelector } from "src/state/study/navigation";
 
-import { IonContent, IonPage } from "@ionic/react";
+import { IonContent, IonItem, IonLabel, IonList, IonPage } from "@ionic/react";
 
-const StudyPage: React.FC = () => {
+type Props = PropsFromState;
+
+const StudyPage: React.FC<Props> = props => {
     return (
         <IonPage>
-            <IonContent>TODO</IonContent>
+            <IonContent>
+                <IonList>
+                    {props.navigationItems.map(item => {
+                        return (
+                            <IonItem>
+                                <IonLabel>{item}</IonLabel>
+                            </IonItem>
+                        );
+                    })}
+                </IonList>
+            </IonContent>
         </IonPage>
     );
 };
 
-export default StudyPage;
+type PropsFromState = ReturnType<typeof mapStateToProps>;
+const mapStateToProps = (state: RootState) => {
+    return {
+        navigationItems: rootNavigationItemsSelector(state),
+    };
+};
+
+export default connect(mapStateToProps)(StudyPage);
