@@ -1,16 +1,8 @@
 import { combineReducers } from "redux";
 
-import { ContentState, reducer as content } from "./content";
-import { LogActions, LogState, reducer as log } from "./log";
-import { NavigationActions, NavigationState, reducer as navigation } from "./navigation";
-
-export type StudyState = {
-    content: ContentState;
-    navigation: NavigationState;
-    log: LogState;
-};
-
-export type StudyActions = NavigationActions | LogActions;
+import { reducer as content } from "./content";
+import { reducer as log } from "./log";
+import { reducer as navigation } from "./navigation";
 
 export const reducer = combineReducers({
     content: content,

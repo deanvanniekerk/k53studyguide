@@ -1,20 +1,13 @@
-import { Reducer } from "react";
 import { combineReducers } from "redux";
 
-import { reducer as study, StudyActions, StudyState } from "./study";
-import { reducer as translations, TranslationsState } from "./translations";
+import { reducer as study } from "./study";
+import { reducer as translations } from "./translations";
 
-export type RootState = {
-    readonly study: StudyState;
-    readonly translations: TranslationsState;
-};
+const rootReducer = combineReducers({
+    study: study,
+    translations: translations,
+});
 
-export type RootActions = StudyActions;
+export type RootState = ReturnType<typeof rootReducer>;
 
-const createRootReducer = (): Reducer<RootState, RootActions> =>
-    combineReducers({
-        study: study,
-        translations: translations,
-    });
-
-export default createRootReducer;
+export default rootReducer;

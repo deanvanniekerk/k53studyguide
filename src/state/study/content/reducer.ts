@@ -1,7 +1,5 @@
 import { ContentData, contentData } from "src/data";
 
-//import { ContentActions } from "./actions";
-
 export type ContentState = {
     readonly contentData: ContentData;
 };

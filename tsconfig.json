@@ -10,7 +10,7 @@
         "skipLibCheck": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
-        "strict": false,
+        "strict": true,
         "forceConsistentCasingInFileNames": true,
         "module": "esnext",
         "moduleResolution": "node",
@@ -18,7 +18,11 @@
         "isolatedModules": true,
         "noEmit": true,
         "jsx": "react",
-        "baseUrl": "./"
+        "baseUrl": "./",
+        "typeRoots": [
+            "node_modules/@types",
+            "src/typings"
+        ]
     },
     "include": [
         "src"
