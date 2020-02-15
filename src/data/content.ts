@@ -6,7 +6,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Welcome to Learn2Drive",
             description:
-                "Learn2Drive contains everything you need to know to pass your Learner&#39;s Licence test. It covers the same ground as the traffic department&#39;s Learner licence test:\n<ul><li>Vehicle controls</li>\n<li>Rules of the road</li>\n<li>Defensive driving</li>\n<li>Road signals</li>\n<li>Road signs</li>\n<li>Road markings</li></ul>",
+                "Learn2Drive contains everything you need to know to pass your Learner's Licence test. It covers the same ground as the traffic department's Learner licence test:\n<ul><li>Vehicle controls</li>\n<li>Rules of the road</li>\n<li>Defensive driving</li>\n<li>Road signals</li>\n<li>Road signs</li>\n<li>Road markings</li></ul>",
         },
         {
             imageName: "",
@@ -18,19 +18,19 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Tests",
             description:
-                "<ul><li>Each menu item in the Navigator, or each section of the Learner&#39;s content, has questions attached to it.</li>\n<li>For example, in the Rules of the Road > Driving > Speed limits section, you will only get questions about Speed limits.</li>\n<li>After doing this test you would move on to study the next section on Rules of the Road > Driving > Stopping, and then do its test.</li>\n<li>If you move up a level onto the Driving section, you&#39;ll get a test combining questions on Speed limits and Stopping, as well as the other sub-sections under Driving, so as you finish each major section you can revise previous work.</li>\n<li>One level up on the Rules of the Road level you will get a selection of questions from all its sub-sections (The driver, The car, The road and Driving).</li></ul>",
+                "<ul><li>Each menu item in the Navigator, or each section of the Learner's content, has questions attached to it.</li>\n<li>For example, in the Rules of the Road > Driving > Speed limits section, you will only get questions about Speed limits.</li>\n<li>After doing this test you would move on to study the next section on Rules of the Road > Driving > Stopping, and then do its test.</li>\n<li>If you move up a level onto the Driving section, you'll get a test combining questions on Speed limits and Stopping, as well as the other sub-sections under Driving, so as you finish each major section you can revise previous work.</li>\n<li>One level up on the Rules of the Road level you will get a selection of questions from all its sub-sections (The driver, The car, The road and Driving).</li></ul>",
         },
         {
             imageName: "",
             heading: "The Mock Test",
             description:
-                "<ul><li>Once you&#39;ve studied all the sections, do a <b>Mock test</b>. This works in the same way as the Learner&#39;s Licence test you&#39;ll write at the traffic department. There are three sections:\n<ul><li>Vehicle controls</li>\n<li>Rules of the road, defensive driving and road signals</li>\n<li>Road signs and road markings</li></ul></li>\n<li>Each section is marked separately and you need to pass all three to get an overall pass. Learn2Drive will give you the individual section results, as well as the overall result. </li>\n<li>Practise the test as many times as you like. You&#39;ll get a new spread of questions each time.</li><li>The test is tough, so don&#39;t be discouraged if your results are bad at first. Better to have a few retries here in Learn2Drive than at the traffic department. If you are doing really badly, revise each section in Learn Mode and do the individual section tests until you feel ready to attempt the mock test again.</li>\n<li>If you can pass this test at least three times you&#39;re in great shape for your traffic department test.</li></ul>",
+                "<ul><li>Once you've studied all the sections, do a <b>Mock test</b>. This works in the same way as the Learner's Licence test you'll write at the traffic department. There are three sections:\n<ul><li>Vehicle controls</li>\n<li>Rules of the road, defensive driving and road signals</li>\n<li>Road signs and road markings</li></ul></li>\n<li>Each section is marked separately and you need to pass all three to get an overall pass. Learn2Drive will give you the individual section results, as well as the overall result. </li>\n<li>Practise the test as many times as you like. You'll get a new spread of questions each time.</li><li>The test is tough, so don't be discouraged if your results are bad at first. Better to have a few retries here in Learn2Drive than at the traffic department. If you are doing really badly, revise each section in Learn Mode and do the individual section tests until you feel ready to attempt the mock test again.</li>\n<li>If you can pass this test at least three times you're in great shape for your traffic department test.</li></ul>",
         },
         {
             imageName: "",
             heading: "Other resources",
             description:
-                "The <b>Checklist</b> helps you keep track of all the tasks you&#39;ll need to do before you write your test, like booking a test date and getting photos. It explains exactly what you need to take with you.",
+                "The <b>Checklist</b> helps you keep track of all the tasks you'll need to do before you write your test, like booking a test date and getting photos. It explains exactly what you need to take with you.",
         },
     ],
     "nav.vehicleControls": [
@@ -44,38 +44,38 @@ const contentData: ContentData = {
     "nav.rulesOfTheRoad.theDriver.learnerDrivers": [
         {
             imageName: "",
-            heading: "What does the Learner&#39;s Licence entitle me to do? ",
+            heading: "What does the Learner's Licence entitle me to do? ",
             description:
-                "If you have a learner&#39;s licence you may drive a car, subject to the following rules:<ul><li>You must carry your learner&#39;s licence with you at all times while driving</li><li>You need to have a supervisor with you at all times who:<ul><li>Has a valid licence for the  same class of vehicle</li><li>Has to sit in the passenger seat or behind the driver&#39;s seat if s/he can&#39;t sit in the passenger seat</li><li>Can&#39;t be under the influence of drugs or alcohol</li></ul></li><li>You don&#39;t have to use L plates by law, but other drivers are more likely to be patient with you if you do (remember to remove them after each driving session)</li><li>You may have other passengers in the car, but not paying passengers</li><li>You may tow a caravan/trailer</li><li>You may go on freeways.</li></ul>",
+                "If you have a learner's licence you may drive a car, subject to the following rules:<ul><li>You must carry your learner's licence with you at all times while driving</li><li>You need to have a supervisor with you at all times who:<ul><li>Has a valid licence for the  same class of vehicle</li><li>Has to sit in the passenger seat or behind the driver's seat if s/he can't sit in the passenger seat</li><li>Can't be under the influence of drugs or alcohol</li></ul></li><li>You don't have to use L plates by law, but other drivers are more likely to be patient with you if you do (remember to remove them after each driving session)</li><li>You may have other passengers in the car, but not paying passengers</li><li>You may tow a caravan/trailer</li><li>You may go on freeways.</li></ul>",
         },
         {
             imageName: "",
-            heading: "How long is the Learner&#39;s Licence valid for? ",
+            heading: "How long is the Learner's Licence valid for? ",
             description: "18 months from the date on which you passed your test.",
         },
         {
             imageName: "",
-            heading: "Requirements for a Learner&#39;s Licence",
+            heading: "Requirements for a Learner's Licence",
             description:
-                "<ul><li>For light motor vehicles you need to be 17 years or older. </li><li>You may not have been disqualified from getting a Learner&#39;s or Driver&#39;s Licence by a court of law. </li><li>You may not apply if your licence has been suspended and you are still within the period of suspension, or your licence has been endorsed or cancelled.</li><li>You may not apply if you already have a licence for same class of vehicle. </li><li>You must have no physical or mental disability that would make it difficult or dangerous for you to drive (including uncontrolled epilepsy or diabetes). If you already have a licence and you become aware of such a defect it is your responsibility to report it to the authorities within 21 days of becoming aware of it.</li></ul>",
+                "<ul><li>For light motor vehicles you need to be 17 years or older. </li><li>You may not have been disqualified from getting a Learner's or Driver's Licence by a court of law. </li><li>You may not apply if your licence has been suspended and you are still within the period of suspension, or your licence has been endorsed or cancelled.</li><li>You may not apply if you already have a licence for same class of vehicle. </li><li>You must have no physical or mental disability that would make it difficult or dangerous for you to drive (including uncontrolled epilepsy or diabetes). If you already have a licence and you become aware of such a defect it is your responsibility to report it to the authorities within 21 days of becoming aware of it.</li></ul>",
         },
         {
             imageName: "",
             heading: "Eyesight ",
             description:
-                "<ul><li>You can&#39;t hold a learner&#39;s licence unless you have a Snellen visual acuity rating of <ul><li>6/12 (20/40) in each eye</li><li>or if one eye has a rating of less than 6/12, then other eye must be 6/9 (20/30) </li></ul></li><li>You may take the eye test wearing glasses/contacts. If you do then your licence will be endorsed and you will need to wear your glasses or contacts whenever you drive. </li><li>If you fail the eye test at the traffic department you can go to be retested by a registered optometrist. If according to their test you pass then this has to be accepted by the traffic department.</li></ul>",
+                "<ul><li>You can't hold a learner's licence unless you have a Snellen visual acuity rating of <ul><li>6/12 (20/40) in each eye</li><li>or if one eye has a rating of less than 6/12, then other eye must be 6/9 (20/30) </li></ul></li><li>You may take the eye test wearing glasses/contacts. If you do then your licence will be endorsed and you will need to wear your glasses or contacts whenever you drive. </li><li>If you fail the eye test at the traffic department you can go to be retested by a registered optometrist. If according to their test you pass then this has to be accepted by the traffic department.</li></ul>",
         },
         {
             imageName: "",
-            heading: "Booking a Learner&#39;s Licence test ",
+            heading: "Booking a Learner's Licence test ",
             description:
-                "<ul><li>Go in person to book your test at the Learner&#39;s Licence Test Centre.</li><li>Take the prescribed fee. This varies per province, so contact your test centre to find out what the fee is.</li><li>Take your valid ID book.</li><li>Take two ID photos (they can be colour or black and white).</li><li>At the test centre you will fill in Form LL1.</li><li>Your eyes will be tested at the test centre.</li><li>You will be given a date on which to come back for your test.</li></ul>",
+                "<ul><li>Go in person to book your test at the Learner's Licence Test Centre.</li><li>Take the prescribed fee. This varies per province, so contact your test centre to find out what the fee is.</li><li>Take your valid ID book.</li><li>Take two ID photos (they can be colour or black and white).</li><li>At the test centre you will fill in Form LL1.</li><li>Your eyes will be tested at the test centre.</li><li>You will be given a date on which to come back for your test.</li></ul>",
         },
         {
             imageName: "",
             heading: "How are you tested?",
             description:
-                "<ul><li>Your Learner&#39;s Licence test consists of a written theory test covering three main sections:<ul><li>Rules of the road, traffic control signals and principles of defensive driving</li><li>Road traffic signs and road markings</li><li>Motor vehicle controls</li></ul></li><li>All of the questions are multiple choice. </li><li>You need to do well in all three sections. Even if you have a high score overall if you have done badly in one of the sections you could fail. </li><li>You will receive a test booklet of questions, and a sketch booklet with pictures in it, for example road signs and situations on the road. Some of the test questions refer to pictures in the sketch booklet. </li></ul>",
+                "<ul><li>Your Learner's Licence test consists of a written theory test covering three main sections:<ul><li>Rules of the road, traffic control signals and principles of defensive driving</li><li>Road traffic signs and road markings</li><li>Motor vehicle controls</li></ul></li><li>All of the questions are multiple choice. </li><li>You need to do well in all three sections. Even if you have a high score overall if you have done badly in one of the sections you could fail. </li><li>You will receive a test booklet of questions, and a sketch booklet with pictures in it, for example road signs and situations on the road. Some of the test questions refer to pictures in the sketch booklet. </li></ul>",
         },
     ],
     "nav.rulesOfTheRoad.theDriver.driversDuties": [
@@ -83,13 +83,13 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Your general duties",
             description:
-                "<ul><li>Always stay in control of your vehicle</li><li>Keep a clear view of road ahead</li><li>The front and back windscreen and rear-view mirrors must be clean and not cracked</li><li>Reverse when only when safe, and for as short a distance as possible</li><li>No part of your body may be out of the vehicle, except for giving hand signals</li><li>Only pull off when it is safe and when it will not interfere with traffic</li><li>Keep a safe following distance so you can stop in time (2 seconds is the normal following distance) </li><li>Give way immediately to emergency vehicles sounding sirens</li><li>You may not run the engine if<ul><li>The vehicle is not under your control (you are out of the car) </li><li>Your fuel cap is off</li><li>The car is smoking excessively </li></ul></li><li>If you leave the car, you have to have the parking brake on</li><li>Instructions from a traffic officer always take precedence over any rule of the road or road sign/marking</li><li>Keep to the left on two way roads. On a one way, you can go on the right</li><li>Have your driver&#39;s licence on you at all times</li><li>Always drive with consideration for the safety of all people and property on and alongside the road. </li></ul>",
+                "<ul><li>Always stay in control of your vehicle</li><li>Keep a clear view of road ahead</li><li>The front and back windscreen and rear-view mirrors must be clean and not cracked</li><li>Reverse when only when safe, and for as short a distance as possible</li><li>No part of your body may be out of the vehicle, except for giving hand signals</li><li>Only pull off when it is safe and when it will not interfere with traffic</li><li>Keep a safe following distance so you can stop in time (2 seconds is the normal following distance) </li><li>Give way immediately to emergency vehicles sounding sirens</li><li>You may not run the engine if<ul><li>The vehicle is not under your control (you are out of the car) </li><li>Your fuel cap is off</li><li>The car is smoking excessively </li></ul></li><li>If you leave the car, you have to have the parking brake on</li><li>Instructions from a traffic officer always take precedence over any rule of the road or road sign/marking</li><li>Keep to the left on two way roads. On a one way, you can go on the right</li><li>Have your driver's licence on you at all times</li><li>Always drive with consideration for the safety of all people and property on and alongside the road. </li></ul>",
         },
         {
             imageName: "",
             heading: "Your duties regarding passengers",
             description:
-                "<ul><li>Don&#39;t allow people or animals to obstruct your view or ability to control the vehicle or give signals clearly</li><li>Don&#39;t allow anyone to take control of the steering or controls</li><li>A passenger may not drive/steer the vehicle unless it is clear that the driver cannot control the vehicle any more</li><li>No person (or animal) can go on the roof/step/running board when the vehicle is in motion </li><li>Passengers may not have any part of the body out of the car</li><li>Make sure passengers know how to work the doors and seatbelt release</li><li>Make sure they wear seatbelts</li><li>Don&#39;t let them get in or out when the vehicle is moving or it&#39;s not safe</li><li>Passengers may only go on the back of a truck or van if the sides are at least<ul><li>450mm high if sitting (350mm in KZN) </li><li>900mm high if standing (1250mm in KZN) </li></ul></li><li>The above rule doesn&#39;t apply to people being transported for work</li><li>Don&#39;t overload passengers. Each should have at least 380mm of seat width</li></ul>",
+                "<ul><li>Don't allow people or animals to obstruct your view or ability to control the vehicle or give signals clearly</li><li>Don't allow anyone to take control of the steering or controls</li><li>A passenger may not drive/steer the vehicle unless it is clear that the driver cannot control the vehicle any more</li><li>No person (or animal) can go on the roof/step/running board when the vehicle is in motion </li><li>Passengers may not have any part of the body out of the car</li><li>Make sure passengers know how to work the doors and seatbelt release</li><li>Make sure they wear seatbelts</li><li>Don't let them get in or out when the vehicle is moving or it's not safe</li><li>Passengers may only go on the back of a truck or van if the sides are at least<ul><li>450mm high if sitting (350mm in KZN) </li><li>900mm high if standing (1250mm in KZN) </li></ul></li><li>The above rule doesn't apply to people being transported for work</li><li>Don't overload passengers. Each should have at least 380mm of seat width</li></ul>",
         },
     ],
     "nav.rulesOfTheRoad.theDriver.accidents": [
@@ -97,13 +97,13 @@ const contentData: ContentData = {
             imageName: "",
             heading: "For all accidents",
             description:
-                "<ul><li>Stop immediately</li><li>Find out if anyone is injured. How badly? </li><li>Establish what damage was caused</li><li>If no-one is hurt, move the vehicles if they&#39;re causing an obstruction</li><li>Use emergency triangles if necessary</li><li>Exchange as much information as possible: <ul><li>Name/address/ID number of all drivers involved</li><li>Name/address/ID number of the owners of all vehicles involved</li><li>Make/model/colour/registration number of all vehicles involved</li><li>Details of insurance companies of all vehicles involved</li><li>If there were any witnesses, take their details too</li></ul></li><li>Go to a police station within 24 hours with your licence to report the accident (unless the police were at the scene) </li><li>Don&#39;t drink/take drugs before reporting the accident</li></ul>",
+                "<ul><li>Stop immediately</li><li>Find out if anyone is injured. How badly? </li><li>Establish what damage was caused</li><li>If no-one is hurt, move the vehicles if they're causing an obstruction</li><li>Use emergency triangles if necessary</li><li>Exchange as much information as possible: <ul><li>Name/address/ID number of all drivers involved</li><li>Name/address/ID number of the owners of all vehicles involved</li><li>Make/model/colour/registration number of all vehicles involved</li><li>Details of insurance companies of all vehicles involved</li><li>If there were any witnesses, take their details too</li></ul></li><li>Go to a police station within 24 hours with your licence to report the accident (unless the police were at the scene) </li><li>Don't drink/take drugs before reporting the accident</li></ul>",
         },
         {
             imageName: "",
             heading: "If someone was injured or killed in an urban area",
             description:
-                "<ul><li>Call the police immediately</li><li>Call an ambulance if necessary</li><li>Help injured people</li><li>Don&#39;t move the vehicles unless a traffic officer tells you to, or unless they&#39;re completely obstructing traffic, and only after marking their positions clearly on the road. Move them just enough to let traffic pass. </li><li>Vehicles can&#39;t be removed from the scene without permission from the driver, owner or an authorised person</li></ul>",
+                "<ul><li>Call the police immediately</li><li>Call an ambulance if necessary</li><li>Help injured people</li><li>Don't move the vehicles unless a traffic officer tells you to, or unless they're completely obstructing traffic, and only after marking their positions clearly on the road. Move them just enough to let traffic pass. </li><li>Vehicles can't be removed from the scene without permission from the driver, owner or an authorised person</li></ul>",
         },
     ],
     "nav.rulesOfTheRoad.theDriver.alcoholDrugs": [
@@ -111,23 +111,23 @@ const contentData: ContentData = {
             imageName: "",
             heading: "The law says",
             description:
-                "<ul><li>You may not drive or even sit in the driver&#39;s seat with the engine on if<ul><li>You&#39;ve taken narcotic drugs (even prescription drugs) </li><li>You are a normal driver and you have a blood alcohol level of over 0.05g per 100ml blood (0.24mg per 1000 ml breath) </li><li>You are a professional driver and you have a blood alcohol level of over 0.02g per 100ml blood (0.10mg per 1000 ml breath) </li></ul></li><li>If asked by a law enforcement officer, you may not refuse to give a blood or breath sample</li><li>You may not smoke till the sample has been taken</li><li>At the time of this CD being printed, there was a proposal to bring in new laws that make it illegal for drivers to have any alcohol at all in their systems for the first three years after getting their licence. Please check to see if this law has come into effect by the time you get your licence.</li></ul>",
+                "<ul><li>You may not drive or even sit in the driver's seat with the engine on if<ul><li>You've taken narcotic drugs (even prescription drugs) </li><li>You are a normal driver and you have a blood alcohol level of over 0.05g per 100ml blood (0.24mg per 1000 ml breath) </li><li>You are a professional driver and you have a blood alcohol level of over 0.02g per 100ml blood (0.10mg per 1000 ml breath) </li></ul></li><li>If asked by a law enforcement officer, you may not refuse to give a blood or breath sample</li><li>You may not smoke till the sample has been taken</li><li>At the time of this CD being printed, there was a proposal to bring in new laws that make it illegal for drivers to have any alcohol at all in their systems for the first three years after getting their licence. Please check to see if this law has come into effect by the time you get your licence.</li></ul>",
         },
         {
             imageName: "",
             heading: "Factors that affect blood alcohol levels",
             description:
-                "If two people drank the same amount they could have different blood alcohol levels, so it&#39;s impossible to say exactly what all people can drink to stay under the limit. Some of the factors that affect blood alcohol levels are:<ul><li>Gender: in general, males&#39; blood alcohol levels go up more slowly than females&#39;</li><li>Weight: the lighter you are, the faster your blood alcohol level goes up</li><li>General level of health: if you are ill it goes up faster</li><li>How fast you&#39;ve been drinking (slower is better) </li><li>What else you&#39;ve eaten or drunk, or other drugs you have taken</li></ul>",
+                "If two people drank the same amount they could have different blood alcohol levels, so it's impossible to say exactly what all people can drink to stay under the limit. Some of the factors that affect blood alcohol levels are:<ul><li>Gender: in general, males' blood alcohol levels go up more slowly than females'</li><li>Weight: the lighter you are, the faster your blood alcohol level goes up</li><li>General level of health: if you are ill it goes up faster</li><li>How fast you've been drinking (slower is better) </li><li>What else you've eaten or drunk, or other drugs you have taken</li></ul>",
         },
         {
             imageName: "",
             heading: "General guidelines for staying under the limit",
             description:
-                "<ul><li>As mentioned, it is not possible to say exactly how many drinks you can have before being over the limit, because it depends on so many factors. Rather drink less and be sure you are under. But to give you an idea, you should stay below:<ul><li>1-2 drinks for females (not drinking faster than 1 drink per hour) </li><li>2-3 drinks for males (not drinking faster than 1 drink per hour) </li></ul></li><li>Alcohol takes time to break down in your blood, so if you had a heavy night and didn&#39;t drive, you could still be over the limit if you wake up the next morning and drive. </li><li>After you stop drinking allow at least an hour for each drink you had to break down. </li></ul>",
+                "<ul><li>As mentioned, it is not possible to say exactly how many drinks you can have before being over the limit, because it depends on so many factors. Rather drink less and be sure you are under. But to give you an idea, you should stay below:<ul><li>1-2 drinks for females (not drinking faster than 1 drink per hour) </li><li>2-3 drinks for males (not drinking faster than 1 drink per hour) </li></ul></li><li>Alcohol takes time to break down in your blood, so if you had a heavy night and didn't drive, you could still be over the limit if you wake up the next morning and drive. </li><li>After you stop drinking allow at least an hour for each drink you had to break down. </li></ul>",
         },
         {
             imageName: "",
-            heading: "One &#34;drink&#34; is",
+            heading: "One 'drink' is",
             description:
                 "<ul><li>One glass table wine (125ml) </li><li>One can/bottle beer (340ml) </li><li>One shot of spirits (25ml) </li></ul>",
         },
@@ -157,7 +157,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Damage to public roads",
             description:
-                "<ul><li>You may not drag or spin your wheels.</li>\n<li>You may not use chocks or shoes between your wheels and the road.</li>\n<li>You may not damage the surface of the road in any way.</li>\n<li>You may not move a vehicle on the pavement (not even pushing or pulling it).</li>\n<li>Don&#39;t put fuel, oil, or any objectionable material on the road, roadside or in running water.</li>\n<li>Don&#39;t drag anything on the road surface that could damage it or cause danger or damage to road users.</li></ul>\n",
+                "<ul><li>You may not drag or spin your wheels.</li>\n<li>You may not use chocks or shoes between your wheels and the road.</li>\n<li>You may not damage the surface of the road in any way.</li>\n<li>You may not move a vehicle on the pavement (not even pushing or pulling it).</li>\n<li>Don't put fuel, oil, or any objectionable material on the road, roadside or in running water.</li>\n<li>Don't drag anything on the road surface that could damage it or cause danger or damage to road users.</li></ul>\n",
         },
         {
             imageName: "",
@@ -177,7 +177,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Pedestrian crossings ",
             description:
-                "<ul><li>If a pedestrian crossing is guarded (with traffic lights), pedestrians must obey the lights (they can&#39;t cross unless indicated by the lights).</li>\n<li>If it is not guarded, then pedestrians have right of way and cars must stop for them.</li>\n<li>Pedestrians may not enter the crossing suddenly making it difficult for cars to stop safely.</li>\n<li>Drivers must stop or slow down if there are pedestrians on a crossing or entering it from the same side as the driver.</li>\n<li>No other car can overtake someone stopped at a pedestrian crossing.</li></ul>\n",
+                "<ul><li>If a pedestrian crossing is guarded (with traffic lights), pedestrians must obey the lights (they can't cross unless indicated by the lights).</li>\n<li>If it is not guarded, then pedestrians have right of way and cars must stop for them.</li>\n<li>Pedestrians may not enter the crossing suddenly making it difficult for cars to stop safely.</li>\n<li>Drivers must stop or slow down if there are pedestrians on a crossing or entering it from the same side as the driver.</li>\n<li>No other car can overtake someone stopped at a pedestrian crossing.</li></ul>\n",
         },
         {
             imageName: "",
@@ -189,7 +189,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Duties of cyclists ",
             description:
-                "<ul><li>You must be seated astride the saddle.</li>\n<li>You must always have at least one hand on the handle bars.</li>\n<li>You can&#39;t have another person, animal or object on the bike that obstructs your view or control.</li>\n<li>All the wheels have to be in contact with the road all the time.</li>\n<li>You may not be holding on to any other moving vehicle.</li>\n<li>You must ride in single file unless overtaking another cyclist; only one person at a time may overtake.</li>\n<li>You can&#39;t make another cyclist swerve from side to side.</li>\n<li>If there is a part of the road set aside for use by cyclists you have to use that part, and can&#39;t use any other.</li></ul>\n",
+                "<ul><li>You must be seated astride the saddle.</li>\n<li>You must always have at least one hand on the handle bars.</li>\n<li>You can't have another person, animal or object on the bike that obstructs your view or control.</li>\n<li>All the wheels have to be in contact with the road all the time.</li>\n<li>You may not be holding on to any other moving vehicle.</li>\n<li>You must ride in single file unless overtaking another cyclist; only one person at a time may overtake.</li>\n<li>You can't make another cyclist swerve from side to side.</li>\n<li>If there is a part of the road set aside for use by cyclists you have to use that part, and can't use any other.</li></ul>\n",
         },
         {
             imageName: "",
@@ -203,13 +203,13 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Animal drawn vehicles",
             description:
-                "<ul><li>All animal drawn vehicles on public roads should have the owner&#39;s name and address clearly marked on them.</li>\n<li>The vehicle and harness have to be in a safe working condition.</li>\n<li>The animal and vehicle must always be under the control of a person (driving with reins or leading) unless they are tied up so that they can&#39;t move.</li>\n<li>Two animal drawn vehicles moving in the same direction can&#39;t be closer than 150m to each other, unless one is overtaking the other and will move away from it quickly.</li></ul>\n",
+                "<ul><li>All animal drawn vehicles on public roads should have the owner's name and address clearly marked on them.</li>\n<li>The vehicle and harness have to be in a safe working condition.</li>\n<li>The animal and vehicle must always be under the control of a person (driving with reins or leading) unless they are tied up so that they can't move.</li>\n<li>Two animal drawn vehicles moving in the same direction can't be closer than 150m to each other, unless one is overtaking the other and will move away from it quickly.</li></ul>\n",
         },
         {
             imageName: "",
             heading: "Abandoned vehicles",
             description:
-                "<ul><li>A vehicle is considered to be abandoned if:\n<ul><li>It is parked in a no stopping or no parking area</li>\n<li>It has been left without moving in the same place on public road or at a testing station longer than 7 days (in an urban area)</li>\n<li>It has been left in the same place on public road longer than 24 hours (outside an urban area)</li>\n<li>It has no licence plate or a false plate</li>\n<li>It is causing a danger or obstruction</li>\n<li>There is no way to identify the owner</li></ul></li>\n<li>Abandoned vehicles can be towed or impounded.</li>\n<li>The owner has to cover all costs involved (unless the vehicle was stolen).</li>\n<li>The vehicle can be sold to cover costs if the owner can&#39;t be traced or does not recover the vehicle.</li></ul>\n",
+                "<ul><li>A vehicle is considered to be abandoned if:\n<ul><li>It is parked in a no stopping or no parking area</li>\n<li>It has been left without moving in the same place on public road or at a testing station longer than 7 days (in an urban area)</li>\n<li>It has been left in the same place on public road longer than 24 hours (outside an urban area)</li>\n<li>It has no licence plate or a false plate</li>\n<li>It is causing a danger or obstruction</li>\n<li>There is no way to identify the owner</li></ul></li>\n<li>Abandoned vehicles can be towed or impounded.</li>\n<li>The owner has to cover all costs involved (unless the vehicle was stolen).</li>\n<li>The vehicle can be sold to cover costs if the owner can't be traced or does not recover the vehicle.</li></ul>\n",
         },
         {
             imageName: "",
@@ -229,7 +229,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Actions not allowed on freeways",
             description:
-                "<ul><li>Hand signals (except in emergencies)</li>\n<li>Reversing</li>\n<li>Driving across dividers or islands</li>\n<li>Leaving animals behind or allowing them on the freeway</li>\n<li>You may not be on foot (walk), or stop your vehicle, unless:\n<ul><li>To obey a road sign or instruction from a traffic officer</li>\n<li>In a demarcated stopping/parking area</li>\n<li>For a reason beyond your control</li>\n<li>You are in the Citizen Force and you&#39;re on the left hand side of the freeway, between an offramp and an onramp</li>\n<li>To pick up or drop off  a Citizen Force member in area as per above</li>\n<li>Emergency personnel and maintenance crews on duty may stop vehicles and walk on freeways</li></ul></li></ul>\n",
+                "<ul><li>Hand signals (except in emergencies)</li>\n<li>Reversing</li>\n<li>Driving across dividers or islands</li>\n<li>Leaving animals behind or allowing them on the freeway</li>\n<li>You may not be on foot (walk), or stop your vehicle, unless:\n<ul><li>To obey a road sign or instruction from a traffic officer</li>\n<li>In a demarcated stopping/parking area</li>\n<li>For a reason beyond your control</li>\n<li>You are in the Citizen Force and you're on the left hand side of the freeway, between an offramp and an onramp</li>\n<li>To pick up or drop off  a Citizen Force member in area as per above</li>\n<li>Emergency personnel and maintenance crews on duty may stop vehicles and walk on freeways</li></ul></li></ul>\n",
         },
     ],
     "nav.rulesOfTheRoad.theCar.unauthorisedUse": [
@@ -237,7 +237,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "",
             description:
-                "<ul><li>Don&#39;t drive, enter, climb on or tamper with a vehicle without the consent of the person lawfully in charge of the vehicle.</li>\n<li>Don&#39;t alter the chassis or engine number of a vehicle without consulting the registering authority.</li></ul>\n",
+                "<ul><li>Don't drive, enter, climb on or tamper with a vehicle without the consent of the person lawfully in charge of the vehicle.</li>\n<li>Don't alter the chassis or engine number of a vehicle without consulting the registering authority.</li></ul>\n",
         },
     ],
     "nav.rulesOfTheRoad.theCar.lights": [
@@ -245,7 +245,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "",
             description:
-                "<ul><li>You may not drive on a public road (even in the daytime) if any of your vehicle&#39;s lights aren&#39;t working or properly secured.</li>\n<li>Unless otherwise stated, all lights have to be able to be seen 150m away.</li></ul>\n",
+                "<ul><li>You may not drive on a public road (even in the daytime) if any of your vehicle's lights aren't working or properly secured.</li>\n<li>Unless otherwise stated, all lights have to be able to be seen 150m away.</li></ul>\n",
         },
         {
             imageName: "",
@@ -263,13 +263,13 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Parking lights",
             description:
-                "<ul><li>If there is only one parking lamp on your car it should be on the right.</li>\n<li>Parking lights must be used when you&#39;re parked: \n<ul><li>outside a demarcated parking area in an urban area</li>\n<li>more than 12m from a streetlight in a public road.</li></ul></li>\n<li>Parking lights cannot be used for driving.</li></ul>\n",
+                "<ul><li>If there is only one parking lamp on your car it should be on the right.</li>\n<li>Parking lights must be used when you're parked: \n<ul><li>outside a demarcated parking area in an urban area</li>\n<li>more than 12m from a streetlight in a public road.</li></ul></li>\n<li>Parking lights cannot be used for driving.</li></ul>\n",
         },
         {
             imageName: "",
             heading: "Adjustable spotlights",
             description:
-                "These may only be used by the following people (when they&#39;re on duty):\n<ul><li>Medical personnel</li>\n<li>Police</li>\n<li>Traffic control personnel</li>\n<li>Fire personnel</li>\n<li>Doctors or vets</li>\n<li>Breakdown trucks/electricity supply vehicles</li></ul>\n",
+                "These may only be used by the following people (when they're on duty):\n<ul><li>Medical personnel</li>\n<li>Police</li>\n<li>Traffic control personnel</li>\n<li>Fire personnel</li>\n<li>Doctors or vets</li>\n<li>Breakdown trucks/electricity supply vehicles</li></ul>\n",
         },
         {
             imageName: "",
@@ -281,13 +281,13 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Indicators ",
             description:
-                "<ul><li>No vehicle may be used on a public road if it doesn&#39;t have working direction indicators visible from both front and back on both sides.</li>\n<li>They must be able to be seen in normal sunlight from 30m away.</li></ul>\n",
+                "<ul><li>No vehicle may be used on a public road if it doesn't have working direction indicators visible from both front and back on both sides.</li>\n<li>They must be able to be seen in normal sunlight from 30m away.</li></ul>\n",
         },
         {
             imageName: "",
             heading: "Emergency warning lights",
             description:
-                "<ul><li>Your emergency warning lights are actually your direction indicators, all flashing at the same time.</li>\n<li>You may only use them when:\n<ul><li>Your vehicle is stationary </li>\n<li>You are towing or being towed</li>\n<li>In emergency situation when your car is in motion, to warn other road users.</li></ul></li>\n<li>They have to be working for the car to be roadworthy.</li>\n<li>Be aware that when they are on you can&#39;t signal direction, so use hand signals when turning, for example when you are being towed.</li></ul>\n",
+                "<ul><li>Your emergency warning lights are actually your direction indicators, all flashing at the same time.</li>\n<li>You may only use them when:\n<ul><li>Your vehicle is stationary </li>\n<li>You are towing or being towed</li>\n<li>In emergency situation when your car is in motion, to warn other road users.</li></ul></li>\n<li>They have to be working for the car to be roadworthy.</li>\n<li>Be aware that when they are on you can't signal direction, so use hand signals when turning, for example when you are being towed.</li></ul>\n",
         },
         {
             imageName: "",
@@ -306,7 +306,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "",
             description:
-                "<ul><li>You may not use a vehicle on a public road unless all the seatbelts work.</li>\n<li>You may only remove seatbelts from the car for repair or replacement, and you can&#39;t use the car on a public road until the repair or replacement is complete.</li>\n<li>All seatbelts fitted in the car must be worn (front and back).</li>\n<li>If there is a seat with a seatbelt available, a passenger has to sit in it rather than sitting in a seat with no seatbelt.</li>\n<li>If a child restraint is available children must use that, otherwise they must use a seatbelt if available.</li>\n<li>If there is no seatbelt in the front passenger seat, anyone up to 14 years old (or shorter than 1.5m) must sit at the back.</li>\n<li>You don&#39;t have to wear a seatbelt if you&#39;re reversing.</li></ul>\n",
+                "<ul><li>You may not use a vehicle on a public road unless all the seatbelts work.</li>\n<li>You may only remove seatbelts from the car for repair or replacement, and you can't use the car on a public road until the repair or replacement is complete.</li>\n<li>All seatbelts fitted in the car must be worn (front and back).</li>\n<li>If there is a seat with a seatbelt available, a passenger has to sit in it rather than sitting in a seat with no seatbelt.</li>\n<li>If a child restraint is available children must use that, otherwise they must use a seatbelt if available.</li>\n<li>If there is no seatbelt in the front passenger seat, anyone up to 14 years old (or shorter than 1.5m) must sit at the back.</li>\n<li>You don't have to wear a seatbelt if you're reversing.</li></ul>\n",
         },
     ],
     "nav.rulesOfTheRoad.theCar.tyres": [
@@ -322,7 +322,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Steering",
             description:
-                "<ul><li>The steering wheel can&#39;t have excessive free play.</li>\n<li>This means that if the wheels are straight you musn&#39;t be able to turn the wheel more than 45 degrees before it starts turning the wheels to the left or right.</li></ul>\n",
+                "<ul><li>The steering wheel can't have excessive free play.</li>\n<li>This means that if the wheels are straight you musn't be able to turn the wheel more than 45 degrees before it starts turning the wheels to the left or right.</li></ul>\n",
         },
         {
             imageName: "",
@@ -346,7 +346,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Mirrors",
             description:
-                "<ul><li>Light motor vehicles have to have at least one interior and one exterior (driver&#39;s side) mirror.</li>\n<li>Minibuses, buses and trucks have to have an exterior mirror on the passenger side as well.</li></ul>\n",
+                "<ul><li>Light motor vehicles have to have at least one interior and one exterior (driver's side) mirror.</li>\n<li>Minibuses, buses and trucks have to have an exterior mirror on the passenger side as well.</li></ul>\n",
         },
         {
             imageName: "",
@@ -376,7 +376,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Exhausts",
             description:
-                "<ul><li>You may not drive with a broken silencer.</li>\n<li>You can&#39;t use your car on a public road if the exhaust smoke is a nuisance or obstructs the vision of other drivers.</li></ul>\n",
+                "<ul><li>You may not drive with a broken silencer.</li>\n<li>You can't use your car on a public road if the exhaust smoke is a nuisance or obstructs the vision of other drivers.</li></ul>\n",
         },
         {
             imageName: "",
@@ -404,7 +404,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "General rules for transporting goods on a vehicle",
             description:
-                "<ul><li>Any goods on a vehicle must be securely fastened.</li>\n<li>The load can&#39;t touch the road anywhere (only a static chain can touch the road).</li>\n<li>The load can&#39;t obscure the driver&#39;s view anywhere, including rear-view mirrors.</li>\n<li>The dimensions cannot be larger than:\n<ul><li>Height: half the height of the vehicle if carried on the roof (if you are carrying bicycles on the roof they can be higher)</li>\n<li>Height: 4.3m for goods vehicles</li>\n<li>Width: 2.5m wide at the widest point (2.6m for large trucks or buses)</li>\n<li>Length: can&#39;t project more than 1.8m from the end of the vehicle at the back and 300mm at the front.</li></ul></li></ul>\n",
+                "<ul><li>Any goods on a vehicle must be securely fastened.</li>\n<li>The load can't touch the road anywhere (only a static chain can touch the road).</li>\n<li>The load can't obscure the driver's view anywhere, including rear-view mirrors.</li>\n<li>The dimensions cannot be larger than:\n<ul><li>Height: half the height of the vehicle if carried on the roof (if you are carrying bicycles on the roof they can be higher)</li>\n<li>Height: 4.3m for goods vehicles</li>\n<li>Width: 2.5m wide at the widest point (2.6m for large trucks or buses)</li>\n<li>Length: can't project more than 1.8m from the end of the vehicle at the back and 300mm at the front.</li></ul></li></ul>\n",
         },
         {
             imageName: "",
@@ -418,7 +418,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "",
             description:
-                "<ul><li>The number of people that can be carried in a vehicle depends on seat space.</li>\n<li>Each person must have at least 380mm of seat space.</li>\n<li>Children under 3 don&#39;t count.</li>\n<li>Children 3-6 can go on laps.</li></ul>\n",
+                "<ul><li>The number of people that can be carried in a vehicle depends on seat space.</li>\n<li>Each person must have at least 380mm of seat space.</li>\n<li>Children under 3 don't count.</li>\n<li>Children 3-6 can go on laps.</li></ul>\n",
         },
     ],
     "nav.rulesOfTheRoad.driving.speedLimits": [
@@ -480,7 +480,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Exceptions",
             description:
-                "The above rules don&#39;t apply:\n<ul><li>If you need to stop to avoid an accident or for circumstances beyond your control.</li>\n<li>To emergency/construction/police vehicles on duty displaying the correct identification lights.</li></ul>\n",
+                "The above rules don't apply:\n<ul><li>If you need to stop to avoid an accident or for circumstances beyond your control.</li>\n<li>To emergency/construction/police vehicles on duty displaying the correct identification lights.</li></ul>\n",
         },
     ],
     "nav.rulesOfTheRoad.driving.parking": [
@@ -546,7 +546,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Exceptions",
             description:
-                "<ul><li>The above rules don&#39;t apply to emergency/construction/police vehicles on duty displaying the correct identification lights.</li></ul>",
+                "<ul><li>The above rules don't apply to emergency/construction/police vehicles on duty displaying the correct identification lights.</li></ul>",
         },
     ],
     "nav.rulesOfTheRoad.driving.dividedRoads": [
@@ -562,7 +562,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "",
             description:
-                "<ul><li>Keep within your lane. Don&#39;t straddle lanes (when your vehicle is in more than one lane).</li>\n<li>Change lanes only if road markings or signs allow you to.</li>\n<li>Signal early when intending to change lanes.</li>\n<li>Change lanes only if it is safe.</li>\n<li>The last thing you must do before changing lanes is to check your blind spots.</li>\n<li>If changing more than one lane, recheck your blind spots for each lane.</li></ul>",
+                "<ul><li>Keep within your lane. Don't straddle lanes (when your vehicle is in more than one lane).</li>\n<li>Change lanes only if road markings or signs allow you to.</li>\n<li>Signal early when intending to change lanes.</li>\n<li>Change lanes only if it is safe.</li>\n<li>The last thing you must do before changing lanes is to check your blind spots.</li>\n<li>If changing more than one lane, recheck your blind spots for each lane.</li></ul>",
         },
     ],
     "nav.rulesOfTheRoad.driving.intersections": [
@@ -594,13 +594,13 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Turning right at an intersection",
             description:
-                "<ul><li>Signal about 5 seconds before you get to the point where you want to turn.</li>\n<li>Keep as far to the right as possible before turning (without crossing the dividing line into oncoming traffic).</li>\n<li>Give way to approaching traffic.</li>\n<li>Cross the centre line of the road you&#39;re turning into before you turn (unless it is a one way).</li>\n<li>If there is a traffic island or traffic officer at the intersection, go to the left of them.</li>\n<li>Once you have turned, adjust your speed to merge into the traffic flow.</li>\n<li>Cancel your signal after turning.</li></ul>",
+                "<ul><li>Signal about 5 seconds before you get to the point where you want to turn.</li>\n<li>Keep as far to the right as possible before turning (without crossing the dividing line into oncoming traffic).</li>\n<li>Give way to approaching traffic.</li>\n<li>Cross the centre line of the road you're turning into before you turn (unless it is a one way).</li>\n<li>If there is a traffic island or traffic officer at the intersection, go to the left of them.</li>\n<li>Once you have turned, adjust your speed to merge into the traffic flow.</li>\n<li>Cancel your signal after turning.</li></ul>",
         },
         {
             imageName: "",
             heading: "When not to enter an intersection ",
             description:
-                "<ul><li>If your vehicle will block traffic flow.</li>\n<li>Don&#39;t cross or turn into roads unless there is enough clear space on the other side to get completely across without endangering or obstructing traffic.</li>\n<li>Don&#39;t cross over box junctions unless you have enough space on the other side to get completely clear of the junction before stopping.</li></ul>",
+                "<ul><li>If your vehicle will block traffic flow.</li>\n<li>Don't cross or turn into roads unless there is enough clear space on the other side to get completely across without endangering or obstructing traffic.</li>\n<li>Don't cross over box junctions unless you have enough space on the other side to get completely clear of the junction before stopping.</li></ul>",
         },
     ],
     "nav.rulesOfTheRoad.driving.signalling": [
@@ -614,13 +614,13 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Hand signals",
             description:
-                "<ul><li>Use hand signals if your signal lights aren&#39;t working.</li>\n<li>The following hand signals are used:\n<ul><li>Stop/sudden slow down: put your right arm straight out from the shoulder, then bend it up at the elbow, your palm facing forward.</li>\n<li>Slow down: put your right arm straight out from the shoulder, palm facing forward, then move your arm up and down from the shoulder.</li>\n<li>Left turn: put your right arm straight out from the shoulder, then bend it down at the elbow, and move your hand in anti-clockwise circles (cyclists and drivers of tractors and animal drawn vehicles can put their left arms straight out from the shoulder).</li>\n<li>Right turn: put your right arm straight out from the shoulder, palm facing forward. </li>\n<li>Overtake (you&#39;re signaling someone else to overtake you): put your right arm straight out from the shoulder, palm facing forward, then move your arm backwards and forwards from the shoulder.</li></ul></li>\n<li>Signal in good time (about 5 seconds before you do the action you are signaling).</li>\n<li>Make sure your signals can be clearly seen from the front, back and sides.</li>\n<li>If you are towing, use hand signals to signal direction, because your indicators are being used as emergency warning signals. </li>\n<li>If your signal lights aren&#39;t working, don&#39;t go on a freeway. No hand signals are allowed except in an emergency.</li></ul>",
+                "<ul><li>Use hand signals if your signal lights aren't working.</li>\n<li>The following hand signals are used:\n<ul><li>Stop/sudden slow down: put your right arm straight out from the shoulder, then bend it up at the elbow, your palm facing forward.</li>\n<li>Slow down: put your right arm straight out from the shoulder, palm facing forward, then move your arm up and down from the shoulder.</li>\n<li>Left turn: put your right arm straight out from the shoulder, then bend it down at the elbow, and move your hand in anti-clockwise circles (cyclists and drivers of tractors and animal drawn vehicles can put their left arms straight out from the shoulder).</li>\n<li>Right turn: put your right arm straight out from the shoulder, palm facing forward. </li>\n<li>Overtake (you're signaling someone else to overtake you): put your right arm straight out from the shoulder, palm facing forward, then move your arm backwards and forwards from the shoulder.</li></ul></li>\n<li>Signal in good time (about 5 seconds before you do the action you are signaling).</li>\n<li>Make sure your signals can be clearly seen from the front, back and sides.</li>\n<li>If you are towing, use hand signals to signal direction, because your indicators are being used as emergency warning signals. </li>\n<li>If your signal lights aren't working, don't go on a freeway. No hand signals are allowed except in an emergency.</li></ul>",
         },
         {
             imageName: "",
             heading: "Emergency stop",
             description:
-                "<ul><li>If you have to do an emergency stop don&#39;t signal. Keep both hands on the wheel.</li></ul>",
+                "<ul><li>If you have to do an emergency stop don't signal. Keep both hands on the wheel.</li></ul>",
         },
     ],
     "nav.rulesOfTheRoad.driving.overtaking": [
@@ -628,19 +628,19 @@ const contentData: ContentData = {
             imageName: "",
             heading: "General",
             description:
-                "<ul><li>The general rule of the road is keep left, pass right.</li>\n<li>When overtaking, keep a clear space around your vehicle and the one you are passing (don&#39;t cut in).</li>\n<li>If overtaking a stationary object or vehicle (for example a bus), watch out for people who might walk out in front of it.</li>\n<li>Signal your intention to overtake.</li>\n<li>While preparing to overtake, don&#39;t encroach on the right of the road so that it is not safe for oncoming traffic.</li></ul>",
+                "<ul><li>The general rule of the road is keep left, pass right.</li>\n<li>When overtaking, keep a clear space around your vehicle and the one you are passing (don't cut in).</li>\n<li>If overtaking a stationary object or vehicle (for example a bus), watch out for people who might walk out in front of it.</li>\n<li>Signal your intention to overtake.</li>\n<li>While preparing to overtake, don't encroach on the right of the road so that it is not safe for oncoming traffic.</li></ul>",
         },
         {
             imageName: "",
             heading: "You may not overtake when",
             description:
-                "<ul><li>Forbidden to by no overtaking signs or road markings (solid lines).</li>\n<li>At a pedestrian crossing.</li>\n<li>Unless you can do it without going onto the right hand side of the road (in other words if the road is wide enough) or if it&#39;s a one way, you may not overtake when:\n<ul><li>You can&#39;t see the road ahead or oncoming traffic.</li>\n<li>Near the summit of a rise (coming up to the top of a hill).</li>\n<li>On a blind curve or corner.</li></ul></li></ul>",
+                "<ul><li>Forbidden to by no overtaking signs or road markings (solid lines).</li>\n<li>At a pedestrian crossing.</li>\n<li>Unless you can do it without going onto the right hand side of the road (in other words if the road is wide enough) or if it's a one way, you may not overtake when:\n<ul><li>You can't see the road ahead or oncoming traffic.</li>\n<li>Near the summit of a rise (coming up to the top of a hill).</li>\n<li>On a blind curve or corner.</li></ul></li></ul>",
         },
         {
             imageName: "",
             heading: "Overtaking on the left",
             description:
-                "<ul><li>You can never drive on the road shoulder or verge or to the left of the edge line to overtake.</li>\n<li>As long as you don&#39;t do this, you may overtake on the left:\n<ul><li>When the driver in front of you is turning right</li>\n<li>If the road is a one-way and wide enough for two cars (in an urban area)</li>\n<li>If the lane you are in is wide enough for two cars (in an urban area)</li>\n<li>If there is more than one lane going in your direction</li>\n<li>If traffic officer tells you to.</li></ul></li></ul>",
+                "<ul><li>You can never drive on the road shoulder or verge or to the left of the edge line to overtake.</li>\n<li>As long as you don't do this, you may overtake on the left:\n<ul><li>When the driver in front of you is turning right</li>\n<li>If the road is a one-way and wide enough for two cars (in an urban area)</li>\n<li>If the lane you are in is wide enough for two cars (in an urban area)</li>\n<li>If there is more than one lane going in your direction</li>\n<li>If traffic officer tells you to.</li></ul></li></ul>",
         },
         {
             imageName: "",
@@ -658,7 +658,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Freeways",
             description:
-                "<ul><li>If you&#39;re in the &#34;fast&#34; lane (furthest right lane going in your direction) on a freeway and you want to overtake someone in front of you, you can flash your headlights at them.</li>\n<li>If you&#39;re in the fast lane and someone flashes you to show they want to overtake, move to the left as soon as it is safe to do so.</li></ul>",
+                "<ul><li>If you're in the 'fast' lane (furthest right lane going in your direction) on a freeway and you want to overtake someone in front of you, you can flash your headlights at them.</li>\n<li>If you're in the fast lane and someone flashes you to show they want to overtake, move to the left as soon as it is safe to do so.</li></ul>",
         },
     ],
     "nav.rulesOfTheRoad.driving.towing": [
@@ -666,13 +666,13 @@ const contentData: ContentData = {
             imageName: "",
             heading: "General rules",
             description:
-                "<ul><li>The two vehicles must be closer than 3.5m to each other.</li>\n<li>They should be securely attached.</li>\n<li>Both vehicles must be under control.</li>\n<li>Motorcycles, tricycles, quadrucycles and pedal cycles can&#39;t tow vehicles.</li></ul>",
+                "<ul><li>The two vehicles must be closer than 3.5m to each other.</li>\n<li>They should be securely attached.</li>\n<li>Both vehicles must be under control.</li>\n<li>Motorcycles, tricycles, quadrucycles and pedal cycles can't tow vehicles.</li></ul>",
         },
         {
             imageName: "",
             heading: "When towing with a rope",
             description:
-                "<ul><li>If the rope is over 1.8m long it must be marked with a red flag.</li>\n<li>The towed vehicle must have a driver with a driver&#39;s licence for that class of vehicle in it (no driver is needed if there is a solid tow bar or the front wheels are clear of the ground).</li>\n<li>There can be no passengers in the towed vehicle, unless it is a tractor towing a semi-trailer (and they are not being charged).</li>\n<li>You may not go over 30km/h.</li>\n<li>Don&#39;t use a rope to tow if the towed vehicle has weak brakes.</li></ul>",
+                "<ul><li>If the rope is over 1.8m long it must be marked with a red flag.</li>\n<li>The towed vehicle must have a driver with a driver's licence for that class of vehicle in it (no driver is needed if there is a solid tow bar or the front wheels are clear of the ground).</li>\n<li>There can be no passengers in the towed vehicle, unless it is a tractor towing a semi-trailer (and they are not being charged).</li>\n<li>You may not go over 30km/h.</li>\n<li>Don't use a rope to tow if the towed vehicle has weak brakes.</li></ul>",
         },
         {
             imageName: "",
@@ -686,7 +686,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "",
             description:
-                "<ul><li>In the 1980&#39;s the South African government looked at proposals for a new system of testing driver&#39;s licences. Each proposal got a new number, and test number 53 was the one that was finally accepted.</li>\n<li>It is similar to the UK tests of the 1980&#39;s.</li>\n<li>The main aims of the K53 test are to encourage defensive driving: at all times protecting yourself against losing control of your vehicle and from possible collisions.</li></ul>",
+                "<ul><li>In the 1980's the South African government looked at proposals for a new system of testing driver's licences. Each proposal got a new number, and test number 53 was the one that was finally accepted.</li>\n<li>It is similar to the UK tests of the 1980's.</li>\n<li>The main aims of the K53 test are to encourage defensive driving: at all times protecting yourself against losing control of your vehicle and from possible collisions.</li></ul>",
         },
         {
             imageName: "",
@@ -706,13 +706,13 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Stationary hazards",
             description:
-                "<ul><li>Stationary hazards don&#39;t move.</li>\n<li>They are mostly to do with the road, and include:\n<ul><li>Corners</li>\n<li>Sharp bends</li>\n<li>Intersections</li>\n<li>Road junctions</li>\n<li>Potholes</li>\n<li>Uneven roads</li>\n<li>Lampposts</li>\n<li>Trees</li>\n<li>Driveways</li>\n<li>Parked cars</li></ul></li>\n<li>They are dangerous because: \n<ul><li>They make it hard to see ahead </li>\n<li>Things can come out of them or round them</li>\n<li>You could crash into them.</li></ul></li></ul>\n",
+                "<ul><li>Stationary hazards don't move.</li>\n<li>They are mostly to do with the road, and include:\n<ul><li>Corners</li>\n<li>Sharp bends</li>\n<li>Intersections</li>\n<li>Road junctions</li>\n<li>Potholes</li>\n<li>Uneven roads</li>\n<li>Lampposts</li>\n<li>Trees</li>\n<li>Driveways</li>\n<li>Parked cars</li></ul></li>\n<li>They are dangerous because: \n<ul><li>They make it hard to see ahead </li>\n<li>Things can come out of them or round them</li>\n<li>You could crash into them.</li></ul></li></ul>\n",
         },
         {
             imageName: "",
             heading: "Moving hazards",
             description:
-                "<ul><li>Moving hazards include anything moving in the road, or anything that could go into the road.</li>\n<li>They could be next to the road and then run into it (animals and children on the side of the road are dangerous because they&#39;re unpredictable).</li>\n<li>Moving hazards have to do with other road users, and include:\n<ul><li>Vehicles (including those going in the same direction as you)</li>\n<li>Pedestrians</li>\n<li>Bicycles</li>\n<li>Animals</li>\n<li>Bright headlights</li></ul></li>\n<li>They are dangerous because: \n<ul><li>You could crash into them.</li>\n<li>They could cause you to swerve or lose control.</li></ul></li></ul>\n",
+                "<ul><li>Moving hazards include anything moving in the road, or anything that could go into the road.</li>\n<li>They could be next to the road and then run into it (animals and children on the side of the road are dangerous because they're unpredictable).</li>\n<li>Moving hazards have to do with other road users, and include:\n<ul><li>Vehicles (including those going in the same direction as you)</li>\n<li>Pedestrians</li>\n<li>Bicycles</li>\n<li>Animals</li>\n<li>Bright headlights</li></ul></li>\n<li>They are dangerous because: \n<ul><li>You could crash into them.</li>\n<li>They could cause you to swerve or lose control.</li></ul></li></ul>\n",
         },
         {
             imageName: "",
@@ -763,31 +763,31 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Clear space",
             description:
-                "<ul><li>Keeping clear space around your vehicle at all times means that you are keeping further away from potential hazards, and giving yourself space to manoeuvre in and react.</li>\n<li>When overtaking, changing lanes or pulling into the road, don&#39;t cut in on people. Move in far enough behind or in front of other cars.</li></ul>\n",
+                "<ul><li>Keeping clear space around your vehicle at all times means that you are keeping further away from potential hazards, and giving yourself space to manoeuvre in and react.</li>\n<li>When overtaking, changing lanes or pulling into the road, don't cut in on people. Move in far enough behind or in front of other cars.</li></ul>\n",
         },
         {
             imageName: "",
             heading: "Following a car",
             description:
-                "<ul><li>When you are following another vehicle, leave a 2 second following distance.</li>\n<li>To work out your following distance, let the car in front of you pass something stationary, like a lamppost or sign on the side of the road, and as it passes count &#34;One second, two seconds&#34; slowly. Your car should pass the marker when you finish saying &#34;two seconds&#34;.</li>\n<li>At different speeds the actual distance differs: when you are going fast, a two second following distance means you are much further behind the other car. When you are going slowly the following distance is still two seconds, but you are much closer to the other car.</li>\n<li>The following distance is there to give yourself time to react. If the car in front of you brakes suddenly, there is a slight delay as your brain see this, decides to brake, and your foot actually hits the brake and the car comes to a stop. </li>\n<li>If your vehicle is carrying a heavy load, or if there are a lot of people in it, it takes longer to stop. Increase your following distance.</li>\n<li>In bad conditions (for example at night, when it is raining or misty), leave a 4 second following distance.</li>\n<li>Heavy vehicles should leave a 3 second gap in normal conditions, more for bad conditions.</li></ul>\n",
+                "<ul><li>When you are following another vehicle, leave a 2 second following distance.</li>\n<li>To work out your following distance, let the car in front of you pass something stationary, like a lamppost or sign on the side of the road, and as it passes count 'One second, two seconds' slowly. Your car should pass the marker when you finish saying 'two seconds'.</li>\n<li>At different speeds the actual distance differs: when you are going fast, a two second following distance means you are much further behind the other car. When you are going slowly the following distance is still two seconds, but you are much closer to the other car.</li>\n<li>The following distance is there to give yourself time to react. If the car in front of you brakes suddenly, there is a slight delay as your brain see this, decides to brake, and your foot actually hits the brake and the car comes to a stop. </li>\n<li>If your vehicle is carrying a heavy load, or if there are a lot of people in it, it takes longer to stop. Increase your following distance.</li>\n<li>In bad conditions (for example at night, when it is raining or misty), leave a 4 second following distance.</li>\n<li>Heavy vehicles should leave a 3 second gap in normal conditions, more for bad conditions.</li></ul>\n",
         },
         {
             imageName: "",
             heading: "Cars following you",
             description:
-                "<ul><li>If someone is following you too closely, open the following distance ahead of you (don&#39;t try to speed up). </li>\n<li>This gives you more room to manoeuvre, and might encourage them to overtake you which will get them out of your way.</li></ul>\n",
+                "<ul><li>If someone is following you too closely, open the following distance ahead of you (don't try to speed up). </li>\n<li>This gives you more room to manoeuvre, and might encourage them to overtake you which will get them out of your way.</li></ul>\n",
         },
         {
             imageName: "",
             heading: "Stopping behind a stationary car",
             description:
-                "<ul><li>When you stop behind a stationary car (for example at a stop street) you should be able to see its back wheels. If you can&#39;t, you&#39;re too close.</li><li>A good guideline is 4-5m behind.</li>\n<li>You should be able to drive out from behind them without reversing.</li>\n<li>If you&#39;re too close, then if someone hits you from the back you may be pushed into the car in front of you. </li>\n<li>If you&#39;re too close, they could roll back onto you as they move off.</li></ul>\n",
+                "<ul><li>When you stop behind a stationary car (for example at a stop street) you should be able to see its back wheels. If you can't, you're too close.</li><li>A good guideline is 4-5m behind.</li>\n<li>You should be able to drive out from behind them without reversing.</li>\n<li>If you're too close, then if someone hits you from the back you may be pushed into the car in front of you. </li>\n<li>If you're too close, they could roll back onto you as they move off.</li></ul>\n",
         },
         {
             imageName: "",
             heading: "Stopping distances",
             description:
-                "<ul><li>When you hit the brakes, the car doesn&#39;t stop immediately. </li>\n<li>The faster you are going, and the heavier your car, the longer it takes to stop.</li>\n<li>At 65km/h the risk of crashing is double the risk at 60km/h.</li>\n<li>At 60km/h it will take you 45m to stop.</li>\n<li>If you were going 65km/h then by the 45m mark you would still be going 32km/h.</li>\n<li>Pace out 45m on a roadway. Think about the fact that if a child ran out into the road in front of your car just before that mark you would not be able to stop in time, even if you were only doing 60 km/h.</li>\n<li>At 100km/h your stopping distance is 100m.</li>\n<li>At 120km/h your stopping distance is 130m.</li></ul>\n",
+                "<ul><li>When you hit the brakes, the car doesn't stop immediately. </li>\n<li>The faster you are going, and the heavier your car, the longer it takes to stop.</li>\n<li>At 65km/h the risk of crashing is double the risk at 60km/h.</li>\n<li>At 60km/h it will take you 45m to stop.</li>\n<li>If you were going 65km/h then by the 45m mark you would still be going 32km/h.</li>\n<li>Pace out 45m on a roadway. Think about the fact that if a child ran out into the road in front of your car just before that mark you would not be able to stop in time, even if you were only doing 60 km/h.</li>\n<li>At 100km/h your stopping distance is 100m.</li>\n<li>At 120km/h your stopping distance is 130m.</li></ul>\n",
         },
     ],
     "nav.defensiveDriving.observing": [
@@ -801,13 +801,13 @@ const contentData: ContentData = {
             imageName: "",
             heading: "Blind spots",
             description:
-                "<ul><li>These are areas around your car that you can&#39;t see in your rear-view mirrors.</li>\n<li>You might check your mirrors, see no cars and turn... and hit a car that was in your blind spot.</li>\n<li>To check your right blind spot, turn your head to the right and look over your shoulder through the drivers and back passenger windows.</li>\n<li>To check your left blind spot, turn your head to the left and look over your shoulder through the front and back passenger windows. </li>\n<li>Checking your blind spot must always be the last thing you do before turning or changing lanes. </li>\n<li>Also check your blind spot before opening your doors.</li></ul>\n",
+                "<ul><li>These are areas around your car that you can't see in your rear-view mirrors.</li>\n<li>You might check your mirrors, see no cars and turn... and hit a car that was in your blind spot.</li>\n<li>To check your right blind spot, turn your head to the right and look over your shoulder through the drivers and back passenger windows.</li>\n<li>To check your left blind spot, turn your head to the left and look over your shoulder through the front and back passenger windows. </li>\n<li>Checking your blind spot must always be the last thing you do before turning or changing lanes. </li>\n<li>Also check your blind spot before opening your doors.</li></ul>\n",
         },
         {
             imageName: "",
             heading: "Finding out where your blind spots are",
             description:
-                "<ul><li>Sit in a parked car (in the driver&#39;s seat).</li>\n<li>Get someone to walk towards the car from the back. They should walk in a line 2m away from the driver&#39;s side of the car.</li>\n<li>Watch them in your driver&#39;s side mirror.</li>\n<li>When they disappear, they&#39;re in the blind spot. Tell them to stop.</li>\n<li>Turn your head and see how far back you have to look to see them.</li>\n<li>Imagine a mark on the inside of your car that tells you where you have to look to.</li>\n<li>Repeat this on the passenger&#39;s side.</li></ul>\n",
+                "<ul><li>Sit in a parked car (in the driver's seat).</li>\n<li>Get someone to walk towards the car from the back. They should walk in a line 2m away from the driver's side of the car.</li>\n<li>Watch them in your driver's side mirror.</li>\n<li>When they disappear, they're in the blind spot. Tell them to stop.</li>\n<li>Turn your head and see how far back you have to look to see them.</li>\n<li>Imagine a mark on the inside of your car that tells you where you have to look to.</li>\n<li>Repeat this on the passenger's side.</li></ul>\n",
         },
     ],
     "nav.defensiveDriving.generalK53Procedure": [
@@ -815,7 +815,7 @@ const contentData: ContentData = {
             imageName: "",
             heading: "",
             description:
-                "There are 10 steps that make up all the K53 procedures. In each situation you may use all or some of these steps. In the Driver&#39;s section of Learn2Drive each procedure is set out in detail, but we&#39;ve listed the main steps here for you, and broken them into three main groups.",
+                "There are 10 steps that make up all the K53 procedures. In each situation you may use all or some of these steps. In the Driver's section of Learn2Drive each procedure is set out in detail, but we've listed the main steps here for you, and broken them into three main groups.",
         },
         {
             imageName: "",
