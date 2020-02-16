@@ -3,10 +3,11 @@ import "./StudyPage.css";
 import React from "react";
 import { connect } from "react-redux";
 import { RootState } from "src/state";
-import { rootNavigationItemsSelector } from "src/state/study/navigation";
+import { navigationIconsSelector, rootNavigationItemsSelector } from "src/state/study/navigation";
 
-import { IonContent, IonItem, IonLabel, IonList, IonPage } from "@ionic/react";
-import { Translate } from 'react-translated'
+import { IonContent, IonList, IonPage } from "@ionic/react";
+
+import { NavigationItem } from "./components";
 
 type Props = PropsFromState;
 
@@ -15,11 +16,13 @@ const StudyPage: React.FC<Props> = props => {
         <IonPage>
             <IonContent>
                 <IonList>
-                    {props.navigationItems.map(key => {
+                    {props.navigationItems.map((key, index) => {
                         return (
-                            <IonItem key={key}>
-                                <IonLabel><Translate text={key} /></IonLabel>
-                            </IonItem>
+                            <NavigationItem
+                                navigationItemKey={key}
+                                onClick={() => {}}
+                                index={index}
+                            />
                         );
                     })}
                 </IonList>
@@ -32,6 +35,7 @@ type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
     return {
         navigationItems: rootNavigationItemsSelector(state),
+        navigationIcons: navigationIconsSelector(state),
     };
 };
 

@@ -1,34 +1,23 @@
+import {
+    documentTextOutline,
+    handLeftOutline,
+    informationCircleOutline,
+    shieldOutline,
+    shuffleOutline,
+    speedometerOutline,
+    warningOutline,
+} from "ionicons/icons";
+
 import { NavigationIcons } from "./";
 
 const navigationIcons: NavigationIcons = {
-    "nav.introduction": {
-        type: "ant-design",
-        name: "infocirlceo",
-    },
-    "nav.vehicleControls": {
-        type: "ant-design",
-        name: "dashboard",
-    },
-    "nav.rulesOfTheRoad": {
-        type: "ant-design",
-        name: "book",
-    },
-    "nav.defensiveDriving": {
-        type: "feather",
-        name: "shield",
-    },
-    "nav.roadMarkings": {
-        type: "font-awesome",
-        name: "road",
-    },
-    "nav.roadSignals": {
-        type: "font-awesome",
-        name: "hand-stop-o",
-    },
-    "nav.signs": {
-        type: "feather",
-        name: "alert-triangle",
-    },
+    "nav.introduction": informationCircleOutline,
+    "nav.vehicleControls": speedometerOutline,
+    "nav.rulesOfTheRoad": documentTextOutline,
+    "nav.defensiveDriving": shieldOutline,
+    "nav.roadMarkings": shuffleOutline,
+    "nav.roadSignals": handLeftOutline,
+    "nav.signs": warningOutline,
 };
 
 export { navigationIcons };

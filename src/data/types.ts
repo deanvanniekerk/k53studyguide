@@ -43,17 +43,7 @@ export type QuestionOptions = {
 };
 
 export type NavigationIcons = {
-    [key: string]: Icon;
-};
-
-export type IconType = "ant-design" | "font-awesome" | "feather" | "material";
-
-export type Icon = {
-    type: IconType;
-    name: string;
-    size?: number;
-    color?: string;
-    style?: IconStyle;
+    [key: string]: string;
 };
 
 export type IconStyle = {
