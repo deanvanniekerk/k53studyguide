@@ -21,6 +21,8 @@ import React from "react";
 import { Provider } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
 import { configureStore } from "src/state/configureStore";
+import { Provider as TranslationProvider } from 'react-translated';
+import { translations } from "src/data";
 
 import {
     IonApp,
@@ -42,6 +44,7 @@ const store = configureStore();
 const App: React.FC = () => (
     <IonApp>
         <Provider store={store}>
+            <TranslationProvider language="en" translation={translations}>
             <IonReactRouter>
                 <IonTabs>
                     <IonRouterOutlet>
@@ -66,6 +69,7 @@ const App: React.FC = () => (
                     </IonTabBar>
                 </IonTabs>
             </IonReactRouter>
+            </TranslationProvider>
         </Provider>
     </IonApp>
 );

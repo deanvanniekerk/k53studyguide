@@ -1,6 +1,5 @@
-import { Translations } from "./";
 
-const translations: Translations = {
+const translations = {
     "nav.controlSignals": "Road Signals",
     "nav.controlSignals.trafficLights": "Traffic Lights",
     "nav.roadSignals": "Road signals",
@@ -110,4 +109,4 @@ const translations: Translations = {
         "Pedestrian/pedal cycle light signals",
 };
 
-export { translations };
+module.exports = { translations };

@@ -11,3 +11,11 @@ ion-tab-button {
 ion-content {
     --color: var(--ion-color-light);
 }
+
+ion-item {
+    --color: var(--ion-color-light);
+}
+
+ion-list ion-item {
+    --inner-border-width: 0 0 0 0;
+}

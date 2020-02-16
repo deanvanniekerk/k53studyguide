@@ -13,7 +13,11 @@ export type NavigationData = {
 };
 
 export type Translations = {
-    [key: string]: string;
+    [key: string]: Translation;
+};
+
+export type Translation = {
+    en: string;
 };
 
 export type QuestionData = {

@@ -6,6 +6,7 @@ import { RootState } from "src/state";
 import { rootNavigationItemsSelector } from "src/state/study/navigation";
 
 import { IonContent, IonItem, IonLabel, IonList, IonPage } from "@ionic/react";
+import { Translate } from 'react-translated'
 
 type Props = PropsFromState;
 
@@ -14,10 +15,10 @@ const StudyPage: React.FC<Props> = props => {
         <IonPage>
             <IonContent>
                 <IonList>
-                    {props.navigationItems.map(item => {
+                    {props.navigationItems.map(key => {
                         return (
-                            <IonItem>
-                                <IonLabel>{item}</IonLabel>
+                            <IonItem key={key}>
+                                <IonLabel><Translate text={key} /></IonLabel>
                             </IonItem>
                         );
                     })}

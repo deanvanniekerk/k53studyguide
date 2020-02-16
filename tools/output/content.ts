@@ -1,5 +1,3 @@
-import { ContentData } from "./";
-
 const contentData: ContentData = {
     "nav.introduction": [
         {
@@ -2867,6 +2865,4 @@ const contentData: ContentData = {
             "description": "nav.signs.warning.hazardMarkerSigns.16.description"
         }
     ]
-};
-
-export { contentData };
+}
