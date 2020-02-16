@@ -1,5 +1,8 @@
 {
   "name": "K53Ninja",
-  "integrations": {},
-  "type": "react"
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "id": "9d7c6c7d"
 }
