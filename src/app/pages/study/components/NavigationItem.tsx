@@ -19,6 +19,8 @@ type Props = {
 
 const NavigationItemComponent: React.FC<Props> = props => {
     const delay = props.index * 40;
+    const seenTotal = props.seenTotals[props.navigationItemKey];
+    const seenProgress = seenTotal ? Math.floor((seenTotal.seen / seenTotal.total) * 100) : 0;
     return (
         <IonItem className="navigation-item" onClick={() => props.onClick(props.navigationItemKey)}>
             <IonIcon
@@ -55,7 +57,7 @@ const NavigationItemComponent: React.FC<Props> = props => {
                     }}
                 >
                     <div className="progress-bar">
-                        <ProgressBar progress={50}></ProgressBar>
+                        <ProgressBar progress={seenProgress}></ProgressBar>
                     </div>
                 </CreateAnimation>
             </IonLabel>

@@ -1,12 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
+import { bindActionCreators, Dispatch } from "redux";
 import { RootState } from "src/state";
-import { currentNavigationBreadcrumbSelector } from "src/state/study/navigation";
+import {
+    currentNavigationBreadcrumbSelector,
+    recieveCurrentNavigationKey,
+} from "src/state/study/navigation";
 
 import { IonText } from "@ionic/react";
 
-type Props = PropsFromState;
+type Props = PropsFromState & PropsFromDispatch;
 
 const BreadcrumbComponent: React.FC<Props> = props => {
     return (
@@ -15,20 +19,21 @@ const BreadcrumbComponent: React.FC<Props> = props => {
                 flexDirection: "row",
             }}
         >
-            {props.breadcrumb.map((b, i) => {
-                const isLast = i === props.breadcrumb.length - 1;
+            {props.breadcrumb.map((key, index) => {
+                const isLast = index === props.breadcrumb.length - 1;
 
-                if (isLast) return <React.Fragment key={b} />;
+                if (isLast) return <React.Fragment key={key} />;
 
                 return (
                     <IonText
-                        key={b}
+                        key={key}
                         style={{
                             opacity: 0.6,
                             fontSize: 12,
                         }}
+                        onClick={() => props.recieveCurrentNavigationKey(key)}
                     >
-                        {b !== "nav" ? <Translate text={b} /> : "Home"}
+                        {key !== "nav" ? <Translate text={key} /> : "Home"}
                         {" / "}
                     </IonText>
                 );
@@ -44,6 +49,13 @@ const mapStateToProps = (state: RootState) => {
     };
 };
 
-const Breadcrumb = connect(mapStateToProps)(BreadcrumbComponent);
+type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
+const mapDispatchToProps = (dispatch: Dispatch) => {
+    return {
+        ...bindActionCreators({ recieveCurrentNavigationKey }, dispatch),
+    };
+};
+
+const Breadcrumb = connect(mapStateToProps, mapDispatchToProps)(BreadcrumbComponent);
 
 export { Breadcrumb };

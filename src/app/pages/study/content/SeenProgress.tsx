@@ -1,4 +1,4 @@
-import { eyeOffOutline, eyeOutline } from "ionicons/icons";
+import { eye, eyeOff } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { ProgressBar } from "src/app/components";
@@ -32,7 +32,7 @@ const SeenProgressComponent: React.FC<Props> = props => {
                 </IonCol>
                 <IonCol>
                     <IonIcon
-                        icon={seenProgress === 100 ? eyeOutline : eyeOffOutline}
+                        icon={seenProgress === 100 ? eye : eyeOff}
                         style={{
                             fontSize: 12,
                             marginLeft: 5,
