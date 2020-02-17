@@ -63,4 +63,7 @@
     --ion-color-light-tint: #f5f6f9;
 
     --ion-item-background: transparent;
+
+    --ion-grid-column-padding: 0;
+    --ion-grid-padding: 0;
 }

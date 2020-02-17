@@ -1,14 +1,14 @@
-.list-icon {
+.navigation-item .list-icon {
     font-size: 22px;
     color: var(--ion-color-light);
     margin-right: 15px;
 }
 
-.list-label {
+.navigation-item .list-label {
     font-size: 14px;
 }
 
-.progress-bar {
+.navigation-item .progress-bar {
     padding-top: 6px;
     width: 80px;
 }

@@ -1,0 +1,9 @@
+.study-content-header h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.study-content-header .close-icon {
+    font-size: 32px;
+    color: rgba(255, 255, 255, 0.4);
+}

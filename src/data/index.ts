@@ -4,3 +4,4 @@ export * from "./navigationLookup";
 export * from "./questions";
 export * from "./translations";
 export * from "./navigationIcons";
+export * from "./theme";

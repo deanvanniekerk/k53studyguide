@@ -8,12 +8,14 @@ ion-tab-button {
     --color: var(--ion-color-tertiary-tint);
 }
 
-ion-content {
+ion-content,
+ion-text,
+ion-item,
+ion-list-header {
     --color: var(--ion-color-light);
 }
 
 ion-item {
-    --color: var(--ion-color-light);
     --min-height: 60px;
 }
 

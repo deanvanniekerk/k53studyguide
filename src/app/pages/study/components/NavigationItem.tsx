@@ -1,5 +1,6 @@
 import "./NavigationItem.css";
 
+import { chevronForwardOutline } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
@@ -19,8 +20,11 @@ type Props = {
 const NavigationItemComponent: React.FC<Props> = props => {
     const delay = props.index * 40;
     return (
-        <IonItem onClick={() => props.onClick(props.navigationItemKey)}>
-            <IonIcon icon={props.navigationIcons[props.navigationItemKey]} className="list-icon" />
+        <IonItem className="navigation-item" onClick={() => props.onClick(props.navigationItemKey)}>
+            <IonIcon
+                icon={props.navigationIcons[props.navigationItemKey] || chevronForwardOutline}
+                className="list-icon"
+            />
             <IonLabel>
                 <CreateAnimation
                     play={true}
