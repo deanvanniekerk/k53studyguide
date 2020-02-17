@@ -7,7 +7,7 @@ import { HorizontalRule } from "src/app/components";
 import { ContentItem } from "src/data";
 import { recieveSeenContentKey } from "src/state/study/log";
 
-import { IonCol, IonGrid, IonImg, IonRow, IonText } from "@ionic/react";
+import { IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
 
 import { ContentSeenIndicator } from "./ContentSeenIndicator";
 
