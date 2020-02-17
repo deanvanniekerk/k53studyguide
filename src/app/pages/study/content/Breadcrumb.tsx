@@ -33,7 +33,7 @@ const BreadcrumbComponent: React.FC<Props> = props => {
                         }}
                         onClick={() => props.recieveCurrentNavigationKey(key)}
                     >
-                        {key !== "nav" ? <Translate text={key} /> : "Home"}
+                        {key !== "nav" ? <Translate text={key} /> : "Study"}
                         {" / "}
                     </IonText>
                 );
