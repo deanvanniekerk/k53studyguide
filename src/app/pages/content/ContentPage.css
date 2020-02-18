@@ -1,4 +1,4 @@
-ion-content.content-page {
+.content-page ion-content {
     --background: linear-gradient(
         to right bottom,
         #845ec2,

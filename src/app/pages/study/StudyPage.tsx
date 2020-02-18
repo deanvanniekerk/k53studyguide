@@ -1,39 +1,27 @@
 import "./StudyPage.css";
 
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { bindActionCreators, Dispatch } from "redux";
 import { RootState } from "src/state";
 import {
-    currentNavigationParentSelector,
-    navigateUp,
     recieveCurrentNavigationKey,
-    ROOT_NAVIGATION_KEY,
     rootNavigationChildrenSelector,
 } from "src/state/study/navigation";
 
-import { IonCol, IonContent, IonGrid, IonModal, IonPage, IonRow } from "@ionic/react";
+import { IonCol, IonContent, IonGrid, IonPage, IonRow } from "@ionic/react";
 
-import ContentPage from "../content/ContentPage";
 import { Header, NavigationItem } from "./components";
 
 type Props = PropsFromState & PropsFromDispatch;
 
 const StudyPage: React.FC<Props> = props => {
-    const [showContent, setShowContent] = useState(false);
+    let history = useHistory();
 
     const onNavigationItemClicked = (key: string) => {
         props.recieveCurrentNavigationKey(key);
-        setShowContent(true);
-    };
-
-    const onBackClicked = () => {
-        if (props.currentNavigationParent === ROOT_NAVIGATION_KEY) {
-            setShowContent(false);
-            return;
-        }
-
-        props.navigateUp();
+        history.push(`/study/content`);
     };
 
     return (
@@ -55,9 +43,6 @@ const StudyPage: React.FC<Props> = props => {
                         })}
                     </IonRow>
                 </IonGrid>
-                <IonModal isOpen={showContent}>
-                    <ContentPage onBackClicked={onBackClicked} />
-                </IonModal>
             </IonContent>
         </IonPage>
     );
@@ -67,14 +52,13 @@ type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
     return {
         navigationChildren: rootNavigationChildrenSelector(state),
-        currentNavigationParent: currentNavigationParentSelector(state),
     };
 };
 
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        ...bindActionCreators({ recieveCurrentNavigationKey, navigateUp }, dispatch),
+        ...bindActionCreators({ recieveCurrentNavigationKey }, dispatch),
     };
 };
 

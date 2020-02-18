@@ -2,9 +2,7 @@ import { createSelector, OutputSelector, Selector } from "reselect";
 import { NavigationData, NavigationIcons } from "src/data";
 import { RootState } from "src/state/rootReducer";
 
-import { NavigationState } from "./reducer";
-
-export const ROOT_NAVIGATION_KEY = "nav";
+import { NavigationState, ROOT_NAVIGATION_KEY } from "./reducer";
 
 const rootSelector: Selector<RootState, NavigationState> = (state: RootState): NavigationState =>
     state.study.navigation;

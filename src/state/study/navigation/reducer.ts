@@ -1,6 +1,8 @@
 import { NavigationData, navigationData, NavigationIcons, navigationIcons } from "src/data";
 
-import { NavigationActions, ROOT_NAVIGATION_KEY } from "./";
+import { NavigationActions } from "./";
+
+export const ROOT_NAVIGATION_KEY = "nav";
 
 export type NavigationState = {
     readonly navigationData: NavigationData;
