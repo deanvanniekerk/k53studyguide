@@ -18,7 +18,7 @@ const ContentListComponent: React.FC<Props> = props => {
     };
 
     return (
-        <IonList>
+        <IonList style={{ paddingTop: 25, paddingBottom: 25 }}>
             {props.contentItems.map((item, index) => {
                 const key = buildItemKey(index);
                 return (

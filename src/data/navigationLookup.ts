@@ -2,7 +2,6 @@ import { NavigationData } from "./";
 
 const navigationData: NavigationData = {
     nav: [
-        "nav.introduction",
         "nav.vehicleControls",
         "nav.rulesOfTheRoad",
         "nav.defensiveDriving",

@@ -1,14 +1,26 @@
-.navigation-item .list-icon {
-    font-size: 22px;
-    color: var(--ion-color-light);
-    margin-right: 15px;
+.root-navigation-item {
+    background-image: linear-gradient(to right bottom, #845ec2, #6f69c9, #5872cd, #3f79ce, #2180cd);
+    border-radius: 8px;
+    margin: 6px;
+    padding: 10px;
+    border: 0;
+    height: 75px;
 }
 
-.navigation-item .list-label {
-    font-size: 14px;
+.root-navigation-item .icon {
+    position: absolute;
+    color: #000000;
+    right: 0px;
+    bottom: -2px;
+    font-size: 24px;
+    opacity: 0.3;
 }
 
-.navigation-item .progress-bar {
-    padding-top: 6px;
-    width: 60px;
+.root-navigation-item .progress-bar {
+    position: absolute;
+    left: 0px;
+    bottom: -3px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

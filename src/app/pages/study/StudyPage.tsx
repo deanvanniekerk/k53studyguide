@@ -12,10 +12,10 @@ import {
     rootNavigationChildrenSelector,
 } from "src/state/study/navigation";
 
-import { IonContent, IonList, IonModal, IonPage } from "@ionic/react";
+import { IonCol, IonContent, IonGrid, IonModal, IonPage, IonRow } from "@ionic/react";
 
-import { NavigationItem } from "./components";
-import ContentPage from "./content/ContentPage";
+import ContentPage from "../content/ContentPage";
+import { Header, NavigationItem } from "./components";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -39,18 +39,22 @@ const StudyPage: React.FC<Props> = props => {
     return (
         <IonPage className="study-page">
             <IonContent>
-                <IonList>
-                    {props.navigationChildren.map((key, index) => {
-                        return (
-                            <NavigationItem
-                                key={key}
-                                navigationItemKey={key}
-                                onClick={onNavigationItemClicked}
-                                index={index}
-                            />
-                        );
-                    })}
-                </IonList>
+                <Header />
+                <IonGrid style={{ padding: 10 }}>
+                    <IonRow>
+                        {props.navigationChildren.map((key, index) => {
+                            return (
+                                <IonCol key={key} size="6" style={{ overflow: "hidden" }}>
+                                    <NavigationItem
+                                        navigationItemKey={key}
+                                        onClick={onNavigationItemClicked}
+                                        index={index}
+                                    />
+                                </IonCol>
+                            );
+                        })}
+                    </IonRow>
+                </IonGrid>
                 <IonModal isOpen={showContent}>
                     <ContentPage onBackClicked={onBackClicked} />
                 </IonModal>

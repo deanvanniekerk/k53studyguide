@@ -17,7 +17,7 @@ type Props = {
 
 const HeaderComponent: React.FC<Props> = props => {
     return (
-        <IonListHeader className="study-content-header">
+        <IonListHeader>
             <IonGrid>
                 <IonRow>
                     <IonCol>

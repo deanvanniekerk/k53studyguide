@@ -1,4 +1,11 @@
 :root {
+    --ion-font-family: "Roboto Condensed", sans-serif;
+
+    --ion-item-background: transparent;
+
+    --ion-grid-column-padding: 0;
+    --ion-grid-padding: 0;
+
     --ion-color-primary: #3880ff;
     --ion-color-primary-rgb: 56, 128, 255;
     --ion-color-primary-contrast: #ffffff;
@@ -61,9 +68,4 @@
     --ion-color-light-contrast-rgb: 0, 0, 0;
     --ion-color-light-shade: #d7d8da;
     --ion-color-light-tint: #f5f6f9;
-
-    --ion-item-background: transparent;
-
-    --ion-grid-column-padding: 0;
-    --ion-grid-padding: 0;
 }

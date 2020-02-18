@@ -8,6 +8,15 @@ ion-tab-button {
     --color: var(--ion-color-tertiary-tint);
 }
 
+ion-tab-button ion-icon {
+    font-size: 24px;
+}
+
+ion-tab-button ion-label {
+    margin-top: 2px;
+    font-size: 12px;
+}
+
 ion-content,
 ion-text,
 ion-item,

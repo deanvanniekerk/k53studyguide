@@ -1,3 +1,5 @@
+import "./Content.css";
+
 import React from "react";
 import { connect } from "react-redux";
 import { Translate, Translator } from "react-translated";
@@ -56,7 +58,7 @@ const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenCon
                 </IonRow>
             )}
             <IonRow>
-                <IonCol>
+                <IonCol className="content-html">
                     <IonText style={{ fontSize: 14, lineHeight: 1.5 }}>
                         <Translator>{translator}</Translator>
                     </IonText>

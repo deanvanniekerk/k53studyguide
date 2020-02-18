@@ -4,9 +4,7 @@ import React from "react";
 
 import { IonContent } from "@ionic/react";
 
-import { ContentList } from "./ContentList";
-import { Header } from "./Header";
-import { Navigator } from "./Navigator";
+import { ContentList, Header, Navigator } from "./components";
 
 type Props = {
     onBackClicked: () => void;
