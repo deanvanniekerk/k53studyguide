@@ -38,6 +38,7 @@ import { IonReactRouter } from "@ionic/react-router";
 import ProfilePage from "./app/pages/profile/ProfilePage";
 import StudyPage from "./app/pages/study/StudyPage";
 import TrainPage from "./app/pages/train/TrainPage";
+import ContentPage from "./app/pages/content/ContentPage";
 
 const store = configureStore();
 
@@ -48,10 +49,11 @@ const App: React.FC = () => (
                 <IonReactRouter>
                     <IonTabs>
                         <IonRouterOutlet>
-                            <Route path="/study" component={StudyPage} exact={true} />
-                            <Route path="/train" component={TrainPage} exact={true} />
-                            <Route path="/profile" component={ProfilePage} />
-                            <Route path="/" render={() => <Redirect to="/study" />} exact={true} />
+                            <Route exact path="/:tab(study)" component={StudyPage} />
+                            <Route exact path="/:tab(study)/content/:navigationKey" component={ContentPage} />
+                            <Route exact path="/:tab(train)" component={TrainPage} />
+                            <Route exact path="/:tab(profile)" component={ProfilePage} />
+                            <Route exact path="/" render={() => <Redirect to="/:tab(study)" />} />
                         </IonRouterOutlet>
                         <IonTabBar slot="bottom">
                             <IonTabButton tab="study" href="/study">
