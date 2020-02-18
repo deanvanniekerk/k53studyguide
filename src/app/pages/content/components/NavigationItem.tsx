@@ -5,9 +5,8 @@ import { Translate } from "react-translated";
 import { ProgressBar } from "src/app/components";
 import { RootState } from "src/state";
 import { seenTotalsSelector } from "src/state/study/log";
-import { navigationIconsSelector } from "src/state/study/navigation";
-
 import { CreateAnimation, IonIcon, IonItem, IonLabel, IonText } from "@ionic/react";
+import { TEXT_COLOR } from "src/data";
 
 type Props = {
     navigationItemKey: string;
@@ -22,8 +21,8 @@ const NavigationItemComponent: React.FC<Props> = props => {
     return (
         <IonItem className="navigation-item" onClick={() => props.onClick(props.navigationItemKey)}>
             <IonIcon
-                icon={props.navigationIcons[props.navigationItemKey] || chevronForwardOutline}
-                style={{ fontSize: 22, marginRight: 15 }}
+                icon={chevronForwardOutline}
+                style={{ fontSize: 22, marginRight: 15, color: TEXT_COLOR }}
             />
             <IonLabel>
                 <CreateAnimation
@@ -66,7 +65,6 @@ const NavigationItemComponent: React.FC<Props> = props => {
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
     return {
-        navigationIcons: navigationIconsSelector(state),
         seenTotals: seenTotalsSelector(state),
     };
 };

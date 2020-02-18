@@ -17,48 +17,46 @@ type Props = {
 
 const HeaderComponent: React.FC<Props> = props => {
     return (
-        <IonListHeader>
-            <IonGrid>
-                <IonRow>
-                    <IonCol>
-                        <IonIcon
-                            style={{ marginTop: 12, opacity: 0.4, fontSize: 24 }}
-                            icon={arrowBackOutline}
-                            onClick={props.onBackClicked}
-                        />
-                    </IonCol>
-                </IonRow>
-                <IonRow style={{ paddingTop: 8 }}>
-                    <IonCol>
-                        <IonText>
-                            <h2>
-                                <Translate text={props.currentNavigationKey} />
-                            </h2>
-                        </IonText>
-                    </IonCol>
-                </IonRow>
-                <IonRow>
-                    <IonCol>
-                        <Breadcrumb />
-                    </IonCol>
-                </IonRow>
-                <IonRow style={{ paddingTop: 20 }}>
-                    <IonCol>
-                        <SeenProgress navigationKey={props.currentNavigationKey} />
-                    </IonCol>
-                </IonRow>
-                <IonRow>
-                    <IonCol>
-                        <HorizontalRule
-                            leftMargin={20}
-                            rightMargin={36}
-                            paddingBottom={0}
-                            paddingTop={20}
-                        />
-                    </IonCol>
-                </IonRow>
-            </IonGrid>
-        </IonListHeader>
+        <>
+            <IonIcon
+                style={{ position: "absolute", opacity: 0.4, fontSize: 24, top: 18, left: 13 }}
+                icon={arrowBackOutline}
+                onClick={props.onBackClicked}
+            />
+            <IonListHeader>
+                <IonGrid>
+                    <IonRow style={{ paddingTop: 40 }}>
+                        <IonCol>
+                            <IonText>
+                                <h2>
+                                    <Translate text={props.currentNavigationKey} />
+                                </h2>
+                            </IonText>
+                        </IonCol>
+                    </IonRow>
+                    <IonRow>
+                        <IonCol>
+                            <Breadcrumb />
+                        </IonCol>
+                    </IonRow>
+                    <IonRow style={{ paddingTop: 20 }}>
+                        <IonCol>
+                            <SeenProgress navigationKey={props.currentNavigationKey} />
+                        </IonCol>
+                    </IonRow>
+                    <IonRow>
+                        <IonCol>
+                            <HorizontalRule
+                                leftMargin={20}
+                                rightMargin={36}
+                                paddingBottom={0}
+                                paddingTop={20}
+                            />
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
+            </IonListHeader>
+        </>
     );
 };
 
