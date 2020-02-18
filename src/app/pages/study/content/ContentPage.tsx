@@ -9,13 +9,13 @@ import { Header } from "./Header";
 import { Navigator } from "./Navigator";
 
 type Props = {
-    onClose: () => void;
+    onBackClicked: () => void;
 };
 
 const ContentPage: React.FC<Props> = props => {
     return (
         <IonContent class="content-page">
-            <Header onClose={props.onClose} />
+            <Header onBackClicked={props.onBackClicked} />
             <Navigator />
             <ContentList />
         </IonContent>

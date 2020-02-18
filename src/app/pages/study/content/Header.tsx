@@ -1,6 +1,4 @@
-import "./Header.css";
-
-import { closeOutline } from "ionicons/icons";
+import { arrowBackOutline } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
@@ -14,28 +12,29 @@ import { Breadcrumb } from "./Breadcrumb";
 import { SeenProgress } from "./SeenProgress";
 
 type Props = {
-    onClose: () => void;
+    onBackClicked: () => void;
 } & PropsFromState;
 
 const HeaderComponent: React.FC<Props> = props => {
     return (
         <IonListHeader className="study-content-header">
             <IonGrid>
-                <IonRow class="ion-align-items-center" style={{ paddingTop: 35 }}>
+                <IonRow>
+                    <IonCol>
+                        <IonIcon
+                            style={{ marginTop: 12, opacity: 0.4, fontSize: 24 }}
+                            icon={arrowBackOutline}
+                            onClick={props.onBackClicked}
+                        />
+                    </IonCol>
+                </IonRow>
+                <IonRow style={{ paddingTop: 8 }}>
                     <IonCol>
                         <IonText>
                             <h2>
                                 <Translate text={props.currentNavigationKey} />
                             </h2>
                         </IonText>
-                    </IonCol>
-                    <IonCol style={{ flex: 0 }} className="ion-align-self-end">
-                        <IonIcon
-                            style={{ marginRight: 10 }}
-                            icon={closeOutline}
-                            onClick={props.onClose}
-                            className="close-icon"
-                        />
                     </IonCol>
                 </IonRow>
                 <IonRow>

@@ -6,6 +6,7 @@ import { RootState } from "src/state";
 import {
     currentNavigationBreadcrumbSelector,
     recieveCurrentNavigationKey,
+    ROOT_NAVIGATION_KEY,
 } from "src/state/study/navigation";
 
 import { IonText } from "@ionic/react";
@@ -33,7 +34,7 @@ const BreadcrumbComponent: React.FC<Props> = props => {
                         }}
                         onClick={() => props.recieveCurrentNavigationKey(key)}
                     >
-                        {key !== "nav" ? <Translate text={key} /> : "Study"}
+                        {key !== ROOT_NAVIGATION_KEY ? <Translate text={key} /> : "Study"}
                         {" / "}
                     </IonText>
                 );

@@ -54,7 +54,7 @@ describe("state > study > content > selectors", () => {
         expect(actual).toEqual(defaultState.contentData);
     });
 
-    it("currentNavigationItemsSelector", () => {
+    it("currentNavigationChildrenSelector", () => {
         const actual = selectors.currentContentItemsSelector.resultFunc(
             contentData,
             "nav.rulesOfTheRoad.theDriver.learnerDrivers"

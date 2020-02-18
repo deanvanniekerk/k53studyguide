@@ -1,6 +1,6 @@
 import { NavigationData, navigationData, NavigationIcons, navigationIcons } from "src/data";
 
-import { NavigationActions } from "./actions";
+import { NavigationActions, ROOT_NAVIGATION_KEY } from "./";
 
 export type NavigationState = {
     readonly navigationData: NavigationData;
@@ -10,7 +10,7 @@ export type NavigationState = {
 
 export const defaultState: NavigationState = {
     navigationData: navigationData,
-    currentNavigationKey: "nav",
+    currentNavigationKey: ROOT_NAVIGATION_KEY,
     navigationIcons: navigationIcons,
 };
 

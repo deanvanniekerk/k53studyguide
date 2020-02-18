@@ -5,8 +5,11 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { RootState } from "src/state";
 import {
+    currentNavigationParentSelector,
+    navigateUp,
     recieveCurrentNavigationKey,
-    rootNavigationItemsSelector,
+    ROOT_NAVIGATION_KEY,
+    rootNavigationChildrenSelector,
 } from "src/state/study/navigation";
 
 import { IonContent, IonList, IonModal, IonPage } from "@ionic/react";
@@ -24,11 +27,20 @@ const StudyPage: React.FC<Props> = props => {
         setShowContent(true);
     };
 
+    const onBackClicked = () => {
+        if (props.currentNavigationParent === ROOT_NAVIGATION_KEY) {
+            setShowContent(false);
+            return;
+        }
+
+        props.navigateUp();
+    };
+
     return (
         <IonPage className="study-page">
             <IonContent>
                 <IonList>
-                    {props.navigationItems.map((key, index) => {
+                    {props.navigationChildren.map((key, index) => {
                         return (
                             <NavigationItem
                                 key={key}
@@ -40,7 +52,7 @@ const StudyPage: React.FC<Props> = props => {
                     })}
                 </IonList>
                 <IonModal isOpen={showContent}>
-                    <ContentPage onClose={() => setShowContent(false)} />
+                    <ContentPage onBackClicked={onBackClicked} />
                 </IonModal>
             </IonContent>
         </IonPage>
@@ -50,14 +62,15 @@ const StudyPage: React.FC<Props> = props => {
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
     return {
-        navigationItems: rootNavigationItemsSelector(state),
+        navigationChildren: rootNavigationChildrenSelector(state),
+        currentNavigationParent: currentNavigationParentSelector(state),
     };
 };
 
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        ...bindActionCreators({ recieveCurrentNavigationKey }, dispatch),
+        ...bindActionCreators({ recieveCurrentNavigationKey, navigateUp }, dispatch),
     };
 };
 

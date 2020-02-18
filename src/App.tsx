@@ -20,9 +20,9 @@ import { flask, personCircle, school } from "ionicons/icons";
 import React from "react";
 import { Provider } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
-import { configureStore } from "src/state/configureStore";
-import { Provider as TranslationProvider } from 'react-translated';
+import { Provider as TranslationProvider } from "react-translated";
 import { translations } from "src/data";
+import { configureStore } from "src/state/configureStore";
 
 import {
     IonApp,
@@ -45,30 +45,30 @@ const App: React.FC = () => (
     <IonApp>
         <Provider store={store}>
             <TranslationProvider language="en" translation={translations}>
-            <IonReactRouter>
-                <IonTabs>
-                    <IonRouterOutlet>
-                        <Route path="/study" component={StudyPage} exact={true} />
-                        <Route path="/train" component={TrainPage} exact={true} />
-                        <Route path="/profile" component={ProfilePage} />
-                        <Route path="/" render={() => <Redirect to="/study" />} exact={true} />
-                    </IonRouterOutlet>
-                    <IonTabBar slot="bottom">
-                        <IonTabButton tab="study" href="/study">
-                            <IonIcon icon={school} />
-                            <IonLabel>Study</IonLabel>
-                        </IonTabButton>
-                        <IonTabButton tab="train" href="/train">
-                            <IonIcon icon={flask} />
-                            <IonLabel>Train</IonLabel>
-                        </IonTabButton>
-                        <IonTabButton tab="profile" href="/profile">
-                            <IonIcon icon={personCircle} />
-                            <IonLabel>Profile</IonLabel>
-                        </IonTabButton>
-                    </IonTabBar>
-                </IonTabs>
-            </IonReactRouter>
+                <IonReactRouter>
+                    <IonTabs>
+                        <IonRouterOutlet>
+                            <Route path="/study" component={StudyPage} exact={true} />
+                            <Route path="/train" component={TrainPage} exact={true} />
+                            <Route path="/profile" component={ProfilePage} />
+                            <Route path="/" render={() => <Redirect to="/study" />} exact={true} />
+                        </IonRouterOutlet>
+                        <IonTabBar slot="bottom">
+                            <IonTabButton tab="study" href="/study">
+                                <IonIcon icon={school} />
+                                <IonLabel>Study</IonLabel>
+                            </IonTabButton>
+                            <IonTabButton tab="train" href="/train">
+                                <IonIcon icon={flask} />
+                                <IonLabel>Train</IonLabel>
+                            </IonTabButton>
+                            <IonTabButton tab="profile" href="/profile">
+                                <IonIcon icon={personCircle} />
+                                <IonLabel>Profile</IonLabel>
+                            </IonTabButton>
+                        </IonTabBar>
+                    </IonTabs>
+                </IonReactRouter>
             </TranslationProvider>
         </Provider>
     </IonApp>

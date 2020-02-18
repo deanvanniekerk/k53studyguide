@@ -3,7 +3,7 @@ import { ContentData, NavigationData } from "src/data";
 import { RootState } from "src/state/rootReducer";
 
 import { contentDataSelector } from "../content";
-import { navigationDataSelector } from "../navigation";
+import { navigationDataSelector, ROOT_NAVIGATION_KEY } from "../navigation";
 import { NavigationTreeItem, SeenContentKeys, SeenTotal, SeenTotals } from "./";
 import { LogState } from "./reducer";
 
@@ -48,7 +48,7 @@ export const navigationTreeSelector: OutputSelector<
     };
 
     const root: NavigationTreeItem = {
-        key: "nav",
+        key: ROOT_NAVIGATION_KEY,
         children: [],
     };
 

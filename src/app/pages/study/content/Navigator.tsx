@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { RootState } from "src/state";
 import {
-    currentNavigationItemsSelector,
+    currentNavigationChildrenSelector,
     recieveCurrentNavigationKey,
 } from "src/state/study/navigation";
 
@@ -18,11 +18,11 @@ const NavigatorComponent: React.FC<Props> = props => {
         props.recieveCurrentNavigationKey(key);
     };
 
-    if (!props.navigationItems) return <React.Fragment />;
+    if (!props.navigationChildren) return <React.Fragment />;
 
     return (
         <IonList>
-            {props.navigationItems.map((key, index) => {
+            {props.navigationChildren.map((key, index) => {
                 return (
                     <NavigationItem
                         key={key}
@@ -39,7 +39,7 @@ const NavigatorComponent: React.FC<Props> = props => {
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
     return {
-        navigationItems: currentNavigationItemsSelector(state),
+        navigationChildren: currentNavigationChildrenSelector(state),
     };
 };
 

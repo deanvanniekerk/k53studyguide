@@ -1,4 +1,4 @@
-import { ContentData, NavigationData, NavigationIcons } from "src/data";
+import { NavigationData, NavigationIcons } from "src/data";
 
 import { NavigationState } from "./";
 import * as selectors from "./selectors";
@@ -31,57 +31,12 @@ describe("state > study > navigation > selectors", () => {
     };
 
     const navigationIcons: NavigationIcons = {
-        "nav.roadSignals": {
-            type: "font-awesome",
-            name: "hand-stop-o",
-        },
-        "nav.signs": {
-            type: "feather",
-            name: "alert-triangle",
-        },
-    };
-
-    const contentData: ContentData = {
-        "nav.roadSignals.warningSignals": [
-            {
-                imageName: "",
-                heading: "1",
-                description: "description 1",
-            },
-            {
-                imageName: "",
-                heading: "2",
-                description: "description 2",
-            },
-        ],
-        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.flagSignals": [
-            {
-                imageName: "rules-of-the-road/vehicleControls.png",
-                heading: "1",
-                description: "description 1",
-            },
-        ],
-        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals": [
-            {
-                imageName: "",
-                heading: "1",
-                description: "description 1",
-            },
-            {
-                imageName: "",
-                heading: "2",
-                description: "description 2",
-            },
-            {
-                imageName: "",
-                heading: "3",
-                description: "description 3",
-            },
-        ],
+        "nav.roadSignals": "icon1",
+        "nav.signs": "ion2",
     };
 
     const defaultState: NavigationState = {
-        navigationData: navigationData,
+        navigationData: {},
         currentNavigationKey: "nav",
         navigationIcons: navigationIcons,
     };
@@ -93,8 +48,8 @@ describe("state > study > navigation > selectors", () => {
         expect(actual).toEqual(defaultState.navigationData);
     });
 
-    it("currentNavigationItemsSelector", () => {
-        const actual = selectors.currentNavigationItemsSelector.resultFunc(
+    it("currentNavigationChildrenSelector", () => {
+        const actual = selectors.currentNavigationChildrenSelector.resultFunc(
             navigationData,
             "nav.roadSignals"
         );
@@ -105,8 +60,8 @@ describe("state > study > navigation > selectors", () => {
         ]);
     });
 
-    it("rootNavigationItemsSelector", () => {
-        const actual = selectors.rootNavigationItemsSelector.resultFunc(navigationData);
+    it("rootNavigationChildrenSelector", () => {
+        const actual = selectors.rootNavigationChildrenSelector.resultFunc(navigationData);
 
         expect(actual).toEqual(["nav.roadSignals", "nav.signs"]);
     });
@@ -119,7 +74,6 @@ describe("state > study > navigation > selectors", () => {
 
     it("currentNavigationBreadcrumbSelector", () => {
         const actual = selectors.currentNavigationBreadcrumbSelector.resultFunc(
-            navigationData,
             "nav.signs.guidance.freewayDirectionSigns"
         );
 
@@ -129,5 +83,16 @@ describe("state > study > navigation > selectors", () => {
             "nav.signs.guidance",
             "nav.signs.guidance.freewayDirectionSigns",
         ]);
+    });
+
+    it("currentNavigationParentSelector", () => {
+        const actual = selectors.currentNavigationParentSelector.resultFunc([
+            "nav",
+            "nav.signs",
+            "nav.signs.guidance",
+            "nav.signs.guidance.freewayDirectionSigns",
+        ]);
+
+        expect(actual).toEqual("nav.signs.guidance");
     });
 });

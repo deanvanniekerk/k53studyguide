@@ -4,7 +4,7 @@ import { RootState } from "src/state/rootReducer";
 
 import { NavigationState } from "./reducer";
 
-const rootNavigationItemName = "nav";
+export const ROOT_NAVIGATION_KEY = "nav";
 
 const rootSelector: Selector<RootState, NavigationState> = (state: RootState): NavigationState =>
     state.study.navigation;
@@ -21,7 +21,7 @@ export const currentNavigationKeySelector: OutputSelector<
     (state: NavigationState) => string
 > = createSelector(rootSelector, root => root.currentNavigationKey);
 
-export const currentNavigationItemsSelector: OutputSelector<
+export const currentNavigationChildrenSelector: OutputSelector<
     RootState,
     string[],
     (data: NavigationData, key: string) => string[]
@@ -29,11 +29,11 @@ export const currentNavigationItemsSelector: OutputSelector<
     data[key] ? data[key] : []
 );
 
-export const rootNavigationItemsSelector: OutputSelector<
+export const rootNavigationChildrenSelector: OutputSelector<
     RootState,
     string[],
     (data: NavigationData) => string[]
-> = createSelector(navigationDataSelector, data => data[rootNavigationItemName]);
+> = createSelector(navigationDataSelector, data => data[ROOT_NAVIGATION_KEY]);
 
 export const navigationIconsSelector: OutputSelector<
     RootState,
@@ -44,26 +44,26 @@ export const navigationIconsSelector: OutputSelector<
 export const currentNavigationBreadcrumbSelector: OutputSelector<
     RootState,
     string[],
-    (data: NavigationData, key: string) => string[]
-> = createSelector(navigationDataSelector, currentNavigationKeySelector, (data, key) => {
-    let breadcrumb: string[] = [];
+    (key: string) => string[]
+> = createSelector(currentNavigationKeySelector, key => {
+    const breadcrumb: string[] = [];
 
-    const walk = (node: string, items: string[]) => {
-        items.push(node);
+    const split = (key || "").split(".");
 
-        if (node === key) {
-            breadcrumb = items;
-            return;
-        }
+    while (split.length > 0) {
+        breadcrumb.push(split.join("."));
+        split.pop();
+    }
 
-        const children = data[node];
+    return breadcrumb.reverse();
+});
 
-        if (!children) return;
+export const currentNavigationParentSelector: OutputSelector<
+    RootState,
+    string,
+    (breadcrumb: string[]) => string
+> = createSelector(currentNavigationBreadcrumbSelector, breadcrumb => {
+    if (breadcrumb.length <= 1) return breadcrumb[0];
 
-        children.forEach(c => walk(c, [...items]));
-    };
-
-    walk(rootNavigationItemName, []);
-
-    return breadcrumb;
+    return breadcrumb[breadcrumb.length - 2];
 });
