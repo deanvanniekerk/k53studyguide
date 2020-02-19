@@ -28,21 +28,20 @@ const ContentSeenIndicatorComponent: React.FC<Props> = ({ navigationKey, seenTot
     return (
         <CreateAnimation
             play={play}
-            duration={500}
+            duration={700}
             easing="ease"
             keyframes={[
                 { offset: 0, transform: "scale(1)" },
-                { offset: 0.5, transform: "scale(1.5)" },
+                { offset: 0.7, transform: "scale(1.6)" },
                 { offset: 1, transform: "scale(1)" },
             ]}
         >
-            <div>
+            <div style={{ paddingLeft: 8, paddingRight: 5 }}>
                 <IonIcon
                     icon={currentSeen ? eye : eyeOff}
                     style={{
                         fontSize: 16,
                         opacity: currentSeen ? 0.6 : 0.4,
-                        marginRight: 5,
                     }}
                 />
             </div>

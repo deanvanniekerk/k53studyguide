@@ -74,8 +74,8 @@ const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenCon
                         <HorizontalRule
                             leftMargin={20}
                             rightMargin={36}
-                            paddingBottom={8}
-                            paddingTop={12}
+                            paddingBottom={12}
+                            paddingTop={18}
                         />
                     </VisibilitySensor>
                 </IonCol>

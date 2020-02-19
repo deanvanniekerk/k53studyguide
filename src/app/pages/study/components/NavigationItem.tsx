@@ -1,7 +1,7 @@
 import "./NavigationItem.css";
 
 import { chevronForwardOutline, eye } from "ionicons/icons";
-import React from "react";
+import React, { useRef } from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import { ProgressBar } from "src/app/components";
@@ -9,7 +9,7 @@ import { RootState } from "src/state";
 import { seenTotalsSelector } from "src/state/study/log";
 import { navigationIconsSelector } from "src/state/study/navigation";
 
-import { CreateAnimation, IonIcon, IonLabel, IonText } from "@ionic/react";
+import { CreateAnimation, IonIcon, IonLabel, IonText, useIonViewWillEnter } from "@ionic/react";
 
 type Props = {
     navigationItemKey: string;
@@ -18,13 +18,23 @@ type Props = {
 } & PropsFromState;
 
 const NavigationItemComponent: React.FC<Props> = props => {
+    const animation1 = useRef<CreateAnimation>(null);
+    const animation2 = useRef<CreateAnimation>(null);
+
     const delay = props.index * 75;
     const seenTotal = props.seenTotals[props.navigationItemKey];
     const seenProgress = seenTotal ? Math.floor((seenTotal.seen / seenTotal.total) * 100) : 0;
     const containerAnimationDuration = 300;
+
+    useIonViewWillEnter(() => {
+        animation1.current!.animation.play();
+        animation2.current!.animation.play();
+    });
+
     return (
         <CreateAnimation
-            play={true}
+            play={false}
+            ref={animation1}
             delay={delay}
             duration={containerAnimationDuration}
             easing="ease"
@@ -47,7 +57,8 @@ const NavigationItemComponent: React.FC<Props> = props => {
                     }}
                 >
                     <CreateAnimation
-                        play={true}
+                        play={false}
+                        ref={animation2}
                         duration={500}
                         delay={delay + containerAnimationDuration}
                         easing="ease"
