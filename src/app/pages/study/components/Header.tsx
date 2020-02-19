@@ -28,6 +28,7 @@ const HeaderComponent: React.FC<Props> = props => {
                             color="primary"
                             shape="round"
                             fill="solid"
+                            size="large"
                             style={{ fontWeight: "bold" }}
                         >
                             <Translate text="continue" />

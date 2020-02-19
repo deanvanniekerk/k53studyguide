@@ -5,11 +5,12 @@ describe("state > study > log > reducer", () => {
         seenContentKeys: {
             key1: true,
         },
+        lastSeenParentContentKey: "key1",
     };
 
-    it("should handle STUDY_NAV_RECIEVE_CURRENT_NAVIGATION_KEY", () => {
+    it("should handle STUDY_LOG_RECIEVE_SEEN_CONTENT_KEY", () => {
         const actualState = reducer(defaultState, {
-            type: "STUDY_LOG_RECIEVE_CONTENT_SEEN_KEY",
+            type: "STUDY_LOG_RECIEVE_SEEN_CONTENT_KEY",
             payload: "key2",
         });
 
@@ -24,7 +25,7 @@ describe("state > study > log > reducer", () => {
         expect(actualState).toEqual(expectedState);
     });
 
-    it("should handle STUDY_NAV_RECIEVE_CURRENT_NAVIGATION_KEY - already seen", () => {
+    it("should handle STUDY_LOG_RECIEVE_SEEN_CONTENT_KEY - already seen", () => {
         const state = {
             ...defaultState,
             seenContentKeys: {
@@ -34,12 +35,26 @@ describe("state > study > log > reducer", () => {
         };
 
         const actualState = reducer(state, {
-            type: "STUDY_LOG_RECIEVE_CONTENT_SEEN_KEY",
+            type: "STUDY_LOG_RECIEVE_SEEN_CONTENT_KEY",
             payload: "key2",
         });
 
         const expectedState = {
             ...state,
+        };
+
+        expect(actualState).toEqual(expectedState);
+    });
+
+    it("should handle STUDY_LOG_RECIEVE_LAST_SEEN_PARENT_CONTENT_KEY", () => {
+        const actualState = reducer(defaultState, {
+            type: "STUDY_LOG_RECIEVE_LAST_SEEN_PARENT_CONTENT_KEY",
+            payload: "key2",
+        });
+
+        const expectedState = {
+            ...defaultState,
+            lastSeenParentContentKey: "key2",
         };
 
         expect(actualState).toEqual(expectedState);

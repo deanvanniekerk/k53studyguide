@@ -1,21 +1,18 @@
 import { combineReducers } from "redux";
-import { persistReducer } from "redux-persist";
+import { PersistConfig, persistReducer } from "redux-persist";
 import { createStorage } from "src/store/store";
 
 import { reducer as content } from "./content";
-import { reducer as log } from "./log";
+import { LogState, reducer as log } from "./log";
 import { reducer as navigation } from "./navigation";
 
-const persistConfig = {
-    key: "study",
+const persistLogConfig: PersistConfig<LogState> = {
+    key: "study-log",
     storage: createStorage(),
-    whitelist: ["log"],
 };
 
-const combinedReducers = combineReducers({
+export const reducer = combineReducers({
     content: content,
     navigation: navigation,
-    log: log,
+    log: persistReducer(persistLogConfig, log),
 });
-
-export const reducer = persistReducer(persistConfig, combinedReducers);

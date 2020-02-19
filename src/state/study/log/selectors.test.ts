@@ -51,13 +51,20 @@ describe("state > study > log > selectors", () => {
 
     const defaultState: LogState = {
         seenContentKeys: {},
+        lastSeenParentContentKey: "key1",
     };
     //-----------------------------------------------------------
 
-    it("contentDataSelector", () => {
+    it("seenContentKeysSelector", () => {
         const actual = selectors.seenContentKeysSelector.resultFunc(defaultState);
 
         expect(actual).toEqual(defaultState.seenContentKeys);
+    });
+
+    it("seenContentKeysSelector", () => {
+        const actual = selectors.lastSeenParentContentKeySelector.resultFunc(defaultState);
+
+        expect(actual).toEqual(defaultState.lastSeenParentContentKey);
     });
 
     it("navigationTreeSelector", () => {

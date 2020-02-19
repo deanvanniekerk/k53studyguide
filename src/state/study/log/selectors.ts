@@ -8,11 +8,18 @@ import { NavigationTreeItem, SeenContentKeys, SeenTotal, SeenTotals } from "./";
 import { LogState } from "./reducer";
 
 const rootSelector: Selector<RootState, LogState> = (state: RootState): LogState => state.study.log;
+
 export const seenContentKeysSelector: OutputSelector<
     RootState,
     SeenContentKeys,
     (state: LogState) => SeenContentKeys
 > = createSelector(rootSelector, root => root.seenContentKeys);
+
+export const lastSeenParentContentKeySelector: OutputSelector<
+    RootState,
+    string,
+    (state: LogState) => string
+> = createSelector(rootSelector, root => root.lastSeenParentContentKey);
 
 export const navigationTreeSelector: OutputSelector<
     RootState,
