@@ -13,4 +13,5 @@
 
 .completeBar {
     flex-direction: row;
+    transition: width 0.2s ease;
 }

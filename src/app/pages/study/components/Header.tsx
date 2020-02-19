@@ -1,10 +1,11 @@
+import { caretForward } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import { RootState } from "src/state";
 import { currentNavigationKeySelector } from "src/state/study/navigation";
 
-import { IonCol, IonGrid, IonListHeader, IonRow, IonText } from "@ionic/react";
+import { IonButton, IonCol, IonGrid, IonIcon, IonListHeader, IonRow, IonText } from "@ionic/react";
 
 type Props = PropsFromState;
 
@@ -19,6 +20,19 @@ const HeaderComponent: React.FC<Props> = props => {
                                 <Translate text="study" />
                             </h2>
                         </IonText>
+                    </IonCol>
+                </IonRow>
+                <IonRow style={{ paddingTop: 15, paddingBottom: 25 }}>
+                    <IonCol>
+                        <IonButton
+                            color="primary"
+                            shape="round"
+                            fill="solid"
+                            style={{ fontWeight: "bold" }}
+                        >
+                            <Translate text="continue" />
+                            <IonIcon slot="end" size="small" icon={caretForward} />
+                        </IonButton>
                     </IonCol>
                 </IonRow>
             </IonGrid>
