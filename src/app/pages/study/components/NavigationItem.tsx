@@ -1,6 +1,6 @@
 import "./NavigationItem.css";
 
-import { chevronForwardOutline, eye } from "ionicons/icons";
+import { eye } from "ionicons/icons";
 import React, { useRef } from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
@@ -69,30 +69,27 @@ const NavigationItemComponent: React.FC<Props> = props => {
                         ]}
                     >
                         <IonIcon
-                            icon={
-                                props.navigationIcons[props.navigationItemKey] ||
-                                chevronForwardOutline
-                            }
+                            icon={props.navigationIcons[props.navigationItemKey]}
                             className="icon"
                         />
                     </CreateAnimation>
                     <IonLabel>
                         <div>
-                            <IonText style={{ fontSize: 14 }}>
+                            <IonText style={{ fontSize: 16 }}>
                                 <Translate text={props.navigationItemKey} />
                             </IonText>
                         </div>
                     </IonLabel>
                     <div className="progress-bar">
-                        <div style={{ width: 60 }}>
-                            <ProgressBar progress={seenProgress} height={6}></ProgressBar>
+                        <div style={{ width: 80 }}>
+                            <ProgressBar progress={seenProgress} height={7}></ProgressBar>
                         </div>
                         <div>
                             <IonIcon
                                 icon={eye}
                                 style={{
-                                    fontSize: 11,
-                                    marginLeft: 4,
+                                    fontSize: 12,
+                                    marginLeft: 6,
                                     opacity: seenProgress === 100 ? 0.7 : 0.4,
                                 }}
                             />

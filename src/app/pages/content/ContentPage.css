@@ -1,19 +1,5 @@
 .content-page ion-content {
-    --background: linear-gradient(
-        to right bottom,
-        #845ec2,
-        #7466c8,
-        #626ecc,
-        #4e74cf,
-        #377ad0,
-        #2180cd,
-        #0a85c9,
-        #0089c4,
-        #008db9,
-        #0090a7,
-        #009091,
-        #008f7a
-    );
+    --background: linear-gradient(to right top, #501a8e, #2a43a3, #005fac, #0e75ad, #4689a9);
 }
 
 .content-page .back-button {

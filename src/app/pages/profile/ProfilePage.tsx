@@ -1,10 +1,12 @@
+import "./ProfilePage.css";
+
 import React from "react";
 
 import { IonContent, IonPage } from "@ionic/react";
 
 const ProfilePage: React.FC = () => {
     return (
-        <IonPage>
+        <IonPage className="profile-page">
             {/* <IonHeader>
         <IonToolbar>
           <IonTitle>Tab 3</IonTitle>

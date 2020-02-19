@@ -1,5 +1,5 @@
 .root-navigation-item {
-    background-image: linear-gradient(to right bottom, #845ec2, #6f69c9, #5872cd, #3f79ce, #2180cd);
+    background-color: #4689a9;
     border-radius: 8px;
     margin: 8px;
     padding: 10px;
@@ -12,8 +12,8 @@
     color: #000000;
     right: 0px;
     bottom: -2px;
-    font-size: 24px;
-    opacity: 0.3;
+    font-size: 38px;
+    opacity: 0.2;
 }
 
 .root-navigation-item .progress-bar {

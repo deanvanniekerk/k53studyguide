@@ -32,7 +32,14 @@ const StudyPage: React.FC<Props> = props => {
                     <IonRow>
                         {props.navigationChildren.map((key, index) => {
                             return (
-                                <IonCol key={key} size="6" style={{ overflow: "hidden" }}>
+                                <IonCol
+                                    key={key}
+                                    sizeXs="12"
+                                    sizeSm="4"
+                                    sizeMd="3"
+                                    sizeLg="2"
+                                    style={{ overflow: "hidden" }}
+                                >
                                     <NavigationItem
                                         navigationItemKey={key}
                                         onClick={onNavigationItemClicked}

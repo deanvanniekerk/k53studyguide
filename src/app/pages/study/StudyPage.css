@@ -1,17 +1,3 @@
 .study-page ion-content {
-    --background: linear-gradient(
-        to left bottom,
-        #2c146c,
-        #43136e,
-        #56116f,
-        #68106f,
-        #780f6f,
-        #8c116e,
-        #9e176c,
-        #af2069,
-        #c63264,
-        #d9465e,
-        #e85c58,
-        #f47452
-    );
+    --background: linear-gradient(to right top, #501a8e, #2a43a3, #005fac, #0e75ad, #4689a9);
 }
