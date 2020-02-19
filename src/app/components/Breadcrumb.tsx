@@ -2,26 +2,27 @@ import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import { bindActionCreators, Dispatch } from "redux";
-import { RootState } from "src/state";
-import {
-    currentNavigationBreadcrumbSelector,
-    recieveCurrentNavigationKey,
-    ROOT_NAVIGATION_KEY,
-} from "src/state/study/navigation";
+import { recieveCurrentNavigationKey, ROOT_NAVIGATION_KEY } from "src/state/study/navigation";
+import { navigationKeyToBreadcrumb } from "src/utils";
 
 import { IonText } from "@ionic/react";
 
-type Props = PropsFromState & PropsFromDispatch;
+type Props = {
+    navigationKey: string;
+    disableNavigation?: boolean;
+} & PropsFromDispatch;
 
 const BreadcrumbComponent: React.FC<Props> = props => {
+    const breadcrumb = navigationKeyToBreadcrumb(props.navigationKey);
+
     return (
         <div
             style={{
                 flexDirection: "row",
             }}
         >
-            {props.breadcrumb.map((key, index) => {
-                const isLast = index === props.breadcrumb.length - 1;
+            {breadcrumb.map((key, index) => {
+                const isLast = index === breadcrumb.length - 1;
 
                 if (isLast) return <React.Fragment key={key} />;
 
@@ -47,13 +48,6 @@ const BreadcrumbComponent: React.FC<Props> = props => {
     );
 };
 
-type PropsFromState = ReturnType<typeof mapStateToProps>;
-const mapStateToProps = (state: RootState) => {
-    return {
-        breadcrumb: currentNavigationBreadcrumbSelector(state),
-    };
-};
-
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
@@ -61,6 +55,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const Breadcrumb = connect(mapStateToProps, mapDispatchToProps)(BreadcrumbComponent);
+const Breadcrumb = connect(null, mapDispatchToProps)(BreadcrumbComponent);
 
 export { Breadcrumb };

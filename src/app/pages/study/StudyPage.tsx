@@ -4,6 +4,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, Dispatch } from "redux";
+import { PageHeader } from "src/app/components";
 import { RootState } from "src/state";
 import {
     recieveCurrentNavigationKey,
@@ -26,8 +27,9 @@ const StudyPage: React.FC<Props> = props => {
 
     return (
         <IonPage className="study-page">
+            <PageHeader text="study" />
             <IonContent>
-                <Header />
+                <Header onNavigationItemClicked={onNavigationItemClicked} />
                 <IonGrid style={{ padding: 10 }}>
                     <IonRow>
                         {props.navigationChildren.map((key, index) => {

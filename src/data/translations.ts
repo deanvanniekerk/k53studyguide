@@ -8,7 +8,7 @@ const translations: Translations = {
         en: "Study",
     },
     continue: {
-        en: "CONTINUE",
+        en: "Continue",
     },
     "nav.vehicleControls.0.heading": {
         en: "Vehicle Controls",

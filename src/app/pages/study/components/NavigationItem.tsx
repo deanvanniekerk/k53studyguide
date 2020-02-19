@@ -75,14 +75,19 @@ const NavigationItemComponent: React.FC<Props> = props => {
                     </CreateAnimation>
                     <IonLabel>
                         <div>
-                            <IonText style={{ fontSize: 16 }}>
+                            <IonText style={{ fontSize: 14, fontWeight: "bold" }}>
                                 <Translate text={props.navigationItemKey} />
                             </IonText>
                         </div>
                     </IonLabel>
                     <div className="progress-bar">
-                        <div style={{ width: 80 }}>
-                            <ProgressBar progress={seenProgress} height={7}></ProgressBar>
+                        <div style={{ width: 100 }}>
+                            <ProgressBar
+                                progress={seenProgress}
+                                height={7}
+                                backgroundColor="#FFFFFF"
+                                backgroundOpacity={0.1}
+                            ></ProgressBar>
                         </div>
                         <div>
                             <IonIcon

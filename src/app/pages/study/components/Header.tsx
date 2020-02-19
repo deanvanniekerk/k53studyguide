@@ -2,24 +2,42 @@ import { caretForward } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
+import { Breadcrumb } from "src/app/components/Breadcrumb";
 import { RootState } from "src/state";
-import { currentNavigationKeySelector } from "src/state/study/navigation";
+import { lastSeenParentContentKeySelector } from "src/state/study/log";
 
 import { IonButton, IonCol, IonGrid, IonIcon, IonListHeader, IonRow, IonText } from "@ionic/react";
 
-type Props = PropsFromState;
+import { SeenProgress } from "./";
+
+type Props = {
+    onNavigationItemClicked: (navigationItemKey: string) => void;
+} & PropsFromState;
 
 const HeaderComponent: React.FC<Props> = props => {
     return (
         <IonListHeader>
             <IonGrid>
-                <IonRow style={{ paddingTop: 15, paddingBottom: 25 }}>
+                <IonRow style={{ paddingTop: 45 }}>
                     <IonCol>
                         <IonText>
-                            <h2>
-                                <Translate text="study" />
+                            <h2 style={{ fontWeight: "bold", marginBottom: 0 }}>
+                                <Translate text={props.lastSeenParentContentKey} />
                             </h2>
                         </IonText>
+                    </IonCol>
+                </IonRow>
+                <IonRow style={{ paddingBottom: 5, paddingTop: 5 }}>
+                    <IonCol>
+                        <Breadcrumb
+                            navigationKey={props.lastSeenParentContentKey}
+                            disableNavigation={true}
+                        />
+                    </IonCol>
+                </IonRow>
+                <IonRow style={{ paddingBottom: 10, paddingTop: 10 }}>
+                    <IonCol>
+                        <SeenProgress navigationKey={props.lastSeenParentContentKey} />
                     </IonCol>
                 </IonRow>
                 <IonRow style={{ paddingTop: 15, paddingBottom: 25 }}>
@@ -29,7 +47,9 @@ const HeaderComponent: React.FC<Props> = props => {
                             shape="round"
                             fill="solid"
                             size="large"
-                            style={{ fontWeight: "bold" }}
+                            onClick={() =>
+                                props.onNavigationItemClicked(props.lastSeenParentContentKey)
+                            }
                         >
                             <Translate text="continue" />
                             <IonIcon slot="end" size="small" icon={caretForward} />
@@ -44,7 +64,7 @@ const HeaderComponent: React.FC<Props> = props => {
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
     return {
-        currentNavigationKey: currentNavigationKeySelector(state),
+        lastSeenParentContentKey: lastSeenParentContentKeySelector(state),
     };
 };
 

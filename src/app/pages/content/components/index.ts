@@ -1,5 +1,4 @@
 export * from "./NavigationItem";
-export * from "./Breadcrumb";
 export * from "./Content";
 export * from "./ContentList";
 export * from "./ContentSeenIndicator";

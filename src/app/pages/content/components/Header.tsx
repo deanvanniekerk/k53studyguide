@@ -2,12 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import { HorizontalRule } from "src/app/components";
+import { Breadcrumb } from "src/app/components/Breadcrumb";
 import { RootState } from "src/state";
 import { currentNavigationKeySelector } from "src/state/study/navigation";
 
 import { IonCol, IonGrid, IonListHeader, IonRow, IonText } from "@ionic/react";
 
-import { Breadcrumb } from "./Breadcrumb";
 import { SeenProgress } from "./SeenProgress";
 
 type Props = PropsFromState;
@@ -17,7 +17,7 @@ const HeaderComponent: React.FC<Props> = props => {
         <>
             <IonListHeader>
                 <IonGrid>
-                    <IonRow style={{ paddingTop: 40 }}>
+                    <IonRow style={{ paddingTop: 45 }}>
                         <IonCol>
                             <IonText>
                                 <h2>
@@ -28,7 +28,7 @@ const HeaderComponent: React.FC<Props> = props => {
                     </IonRow>
                     <IonRow>
                         <IonCol>
-                            <Breadcrumb />
+                            <Breadcrumb navigationKey={props.currentNavigationKey} />
                         </IonCol>
                     </IonRow>
                     <IonRow style={{ paddingTop: 20 }}>

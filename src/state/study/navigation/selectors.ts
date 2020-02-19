@@ -1,6 +1,7 @@
 import { createSelector, OutputSelector, Selector } from "reselect";
 import { NavigationData, NavigationIcons } from "src/data";
 import { RootState } from "src/state/rootReducer";
+import { navigationKeyToBreadcrumb } from "src/utils";
 
 import { NavigationState, ROOT_NAVIGATION_KEY } from "./reducer";
 
@@ -39,28 +40,13 @@ export const navigationIconsSelector: OutputSelector<
     (state: NavigationState) => NavigationIcons
 > = createSelector(rootSelector, root => root.navigationIcons);
 
-export const currentNavigationBreadcrumbSelector: OutputSelector<
-    RootState,
-    string[],
-    (key: string) => string[]
-> = createSelector(currentNavigationKeySelector, key => {
-    const breadcrumb: string[] = [];
-
-    const split = (key || "").split(".");
-
-    while (split.length > 0) {
-        breadcrumb.push(split.join("."));
-        split.pop();
-    }
-
-    return breadcrumb.reverse();
-});
-
 export const currentNavigationParentSelector: OutputSelector<
     RootState,
     string,
-    (breadcrumb: string[]) => string
-> = createSelector(currentNavigationBreadcrumbSelector, breadcrumb => {
+    (key: string) => string
+> = createSelector(currentNavigationKeySelector, key => {
+    const breadcrumb = navigationKeyToBreadcrumb(key);
+
     if (breadcrumb.length <= 1) return breadcrumb[0];
 
     return breadcrumb[breadcrumb.length - 2];

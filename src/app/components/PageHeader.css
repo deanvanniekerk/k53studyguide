@@ -1,0 +1,13 @@
+.page-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 0.8em;
+    font-weight: bolder;
+    color: var(--ion-color-light);
+    text-transform: uppercase;
+}

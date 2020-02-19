@@ -36,11 +36,13 @@ const SeenProgressComponent: React.FC<Props> = props => {
                 </IonCol>
             </IonRow>
             <IonRow>
-                <IonText style={{ opacity: 0.9, fontSize: 12, marginTop: 5 }}>
-                    {total.seen}
-                    {" / "}
-                    {total.total} Seen
-                </IonText>
+                <IonCol>
+                    <IonText style={{ opacity: 0.9, fontSize: 12, marginTop: 5 }}>
+                        {total.seen}
+                        {" / "}
+                        {total.total} Seen
+                    </IonText>
+                </IonCol>
             </IonRow>
         </IonGrid>
     );

@@ -72,26 +72,10 @@ describe("state > study > navigation > selectors", () => {
         expect(actual).toEqual(navigationIcons);
     });
 
-    it("currentNavigationBreadcrumbSelector", () => {
-        const actual = selectors.currentNavigationBreadcrumbSelector.resultFunc(
+    it("currentNavigationParentSelector", () => {
+        const actual = selectors.currentNavigationParentSelector.resultFunc(
             "nav.signs.guidance.freewayDirectionSigns"
         );
-
-        expect(actual).toEqual([
-            "nav",
-            "nav.signs",
-            "nav.signs.guidance",
-            "nav.signs.guidance.freewayDirectionSigns",
-        ]);
-    });
-
-    it("currentNavigationParentSelector", () => {
-        const actual = selectors.currentNavigationParentSelector.resultFunc([
-            "nav",
-            "nav.signs",
-            "nav.signs.guidance",
-            "nav.signs.guidance.freewayDirectionSigns",
-        ]);
 
         expect(actual).toEqual("nav.signs.guidance");
     });

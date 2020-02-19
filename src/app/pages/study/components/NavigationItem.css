@@ -1,5 +1,5 @@
 .root-navigation-item {
-    background-color: #4689a9;
+    background-color: #37007673;
     border-radius: 8px;
     margin: 8px;
     padding: 10px;
@@ -13,7 +13,7 @@
     right: 0px;
     bottom: -2px;
     font-size: 38px;
-    opacity: 0.2;
+    opacity: 0.3;
 }
 
 .root-navigation-item .progress-bar {
