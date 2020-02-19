@@ -53,7 +53,11 @@ const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenCon
             {item.imageName && (
                 <IonRow>
                     <IonCol style={{ textAlign: "center", paddingTop: 20, paddingBottom: 20 }}>
-                        <img src={`assets/images/${item.imageName}`} alt="" />
+                        <img
+                            src={`assets/images/${item.imageName}`}
+                            alt=""
+                            style={{ maxWidth: "100%" }}
+                        />
                     </IonCol>
                 </IonRow>
             )}

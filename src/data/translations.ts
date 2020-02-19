@@ -1,6 +1,9 @@
 import { Translations } from "./";
 
 const translations: Translations = {
+    nav: {
+        en: "Study",
+    },
     study: {
         en: "Study",
     },

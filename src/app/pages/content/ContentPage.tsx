@@ -29,7 +29,6 @@ const ContentPage: React.FC<Props> = props => {
             else history.goBack();
             return;
         }
-
         props.navigateUp();
     };
 

@@ -21,7 +21,7 @@ const StudyPage: React.FC<Props> = props => {
 
     const onNavigationItemClicked = (key: string) => {
         props.recieveCurrentNavigationKey(key);
-        history.push(`/study/content`);
+        history.push(`/content`);
     };
 
     return (

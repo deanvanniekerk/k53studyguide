@@ -13,10 +13,14 @@ const Routes: React.FC = () => {
     return (
         <IonTabs>
             <IonRouterOutlet>
-                <Route exact path="/:tab(study)" component={StudyPage} />
+                {/* <Route exact path="/:tab(study)" component={StudyPage} />
                 <Route exact path="/:tab(study)/content" component={ContentPage} />
                 <Route exact path="/:tab(train)" component={TrainPage} />
-                <Route exact path="/:tab(profile)" component={ProfilePage} />
+                <Route exact path="/:tab(profile)" component={ProfilePage} /> */}
+                <Route exact path="/study" component={StudyPage} />
+                <Route exact path="/content" component={ContentPage} />
+                <Route exact path="/train" component={TrainPage} />
+                <Route exact path="/profile" component={ProfilePage} />
                 <Route exact path="/" render={() => <Redirect to="/study" />} />
             </IonRouterOutlet>
             <IonTabBar slot="bottom">
