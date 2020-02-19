@@ -1,4 +1,4 @@
-import { eye, eyeOff } from "ionicons/icons";
+import { eye } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { ProgressBar } from "src/app/components";
@@ -22,17 +22,11 @@ const SeenProgressComponent: React.FC<Props> = props => {
         <IonGrid>
             <IonRow class="ion-align-items-center">
                 <IonCol size="2">
-                    <ProgressBar
-                        foregroundOpacity={0.9}
-                        backgroundColor="#000000"
-                        backgroundOpacity={0.2}
-                        height={8}
-                        progress={seenProgress}
-                    />
+                    <ProgressBar height={8} progress={seenProgress} />
                 </IonCol>
                 <IonCol>
                     <IonIcon
-                        icon={seenProgress === 100 ? eye : eyeOff}
+                        icon={eye}
                         style={{
                             fontSize: 12,
                             marginLeft: 5,

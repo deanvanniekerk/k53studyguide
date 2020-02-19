@@ -3,10 +3,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import { ProgressBar } from "src/app/components";
+import { TEXT_COLOR } from "src/data";
 import { RootState } from "src/state";
 import { seenTotalsSelector } from "src/state/study/log";
+
 import { CreateAnimation, IonIcon, IonItem, IonLabel, IonText } from "@ionic/react";
-import { TEXT_COLOR } from "src/data";
 
 type Props = {
     navigationItemKey: string;
@@ -54,7 +55,11 @@ const NavigationItemComponent: React.FC<Props> = props => {
                     }}
                 >
                     <div style={{ paddingTop: 6, width: 60 }}>
-                        <ProgressBar progress={seenProgress}></ProgressBar>
+                        <ProgressBar
+                            progress={seenProgress}
+                            backgroundOpacity={0.15}
+                            foregroundOpacity={0.7}
+                        ></ProgressBar>
                     </div>
                 </CreateAnimation>
             </IonLabel>

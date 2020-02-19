@@ -85,12 +85,7 @@ const NavigationItemComponent: React.FC<Props> = props => {
                     </IonLabel>
                     <div className="progress-bar">
                         <div style={{ width: 60 }}>
-                            <ProgressBar
-                                progress={seenProgress}
-                                height={6}
-                                backgroundOpacity={0.3}
-                                foregroundOpacity={0.7}
-                            ></ProgressBar>
+                            <ProgressBar progress={seenProgress} height={6}></ProgressBar>
                         </div>
                         <div>
                             <IonIcon

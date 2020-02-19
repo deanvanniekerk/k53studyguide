@@ -14,22 +14,6 @@ type Props = {
 };
 
 const ProgressBar: React.FC<Props> = props => {
-    // const animation = useRef(new Animated.Value(0));
-
-    // useEffect(() => {
-    //     Animated.timing(animation.current, {
-    //         toValue: props.progress,
-    //         duration: props.progress === 0 ? 0 : 600,
-    //         easing: Easing.inOut(Easing.ease),
-    //     }).start();
-    // }, [props.progress]);
-
-    // const width = animation.current.interpolate({
-    //     inputRange: [0, 100],
-    //     outputRange: ["0%", "100%"],
-    //     extrapolate: "clamp",
-    // });
-
     const width = `${props.progress}%`;
 
     return (
@@ -61,8 +45,8 @@ const ProgressBar: React.FC<Props> = props => {
 };
 ProgressBar.defaultProps = {
     backgroundOpacity: 0.2,
-    backgroundColor: TEXT_COLOR,
-    foregroundOpacity: 0.6,
+    backgroundColor: "#000000",
+    foregroundOpacity: 0.8,
     foregroundColor: TEXT_COLOR,
     height: 4,
 };
