@@ -27,7 +27,7 @@ import { IonReactRouter } from "@ionic/react-router";
 
 import Routes from "./app/Routes";
 
-const store = configureStore();
+const { store } = configureStore();
 
 const App: React.FC = () => (
     <IonApp>
