@@ -15,3 +15,11 @@
         #008f7a
     );
 }
+
+.content-page .back-button {
+    color: var(--ion-color-light);
+    font-size: 22px;
+    opacity: 0.8;
+    padding-top: 10px;
+    padding-left: 5px;
+}

@@ -1,4 +1,3 @@
-import { arrowBackOutline } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
@@ -6,23 +5,16 @@ import { HorizontalRule } from "src/app/components";
 import { RootState } from "src/state";
 import { currentNavigationKeySelector } from "src/state/study/navigation";
 
-import { IonCol, IonGrid, IonIcon, IonListHeader, IonRow, IonText } from "@ionic/react";
+import { IonCol, IonGrid, IonListHeader, IonRow, IonText } from "@ionic/react";
 
 import { Breadcrumb } from "./Breadcrumb";
 import { SeenProgress } from "./SeenProgress";
 
-type Props = {
-    onBackClicked: () => void;
-} & PropsFromState;
+type Props = PropsFromState;
 
 const HeaderComponent: React.FC<Props> = props => {
     return (
         <>
-            <IonIcon
-                style={{ position: "absolute", opacity: 0.4, fontSize: 24, top: 18, left: 13 }}
-                icon={arrowBackOutline}
-                onClick={props.onBackClicked}
-            />
             <IonListHeader>
                 <IonGrid>
                     <IonRow style={{ paddingTop: 40 }}>
