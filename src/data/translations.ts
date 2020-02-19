@@ -109,7 +109,7 @@ const translations: Translations = {
             "<ul><li>One glass table wine (125ml) </li><li>One can/bottle beer (340ml) </li><li>One shot of spirits (25ml) </li></ul>",
     },
     "nav.rulesOfTheRoad.theDriver.cellphones.0.heading": {
-        en: "",
+        en: " ",
     },
     "nav.rulesOfTheRoad.theDriver.cellphones.0.description": {
         en:
@@ -214,14 +214,14 @@ const translations: Translations = {
             "<ul><li>Hand signals (except in emergencies)</li>\n<li>Reversing</li>\n<li>Driving across dividers or islands</li>\n<li>Leaving animals behind or allowing them on the freeway</li>\n<li>You may not be on foot (walk), or stop your vehicle, unless:\n<ul><li>To obey a road sign or instruction from a traffic officer</li>\n<li>In a demarcated stopping/parking area</li>\n<li>For a reason beyond your control</li>\n<li>You are in the Citizen Force and you're on the left hand side of the freeway, between an offramp and an onramp</li>\n<li>To pick up or drop off  a Citizen Force member in area as per above</li>\n<li>Emergency personnel and maintenance crews on duty may stop vehicles and walk on freeways</li></ul></li></ul>\n",
     },
     "nav.rulesOfTheRoad.theCar.unauthorisedUse.0.heading": {
-        en: "",
+        en: " ",
     },
     "nav.rulesOfTheRoad.theCar.unauthorisedUse.0.description": {
         en:
             "<ul><li>Don't drive, enter, climb on or tamper with a vehicle without the consent of the person lawfully in charge of the vehicle.</li>\n<li>Don't alter the chassis or engine number of a vehicle without consulting the registering authority.</li></ul>\n",
     },
     "nav.rulesOfTheRoad.theCar.lights.0.heading": {
-        en: "",
+        en: " ",
     },
     "nav.rulesOfTheRoad.theCar.lights.0.description": {
         en:
@@ -290,14 +290,14 @@ const translations: Translations = {
             "<ul><li>All animal drawn vehicles must have white lights on both sides of the front and red lights at both sides of the back.</li>\n<li>If a person is leading an animal drawn vehicle, the person has to stand at the head of the first animal with a white light.</li></ul>\n",
     },
     "nav.rulesOfTheRoad.theCar.seatBelts.0.heading": {
-        en: "",
+        en: " ",
     },
     "nav.rulesOfTheRoad.theCar.seatBelts.0.description": {
         en:
             "<ul><li>You may not use a vehicle on a public road unless all the seatbelts work.</li>\n<li>You may only remove seatbelts from the car for repair or replacement, and you can't use the car on a public road until the repair or replacement is complete.</li>\n<li>All seatbelts fitted in the car must be worn (front and back).</li>\n<li>If there is a seat with a seatbelt available, a passenger has to sit in it rather than sitting in a seat with no seatbelt.</li>\n<li>If a child restraint is available children must use that, otherwise they must use a seatbelt if available.</li>\n<li>If there is no seatbelt in the front passenger seat, anyone up to 14 years old (or shorter than 1.5m) must sit at the back.</li>\n<li>You don't have to wear a seatbelt if you're reversing.</li></ul>\n",
     },
     "nav.rulesOfTheRoad.theCar.tyres.0.heading": {
-        en: "",
+        en: " ",
     },
     "nav.rulesOfTheRoad.theCar.tyres.0.description": {
         en:
@@ -387,7 +387,7 @@ const translations: Translations = {
             "<ul><li>You are not allowed to use a car on a public road if the hooter is not working.</li>\n<li>It must be audible for at least 90m.</li>\n<li>It may not have a variable tone (tune).</li>\n<li>You may only use it to prevent an accident.</li></ul>\n",
     },
     "nav.rulesOfTheRoad.theCar.emergencyTriangles.0.heading": {
-        en: "",
+        en: " ",
     },
     "nav.rulesOfTheRoad.theCar.emergencyTriangles.0.description": {
         en:
@@ -408,7 +408,7 @@ const translations: Translations = {
             "<ul><li>Any load that projects more than 150mm from the sides of the vehicle or 300mm from the back must carry warning markings.</li>\n<li>If the load is less than 600mm wide it must be marked with:\n<ul><li>In the day, a single red flag (300mm square)</li>\n<li>At night, a single red reflector</li></ul></li>\n<li>If the load is more than 600mm wide it must be marked with:\n<ul><li>In the day, red flags (300mm square) at each corner</li>\n<li>At night, white reflectors/lights on each corner at the front</li>\n<li>At night, red reflectors/lights on each corner at the back</li>\n<li>At night, yellow reflectors/lights on each side.</li></ul></li></ul>\n",
     },
     "nav.rulesOfTheRoad.theCar.numberOfPassengers.0.heading": {
-        en: "",
+        en: " ",
     },
     "nav.rulesOfTheRoad.theCar.numberOfPassengers.0.description": {
         en:
@@ -439,7 +439,7 @@ const translations: Translations = {
         en: '<span class="contentHeading2">You may not stop:</span>',
     },
     "nav.rulesOfTheRoad.driving.stopping.1.description": {
-        en: "",
+        en: " ",
     },
     "nav.rulesOfTheRoad.driving.stopping.2.heading": {
         en: "Where forbidden by",
@@ -483,7 +483,7 @@ const translations: Translations = {
             "The above rules don't apply:\n<ul><li>If you need to stop to avoid an accident or for circumstances beyond your control.</li>\n<li>To emergency/construction/police vehicles on duty displaying the correct identification lights.</li></ul>\n",
     },
     "nav.rulesOfTheRoad.driving.parking.0.heading": {
-        en: "",
+        en: " ",
     },
     "nav.rulesOfTheRoad.driving.parking.0.description": {
         en:
@@ -557,14 +557,14 @@ const translations: Translations = {
             "<ul><li>The above rules don't apply to emergency/construction/police vehicles on duty displaying the correct identification lights.</li></ul>",
     },
     "nav.rulesOfTheRoad.driving.dividedRoads.0.heading": {
-        en: "",
+        en: " ",
     },
     "nav.rulesOfTheRoad.driving.dividedRoads.0.description": {
         en:
             "<ul><li>These are roads that have been divided into more than one area by a line or barrier.</li>\n<li>Keep to the left of a divided road (unless it is a one way).</li>\n<li>Cross the divider only at an opening or intersection, or where a road marking or police officer says you can.</li></ul>",
     },
     "nav.rulesOfTheRoad.driving.changingLanes.0.heading": {
-        en: "",
+        en: " ",
     },
     "nav.rulesOfTheRoad.driving.changingLanes.0.description": {
         en:
@@ -697,7 +697,7 @@ const translations: Translations = {
             "<ul><li>You may go over 30km/h if there are no passengers (only semi-trailers may be towed at over 30km/h carrying passengers).</li>\n<li>The towed vehicle does not need a driver.</li>\n<li>You must use a solid tow bar for towing vehicles with weak brakes.</li></ul>",
     },
     "nav.defensiveDriving.introToK53.0.heading": {
-        en: "",
+        en: " ",
     },
     "nav.defensiveDriving.introToK53.0.description": {
         en:
@@ -711,7 +711,7 @@ const translations: Translations = {
             "To drive defensively you need to:\n<ul><li>Know how to use your vehicle controls.</li>\n<li>Be on the lookout all the time, by observing. This means looking around your car, including in your mirrors and your blind spots.</li>\n<li>Be able to recognize hazards (dangers).</li>\n<li>Know how to deal with hazards.</li>\n<li>Give yourself enough time to react to hazards, by keeping a good following distance and keeping safe clear space all around your vehicle all the time.</li>\n<li>Know the basic K53 procedure: the 10 steps used for most driving procedures (eg turning, overtaking, etc).</li></ul>\n",
     },
     "nav.defensiveDriving.typesOfHazards.0.heading": {
-        en: "",
+        en: " ",
     },
     "nav.defensiveDriving.typesOfHazards.0.description": {
         en:
@@ -739,7 +739,7 @@ const translations: Translations = {
             "<ul><li>Changing hazards mostly have to do with weather conditions, and include:\n<ul><li>Wind</li>\n<li>Dust</li>\n<li>Rain</li>\n<li>Mist/fog</li>\n<li>Snow/ice</li>\n<li>Sun (especially the setting/rising sun)</li></ul></li>\n<li>They are dangerous because: \n<ul><li>They make it hard to see ahead</li>\n<li>They could cause your vehicle to move or slip on the road.</li></ul></li></ul>\n",
     },
     "nav.defensiveDriving.dealingWithHazards.0.heading": {
-        en: "",
+        en: " ",
     },
     "nav.defensiveDriving.dealingWithHazards.0.description": {
         en:
@@ -836,7 +836,7 @@ const translations: Translations = {
             "<ul><li>Sit in a parked car (in the driver's seat).</li>\n<li>Get someone to walk towards the car from the back. They should walk in a line 2m away from the driver's side of the car.</li>\n<li>Watch them in your driver's side mirror.</li>\n<li>When they disappear, they're in the blind spot. Tell them to stop.</li>\n<li>Turn your head and see how far back you have to look to see them.</li>\n<li>Imagine a mark on the inside of your car that tells you where you have to look to.</li>\n<li>Repeat this on the passenger's side.</li></ul>\n",
     },
     "nav.defensiveDriving.generalK53Procedure.0.heading": {
-        en: "",
+        en: " ",
     },
     "nav.defensiveDriving.generalK53Procedure.0.description": {
         en:
@@ -1326,247 +1326,247 @@ const translations: Translations = {
         en: "Arrestor bed pre-advance exit",
     },
     "nav.signs.guidance.diagrammaticSigns.0.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.diagrammaticSigns.1.heading": {
         en: "Engage lower gear sign",
     },
     "nav.signs.guidance.diagrammaticSigns.1.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.diagrammaticSigns.2.heading": {
         en: "Traffic movement affected by obstruction",
     },
     "nav.signs.guidance.diagrammaticSigns.2.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.diagrammaticSigns.3.heading": {
         en: "Additional lane",
     },
     "nav.signs.guidance.diagrammaticSigns.3.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.diagrammaticSigns.4.heading": {
         en: "Lane use control by regulation",
     },
     "nav.signs.guidance.diagrammaticSigns.4.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.diagrammaticSigns.5.heading": {
         en: "Lanes merge",
     },
     "nav.signs.guidance.diagrammaticSigns.5.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.diagrammaticSigns.6.heading": {
         en: "Overhead lane use control by regulation",
     },
     "nav.signs.guidance.diagrammaticSigns.6.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.diagrammaticSigns.7.heading": {
         en: "Public transport",
     },
     "nav.signs.guidance.diagrammaticSigns.7.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.diagrammaticSigns.8.heading": {
         en: "At grade lane layout",
     },
     "nav.signs.guidance.diagrammaticSigns.8.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.diagrammaticSigns.9.heading": {
         en: "Junction with warning",
     },
     "nav.signs.guidance.diagrammaticSigns.9.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.directionSigns.0.heading": {
         en: "Stack-type direction",
     },
     "nav.signs.guidance.directionSigns.0.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.directionSigns.1.heading": {
         en: "Confirmation",
     },
     "nav.signs.guidance.directionSigns.1.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.directionSigns.2.heading": {
         en: "Fingerboard",
     },
     "nav.signs.guidance.directionSigns.2.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.freewayDirectionSigns.0.heading": {
         en: "Advance exit direction",
     },
     "nav.signs.guidance.freewayDirectionSigns.0.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.freewayDirectionSigns.1.heading": {
         en: "Exit direction",
     },
     "nav.signs.guidance.freewayDirectionSigns.1.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.freewayDirectionSigns.2.heading": {
         en: "Gore exit direction",
     },
     "nav.signs.guidance.freewayDirectionSigns.2.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.freewayDirectionSigns.3.heading": {
         en: "Exit sequence",
     },
     "nav.signs.guidance.freewayDirectionSigns.3.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.freewayDirectionSigns.4.heading": {
         en: "Near-side on-ramp direction",
     },
     "nav.signs.guidance.freewayDirectionSigns.4.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.freewayDirectionSigns.5.heading": {
         en: "Far-side on-ramp advance direction",
     },
     "nav.signs.guidance.freewayDirectionSigns.5.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.freewayDirectionSigns.6.heading": {
         en: "Overhead pre-advance exit direction",
     },
     "nav.signs.guidance.freewayDirectionSigns.6.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.locationSigns.0.heading": {
         en: "Street name",
     },
     "nav.signs.guidance.locationSigns.0.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.locationSigns.1.heading": {
         en: "Suburb name",
     },
     "nav.signs.guidance.locationSigns.1.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.locationSigns.2.heading": {
         en: "Town or city name",
     },
     "nav.signs.guidance.locationSigns.2.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.locationSigns.3.heading": {
         en: "River name",
     },
     "nav.signs.guidance.locationSigns.3.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.locationSigns.4.heading": {
         en: "National or provincial border",
     },
     "nav.signs.guidance.locationSigns.4.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.locationSigns.5.heading": {
         en: "Geographical location",
     },
     "nav.signs.guidance.locationSigns.5.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.locationSigns.6.heading": {
         en: "Route name",
     },
     "nav.signs.guidance.locationSigns.6.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.locationSigns.7.heading": {
         en: "Interchange name",
     },
     "nav.signs.guidance.locationSigns.7.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.routeMarkerSigns.0.heading": {
         en: "Advance transport trailblazer",
     },
     "nav.signs.guidance.routeMarkerSigns.0.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.routeMarkerSigns.1.heading": {
         en: "Advance trailblazer",
     },
     "nav.signs.guidance.routeMarkerSigns.1.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.routeMarkerSigns.2.heading": {
         en: "Tourism route marker",
     },
     "nav.signs.guidance.routeMarkerSigns.2.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.routeMarkerSigns.3.heading": {
         en: "SADC route marker",
     },
     "nav.signs.guidance.routeMarkerSigns.3.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.tourismDirectionSigns.0.heading": {
         en: "Freeway advance exit",
     },
     "nav.signs.guidance.tourismDirectionSigns.0.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.tourismDirectionSigns.1.heading": {
         en: "Advance turn",
     },
     "nav.signs.guidance.tourismDirectionSigns.1.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.tourismDirectionSigns.2.heading": {
         en: "Final turn",
     },
     "nav.signs.guidance.tourismDirectionSigns.2.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.tourismDirectionSigns.3.heading": {
         en: "Service exit sequence",
     },
     "nav.signs.guidance.tourismDirectionSigns.3.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.tourismDirectionSigns.4.heading": {
         en: "Rest and service sequence",
     },
     "nav.signs.guidance.tourismDirectionSigns.4.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.tourismDirectionSigns.5.heading": {
         en: "Advance roadside emergency service",
     },
     "nav.signs.guidance.tourismDirectionSigns.5.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.tourismDirectionSigns.6.heading": {
         en: "Parking",
     },
     "nav.signs.guidance.tourismDirectionSigns.6.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.tourismDirectionSigns.7.heading": {
         en: "Tourist information",
     },
     "nav.signs.guidance.tourismDirectionSigns.7.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.guidance.tourismDirectionSigns.8.heading": {
         en: "Emergency services",
     },
     "nav.signs.guidance.tourismDirectionSigns.8.description": {
-        en: "",
+        en: " ",
     },
     "nav.signs.information.0.heading": {
         en: "Countdown",
@@ -3715,7 +3715,7 @@ const translations: Translations = {
         en: "Freeways",
     },
     "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad": {
-        en: "Vehicles on the  road",
+        en: "Vehicles on the road",
     },
     "nav.signs": {
         en: "Road signs",
