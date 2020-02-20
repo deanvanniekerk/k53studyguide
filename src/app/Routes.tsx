@@ -4,10 +4,11 @@ import { Redirect, Route } from "react-router-dom";
 
 import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react";
 
+import ArenaPage from "./pages/arena/ArenaPage";
 import ContentPage from "./pages/content/ContentPage";
+import DojoPage from "./pages/dojo/DojoPage";
 import ProfilePage from "./pages/profile/ProfilePage";
 import StudyPage from "./pages/study/StudyPage";
-import TrainPage from "./pages/train/TrainPage";
 
 const Routes: React.FC = () => {
     return (
@@ -19,7 +20,8 @@ const Routes: React.FC = () => {
                 <Route exact path="/:tab(profile)" component={ProfilePage} /> */}
                 <Route exact path="/study" component={StudyPage} />
                 <Route exact path="/content" component={ContentPage} />
-                <Route exact path="/train" component={TrainPage} />
+                <Route exact path="/dojo" component={DojoPage} />
+                <Route exact path="/arena" component={ArenaPage} />
                 <Route exact path="/profile" component={ProfilePage} />
                 <Route exact path="/" render={() => <Redirect to="/study" />} />
             </IonRouterOutlet>
@@ -28,9 +30,13 @@ const Routes: React.FC = () => {
                     <IonIcon icon={school} />
                     <IonLabel>Study</IonLabel>
                 </IonTabButton>
-                <IonTabButton tab="train" href="/train">
+                <IonTabButton tab="dojo" href="/dojo">
                     <IonIcon icon={flask} />
-                    <IonLabel>Train</IonLabel>
+                    <IonLabel>Dojo</IonLabel>
+                </IonTabButton>
+                <IonTabButton tab="arena" href="/arena">
+                    <IonIcon icon={flask} />
+                    <IonLabel>Arena</IonLabel>
                 </IonTabButton>
                 <IonTabButton tab="profile" href="/profile">
                     <IonIcon icon={personCircle} />

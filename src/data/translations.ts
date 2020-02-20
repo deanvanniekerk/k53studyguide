@@ -7,6 +7,15 @@ const translations: Translations = {
     study: {
         en: "Study",
     },
+    dojo: {
+        en: "Dojo",
+    },
+    arena: {
+        en: "Arena",
+    },
+    profile: {
+        en: "Profile",
+    },
     continue: {
         en: "Continue",
     },
