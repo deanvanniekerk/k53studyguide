@@ -1,18 +1,14 @@
 import { createSelector, OutputSelector, Selector } from "reselect";
-import { NavigationData, NavigationIcons } from "src/data";
+import { ContentData, ContentItem, NavigationData } from "src/data";
+import { contentDataSelector } from "src/state/content";
+import { navigationDataSelector } from "src/state/navigation";
 import { RootState } from "src/state/rootReducer";
 import { navigationKeyToBreadcrumb } from "src/utils";
 
-import { NavigationState, ROOT_NAVIGATION_KEY } from "./reducer";
+import { NavigationState } from "./reducer";
 
 const rootSelector: Selector<RootState, NavigationState> = (state: RootState): NavigationState =>
     state.study.navigation;
-
-export const navigationDataSelector: OutputSelector<
-    RootState,
-    NavigationData,
-    (state: NavigationState) => NavigationData
-> = createSelector(rootSelector, root => root.navigationData);
 
 export const currentNavigationKeySelector: OutputSelector<
     RootState,
@@ -28,18 +24,6 @@ export const currentNavigationChildrenSelector: OutputSelector<
     data[key] ? data[key] : []
 );
 
-export const rootNavigationChildrenSelector: OutputSelector<
-    RootState,
-    string[],
-    (data: NavigationData) => string[]
-> = createSelector(navigationDataSelector, data => data[ROOT_NAVIGATION_KEY]);
-
-export const navigationIconsSelector: OutputSelector<
-    RootState,
-    NavigationIcons,
-    (state: NavigationState) => NavigationIcons
-> = createSelector(rootSelector, root => root.navigationIcons);
-
 export const currentNavigationParentSelector: OutputSelector<
     RootState,
     string,
@@ -51,3 +35,11 @@ export const currentNavigationParentSelector: OutputSelector<
 
     return breadcrumb[breadcrumb.length - 2];
 });
+
+export const currentContentItemsSelector: OutputSelector<
+    RootState,
+    ContentItem[],
+    (data: ContentData, key: string) => ContentItem[]
+> = createSelector(contentDataSelector, currentNavigationKeySelector, (data, key) =>
+    data[key] ? data[key] : []
+);

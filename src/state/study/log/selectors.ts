@@ -1,9 +1,9 @@
 import { createSelector, OutputSelector, Selector } from "reselect";
 import { ContentData, NavigationData } from "src/data";
+import { contentDataSelector } from "src/state/content";
+import { navigationDataSelector, ROOT_NAVIGATION_KEY } from "src/state/navigation";
 import { RootState } from "src/state/rootReducer";
 
-import { contentDataSelector } from "../content";
-import { navigationDataSelector, ROOT_NAVIGATION_KEY } from "../navigation";
 import { NavigationTreeItem, SeenContentKeys, SeenTotal, SeenTotals } from "./";
 import { LogState } from "./reducer";
 

@@ -5,10 +5,8 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, Dispatch } from "redux";
 import { RootState } from "src/state";
-import {
-    recieveCurrentNavigationKey,
-    rootNavigationChildrenSelector,
-} from "src/state/study/navigation";
+import { rootNavigationChildrenSelector } from "src/state/navigation";
+import { recieveCurrentNavigationKey } from "src/state/study/navigation";
 
 import { IonCol, IonContent, IonGrid, IonPage, IonRow } from "@ionic/react";
 

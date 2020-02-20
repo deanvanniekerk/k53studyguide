@@ -6,8 +6,8 @@ import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import { ProgressBar } from "src/app/components";
 import { RootState } from "src/state";
+import { navigationIconsSelector } from "src/state/navigation";
 import { seenTotalsSelector } from "src/state/study/log";
-import { navigationIconsSelector } from "src/state/study/navigation";
 
 import { CreateAnimation, IonIcon, IonLabel, IonText, useIonViewWillEnter } from "@ionic/react";
 

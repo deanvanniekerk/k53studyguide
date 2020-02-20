@@ -3,7 +3,7 @@ import { ContentData } from "src/data";
 import { ContentState } from "./";
 import * as selectors from "./selectors";
 
-describe("state > study > content > selectors", () => {
+describe("state > content > selectors", () => {
     //Setup Data --------------------------------------------
     const contentData: ContentData = {
         "nav.introduction": [
@@ -52,14 +52,5 @@ describe("state > study > content > selectors", () => {
         const actual = selectors.contentDataSelector.resultFunc(defaultState);
 
         expect(actual).toEqual(defaultState.contentData);
-    });
-
-    it("currentNavigationChildrenSelector", () => {
-        const actual = selectors.currentContentItemsSelector.resultFunc(
-            contentData,
-            "nav.rulesOfTheRoad.theDriver.learnerDrivers"
-        );
-
-        expect(actual).toEqual(contentData["nav.rulesOfTheRoad.theDriver.learnerDrivers"]);
     });
 });

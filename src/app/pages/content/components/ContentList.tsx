@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { RootState } from "src/state";
-import { currentContentItemsSelector } from "src/state/study/content";
 import { recieveLastSeenParentContentKey } from "src/state/study/log";
-import { currentNavigationKeySelector } from "src/state/study/navigation";
+import {
+    currentContentItemsSelector,
+    currentNavigationKeySelector,
+} from "src/state/study/navigation";
 
 import { IonItem, IonList } from "@ionic/react";
 

@@ -1,19 +1,13 @@
-import { NavigationData, navigationData, NavigationIcons, navigationIcons } from "src/data";
-
 import { NavigationActions } from "./";
 
 export const ROOT_NAVIGATION_KEY = "nav";
 
 export type NavigationState = {
-    readonly navigationData: NavigationData;
     readonly currentNavigationKey: string;
-    readonly navigationIcons: NavigationIcons;
 };
 
 export const defaultState: NavigationState = {
-    navigationData: navigationData,
     currentNavigationKey: ROOT_NAVIGATION_KEY,
-    navigationIcons: navigationIcons,
 };
 
 export const reducer = (
