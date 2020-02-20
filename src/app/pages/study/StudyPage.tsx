@@ -4,7 +4,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, Dispatch } from "redux";
-import { PageHeader } from "src/app/components";
 import { RootState } from "src/state";
 import {
     recieveCurrentNavigationKey,
@@ -14,6 +13,7 @@ import {
 import { IonCol, IonContent, IonGrid, IonPage, IonRow } from "@ionic/react";
 
 import { Header, NavigationItem } from "./components";
+import { StudyPageHeader } from "./StudyPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -27,7 +27,7 @@ const StudyPage: React.FC<Props> = props => {
 
     return (
         <IonPage className="study-page">
-            <PageHeader text="study" />
+            <StudyPageHeader />
             <IonContent>
                 <Header onNavigationItemClicked={onNavigationItemClicked} />
                 <IonGrid style={{ padding: 10 }}>
