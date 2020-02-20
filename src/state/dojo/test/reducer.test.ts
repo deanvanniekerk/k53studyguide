@@ -1,8 +1,9 @@
 import { reducer, TestState } from "./reducer";
 
-describe("state > study > navigation > reducer", () => {
+describe("state > dojo > test > reducer", () => {
     const defaultState: TestState = {
         questionAnswers: [],
+        targetNavigationKey: "nav",
     };
 
     it("should handle DOJO_TEST_RECIEVE_QUESTION_ANSWERS", () => {
@@ -39,6 +40,25 @@ describe("state > study > navigation > reducer", () => {
         const expectedState = {
             ...defaultState,
             questionAnswers: questionAnswers,
+        };
+
+        expect(actualState).toEqual(expectedState);
+    });
+
+    it("should handle DOJO_TEST_RECIEVE_TARGET_NAVIGATION_KEY", () => {
+        const state: TestState = {
+            ...defaultState,
+            targetNavigationKey: "oldKey",
+        };
+
+        const actualState = reducer(state, {
+            type: "DOJO_TEST_RECIEVE_TARGET_NAVIGATION_KEY",
+            payload: "newKey",
+        });
+
+        const expectedState = {
+            ...defaultState,
+            targetNavigationKey: "newKey",
         };
 
         expect(actualState).toEqual(expectedState);

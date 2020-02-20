@@ -30,6 +30,7 @@ describe("state > study > navigation > selectors", () => {
 
     const defaultState: TestState = {
         questionAnswers: questionAnswers,
+        targetNavigationKey: "key1",
     };
     //-----------------------------------------------------------
 
@@ -37,5 +38,11 @@ describe("state > study > navigation > selectors", () => {
         const actual = selectors.questionAnswersSelector.resultFunc(defaultState);
 
         expect(actual).toEqual(questionAnswers);
+    });
+
+    it("targetNavigationKeySelector", () => {
+        const actual = selectors.targetNavigationKeySelector.resultFunc(defaultState);
+
+        expect(actual).toEqual(defaultState.targetNavigationKey);
     });
 });

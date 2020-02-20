@@ -1,10 +1,11 @@
 import "./ContentPage.css";
 
-import { arrowBackOutline } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, Dispatch } from "redux";
+
+import { BackButton } from "@/app/components";
 import { RootState } from "@/state";
 import { navigationDataSelector } from "@/state/navigation";
 import {
@@ -13,8 +14,7 @@ import {
     navigateUp,
     ROOT_NAVIGATION_KEY,
 } from "@/state/study/navigation";
-
-import { IonContent, IonFab, IonIcon, IonPage } from "@ionic/react";
+import { IonContent, IonPage } from "@ionic/react";
 
 import { ContentList, Header, Navigator } from "./components";
 
@@ -35,9 +35,7 @@ const ContentPage: React.FC<Props> = props => {
     return (
         <IonPage className="content-page">
             <IonContent>
-                <IonFab vertical="top" horizontal="start" slot="fixed" onClick={onBackClicked}>
-                    <IonIcon className="back-button" icon={arrowBackOutline} />
-                </IonFab>
+                <BackButton onClick={onBackClicked} />
                 <Header />
                 <Navigator />
                 <ContentList />

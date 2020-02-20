@@ -9,18 +9,16 @@ import ContentPage from "./pages/content/ContentPage";
 import DojoPage from "./pages/dojo/DojoPage";
 import ProfilePage from "./pages/profile/ProfilePage";
 import StudyPage from "./pages/study/StudyPage";
+import TestPage from "./pages/test/TestPage";
 
 const Routes: React.FC = () => {
     return (
         <IonTabs>
             <IonRouterOutlet>
-                {/* <Route exact path="/:tab(study)" component={StudyPage} />
-                <Route exact path="/:tab(study)/content" component={ContentPage} />
-                <Route exact path="/:tab(train)" component={TrainPage} />
-                <Route exact path="/:tab(profile)" component={ProfilePage} /> */}
                 <Route exact path="/study" component={StudyPage} />
                 <Route exact path="/content" component={ContentPage} />
                 <Route exact path="/dojo" component={DojoPage} />
+                <Route exact path="/test" component={TestPage} />
                 <Route exact path="/arena" component={ArenaPage} />
                 <Route exact path="/profile" component={ProfilePage} />
                 <Route exact path="/" render={() => <Redirect to="/study" />} />

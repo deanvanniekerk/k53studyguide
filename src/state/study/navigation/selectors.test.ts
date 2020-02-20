@@ -1,5 +1,6 @@
 import { ContentData, NavigationData } from "@/data";
 
+import { NavigationState } from "./reducer";
 import * as selectors from "./selectors";
 
 describe("state > study > navigation > selectors", () => {
@@ -66,6 +67,10 @@ describe("state > study > navigation > selectors", () => {
             },
         ],
     };
+
+    const defaultState: NavigationState = {
+        currentNavigationKey: "key1",
+    };
     //-----------------------------------------------------------
 
     it("currentNavigationChildrenSelector", () => {
@@ -95,5 +100,11 @@ describe("state > study > navigation > selectors", () => {
         );
 
         expect(actual).toEqual(contentData["nav.rulesOfTheRoad.theDriver.learnerDrivers"]);
+    });
+
+    it("currentNavigationKeySelector", () => {
+        const actual = selectors.currentNavigationKeySelector.resultFunc(defaultState);
+
+        expect(actual).toEqual(defaultState.currentNavigationKey);
     });
 });
