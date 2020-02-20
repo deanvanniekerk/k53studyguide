@@ -1,9 +1,9 @@
 import { eye } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
-import { ProgressBar } from "src/app/components";
-import { RootState } from "src/state";
-import { seenTotalsSelector } from "src/state/study/log";
+import { ProgressBar } from "@/app/components";
+import { RootState } from "@/state";
+import { seenTotalsSelector } from "@/state/study/log";
 
 import { IonCol, IonGrid, IonIcon, IonRow, IonText } from "@ionic/react";
 

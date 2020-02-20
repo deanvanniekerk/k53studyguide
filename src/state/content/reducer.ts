@@ -1,4 +1,4 @@
-import { ContentData, contentData } from "src/data";
+import { ContentData, contentData } from "@/data";
 
 export type ContentState = {
     readonly contentData: ContentData;

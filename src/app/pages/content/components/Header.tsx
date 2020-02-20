@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
-import { HorizontalRule } from "src/app/components";
-import { Breadcrumb } from "src/app/components/Breadcrumb";
-import { RootState } from "src/state";
-import { currentNavigationKeySelector } from "src/state/study/navigation";
+import { HorizontalRule } from "@/app/components";
+import { Breadcrumb } from "@/app/components/Breadcrumb";
+import { RootState } from "@/state";
+import { currentNavigationKeySelector } from "@/state/study/navigation";
 
 import { IonCol, IonGrid, IonListHeader, IonRow, IonText } from "@ionic/react";
 

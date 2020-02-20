@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
-import { Translations } from "src/data";
-import { RootState } from "src/state/rootReducer";
+import { Translations } from "@/data";
+import { RootState } from "@/state/rootReducer";
 
 import { TranslationsState } from "./reducer";
 

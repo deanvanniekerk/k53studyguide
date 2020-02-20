@@ -4,11 +4,11 @@ import { eye } from "ionicons/icons";
 import React, { useRef } from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
-import { ProgressBar } from "src/app/components";
-import { RootState } from "src/state";
-import { navigationIconsSelector } from "src/state/navigation";
-import { seenTotalsSelector } from "src/state/study/log";
 
+import { ProgressBar } from "@/app/components";
+import { RootState } from "@/state";
+import { navigationIconsSelector } from "@/state/navigation";
+import { seenTotalsSelector } from "@/state/study/log";
 import { CreateAnimation, IonIcon, IonLabel, IonText, useIonViewWillEnter } from "@ionic/react";
 
 type Props = {
@@ -27,8 +27,9 @@ const NavigationItemComponent: React.FC<Props> = props => {
     const containerAnimationDuration = 300;
 
     useIonViewWillEnter(() => {
-        animation1.current!.animation.play();
-        animation2.current!.animation.play();
+        if (animation1.current) animation1.current.animation.play();
+
+        if (animation2.current) animation2.current.animation.play();
     });
 
     return (

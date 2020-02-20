@@ -1,4 +1,4 @@
-import { Translations, translations } from "src/data";
+import { Translations, translations } from "@/data";
 
 export type TranslationsState = {
     readonly translations: Translations;

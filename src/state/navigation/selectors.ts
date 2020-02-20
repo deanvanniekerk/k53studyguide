@@ -1,6 +1,6 @@
 import { createSelector, OutputSelector, Selector } from "reselect";
-import { NavigationData, NavigationIcons } from "src/data";
-import { RootState } from "src/state/rootReducer";
+import { NavigationData, NavigationIcons } from "@/data";
+import { RootState } from "@/state/rootReducer";
 
 import { NavigationState, ROOT_NAVIGATION_KEY } from "./reducer";
 

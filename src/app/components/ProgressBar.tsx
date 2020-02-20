@@ -1,8 +1,8 @@
 import "./ProgressBar.css";
 
 import React from "react";
-import { TEXT_COLOR } from "src/data";
-import { hexToRgb } from "src/utils/color";
+import { TEXT_COLOR } from "@/data";
+import { hexToRgb } from "@/utils/color";
 
 type Props = {
     progress: number;

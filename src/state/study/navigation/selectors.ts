@@ -1,9 +1,9 @@
 import { createSelector, OutputSelector, Selector } from "reselect";
-import { ContentData, ContentItem, NavigationData } from "src/data";
-import { contentDataSelector } from "src/state/content";
-import { navigationDataSelector } from "src/state/navigation";
-import { RootState } from "src/state/rootReducer";
-import { navigationKeyToBreadcrumb } from "src/utils";
+import { ContentData, ContentItem, NavigationData } from "@/data";
+import { contentDataSelector } from "@/state/content";
+import { navigationDataSelector } from "@/state/navigation";
+import { RootState } from "@/state/rootReducer";
+import { navigationKeyToBreadcrumb } from "@/utils";
 
 import { NavigationState } from "./reducer";
 

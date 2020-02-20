@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { RootState } from "src/state";
-import { recieveLastSeenParentContentKey } from "src/state/study/log";
+import { RootState } from "@/state";
+import { recieveLastSeenParentContentKey } from "@/state/study/log";
 import {
     currentContentItemsSelector,
     currentNavigationKeySelector,
-} from "src/state/study/navigation";
+} from "@/state/study/navigation";
 
 import { IonItem, IonList } from "@ionic/react";
 

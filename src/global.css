@@ -36,6 +36,7 @@ ion-list ion-item {
     font-family: var(--ion-font-family-bold);
     height: 3.3em;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 .text-lg {

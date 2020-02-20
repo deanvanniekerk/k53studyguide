@@ -1,4 +1,4 @@
-import { NavigationData, NavigationIcons } from "src/data";
+import { NavigationData, NavigationIcons } from "@/data";
 
 import { NavigationState } from "./";
 import * as selectors from "./selectors";

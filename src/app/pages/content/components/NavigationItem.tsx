@@ -2,10 +2,10 @@ import { chevronForwardOutline } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
-import { ProgressBar } from "src/app/components";
-import { TEXT_COLOR } from "src/data";
-import { RootState } from "src/state";
-import { seenTotalsSelector } from "src/state/study/log";
+import { ProgressBar } from "@/app/components";
+import { TEXT_COLOR } from "@/data";
+import { RootState } from "@/state";
+import { seenTotalsSelector } from "@/state/study/log";
 
 import { CreateAnimation, IonIcon, IonItem, IonLabel, IonText } from "@ionic/react";
 

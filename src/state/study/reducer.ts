@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { PersistConfig, persistReducer } from "redux-persist";
-import { createStorage } from "src/store/store";
+import { createStorage } from "@/store/store";
 
 import { LogState, reducer as log } from "./log";
 import { NavigationState, reducer as navigation } from "./navigation";

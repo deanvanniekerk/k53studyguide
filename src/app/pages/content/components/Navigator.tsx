@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { RootState } from "src/state";
+import { RootState } from "@/state";
 import {
     currentNavigationChildrenSelector,
     recieveCurrentNavigationKey,
-} from "src/state/study/navigation";
+} from "@/state/study/navigation";
 
 import { IonList } from "@ionic/react";
 

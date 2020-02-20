@@ -1,6 +1,6 @@
 import { createSelector, OutputSelector, Selector } from "reselect";
-import { ContentData } from "src/data";
-import { RootState } from "src/state/rootReducer";
+import { ContentData } from "@/data";
+import { RootState } from "@/state/rootReducer";
 
 import { ContentState } from "./reducer";
 

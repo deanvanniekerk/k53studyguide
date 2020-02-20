@@ -1,5 +1,5 @@
 import React from "react";
-import { PageHeader } from "src/app/components";
+import { PageHeader } from "@/app/components";
 
 const ProfilePageHeaderComponent: React.FC = () => {
     return <PageHeader text="profile" />;

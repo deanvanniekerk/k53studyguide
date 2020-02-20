@@ -1,1 +1,1 @@
-declare module 'react-translated';
+declare module "react-translated";

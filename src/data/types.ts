@@ -49,13 +49,3 @@ export type NavigationIcons = {
 export type IconStyle = {
     [key: string]: string;
 };
-
-export type Images = {
-    [key: string]: ImageData;
-};
-
-export type ImageData = {
-    width: number;
-    height: number;
-    source: any;
-};

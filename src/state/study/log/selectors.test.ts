@@ -1,4 +1,4 @@
-import { ContentData, NavigationData } from "src/data";
+import { ContentData, NavigationData } from "@/data";
 
 import { LogState, NavigationTreeItem, SeenContentKeys } from "./";
 import * as selectors from "./selectors";

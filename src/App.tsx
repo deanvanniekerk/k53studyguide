@@ -19,8 +19,8 @@ import "./global.css";
 import React from "react";
 import { Provider } from "react-redux";
 import { Provider as TranslationProvider } from "react-translated";
-import { translations } from "src/data";
-import { configureStore } from "src/state/configureStore";
+import { translations } from "@/data";
+import { configureStore } from "@/state/configureStore";
 
 import { IonApp } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";

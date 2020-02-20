@@ -1,13 +1,15 @@
-import createMockStore from "redux-mock-store";
-import thunk, { ThunkDispatch } from "redux-thunk";
-import { RootState } from "src/state";
+// import createMockStore from "redux-mock-store";
+// import thunk, { ThunkDispatch } from "redux-thunk";
+// import { RootState } from "@/state";
 
-import { navigateUp, recieveCurrentNavigationKey, RecieveCurrentNavigationKeyAction } from "./";
+// import { navigateUp, recieveCurrentNavigationKey, RecieveCurrentNavigationKeyAction } from "./";
 
-type DispatchExts = ThunkDispatch<RootState, void, RecieveCurrentNavigationKeyAction>;
+// type DispatchExts = ThunkDispatch<RootState, void, RecieveCurrentNavigationKeyAction>;
 
-const middlewares = [thunk];
-const mockStore = createMockStore<RootState, DispatchExts>(middlewares);
+// const middlewares = [thunk];
+// const mockStore = createMockStore<RootState, DispatchExts>(middlewares);
+
+export {};
 
 describe("state > study > navigation > operations", () => {
     it("navigateUp - 3 levels", () => {

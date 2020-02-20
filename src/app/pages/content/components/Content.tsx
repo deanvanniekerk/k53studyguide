@@ -5,9 +5,9 @@ import { connect } from "react-redux";
 import { Translate, Translator } from "react-translated";
 import VisibilitySensor from "react-visibility-sensor";
 import { bindActionCreators, Dispatch } from "redux";
-import { HorizontalRule } from "src/app/components";
-import { ContentItem } from "src/data";
-import { recieveSeenContentKey } from "src/state/study/log";
+import { HorizontalRule } from "@/app/components";
+import { ContentItem } from "@/data";
+import { recieveSeenContentKey } from "@/state/study/log";
 
 import { IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
 

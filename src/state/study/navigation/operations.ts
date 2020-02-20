@@ -1,5 +1,5 @@
 import { ThunkAction } from "redux-thunk";
-import { RootState } from "src/state";
+import { RootState } from "@/state";
 
 import {
     currentNavigationKeySelector,

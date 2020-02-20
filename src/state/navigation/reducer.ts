@@ -1,4 +1,4 @@
-import { NavigationData, navigationData, NavigationIcons, navigationIcons } from "src/data";
+import { NavigationData, navigationData, NavigationIcons, navigationIcons } from "@/data";
 
 export const ROOT_NAVIGATION_KEY = "nav";
 

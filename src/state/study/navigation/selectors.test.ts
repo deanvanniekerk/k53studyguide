@@ -1,4 +1,4 @@
-import { ContentData, NavigationData } from "src/data";
+import { ContentData, NavigationData } from "@/data";
 
 import * as selectors from "./selectors";
 

@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import { bindActionCreators, Dispatch } from "redux";
-import { recieveCurrentNavigationKey, ROOT_NAVIGATION_KEY } from "src/state/study/navigation";
-import { navigationKeyToBreadcrumb } from "src/utils";
+import { recieveCurrentNavigationKey, ROOT_NAVIGATION_KEY } from "@/state/study/navigation";
+import { navigationKeyToBreadcrumb } from "@/utils";
 
 import { IonText } from "@ionic/react";
 

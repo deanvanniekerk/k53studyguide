@@ -5,14 +5,14 @@ import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, Dispatch } from "redux";
-import { RootState } from "src/state";
-import { navigationDataSelector } from "src/state/navigation";
+import { RootState } from "@/state";
+import { navigationDataSelector } from "@/state/navigation";
 import {
     currentNavigationKeySelector,
     currentNavigationParentSelector,
     navigateUp,
     ROOT_NAVIGATION_KEY,
-} from "src/state/study/navigation";
+} from "@/state/study/navigation";
 
 import { IonContent, IonFab, IonIcon, IonPage } from "@ionic/react";
 

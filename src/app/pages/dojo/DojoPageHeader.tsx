@@ -1,5 +1,5 @@
 import React from "react";
-import { PageHeader } from "src/app/components";
+import { PageHeader } from "@/app/components";
 
 const DojoPageHeaderComponent: React.FC = () => {
     return <PageHeader text="dojo" />;

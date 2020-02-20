@@ -4,10 +4,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, Dispatch } from "redux";
-import { RootState } from "src/state";
-import { rootNavigationChildrenSelector } from "src/state/navigation";
-import { recieveCurrentNavigationKey } from "src/state/study/navigation";
 
+import { RootState } from "@/state";
+import { rootNavigationChildrenSelector } from "@/state/navigation";
+import { recieveCurrentNavigationKey } from "@/state/study/navigation";
 import { IonCol, IonContent, IonGrid, IonPage, IonRow } from "@ionic/react";
 
 import { Header, NavigationItem } from "./components";
@@ -16,7 +16,7 @@ import { StudyPageHeader } from "./StudyPageHeader";
 type Props = PropsFromState & PropsFromDispatch;
 
 const StudyPage: React.FC<Props> = props => {
-    let history = useHistory();
+    const history = useHistory();
 
     const onNavigationItemClicked = (key: string) => {
         props.recieveCurrentNavigationKey(key);
