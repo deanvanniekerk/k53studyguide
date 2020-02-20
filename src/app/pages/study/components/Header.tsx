@@ -46,13 +46,13 @@ const HeaderComponent: React.FC<Props> = props => {
                             color="primary"
                             shape="round"
                             fill="solid"
-                            size="large"
+                            className="button-med-large"
                             onClick={() =>
                                 props.onNavigationItemClicked(props.lastSeenParentContentKey)
                             }
                         >
                             <Translate text="continue" />
-                            <IonIcon slot="end" size="small" icon={caretForward} />
+                            <IonIcon slot="end" icon={caretForward} />
                         </IonButton>
                     </IonCol>
                 </IonRow>

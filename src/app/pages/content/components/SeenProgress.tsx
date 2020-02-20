@@ -26,9 +26,9 @@ const SeenProgressComponent: React.FC<Props> = props => {
                 </IonCol>
                 <IonCol>
                     <IonIcon
+                        className="text-sm"
                         icon={eye}
                         style={{
-                            fontSize: 12,
                             marginLeft: 5,
                             opacity: seenProgress === 100 ? 1 : 0.6,
                         }}
@@ -37,7 +37,7 @@ const SeenProgressComponent: React.FC<Props> = props => {
             </IonRow>
             <IonRow>
                 <IonCol>
-                    <IonText style={{ opacity: 0.9, fontSize: 12, marginTop: 5 }}>
+                    <IonText className="text-xs" style={{ opacity: 0.9, marginTop: 5 }}>
                         {total.seen}
                         {" / "}
                         {total.total} Seen

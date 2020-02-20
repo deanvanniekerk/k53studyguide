@@ -1,5 +1,12 @@
 :root {
     --ion-font-family: "Montserrat", sans-serif;
+    --ion-font-family-bold: "Montserrat-Bold", sans-serif;
+
+    --ion-font-size-xs: 0.7rem;
+    --ion-font-size-sm: 0.8rem;
+    --ion-font-size-md: 0.9rem;
+    --ion-font-size-l: 1.1rem;
+    --ion-font-size-xl: 1.5rem;
 
     --ion-item-background: transparent;
 
@@ -62,7 +69,7 @@
     --ion-color-medium-shade: #86888f;
     --ion-color-medium-tint: #a2a4ab;
 
-    --ion-color-light: #f4f5f8;
+    --ion-color-light: #ffffff;
     --ion-color-light-rgb: 244, 244, 244;
     --ion-color-light-contrast: #000000;
     --ion-color-light-contrast-rgb: 0, 0, 0;

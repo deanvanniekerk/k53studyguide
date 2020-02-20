@@ -23,7 +23,8 @@ const NavigationItemComponent: React.FC<Props> = props => {
         <IonItem className="navigation-item" onClick={() => props.onClick(props.navigationItemKey)}>
             <IonIcon
                 icon={chevronForwardOutline}
-                style={{ fontSize: 22, marginRight: 15, color: TEXT_COLOR }}
+                className="text-l"
+                style={{ marginRight: 15, color: TEXT_COLOR }}
             />
             <IonLabel>
                 <CreateAnimation
@@ -38,7 +39,7 @@ const NavigationItemComponent: React.FC<Props> = props => {
                     }}
                 >
                     <div>
-                        <IonText style={{ fontSize: 14 }}>
+                        <IonText className="text-md">
                             <Translate text={props.navigationItemKey} />
                         </IonText>
                     </div>

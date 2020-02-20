@@ -9,11 +9,11 @@
 
 .root-navigation-item .icon {
     position: absolute;
-    color: #000000;
+    color: var(--ion-color-light);
     right: 0px;
     bottom: -2px;
-    font-size: 38px;
-    opacity: 0.3;
+    font-size: 2.5rem;
+    opacity: 0.2;
 }
 
 .root-navigation-item .progress-bar {

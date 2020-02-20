@@ -75,7 +75,7 @@ const NavigationItemComponent: React.FC<Props> = props => {
                     </CreateAnimation>
                     <IonLabel>
                         <div>
-                            <IonText style={{ fontSize: 14, fontWeight: "bold" }}>
+                            <IonText className="text-md" style={{ fontWeight: "bold" }}>
                                 <Translate text={props.navigationItemKey} />
                             </IonText>
                         </div>
@@ -92,8 +92,8 @@ const NavigationItemComponent: React.FC<Props> = props => {
                         <div>
                             <IonIcon
                                 icon={eye}
+                                className="text-sm"
                                 style={{
-                                    fontSize: 12,
                                     marginLeft: 6,
                                     opacity: seenProgress === 100 ? 0.7 : 0.4,
                                 }}

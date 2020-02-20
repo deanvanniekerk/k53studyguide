@@ -31,8 +31,8 @@ const BreadcrumbComponent: React.FC<Props> = props => {
                         key={key}
                         style={{
                             opacity: 0.6,
-                            fontSize: 12,
                         }}
+                        className="text-sm"
                         onClick={() => props.recieveCurrentNavigationKey(key)}
                     >
                         {key !== ROOT_NAVIGATION_KEY ? (

@@ -42,7 +42,7 @@ const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenCon
         <IonGrid style={{ paddingBottom: 15 }} className="study-content">
             <IonRow style={{ paddingBottom: 8 }}>
                 <IonCol>
-                    <IonText style={{ fontWeight: "bold", fontSize: 15 }}>
+                    <IonText className="text-md" style={{ fontWeight: "bold" }}>
                         <Translate text={item.heading} />
                     </IonText>
                 </IonCol>
@@ -63,7 +63,7 @@ const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenCon
             )}
             <IonRow>
                 <IonCol className="content-html">
-                    <IonText style={{ fontSize: 14, lineHeight: 1.5 }}>
+                    <IonText className="text-md" style={{ lineHeight: 1.5 }}>
                         <Translator>{translator}</Translator>
                     </IonText>
                 </IonCol>

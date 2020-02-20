@@ -9,12 +9,12 @@ ion-tab-button {
 }
 
 ion-tab-button ion-icon {
-    font-size: 24px;
+    font-size: var(--ion-font-size-xl);
 }
 
 ion-tab-button ion-label {
     margin-top: 2px;
-    font-size: 12px;
+    font-size: var(--ion-font-size-sm);
 }
 
 ion-content,
@@ -32,10 +32,28 @@ ion-list ion-item {
     --inner-border-width: 0 0 0 0;
 }
 
-.button-large {
-    height: 3em;
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 900;
+.button-med-large {
+    font-family: var(--ion-font-family-bold);
+    height: 3.3em;
+    font-weight: bold;
+}
+
+.text-lg {
+    font-size: var(--ion-font-size-lg);
+}
+
+.text-l {
+    font-size: var(--ion-font-size-l);
+}
+
+.text-md {
+    font-size: var(--ion-font-size-md);
+}
+
+.text-sm {
+    font-size: var(--ion-font-size-sm);
+}
+
+.text-xs {
+    font-size: var(--ion-font-size-xs);
 }

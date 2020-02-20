@@ -40,7 +40,6 @@ const ContentSeenIndicatorComponent: React.FC<Props> = ({ navigationKey, seenTot
                 <IonIcon
                     icon={currentSeen ? eye : eyeOff}
                     style={{
-                        fontSize: 16,
                         opacity: currentSeen ? 0.6 : 0.4,
                     }}
                 />
