@@ -1,19 +1,18 @@
 .root-navigation-item {
-    background-color: #4d83a6;
     border-radius: 8px;
     margin: 8px;
     padding: 10px;
-    border: 0;
+    border: 1px solid #ffffff61;
     height: 75px;
 }
 
 .root-navigation-item .icon {
     position: absolute;
-    color: #000000;
+    color: #ffffff;
     right: 0px;
     bottom: -2px;
     font-size: 2.5rem;
-    opacity: 0.2;
+    opacity: 0.4;
 }
 
 .root-navigation-item .progress-bar {

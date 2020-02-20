@@ -86,7 +86,6 @@ const NavigationItemComponent: React.FC<Props> = props => {
                             <ProgressBar
                                 progress={seenProgress}
                                 height={7}
-                                backgroundColor="#000000"
                                 backgroundOpacity={0.2}
                             ></ProgressBar>
                         </div>

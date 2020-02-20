@@ -46,7 +46,7 @@ const ProgressBar: React.FC<Props> = props => {
 };
 ProgressBar.defaultProps = {
     backgroundOpacity: 0.2,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#000000",
     foregroundOpacity: 0.8,
     foregroundColor: TEXT_COLOR,
     height: 4,
