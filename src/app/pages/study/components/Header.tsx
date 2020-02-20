@@ -2,10 +2,10 @@ import { caretForward } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
+
 import { Breadcrumb } from "@/app/components/Breadcrumb";
 import { RootState } from "@/state";
 import { lastSeenParentContentKeySelector } from "@/state/study/log";
-
 import { IonButton, IonCol, IonGrid, IonIcon, IonListHeader, IonRow, IonText } from "@ionic/react";
 
 import { SeenProgress } from "./";
@@ -18,7 +18,7 @@ const HeaderComponent: React.FC<Props> = props => {
     return (
         <IonListHeader>
             <IonGrid>
-                <IonRow style={{ paddingTop: 45 }}>
+                <IonRow style={{ paddingTop: 55 }}>
                     <IonCol>
                         <IonText>
                             <h2 style={{ fontWeight: "bold", marginBottom: 0 }}>
@@ -27,7 +27,7 @@ const HeaderComponent: React.FC<Props> = props => {
                         </IonText>
                     </IonCol>
                 </IonRow>
-                <IonRow style={{ paddingBottom: 5, paddingTop: 5 }}>
+                <IonRow style={{ paddingBottom: 5, paddingTop: 8 }}>
                     <IonCol>
                         <Breadcrumb
                             navigationKey={props.lastSeenParentContentKey}
@@ -40,7 +40,7 @@ const HeaderComponent: React.FC<Props> = props => {
                         <SeenProgress navigationKey={props.lastSeenParentContentKey} />
                     </IonCol>
                 </IonRow>
-                <IonRow style={{ paddingTop: 15, paddingBottom: 25 }}>
+                <IonRow style={{ paddingTop: 20, paddingBottom: 20 }}>
                     <IonCol>
                         <IonButton
                             color="primary"

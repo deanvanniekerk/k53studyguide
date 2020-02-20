@@ -1,6 +1,7 @@
 import "./ProgressBar.css";
 
 import React from "react";
+
 import { TEXT_COLOR } from "@/data";
 import { hexToRgb } from "@/utils/color";
 
@@ -45,7 +46,7 @@ const ProgressBar: React.FC<Props> = props => {
 };
 ProgressBar.defaultProps = {
     backgroundOpacity: 0.2,
-    backgroundColor: "#000000",
+    backgroundColor: "#FFFFFF",
     foregroundOpacity: 0.8,
     foregroundColor: TEXT_COLOR,
     height: 4,
