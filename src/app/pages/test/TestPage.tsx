@@ -1,17 +1,13 @@
-import "./TestPage.css";
-
 import React from "react";
-import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
 
 import { BackButton } from "@/app/components";
-import { RootState } from "@/state";
-import { questionAnswersSelector } from "@/state/dojo/test/selectors";
 import { IonContent, IonPage } from "@ionic/react";
 
-type Props = PropsFromState;
+import { Header, QuestionList } from "./components";
 
-const TestPage: React.FC<Props> = props => {
+const TestPage: React.FC = () => {
     const history = useHistory();
 
     const onBackClicked = () => {
@@ -20,22 +16,18 @@ const TestPage: React.FC<Props> = props => {
     };
 
     return (
-        <IonPage className="test-page">
-            <IonContent>
+        <IonPage>
+            <Content>
                 <BackButton onClick={onBackClicked} />
-                {props.questionAnswers.map(qa => {
-                    return <div key={qa.question.id}>{qa.question.id}</div>;
-                })}
-            </IonContent>
+                <Header />
+                <QuestionList />
+            </Content>
         </IonPage>
     );
 };
 
-type PropsFromState = ReturnType<typeof mapStateToProps>;
-const mapStateToProps = (state: RootState) => {
-    return {
-        questionAnswers: questionAnswersSelector(state),
-    };
-};
+const Content = styled(IonContent)`
+    --background: linear-gradient(to right bottom, #501a8e, #9a0684, #cc1e73, #ed4c60, #ff7b51);
+`;
 
-export default connect(mapStateToProps)(TestPage);
+export default TestPage;

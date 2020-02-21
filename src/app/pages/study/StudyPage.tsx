@@ -1,9 +1,8 @@
-import "./StudyPage.css";
-
 import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, Dispatch } from "redux";
+import styled from "styled-components";
 
 import { RootState } from "@/state";
 import { rootNavigationChildrenSelector } from "@/state/navigation";
@@ -26,7 +25,7 @@ const StudyPage: React.FC<Props> = props => {
     return (
         <IonPage className="study-page">
             <StudyPageHeader />
-            <IonContent>
+            <Content>
                 <Header onNavigationItemClicked={onNavigationItemClicked} />
                 <IonGrid style={{ padding: 10 }}>
                     <IonRow>
@@ -50,10 +49,14 @@ const StudyPage: React.FC<Props> = props => {
                         })}
                     </IonRow>
                 </IonGrid>
-            </IonContent>
+            </Content>
         </IonPage>
     );
 };
+
+const Content = styled(IonContent)`
+    --background: linear-gradient(to right bottom, #501a8e, #0055ba, #007bc3, #009ab4, #00b49f);
+`;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
