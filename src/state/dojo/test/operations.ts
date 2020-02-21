@@ -3,6 +3,7 @@ import { ThunkAction } from "redux-thunk";
 import { QuestionItem } from "@/data";
 import { RootState } from "@/state";
 import { questionDataSelector } from "@/state/questions";
+import { shuffleArray } from "@/utils";
 
 import {
     recieveQuestionAnswers,
@@ -28,8 +29,10 @@ export const loadQuestionAnswers = (): ThunkAction<
             if (k.startsWith(targetKey)) bank.push(...questionData[k]);
         });
 
+        bank = shuffleArray<QuestionItem>(bank);
+
         //Do some ordering here...
-        if (bank.length > 10) bank = bank.slice(0, 11);
+        if (bank.length > 10) bank = bank.slice(0, 10);
 
         const questionAnswers: QuestionAnswer[] = bank.map(q => ({
             answer: null,

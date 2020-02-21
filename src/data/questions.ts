@@ -5,58 +5,57 @@ const questionData: QuestionData = {
         {
             id: "1",
             answer: "C",
-            text: "When you only have a learner's licence you are not allowed to:",
+            text: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Carry passengers in your car.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Drive faster than 100km/h.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Drive without having your licence with you.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "2",
             answer: "A",
-            text: "Once you have your learner's licence you must:",
+            text: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.1.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Only drive when you have a supervisor with a licence for the class of vehicle you are driving.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Stay off freeways.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Apply for your driver's licence within 12 months.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "3",
             answer: "B",
-            text: "You may not get a learner's licence if you:",
+            text: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "Are over 17 years old",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You already have a licence for the same class of vehicle.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Wear glasses.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.2.option.2.text",
                 },
             ],
         },
@@ -65,24 +64,24 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "Which of the following are true?",
-                    "(1) If you wear glasses you will not need to do the eye test when you apply for your learner's licence.",
-                    "(2) If you have been disqualified from holding a driver's licence by a court of law you have to re-apply for your learner's licence and write your test again. ",
-                    "(3) You may tow a caravan or trailer if you only have your learner's licence.",
+                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.text.list.0.text",
+                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.text.list.1.text",
+                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.text.list.2.text",
+                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "None of them are true.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (2) and (3) are true.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (3) is true.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.option.2.text",
                 },
             ],
         },
@@ -91,43 +90,43 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "You may only obtain a Learner's Licence if:",
-                    "(1) Your licence has not been suspended, or the suspension period has expired.",
-                    "(2) You do not already have a licence for the same class of vehicle.",
-                    "(3) You do not have any physical or mental disabilities that would make it unsafe for you to drive.",
+                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.4.text.list.0.text",
+                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.4.text.list.1.text",
+                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.4.text.list.2.text",
+                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.4.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1) is the only correct answer",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (2) are the only correct answers",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(1), (2) and (3) are all correct",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.4.option.2.text",
                 },
             ],
         },
         {
             id: "6",
             answer: "B",
-            text: "The learner's test consists of the following three sections:",
+            text: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.5.text",
             option: [
                 {
                     id: "A",
-                    value: "Road traffic signs, Road traffic signals, Road markings.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Rules of the road, Road signs/markings, Vehicle controls.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Defensive driving, K53 procedures, Road signs/signals.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.5.option.2.text",
                 },
             ],
         },
@@ -136,24 +135,24 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "Which of the following are true?",
-                    "(1) The learner's licence test consists of multiple choice questions only.",
-                    "(2) Some of the questions in the test refer to sketches and pictures in a sketch booklet.",
-                    "(3) The learner's licence test consists of a written and practical component.",
+                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.6.text.list.0.text",
+                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.6.text.list.1.text",
+                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.6.text.list.2.text",
+                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.6.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1) and (2) only are true.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(2) and (3) only are true.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(1) and (3) only are true.",
+                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.6.option.2.text",
                 },
             ],
         },
@@ -162,57 +161,57 @@ const questionData: QuestionData = {
         {
             id: "8",
             answer: "A",
-            text: "Which may you not do?",
+            text: "nav.rulesOfTheRoad.theDriver.driversDuties.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Leave your vehicle unattended with the engine on.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Drive in reverse for more than 120 meters.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Drive a vehicle with more than 3 passengers in it.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "9",
             answer: "B",
-            text: "You may not run the engine if:",
+            text: "nav.rulesOfTheRoad.theDriver.driversDuties.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "The lights are not working properly.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The fuel cap is not properly closed.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You do not have a clear view of the road ahead.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "10",
             answer: "B",
-            text: "You may drive on the right hand side of the road if:",
+            text: "nav.rulesOfTheRoad.theDriver.driversDuties.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "There are potholes on the left.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "It is a one-way road.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Never.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.2.option.2.text",
                 },
             ],
         },
@@ -221,43 +220,43 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "Which of the following is true?",
-                    "(1) You may never put any part of your body out of the vehicle while you are driving. ",
-                    "(2) Instructions from a traffic officer always take precedence over any road signs, signals or markings. ",
-                    "(3) You must give way to emergency vehicles sounding sirens if they are approaching from your right hand side.",
+                    "nav.rulesOfTheRoad.theDriver.driversDuties.question.3.text.list.0.text",
+                    "nav.rulesOfTheRoad.theDriver.driversDuties.question.3.text.list.1.text",
+                    "nav.rulesOfTheRoad.theDriver.driversDuties.question.3.text.list.2.text",
+                    "nav.rulesOfTheRoad.theDriver.driversDuties.question.3.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "Only (1) is true.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (2) and (3) are true.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (2) is true.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "12",
             answer: "B",
-            text: "When parking and leaving your car, you must:",
+            text: "nav.rulesOfTheRoad.theDriver.driversDuties.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "Switch the lights off.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Put the parking brake on.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Take your driver's licence with you.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.4.option.2.text",
                 },
             ],
         },
@@ -266,105 +265,100 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "The driver is responsible for making sure that passengers:",
-                    "(1) Do not throw anything out of the vehicle while it is in motion.",
-                    "(2) Wear seatbelts if they are under the age of 14 or less than 1.5m tall. ",
-                    "(3) Do not travel on the back of a bakkie.",
+                    "nav.rulesOfTheRoad.theDriver.driversDuties.question.5.text.list.0.text",
+                    "nav.rulesOfTheRoad.theDriver.driversDuties.question.5.text.list.1.text",
+                    "nav.rulesOfTheRoad.theDriver.driversDuties.question.5.text.list.2.text",
+                    "nav.rulesOfTheRoad.theDriver.driversDuties.question.5.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "All of them are true.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (2) and (3) are true.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "None of them are true.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.5.option.2.text",
                 },
             ],
         },
         {
             id: "14",
             answer: "B",
-            text: "With regard to passengers:",
+            text: "nav.rulesOfTheRoad.theDriver.driversDuties.question.6.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "If the driver feels ill, the passenger in the front seat should immediately take control of the steering.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "People or animals may not occupy the running board of a car while it is moving.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "A truck transporting farm workers must have sides at least 450mm high if they are sitting.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.6.option.2.text",
                 },
             ],
         },
         {
             id: "15",
             answer: "A",
-            text:
-                "Your car is overloaded if all passengers do not have at least ... of seat space.",
+            text: "nav.rulesOfTheRoad.theDriver.driversDuties.question.7.text",
             option: [
                 {
                     id: "A",
-                    value: "380mm",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "360mm",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "3.6m",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.7.option.2.text",
                 },
             ],
         },
         {
             id: "16",
             answer: "B",
-            text: "When transporting animals inside a light motor vehicle you must:",
+            text: "nav.rulesOfTheRoad.theDriver.driversDuties.question.8.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Make sure they are tied up so that they cannot move around in the vehicle.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.8.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Not allow your view to be obstructed.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.8.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Apply for the relevant permit from your local authorities.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.8.option.2.text",
                 },
             ],
         },
         {
             id: "230",
             answer: "B",
-            text: "When you hear an emergency vehicle's siren you should:",
+            text: "nav.rulesOfTheRoad.theDriver.driversDuties.question.9.text",
             option: [
                 {
                     id: "A",
-                    value: "Warn other drivers using your emergency warning lights.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.9.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Give way immediately.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.9.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Stop immediately.",
+                    value: "nav.rulesOfTheRoad.theDriver.driversDuties.question.9.option.2.text",
                 },
             ],
         },
@@ -373,61 +367,57 @@ const questionData: QuestionData = {
         {
             id: "17",
             answer: "C",
-            text:
-                "In the case of an accident outside an urban area the first thing you must do is:",
+            text: "nav.rulesOfTheRoad.theDriver.accidents.question.0.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Move the cars immediately as other drivers will be approaching at high speed.",
+                    value: "nav.rulesOfTheRoad.theDriver.accidents.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Set up an emergency triangle 45m from your vehicle in the direction of approaching traffic.",
+                    value: "nav.rulesOfTheRoad.theDriver.accidents.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Establish if anyone is injured.",
+                    value: "nav.rulesOfTheRoad.theDriver.accidents.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "18",
             answer: "B",
-            text: "The following information should be exchanged at an accident scene:",
+            text: "nav.rulesOfTheRoad.theDriver.accidents.question.1.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Whether the other driver was under the influence of narcotic drugs or alcohol.",
+                    value: "nav.rulesOfTheRoad.theDriver.accidents.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The make, model and registration number of the other vehicle.",
+                    value: "nav.rulesOfTheRoad.theDriver.accidents.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "It should be agreed who caused the accident.",
+                    value: "nav.rulesOfTheRoad.theDriver.accidents.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "19",
             answer: "C",
-            text: "After being involved in an accident you are not required to stop if:",
+            text: "nav.rulesOfTheRoad.theDriver.accidents.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "There is no damage to either vehicle.",
+                    value: "nav.rulesOfTheRoad.theDriver.accidents.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "It is between the hours of sunrise and sunset and in a dangerous area.",
+                    value: "nav.rulesOfTheRoad.theDriver.accidents.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You are always required to stop.",
+                    value: "nav.rulesOfTheRoad.theDriver.accidents.question.2.option.2.text",
                 },
             ],
         },
@@ -436,43 +426,43 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "Which of the following is true? ",
-                    "(1) The driver of each vehicle is required to help the passengers from his/her vehicle. ",
-                    "(2) You may move the cars immediately if somebody was injured in an urban area and the ambulance has been called, as long as no-one was killed. ",
-                    "(3) If someone was killed inside an urban area you may not move the cars unless they are completely obstructing traffic, and only after marking their positions clearly on the road.",
+                    "nav.rulesOfTheRoad.theDriver.accidents.question.3.text.list.0.text",
+                    "nav.rulesOfTheRoad.theDriver.accidents.question.3.text.list.1.text",
+                    "nav.rulesOfTheRoad.theDriver.accidents.question.3.text.list.2.text",
+                    "nav.rulesOfTheRoad.theDriver.accidents.question.3.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3) are true.",
+                    value: "nav.rulesOfTheRoad.theDriver.accidents.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (2) and (3) are true.",
+                    value: "nav.rulesOfTheRoad.theDriver.accidents.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (3) is true.",
+                    value: "nav.rulesOfTheRoad.theDriver.accidents.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "21",
             answer: "A",
-            text: "In the case of all accidents:",
+            text: "nav.rulesOfTheRoad.theDriver.accidents.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "You must establish what damage was caused.",
+                    value: "nav.rulesOfTheRoad.theDriver.accidents.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The police must be called immediately.",
+                    value: "nav.rulesOfTheRoad.theDriver.accidents.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You should not drink or take drugs for 24 hours following an accident.",
+                    value: "nav.rulesOfTheRoad.theDriver.accidents.question.4.option.2.text",
                 },
             ],
         },
@@ -481,81 +471,76 @@ const questionData: QuestionData = {
         {
             id: "22",
             answer: "B",
-            text: "When you have taken narcotic drugs under the direction of a doctor:",
+            text: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.0.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "You must carry the prescription with you at all times while you are driving.",
+                    value: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You may not drive at all.",
+                    value: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may not drive for one hour after taking the drugs.",
+                    value: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "23",
             answer: "B",
-            text: "If requested to give a blood or breath sample by a traffic officer:",
+            text: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.1.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "You should contact an attorney to be present before you give the sample.",
+                    value: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You may not smoke until you have given the sample.",
+                    value: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "You may refuse to give the sample if you have already given a sample within the last 24 hours.",
+                    value: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "24",
             answer: "C",
-            text: "With regard to blood alcohol levels:",
+            text: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "One shot of spirits is roughly equivalent to two beers.",
+                    value: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Two units of alcohol over a period of two hours is under the limit for males.",
+                    value: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "The amount of alcohol that needs to be consumed to become legally drunk varies from person to person.",
+                    value: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "25",
             answer: "B",
-            text: "In South Africa, the legal limit for blood alcohol level is:",
+            text: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "0.2g per 100ml of blood for professional drivers.",
+                    value: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "0.05g per 100ml of blood for normal drivers.",
+                    value: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "0.24g per 100ml of blood for normal drivers.",
+                    value: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.3.option.2.text",
                 },
             ],
         },
@@ -564,24 +549,24 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "Which of the following is true? ",
-                    "(1) You may not sit in the driver's seat of a car with the engine running if you are over the legal alcohol limit. ",
-                    "(2) An underweight female is likely to get drunk more quickly than an overweight male. ",
-                    "(3) It is possible to still be over the legal limit the morning after you were drinking.",
+                    "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.4.text.list.0.text",
+                    "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.4.text.list.1.text",
+                    "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.4.text.list.2.text",
+                    "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.4.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "All of them are true.",
+                    value: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "None of them is true.",
+                    value: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (3) is true.",
+                    value: "nav.rulesOfTheRoad.theDriver.alcoholDrugs.question.4.option.2.text",
                 },
             ],
         },
@@ -590,39 +575,38 @@ const questionData: QuestionData = {
         {
             id: "27",
             answer: "C",
-            text: "Cellphones may be used while driving:",
+            text: "nav.rulesOfTheRoad.theDriver.cellphones.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Only by off-duty emergency personnel.",
+                    value: "nav.rulesOfTheRoad.theDriver.cellphones.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only when held in the left hand.",
+                    value: "nav.rulesOfTheRoad.theDriver.cellphones.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only when using a hands free kit.",
+                    value: "nav.rulesOfTheRoad.theDriver.cellphones.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "28",
             answer: "C",
-            text:
-                "Communications devices other than cellphones, for example hand-held radios, may be used:",
+            text: "nav.rulesOfTheRoad.theDriver.cellphones.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "On roads outside urban areas.",
+                    value: "nav.rulesOfTheRoad.theDriver.cellphones.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "By drivers who cannot use cellphones because of traffic restrictions.",
+                    value: "nav.rulesOfTheRoad.theDriver.cellphones.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "By traffic officers in the course of their duties.",
+                    value: "nav.rulesOfTheRoad.theDriver.cellphones.question.1.option.2.text",
                 },
             ],
         },
@@ -631,39 +615,44 @@ const questionData: QuestionData = {
         {
             id: "29",
             answer: "B",
-            text: "Hindering traffic is not allowed. Hindering traffic means:",
+            text: "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Following too closely behind other cars.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Disrupting traffic flow on a public road.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Littering on a public road.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "30",
             answer: "C",
-            text:
-                "Putting traffic cones on the road to stop traffic from entering a section of the road is only allowed when:",
+            text: "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "You are engaged in a film-shoot within an urban area.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "It is in front of property that you own.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Not at all.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.1.option.2.text",
                 },
             ],
         },
@@ -672,63 +661,71 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "Which of the following do you need official permission to organise on a public road?",
-                    "(1) A speed trial.",
-                    "(2) A marathon. ",
-                    "(3) A convoy.",
+                    "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.2.text.list.0.text",
+                    "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.2.text.list.1.text",
+                    "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.2.text.list.2.text",
+                    "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.2.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3).",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (2) only.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(1) only.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "32",
             answer: "C",
-            text: "With regard to parking your vehicle on a pavement:",
+            text: "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "You may only do so in front of a property that you own or are renting.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.3.option.0.text",
                 },
                 {
                     id: "B",
                     value:
-                        "You may only move a vehicle onto a pavement for the amount of time that it takes you to offload goods and/or passengers.",
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may never move a vehicle on a pavement.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "33",
             answer: "A",
-            text: "Damage to public roads is not allowed. This includes:",
+            text: "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "Dragging or spinning your wheels.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Towing a trailer heavier than 3 500kg.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Reversing at speeds greater than 60km/h.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.4.option.2.text",
                 },
             ],
         },
@@ -737,62 +734,71 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "Which of the following may be offences?",
-                    "(1) Playing loud music if your house is within 10m of a major road where the noise could distract drivers.",
-                    "(2) Erecting a bright light outside your house which could distract drivers.",
-                    "(3) Pouring used oil from your car's engine out on a public road.",
+                    "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.5.text.list.0.text",
+                    "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.5.text.list.1.text",
+                    "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.5.text.list.2.text",
+                    "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.5.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "All of them are offences.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (2) are offences.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(2) and (3) are offences.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.5.option.2.text",
                 },
             ],
         },
         {
             id: "35",
             answer: "A",
-            text: "Chocks or shoes may not be used because:",
+            text: "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.6.text",
             option: [
                 {
                     id: "A",
-                    value: "They can damage the road.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "They can damage your wheels.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "They can distract other drivers.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.6.option.2.text",
                 },
             ],
         },
         {
             id: "36",
             answer: "A",
-            text: "In which place is it a traffic offence to pour fuel?",
+            text: "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.7.text",
             option: [
                 {
                     id: "A",
-                    value: "Into running water.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "In your driveway.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Into your sewage system.",
+                    value:
+                        "nav.rulesOfTheRoad.theRoad.damageToPublicRoads.question.7.option.2.text",
                 },
             ],
         },
@@ -801,61 +807,57 @@ const questionData: QuestionData = {
         {
             id: "37",
             answer: "C",
-            text: "You may not sell or display goods on or alongside a public road:",
+            text: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Within 5m of the roadway outside an urban area.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Within 5m of a level crossing or blind corner in an urban area.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Within 5m of an intersection in an urban area.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "38",
             answer: "B",
-            text: "With regard to pedestrian crossings:",
+            text: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.1.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "At a guarded pedestrian crossing, pedestrians may cross at any time if no cars are approaching.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "At an unguarded pedestrian crossing, drivers must slow down or stop if there are pedestrians on or entering the crossing.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "At an unguarded pedestrian crossing, cars have right of way.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "39",
             answer: "B",
-            text: "Duties of pedestrians include:",
+            text: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "If there is a pavement, pedestrians must walk facing oncoming traffic.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "At an unguarded pedestrian crossing, pedestrians may not enter the crossing suddenly.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "Pedestrians may only cross the road at an intersection, or within 50m of it.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.2.option.2.text",
                 },
             ],
         },
@@ -864,103 +866,100 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "Which of the following is true:",
-                    "(1) If there is no pavement pedestrians must walk as close to the right edge of the road as possible.",
-                    "(2) Pedestrians may cross the road 180m away from an intersection.",
-                    "(3) At a guarded pedestrian crossing, pedestrians must obey the lights even when the road is clear.",
+                    "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.3.text.list.0.text",
+                    "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.3.text.list.1.text",
+                    "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.3.text.list.2.text",
+                    "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.3.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3) are all true.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (1) and (3) are true.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (3) is true.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "41",
             answer: "C",
-            text: "Pedestrians are required to:",
+            text: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.4.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Wear reflectors when on a public road within the hours of sunset and sunrise.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Make sure that they walk only within designated pedestrian malls.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Ensure that the road is safe before crossing as quickly as possible.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.4.option.2.text",
                 },
             ],
         },
         {
             id: "42",
             answer: "A",
-            text: "Cyclists are not allowed to:",
+            text: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.5.text",
             option: [
                 {
                     id: "A",
-                    value: "Drive while any of the wheels are not in contact with the road.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Carry animals on their pedal cycles.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Drive in a line of more than two cyclists behind each other.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.5.option.2.text",
                 },
             ],
         },
         {
             id: "43",
             answer: "B",
-            text: "When overtaking another cyclist, a cyclist must:",
+            text: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.6.text",
             option: [
                 {
                     id: "A",
-                    value: "Signal his intention clearly and in good time.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Make sure that only one cyclist at a time is overtaking the same person.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Keep a clear space of at least 1.5m between the two pedal cycles.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.6.option.2.text",
                 },
             ],
         },
         {
             id: "44",
             answer: "C",
-            text:
-                "If there is a designated part of the road set aside for cyclists, this must be used:",
+            text: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.7.text",
             option: [
                 {
                     id: "A",
-                    value: "During peak traffic periods in the mornings and evenings.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "By cars transporting bicycles.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "By cyclists at all times.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.7.option.2.text",
                 },
             ],
         },
@@ -969,43 +968,43 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "When herding animals on a public road:",
-                    "(1) You must carry a red flag (30mm square) during the day.",
-                    "(2) If the herd is more than 50 animals, you must carry a red light at the back of the herd during the hours between sunset and sunrise.",
-                    "(3) When herding animals on a freeway, you must carry red flags 150m to the front and to the back of the herd.",
+                    "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.8.text.list.0.text",
+                    "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.8.text.list.1.text",
+                    "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.8.text.list.2.text",
+                    "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.8.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "All of them are true.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.8.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "None of them is true.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.8.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (1) is true.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.8.option.2.text",
                 },
             ],
         },
         {
             id: "46",
             answer: "A",
-            text: "Animals may be on a public road in an urban area if:",
+            text: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.9.text",
             option: [
                 {
                     id: "A",
-                    value: "They are being ridden.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.9.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "They carry an tag identifying the owner.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.9.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "They are within 180m of their owner's properties.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.9.option.2.text",
                 },
             ],
         },
@@ -1014,24 +1013,24 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "Which of the following are offences:",
-                    "(1) Transporting animals in a light motor vehicle.",
-                    "(2) Operating animal drawn vehicles within urban areas.",
-                    "(3) Herding animals on a public road.",
+                    "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.10.text.list.0.text",
+                    "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.10.text.list.1.text",
+                    "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.10.text.list.2.text",
+                    "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.10.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1) and (2) only are offences.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.10.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(3) only is an offence.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.10.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "None of them are offences.",
+                    value: "nav.rulesOfTheRoad.theRoad.peopleOnTheRoad.question.10.option.2.text",
                 },
             ],
         },
@@ -1040,39 +1039,38 @@ const questionData: QuestionData = {
         {
             id: "48",
             answer: "C",
-            text: "To operate an animal-drawn vehicle on a public road it must:",
+            text: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Be drawn by not more than two animals.",
+                    value: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Stay within 150mm of the edge of the road (kerb).",
+                    value: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "Be operated by reins if the driver is on the vehicle or else be led by a driver walking in front of the vehicle.",
+                    value: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "49",
             answer: "B",
-            text: "Attention should be paid to the ... of an animal drawn vehicle.",
+            text: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "Brakes.",
+                    value: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Harness.",
+                    value: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Speed.",
+                    value: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.1.option.2.text",
                 },
             ],
         },
@@ -1081,43 +1079,43 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "A vehicle is considered to be abandoned if:",
-                    "(1) It is parked in the same place on a public road in an urban are for more than 24 hours.",
-                    "(2) It does not have a valid licence plate.",
-                    "(3) It is parked in a no stopping area.",
+                    "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.2.text.list.0.text",
+                    "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.2.text.list.1.text",
+                    "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.2.text.list.2.text",
+                    "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.2.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3) are correct.",
+                    value: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (2) are correct.",
+                    value: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(2) and (3) are correct.",
+                    value: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "51",
             answer: "A",
-            text: "Abandoned vehicles:",
+            text: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "Can be sold if the owner does not recover them.",
+                    value: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Are considered to be stolen vehicles.",
+                    value: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Are vehicles that are parked at a vehicle testing station.",
+                    value: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.3.option.2.text",
                 },
             ],
         },
@@ -1126,24 +1124,24 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "At which of the following times may a convoy never travel?",
-                    "(1) On the Easter weekend.",
-                    "(2) After 18h00 on a Thursday evening.",
-                    "(3) During the Christmas holidays.",
+                    "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.4.text.list.0.text",
+                    "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.4.text.list.1.text",
+                    "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.4.text.list.2.text",
+                    "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.4.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1) is not allowed.",
+                    value: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (2) are not allowed.",
+                    value: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(1), (2) and (3) are all not allowed.",
+                    value: "nav.rulesOfTheRoad.theRoad.vehiclesOnTheRoad.question.4.option.2.text",
                 },
             ],
         },
@@ -1152,19 +1150,19 @@ const questionData: QuestionData = {
         {
             id: "53",
             answer: "B",
-            text: "... are not allowed on freeways.",
+            text: "nav.rulesOfTheRoad.theRoad.freeways.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Convoys.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Pedestrians.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Trucks with a gross vehicle mass of more than 8 000kg.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.0.option.2.text",
                 },
             ],
         },
@@ -1173,24 +1171,24 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "Which of the following may go on freeways?",
-                    "(1) Bicycles.",
-                    "(2) Quadrucycles.",
-                    "(3) Tricycles.",
+                    "nav.rulesOfTheRoad.theRoad.freeways.question.1.text.list.0.text",
+                    "nav.rulesOfTheRoad.theRoad.freeways.question.1.text.list.1.text",
+                    "nav.rulesOfTheRoad.theRoad.freeways.question.1.text.list.2.text",
+                    "nav.rulesOfTheRoad.theRoad.freeways.question.1.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "Only (2) is allowed.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(2) and (3) are allowed.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "None of them are allowed.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.1.option.2.text",
                 },
             ],
         },
@@ -1199,141 +1197,138 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "Which of the following may go on freeways?",
-                    "(1) Motorcycles with an engine capacity of between 25cc and 50cc.",
-                    "(2) Motorcycles with an engine capacity of between 50cc and 75cc.",
-                    "(3) Motorcycles with an engine capacity of between 75cc and 100cc.",
+                    "nav.rulesOfTheRoad.theRoad.freeways.question.2.text.list.0.text",
+                    "nav.rulesOfTheRoad.theRoad.freeways.question.2.text.list.1.text",
+                    "nav.rulesOfTheRoad.theRoad.freeways.question.2.text.list.2.text",
+                    "nav.rulesOfTheRoad.theRoad.freeways.question.2.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3) are allowed.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(2) and (3) only are allowed.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(3) only is allowed.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "56",
             answer: "B",
-            text: "Animal-drawn vehicles may go on freeways:",
+            text: "nav.rulesOfTheRoad.theRoad.freeways.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "During the daytime only (between the hours of sunrise and sunset).",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "At no times.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "If the animals are under the control of the driver by means of reins.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "57",
             answer: "A",
-            text: "It is allowed for ... to go on freeways.",
+            text: "nav.rulesOfTheRoad.theRoad.freeways.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "Tractors engaged in road maintenance or construction.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Electrically powered motorcycles.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Vehicles with a mass of 220kg and over.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.4.option.2.text",
                 },
             ],
         },
         {
             id: "58",
             answer: "B",
-            text: "Under normal circumstances on a freeway, you may not:",
+            text: "nav.rulesOfTheRoad.theRoad.freeways.question.5.text",
             option: [
                 {
                     id: "A",
-                    value: "Transport animals in a trailer.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Give hand signals.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Overtake.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.5.option.2.text",
                 },
             ],
         },
         {
             id: "59",
             answer: "C",
-            text: "The following people are allowed on foot on a freeway:",
+            text: "nav.rulesOfTheRoad.theRoad.freeways.question.6.text",
             option: [
                 {
                     id: "A",
-                    value: "Farm labourers, or people travelling to work.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Conservation officers.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Citizen Force members.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.6.option.2.text",
                 },
             ],
         },
         {
             id: "60",
             answer: "C",
-            text:
-                "You may drive across a solid road divider or island on a freeway only in the following circumstances:",
+            text: "nav.rulesOfTheRoad.theRoad.freeways.question.7.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "There has been an accident on the other side and you need to go and help.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You have missed your exit and there is not another one within 10km.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may not do so.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.7.option.2.text",
                 },
             ],
         },
         {
             id: "61",
             answer: "B",
-            text: "Under what circumstances may you stop on a freeway?",
+            text: "nav.rulesOfTheRoad.theRoad.freeways.question.8.text",
             option: [
                 {
                     id: "A",
-                    value: "Under no circumstances may you stop on a freeway.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.8.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "When instructed to do so by a traffic control officer.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.8.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "At any time apart from the Easter Weekend and Christmas Day/Day of Goodwill.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.8.option.2.text",
                 },
             ],
         },
@@ -1342,43 +1337,43 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "Animals are only allowed on a freeway if they are being:",
-                    "(1) Ridden.",
-                    "(2) Herded from one place to another.",
-                    "(3) Led by reins.",
+                    "nav.rulesOfTheRoad.theRoad.freeways.question.9.text.list.0.text",
+                    "nav.rulesOfTheRoad.theRoad.freeways.question.9.text.list.1.text",
+                    "nav.rulesOfTheRoad.theRoad.freeways.question.9.text.list.2.text",
+                    "nav.rulesOfTheRoad.theRoad.freeways.question.9.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "All of these are allowed.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.9.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "None of these is allowed.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.9.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (1) is allowed.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.9.option.2.text",
                 },
             ],
         },
         {
             id: "63",
             answer: "B",
-            text: "You may reverse on a freeway:",
+            text: "nav.rulesOfTheRoad.theRoad.freeways.question.10.text",
             option: [
                 {
                     id: "A",
-                    value: "As long as you are at least 1m from the edge line of the road.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.10.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "At no time.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.10.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only if you are picking up a Citizen Force member.",
+                    value: "nav.rulesOfTheRoad.theRoad.freeways.question.10.option.2.text",
                 },
             ],
         },
@@ -1389,44 +1384,43 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "Which of the following may you not do without the permission of the person lawfully in charge of a vehicle?",
-                    "(1) Climb on. ",
-                    "(2) Enter.",
-                    "(3) Drive.",
+                    "nav.rulesOfTheRoad.theCar.unauthorisedUse.question.0.text.list.0.text",
+                    "nav.rulesOfTheRoad.theCar.unauthorisedUse.question.0.text.list.1.text",
+                    "nav.rulesOfTheRoad.theCar.unauthorisedUse.question.0.text.list.2.text",
+                    "nav.rulesOfTheRoad.theCar.unauthorisedUse.question.0.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3).",
+                    value: "nav.rulesOfTheRoad.theCar.unauthorisedUse.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (1) and (2).",
+                    value: "nav.rulesOfTheRoad.theCar.unauthorisedUse.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (2) and (3).",
+                    value: "nav.rulesOfTheRoad.theCar.unauthorisedUse.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "65",
             answer: "A",
-            text:
-                "You may not alter the ... of a vehicle without consulting the registering authority.",
+            text: "nav.rulesOfTheRoad.theCar.unauthorisedUse.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "Chassis number.",
+                    value: "nav.rulesOfTheRoad.theCar.unauthorisedUse.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Colour.",
+                    value: "nav.rulesOfTheRoad.theCar.unauthorisedUse.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Insurance policy.",
+                    value: "nav.rulesOfTheRoad.theCar.unauthorisedUse.question.1.option.2.text",
                 },
             ],
         },
@@ -1435,40 +1429,38 @@ const questionData: QuestionData = {
         {
             id: "66",
             answer: "C",
-            text:
-                "At which hours may you not drive on a public road if your vehicle's lights are not working?",
+            text: "nav.rulesOfTheRoad.theCar.lights.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Between the hours of sunset and sunrise.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Between the hours of sunrise and sunset.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "At any time.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "67",
             answer: "B",
-            text:
-                "You headlights need to be able to be seen by a person of normal vision from a distance of ... away.",
+            text: "nav.rulesOfTheRoad.theCar.lights.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "30m",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "150m",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "180m",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.1.option.2.text",
                 },
             ],
         },
@@ -1477,83 +1469,81 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "At which times must you put on your headlights?",
-                    "(1) When you cannot see the road ahead clearly for a distance of at least 150m.",
-                    "(2) Between the hours of sunset and sunrise.",
-                    "(3) In rain and fog.",
+                    "nav.rulesOfTheRoad.theCar.lights.question.2.text.list.0.text",
+                    "nav.rulesOfTheRoad.theCar.lights.question.2.text.list.1.text",
+                    "nav.rulesOfTheRoad.theCar.lights.question.2.text.list.2.text",
+                    "nav.rulesOfTheRoad.theCar.lights.question.2.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3).",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(2) and (3) only.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(2) only.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "69",
             answer: "B",
-            text: "Other drivers can be blinded if:",
+            text: "nav.rulesOfTheRoad.theCar.lights.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "You use your dipped beams outside urban areas.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Your dipped beams hit the road more than 45m ahead of your car.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "You use your bright beams when you are following someone and there is no oncoming traffic.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "70",
             answer: "B",
-            text: "You should be able to see a person, vehicle or large object in the road:",
+            text: "nav.rulesOfTheRoad.theCar.lights.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "100m away with your dipped beams.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "100m away with your bright beams.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "150m away with your bright beams.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.4.option.2.text",
                 },
             ],
         },
         {
             id: "71",
             answer: "C",
-            text: "Parking lights should be used when you are parked:",
+            text: "nav.rulesOfTheRoad.theCar.lights.question.5.text",
             option: [
                 {
                     id: "A",
-                    value: "Within 1m of the edge of the road.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "In a demarcated parking area in an urban area.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "More than 12m from the closest streetlight outside a demarcated parking area in an urban area.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.5.option.2.text",
                 },
             ],
         },
@@ -1562,121 +1552,119 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "Which of the following should you use to drive if your headlights are not working and it is nighttime?",
-                    "(1) Parking lights.",
-                    "(2) Emergency warning lights.",
-                    "Brake lights.",
+                    "nav.rulesOfTheRoad.theCar.lights.question.6.text.list.0.text",
+                    "nav.rulesOfTheRoad.theCar.lights.question.6.text.list.1.text",
+                    "nav.rulesOfTheRoad.theCar.lights.question.6.text.list.2.text",
+                    "nav.rulesOfTheRoad.theCar.lights.question.6.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "Any one of (1), (2) or (3)",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "None of them. You should not drive.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may only use (1).",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.6.option.2.text",
                 },
             ],
         },
         {
             id: "73",
             answer: "A",
-            text: "Adjustable spotlights may be used by the following people on a public road:",
+            text: "nav.rulesOfTheRoad.theCar.lights.question.7.text",
             option: [
                 {
                     id: "A",
-                    value: "Vets",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Farmers",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Four-wheel drive vehicles.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.7.option.2.text",
                 },
             ],
         },
         {
             id: "74",
             answer: "A",
-            text: "Brake lights must be able to be seen:",
+            text: "nav.rulesOfTheRoad.theCar.lights.question.8.text",
             option: [
                 {
                     id: "A",
-                    value: "In normal sunlight, 30m away.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.8.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "At night, 30m away.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.8.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "In normal sunlight, 45m away.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.8.option.2.text",
                 },
             ],
         },
         {
             id: "75",
             answer: "C",
-            text: "Which of the following is correct?",
+            text: "nav.rulesOfTheRoad.theCar.lights.question.9.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "If you are travelling on a freeway and your brake lights are not working you must use emergency warning lights.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.9.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Your rear lamps must be brighter than your brake lights.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.9.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "Both your brake lights must be working for you to use your vehicle on a public road.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.9.option.2.text",
                 },
             ],
         },
         {
             id: "76",
             answer: "C",
-            text: "You may not take your vehicle on a public road if:",
+            text: "nav.rulesOfTheRoad.theCar.lights.question.10.text",
             option: [
                 {
                     id: "A",
-                    value: "One of your front indicators is not working.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.10.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "One of your back indicators is not working.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.10.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Any of your indicators is not working.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.10.option.2.text",
                 },
             ],
         },
         {
             id: "77",
             answer: "B",
-            text: "If you are using your emergency warning lights you must:",
+            text: "nav.rulesOfTheRoad.theCar.lights.question.11.text",
             option: [
                 {
                     id: "A",
-                    value: "Keep your headlights on.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.11.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Use hand signals to show when you are turning.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.11.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Emergency warning lights may only be used by emergency personnel.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.11.option.2.text",
                 },
             ],
         },
@@ -1685,63 +1673,62 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "In which of the following situations may you use your emergency warning lights?",
-                    "(1) Your indicators are not working.",
-                    "(2) You are travelling on a freeway at speeds greater than 120km/h.",
-                    "(3) You are being towed.",
+                    "nav.rulesOfTheRoad.theCar.lights.question.12.text.list.0.text",
+                    "nav.rulesOfTheRoad.theCar.lights.question.12.text.list.1.text",
+                    "nav.rulesOfTheRoad.theCar.lights.question.12.text.list.2.text",
+                    "nav.rulesOfTheRoad.theCar.lights.question.12.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "In any of these situations.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.12.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "In none of these situations.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.12.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only in situation (3).",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.12.option.2.text",
                 },
             ],
         },
         {
             id: "79",
             answer: "B",
-            text: "In order to be roadworthy, all cars must have:",
+            text: "nav.rulesOfTheRoad.theCar.lights.question.13.text",
             option: [
                 {
                     id: "A",
-                    value: "Two white reflectors on the back of the vehicle.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.13.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Emergency warning lights that all flash at the same time.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.13.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Adjustable spotlights in working order.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.13.option.2.text",
                 },
             ],
         },
         {
             id: "80",
             answer: "A",
-            text: "Animal drawn vehicles should have:",
+            text: "nav.rulesOfTheRoad.theCar.lights.question.14.text",
             option: [
                 {
                     id: "A",
-                    value: "White lights on the front and red lights at the back.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.14.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Red reflectors on the sides of the vehicle.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.14.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "A person leading the animals carrying a red light at the head of the first animal.",
+                    value: "nav.rulesOfTheRoad.theCar.lights.question.14.option.2.text",
                 },
             ],
         },
@@ -1750,40 +1737,38 @@ const questionData: QuestionData = {
         {
             id: "81",
             answer: "A",
-            text: "It is an offence to:",
+            text: "nav.rulesOfTheRoad.theCar.seatBelts.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Permanently remove seatbelts from your car.",
+                    value: "nav.rulesOfTheRoad.theCar.seatBelts.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Allow passengers to sit in the back if the car has no seatbelts fitted in the back.",
+                    value: "nav.rulesOfTheRoad.theCar.seatBelts.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Use a child restraint instead of a seatbelt for a child.",
+                    value: "nav.rulesOfTheRoad.theCar.seatBelts.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "82",
             answer: "C",
-            text:
-                "If there is no seatbelt in the front passenger seat, the following people must sit in the back:",
+            text: "nav.rulesOfTheRoad.theCar.seatBelts.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "People over 1.4m tall.",
+                    value: "nav.rulesOfTheRoad.theCar.seatBelts.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "People who only have their learner's licences.",
+                    value: "nav.rulesOfTheRoad.theCar.seatBelts.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Children under the age of 14.",
+                    value: "nav.rulesOfTheRoad.theCar.seatBelts.question.1.option.2.text",
                 },
             ],
         },
@@ -1792,44 +1777,43 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "Any seatbelts fitted in the car must be worn:",
-                    "(1) In the front seats only.",
-                    "(2) In urban areas only.",
-                    "(3) Between the hours of sunset and sunrise only.",
+                    "nav.rulesOfTheRoad.theCar.seatBelts.question.2.text.list.0.text",
+                    "nav.rulesOfTheRoad.theCar.seatBelts.question.2.text.list.1.text",
+                    "nav.rulesOfTheRoad.theCar.seatBelts.question.2.text.list.2.text",
+                    "nav.rulesOfTheRoad.theCar.seatBelts.question.2.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3) are true.",
+                    value: "nav.rulesOfTheRoad.theCar.seatBelts.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "None of them is true.",
+                    value: "nav.rulesOfTheRoad.theCar.seatBelts.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (1) is true.",
+                    value: "nav.rulesOfTheRoad.theCar.seatBelts.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "84",
             answer: "B",
-            text:
-                "In which situation do you not have to wear a seatbelt if one is fitted in your seat?",
+            text: "nav.rulesOfTheRoad.theCar.seatBelts.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "When you are over 1.4m tall.",
+                    value: "nav.rulesOfTheRoad.theCar.seatBelts.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "When you are reversing.",
+                    value: "nav.rulesOfTheRoad.theCar.seatBelts.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "When you are on a two-lane road.",
+                    value: "nav.rulesOfTheRoad.theCar.seatBelts.question.3.option.2.text",
                 },
             ],
         },
@@ -1838,57 +1822,57 @@ const questionData: QuestionData = {
         {
             id: "85",
             answer: "B",
-            text: "Your tyre tread must be deeper than:",
+            text: "nav.rulesOfTheRoad.theCar.tyres.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "25mm all over",
+                    value: "nav.rulesOfTheRoad.theCar.tyres.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "1mm all over",
+                    value: "nav.rulesOfTheRoad.theCar.tyres.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "10mm all over",
+                    value: "nav.rulesOfTheRoad.theCar.tyres.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "86",
             answer: "C",
-            text: "If you have lumps or bulges on your tyre they must be:",
+            text: "nav.rulesOfTheRoad.theCar.tyres.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "Less than 25mm in diameter.",
+                    value: "nav.rulesOfTheRoad.theCar.tyres.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Less than 1mm high.",
+                    value: "nav.rulesOfTheRoad.theCar.tyres.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may not have any lumps or bulges on your tyre.",
+                    value: "nav.rulesOfTheRoad.theCar.tyres.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "87",
             answer: "B",
-            text: "You may not have any ... showing on your tyre:",
+            text: "nav.rulesOfTheRoad.theCar.tyres.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "Tread pattern",
+                    value: "nav.rulesOfTheRoad.theCar.tyres.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Steel belts",
+                    value: "nav.rulesOfTheRoad.theCar.tyres.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Cuts of less than 10% of the tyre width.",
+                    value: "nav.rulesOfTheRoad.theCar.tyres.question.2.option.2.text",
                 },
             ],
         },
@@ -1897,24 +1881,24 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "Which of the following is true? ",
-                    "(1) Your car is roadworthy if you can see the tread pattern on at least three of your tyres.",
-                    "(2) You may drive with tyres where the inner cords are showing as long as this is only on one of the tyres and you are carrying a spare tyre.",
-                    "(3) You are required to know how to change a tyre in order to obtain your driver's licence.",
+                    "nav.rulesOfTheRoad.theCar.tyres.question.3.text.list.0.text",
+                    "nav.rulesOfTheRoad.theCar.tyres.question.3.text.list.1.text",
+                    "nav.rulesOfTheRoad.theCar.tyres.question.3.text.list.2.text",
+                    "nav.rulesOfTheRoad.theCar.tyres.question.3.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "All of them are true.",
+                    value: "nav.rulesOfTheRoad.theCar.tyres.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "None of them is true.",
+                    value: "nav.rulesOfTheRoad.theCar.tyres.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (1) and (2) are true.",
+                    value: "nav.rulesOfTheRoad.theCar.tyres.question.3.option.2.text",
                 },
             ],
         },
@@ -1925,121 +1909,119 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "Which of the following are required in order for your car to be roadworthy?",
-                    "(1) An anti-theft device.",
-                    "(2) Tinted windscreens.",
-                    "(3) A working speedometer.",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.0.text.list.0.text",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.0.text.list.1.text",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.0.text.list.2.text",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.0.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1) and (3) only.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(3) only.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(1) only.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "90",
             answer: "A",
-            text:
-                "If you turn your steering wheel the wheels must start to turn before you have turned the wheel more than:",
+            text: "nav.rulesOfTheRoad.theCar.otherEquipment.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "45 degrees.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "90 degrees.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "180 degrees.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "91",
             answer: "B",
-            text: "An anti-theft device may not interfere with:",
+            text: "nav.rulesOfTheRoad.theCar.otherEquipment.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "The fuel system of the car.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The braking system of the car.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "The ignition system of the car.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "92",
             answer: "C",
-            text: "The service brake of a light motor vehicle is also known as the:",
+            text: "nav.rulesOfTheRoad.theCar.otherEquipment.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "Parking brake",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Emergency brake",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Foot brake",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "93",
             answer: "A",
-            text: "The parking brake of a light motor vehicle is also know as the:",
+            text: "nav.rulesOfTheRoad.theCar.otherEquipment.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "Hand brake",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Service brake",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Foot brake",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.4.option.2.text",
                 },
             ],
         },
         {
             id: "94",
             answer: "B",
-            text:
-                "If you were travelling at a speed of 35km/h, your service brake needs to be able to stop the car within a distance of",
+            text: "nav.rulesOfTheRoad.theCar.otherEquipment.question.5.text",
             option: [
                 {
                     id: "A",
-                    value: "10m",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "14m",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "35m",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.5.option.2.text",
                 },
             ],
         },
@@ -2048,62 +2030,62 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "In order to ensure that the driver has clear vision, windscreens may not:",
-                    "(1) Be cracked. ",
-                    "(2) Be tinted.",
-                    "(3) Be dirty.",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.6.text.list.0.text",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.6.text.list.1.text",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.6.text.list.2.text",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.6.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3) are correct.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "None of them is correct.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(1) and (3) only are correct.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.6.option.2.text",
                 },
             ],
         },
         {
             id: "96",
             answer: "C",
-            text: "Your car is not roadworthy unless:",
+            text: "nav.rulesOfTheRoad.theCar.otherEquipment.question.7.text",
             option: [
                 {
                     id: "A",
-                    value: "Both of your windscreen wipers work.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The windscreen wiper in front of the passenger works.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "The windscreen wiper in front of the driver works.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.7.option.2.text",
                 },
             ],
         },
         {
             id: "97",
             answer: "A",
-            text: "An exterior rear-view mirror on the passenger side is a requirement in:",
+            text: "nav.rulesOfTheRoad.theCar.otherEquipment.question.8.text",
             option: [
                 {
                     id: "A",
-                    value: "Minibuses.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.8.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "All vehicles.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.8.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Bakkies.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.8.option.2.text",
                 },
             ],
         },
@@ -2112,62 +2094,62 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "Which of the following regarding the vehicle's doors are true?",
-                    "(1) A light motor vehicle is required to have 4 opening doors.",
-                    "(2) The doors are required to open from the inside but not necessarily from the outside.",
-                    "(3) It is the driver's responsibility to ensure that passengers know how to open their doors.",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.9.text.list.0.text",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.9.text.list.1.text",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.9.text.list.2.text",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.9.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "None of them is true.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.9.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) only is true.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.9.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(3) only is true.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.9.option.2.text",
                 },
             ],
         },
         {
             id: "99",
             answer: "B",
-            text: "You may not drive when:",
+            text: "nav.rulesOfTheRoad.theCar.otherEquipment.question.10.text",
             option: [
                 {
                     id: "A",
-                    value: "Your fuel cap is closed but unlocked.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.10.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Your doors are open.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.10.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Your doors are unlocked.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.10.option.2.text",
                 },
             ],
         },
         {
             id: "100",
             answer: "C",
-            text: "If your car cannot reverse then:",
+            text: "nav.rulesOfTheRoad.theCar.otherEquipment.question.11.text",
             option: [
                 {
                     id: "A",
-                    value: "You may drive it in urban areas, but not on freeways.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.11.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You may drive it only in order to get it to a repair centre.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.11.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may not drive it on any public road.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.11.option.2.text",
                 },
             ],
         },
@@ -2176,62 +2158,62 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "You may use your hooter in order to:",
-                    "(1) Signal that you are travelling at faster than the speed limit in an emergency situation.",
-                    "(2) Alert a driver whose vehicle is smoking excessively.",
-                    "(3) In order to prevent an accident.",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.12.text.list.0.text",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.12.text.list.1.text",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.12.text.list.2.text",
+                    "nav.rulesOfTheRoad.theCar.otherEquipment.question.12.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "All three of them are true.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.12.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (1) and (3) are true.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.12.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (3) is true.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.12.option.2.text",
                 },
             ],
         },
         {
             id: "102",
             answer: "B",
-            text: "You must be able to hear the hooter for at least:",
+            text: "nav.rulesOfTheRoad.theCar.otherEquipment.question.13.text",
             option: [
                 {
                     id: "A",
-                    value: "30m",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.13.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "90m",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.13.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "150m",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.13.option.2.text",
                 },
             ],
         },
         {
             id: "103",
             answer: "A",
-            text: "You may not drive when:",
+            text: "nav.rulesOfTheRoad.theCar.otherEquipment.question.14.text",
             option: [
                 {
                     id: "A",
-                    value: "Your vehicle is making excessive smoke.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.14.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Your windows are open.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.14.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You are playing music.",
+                    value: "nav.rulesOfTheRoad.theCar.otherEquipment.question.14.option.2.text",
                 },
             ],
         },
@@ -2242,46 +2224,43 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "Emergency triangles must be carried in:",
-                    "(1) Bakkies.",
-                    "(2) Caravans.",
-                    "(3) Minibuses.",
+                    "nav.rulesOfTheRoad.theCar.emergencyTriangles.question.0.text.list.0.text",
+                    "nav.rulesOfTheRoad.theCar.emergencyTriangles.question.0.text.list.1.text",
+                    "nav.rulesOfTheRoad.theCar.emergencyTriangles.question.0.text.list.2.text",
+                    "nav.rulesOfTheRoad.theCar.emergencyTriangles.question.0.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "All of them.",
+                    value: "nav.rulesOfTheRoad.theCar.emergencyTriangles.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (2) and (3).",
+                    value: "nav.rulesOfTheRoad.theCar.emergencyTriangles.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (1) and (2).",
+                    value: "nav.rulesOfTheRoad.theCar.emergencyTriangles.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "105",
             answer: "C",
-            text: "You must display the emergency triangle:",
+            text: "nav.rulesOfTheRoad.theCar.emergencyTriangles.question.1.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "When your vehicle is stationary because of traffic and with the driver still in the vehicle.",
+                    value: "nav.rulesOfTheRoad.theCar.emergencyTriangles.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "When you are stopped in a designated parking area outside an urban area.",
+                    value: "nav.rulesOfTheRoad.theCar.emergencyTriangles.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "At least 45m from your vehicle in the direction from which traffic will approach.",
+                    value: "nav.rulesOfTheRoad.theCar.emergencyTriangles.question.1.option.2.text",
                 },
             ],
         },
@@ -2290,98 +2269,95 @@ const questionData: QuestionData = {
         {
             id: "106",
             answer: "C",
-            text: "When transporting goods on a vehicle:",
+            text: "nav.rulesOfTheRoad.theCar.transportingGoods.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "You may only use a bakkie, trailer or truck.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You must display an emergency triangle.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "The goods must be securely fastened.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "107",
             answer: "B",
-            text: "The only thing that may touch the road is:",
+            text: "nav.rulesOfTheRoad.theCar.transportingGoods.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "A warning flag to show that you are transporting goods.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "A static chain.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "The rope that is tying the goods.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "108",
             answer: "B",
-            text: "If the goods are obstructing your view, then:",
+            text: "nav.rulesOfTheRoad.theCar.transportingGoods.question.2.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "You must at least be able to see out through the exterior passenger side window.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You must rearrange the load.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You should drive with your emergency warning lights on.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "109",
             answer: "A",
-            text:
-                "The only time when the goods may be higher than half the height of the vehicle when carried on the roof is when:",
+            text: "nav.rulesOfTheRoad.theCar.transportingGoods.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "You are carrying bicycles.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You are using a bakkie.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You are transporting quadrucycles.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "110",
             answer: "B",
-            text:
-                "For a light motor vehicle, the goods may not be wider than ... at their widest point.",
+            text: "nav.rulesOfTheRoad.theCar.transportingGoods.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "1.8m",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "2.5m",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "4.3m",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.4.option.2.text",
                 },
             ],
         },
@@ -2390,45 +2366,43 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "The dimensions of the load should be:",
-                    "(1) Not projecting more than 300mm at the front and 1.8m at the back.",
-                    "(2) Not more than half the height of the vehicle if carried on the roof.",
-                    "(3) Not projecting more than 2.5m on each side of the vehicle.",
+                    "nav.rulesOfTheRoad.theCar.transportingGoods.question.5.text.list.0.text",
+                    "nav.rulesOfTheRoad.theCar.transportingGoods.question.5.text.list.1.text",
+                    "nav.rulesOfTheRoad.theCar.transportingGoods.question.5.text.list.2.text",
+                    "nav.rulesOfTheRoad.theCar.transportingGoods.question.5.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3) are correct.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (3) only are correct.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(1) and (2) only are correct.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.5.option.2.text",
                 },
             ],
         },
         {
             id: "112",
             answer: "C",
-            text: "With regard to warning markings when you are transporting goods:",
+            text: "nav.rulesOfTheRoad.theCar.transportingGoods.question.6.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "You must use warning markings if the load projects 30mm from the rear of the vehicle.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You must use yellow reflectors on each corner at the back at night.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "You should mark projecting loads with red flags 300mm square during the day.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.6.option.2.text",
                 },
             ],
         },
@@ -2437,24 +2411,24 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "If the load projects more than 300mm from the back or 150mm from the sides and is more than 600mm wide you must mark it at night with:",
-                    "(1) White reflectors or lights at the front.",
-                    "(2) Red reflectors or lights at the back.",
-                    "(3) Yellow reflectors or lights on the sides.",
+                    "nav.rulesOfTheRoad.theCar.transportingGoods.question.7.text.list.0.text",
+                    "nav.rulesOfTheRoad.theCar.transportingGoods.question.7.text.list.1.text",
+                    "nav.rulesOfTheRoad.theCar.transportingGoods.question.7.text.list.2.text",
+                    "nav.rulesOfTheRoad.theCar.transportingGoods.question.7.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3) are correct.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (3) only are correct.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(1) and (2) only are correct.",
+                    value: "nav.rulesOfTheRoad.theCar.transportingGoods.question.7.option.2.text",
                 },
             ],
         },
@@ -2463,21 +2437,19 @@ const questionData: QuestionData = {
         {
             id: "114",
             answer: "B",
-            text: "When you are carrying passengers:",
+            text: "nav.rulesOfTheRoad.theCar.numberOfPassengers.question.0.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "If the passengers are paying they must have at least 300mm of seat space each.",
+                    value: "nav.rulesOfTheRoad.theCar.numberOfPassengers.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Any passenger must have at least 380mm of seat space.",
+                    value: "nav.rulesOfTheRoad.theCar.numberOfPassengers.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "You may not carry more than 3 children under the age of 3 on people's laps.",
+                    value: "nav.rulesOfTheRoad.theCar.numberOfPassengers.question.0.option.2.text",
                 },
             ],
         },
@@ -2486,41 +2458,38 @@ const questionData: QuestionData = {
         {
             id: "115",
             answer: "B",
-            text:
-                "If there are no speed limit signs, the general speed limit in urban areas (cities and towns) is:",
+            text: "nav.rulesOfTheRoad.driving.speedLimits.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "80",
+                    value: "nav.rulesOfTheRoad.driving.speedLimits.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "60",
+                    value: "nav.rulesOfTheRoad.driving.speedLimits.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "100",
+                    value: "nav.rulesOfTheRoad.driving.speedLimits.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "116",
             answer: "A",
-            text: "Which of the following is false?",
+            text: "nav.rulesOfTheRoad.driving.speedLimits.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "The maximum speed limit for tractors on public roads is 80km/h.",
+                    value: "nav.rulesOfTheRoad.driving.speedLimits.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Minibuses carrying paying passengers may never travel faster than 100km/h.",
+                    value: "nav.rulesOfTheRoad.driving.speedLimits.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "If a road sign gives a different speed limit than 60km/h in an urban area it must be obeyed.",
+                    value: "nav.rulesOfTheRoad.driving.speedLimits.question.1.option.2.text",
                 },
             ],
         },
@@ -2529,24 +2498,24 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "The general speed limit on freeways is 120km/h for the following vehicles:",
-                    "(1) Light motor vehicles.",
-                    "(2) Bakkies.",
-                    "(3) Passenger buses.",
+                    "nav.rulesOfTheRoad.driving.speedLimits.question.2.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.speedLimits.question.2.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.speedLimits.question.2.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.speedLimits.question.2.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3) are all true.",
+                    value: "nav.rulesOfTheRoad.driving.speedLimits.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (1) and (2) are true.",
+                    value: "nav.rulesOfTheRoad.driving.speedLimits.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (1) is true.",
+                    value: "nav.rulesOfTheRoad.driving.speedLimits.question.2.option.2.text",
                 },
             ],
         },
@@ -2555,43 +2524,43 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "The general speed limit on national roads is 100km/h for the following vehicles:",
-                    "(1) Light motor vehicles.",
-                    "(2) Bakkies.",
-                    "(3) Passenger buses.",
+                    "nav.rulesOfTheRoad.driving.speedLimits.question.3.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.speedLimits.question.3.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.speedLimits.question.3.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.speedLimits.question.3.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3) are all true.",
+                    value: "nav.rulesOfTheRoad.driving.speedLimits.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (1) and (2) are true.",
+                    value: "nav.rulesOfTheRoad.driving.speedLimits.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (1) is true.",
+                    value: "nav.rulesOfTheRoad.driving.speedLimits.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "119",
             answer: "C",
-            text: "If you do not know what the speed limit on a national road is, you should:",
+            text: "nav.rulesOfTheRoad.driving.speedLimits.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "Pull off the road immediately.",
+                    value: "nav.rulesOfTheRoad.driving.speedLimits.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Drive at 80km/h.",
+                    value: "nav.rulesOfTheRoad.driving.speedLimits.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Drive at 100km/h.",
+                    value: "nav.rulesOfTheRoad.driving.speedLimits.question.4.option.2.text",
                 },
             ],
         },
@@ -2600,39 +2569,38 @@ const questionData: QuestionData = {
         {
             id: "120",
             answer: "A",
-            text: "You may not stop:",
+            text: "nav.rulesOfTheRoad.driving.stopping.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Within 5m of a subway",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "In no parking areas",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Opposite another car where the road is 11m wide",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "121",
             answer: "B",
-            text: "You must stop immediately if:",
+            text: "nav.rulesOfTheRoad.driving.stopping.question.1.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "You are in an area where stopping is not forbidden by a road sign, signal or marking.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You are instructed to do so by a traffic officer.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You are within the railway reserve of a level crossing.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.1.option.2.text",
                 },
             ],
         },
@@ -2641,24 +2609,24 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "The following people may instruct you to stop:",
-                    "(1) A person driving or leading animals.",
-                    "(2) A scholar patrol officer.",
-                    "(3) The driver of a passenger bus.",
+                    "nav.rulesOfTheRoad.driving.stopping.question.2.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.stopping.question.2.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.stopping.question.2.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.stopping.question.2.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(2) only.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (2) only.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(1), (2) and (3).",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.2.option.2.text",
                 },
             ],
         },
@@ -2666,19 +2634,19 @@ const questionData: QuestionData = {
             id: "123",
             answer: "C",
             image: "road-signs/R217.gif",
-            text: "If you see this sign, you must:",
+            text: "nav.rulesOfTheRoad.driving.stopping.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "Stop immediately.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Stop immediately, but only if you are on a freeway.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Not stop.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.3.option.2.text",
                 },
             ],
         },
@@ -2687,24 +2655,24 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "In which of the following areas may you not stop?",
-                    "(1) Within 1.5m of a fire hydrant.",
-                    "(2) Inside your driveway.",
-                    "(3) 9m from the approach side of a tunnel.",
+                    "nav.rulesOfTheRoad.driving.stopping.question.4.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.stopping.question.4.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.stopping.question.4.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.stopping.question.4.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "You may stop in all these areas.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You may not stop in any of these areas.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may not stop in area (3) only.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.4.option.2.text",
                 },
             ],
         },
@@ -2713,82 +2681,81 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "In which of the following areas may you not stop?",
-                    "(1) On top of a bridge.",
-                    "(2) Under a bridge.",
-                    "(3) Within 6m of a bridge.",
+                    "nav.rulesOfTheRoad.driving.stopping.question.5.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.stopping.question.5.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.stopping.question.5.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.stopping.question.5.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3).",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (2) and (3).",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (3).",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.5.option.2.text",
                 },
             ],
         },
         {
             id: "126",
             answer: "A",
-            text: "You may stop in a no stopping area if:",
+            text: "nav.rulesOfTheRoad.driving.stopping.question.6.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "You are an emergency services officer stopping in the course of your duties.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You have a learner's licence.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You are driving an animal drawn vehicle.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.6.option.2.text",
                 },
             ],
         },
         {
             id: "127",
             answer: "B",
-            text: "You may not stop:",
+            text: "nav.rulesOfTheRoad.driving.stopping.question.7.text",
             option: [
                 {
                     id: "A",
-                    value: "Opposite roadworks or an excavation if the roadway is 12m wide.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Within 6m of a subway.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Within 5m of an intersection in an urban area.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.7.option.2.text",
                 },
             ],
         },
         {
             id: "128",
             answer: "C",
-            text: "You may only stop on the right-hand side of the road if:",
+            text: "nav.rulesOfTheRoad.driving.stopping.question.8.text",
             option: [
                 {
                     id: "A",
-                    value: "You are stopping for parking.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.8.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "There is no oncoming traffic approaching.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.8.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "It is a one-way road.",
+                    value: "nav.rulesOfTheRoad.driving.stopping.question.8.option.2.text",
                 },
             ],
         },
@@ -2798,41 +2765,38 @@ const questionData: QuestionData = {
             id: "129",
             answer: "B",
             image: "road-signs/TR216.gif",
-            text: "You may park in the following area if:",
+            text: "nav.rulesOfTheRoad.driving.parking.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "It is daytime (between the hours of sunrise and sunset).",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You may not park here.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only yellow cars may park here.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "130",
             answer: "B",
-            text: "Parking is defined as:",
+            text: "nav.rulesOfTheRoad.driving.parking.question.1.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Stopping the car if you do not have any goods or passengers in the car with you.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Stopping the car for longer than is needed to offload goods or passengers.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "Getting out of the car and leaving it unattended with the engine not running.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.1.option.2.text",
                 },
             ],
         },
@@ -2841,62 +2805,62 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "Which of the following areas are both no stopping and no parking areas?",
-                    "(1) The pavement.",
-                    "(2) Over the activating mechanism of a robot.",
-                    "(3) In front of a driveway or gate.",
+                    "nav.rulesOfTheRoad.driving.parking.question.2.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.parking.question.2.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.parking.question.2.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.parking.question.2.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3).",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (3) only are correct.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(2) and (3) only are correct.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "132",
             answer: "A",
-            text: "You may not park:",
+            text: "nav.rulesOfTheRoad.driving.parking.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "Within 6m of a place where the road has been narrowed.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Within 5.5m of a fire hydrant.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "For 9m after you have passed a pedestrian crossing.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "133",
             answer: "B",
-            text: "If a construction vehicle wants to park in a no parking area it must:",
+            text: "nav.rulesOfTheRoad.driving.parking.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "Obtain written permission from the relevant authorities.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Display the correct identification lights.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Display an emergency triangle 45m behind it.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.4.option.2.text",
                 },
             ],
         },
@@ -2905,65 +2869,62 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "In relation to roadworks or an excavation, you may not park:",
-                    "(1) Next to it.",
-                    "(2) Opposite it.",
-                    "(3) Within 5m of it.",
+                    "nav.rulesOfTheRoad.driving.parking.question.5.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.parking.question.5.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.parking.question.5.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.parking.question.5.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1) only.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (2) only.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(1), (2) and (3).",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.5.option.2.text",
                 },
             ],
         },
         {
             id: "135",
             answer: "C",
-            text: "When you are parked, by law, the position of your wheels must be:",
+            text: "nav.rulesOfTheRoad.driving.parking.question.6.text",
             option: [
                 {
                     id: "A",
-                    value: "Straight, parallel to the kerb.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "The inside of the wheel closest to the kerb must be within 450mm of the kerb.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "The outside of the wheel closest to the kerb must be within 450mm of the kerb.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.6.option.2.text",
                 },
             ],
         },
         {
             id: "136",
             answer: "C",
-            text:
-                "If you are parked in a demarcated parking bay within an urban area, you must ensure that:",
+            text: "nav.rulesOfTheRoad.driving.parking.question.7.text",
             option: [
                 {
                     id: "A",
-                    value: "Your left wheels are within 450mm of the kerb.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Your right wheels are within 450mm of the kerb.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may be 550mm or more from a kerb.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.7.option.2.text",
                 },
             ],
         },
@@ -2972,24 +2933,24 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "Which of the following areas may you park in at night?",
-                    "(1) More than 12m from the closest streetlight within an urban area.",
-                    "(2) Under a bridge.",
-                    "(3) Within 9m of your approach side of a pedestrian crossing, as long as your main headlights are on.",
+                    "nav.rulesOfTheRoad.driving.parking.question.8.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.parking.question.8.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.parking.question.8.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.parking.question.8.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "None of them.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.8.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) only.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.8.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(3) only.",
+                    value: "nav.rulesOfTheRoad.driving.parking.question.8.option.2.text",
                 },
             ],
         },
@@ -2998,77 +2959,76 @@ const questionData: QuestionData = {
         {
             id: "138",
             answer: "B",
-            text: "You may drive on the right hand side of a two-way road if:",
+            text: "nav.rulesOfTheRoad.driving.dividedRoads.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "There is a sign prohibiting overtaking.",
+                    value: "nav.rulesOfTheRoad.driving.dividedRoads.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You did not cross any barriers or solid road markings to get there.",
+                    value: "nav.rulesOfTheRoad.driving.dividedRoads.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "The closest oncoming car is 2 seconds away.",
+                    value: "nav.rulesOfTheRoad.driving.dividedRoads.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "139",
             answer: "C",
-            text: "Which of the following is not a divided road?",
+            text: "nav.rulesOfTheRoad.driving.dividedRoads.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "A one-way road with two lanes.",
+                    value: "nav.rulesOfTheRoad.driving.dividedRoads.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "A two-way road but where there is only one lane going in each direction.",
+                    value: "nav.rulesOfTheRoad.driving.dividedRoads.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "A single-lane freeway offramp.",
+                    value: "nav.rulesOfTheRoad.driving.dividedRoads.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "140",
             answer: "C",
-            text: "When may you drive on the right-hand side of a two-way public road?",
+            text: "nav.rulesOfTheRoad.driving.dividedRoads.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "Never.",
+                    value: "nav.rulesOfTheRoad.driving.dividedRoads.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only if your emergency lights are on.",
+                    value: "nav.rulesOfTheRoad.driving.dividedRoads.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "When directed to do so by a traffic officer.",
+                    value: "nav.rulesOfTheRoad.driving.dividedRoads.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "141",
             answer: "C",
-            text: "On a one-way road you should:",
+            text: "nav.rulesOfTheRoad.driving.dividedRoads.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "Always drive on the right, no matter how many lanes there are.",
+                    value: "nav.rulesOfTheRoad.driving.dividedRoads.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Park on the right hand side only.",
+                    value: "nav.rulesOfTheRoad.driving.dividedRoads.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only cross any dividers at an opening ",
+                    value: "nav.rulesOfTheRoad.driving.dividedRoads.question.3.option.2.text",
                 },
             ],
         },
@@ -3077,60 +3037,57 @@ const questionData: QuestionData = {
         {
             id: "142",
             answer: "B",
-            text: "When crossing more than one lane towards the right, you must:",
+            text: "nav.rulesOfTheRoad.driving.changingLanes.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Use a hand signal.",
+                    value: "nav.rulesOfTheRoad.driving.changingLanes.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Check your blind spot twice, once before each lane.",
+                    value: "nav.rulesOfTheRoad.driving.changingLanes.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "Check your blind spot to the right for at least two seconds before the first lane change.",
+                    value: "nav.rulesOfTheRoad.driving.changingLanes.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "143",
             answer: "A",
-            text: "Straddling is when you:",
+            text: "nav.rulesOfTheRoad.driving.changingLanes.question.1.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Drive with your left wheels in one lane and your right wheels in another.",
+                    value: "nav.rulesOfTheRoad.driving.changingLanes.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Cross over two lanes on a freeway.",
+                    value: "nav.rulesOfTheRoad.driving.changingLanes.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Drive inside the yellow line on the left of the road.",
+                    value: "nav.rulesOfTheRoad.driving.changingLanes.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "144",
             answer: "C",
-            text: "The very last thing you must do before changing lanes is:",
+            text: "nav.rulesOfTheRoad.driving.changingLanes.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "Signal your intention.",
+                    value: "nav.rulesOfTheRoad.driving.changingLanes.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Check if there are any road markings or road signs that prohibit a lane change.",
+                    value: "nav.rulesOfTheRoad.driving.changingLanes.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Check your blind spot.",
+                    value: "nav.rulesOfTheRoad.driving.changingLanes.question.2.option.2.text",
                 },
             ],
         },
@@ -3139,24 +3096,24 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "Which of the following is true?",
-                    "(1) On a one-way road your right wheels may straddle a lane.",
-                    "(2) You must change lanes only when it is safe to do so.",
-                    "(3) You may not change lanes on a freeway.",
+                    "nav.rulesOfTheRoad.driving.changingLanes.question.3.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.changingLanes.question.3.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.changingLanes.question.3.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.changingLanes.question.3.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1) and (2) are correct.",
+                    value: "nav.rulesOfTheRoad.driving.changingLanes.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (2) is correct.",
+                    value: "nav.rulesOfTheRoad.driving.changingLanes.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "All of the options are correct.",
+                    value: "nav.rulesOfTheRoad.driving.changingLanes.question.3.option.2.text",
                 },
             ],
         },
@@ -3165,39 +3122,38 @@ const questionData: QuestionData = {
         {
             id: "146",
             answer: "C",
-            text: "What is the last thing you need to do before changing lanes towards the left?",
+            text: "nav.rulesOfTheRoad.driving.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Brake.",
+                    value: "nav.rulesOfTheRoad.driving.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Indicate.",
+                    value: "nav.rulesOfTheRoad.driving.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Check your blind spot.",
+                    value: "nav.rulesOfTheRoad.driving.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "234",
             answer: "A",
-            text: "When do you have right of way?",
+            text: "nav.rulesOfTheRoad.driving.question.1.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "When you going straight at an intersection and the car approaching you wants to turn right.",
+                    value: "nav.rulesOfTheRoad.driving.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "At a yield sign.",
+                    value: "nav.rulesOfTheRoad.driving.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "When you are travelling at 60km/h inside an urban area.",
+                    value: "nav.rulesOfTheRoad.driving.question.1.option.2.text",
                 },
             ],
         },
@@ -3206,100 +3162,95 @@ const questionData: QuestionData = {
         {
             id: "147",
             answer: "C",
-            text: "At steady red robots, cars must:",
+            text: "nav.rulesOfTheRoad.driving.intersections.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Move off in the order in which they arrived.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Give the robots precedence over instructions from a traffic officer.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Stop completely behind the stop line.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "148",
             answer: "A",
-            text: "Concerning stop streets, which of the following is true:",
+            text: "nav.rulesOfTheRoad.driving.intersections.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "Flashing red robots and 4-way stops are treated in the same way.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You always have right of way at a 3-way stop.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "Traffic officers must stand to the left of a stop street when directing traffic.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "149",
             answer: "B",
-            text: "You may drive straight through a stop street if:",
+            text: "nav.rulesOfTheRoad.driving.intersections.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "It is at night and you are outside an urban area.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You may never do this.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You are directed to do so by a traffic officer.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "150",
             answer: "B",
-            text: "At traffic circles:",
+            text: "nav.rulesOfTheRoad.driving.intersections.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "You have right of way.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You must yield to the right.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You must yield to the left.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "151",
             answer: "A",
-            text:
-                "If you are waiting behind another car to enter a traffic circle, as soon as they enter it you should:",
+            text: "nav.rulesOfTheRoad.driving.intersections.question.4.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Check if there is other traffic approaching from the right and enter if safe.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Wait until the car you were behind has exited the circle before you enter it.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "Flash your headlights briefly to warn them that you are about to enter.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.4.option.2.text",
                 },
             ],
         },
@@ -3308,201 +3259,195 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "Which of the following may you not do?",
-                    "(1) Overtake a vehicle waiting for pedestrians at a pedestrian crossing.",
-                    "(2) Turn left at an intersection.",
-                    "(3) Turn right into a traffic circle.",
+                    "nav.rulesOfTheRoad.driving.intersections.question.5.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.intersections.question.5.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.intersections.question.5.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.intersections.question.5.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1) and (2) only.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(2) and (3) only.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(1) and (3) only.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.5.option.2.text",
                 },
             ],
         },
         {
             id: "153",
             answer: "B",
-            text:
-                "You should signal your intention to turn about ... seconds before you actually turn.",
+            text: "nav.rulesOfTheRoad.driving.intersections.question.6.text",
             option: [
                 {
                     id: "A",
-                    value: "2",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "5",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "60",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.6.option.2.text",
                 },
             ],
         },
         {
             id: "154",
             answer: "C",
-            text: "It is illegal to:",
+            text: "nav.rulesOfTheRoad.driving.intersections.question.7.text",
             option: [
                 {
                     id: "A",
-                    value: "Cancel your signal after turning left.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Cancel your signal after turning right.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Not signal when you are turning left.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.7.option.2.text",
                 },
             ],
         },
         {
             id: "155",
             answer: "C",
-            text:
-                "You need to adjust your speed to merge into the traffic flow in the road you have just turned into when:",
+            text: "nav.rulesOfTheRoad.driving.intersections.question.8.text",
             option: [
                 {
                     id: "A",
-                    value: "You have just turned left.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.8.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You have just turned right.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.8.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You have just turned either left or right.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.8.option.2.text",
                 },
             ],
         },
         {
             id: "156",
             answer: "B",
-            text:
-                "When turning, you should position your vehicle as far as is safe towards the side of the road you will be turning towards. This could encroach on oncoming traffic when you are turning:",
+            text: "nav.rulesOfTheRoad.driving.intersections.question.9.text",
             option: [
                 {
                     id: "A",
-                    value: "Left.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.9.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Right.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.9.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "At a robot with a flashing green arrow to the left.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.9.option.2.text",
                 },
             ],
         },
         {
             id: "157",
             answer: "C",
-            text: "When turning right into a two way road you should:",
+            text: "nav.rulesOfTheRoad.driving.intersections.question.10.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Start your turn before you cross the centre line of the road you are turning into.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.10.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Turn into the right hand lane of the road you are turning into.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.10.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "Start your turn after you cross the centre line of the road you are turning into.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.10.option.2.text",
                 },
             ],
         },
         {
             id: "158",
             answer: "A",
-            text: "If there is a box junction at an intersection:",
+            text: "nav.rulesOfTheRoad.driving.intersections.question.11.text",
             option: [
                 {
                     id: "A",
-                    value: "You must not stop over the box.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.11.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You must yield to the right.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.11.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You have right of way.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.11.option.2.text",
                 },
             ],
         },
         {
             id: "159",
             answer: "A",
-            text: "You may not enter an intersection:",
+            text: "nav.rulesOfTheRoad.driving.intersections.question.12.text",
             option: [
                 {
                     id: "A",
-                    value: "If your vehicle will block the flow of traffic.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.12.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Unless instructed to do so by a traffic officer.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.12.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Unless there is a flashing green robot.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.12.option.2.text",
                 },
             ],
         },
         {
             id: "229",
             answer: "C",
-            text:
-                "If you have already entered an intersection and the light turns orange you should:",
+            text: "nav.rulesOfTheRoad.driving.intersections.question.13.text",
             option: [
                 {
                     id: "A",
-                    value: "Reverse immediately back to the stop line behind you.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.13.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Pull over to the side of the road.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.13.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Wait until it is safe and then proceed as soon as possible.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.13.option.2.text",
                 },
             ],
         },
         {
             id: "232",
             answer: "C",
-            text: "Which of these three has right of way at an intersection?",
+            text: "nav.rulesOfTheRoad.driving.intersections.question.14.text",
             option: [
                 {
                     id: "A",
-                    value: "Light motor vehicles.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.14.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Cyclists.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.14.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Pedestrians.",
+                    value: "nav.rulesOfTheRoad.driving.intersections.question.14.option.2.text",
                 },
             ],
         },
@@ -3513,24 +3458,24 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "Which of the following are signals?",
-                    "(1) Indicators.",
-                    "(2) Brake lights.",
-                    "(3) The horn.",
+                    "nav.rulesOfTheRoad.driving.signalling.question.0.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.signalling.question.0.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.signalling.question.0.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.signalling.question.0.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "They are all signals.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (1) and (2) are signals.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (1) is a signal.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.0.option.2.text",
                 },
             ],
         },
@@ -3539,101 +3484,100 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "The stop hand signal (right arm bent up with the palm facing forward) must be used when:",
-                    "(1)You are braking on a freeway and your brake lights are out of order.",
-                    "(2) You are doing an emergency stop.",
-                    "(3) You are being towed.",
+                    "nav.rulesOfTheRoad.driving.signalling.question.1.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.signalling.question.1.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.signalling.question.1.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.signalling.question.1.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "At all of these times.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "At none of these times.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only in situation (1).",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "162",
             answer: "A",
-            text: "You need to make sure that you indicate:",
+            text: "nav.rulesOfTheRoad.driving.signalling.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "5 seconds before you pull off from a parked position.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "At the same time as your brake lights go on.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only at night.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "163",
             answer: "C",
-            text: "Under no circumstances may the driver of any vehicle give a hand signal:",
+            text: "nav.rulesOfTheRoad.driving.signalling.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "With the left hand.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "When the emergency warning lights are on.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Which cannot be clearly seen.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "164",
             answer: "B",
-            text:
-                "Putting your right arm out straight from the shoulder with the palm facing forward is the signal for:",
+            text: "nav.rulesOfTheRoad.driving.signalling.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "Allowing someone to overtake you.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Turning right.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Sudden slow down.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.4.option.2.text",
                 },
             ],
         },
         {
             id: "165",
             answer: "B",
-            text: "Both hands must be kept on the wheel when you are ...",
+            text: "nav.rulesOfTheRoad.driving.signalling.question.5.text",
             option: [
                 {
                     id: "A",
-                    value: "Accelerating.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Doing an emergency stop.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Giving a hand signal.",
+                    value: "nav.rulesOfTheRoad.driving.signalling.question.5.option.2.text",
                 },
             ],
         },
@@ -3642,19 +3586,19 @@ const questionData: QuestionData = {
         {
             id: "166",
             answer: "B",
-            text: "The general rule of the road is:",
+            text: "nav.rulesOfTheRoad.driving.overtaking.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Keep your headlights on.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Keep left, pass right.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Keep right, pass left.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.0.option.2.text",
                 },
             ],
         },
@@ -3663,43 +3607,43 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "Overtaking is the term that is used to describe moving around or passing which of the following:",
-                    "(1) A vehicle moving in the same direction as you.",
-                    "(2) A vehicle moving in the opposite direction to you.",
-                    "(3) A stationary object.",
+                    "nav.rulesOfTheRoad.driving.overtaking.question.1.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.overtaking.question.1.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.overtaking.question.1.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.overtaking.question.1.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "Only number (1).",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (1) and (2).",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (1) and (3).",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "168",
             answer: "A",
-            text: "When overtaking a stationary bus you need to watch out for:",
+            text: "nav.rulesOfTheRoad.driving.overtaking.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "People who might walk out from behind it.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Its shadow.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Exhaust fumes coming out from it.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.2.option.2.text",
                 },
             ],
         },
@@ -3708,264 +3652,252 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "You need to signal your direction during overtaking to the right as follows:",
-                    "(1) Before moving onto the right hand side of the road.",
-                    "(2) Before moving back onto the left hand side of the road.",
-                    "(3) When you are completely back in the lane from which you originally moved off.",
+                    "nav.rulesOfTheRoad.driving.overtaking.question.3.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.overtaking.question.3.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.overtaking.question.3.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.overtaking.question.3.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "Only (1).",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (1) and (2).",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (3).",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "170",
             answer: "C",
-            text: "When overtaking, clear space must be obtained around:",
+            text: "nav.rulesOfTheRoad.driving.overtaking.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "Your vehicle.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The vehicle you are overtaking.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Both vehicles.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.4.option.2.text",
                 },
             ],
         },
         {
             id: "171",
             answer: "A",
-            text: "You may not overtake when:",
+            text: "nav.rulesOfTheRoad.driving.overtaking.question.5.text",
             option: [
                 {
                     id: "A",
-                    value: "You are approaching the summit of a hill.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You are going downhill.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "There is a ditch on the side of the road.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.5.option.2.text",
                 },
             ],
         },
         {
             id: "172",
             answer: "A",
-            text: "You may not overtake when:",
+            text: "nav.rulesOfTheRoad.driving.overtaking.question.6.text",
             option: [
                 {
                     id: "A",
-                    value: "It is a divided road and you will have to cross a solid line.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You will need to move onto the right hand side of the road to do so.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You see a traffic officer.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.6.option.2.text",
                 },
             ],
         },
         {
             id: "173",
             answer: "C",
-            text: "If you cannot see the road ahead clearly when overtaking you should:",
+            text: "nav.rulesOfTheRoad.driving.overtaking.question.7.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Overtake in third gear so that you have more power available if you need it.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Accelerate to a maximum of 140km/h in order to get clear as soon as possible.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Not overtake.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.7.option.2.text",
                 },
             ],
         },
         {
             id: "174",
             answer: "C",
-            text: "With regards to overtaking on the left:",
+            text: "nav.rulesOfTheRoad.driving.overtaking.question.8.text",
             option: [
                 {
                     id: "A",
-                    value: "It is illegal to do so.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.8.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "If the driver in front of you is turning right you may overtake on the left road shoulder.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.8.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may do so in a one-way street with two lanes.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.8.option.2.text",
                 },
             ],
         },
         {
             id: "175",
             answer: "A",
-            text: "You may not:",
+            text: "nav.rulesOfTheRoad.driving.overtaking.question.9.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Overtake on the left where there is only one lane but the road is wide enough for two cars outside an urban area.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.9.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Overtake when directed to be a traffic officer.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.9.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Indicate to the left when you are overtaking on the left.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.9.option.2.text",
                 },
             ],
         },
         {
             id: "176",
             answer: "A",
-            text: "The difference between overtaking and changing lanes is that:",
+            text: "nav.rulesOfTheRoad.driving.overtaking.question.10.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "With overtaking you end up in the same lane you started from but with lane changing you are in a different lane.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.10.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "With changing lanes you need to check your blind spots twice, but with overtaking you only need to check once.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.10.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "You may overtake two cars at the same time but you may only change one lane at the same time.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.10.option.2.text",
                 },
             ],
         },
         {
             id: "177",
             answer: "C",
-            text: "When you are being overtaken on the left:",
+            text: "nav.rulesOfTheRoad.driving.overtaking.question.11.text",
             option: [
                 {
                     id: "A",
-                    value: "You should keep as far to the left as possible.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.11.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You should immediately alert a traffic officer.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.11.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may not speed up.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.11.option.2.text",
                 },
             ],
         },
         {
             id: "178",
             answer: "B",
-            text: "On a public road, you are allowed to:",
+            text: "nav.rulesOfTheRoad.driving.overtaking.question.12.text",
             option: [
                 {
                     id: "A",
-                    value: "Pass other vehicles on the left-hand side if they are turning right.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.12.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Pass other vehicles on the left hand side when they are turning right as long as you don't go onto the road shoulder",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.12.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may not pass vehicles on the left-hand side.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.12.option.2.text",
                 },
             ],
         },
         {
             id: "179",
             answer: "C",
-            text: "Which of the following is true?",
+            text: "nav.rulesOfTheRoad.driving.overtaking.question.13.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "You may never move onto the road shoulder (verge or yellow line on the left).",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.13.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "You may move onto the road shoulder only between the hours of sunset and sunrise, and only if you can see clearly ahead for 150m.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.13.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "You may only go onto the road shoulder if someone is going to pass you and there is only one lane going in each direction.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.13.option.2.text",
                 },
             ],
         },
         {
             id: "180",
             answer: "B",
-            text: "It is illegal to:",
+            text: "nav.rulesOfTheRoad.driving.overtaking.question.14.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Flash your headlights at somebody on a freeway if you would like to pass them.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.14.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Hoot at somebody on a freeway if you would like to pass them.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.14.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Drive in the fast (furthest right) lane on a freeway.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.14.option.2.text",
                 },
             ],
         },
         {
             id: "181",
             answer: "A",
-            text: "If somebody flashes their headlights at you on a freeway you must:",
+            text: "nav.rulesOfTheRoad.driving.overtaking.question.15.text",
             option: [
                 {
                     id: "A",
-                    value: "Move over to the left hand side of the road.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.15.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Make a note of their registration number, make and model of their car.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.15.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Report the incident to the closest police station within 24 hours.",
+                    value: "nav.rulesOfTheRoad.driving.overtaking.question.15.option.2.text",
                 },
             ],
         },
@@ -3974,19 +3906,19 @@ const questionData: QuestionData = {
         {
             id: "182",
             answer: "A",
-            text: "When you are towing, the two vehicles must be:",
+            text: "nav.rulesOfTheRoad.driving.towing.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Not more than 3.5m apart.",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "More than 3.5m apart.",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "1.8m apart.",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.0.option.2.text",
                 },
             ],
         },
@@ -3995,123 +3927,119 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "The following vehicles may tow other vehicles:",
-                    "(1) Motorcycles. ",
-                    "(2) Motor tricycles.",
-                    "(3) Quadrucycles.",
+                    "nav.rulesOfTheRoad.driving.towing.question.1.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.towing.question.1.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.towing.question.1.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.towing.question.1.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "Only (2) and (3) may tow.",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (3) may tow.",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "None of them may tow.",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "184",
             answer: "A",
-            text: "You may only tow with a rope if:",
+            text: "nav.rulesOfTheRoad.driving.towing.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "You mark it with a red flag if it is longer than 1.8m long.",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The vehicle you are towing has weak brakes.",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You are carrying paying passengers.",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "185",
             answer: "B",
-            text: "The following speeds are applicable to towing:",
+            text: "nav.rulesOfTheRoad.driving.towing.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "When towing with a rope you may not exceed 60km/h in an urban area.",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "When towing paying passengers in a semi-trailer you may travel at over 30km/h.",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "When towing a light motor vehicle with a solid tow bar with no passengers you must not travel faster than 30km/h.",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "186",
             answer: "B",
-            text:
-                "A driver with a licence for the right class of vehicle must be in the towed vehicle when it is:",
+            text: "nav.rulesOfTheRoad.driving.towing.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "Being towed with a solid tow-bar.",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Being towed with a rope.",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "A semi-trailer.",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.4.option.2.text",
                 },
             ],
         },
         {
             id: "187",
             answer: "A",
-            text:
-                "When you are towing another vehicle with a rope you may not go faster than ... km/h:",
+            text: "nav.rulesOfTheRoad.driving.towing.question.5.text",
             option: [
                 {
                     id: "A",
-                    value: "30",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "45",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "60",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.5.option.2.text",
                 },
             ],
         },
         {
             id: "188",
             answer: "A",
-            text: "If your vehicle has poor brakes and you need to tow it, you must use a:",
+            text: "nav.rulesOfTheRoad.driving.towing.question.6.text",
             option: [
                 {
                     id: "A",
-                    value: "Tow-bar",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Rope",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Trailer",
+                    value: "nav.rulesOfTheRoad.driving.towing.question.6.option.2.text",
                 },
             ],
         },
@@ -4122,46 +4050,43 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "Which of the following regarding the K53 licence test in South Africa is true?",
-                    "(1) It is based on the driving system in the United States.",
-                    "(2) It is has been in use in SA since the 1980's.",
-                    "(3) The main aim of the K53 system is to promote the use of blind spots.",
+                    "nav.defensiveDriving.introToK53.question.0.text.list.0.text",
+                    "nav.defensiveDriving.introToK53.question.0.text.list.1.text",
+                    "nav.defensiveDriving.introToK53.question.0.text.list.2.text",
+                    "nav.defensiveDriving.introToK53.question.0.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "All of them are true.",
+                    value: "nav.defensiveDriving.introToK53.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "None of them are true.",
+                    value: "nav.defensiveDriving.introToK53.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (2) is true.",
+                    value: "nav.defensiveDriving.introToK53.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "190",
             answer: "A",
-            text: "The main principles you need to follow when driving defensively are:",
+            text: "nav.defensiveDriving.introToK53.question.1.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Be familiar with the use of all your vehicle controls; be on the lookout for hazards; give yourself clear space so you have time to deal with hazards.",
+                    value: "nav.defensiveDriving.introToK53.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Be fully aware of all the road signs; stay in control of your vehicle; keep your blood alcohol level below the limit.",
+                    value: "nav.defensiveDriving.introToK53.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "Distinguish between moving and stationary hazards; keep your vehicle roadworthy; have a supervisor while you are driving if you only have a learner's licence.",
+                    value: "nav.defensiveDriving.introToK53.question.1.option.2.text",
                 },
             ],
         },
@@ -4170,59 +4095,57 @@ const questionData: QuestionData = {
         {
             id: "191",
             answer: "B",
-            text: "Hazards can be defined as:",
+            text: "nav.defensiveDriving.typesOfHazards.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Dangerous actions on the part of other drivers.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Object or actions that could make you change your speed or direction while driving.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Moving, stationary or changing conditions in the road.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "192",
             answer: "C",
-            text: "Which one of the following is true?",
+            text: "nav.defensiveDriving.typesOfHazards.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "Changing hazards mostly have to do with the surface of the road.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Wind, rain and dust storms are examples of moving hazards.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "The type of hazard that things are more likely to come out of or round is stationary hazards.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "193",
             answer: "A",
-            text: "... hazards could cause you to swerve and lose control.",
+            text: "nav.defensiveDriving.typesOfHazards.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "Moving.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Stationary.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Both moving and stationary.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.2.option.2.text",
                 },
             ],
         },
@@ -4231,82 +4154,81 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "The sun is most dangerous as a road hazard at what time of the day?",
-                    "(1) Sunrise.",
-                    "(2) Midday.",
-                    "(3) Sunset.",
+                    "nav.defensiveDriving.typesOfHazards.question.3.text.list.0.text",
+                    "nav.defensiveDriving.typesOfHazards.question.3.text.list.1.text",
+                    "nav.defensiveDriving.typesOfHazards.question.3.text.list.2.text",
+                    "nav.defensiveDriving.typesOfHazards.question.3.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3) are equally dangerous.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (3) are more dangerous.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(2) is more dangerous.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "195",
             answer: "A",
-            text: "Which of the following is not usually a hazard?",
+            text: "nav.defensiveDriving.typesOfHazards.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "Running water on the side of the road.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "A public vehicle entrance, for example at a filling station.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Uneven roads.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.4.option.2.text",
                 },
             ],
         },
         {
             id: "196",
             answer: "C",
-            text: "Which of the following is not usually a hazard?",
+            text: "nav.defensiveDriving.typesOfHazards.question.5.text",
             option: [
                 {
                     id: "A",
-                    value: "Vehicles going in the same direction as you.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Vehicles going in a different direction to you.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Vehicles not in use on a public road.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.5.option.2.text",
                 },
             ],
         },
         {
             id: "197",
             answer: "B",
-            text:
-                "Unpredictable hazards can be the most dangerous. Which of these hazards is most likely to act unpredictably?",
+            text: "nav.defensiveDriving.typesOfHazards.question.6.text",
             option: [
                 {
                     id: "A",
-                    value: "Lampposts.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Animals.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Mist.",
+                    value: "nav.defensiveDriving.typesOfHazards.question.6.option.2.text",
                 },
             ],
         },
@@ -4315,84 +4237,76 @@ const questionData: QuestionData = {
         {
             id: "198",
             answer: "C",
-            text: "The steps involved in dealing with hazards (in order) are:",
+            text: "nav.defensiveDriving.dealingWithHazards.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Identify, Search, Decide, Predict, Act.",
+                    value: "nav.defensiveDriving.dealingWithHazards.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Search, Decide, Predict, Identify, Act.",
+                    value: "nav.defensiveDriving.dealingWithHazards.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Search, Identify, Predict, Decide, Act.",
+                    value: "nav.defensiveDriving.dealingWithHazards.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "199",
             answer: "C",
-            text: "Observation refers to:",
+            text: "nav.defensiveDriving.dealingWithHazards.question.1.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Keeping your windscreen clean so that you can see hazards clearly at all times.",
+                    value: "nav.defensiveDriving.dealingWithHazards.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Noticing details regarding the road surface and condition, for example potholes.",
+                    value: "nav.defensiveDriving.dealingWithHazards.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Checking your mirrors every 5-8 seconds while you are driving.",
+                    value: "nav.defensiveDriving.dealingWithHazards.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "200",
             answer: "A",
-            text: "Which of the following is not true?",
+            text: "nav.defensiveDriving.dealingWithHazards.question.2.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Anything that is off the road surface (to the side of the road) is not considered a hazard.",
+                    value: "nav.defensiveDriving.dealingWithHazards.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Once you have seen a hazard you should identify what type of hazard it is.",
+                    value: "nav.defensiveDriving.dealingWithHazards.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "When deciding whether to brake suddenly you should take into account whether the roads are wet or not.",
+                    value: "nav.defensiveDriving.dealingWithHazards.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "201",
             answer: "C",
-            text: "Which of the following is true with regard to dealing with hazards?",
+            text: "nav.defensiveDriving.dealingWithHazards.question.3.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "If you have a green robot you do not need to observe traffic in the other road at an intersection because their traffic light will automatically be red and they will stop.",
+                    value: "nav.defensiveDriving.dealingWithHazards.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Hooting is not considered to be an appropriate action to take in an urban area.",
+                    value: "nav.defensiveDriving.dealingWithHazards.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "Before passing a driveway you should check the position of other cars on the road in case a vehicle comes out of the driveway and you have to swerve.",
+                    value: "nav.defensiveDriving.dealingWithHazards.question.3.option.2.text",
                 },
             ],
         },
@@ -4401,81 +4315,76 @@ const questionData: QuestionData = {
         {
             id: "202",
             answer: "B",
-            text: "Clear space refers to:",
+            text: "nav.defensiveDriving.clearSpace.question.0.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "The section of the windscreen which the windscreen wipers touch and clear when it is raining.",
+                    value: "nav.defensiveDriving.clearSpace.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "An area around your car which should keep empty at all times.",
+                    value: "nav.defensiveDriving.clearSpace.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "The yellow road markings painted in intersection and which you must keep clear by not stopping over.",
+                    value: "nav.defensiveDriving.clearSpace.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "203",
             answer: "A",
-            text:
-                "With regard to following distances, the distance in metres that you are required to keep between yourself and other cars is:",
+            text: "nav.defensiveDriving.clearSpace.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "Greater when you are going faster.",
+                    value: "nav.defensiveDriving.clearSpace.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Greater when you are going slower.",
+                    value: "nav.defensiveDriving.clearSpace.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "You are always required to keep the same following distance in metres no matter what speed you are travelling at.",
+                    value: "nav.defensiveDriving.clearSpace.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "204",
             answer: "B",
-            text: "The purpose of the following distance is to:",
+            text: "nav.defensiveDriving.clearSpace.question.2.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Allow you to see further ahead because there is not a car close in front of your windscreen.",
+                    value: "nav.defensiveDriving.clearSpace.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Give you time to react to situations that occur.",
+                    value: "nav.defensiveDriving.clearSpace.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Make sure that you don't frustrate other drivers.",
+                    value: "nav.defensiveDriving.clearSpace.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "205",
             answer: "B",
-            text: "Following distances for trucks under normal conditions should be ... seconds.",
+            text: "nav.defensiveDriving.clearSpace.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "2",
+                    value: "nav.defensiveDriving.clearSpace.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "3",
+                    value: "nav.defensiveDriving.clearSpace.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "4",
+                    value: "nav.defensiveDriving.clearSpace.question.3.option.2.text",
                 },
             ],
         },
@@ -4484,64 +4393,62 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "Under which of the following conditions should you increase your following distance?",
-                    "(1) At night.",
-                    "(2) When another car is following you too closely.",
-                    "(3) When you are late for an appointment.",
+                    "nav.defensiveDriving.clearSpace.question.4.text.list.0.text",
+                    "nav.defensiveDriving.clearSpace.question.4.text.list.1.text",
+                    "nav.defensiveDriving.clearSpace.question.4.text.list.2.text",
+                    "nav.defensiveDriving.clearSpace.question.4.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1) only.",
+                    value: "nav.defensiveDriving.clearSpace.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (2) only.",
+                    value: "nav.defensiveDriving.clearSpace.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "None of them.",
+                    value: "nav.defensiveDriving.clearSpace.question.4.option.2.text",
                 },
             ],
         },
         {
             id: "207",
             answer: "C",
-            text:
-                "If you are working out your following distance, you should identify a stationary point on the road, let the car in front pass it and count ONE SECOND, TWO SECONDS. Your car should pass the same point as you:",
+            text: "nav.defensiveDriving.clearSpace.question.5.text",
             option: [
                 {
                     id: "A",
-                    value: "Begin to say the word TWO.",
+                    value: "nav.defensiveDriving.clearSpace.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Finish saying the word TWO.",
+                    value: "nav.defensiveDriving.clearSpace.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Finish saying the word SECONDS.",
+                    value: "nav.defensiveDriving.clearSpace.question.5.option.2.text",
                 },
             ],
         },
         {
             id: "208",
             answer: "C",
-            text:
-                "In bad driving conditions your following distance (in a light motor vehicle) should be:",
+            text: "nav.defensiveDriving.clearSpace.question.6.text",
             option: [
                 {
                     id: "A",
-                    value: "2 seconds",
+                    value: "nav.defensiveDriving.clearSpace.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "3 seconds",
+                    value: "nav.defensiveDriving.clearSpace.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "4 seconds",
+                    value: "nav.defensiveDriving.clearSpace.question.6.option.2.text",
                 },
             ],
         },
@@ -4550,101 +4457,100 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "When stopping behind a stationary car:",
-                    "(1) You should be able to see their wheels.",
-                    "(2) You should be 4-5m behind them.",
-                    "(3) You should be able to drive out from behind them without reversing and without them moving.",
+                    "nav.defensiveDriving.clearSpace.question.7.text.list.0.text",
+                    "nav.defensiveDriving.clearSpace.question.7.text.list.1.text",
+                    "nav.defensiveDriving.clearSpace.question.7.text.list.2.text",
+                    "nav.defensiveDriving.clearSpace.question.7.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3) are correct.",
+                    value: "nav.defensiveDriving.clearSpace.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (1) and (2) are correct.",
+                    value: "nav.defensiveDriving.clearSpace.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (2) is correct.",
+                    value: "nav.defensiveDriving.clearSpace.question.7.option.2.text",
                 },
             ],
         },
         {
             id: "210",
             answer: "C",
-            text: "Which of the following is true?",
+            text: "nav.defensiveDriving.clearSpace.question.8.text",
             option: [
                 {
                     id: "A",
-                    value: "You must keep a 2 second stopping distance at all time.",
+                    value: "nav.defensiveDriving.clearSpace.question.8.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "In wet weather you must increase your stopping distance.",
+                    value: "nav.defensiveDriving.clearSpace.question.8.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "When your car is heavier, your stopping distance increases.",
+                    value: "nav.defensiveDriving.clearSpace.question.8.option.2.text",
                 },
             ],
         },
         {
             id: "211",
             answer: "B",
-            text: "If you are going at 60 km/h and you slam on the brakes:",
+            text: "nav.defensiveDriving.clearSpace.question.9.text",
             option: [
                 {
                     id: "A",
-                    value: "You will be able to stop within 60m.",
+                    value: "nav.defensiveDriving.clearSpace.question.9.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You will be able to stop within 45m.",
+                    value: "nav.defensiveDriving.clearSpace.question.9.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You will be able to stop within 32m",
+                    value: "nav.defensiveDriving.clearSpace.question.9.option.2.text",
                 },
             ],
         },
         {
             id: "212",
             answer: "C",
-            text: "Your stopping distance is greatest at:",
+            text: "nav.defensiveDriving.clearSpace.question.10.text",
             option: [
                 {
                     id: "A",
-                    value: "60km/h",
+                    value: "nav.defensiveDriving.clearSpace.question.10.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "65kmh",
+                    value: "nav.defensiveDriving.clearSpace.question.10.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "120km/h",
+                    value: "nav.defensiveDriving.clearSpace.question.10.option.2.text",
                 },
             ],
         },
         {
             id: "213",
             answer: "B",
-            text:
-                "Keeping a safe following distance means that if the vehicle in front of you suddenly stops you would be able to:",
+            text: "nav.defensiveDriving.clearSpace.question.11.text",
             option: [
                 {
                     id: "A",
-                    value: "Come to a stop next to it.",
+                    value: "nav.defensiveDriving.clearSpace.question.11.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Stop in a straight line.",
+                    value: "nav.defensiveDriving.clearSpace.question.11.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Swerve and pass it to the left.",
+                    value: "nav.defensiveDriving.clearSpace.question.11.option.2.text",
                 },
             ],
         },
@@ -4653,99 +4559,95 @@ const questionData: QuestionData = {
         {
             id: "214",
             answer: "B",
-            text: "Which of the following is true?",
+            text: "nav.defensiveDriving.observing.question.0.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Observation only needs to be done when you are moving your position on the road from left to right, for example when you are turning.",
+                    value: "nav.defensiveDriving.observing.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Checking of blind spots needs to be done when you are moving your position on the road from left to right, for example when you are changing lanes.",
+                    value: "nav.defensiveDriving.observing.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "Braking needs to be done when you are moving your position on the road from left to right, for example when you are overtaking.",
+                    value: "nav.defensiveDriving.observing.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "215",
             answer: "C",
-            text: "Mirrors must be checked at least once every ... seconds.",
+            text: "nav.defensiveDriving.observing.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "2",
+                    value: "nav.defensiveDriving.observing.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "4",
+                    value: "nav.defensiveDriving.observing.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "8",
+                    value: "nav.defensiveDriving.observing.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "216",
             answer: "B",
-            text: "Blind spots are:",
+            text: "nav.defensiveDriving.observing.question.2.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "Areas around your car which you can't see out of your front windscreen.",
+                    value: "nav.defensiveDriving.observing.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Areas around your car which you can't see in your rear-view mirrors.",
+                    value: "nav.defensiveDriving.observing.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Areas around your car which you can't see if you turn your head.",
+                    value: "nav.defensiveDriving.observing.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "217",
             answer: "B",
-            text: "To check your right blind spot, you should look through:",
+            text: "nav.defensiveDriving.observing.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "Your window (driver's window).",
+                    value: "nav.defensiveDriving.observing.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The back window on your side (driver's side).",
+                    value: "nav.defensiveDriving.observing.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "The back window on the passenger side.",
+                    value: "nav.defensiveDriving.observing.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "218",
             answer: "A",
-            text: "To check your left blind spot, you should look through:",
+            text: "nav.defensiveDriving.observing.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "The back window on the passenger side.",
+                    value: "nav.defensiveDriving.observing.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The front window on the passenger side.",
+                    value: "nav.defensiveDriving.observing.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Your window (driver's window).",
+                    value: "nav.defensiveDriving.observing.question.4.option.2.text",
                 },
             ],
         },
@@ -4754,44 +4656,43 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "In which situations should you check your blind spots?",
-                    "(1) Before you change lanes.",
-                    "(2) Before you put your hand out of the window to give a hand signal.",
-                    "(3) Before you open your doors.",
+                    "nav.defensiveDriving.observing.question.5.text.list.0.text",
+                    "nav.defensiveDriving.observing.question.5.text.list.1.text",
+                    "nav.defensiveDriving.observing.question.5.text.list.2.text",
+                    "nav.defensiveDriving.observing.question.5.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "All of these situations.",
+                    value: "nav.defensiveDriving.observing.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Situations (1) and (2).",
+                    value: "nav.defensiveDriving.observing.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Situations (1) and (3).",
+                    value: "nav.defensiveDriving.observing.question.5.option.2.text",
                 },
             ],
         },
         {
             id: "220",
             answer: "C",
-            text: "To find out where your blind spots are you should:",
+            text: "nav.defensiveDriving.observing.question.6.text",
             option: [
                 {
                     id: "A",
-                    value: "Turn your head and look out of the rear windscreen.",
+                    value: "nav.defensiveDriving.observing.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Position a mirror behind your car and check the visibility.",
+                    value: "nav.defensiveDriving.observing.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "Watch someone approaching your car from the back and notice when they disappear from view.",
+                    value: "nav.defensiveDriving.observing.question.6.option.2.text",
                 },
             ],
         },
@@ -4800,115 +4701,114 @@ const questionData: QuestionData = {
         {
             id: "221",
             answer: "A",
-            text: "If you need to signal, which of these does not have to be done first?",
+            text: "nav.defensiveDriving.generalK53Procedure.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Brake.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Observe.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Blind spot.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "222",
             answer: "B",
-            text: "Which of the following are not signals?",
+            text: "nav.defensiveDriving.generalK53Procedure.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "Hooting.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Accelerating.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Indicating.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "223",
             answer: "B",
-            text: "If you need to slow down or brake, you need to ... first, because ...",
+            text: "nav.defensiveDriving.generalK53Procedure.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "change gear ... otherwise the car will be too difficult to stop",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "check your mirrors ... someone my be coming up fast behind you",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "give a hand signal ... you need to warn other drivers",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "224",
             answer: "A",
-            text: "After braking you may need to:",
+            text: "nav.defensiveDriving.generalK53Procedure.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "Change gear.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Signal.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Check your blind spots.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "225",
             answer: "C",
-            text:
-                "If you want to change lanes, and there are no other cars around, you may leave out which of the three groups of steps?",
+            text: "nav.defensiveDriving.generalK53Procedure.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "Signalling.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Steering.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Slowing down/braking.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.4.option.2.text",
                 },
             ],
         },
         {
             id: "226",
             answer: "B",
-            text: "The other steps that go with accelerating at the end of a manoeuvre are:",
+            text: "nav.defensiveDriving.generalK53Procedure.question.5.text",
             option: [
                 {
                     id: "A",
-                    value: "Braking, signalling, checking your blind spot.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Cancelling your signal, checking your blind spot, steering.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Observing, changing gear, steering.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.5.option.2.text",
                 },
             ],
         },
@@ -4917,44 +4817,43 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "If you need to turn, you will check your blind spots:",
-                    "(1) Before you signal.",
-                    "(2) Before you steer.",
-                    "(3) When you are in the new lane.",
+                    "nav.defensiveDriving.generalK53Procedure.question.6.text.list.0.text",
+                    "nav.defensiveDriving.generalK53Procedure.question.6.text.list.1.text",
+                    "nav.defensiveDriving.generalK53Procedure.question.6.text.list.2.text",
+                    "nav.defensiveDriving.generalK53Procedure.question.6.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "At all of these times.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (1) is correct.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(1) and (2) are correct.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.6.option.2.text",
                 },
             ],
         },
         {
             id: "228",
             answer: "A",
-            text:
-                "The three main groups of actions in the general K53 scenario can best be summarised as:",
+            text: "nav.defensiveDriving.generalK53Procedure.question.7.text",
             option: [
                 {
                     id: "A",
-                    value: "Signal, Slow down, Move off.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Observe, Change gear, Steer.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Accelerate, Mirrors, Blind spot.",
+                    value: "nav.defensiveDriving.generalK53Procedure.question.7.option.2.text",
                 },
             ],
         },
@@ -4963,41 +4862,38 @@ const questionData: QuestionData = {
         {
             id: "231",
             answer: "C",
-            text: "A good example of courteous driving would be:",
+            text: "nav.rulesOfTheRoad.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "To pick up hitch hikers on the freeway.",
+                    value: "nav.rulesOfTheRoad.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "To hoot to say thank you if somebody let you into their lane.",
+                    value: "nav.rulesOfTheRoad.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "To move slightly to the left if someone is overtaking you on the right so that they can see better.",
+                    value: "nav.rulesOfTheRoad.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "233",
             answer: "B",
-            text: "Which one is not correct?",
+            text: "nav.rulesOfTheRoad.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "You may not stop facing oncoming traffic.",
+                    value: "nav.rulesOfTheRoad.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "If you are in an traffic circle you must yield to people entering the circle in front of you.",
+                    value: "nav.rulesOfTheRoad.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "The maximum amount of time that a vehicle can be parked in one place without moving outside an urban area is 24 hours.",
+                    value: "nav.rulesOfTheRoad.question.1.option.2.text",
                 },
             ],
         },
@@ -5008,43 +4904,43 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "In order to be roadworthy, all cars must have:",
-                    "(1) Adjustable spotlights.",
-                    "(2) A hooter where the tone or the pitch of the sound changes.",
-                    "(3) Brake lights that can be seen 30m away.",
+                    "nav.rulesOfTheRoad.theCar.question.0.text.list.0.text",
+                    "nav.rulesOfTheRoad.theCar.question.0.text.list.1.text",
+                    "nav.rulesOfTheRoad.theCar.question.0.text.list.2.text",
+                    "nav.rulesOfTheRoad.theCar.question.0.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3).",
+                    value: "nav.rulesOfTheRoad.theCar.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(2) and (3) only.",
+                    value: "nav.rulesOfTheRoad.theCar.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(3) only.",
+                    value: "nav.rulesOfTheRoad.theCar.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "236",
             answer: "B",
-            text: "Your vehicle's clearance certificate (licence disc) is valid for:",
+            text: "nav.rulesOfTheRoad.theCar.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "6 months",
+                    value: "nav.rulesOfTheRoad.theCar.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "12 months",
+                    value: "nav.rulesOfTheRoad.theCar.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "18 months",
+                    value: "nav.rulesOfTheRoad.theCar.question.1.option.2.text",
                 },
             ],
         },
@@ -5055,24 +4951,24 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "At an intersection:",
-                    "(1) You may stop within the intersection to only long enough to offload passengers.",
-                    "(2) Pedestrians who have begun to cross the road when the red man signal comes on should wait on the centre line in the road until all cars have passed.",
-                    "(3) You must yield to oncoming traffic if you are turning left.",
+                    "nav.rulesOfTheRoad.driving.Intersections.question.0.text.list.0.text",
+                    "nav.rulesOfTheRoad.driving.Intersections.question.0.text.list.1.text",
+                    "nav.rulesOfTheRoad.driving.Intersections.question.0.text.list.2.text",
+                    "nav.rulesOfTheRoad.driving.Intersections.question.0.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "None of them are true.",
+                    value: "nav.rulesOfTheRoad.driving.Intersections.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "All of them are true.",
+                    value: "nav.rulesOfTheRoad.driving.Intersections.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (3) is true.",
+                    value: "nav.rulesOfTheRoad.driving.Intersections.question.0.option.2.text",
                 },
             ],
         },
@@ -5081,172 +4977,171 @@ const questionData: QuestionData = {
         {
             id: "238",
             answer: "A",
-            text: "The order of the pedals (from left to right) is:",
+            text: "nav.vehicleControls.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Clutch, Brake, Accelerator.",
+                    value: "nav.vehicleControls.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Accelerator, Brake, Clutch.",
+                    value: "nav.vehicleControls.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Clutch, Accelerator, Brake.",
+                    value: "nav.vehicleControls.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "239",
             answer: "B",
-            text: "Which foot must you use for the brake?",
+            text: "nav.vehicleControls.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "Left.",
+                    value: "nav.vehicleControls.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Right.",
+                    value: "nav.vehicleControls.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "You should use whichever one that is closest so that you can brake quickly in an emergency.",
+                    value: "nav.vehicleControls.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "240",
             answer: "C",
-            text: "Before you brake, you must use the following control.",
+            text: "nav.vehicleControls.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "Windscreen wipers.",
+                    value: "nav.vehicleControls.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Gear lever.",
+                    value: "nav.vehicleControls.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Rear-view mirror.",
+                    value: "nav.vehicleControls.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "241",
             answer: "C",
-            text: "To check that you do not exceed the speed limit you use the:",
+            text: "nav.vehicleControls.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "Brake.",
+                    value: "nav.vehicleControls.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Accelerator.",
+                    value: "nav.vehicleControls.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Speedometer.",
+                    value: "nav.vehicleControls.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "242",
             answer: "A",
-            text: "If the temperature of your car is rising, this will show on the:",
+            text: "nav.vehicleControls.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "Gauges.",
+                    value: "nav.vehicleControls.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Speedometer.",
+                    value: "nav.vehicleControls.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Direction indicator.",
+                    value: "nav.vehicleControls.question.4.option.2.text",
                 },
             ],
         },
         {
             id: "243",
             answer: "A",
-            text: "When you want to turn you must use the:",
+            text: "nav.vehicleControls.question.5.text",
             option: [
                 {
                     id: "A",
-                    value: "Mirrors, indicators, steering wheel.",
+                    value: "nav.vehicleControls.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Brake, gear, indicators.",
+                    value: "nav.vehicleControls.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Speedometer, indicators, steering wheel.",
+                    value: "nav.vehicleControls.question.5.option.2.text",
                 },
             ],
         },
         {
             id: "244",
             answer: "A",
-            text: "Which of the controls may only be used to prevent an accident?",
+            text: "nav.vehicleControls.question.6.text",
             option: [
                 {
                     id: "A",
-                    value: "Horn.",
+                    value: "nav.vehicleControls.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Mirrors.",
+                    value: "nav.vehicleControls.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Emergency warning lights.",
+                    value: "nav.vehicleControls.question.6.option.2.text",
                 },
             ],
         },
         {
             id: "245",
             answer: "A",
-            text: "Which control is not found in an automatic vehicle?",
+            text: "nav.vehicleControls.question.7.text",
             option: [
                 {
                     id: "A",
-                    value: "Clutch",
+                    value: "nav.vehicleControls.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Service brake",
+                    value: "nav.vehicleControls.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Oil gauge",
+                    value: "nav.vehicleControls.question.7.option.2.text",
                 },
             ],
         },
         {
             id: "246",
             answer: "B",
-            text: "When you park your vehicle and want to make sure it will not move, you use the:",
+            text: "nav.vehicleControls.question.8.text",
             option: [
                 {
                     id: "A",
-                    value: "Service brake",
+                    value: "nav.vehicleControls.question.8.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Parking brake",
+                    value: "nav.vehicleControls.question.8.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Clutch",
+                    value: "nav.vehicleControls.question.8.option.2.text",
                 },
             ],
         },
@@ -5255,81 +5150,81 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "To select a gear you must use the:",
-                    "(1) Gear lever.",
-                    "(2) Clutch.",
-                    "(3) Brake pedal.",
+                    "nav.vehicleControls.question.9.text.list.0.text",
+                    "nav.vehicleControls.question.9.text.list.1.text",
+                    "nav.vehicleControls.question.9.text.list.2.text",
+                    "nav.vehicleControls.question.9.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1) only.",
+                    value: "nav.vehicleControls.question.9.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (2) only.",
+                    value: "nav.vehicleControls.question.9.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(1), (2) and (3).",
+                    value: "nav.vehicleControls.question.9.option.2.text",
                 },
             ],
         },
         {
             id: "248",
             answer: "B",
-            text: "To move forward you must use the:",
+            text: "nav.vehicleControls.question.10.text",
             option: [
                 {
                     id: "A",
-                    value: "Parking brake",
+                    value: "nav.vehicleControls.question.10.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Accelerator",
+                    value: "nav.vehicleControls.question.10.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Indicator",
+                    value: "nav.vehicleControls.question.10.option.2.text",
                 },
             ],
         },
         {
             id: "249",
             answer: "A",
-            text: "To stop your vehicle you must use the:",
+            text: "nav.vehicleControls.question.11.text",
             option: [
                 {
                     id: "A",
-                    value: "Service brake",
+                    value: "nav.vehicleControls.question.11.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Parking brake",
+                    value: "nav.vehicleControls.question.11.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Clutch",
+                    value: "nav.vehicleControls.question.11.option.2.text",
                 },
             ],
         },
         {
             id: "250",
             answer: "B",
-            text: "Which control also controls the headlights on most cars?",
+            text: "nav.vehicleControls.question.12.text",
             option: [
                 {
                     id: "A",
-                    value: "Wiper stalk.",
+                    value: "nav.vehicleControls.question.12.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Direction indicator stalk.",
+                    value: "nav.vehicleControls.question.12.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Emergency warning light switch.",
+                    value: "nav.vehicleControls.question.12.option.2.text",
                 },
             ],
         },
@@ -5338,64 +5233,63 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "If you were going to turn sharp, you could not do it legally without using:",
-                    "(1) The rear-view mirrors.",
-                    "(2) The steering wheel.",
-                    "(3) The brakes.",
-                    "(4) The indicators.",
+                    "nav.vehicleControls.question.13.text.list.0.text",
+                    "nav.vehicleControls.question.13.text.list.1.text",
+                    "nav.vehicleControls.question.13.text.list.2.text",
+                    "nav.vehicleControls.question.13.text.list.3.text",
+                    "nav.vehicleControls.question.13.text.list.4.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "All of them.",
+                    value: "nav.vehicleControls.question.13.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(2) and (3) only.",
+                    value: "nav.vehicleControls.question.13.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(2), (3) and (4) only.",
+                    value: "nav.vehicleControls.question.13.option.2.text",
                 },
             ],
         },
         {
             id: "252",
             answer: "A",
-            text:
-                "Which control is usually used according to the speed at which the vehicle is travelling?",
+            text: "nav.vehicleControls.question.14.text",
             option: [
                 {
                     id: "A",
-                    value: "Gears.",
+                    value: "nav.vehicleControls.question.14.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Mirrors.",
+                    value: "nav.vehicleControls.question.14.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Horn.",
+                    value: "nav.vehicleControls.question.14.option.2.text",
                 },
             ],
         },
         {
             id: "253",
             answer: "C",
-            text: "Which control should be checked every 5-8 seconds?",
+            text: "nav.vehicleControls.question.15.text",
             option: [
                 {
                     id: "A",
-                    value: "Speedometer.",
+                    value: "nav.vehicleControls.question.15.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Temperature gauge.",
+                    value: "nav.vehicleControls.question.15.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Rear-view mirror.",
+                    value: "nav.vehicleControls.question.15.option.2.text",
                 },
             ],
         },
@@ -5404,160 +5298,157 @@ const questionData: QuestionData = {
             answer: "A",
             text: {
                 list: [
-                    "Which controls should be replaced with hand signals if they are not working?",
-                    "(1)Direction indicators.",
-                    "(2) Hooter.",
-                    "(3) Parking brake.",
+                    "nav.vehicleControls.question.16.text.list.0.text",
+                    "nav.vehicleControls.question.16.text.list.1.text",
+                    "nav.vehicleControls.question.16.text.list.2.text",
+                    "nav.vehicleControls.question.16.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1) only.",
+                    value: "nav.vehicleControls.question.16.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (3) only.",
+                    value: "nav.vehicleControls.question.16.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "All of them.",
+                    value: "nav.vehicleControls.question.16.option.2.text",
                 },
             ],
         },
         {
             id: "255",
             answer: "C",
-            text:
-                "With regards to the ..., if only one of them is working it has to be the one on the driver's side.",
+            text: "nav.vehicleControls.question.17.text",
             option: [
                 {
                     id: "A",
-                    value: "Direction indicators.",
+                    value: "nav.vehicleControls.question.17.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Gauges.",
+                    value: "nav.vehicleControls.question.17.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Windscreen wipers.",
+                    value: "nav.vehicleControls.question.17.option.2.text",
                 },
             ],
         },
         {
             id: "256",
             answer: "A",
-            text: "Which controls may not be interfered with by anti-theft devices?",
+            text: "nav.vehicleControls.question.18.text",
             option: [
                 {
                     id: "A",
-                    value: "Brakes, steering wheel.",
+                    value: "nav.vehicleControls.question.18.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Brakes, hooter.",
+                    value: "nav.vehicleControls.question.18.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Parking brake, headlights.",
+                    value: "nav.vehicleControls.question.18.option.2.text",
                 },
             ],
         },
         {
             id: "257",
             answer: "B",
-            text: "Which controls should be adjusted before you drive off?",
+            text: "nav.vehicleControls.question.19.text",
             option: [
                 {
                     id: "A",
-                    value: "Clutch.",
+                    value: "nav.vehicleControls.question.19.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Rear-view mirrors.",
+                    value: "nav.vehicleControls.question.19.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Speedometer.",
+                    value: "nav.vehicleControls.question.19.option.2.text",
                 },
             ],
         },
         {
             id: "258",
             answer: "A",
-            text: "When you want to reverse you will use the:",
+            text: "nav.vehicleControls.question.20.text",
             option: [
                 {
                     id: "A",
-                    value: "Gears.",
+                    value: "nav.vehicleControls.question.20.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Rear-view mirrors.",
+                    value: "nav.vehicleControls.question.20.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Brakes.",
+                    value: "nav.vehicleControls.question.20.option.2.text",
                 },
             ],
         },
         {
             id: "259",
             answer: "C",
-            text: "Which controls should you use during heavy rain?",
+            text: "nav.vehicleControls.question.21.text",
             option: [
                 {
                     id: "A",
-                    value: "Windscreen wipers, indicators..",
+                    value: "nav.vehicleControls.question.21.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Windscreen wipers, emergency warning lights..",
+                    value: "nav.vehicleControls.question.21.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Windscreen wipers, headlights.",
+                    value: "nav.vehicleControls.question.21.option.2.text",
                 },
             ],
         },
         {
             id: "260",
             answer: "C",
-            text: "If you need to indicate and change gears at the same time, you must:",
+            text: "nav.vehicleControls.question.22.text",
             option: [
                 {
                     id: "A",
-                    value: "Use the left hand for the gear and the right hand for the indicator.",
+                    value: "nav.vehicleControls.question.22.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Use the right hand for the indicator and the left hand for the gear.",
+                    value: "nav.vehicleControls.question.22.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You must not do this.",
+                    value: "nav.vehicleControls.question.22.option.2.text",
                 },
             ],
         },
         {
             id: "261",
             answer: "A",
-            text: "If you are doing an emergency stop you must:",
+            text: "nav.vehicleControls.question.23.text",
             option: [
                 {
                     id: "A",
-                    value: "Keep both hands on the steering wheel.",
+                    value: "nav.vehicleControls.question.23.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Use the parking brake as well as the service brake so that you can stop as quickly as possible.",
+                    value: "nav.vehicleControls.question.23.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "Put on your emergency warning lights before you brake to warn cars behind you.",
+                    value: "nav.vehicleControls.question.23.option.2.text",
                 },
             ],
         },
@@ -5566,39 +5457,38 @@ const questionData: QuestionData = {
         {
             id: "262",
             answer: "B",
-            text: "Which one of these road signals do not light up?",
+            text: "nav.roadSignals.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Traffic signals.",
+                    value: "nav.roadSignals.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Flag signals.",
+                    value: "nav.roadSignals.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Overhead lane direction control signals.",
+                    value: "nav.roadSignals.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "263",
             answer: "A",
-            text:
-                "Which of the following signals give you instructions that must be obeyed?(1) Regulatory signals. (2) Warning signals.",
+            text: "nav.roadSignals.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "(1) only.",
+                    value: "nav.roadSignals.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(2) only.",
+                    value: "nav.roadSignals.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Not (1) or (2).",
+                    value: "nav.roadSignals.question.1.option.2.text",
                 },
             ],
         },
@@ -5607,19 +5497,23 @@ const questionData: QuestionData = {
         {
             id: "264",
             answer: "A",
-            text: "Vehicular light signals include:",
+            text:
+                "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Robots.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The indicator lights on a car.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Overhead lane direction control signals.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.0.option.2.text",
                 },
             ],
         },
@@ -5628,19 +5522,22 @@ const questionData: QuestionData = {
             answer: "C",
             image: "road-signs/S8.gif",
             text:
-                "When there is a green arrow flashing to the right next to a red traffic light it means that:",
+                "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "All traffic must turn right.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Pedestrians may walk.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "If you are turning right you may go.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.1.option.2.text",
                 },
             ],
         },
@@ -5648,38 +5545,46 @@ const questionData: QuestionData = {
             id: "266",
             answer: "B",
             image: "road-signs/S1B.gif",
-            text: "This symbol means that ... may go.",
+            text:
+                "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "Trams.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Buses.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Cable cars.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "267",
             answer: "A",
-            text: "A steady yellow disc means that you must:",
+            text:
+                "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "Stop.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only turn left.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Accelerate to clear the junction quickly.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.3.option.2.text",
                 },
             ],
         },
@@ -5687,21 +5592,23 @@ const questionData: QuestionData = {
             id: "268",
             answer: "B",
             image: "road-signs/S1L.gif",
-            text: "This signal means that:",
+            text:
+                "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "You should treat the intersection as a 4-way stop.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.4.option.0.text",
                 },
                 {
                     id: "B",
                     value:
-                        "If you want to turn left you must stop, but then may proceed when it is safe to go.",
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.4.option.1.text",
                 },
                 {
                     id: "C",
                     value:
-                        "If you want to turn left you may, because all other traffic is being stopped.",
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.4.option.2.text",
                 },
             ],
         },
@@ -5709,19 +5616,22 @@ const questionData: QuestionData = {
             id: "269",
             answer: "A",
             text:
-                "If there is no signal specific to pedestrians, then a steady red disc means that pedestrians must:",
+                "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.5.text",
             option: [
                 {
                     id: "A",
-                    value: "Stop.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Go.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Check for oncoming cars and then go.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.5.option.2.text",
                 },
             ],
         },
@@ -5730,62 +5640,73 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "When a steady green disc is displayed, then cars must:",
-                    "(1) Proceed knowing that all other traffic is being stopped and they have right of way.",
-                    "(2) Yield to pedestrians.",
-                    "(3) Yield to cars already in the intersection.",
+                    "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.6.text.list.0.text",
+                    "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.6.text.list.1.text",
+                    "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.6.text.list.2.text",
+                    "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.6.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1) only.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(2) and (3) only.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(3) only.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.6.option.2.text",
                 },
             ],
         },
         {
             id: "271",
             answer: "A",
-            text: "A flashing yellow disc acts as a:",
+            text:
+                "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.7.text",
             option: [
                 {
                     id: "A",
-                    value: "Yield sign.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Right of way sign.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Stop sign.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.7.option.2.text",
                 },
             ],
         },
         {
             id: "272",
             answer: "C",
-            text: "A flashing red disc acts as a:",
+            text:
+                "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.8.text",
             option: [
                 {
                     id: "A",
-                    value: "Yield sign.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.8.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Right of way sign.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.8.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Stop sign.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.vehicularLightSignals.question.8.option.2.text",
                 },
             ],
         },
@@ -5794,38 +5715,46 @@ const questionData: QuestionData = {
         {
             id: "273",
             answer: "B",
-            text: "Which two signs mean the same thing?",
+            text:
+                "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Steady red man and steady green man.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Flashing red man and flashing green man.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Steady green man and flashing red man.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "274",
             answer: "C",
-            text: "A flashing green cycle means that:",
+            text:
+                "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "Cyclists must start going.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The signal will change to a steady green cycle soon.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "The signal will change to a steady red cycle soon.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.1.option.2.text",
                 },
             ],
         },
@@ -5833,19 +5762,22 @@ const questionData: QuestionData = {
             id: "275",
             answer: "B",
             text:
-                "If you are approaching a pedestrian crossing on foot and the man signal is flashing green you should:",
+                "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "Go.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Stop.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Go, but yield to vehicular traffic.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.2.option.2.text",
                 },
             ],
         },
@@ -5853,20 +5785,22 @@ const questionData: QuestionData = {
             id: "276",
             answer: "A",
             text:
-                "When directed to go by a pedestrian or cycle signal, which of the following is true?",
+                "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "You should cross within the guidelines painted on the road.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.3.option.0.text",
                 },
                 {
                     id: "B",
                     value:
-                        "You can cross at any point because all traffic will be stopped for you.",
+                        "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You must cross at least 50m away from the intersection.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.trafficSignals.pedestrianAndPedalCyclistLightSignals.question.3.option.2.text",
                 },
             ],
         },
@@ -5876,19 +5810,22 @@ const questionData: QuestionData = {
             id: "277",
             answer: "B",
             image: "road-signs/FRD.gif",
-            text: "This signal is found at:",
+            text: "nav.roadSignals.regulatorySignals.redFlashingSignals.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Police roadblocks.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.redFlashingSignals.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Railway crossings.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.redFlashingSignals.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Crossroads.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.redFlashingSignals.question.0.option.2.text",
                 },
             ],
         },
@@ -5896,22 +5833,22 @@ const questionData: QuestionData = {
             id: "278",
             answer: "C",
             image: "road-signs/FRD-R1.gif",
-            text: "Which of the following is true?",
+            text: "nav.roadSignals.regulatorySignals.redFlashingSignals.question.1.text",
             option: [
                 {
                     id: "A",
                     value:
-                        "When both lights are flashing at the same time, you may treat this as a 4-way stop.",
+                        "nav.roadSignals.regulatorySignals.redFlashingSignals.question.1.option.0.text",
                 },
                 {
                     id: "B",
                     value:
-                        "These lights flash alternately and mean that you must stop until it is safe to go.",
+                        "nav.roadSignals.regulatorySignals.redFlashingSignals.question.1.option.1.text",
                 },
                 {
                     id: "C",
                     value:
-                        "These lights flash alternately and mean that you must stop until they stop flashing.",
+                        "nav.roadSignals.regulatorySignals.redFlashingSignals.question.1.option.2.text",
                 },
             ],
         },
@@ -5921,19 +5858,23 @@ const questionData: QuestionData = {
             id: "280",
             answer: "A",
             image: "road-signs/S16.gif",
-            text: "When you see this signal you know that:",
+            text:
+                "nav.roadSignals.regulatorySignals.overheadLaneDirectionControlSignals .question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "The lane you are in is safe to proceed in.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.overheadLaneDirectionControlSignals .question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The lane you are in has traffic coming towards you.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.overheadLaneDirectionControlSignals .question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "There is a height restriction in the lane you are in.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.overheadLaneDirectionControlSignals .question.0.option.2.text",
                 },
             ],
         },
@@ -5944,19 +5885,22 @@ const questionData: QuestionData = {
             answer: "B",
             image: "road-signs/SS1C.gif",
             text:
-                "If you are approaching from the direction this traffic officer is facing, you must:",
+                "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Proceed only if you are turning right.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Stop.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Yield to the right.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals.question.0.option.2.text",
                 },
             ],
         },
@@ -5965,19 +5909,22 @@ const questionData: QuestionData = {
             answer: "B",
             image: "road-signs/SS1C.gif",
             text:
-                "If you are approaching from the direction of this traffic officer's back, you must:",
+                "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "Proceed only if you are turning left.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Stop.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Yield to the left.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals.question.1.option.2.text",
                 },
             ],
         },
@@ -5985,19 +5932,23 @@ const questionData: QuestionData = {
             id: "283",
             answer: "C",
             image: "road-signs/SS1A.gif",
-            text: "When you see this signal you must:",
+            text:
+                "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "Proceed.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Stop for at least 2 seconds.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Stop until you are signalled to proceed.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals.question.2.option.2.text",
                 },
             ],
         },
@@ -6007,19 +5958,23 @@ const questionData: QuestionData = {
             id: "284",
             answer: "C",
             image: "road-signs/SS2A.gif",
-            text: "This signal means that:",
+            text:
+                "nav.roadSignals.regulatorySignals.otherRegulatorySignals.flagSignals.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "There is danger ahead.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.flagSignals.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Constructions workers are on duty.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.flagSignals.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You must stop.",
+                    value:
+                        "nav.roadSignals.regulatorySignals.otherRegulatorySignals.flagSignals.question.0.option.2.text",
                 },
             ],
         },
@@ -6029,38 +5984,38 @@ const questionData: QuestionData = {
             id: "285",
             answer: "A",
             image: "road-signs/SS4A.gif",
-            text: "This signal is a:",
+            text: "nav.roadSignals.warningSignals.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Warning signal.",
+                    value: "nav.roadSignals.warningSignals.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Regulatory signal.",
+                    value: "nav.roadSignals.warningSignals.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Information signal.",
+                    value: "nav.roadSignals.warningSignals.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "286",
             answer: "B",
-            text: "A flashing yellow light signal always means that:",
+            text: "nav.roadSignals.warningSignals.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "There is a pedestrian crossing ahead.",
+                    value: "nav.roadSignals.warningSignals.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "There is a hazard ahead and you must proceed with caution.",
+                    value: "nav.roadSignals.warningSignals.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You must stop.",
+                    value: "nav.roadSignals.warningSignals.question.1.option.2.text",
                 },
             ],
         },
@@ -6070,19 +6025,19 @@ const questionData: QuestionData = {
             id: "287",
             answer: "A",
             image: "road-signs/RM8.gif",
-            text: "This is an example of a:",
+            text: "nav.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Road marking.",
+                    value: "nav.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Road sign.",
+                    value: "nav.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Road signal.",
+                    value: "nav.question.0.option.2.text",
                 },
             ],
         },
@@ -6093,24 +6048,24 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "Which of the following is true?",
-                    "(1) Road markings are only found in urban areas.",
-                    "(2) Road markings take precedence over the instructions of a traffic officer.",
-                    "(3) Road markings are always white.",
+                    "nav.roadMarkings.question.0.text.list.0.text",
+                    "nav.roadMarkings.question.0.text.list.1.text",
+                    "nav.roadMarkings.question.0.text.list.2.text",
+                    "nav.roadMarkings.question.0.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1) and (2) only are true.",
+                    value: "nav.roadMarkings.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (1) is true.",
+                    value: "nav.roadMarkings.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "None of them is true.",
+                    value: "nav.roadMarkings.question.0.option.2.text",
                 },
             ],
         },
@@ -6121,39 +6076,45 @@ const questionData: QuestionData = {
             answer: "B",
             image: "road-signs/RM7.gif",
             text:
-                "This picture shows a reserved parking area. The symbol shows that only ambulances may park there. Which of the following statements is true?",
+                "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "If the symbol was an M, only minibuses would be able to park there.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "If the symbol was a CD, only diplomatic vehicles could park there.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "If the symbol was an SOS, only emergency vehicles could park there.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "290",
             answer: "A",
-            text: "Transverse regulatory markings:",
+            text:
+                "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "Are painted across the road and have to be obeyed.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.1.option.0.text",
                 },
                 {
                     id: "B",
                     value:
-                        "Are painted along the road in the direction in which you are travelling and have to be obeyed.",
+                        "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Are painted across the road and are for warning purposes.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.1.option.2.text",
                 },
             ],
         },
@@ -6163,24 +6124,27 @@ const questionData: QuestionData = {
             image: "road-signs/RTM2.gif",
             text: {
                 list: [
-                    "If you see this sign you could be at a:",
-                    "(1) Pedestrian crossing.",
-                    "(2) Railway.",
-                    "(3) Traffic circle.",
+                    "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.2.text.list.0.text",
+                    "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.2.text.list.1.text",
+                    "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.2.text.list.2.text",
+                    "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.2.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1) and (3) only.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1), (2) and (3).",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "None of them.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.2.option.2.text",
                 },
             ],
         },
@@ -6189,19 +6153,22 @@ const questionData: QuestionData = {
             answer: "A",
             image: "road-signs/RTM3.gif",
             text:
-                "If you are driving in the direction of one of the black arrows in this picture, you must stop behind the ... white line you come to.",
+                "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "First.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Second.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Third.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.3.option.2.text",
                 },
             ],
         },
@@ -6210,22 +6177,23 @@ const questionData: QuestionData = {
             answer: "C",
             image: "road-signs/RTM3.gif",
             image2: "road-signs/RTM4.gif",
-            text: "What is the difference between these two road markings?",
+            text:
+                "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.4.text",
             option: [
                 {
                     id: "A",
                     value:
-                        "One is for pedestrians only to cross and one is for cycles only to cross.",
+                        "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.4.option.0.text",
                 },
                 {
                     id: "B",
                     value:
-                        "The one with broken lines only has to be obeyed during the day whereas the one with solid lines has to be obeyed at all times.",
+                        "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.4.option.1.text",
                 },
                 {
                     id: "C",
                     value:
-                        "They are both pedestrian crossings and should both be obeyed at all times.",
+                        "nav.roadMarkings.regulatoryMarkings.transverseRegulatoryMarkings.question.4.option.2.text",
                 },
             ],
         },
@@ -6235,20 +6203,19 @@ const questionData: QuestionData = {
             id: "291",
             answer: "B",
             image: "road-signs/WM8.gif",
-            text: "If you see this marking then:",
+            text: "nav.roadMarkings.warning.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "You may not pass another vehicle.",
+                    value: "nav.roadMarkings.warning.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "A line is going to begin that will not allow you to pass other vehicles.",
+                    value: "nav.roadMarkings.warning.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "The lane will split into multiple lanes in the direction of the arrow.",
+                    value: "nav.roadMarkings.warning.question.0.option.2.text",
                 },
             ],
         },
@@ -6259,22 +6226,23 @@ const questionData: QuestionData = {
             answer: "A",
             image: "road-signs/RM1.gif",
             image2: "road-signs/RM2.1.gif",
-            text: "What is the difference between these two road markings?",
+            text:
+                "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.0.text",
             option: [
                 {
                     id: "A",
                     value:
-                        "The marking on the left shows you may not pass other vehicles. The marking on the right ALSO shows that you may not drive over the line for any reason.",
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.0.option.0.text",
                 },
                 {
                     id: "B",
                     value:
-                        "There is no difference. They both show you may not pass other vehicles.",
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.0.option.1.text",
                 },
                 {
                     id: "C",
                     value:
-                        "They both show you may not pass other vehicles. The one on the left is used on all roads and the one on the right on freeways only.",
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.0.option.2.text",
                 },
             ],
         },
@@ -6282,57 +6250,69 @@ const questionData: QuestionData = {
             id: "296",
             answer: "C",
             image: "road-signs/RM3.gif",
-            text: "This is a:",
+            text:
+                "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "No crossing line.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "No overtaking lane.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Channelizing line.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "297",
             answer: "B",
-            text: "No parking lines are:",
+            text:
+                "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "White.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Yellow.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Red.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "298",
             answer: "C",
-            text: "If a no stopping line is broken (dashed), it means that:",
+            text:
+                "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "You may not stop there.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You may stop there.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may stop there at certain times of the day.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.3.option.2.text",
                 },
             ],
         },
@@ -6340,19 +6320,23 @@ const questionData: QuestionData = {
             id: "299",
             answer: "C",
             image: "road-signs/RM5.2.gif",
-            text: "This is a:",
+            text:
+                "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "Box junction.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Arrestor bed.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Painted island.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.4.option.2.text",
                 },
             ],
         },
@@ -6361,24 +6345,27 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "Which of the following is true?",
-                    "(1) No stopping lines are red.",
-                    "(2) Left edge lines are white.",
-                    "(3) Right edge lines are yellow.",
+                    "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.5.text.list.0.text",
+                    "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.5.text.list.1.text",
+                    "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.5.text.list.2.text",
+                    "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.5.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "They are all true.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "None of them is true.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (1) is true.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.5.option.2.text",
                 },
             ],
         },
@@ -6386,22 +6373,23 @@ const questionData: QuestionData = {
             id: "301",
             answer: "B",
             image: "road-signs/RM8.gif",
-            text: "This marking means that:",
+            text:
+                "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.6.text",
             option: [
                 {
                     id: "A",
                     value:
-                        "There are mandatory direction arrows ahead and you will only be able to go in their direction when you get to them.",
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.6.option.0.text",
                 },
                 {
                     id: "B",
                     value:
-                        "These are mandatory direction arrows and you may only go in their direction.",
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.6.option.1.text",
                 },
                 {
                     id: "C",
                     value:
-                        "The lane is splitting ahead and you will have to choose which lane to proceed in.",
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.6.option.2.text",
                 },
             ],
         },
@@ -6409,19 +6397,23 @@ const questionData: QuestionData = {
             id: "302",
             answer: "A",
             image: "road-signs/RM9.gif",
-            text: "This marking means that:",
+            text:
+                "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.7.text",
             option: [
                 {
                     id: "A",
-                    value: "Buses must drive on the left of the yellow line only.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Buses must drive on the right of the yellow line only.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Buses must park on the left of the yellow line only.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.7.option.2.text",
                 },
             ],
         },
@@ -6429,22 +6421,23 @@ const questionData: QuestionData = {
             id: "303",
             answer: "A",
             image: "road-signs/RM17.1.gif",
-            text: "Which one is true?",
+            text:
+                "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.8.text",
             option: [
                 {
                     id: "A",
                     value:
-                        "This symbol represents pedal cycles, and can be used in bicycle lanes and crossings.",
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.8.option.0.text",
                 },
                 {
                     id: "B",
                     value:
-                        "This symbol represents motorcycles, and can be used in motorcycle lanes and crossings.",
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.8.option.1.text",
                 },
                 {
                     id: "C",
                     value:
-                        "This symbol represents pedal cycles and can only be used in pedal cycle crossings.",
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.8.option.2.text",
                 },
             ],
         },
@@ -6452,19 +6445,23 @@ const questionData: QuestionData = {
             id: "304",
             answer: "C",
             image: "road-signs/RM10.gif",
-            text: "Who may let their vehicle stop over the yellow markings?",
+            text:
+                "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.9.text",
             option: [
                 {
                     id: "A",
-                    value: "Drivers moving up in the direction of the black arrow on the left.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.9.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Drivers moving down in the direction of the black arrow on the right.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.9.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Drivers approaching from the left where the stop line is.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.9.option.2.text",
                 },
             ],
         },
@@ -6474,24 +6471,27 @@ const questionData: QuestionData = {
             image: "road-signs/RM10.gif",
             text: {
                 list: [
-                    "This marking means that:",
-                    "(1) You may not drive over it with any part of your vehicle.",
-                    "(2) You may not stop over it with any part of your vehicle.",
-                    "(3) You may not park over it with any part of your vehicle.",
+                    "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.10.text.list.0.text",
+                    "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.10.text.list.1.text",
+                    "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.10.text.list.2.text",
+                    "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.10.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3) are true.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.10.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(2) and (3) only are true.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.10.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(3) only is true.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.10.option.2.text",
                 },
             ],
         },
@@ -6499,19 +6499,23 @@ const questionData: QuestionData = {
             id: "306",
             answer: "A",
             image: "road-signs/RM11.gif",
-            text: "With this zig-zag marking you must:",
+            text:
+                "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.11.text",
             option: [
                 {
                     id: "A",
-                    value: "Not cross over it.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.11.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Stop within it immediately.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.11.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Not swerve from side to side within it.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.11.option.2.text",
                 },
             ],
         },
@@ -6519,19 +6523,23 @@ const questionData: QuestionData = {
             id: "307",
             answer: "C",
             image: "road-signs/RM14.gif",
-            text: "This marking shows that:",
+            text:
+                "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.12.text",
             option: [
                 {
                     id: "A",
-                    value: "This is a lane reserved exclusively for motorcycles.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.12.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Motorcycles may not park here.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.12.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Motorcycles may not pass this point.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.12.option.2.text",
                 },
             ],
         },
@@ -6539,20 +6547,23 @@ const questionData: QuestionData = {
             id: "308",
             answer: "C",
             image: "road-signs/RM16.gif",
-            text: "This marking shows that:",
+            text:
+                "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.13.text",
             option: [
                 {
                     id: "A",
-                    value: "No wheelchairs may park here.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.13.option.0.text",
                 },
                 {
                     id: "B",
                     value:
-                        "No vehicles under 230kg and specifically designed for disabled persons may park here.",
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.13.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "No vehicles except for those carrying disabled persons may park here.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.13.option.2.text",
                 },
             ],
         },
@@ -6560,21 +6571,23 @@ const questionData: QuestionData = {
             id: "309",
             answer: "A",
             image: "road-signs/RM15.gif",
-            text: "At this intersection, the rule is:",
+            text:
+                "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.14.text",
             option: [
                 {
                     id: "A",
                     value:
-                        "All vehicles must yield to pedestrians before entering the intersection.",
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.14.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "All vehicles must travel in an anti-clockwise direction.",
+                    value:
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.14.option.1.text",
                 },
                 {
                     id: "C",
                     value:
-                        "Vehicles approaching from the direction of the four black arrows must leave in the order in which they arrived.",
+                        "nav.roadMarkings.regulatoryMarkings.longitudinalRegulatoryMarkings.question.14.option.2.text",
                 },
             ],
         },
@@ -6585,22 +6598,19 @@ const questionData: QuestionData = {
             answer: "B",
             image: "road-signs/WM2.3.gif",
             image2: "road-signs/WM3.2.gif",
-            text: "What can be said about these two road markings?",
+            text: "nav.roadMarkings.warningMarkings.question.0.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "They are both lane dividers, one for lanes travelling in the same direction, and the other for lanes travelling in different directions.",
+                    value: "nav.roadMarkings.warningMarkings.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "The fat ones are continuity lines and the thin ones are dividing lines.",
+                    value: "nav.roadMarkings.warningMarkings.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "The marking on the left may be crossed, but the marking on the right may not be crossed.",
+                    value: "nav.roadMarkings.warningMarkings.question.0.option.2.text",
                 },
             ],
         },
@@ -6608,19 +6618,19 @@ const questionData: QuestionData = {
             id: "311",
             answer: "C",
             image: "road-signs/WM1.gif",
-            text: "When you see this marking it means that:",
+            text: "nav.roadMarkings.warningMarkings.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "There is a crossroads ahead.",
+                    value: "nav.roadMarkings.warningMarkings.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "There is a skew junction ahead.",
+                    value: "nav.roadMarkings.warningMarkings.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "There is a railway ahead.",
+                    value: "nav.roadMarkings.warningMarkings.question.1.option.2.text",
                 },
             ],
         },
@@ -6628,22 +6638,19 @@ const questionData: QuestionData = {
             id: "312",
             answer: "C",
             image: "road-signs/WM6.gif",
-            text: "This marking means that:",
+            text: "nav.roadMarkings.warningMarkings.question.2.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "There are mandatory direction arrows ahead and you will only be able to go in their direction when you get to them.",
+                    value: "nav.roadMarkings.warningMarkings.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "These are mandatory direction arrows and you may only go in their direction.",
+                    value: "nav.roadMarkings.warningMarkings.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "These are lane reduction arrows and a lane is ending some distance ahead.",
+                    value: "nav.roadMarkings.warningMarkings.question.2.option.2.text",
                 },
             ],
         },
@@ -6651,19 +6658,19 @@ const questionData: QuestionData = {
             id: "313",
             answer: "C",
             image: "road-signs/WM8.gif",
-            text: "If you see these arrows:",
+            text: "nav.roadMarkings.warningMarkings.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "You may overtake in the direction indicated by the arrow.",
+                    value: "nav.roadMarkings.warningMarkings.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You must turn in the direction indicated by the arrow.",
+                    value: "nav.roadMarkings.warningMarkings.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "There is a no crossing or a no stopping line ahead.",
+                    value: "nav.roadMarkings.warningMarkings.question.3.option.2.text",
                 },
             ],
         },
@@ -6674,24 +6681,24 @@ const questionData: QuestionData = {
             image2: "road-signs/WM9.2.gif",
             text: {
                 list: [
-                    "What is true of these two markings?",
-                    "(1) The solid marking refers to actions to be taken during the day, and the outlined marking refers to actions to be taken during the night.",
-                    "(2) They are painted islands which you may not drive, stop or park over.",
-                    "(3) The one with solid markings warns of an arrestor bed ahead, and the one with outlines refers to an escape road ahead.",
+                    "nav.roadMarkings.warningMarkings.question.4.text.list.0.text",
+                    "nav.roadMarkings.warningMarkings.question.4.text.list.1.text",
+                    "nav.roadMarkings.warningMarkings.question.4.text.list.2.text",
+                    "nav.roadMarkings.warningMarkings.question.4.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "Only (2) and (3) are true.",
+                    value: "nav.roadMarkings.warningMarkings.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (3) is true.",
+                    value: "nav.roadMarkings.warningMarkings.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "None of them are true.",
+                    value: "nav.roadMarkings.warningMarkings.question.4.option.2.text",
                 },
             ],
         },
@@ -6699,19 +6706,19 @@ const questionData: QuestionData = {
             id: "315",
             answer: "C",
             image: "road-signs/WM10.gif",
-            text: "When you see this painted on the road then:",
+            text: "nav.roadMarkings.warningMarkings.question.5.text",
             option: [
                 {
                     id: "A",
-                    value: "There is a speed hump ahead.",
+                    value: "nav.roadMarkings.warningMarkings.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "There is a pedestrian crossing ahead.",
+                    value: "nav.roadMarkings.warningMarkings.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "It is painted over a speed hump.",
+                    value: "nav.roadMarkings.warningMarkings.question.5.option.2.text",
                 },
             ],
         },
@@ -6719,20 +6726,19 @@ const questionData: QuestionData = {
             id: "316",
             answer: "C",
             image: "road-signs/WM11.2.gif",
-            text: "This means that:",
+            text: "nav.roadMarkings.warningMarkings.question.6.text",
             option: [
                 {
                     id: "A",
-                    value: "The road will split into two lanes ahead.",
+                    value: "nav.roadMarkings.warningMarkings.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "You were on a one-way road and you are about to enter a roadway with traffic travelling in both directions.",
+                    value: "nav.roadMarkings.warningMarkings.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "There was an exclusive lane and the restriction has now ended.",
+                    value: "nav.roadMarkings.warningMarkings.question.6.option.2.text",
                 },
             ],
         },
@@ -6740,20 +6746,19 @@ const questionData: QuestionData = {
             id: "317",
             answer: "A",
             image: "road-signs/WM4.gif",
-            text: "What is true about this marking?",
+            text: "nav.roadMarkings.warningMarkings.question.7.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "The double white arrow shows that in that lane traffic could be going in either direction.",
+                    value: "nav.roadMarkings.warningMarkings.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The double line indicates that there are two lanes next to each other.",
+                    value: "nav.roadMarkings.warningMarkings.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You should only drive on the left of the lines.",
+                    value: "nav.roadMarkings.warningMarkings.question.7.option.2.text",
                 },
             ],
         },
@@ -6761,19 +6766,19 @@ const questionData: QuestionData = {
             id: "318",
             answer: "A",
             image: "road-signs/WM5.gif",
-            text: "This marking means that:",
+            text: "nav.roadMarkings.warningMarkings.question.8.text",
             option: [
                 {
                     id: "A",
-                    value: "There is a yield sign ahead.",
+                    value: "nav.roadMarkings.warningMarkings.question.8.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The roadway will be widening out ahead.",
+                    value: "nav.roadMarkings.warningMarkings.question.8.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "There is a dead-end ahead.",
+                    value: "nav.roadMarkings.warningMarkings.question.8.option.2.text",
                 },
             ],
         },
@@ -6785,24 +6790,24 @@ const questionData: QuestionData = {
             image: "road-signs/GM2.gif",
             text: {
                 list: [
-                    "What is true of this picture?",
-                    "(1) There are no pedestrian crossings in this picture.",
-                    "(2) This picture is depicting a freeway interchange.",
-                    "(3) The picture shows guidelines for turning within an intersection.",
+                    "nav.roadMarkings.guidanceMarkings.question.0.text.list.0.text",
+                    "nav.roadMarkings.guidanceMarkings.question.0.text.list.1.text",
+                    "nav.roadMarkings.guidanceMarkings.question.0.text.list.2.text",
+                    "nav.roadMarkings.guidanceMarkings.question.0.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "All of them are true.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (1) and (3) are true.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (3) is true.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.0.option.2.text",
                 },
             ],
         },
@@ -6810,19 +6815,19 @@ const questionData: QuestionData = {
             id: "320",
             answer: "B",
             image: "road-signs/GM8.gif",
-            text: "This marking is used on:",
+            text: "nav.roadMarkings.guidanceMarkings.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "Booms.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Kerbs.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Poles used in the yard test for parallel parking.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.1.option.2.text",
                 },
             ],
         },
@@ -6830,20 +6835,19 @@ const questionData: QuestionData = {
             id: "321",
             answer: "C",
             image: "road-signs/GM1.2.gif",
-            text: "This marking is a lane line, and so:",
+            text: "nav.roadMarkings.guidanceMarkings.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "You may not cross over it.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "You may only cross over it if both lanes of traffic are travelling in the same direction.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may cross over it.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.2.option.2.text",
                 },
             ],
         },
@@ -6851,38 +6855,38 @@ const questionData: QuestionData = {
             id: "322",
             answer: "A",
             image: "road-signs/GM3.1.gif",
-            text: "These furcation arrows show that:",
+            text: "nav.roadMarkings.guidanceMarkings.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "There will be an extra lane on the left ahead.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "There will be an extra lane on the right ahead.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "The road splits into a Y-junction ahead.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.3.option.2.text",
                 },
             ],
         },
         {
             id: "323",
             answer: "C",
-            text: "Which of the following is not commonly found as a word guidance marking?",
+            text: "nav.roadMarkings.guidanceMarkings.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "School.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Slow.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Trucks crossing.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.4.option.2.text",
                 },
             ],
         },
@@ -6892,25 +6896,25 @@ const questionData: QuestionData = {
             image: "road-signs/GM5.gif",
             text: {
                 list: [
-                    "What is true of this picture?",
-                    "(1) There are no pedestrian crossings in this picture.",
-                    "(2) There is a bicycle crossing in this picture.",
-                    "(3) There is a yield marking in this picture.",
-                    "(4) There is a stop marking in this picture.",
+                    "nav.roadMarkings.guidanceMarkings.question.5.text.list.0.text",
+                    "nav.roadMarkings.guidanceMarkings.question.5.text.list.1.text",
+                    "nav.roadMarkings.guidanceMarkings.question.5.text.list.2.text",
+                    "nav.roadMarkings.guidanceMarkings.question.5.text.list.3.text",
+                    "nav.roadMarkings.guidanceMarkings.question.5.text.list.4.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(2) and (4) only are true.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1), (2) and (4) are true.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(1) and (3) are true.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.5.option.2.text",
                 },
             ],
         },
@@ -6918,19 +6922,19 @@ const questionData: QuestionData = {
             id: "325",
             answer: "C",
             image: "road-signs/GM4.1.gif",
-            text: "This arrow shows:",
+            text: "nav.roadMarkings.guidanceMarkings.question.6.text",
             option: [
                 {
                     id: "A",
-                    value: "That there is a hazard ahead.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "That the road becomes a single lane ahead.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.6.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "The direction of travel in the lane.",
+                    value: "nav.roadMarkings.guidanceMarkings.question.6.option.2.text",
                 },
             ],
         },
@@ -6940,38 +6944,38 @@ const questionData: QuestionData = {
             id: "326",
             answer: "B",
             image: "road-signs/W101.gif",
-            text: "What is ahead if you see this sign?",
+            text: "nav.signs.regulatory.control.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "A first-aid post",
+                    value: "nav.signs.regulatory.control.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Roads which cross",
+                    value: "nav.signs.regulatory.control.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "A level crossing",
+                    value: "nav.signs.regulatory.control.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "328",
             answer: "C",
-            text: "Which one of the following is true?",
+            text: "nav.signs.regulatory.control.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "All control signs are red and black.",
+                    value: "nav.signs.regulatory.control.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "All control signs are round.",
+                    value: "nav.signs.regulatory.control.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "All control signs are regulatory, which means they have to be obeyed.",
+                    value: "nav.signs.regulatory.control.question.1.option.2.text",
                 },
             ],
         },
@@ -6981,24 +6985,24 @@ const questionData: QuestionData = {
             image: "road-signs/R1.gif",
             text: {
                 list: [
-                    "This sign could be found at which of the following places?",
-                    "(1) Scholar patrol.",
-                    "(2) Level crossing.",
-                    "(3) Intersection controlled by traffic signals.",
+                    "nav.signs.regulatory.control.question.2.text.list.0.text",
+                    "nav.signs.regulatory.control.question.2.text.list.1.text",
+                    "nav.signs.regulatory.control.question.2.text.list.2.text",
+                    "nav.signs.regulatory.control.question.2.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3) are all true.",
+                    value: "nav.signs.regulatory.control.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (2) only.",
+                    value: "nav.signs.regulatory.control.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(3) only.",
+                    value: "nav.signs.regulatory.control.question.2.option.2.text",
                 },
             ],
         },
@@ -7006,19 +7010,19 @@ const questionData: QuestionData = {
             id: "330",
             answer: "B",
             image: "road-signs/R5.gif",
-            text: "At this sign:",
+            text: "nav.signs.regulatory.control.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "No vehicles may enter.",
+                    value: "nav.signs.regulatory.control.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only delivery, construction and maintenance vehicles may enter.",
+                    value: "nav.signs.regulatory.control.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Any vehicles entering must drive at less than 30 km/h.",
+                    value: "nav.signs.regulatory.control.question.3.option.2.text",
                 },
             ],
         },
@@ -7026,21 +7030,19 @@ const questionData: QuestionData = {
             id: "331",
             answer: "C",
             image: "road-signs/R6.gif",
-            text: "When you see this sign it means that:",
+            text: "nav.signs.regulatory.control.question.4.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "The road ahead will become a road with traffic travelling in two directions.",
+                    value: "nav.signs.regulatory.control.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "This is a reversible lane and traffic could be moving in either direction.",
+                    value: "nav.signs.regulatory.control.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You must yield to oncoming traffic.",
+                    value: "nav.signs.regulatory.control.question.4.option.2.text",
                 },
             ],
         },
@@ -7048,19 +7050,19 @@ const questionData: QuestionData = {
             id: "332",
             answer: "A",
             image: "road-signs/R4.2.gif",
-            text: "Which of the following is true of this sign?",
+            text: "nav.signs.regulatory.control.question.5.text",
             option: [
                 {
                     id: "A",
-                    value: "You may only turn right.",
+                    value: "nav.signs.regulatory.control.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You may not turn right.",
+                    value: "nav.signs.regulatory.control.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "The road bends sharply to the right ahead.",
+                    value: "nav.signs.regulatory.control.question.5.option.2.text",
                 },
             ],
         },
@@ -7070,19 +7072,19 @@ const questionData: QuestionData = {
             id: "327",
             answer: "C",
             image: "road-signs/IN7.gif",
-            text: "Where would you find this sign?",
+            text: "nav.signs.information.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "At a roadworks site",
+                    value: "nav.signs.information.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Before a sharp curve to the right",
+                    value: "nav.signs.information.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "At a traffic circle where right of way is applicable",
+                    value: "nav.signs.information.question.0.option.2.text",
                 },
             ],
         },
@@ -7091,20 +7093,19 @@ const questionData: QuestionData = {
             answer: "B",
             image: "road-signs/IN2.gif",
             image2: "road-signs/IN3.gif",
-            text:
-                "Which one of these two signs would you encounter first as you were driving along?",
+            text: "nav.signs.information.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "First the one with two stripes and then the one with three.",
+                    value: "nav.signs.information.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "First the one with three stripes and then the one with two.",
+                    value: "nav.signs.information.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "They will not be found in the same area together.",
+                    value: "nav.signs.information.question.1.option.2.text",
                 },
             ],
         },
@@ -7112,19 +7113,19 @@ const questionData: QuestionData = {
             id: "386",
             answer: "C",
             image: "road-signs/IN25.gif",
-            text: "Which is correct regarding this sign?",
+            text: "nav.signs.information.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "It shows upcoming exits off a freeway. The first exit is the R350.",
+                    value: "nav.signs.information.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "It shows which classes of vehicle may use this road.",
+                    value: "nav.signs.information.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "It means that there is a tollbooth coming up.",
+                    value: "nav.signs.information.question.2.option.2.text",
                 },
             ],
         },
@@ -7135,24 +7136,24 @@ const questionData: QuestionData = {
             image2: "road-signs/IN10.gif",
             text: {
                 list: [
-                    "What is true of these two signs?",
-                    "(1) They may both be found on freeways.",
-                    "(2) They are both information signs.",
-                    "(3) They both apply to cars only, not all vehicles.",
+                    "nav.signs.information.question.3.text.list.0.text",
+                    "nav.signs.information.question.3.text.list.1.text",
+                    "nav.signs.information.question.3.text.list.2.text",
+                    "nav.signs.information.question.3.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "All of them are true.",
+                    value: "nav.signs.information.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "None of them is true.",
+                    value: "nav.signs.information.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (2) is true.",
+                    value: "nav.signs.information.question.3.option.2.text",
                 },
             ],
         },
@@ -7160,19 +7161,19 @@ const questionData: QuestionData = {
             id: "388",
             answer: "B",
             image: "road-signs/IN11.1.gif",
-            text: "This sign shows that:",
+            text: "nav.signs.information.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "You may not exceed 80km/h.",
+                    value: "nav.signs.information.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "It is suggesting that a safe speed on this road would be 80km/h.",
+                    value: "nav.signs.information.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may not travel slower than 80km/h.",
+                    value: "nav.signs.information.question.4.option.2.text",
                 },
             ],
         },
@@ -7183,24 +7184,24 @@ const questionData: QuestionData = {
             answer: "C",
             text: {
                 list: [
-                    "Command signs are always:",
-                    "(1) Round.",
-                    "(2) Mainly blue and white in colour.",
-                    "(3) For informational purposes only.",
+                    "nav.signs.regulatory.command.question.0.text.list.0.text",
+                    "nav.signs.regulatory.command.question.0.text.list.1.text",
+                    "nav.signs.regulatory.command.question.0.text.list.2.text",
+                    "nav.signs.regulatory.command.question.0.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(2) and (3) only.",
+                    value: "nav.signs.regulatory.command.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1), (2) and (3).",
+                    value: "nav.signs.regulatory.command.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(1) and (2) only are correct.",
+                    value: "nav.signs.regulatory.command.question.0.option.2.text",
                 },
             ],
         },
@@ -7208,19 +7209,19 @@ const questionData: QuestionData = {
             id: "334",
             answer: "B",
             image: "road-signs/R101.gif",
-            text: "Which is true of this sign?",
+            text: "nav.signs.regulatory.command.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "This is the speed limit on all roads in an urban area.",
+                    value: "nav.signs.regulatory.command.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You may not go slower than 50 km/h.",
+                    value: "nav.signs.regulatory.command.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may not go faster than 50 km/h.",
+                    value: "nav.signs.regulatory.command.question.1.option.2.text",
                 },
             ],
         },
@@ -7228,19 +7229,19 @@ const questionData: QuestionData = {
             id: "335",
             answer: "A",
             image: "road-signs/R137.gif",
-            text: "Where would you find this sign?",
+            text: "nav.signs.regulatory.command.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "At a traffic circle.",
+                    value: "nav.signs.regulatory.command.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Some distance before a traffic circle.",
+                    value: "nav.signs.regulatory.command.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Some distance after a traffic circle.",
+                    value: "nav.signs.regulatory.command.question.2.option.2.text",
                 },
             ],
         },
@@ -7248,19 +7249,19 @@ const questionData: QuestionData = {
             id: "336",
             answer: "B",
             image: "road-signs/R103.gif",
-            text: "This sign tells you to:",
+            text: "nav.signs.regulatory.command.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "You must turn left after this sign.",
+                    value: "nav.signs.regulatory.command.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You must keep to the left of this sign.",
+                    value: "nav.signs.regulatory.command.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "An additional lane will be added on the left.",
+                    value: "nav.signs.regulatory.command.question.3.option.2.text",
                 },
             ],
         },
@@ -7269,21 +7270,19 @@ const questionData: QuestionData = {
             answer: "C",
             image: "road-signs/R105.gif",
             image2: "road-signs/R108.gif",
-            text: "What is the difference between these two road signs?",
+            text: "nav.signs.regulatory.command.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "The straight arrow will be found some distance before the bent arrow.",
+                    value: "nav.signs.regulatory.command.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "The straight arrow means you may only turn left and the bent arrow means you may turn left if you want to.",
+                    value: "nav.signs.regulatory.command.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "The straight arrow is found at a junction where you may only go left and the bent arrow is an advance warning about this junction.",
+                    value: "nav.signs.regulatory.command.question.4.option.2.text",
                 },
             ],
         },
@@ -7294,24 +7293,24 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "Which of the following statements is true?",
-                    "(1) To be prohibited from doing something means you may not do it.",
-                    "(2) All prohibition signs have a diagonal red stripe through them.",
-                    "(3) Prohibition signs include signs to limit mass, length, height and axle massload of the vehicles that are allowed to use a road.",
+                    "nav.signs.regulatory.prohibition.question.0.text.list.0.text",
+                    "nav.signs.regulatory.prohibition.question.0.text.list.1.text",
+                    "nav.signs.regulatory.prohibition.question.0.text.list.2.text",
+                    "nav.signs.regulatory.prohibition.question.0.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3) are true.",
+                    value: "nav.signs.regulatory.prohibition.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (1) and (3) are true.",
+                    value: "nav.signs.regulatory.prohibition.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (1) and (2) are true.",
+                    value: "nav.signs.regulatory.prohibition.question.0.option.2.text",
                 },
             ],
         },
@@ -7319,19 +7318,19 @@ const questionData: QuestionData = {
             id: "339",
             answer: "B",
             image: "road-signs/R201.gif",
-            text: "If you see this sign:",
+            text: "nav.signs.regulatory.prohibition.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "You must drive at 100km/h.",
+                    value: "nav.signs.regulatory.prohibition.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You may not drive at over 100km/h.",
+                    value: "nav.signs.regulatory.prohibition.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You are probably in an urban area.",
+                    value: "nav.signs.regulatory.prohibition.question.1.option.2.text",
                 },
             ],
         },
@@ -7339,19 +7338,19 @@ const questionData: QuestionData = {
             id: "340",
             answer: "C",
             image: "road-signs/R212.gif",
-            text: "This sign means that:",
+            text: "nav.signs.regulatory.prohibition.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "There is no road going to the right ahead.",
+                    value: "nav.signs.regulatory.prohibition.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You must turn right ahead.",
+                    value: "nav.signs.regulatory.prohibition.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You may not turn right ahead.",
+                    value: "nav.signs.regulatory.prohibition.question.2.option.2.text",
                 },
             ],
         },
@@ -7360,21 +7359,19 @@ const questionData: QuestionData = {
             answer: "C",
             image: "road-signs/R228.gif",
             image2: "road-signs/R229.gif",
-            text: "What is the difference between these two signs?",
+            text: "nav.signs.regulatory.prohibition.question.3.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "There is no difference. They both mean that delivery vehicles may not enter beyond this point.",
+                    value: "nav.signs.regulatory.prohibition.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The first one refers to bakkies and the second one refers to trucks.",
+                    value: "nav.signs.regulatory.prohibition.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "The first one means that delivery vehicles are prohibited and the second one means that goods vehicles are prohibited.",
+                    value: "nav.signs.regulatory.prohibition.question.3.option.2.text",
                 },
             ],
         },
@@ -7384,24 +7381,24 @@ const questionData: QuestionData = {
             image: "road-signs/R220.gif",
             text: {
                 list: [
-                    "When you see this sign, then:",
-                    "(1) If you are a pedestrian you may not pass it.",
-                    "(2) If you are a cyclist you may not pass it.",
-                    "(3) This sign only applies to pedestrians who are accompanied by cyclists.",
+                    "nav.signs.regulatory.prohibition.question.4.text.list.0.text",
+                    "nav.signs.regulatory.prohibition.question.4.text.list.1.text",
+                    "nav.signs.regulatory.prohibition.question.4.text.list.2.text",
+                    "nav.signs.regulatory.prohibition.question.4.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1) only.",
+                    value: "nav.signs.regulatory.prohibition.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(1) and (2) only.",
+                    value: "nav.signs.regulatory.prohibition.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "(3) only.",
+                    value: "nav.signs.regulatory.prohibition.question.4.option.2.text",
                 },
             ],
         },
@@ -7411,20 +7408,19 @@ const questionData: QuestionData = {
             id: "343",
             answer: "C",
             image: "road-signs/R302.gif",
-            text: "The yellow dashed line down the side of this sign means that:",
+            text: "nav.signs.regulatory.reservations.question.0.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "It means that buses may only park in this area during certain times of the day.",
+                    value: "nav.signs.regulatory.reservations.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "It shows that the sign is a temporary sign.",
+                    value: "nav.signs.regulatory.reservations.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "It shows that the sign refers to an exclusive lane.",
+                    value: "nav.signs.regulatory.reservations.question.0.option.2.text",
                 },
             ],
         },
@@ -7434,24 +7430,24 @@ const questionData: QuestionData = {
             image: "road-signs/R307.gif",
             text: {
                 list: [
-                    "Which of the following vehicles may use the area of the road where this sign is displayed? ",
-                    "(1) Any vehicles with two wheels.",
-                    "(2) Motorcycles only.",
-                    "(3) Motorcycles and pedal cycles.",
+                    "nav.signs.regulatory.reservations.question.1.text.list.0.text",
+                    "nav.signs.regulatory.reservations.question.1.text.list.1.text",
+                    "nav.signs.regulatory.reservations.question.1.text.list.2.text",
+                    "nav.signs.regulatory.reservations.question.1.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "(1), (2) and (3).",
+                    value: "nav.signs.regulatory.reservations.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "(2) only.",
+                    value: "nav.signs.regulatory.reservations.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "None of them.",
+                    value: "nav.signs.regulatory.reservations.question.1.option.2.text",
                 },
             ],
         },
@@ -7459,38 +7455,38 @@ const questionData: QuestionData = {
             id: "345",
             answer: "B",
             image: "road-signs/R325.gif",
-            text: "This sign marks a:",
+            text: "nav.signs.regulatory.reservations.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "Bus parking area.",
+                    value: "nav.signs.regulatory.reservations.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Bus stop.",
+                    value: "nav.signs.regulatory.reservations.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Bus lane.",
+                    value: "nav.signs.regulatory.reservations.question.2.option.2.text",
                 },
             ],
         },
         {
             id: "346",
             answer: "A",
-            text: "Reservation signs mostly have to do with:",
+            text: "nav.signs.regulatory.reservations.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "Areas reserved for certain types of vehicles to drive or park.",
+                    value: "nav.signs.regulatory.reservations.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Buses, minibuses and trams.",
+                    value: "nav.signs.regulatory.reservations.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Areas where certain kinds of vehicles may not drive or stop.",
+                    value: "nav.signs.regulatory.reservations.question.3.option.2.text",
                 },
             ],
         },
@@ -7498,19 +7494,19 @@ const questionData: QuestionData = {
             id: "347",
             answer: "C",
             image: "road-signs/R306P.gif",
-            text: "This sign means that:",
+            text: "nav.signs.regulatory.reservations.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "You may only park here at certain times of the day.",
+                    value: "nav.signs.regulatory.reservations.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The shortest amount of time you can park here for is 60 minutes.",
+                    value: "nav.signs.regulatory.reservations.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "The longest amount of time you can park here for is 60 minutes.",
+                    value: "nav.signs.regulatory.reservations.question.4.option.2.text",
                 },
             ],
         },
@@ -7520,20 +7516,19 @@ const questionData: QuestionData = {
             id: "348",
             answer: "A",
             image: "road-signs/R401.gif",
-            text: "When you see this sign, it means you may not:",
+            text: "nav.signs.regulatory.comprehensive.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Proceed on foot.",
+                    value: "nav.signs.regulatory.comprehensive.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Proceed if your vehicle is over a certain height because there is a bridge ahead.",
+                    value: "nav.signs.regulatory.comprehensive.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Travel straight.",
+                    value: "nav.signs.regulatory.comprehensive.question.0.option.2.text",
                 },
             ],
         },
@@ -7541,19 +7536,19 @@ const questionData: QuestionData = {
             id: "349",
             answer: "C",
             image: "road-signs/R403.gif",
-            text: "You would find this sign near a:",
+            text: "nav.signs.regulatory.comprehensive.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "School.",
+                    value: "nav.signs.regulatory.comprehensive.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Playground.",
+                    value: "nav.signs.regulatory.comprehensive.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Residential area.",
+                    value: "nav.signs.regulatory.comprehensive.question.1.option.2.text",
                 },
             ],
         },
@@ -7562,20 +7557,19 @@ const questionData: QuestionData = {
             answer: "A",
             image: "road-signs/R402.gif",
             image2: "road-signs/R401.gif",
-            text: "Which of the following is true of these two signs?",
+            text: "nav.signs.regulatory.comprehensive.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "The same rules apply whichever one you see.",
+                    value: "nav.signs.regulatory.comprehensive.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "One is found in urban areas and the other outside urban areas.",
+                    value: "nav.signs.regulatory.comprehensive.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "One means that there will be an offramp in 100m and the other means there will be an offramp in 200m.",
+                    value: "nav.signs.regulatory.comprehensive.question.2.option.2.text",
                 },
             ],
         },
@@ -7585,19 +7579,19 @@ const questionData: QuestionData = {
             id: "351",
             answer: "C",
             image: "road-signs/R600.gif",
-            text: "What is the meaning of this sign?",
+            text: "nav.signs.regulatory.derestriction.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "There is a level-crossing ahead.",
+                    value: "nav.signs.regulatory.derestriction.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "There is a crossroads ahead.",
+                    value: "nav.signs.regulatory.derestriction.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "This sign is used over another sign and means a restriction has ended.",
+                    value: "nav.signs.regulatory.derestriction.question.0.option.2.text",
                 },
             ],
         },
@@ -7606,21 +7600,19 @@ const questionData: QuestionData = {
         {
             id: "352",
             answer: "B",
-            text: "Exclusive secondary signs are:",
+            text: "nav.signs.regulatory.exclusive.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Always round.",
+                    value: "nav.signs.regulatory.exclusive.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "Displayed with a primary sign and mean that the sign only applies at some times or to some vehicles.",
+                    value: "nav.signs.regulatory.exclusive.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "Displayed with a primary sign in order to give extra guidance information about the primary sign.",
+                    value: "nav.signs.regulatory.exclusive.question.0.option.2.text",
                 },
             ],
         },
@@ -7628,19 +7620,19 @@ const questionData: QuestionData = {
             id: "353",
             answer: "B",
             image: "road-signs/R540.gif",
-            text: "This sign means that:",
+            text: "nav.signs.regulatory.exclusive.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "You may only travel at 15km/h or slower.",
+                    value: "nav.signs.regulatory.exclusive.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "A primary sign's restriction is further restricted to 15 vehicles.",
+                    value: "nav.signs.regulatory.exclusive.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "A primary sign's restriction only applies to vehicles under 15 tonnes.",
+                    value: "nav.signs.regulatory.exclusive.question.1.option.2.text",
                 },
             ],
         },
@@ -7648,20 +7640,19 @@ const questionData: QuestionData = {
             id: "354",
             answer: "B",
             image: "road-signs/R505.gif",
-            text:
-                "If you would like to park in an area where there is a sign allowing parking accompanied by this sign, and you would like to park for 45 minutes, when may you do it?",
+            text: "nav.signs.regulatory.exclusive.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "You may not.",
+                    value: "nav.signs.regulatory.exclusive.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "On Sunday.",
+                    value: "nav.signs.regulatory.exclusive.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "On Saturday from 08h00 to 13h00.",
+                    value: "nav.signs.regulatory.exclusive.question.2.option.2.text",
                 },
             ],
         },
@@ -7670,20 +7661,19 @@ const questionData: QuestionData = {
             answer: "A",
             image: "road-signs/R511.gif",
             image2: "road-signs/R512.gif",
-            text:
-                "After a tunnel, if there was a sign telling you to switch off your headlights again, it would be most likely to be accompanied by which of these signs?",
+            text: "nav.signs.regulatory.exclusive.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "The first one.",
+                    value: "nav.signs.regulatory.exclusive.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The second one.",
+                    value: "nav.signs.regulatory.exclusive.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Neither of them.",
+                    value: "nav.signs.regulatory.exclusive.question.3.option.2.text",
                 },
             ],
         },
@@ -7691,19 +7681,19 @@ const questionData: QuestionData = {
             id: "356",
             answer: "A",
             image: "road-signs/R535.gif",
-            text: "This sign is most likely to be displayed with a ... sign.",
+            text: "nav.signs.regulatory.exclusive.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "No overtaking.",
+                    value: "nav.signs.regulatory.exclusive.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Stop.",
+                    value: "nav.signs.regulatory.exclusive.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Winding road.",
+                    value: "nav.signs.regulatory.exclusive.question.4.option.2.text",
                 },
             ],
         },
@@ -7713,19 +7703,19 @@ const questionData: QuestionData = {
             id: "357",
             answer: "B",
             image: "road-signs/W104.gif",
-            text: "This sign is a:",
+            text: "nav.signs.warning.advancedWarningSigns.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Direction of movement sign.",
+                    value: "nav.signs.warning.advancedWarningSigns.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Road layout sign.",
+                    value: "nav.signs.warning.advancedWarningSigns.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Symbolic sign.",
+                    value: "nav.signs.warning.advancedWarningSigns.question.0.option.2.text",
                 },
             ],
         },
@@ -7734,25 +7724,25 @@ const questionData: QuestionData = {
             answer: "B",
             text: {
                 list: [
-                    "Which of the following is true?",
-                    "(1) All normal advance warning signs are triangles with a red border and white background.",
-                    "(2) Temporary signs have a yellow background.",
-                    "(3) These signs are known as advance signs because they are more complicated than normal.",
-                    "(4) These signs are known as advance signs because they warn you of something before you come to it.",
+                    "nav.signs.warning.advancedWarningSigns.question.1.text.list.0.text",
+                    "nav.signs.warning.advancedWarningSigns.question.1.text.list.1.text",
+                    "nav.signs.warning.advancedWarningSigns.question.1.text.list.2.text",
+                    "nav.signs.warning.advancedWarningSigns.question.1.text.list.3.text",
+                    "nav.signs.warning.advancedWarningSigns.question.1.text.list.4.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "All of them are true.",
+                    value: "nav.signs.warning.advancedWarningSigns.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (1), (2) and (4) are true.",
+                    value: "nav.signs.warning.advancedWarningSigns.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (1) and (4) are true.",
+                    value: "nav.signs.warning.advancedWarningSigns.question.1.option.2.text",
                 },
             ],
         },
@@ -7762,19 +7752,22 @@ const questionData: QuestionData = {
             id: "358",
             answer: "B",
             image: "road-signs/W103.gif",
-            text: "At the crossroads ahead, what is true?",
+            text: "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "You will have right of way.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You will not have right of way.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "There will be a four-way stop.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.0.option.2.text",
                 },
             ],
         },
@@ -7782,19 +7775,22 @@ const questionData: QuestionData = {
             id: "359",
             answer: "C",
             image: "road-signs/W117.gif",
-            text: "This sign means that:",
+            text: "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "The road is narrowing ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "An exclusive lane is ending ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "A dual-carriageway is ending ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.1.option.2.text",
                 },
             ],
         },
@@ -7802,19 +7798,22 @@ const questionData: QuestionData = {
             id: "361",
             answer: "A",
             image: "road-signs/W109.gif",
-            text: "If you see this sign then there are ... ahead.",
+            text: "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "Roads joining yours from both sides.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Concealed driveways.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Crossroads.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.2.option.2.text",
                 },
             ],
         },
@@ -7822,19 +7821,22 @@ const questionData: QuestionData = {
             id: "362",
             answer: "B",
             image: "road-signs/W114.gif",
-            text: "This sign warns you that:",
+            text: "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "The road is splitting ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "There is a road joining yours ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "A lane is ending ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.3.option.2.text",
                 },
             ],
         },
@@ -7842,19 +7844,22 @@ const questionData: QuestionData = {
             id: "363",
             answer: "C",
             image: "road-signs/W115.gif",
-            text: "This is a:",
+            text: "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "Skew junction.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Staggered junction.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Y junction.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.roadLayoutSigns.question.4.option.2.text",
                 },
             ],
         },
@@ -7864,19 +7869,22 @@ const questionData: QuestionData = {
             id: "364",
             answer: "B",
             image: "road-signs/W201.gif",
-            text: "You would find this sign:",
+            text: "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "At a traffic circle.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Some distance before a traffic circle.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Some distance after a traffic circle.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.0.option.2.text",
                 },
             ],
         },
@@ -7884,19 +7892,22 @@ const questionData: QuestionData = {
             id: "365",
             answer: "C",
             image: "road-signs/W204.gif",
-            text: "This sign means that:",
+            text: "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "You must keep to the right of this sign.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You may not turn right ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "The road turns sharp right ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.1.option.2.text",
                 },
             ],
         },
@@ -7904,19 +7915,22 @@ const questionData: QuestionData = {
             id: "366",
             answer: "B",
             image: "road-signs/W207.gif",
-            text: "Where you see this sign:",
+            text: "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "You are allowed to do a U-turn.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "There is a hairpin bend in the road.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You must turn around and go back the way you came.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.2.option.2.text",
                 },
             ],
         },
@@ -7924,21 +7938,22 @@ const questionData: QuestionData = {
             id: "367",
             answer: "A",
             image: "road-signs/W213.gif",
-            text: "Which one is true when you see this sign?",
+            text: "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.3.text",
             option: [
                 {
                     id: "A",
                     value:
-                        "You are on a one-way road at the moment but there is two-way traffic crossing the junction ahead.",
+                        "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.3.option.0.text",
                 },
                 {
                     id: "B",
                     value:
-                        "There is a T-junction ahead and you will have to turn either right or left.",
+                        "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "There are crosswinds ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.3.option.2.text",
                 },
             ],
         },
@@ -7946,20 +7961,22 @@ const questionData: QuestionData = {
             id: "368",
             answer: "C",
             image: "road-signs/W218.gif",
-            text: "This sign shows that:",
+            text: "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "The road will have a series of curves up ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "There is a concealed driveway ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.4.option.1.text",
                 },
                 {
                     id: "C",
                     value:
-                        "There could be cars entering from either direction from concealed driveways up ahead.",
+                        "nav.signs.warning.advancedWarningSigns.directionOfMovementSigns.question.4.option.2.text",
                 },
             ],
         },
@@ -7972,24 +7989,27 @@ const questionData: QuestionData = {
             image2: "road-signs/W303.gif",
             text: {
                 list: [
-                    "What is true of these two signs?",
-                    "(1) They both warn of traffic controls ahead.",
-                    "(2) They are temporary signs erected when traffic signals are out of order.",
-                    "(3) They can be used at scholar patrols.",
+                    "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.0.text.list.0.text",
+                    "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.0.text.list.1.text",
+                    "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.0.text.list.2.text",
+                    "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.0.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "None of these are true.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (3) is true.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (1) is true.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.0.option.2.text",
                 },
             ],
         },
@@ -7997,19 +8017,22 @@ const questionData: QuestionData = {
             id: "370",
             answer: "B",
             image: "road-signs/W307.gif",
-            text: "This sign means that:",
+            text: "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "There is a marked pedestrian crossing ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "There could be pedestrians crossing ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "This is a pedestrian priority area.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.1.option.2.text",
                 },
             ],
         },
@@ -8017,20 +8040,22 @@ const questionData: QuestionData = {
             id: "371",
             answer: "A",
             image: "road-signs/W315.gif",
-            text: "What is up ahead when you see this sign?",
+            text: "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.2.text",
             option: [
                 {
                     id: "A",
                     value:
-                        "The road ahead may be closed with a gate, or there could be a railway crossing with gates, booms or barriers ahead.",
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "A motor gate on the left hand side.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "If you turn right you will come to a motor gate.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.2.option.2.text",
                 },
             ],
         },
@@ -8038,19 +8063,22 @@ const questionData: QuestionData = {
             id: "372",
             answer: "C",
             image: "road-signs/W319.gif",
-            text: "This sign tells you that:",
+            text: "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "You may overtake here.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You may not overtake here.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "There is a tunnel up ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.3.option.2.text",
                 },
             ],
         },
@@ -8058,19 +8086,22 @@ const questionData: QuestionData = {
             id: "373",
             answer: "C",
             image: "road-signs/W321.gif",
-            text: "Which of these is true of this sign?",
+            text: "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "The road ahead is used by abnormally long vehicles.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The road ahead is narrower than 15m.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You should not proceed if your vehicle is longer than 15m.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.4.option.2.text",
                 },
             ],
         },
@@ -8080,24 +8111,27 @@ const questionData: QuestionData = {
             image: "road-signs/W324.gif",
             text: {
                 list: [
-                    "Which of the following is true of this sign?",
-                    "(1) There is an accident ahead.",
-                    "(2) There may be slow moving heavy vehicles ahead.",
-                    "(3) There is a steep descent ahead.",
+                    "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.5.text.list.0.text",
+                    "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.5.text.list.1.text",
+                    "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.5.text.list.2.text",
+                    "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.5.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "Only (1) is true.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.5.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (2) and (3) are true.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.5.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (3) is true.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.5.option.2.text",
                 },
             ],
         },
@@ -8105,20 +8139,22 @@ const questionData: QuestionData = {
             id: "375",
             answer: "A",
             image: "road-signs/W328.gif",
-            text: "This sign means that:",
+            text: "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.6.text",
             option: [
                 {
                     id: "A",
-                    value: "The road narrows ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.6.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "A dual-carriageway ends ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.6.option.1.text",
                 },
                 {
                     id: "C",
                     value:
-                        "You are on a road with traffic travelling in one direction and this will change to a road with traffic in both directions up ahead.",
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.6.option.2.text",
                 },
             ],
         },
@@ -8126,19 +8162,22 @@ const questionData: QuestionData = {
             id: "376",
             answer: "C",
             image: "road-signs/W332.gif",
-            text: "This sign means that:",
+            text: "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.7.text",
             option: [
                 {
                     id: "A",
-                    value: "The road is uneven, or there is a ridge or dip in the road ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.7.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You are at a speed hump.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.7.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "There are speed humps ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.7.option.2.text",
                 },
             ],
         },
@@ -8146,19 +8185,22 @@ const questionData: QuestionData = {
             id: "377",
             answer: "B",
             image: "road-signs/TW338.gif",
-            text: "If you see this sign then:",
+            text: "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.8.text",
             option: [
                 {
                     id: "A",
-                    value: "A gravel road is about to begin ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.8.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You know that something temporary is occurring up ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.8.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "There are falling rocks up ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.8.option.2.text",
                 },
             ],
         },
@@ -8166,19 +8208,22 @@ const questionData: QuestionData = {
             id: "378",
             answer: "A",
             image: "road-signs/TW347.gif",
-            text: "This sign would be likely to be found at a:",
+            text: "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.9.text",
             option: [
                 {
                     id: "A",
-                    value: "Road block.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.9.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Police station.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.9.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Vet.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.9.option.2.text",
                 },
             ],
         },
@@ -8186,20 +8231,22 @@ const questionData: QuestionData = {
             id: "379",
             answer: "C",
             image: "road-signs/W360.gif",
-            text: "This sign means that:",
+            text: "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.10.text",
             option: [
                 {
                     id: "A",
                     value:
-                        "If you have goods on your vehicle projecting more than 2.1m to the sides you need to mark them.",
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.10.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The road will be narrowing by 2.1m ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.10.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "There is a narrow structure on the road ahead.",
+                    value:
+                        "nav.signs.warning.advancedWarningSigns.symbolicSigns.question.10.option.2.text",
                 },
             ],
         },
@@ -8212,24 +8259,24 @@ const questionData: QuestionData = {
             image2: "road-signs/W406.gif",
             text: {
                 list: [
-                    "What is true of these two signs?",
-                    "(1) The first one means there is an obstruction to the side of the road, while the second means there is a sharp curve.",
-                    "(2) They are both advance warning signs.",
-                    "(3) They can be found on the back of trucks.",
+                    "nav.signs.warning.hazardMarkerSigns.question.0.text.list.0.text",
+                    "nav.signs.warning.hazardMarkerSigns.question.0.text.list.1.text",
+                    "nav.signs.warning.hazardMarkerSigns.question.0.text.list.2.text",
+                    "nav.signs.warning.hazardMarkerSigns.question.0.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "They are all true.",
+                    value: "nav.signs.warning.hazardMarkerSigns.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (1) and (2) are true.",
+                    value: "nav.signs.warning.hazardMarkerSigns.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Only (1) is true.",
+                    value: "nav.signs.warning.hazardMarkerSigns.question.0.option.2.text",
                 },
             ],
         },
@@ -8237,19 +8284,19 @@ const questionData: QuestionData = {
             id: "381",
             answer: "B",
             image: "road-signs/W410.gif",
-            text: "Where is this marker found?",
+            text: "nav.signs.warning.hazardMarkerSigns.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "At a T-junction.",
+                    value: "nav.signs.warning.hazardMarkerSigns.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "At a dead-end.",
+                    value: "nav.signs.warning.hazardMarkerSigns.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "On a boom.",
+                    value: "nav.signs.warning.hazardMarkerSigns.question.1.option.2.text",
                 },
             ],
         },
@@ -8258,20 +8305,19 @@ const questionData: QuestionData = {
             answer: "C",
             image: "road-signs/W413.gif",
             image2: "road-signs/W414.gif",
-            text:
-                "Which of these markers means that there is a division in the road ahead and that you must pass to one or the other side of it?",
+            text: "nav.signs.warning.hazardMarkerSigns.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "The larger one only.",
+                    value: "nav.signs.warning.hazardMarkerSigns.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The smaller one only.",
+                    value: "nav.signs.warning.hazardMarkerSigns.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Both of them.",
+                    value: "nav.signs.warning.hazardMarkerSigns.question.2.option.2.text",
                 },
             ],
         },
@@ -8280,19 +8326,19 @@ const questionData: QuestionData = {
             answer: "A",
             image: "road-signs/W409.gif",
             image2: "road-signs/W411.gif",
-            text: "Which of these markings would be more likely to move?",
+            text: "nav.signs.warning.hazardMarkerSigns.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "The one with vertical lines (the larger one).",
+                    value: "nav.signs.warning.hazardMarkerSigns.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The one with diagonal lines (the smaller one).",
+                    value: "nav.signs.warning.hazardMarkerSigns.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Neither of them.",
+                    value: "nav.signs.warning.hazardMarkerSigns.question.3.option.2.text",
                 },
             ],
         },
@@ -8300,21 +8346,19 @@ const questionData: QuestionData = {
             id: "384",
             answer: "B",
             image: "road-signs/TW412.2.gif",
-            text: "This sign means that:",
+            text: "nav.signs.warning.hazardMarkerSigns.question.4.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "You must not obey the traffic signals ahead because there is a traffic officer directing traffic.",
+                    value: "nav.signs.warning.hazardMarkerSigns.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The traffic signals ahead are temporarily out of order.",
+                    value: "nav.signs.warning.hazardMarkerSigns.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "You have just passed a zone controlled by traffic signals and there are no more ahead.",
+                    value: "nav.signs.warning.hazardMarkerSigns.question.4.option.2.text",
                 },
             ],
         },
@@ -8323,38 +8367,38 @@ const questionData: QuestionData = {
         {
             id: "389",
             answer: "C",
-            text: "Location markers are usually:",
+            text: "nav.signs.guidance.locationSigns.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Round.",
+                    value: "nav.signs.guidance.locationSigns.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Triangular.",
+                    value: "nav.signs.guidance.locationSigns.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Rectangular.",
+                    value: "nav.signs.guidance.locationSigns.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "390",
             answer: "A",
-            text: "What is true of location markers?",
+            text: "nav.signs.guidance.locationSigns.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "They give information and do not have to be obeyed.",
+                    value: "nav.signs.guidance.locationSigns.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "They give information about tourist routes only.",
+                    value: "nav.signs.guidance.locationSigns.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "They are only found on freeways and national roads.",
+                    value: "nav.signs.guidance.locationSigns.question.1.option.2.text",
                 },
             ],
         },
@@ -8362,20 +8406,19 @@ const questionData: QuestionData = {
             id: "391",
             answer: "A",
             image: "road-signs/GL4.gif",
-            text: "What is true of this sign?",
+            text: "nav.signs.guidance.locationSigns.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "It is telling you the name of a river you are passing.",
+                    value: "nav.signs.guidance.locationSigns.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "It is instructing you to save water.",
+                    value: "nav.signs.guidance.locationSigns.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "It means that you are not allowed by law to pour fuel, oil or other objectionable material into running water on the side of the road.",
+                    value: "nav.signs.guidance.locationSigns.question.2.option.2.text",
                 },
             ],
         },
@@ -8383,19 +8426,19 @@ const questionData: QuestionData = {
             id: "392",
             answer: "C",
             image: "road-signs/GL3.gif",
-            text: "This sign marks a:",
+            text: "nav.signs.guidance.locationSigns.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "Suburb.",
+                    value: "nav.signs.guidance.locationSigns.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Street.",
+                    value: "nav.signs.guidance.locationSigns.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Town.",
+                    value: "nav.signs.guidance.locationSigns.question.3.option.2.text",
                 },
             ],
         },
@@ -8403,19 +8446,19 @@ const questionData: QuestionData = {
             id: "393",
             answer: "C",
             image: "road-signs/GL6.gif",
-            text: "This sign means that:",
+            text: "nav.signs.guidance.locationSigns.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "The Bain's Kloof Pass is 701m ahead.",
+                    value: "nav.signs.guidance.locationSigns.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The Bain's Kloof Pass is 701m long.",
+                    value: "nav.signs.guidance.locationSigns.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You are on the Bain's Kloof Pass and it is 701m high",
+                    value: "nav.signs.guidance.locationSigns.question.4.option.2.text",
                 },
             ],
         },
@@ -8425,20 +8468,19 @@ const questionData: QuestionData = {
             id: "394",
             answer: "C",
             image: "road-signs/GE9.gif",
-            text: "What is not true of this sign?",
+            text: "nav.signs.guidance.routeMarkerSigns.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "It directs you to a transport facility.",
+                    value: "nav.signs.guidance.routeMarkerSigns.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "It is found some distance before the turnoff it is warning about and not at it.",
+                    value: "nav.signs.guidance.routeMarkerSigns.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "It means there is a jetty or river bank ahead.",
+                    value: "nav.signs.guidance.routeMarkerSigns.question.0.option.2.text",
                 },
             ],
         },
@@ -8447,39 +8489,38 @@ const questionData: QuestionData = {
             answer: "A",
             image: "road-signs/GE18.3.gif",
             image2: "road-signs/GE19.3.gif",
-            text: "What is true of both of these signs?",
+            text: "nav.signs.guidance.routeMarkerSigns.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "They are both route markers.",
+                    value: "nav.signs.guidance.routeMarkerSigns.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "They both direct you to tourist venues.",
+                    value: "nav.signs.guidance.routeMarkerSigns.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value:
-                        "They are both found directly at the place where you must turn off for the route, and not before it.",
+                    value: "nav.signs.guidance.routeMarkerSigns.question.1.option.2.text",
                 },
             ],
         },
         {
             id: "396",
             answer: "B",
-            text: "Tourist routes and markers are usually ... in colour.",
+            text: "nav.signs.guidance.routeMarkerSigns.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "Green.",
+                    value: "nav.signs.guidance.routeMarkerSigns.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Brown.",
+                    value: "nav.signs.guidance.routeMarkerSigns.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Blue.",
+                    value: "nav.signs.guidance.routeMarkerSigns.question.2.option.2.text",
                 },
             ],
         },
@@ -8489,38 +8530,38 @@ const questionData: QuestionData = {
             id: "397",
             answer: "A",
             image: "road-signs/GD2.gif",
-            text: "This sign is a:",
+            text: "nav.signs.guidance.directionSigns.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Direction sign.",
+                    value: "nav.signs.guidance.directionSigns.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Information sign.",
+                    value: "nav.signs.guidance.directionSigns.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Prohibition sign.",
+                    value: "nav.signs.guidance.directionSigns.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "398",
             answer: "B",
-            text: "A confirmation sign tells you:",
+            text: "nav.signs.guidance.directionSigns.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "Which direction to turn in to get to a destination.",
+                    value: "nav.signs.guidance.directionSigns.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "How far it is to a destination.",
+                    value: "nav.signs.guidance.directionSigns.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "What the speed limit is on a road you have just turned on to.",
+                    value: "nav.signs.guidance.directionSigns.question.1.option.2.text",
                 },
             ],
         },
@@ -8528,19 +8569,19 @@ const questionData: QuestionData = {
             id: "399",
             answer: "A",
             image: "road-signs/GD3.gif",
-            text: "When you see this sign, which route are you on?",
+            text: "nav.signs.guidance.directionSigns.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "The R102.",
+                    value: "nav.signs.guidance.directionSigns.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The N2.",
+                    value: "nav.signs.guidance.directionSigns.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "At a crossroads between the N2 and the R102.",
+                    value: "nav.signs.guidance.directionSigns.question.2.option.2.text",
                 },
             ],
         },
@@ -8548,19 +8589,19 @@ const questionData: QuestionData = {
             id: "400",
             answer: "A",
             image: "road-signs/GD4.gif",
-            text: "If you want to go to the Prince Edward High School, you should turn:",
+            text: "nav.signs.guidance.directionSigns.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "Left immediately.",
+                    value: "nav.signs.guidance.directionSigns.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Left some way ahead.",
+                    value: "nav.signs.guidance.directionSigns.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Right at any point.",
+                    value: "nav.signs.guidance.directionSigns.question.3.option.2.text",
                 },
             ],
         },
@@ -8570,38 +8611,38 @@ const questionData: QuestionData = {
             id: "401",
             answer: "B",
             image: "road-signs/GC1.gif",
-            text: "If you want to go to the M1, you should turn:",
+            text: "nav.signs.guidance.freewayDirectionSigns.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "Left in 2km.",
+                    value: "nav.signs.guidance.freewayDirectionSigns.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Left in more than 2km.",
+                    value: "nav.signs.guidance.freewayDirectionSigns.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Right in more than 2km.",
+                    value: "nav.signs.guidance.freewayDirectionSigns.question.0.option.2.text",
                 },
             ],
         },
         {
             id: "402",
             answer: "C",
-            text: "Freeway directions signs are ... in colour.",
+            text: "nav.signs.guidance.freewayDirectionSigns.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "Green.",
+                    value: "nav.signs.guidance.freewayDirectionSigns.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Brown.",
+                    value: "nav.signs.guidance.freewayDirectionSigns.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Blue.",
+                    value: "nav.signs.guidance.freewayDirectionSigns.question.1.option.2.text",
                 },
             ],
         },
@@ -8611,24 +8652,24 @@ const questionData: QuestionData = {
             image: "road-signs/GB3.gif",
             text: {
                 list: [
-                    "This sign means that:",
-                    "(1) The exit to Pretoria is not here, but a little way down the road.",
-                    "(2) The road you will be on when you turn right is the N3.",
-                    "(3) The road you will be on when you turn right will lead eventually to the N1.",
+                    "nav.signs.guidance.freewayDirectionSigns.question.2.text.list.0.text",
+                    "nav.signs.guidance.freewayDirectionSigns.question.2.text.list.1.text",
+                    "nav.signs.guidance.freewayDirectionSigns.question.2.text.list.2.text",
+                    "nav.signs.guidance.freewayDirectionSigns.question.2.text.list.3.text",
                 ],
             },
             option: [
                 {
                     id: "A",
-                    value: "All of them are correct.",
+                    value: "nav.signs.guidance.freewayDirectionSigns.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Only (2) is correct.",
+                    value: "nav.signs.guidance.freewayDirectionSigns.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "None of them is correct.",
+                    value: "nav.signs.guidance.freewayDirectionSigns.question.2.option.2.text",
                 },
             ],
         },
@@ -8636,19 +8677,19 @@ const questionData: QuestionData = {
             id: "404",
             answer: "C",
             image: "road-signs/GA8.gif",
-            text: "Which one is true",
+            text: "nav.signs.guidance.freewayDirectionSigns.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "The exit to Eeufees St is exit 202.",
+                    value: "nav.signs.guidance.freewayDirectionSigns.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "The exit to Andries Pretorius St is in 6km.",
+                    value: "nav.signs.guidance.freewayDirectionSigns.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Zastron St is in the city centre of Bloemfontein.",
+                    value: "nav.signs.guidance.freewayDirectionSigns.question.3.option.2.text",
                 },
             ],
         },
@@ -8656,20 +8697,19 @@ const questionData: QuestionData = {
             id: "405",
             answer: "B",
             image: "road-signs/GA4.gif",
-            text: "What does this sign mean?",
+            text: "nav.signs.guidance.freewayDirectionSigns.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "You are on route 104 at the moment.",
+                    value: "nav.signs.guidance.freewayDirectionSigns.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "This marks a freeway offramp and you have to go either to the left or the right of this marker.",
+                    value: "nav.signs.guidance.freewayDirectionSigns.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You are on a national road.",
+                    value: "nav.signs.guidance.freewayDirectionSigns.question.4.option.2.text",
                 },
             ],
         },
@@ -8679,19 +8719,19 @@ const questionData: QuestionData = {
             id: "406",
             answer: "A",
             image: "road-signs/GF12.gif",
-            text: "This sign would be helpful to you if:",
+            text: "nav.signs.guidance.tourismDirectionSigns.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "You had an emergency.",
+                    value: "nav.signs.guidance.tourismDirectionSigns.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "You needed to call a friend.",
+                    value: "nav.signs.guidance.tourismDirectionSigns.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "You were looking for a tourist information booth.",
+                    value: "nav.signs.guidance.tourismDirectionSigns.question.0.option.2.text",
                 },
             ],
         },
@@ -8699,19 +8739,19 @@ const questionData: QuestionData = {
             id: "407",
             answer: "B",
             image: "road-signs/GF1.gif",
-            text: "If you take the exit you might come to which of the following:",
+            text: "nav.signs.guidance.tourismDirectionSigns.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "A roadblock, a beach, a helicopter pad.",
+                    value: "nav.signs.guidance.tourismDirectionSigns.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "A hospital, a garage, a beach.",
+                    value: "nav.signs.guidance.tourismDirectionSigns.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "A police station, a hospital, a phone booth.",
+                    value: "nav.signs.guidance.tourismDirectionSigns.question.1.option.2.text",
                 },
             ],
         },
@@ -8719,19 +8759,19 @@ const questionData: QuestionData = {
             id: "408",
             answer: "C",
             image: "road-signs/GF2.gif",
-            text: "The T1 is a:",
+            text: "nav.signs.guidance.tourismDirectionSigns.question.2.text",
             option: [
                 {
                     id: "A",
-                    value: "Freeway.",
+                    value: "nav.signs.guidance.tourismDirectionSigns.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "National road.",
+                    value: "nav.signs.guidance.tourismDirectionSigns.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Tourist route.",
+                    value: "nav.signs.guidance.tourismDirectionSigns.question.2.option.2.text",
                 },
             ],
         },
@@ -8739,20 +8779,19 @@ const questionData: QuestionData = {
             id: "409",
             answer: "C",
             image: "road-signs/GF8.gif",
-            text: "Which of the following is true?",
+            text: "nav.signs.guidance.tourismDirectionSigns.question.3.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "If you want to get to a caravan park, you will have to travel 70km further.",
+                    value: "nav.signs.guidance.tourismDirectionSigns.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "If you want to get to a helipad you will have to travel 9.5km further.",
+                    value: "nav.signs.guidance.tourismDirectionSigns.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "There are breakdown services at exit 59.",
+                    value: "nav.signs.guidance.tourismDirectionSigns.question.3.option.2.text",
                 },
             ],
         },
@@ -8760,19 +8799,19 @@ const questionData: QuestionData = {
             id: "410",
             answer: "B",
             image: "road-signs/GFS-D1-18.gif",
-            text: "This symbol refers to:",
+            text: "nav.signs.guidance.tourismDirectionSigns.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "Police.",
+                    value: "nav.signs.guidance.tourismDirectionSigns.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Parking.",
+                    value: "nav.signs.guidance.tourismDirectionSigns.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "Painting.",
+                    value: "nav.signs.guidance.tourismDirectionSigns.question.4.option.2.text",
                 },
             ],
         },
@@ -8782,19 +8821,19 @@ const questionData: QuestionData = {
             id: "411",
             answer: "A",
             image: "road-signs/GS501.gif",
-            text: "What is 3km away?",
+            text: "nav.signs.guidance.diagrammaticSigns.question.0.text",
             option: [
                 {
                     id: "A",
-                    value: "An arrestor bed.",
+                    value: "nav.signs.guidance.diagrammaticSigns.question.0.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "A painted island.",
+                    value: "nav.signs.guidance.diagrammaticSigns.question.0.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "A warning flag signal near construction works.",
+                    value: "nav.signs.guidance.diagrammaticSigns.question.0.option.2.text",
                 },
             ],
         },
@@ -8802,20 +8841,19 @@ const questionData: QuestionData = {
             id: "412",
             answer: "A",
             image: "road-signs/GS605.gif",
-            text: "This sign means that:",
+            text: "nav.signs.guidance.diagrammaticSigns.question.1.text",
             option: [
                 {
                     id: "A",
-                    value: "The lane below the sign is for trucks over 10 tonnes for the next 5km.",
+                    value: "nav.signs.guidance.diagrammaticSigns.question.1.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "The lane below the sign is for vehicles under 10 tonnes for the next 5km.",
+                    value: "nav.signs.guidance.diagrammaticSigns.question.1.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "10 ton trucks will be coming towards you for the next 5km.",
+                    value: "nav.signs.guidance.diagrammaticSigns.question.1.option.2.text",
                 },
             ],
         },
@@ -8823,20 +8861,19 @@ const questionData: QuestionData = {
             id: "413",
             answer: "B",
             image: "road-signs/GS403.gif",
-            text: "What does this sign mean?",
+            text: "nav.signs.guidance.diagrammaticSigns.question.2.text",
             option: [
                 {
                     id: "A",
-                    value:
-                        "These are mandatory direction arrows and you may only proceed in their direction.",
+                    value: "nav.signs.guidance.diagrammaticSigns.question.2.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "Lanes will be merging ahead.",
+                    value: "nav.signs.guidance.diagrammaticSigns.question.2.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "There is a no crossing or no overtaking line ahead.",
+                    value: "nav.signs.guidance.diagrammaticSigns.question.2.option.2.text",
                 },
             ],
         },
@@ -8844,20 +8881,19 @@ const questionData: QuestionData = {
             id: "414",
             answer: "C",
             image: "road-signs/GS103.gif",
-            text: "Which one of these is not true when you see this sign?",
+            text: "nav.signs.guidance.diagrammaticSigns.question.3.text",
             option: [
                 {
                     id: "A",
-                    value: "If you are in the left lane you will need to move towards the right.",
+                    value: "nav.signs.guidance.diagrammaticSigns.question.3.option.0.text",
                 },
                 {
                     id: "B",
-                    value:
-                        "If you are in the middle lane you will need to check your blind spot to the left.",
+                    value: "nav.signs.guidance.diagrammaticSigns.question.3.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "The left lane will become an arrestor bed.",
+                    value: "nav.signs.guidance.diagrammaticSigns.question.3.option.2.text",
                 },
             ],
         },
@@ -8865,19 +8901,19 @@ const questionData: QuestionData = {
             id: "415",
             answer: "B",
             image: "road-signs/GS205.gif",
-            text: "This sign marks:",
+            text: "nav.signs.guidance.diagrammaticSigns.question.4.text",
             option: [
                 {
                     id: "A",
-                    value: "An exclusive lane ending.",
+                    value: "nav.signs.guidance.diagrammaticSigns.question.4.option.0.text",
                 },
                 {
                     id: "B",
-                    value: "An extra lane starting ahead.",
+                    value: "nav.signs.guidance.diagrammaticSigns.question.4.option.1.text",
                 },
                 {
                     id: "C",
-                    value: "A dual carriageway beginning.",
+                    value: "nav.signs.guidance.diagrammaticSigns.question.4.option.2.text",
                 },
             ],
         },

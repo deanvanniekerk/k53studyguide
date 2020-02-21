@@ -1,8 +1,8 @@
 .root-navigation-item {
-    border-radius: 8px;
+    border-radius: var(--ic-corner-radius);
+    border: var(--ic-border);
+    padding: var(--ic-padding);
     margin: 8px;
-    padding: 10px;
-    border: 1px solid #ffffff61;
     height: 75px;
 }
 

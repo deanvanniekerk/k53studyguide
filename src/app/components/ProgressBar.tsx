@@ -1,6 +1,6 @@
 import "./ProgressBar.css";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { TEXT_COLOR } from "@/data";
 import { hexToRgb } from "@/utils/color";
@@ -12,10 +12,17 @@ type Props = {
     foregroundColor?: string;
     foregroundOpacity?: number;
     height?: number;
+    de?: number;
 };
 
 const ProgressBar: React.FC<Props> = props => {
-    const width = `${props.progress}%`;
+    const [progress, setProgress] = useState(0);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setProgress(props.progress);
+        }, 100);
+    }, [props.progress]);
 
     return (
         <div className="container">
@@ -35,9 +42,10 @@ const ProgressBar: React.FC<Props> = props => {
                         backgroundColor: `rgba(${hexToRgb(props.foregroundColor || TEXT_COLOR).join(
                             ","
                         )}, ${props.foregroundOpacity})`,
-                        width,
+                        width: `${progress}%`,
                         height: props.height,
                         borderRadius: props.height,
+                        transition: "width 0.3s ease",
                     }}
                 ></div>
             </div>

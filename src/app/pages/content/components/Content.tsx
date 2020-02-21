@@ -5,10 +5,11 @@ import { connect } from "react-redux";
 import { Translate, Translator } from "react-translated";
 import VisibilitySensor from "react-visibility-sensor";
 import { bindActionCreators, Dispatch } from "redux";
+import styled from "styled-components";
+
 import { HorizontalRule } from "@/app/components";
 import { ContentItem } from "@/data";
 import { recieveSeenContentKey } from "@/state/study/log";
-
 import { IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
 
 import { ContentSeenIndicator } from "./ContentSeenIndicator";
@@ -63,9 +64,9 @@ const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenCon
             )}
             <IonRow>
                 <IonCol className="content-html">
-                    <IonText className="text-md" style={{ lineHeight: 1.5 }}>
+                    <Description>
                         <Translator>{translator}</Translator>
-                    </IonText>
+                    </Description>
                 </IonCol>
             </IonRow>
             <IonRow>
@@ -87,6 +88,11 @@ const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenCon
         </IonGrid>
     );
 };
+
+const Description = styled(IonText)`
+    font-size: var(--ion-font-size-md);
+    line-height: var(--line-height);
+`;
 
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
 const mapDispatchToProps = (dispatch: Dispatch) => {
