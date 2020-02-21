@@ -62,6 +62,12 @@ describe("state > dojo > test > operations", () => {
             },
         ];
 
-        expect(actions[0]).toEqual(recieveQuestionAnswers(questionAnswers));
+        expect(actions[0].type).toEqual(recieveQuestionAnswers(questionAnswers).type);
+        expect(actions[0].payload.length).toEqual(
+            recieveQuestionAnswers(questionAnswers).payload.length
+        );
+        expect(actions[0].payload).toEqual(
+            jasmine.arrayContaining(recieveQuestionAnswers(questionAnswers).payload)
+        );
     });
 });

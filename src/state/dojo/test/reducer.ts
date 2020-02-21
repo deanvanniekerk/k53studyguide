@@ -1,3 +1,5 @@
+import update from "immutability-helper";
+
 import { ROOT_NAVIGATION_KEY } from "@/state/navigation";
 
 import { QuestionAnswer, TestActions } from "./";
@@ -23,6 +25,11 @@ export const reducer = (state: TestState = defaultState, action: TestActions): T
             return {
                 ...state,
                 targetNavigationKey: action.payload,
+            };
+        case "DOJO_TEST_RECIEVE_ANSWER":
+            return {
+                ...state,
+                //questionAnswers: update(state.questionAnswers, {}),
             };
         default:
             return state;

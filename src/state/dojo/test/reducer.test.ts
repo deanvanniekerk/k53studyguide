@@ -12,20 +12,16 @@ describe("state > dojo > test > reducer", () => {
                 answer: null,
                 question: {
                     id: "1",
-                    answer: "C",
-                    text: "When you only have a learner's licence you are not allowed to:",
+                    answer: "B",
+                    text: "Question 1:",
                     option: [
                         {
                             id: "A",
-                            value: "Carry passengers in your car.",
+                            value: "Option 1.",
                         },
                         {
                             id: "B",
-                            value: "Drive faster than 100km/h.",
-                        },
-                        {
-                            id: "C",
-                            value: "Drive without having your licence with you.",
+                            value: "Option 2.",
                         },
                     ],
                 },
@@ -60,6 +56,118 @@ describe("state > dojo > test > reducer", () => {
             ...defaultState,
             targetNavigationKey: "newKey",
         };
+
+        expect(actualState).toEqual(expectedState);
+    });
+
+    it("should handle DOJO_TEST_RECIEVE_QUESTION_ANSWERS", () => {
+        const questionAnswers = [
+            {
+                answer: "A",
+                question: {
+                    id: "4",
+                    answer: "B",
+                    text: "Question 1:",
+                    option: [
+                        {
+                            id: "A",
+                            value: "Option 1.",
+                        },
+                        {
+                            id: "B",
+                            value: "Option 2.",
+                        },
+                        {
+                            id: "C",
+                            value: "Option 3.",
+                        },
+                    ],
+                },
+            },
+            {
+                answer: null,
+                question: {
+                    id: "3",
+                    answer: "B",
+                    text: "Question 1:",
+                    option: [
+                        {
+                            id: "A",
+                            value: "Option 1.",
+                        },
+                        {
+                            id: "B",
+                            value: "Option 2.",
+                        },
+                        {
+                            id: "C",
+                            value: "Option 3.",
+                        },
+                    ],
+                },
+            },
+            {
+                answer: null,
+                question: {
+                    id: "2",
+                    answer: "B",
+                    text: "Question 1:",
+                    option: [
+                        {
+                            id: "A",
+                            value: "Option 1.",
+                        },
+                        {
+                            id: "B",
+                            value: "Option 2.",
+                        },
+                        {
+                            id: "C",
+                            value: "Option 3.",
+                        },
+                    ],
+                },
+            },
+            {
+                answer: "C",
+                question: {
+                    id: "1",
+                    answer: "B",
+                    text: "Question 1:",
+                    option: [
+                        {
+                            id: "A",
+                            value: "Option 1.",
+                        },
+                        {
+                            id: "B",
+                            value: "Option 2.",
+                        },
+                        {
+                            id: "C",
+                            value: "Option 3.",
+                        },
+                    ],
+                },
+            },
+        ];
+
+        const initalState = { ...defaultState, questionAnswers };
+
+        const actualState = reducer(initalState, {
+            type: "DOJO_TEST_RECIEVE_ANSWER",
+            payload: {
+                questionId: "2",
+                answer: "B",
+            },
+        });
+
+        //Deep clone
+        const expectedState = JSON.parse(JSON.stringify(initalState));
+
+        expectedState.questionAnswers[2].answer = "B";
+
+        console.log(actualState);
 
         expect(actualState).toEqual(expectedState);
     });

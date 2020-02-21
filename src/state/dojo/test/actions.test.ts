@@ -41,4 +41,16 @@ describe("state > dojo > test > actions", () => {
 
         expect(actions.recieveTargetNavigationKey("99")).toEqual(expectedAction);
     });
+
+    it("recieveAnswer", () => {
+        const expectedAction = {
+            type: "DOJO_TEST_RECIEVE_ANSWER",
+            payload: {
+                questionId: "1",
+                answer: "A",
+            },
+        };
+
+        expect(actions.recieveAnswer("1", "A")).toEqual(expectedAction);
+    });
 });
