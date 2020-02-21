@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
+import { HorizontalRule } from "@/app/components";
 import { RootState } from "@/state";
 import { questionAnswersSelector } from "@/state/dojo/test/selectors";
 import { IonItem, IonList } from "@ionic/react";
@@ -20,7 +21,13 @@ const QuestionListComponent: React.FC<Props> = props => {
                             <Header>Question: {index + 1}</Header>
                             <Question question={qa.question} />
                             <ImageList question={qa.question} />
-                            <OptionList question={qa.question} />
+                            <HorizontalRule
+                                leftMargin={20}
+                                rightMargin={36}
+                                paddingBottom={0}
+                                paddingTop={20}
+                            />
+                            <OptionList questionAnswer={qa} />
                         </Container>
                     </Item>
                 );

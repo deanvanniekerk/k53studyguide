@@ -167,8 +167,6 @@ describe("state > dojo > test > reducer", () => {
 
         expectedState.questionAnswers[2].answer = "B";
 
-        console.log(actualState);
-
         expect(actualState).toEqual(expectedState);
     });
 });

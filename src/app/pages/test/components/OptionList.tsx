@@ -1,27 +1,31 @@
-import { ellipseOutline } from "ionicons/icons";
+import { radioButtonOff, radioButtonOn } from "ionicons/icons";
 import React from "react";
+import { connect } from "react-redux";
 import { Translate } from "react-translated";
+import { bindActionCreators, Dispatch } from "redux";
 import styled from "styled-components";
 
-import { QuestionItem } from "@/data";
+import { QuestionAnswer, recieveAnswer } from "@/state/dojo/test";
 import { IonIcon } from "@ionic/react";
 
 type Props = {
-    question: QuestionItem;
-};
+    questionAnswer: QuestionAnswer;
+} & PropsFromDispatch;
 
-const OptionList: React.FC<Props> = ({ question }) => {
+const OptionListComponent: React.FC<Props> = ({ questionAnswer, recieveAnswer }) => {
+    const { question, answer } = questionAnswer;
+
     return (
         <Container>
             {question.option.map(option => {
                 return (
-                    <Row key={option.id}>
+                    <Row key={option.id} onClick={() => recieveAnswer(question.id, option.id)}>
                         <IconColum>
-                            <Icon icon={ellipseOutline} />
+                            <Icon icon={option.id === answer ? radioButtonOn : radioButtonOff} />
                         </IconColum>
-                        <TextColumn>
+                        <div>
                             <Translate text={option.value} />
-                        </TextColumn>
+                        </div>
                     </Row>
                 );
             })}
@@ -50,6 +54,13 @@ const Icon = styled(IonIcon)`
     font-size: var(--ion-font-size-l);
 `;
 
-const TextColumn = styled.div``;
+type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
+const mapDispatchToProps = (dispatch: Dispatch) => {
+    return {
+        ...bindActionCreators({ recieveAnswer }, dispatch),
+    };
+};
+
+const OptionList = connect(null, mapDispatchToProps)(OptionListComponent);
 
 export { OptionList };

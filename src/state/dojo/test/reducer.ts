@@ -27,9 +27,18 @@ export const reducer = (state: TestState = defaultState, action: TestActions): T
                 targetNavigationKey: action.payload,
             };
         case "DOJO_TEST_RECIEVE_ANSWER":
+            const index = state.questionAnswers.findIndex(
+                q => q.question.id === action.payload.questionId
+            );
             return {
                 ...state,
-                //questionAnswers: update(state.questionAnswers, {}),
+                questionAnswers: update(state.questionAnswers, {
+                    [index]: {
+                        answer: {
+                            $set: action.payload.answer,
+                        },
+                    },
+                }),
             };
         default:
             return state;

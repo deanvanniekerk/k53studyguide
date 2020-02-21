@@ -18,7 +18,7 @@ const Question: React.FC<Props> = ({ question }) => {
             return (
                 <List>
                     {list.map(item => (
-                        <li key={item}>{<Translate text={item} />}</li>
+                        <ListItem key={item}>{<Translate text={item} />}</ListItem>
                     ))}
                 </List>
             );
@@ -33,6 +33,11 @@ const Question: React.FC<Props> = ({ question }) => {
 const List = styled.ul`
     margin-block-start: 0;
     margin-block-end: 0;
+    padding-inline-start: 20px;
+`;
+
+const ListItem = styled.li`
+    padding: 5px 0;
 `;
 
 export { Question };
