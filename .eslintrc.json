@@ -23,5 +23,8 @@
         "react": {
             "version": "detect"
         }
-    }
+    },
+    "ignorePatterns": [
+        "tools/"
+    ]
 }

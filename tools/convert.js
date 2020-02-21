@@ -1,45 +1,62 @@
-const { contentData } = require("./data/content");
-const { translations } = require("./data/strings");
+const { questionData } = require("./data/questions");
+const { translations } = require("./data/translations");
 const fs = require('fs');
 
-const output = {};
+const questionKeys = Object.keys(questionData);
 
-const contentKeys = Object.keys(contentData);
+questionKeys.forEach(key => {
 
-contentKeys.forEach(key => {
-    
-    const data = contentData[key];
+    const data = questionData[key];
 
-    data.forEach((d, i) => {
+    data.forEach((question, index) => {
 
-        const headingKey = `${key}.${i}.heading`;
-        const descriptionKey = `${key}.${i}.description`;
+        const prefix = `${key}.question.${index}`;
 
-        output[headingKey] = {
-            en: d.heading
-        };
-        output[descriptionKey] = {
-            en: d.description
-        };
+        if (question.text.list) {
 
-        d.heading = headingKey;
-        d.description = descriptionKey;
+            const listItemKeys = [];
+            question.text.list.forEach((listItem, i) => {
+                const listItemTextKey = `${prefix}.text.list.${i}.text`;
+                translations[listItemTextKey] = {
+                    en: listItem
+                };
+                listItemKeys.push(listItemTextKey);
+            });
+            question.text.list = listItemKeys;
+
+        }
+        else {
+            const textKey = `${prefix}.text`;
+            translations[textKey] = {
+                en: question.text
+            };
+            question.text = textKey;
+        }
+
+        question.option.forEach((option, i) => {
+            const optionTextKey = `${prefix}.option.${i}.text`;
+            translations[optionTextKey] = {
+                en: option.value
+            };
+            option.value = optionTextKey;
+        })
+
     })
 
 });
 
-const tKeys = Object.keys(translations);
 
-tKeys.forEach(key => {
-    
-    if(output[key] )
-        console.log(output[key] );
+fs.writeFileSync('./output/translations.ts', `
+import { Translations } from "./";
 
-    output[key] = {
-        en: translations[key]
-    };
+const translations: Translations = ${JSON.stringify(translations, null, 4)}
 
-});
+export { translations };
+`);
+fs.writeFileSync('./output/questions.ts', `
+import { QuestionData } from "./";
 
-fs.writeFileSync('./output/translations.ts', `export default ${JSON.stringify(output, null, 4)}`);
-fs.writeFileSync('./output/content.ts', `const contentData = ${JSON.stringify(contentData, null, 4)}`);
+const questionData: QuestionData = ${JSON.stringify(questionData, null, 4)}
+
+export { questionData };
+`);
