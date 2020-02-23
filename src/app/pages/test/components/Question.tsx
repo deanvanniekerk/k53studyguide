@@ -1,43 +1,42 @@
 import React from "react";
-import { Translate } from "react-translated";
 import styled from "styled-components";
 
-import { QuestionItem, QuestionText } from "@/data";
+import { HorizontalRule } from "@/app/components";
+import { QuestionAnswer } from "@/state/dojo/test";
+
+import { ImageList, OptionList, QuestionText } from "./";
 
 type Props = {
-    question: QuestionItem;
+    questionAnswer: QuestionAnswer;
+    questionNumber: number;
 };
 
-const Question: React.FC<Props> = ({ question }) => {
-    const getQuestionTextComponent = (text: string | QuestionText): React.ReactNode => {
-        if (typeof text === "string") return <Translate text={text} />;
-
-        if ((text as QuestionText).list) {
-            const list = text.list;
-
-            return (
-                <List>
-                    {list.map(item => (
-                        <ListItem key={item}>{<Translate text={item} />}</ListItem>
-                    ))}
-                </List>
-            );
-        }
-
-        return <React.Fragment />;
-    };
-
-    return <>{getQuestionTextComponent(question.text)}</>;
+const Question: React.FC<Props> = ({ questionAnswer, questionNumber }) => {
+    return (
+        <Container>
+            <Header>Question: {questionNumber}</Header>
+            <QuestionText question={questionAnswer.question} />
+            <ImageList question={questionAnswer.question} />
+            <HorizontalRule leftMargin={20} rightMargin={36} paddingBottom={0} paddingTop={20} />
+            <OptionList questionAnswer={questionAnswer} />
+        </Container>
+    );
 };
 
-const List = styled.ul`
-    margin-block-start: 0;
-    margin-block-end: 0;
-    padding-inline-start: 20px;
+const Container = styled.div`
+    border-radius: var(--ic-corner-radius);
+    border: var(--ic-border);
+    padding: var(--ic-padding);
+    width: 100%;
+    height: 100%;
+    line-height: var(--line-height);
+    font-size: var(--ion-font-size-md);
 `;
 
-const ListItem = styled.li`
-    padding: 5px 0;
+const Header = styled.div`
+    font-weight: bold;
+    padding-top: 8px;
+    padding-bottom: 10px;
 `;
 
 export { Question };

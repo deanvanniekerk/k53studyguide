@@ -2,12 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import { HorizontalRule } from "@/app/components";
 import { RootState } from "@/state";
 import { questionAnswersSelector } from "@/state/dojo/test/selectors";
 import { IonItem, IonList } from "@ionic/react";
 
-import { ImageList, OptionList, Question } from "./";
+import { Question } from "./";
 
 type Props = PropsFromState;
 
@@ -17,18 +16,7 @@ const QuestionListComponent: React.FC<Props> = props => {
             {props.questionAnswers.map((qa, index) => {
                 return (
                     <Item key={qa.question.id}>
-                        <Container>
-                            <Header>Question: {index + 1}</Header>
-                            <Question question={qa.question} />
-                            <ImageList question={qa.question} />
-                            <HorizontalRule
-                                leftMargin={20}
-                                rightMargin={36}
-                                paddingBottom={0}
-                                paddingTop={20}
-                            />
-                            <OptionList questionAnswer={qa} />
-                        </Container>
+                        <Question questionAnswer={qa} questionNumber={index + 1} />
                     </Item>
                 );
             })}
@@ -42,23 +30,8 @@ const List = styled(IonList)`
 `;
 
 const Item = styled(IonItem)`
+    overflow: hidden;
     padding-bottom: 25px;
-`;
-
-const Container = styled.div`
-    border-radius: var(--ic-corner-radius);
-    border: var(--ic-border);
-    padding: var(--ic-padding);
-    width: 100%;
-    height: 100%;
-    line-height: var(--line-height);
-    font-size: var(--ion-font-size-md);
-`;
-
-const Header = styled.div`
-    font-weight: bold;
-    padding-top: 8px;
-    padding-bottom: 10px;
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
