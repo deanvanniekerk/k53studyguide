@@ -15,7 +15,7 @@ const ArenaPage: React.FC = () => {
 };
 
 const Content = styled(IonContent)`
-    --background: linear-gradient(to right bottom, #501a8e, #9a0684, #cc1e73, #ed4c60, #ff7b51);
+    --background: var(--arena-background);
 `;
 
 export default ArenaPage;

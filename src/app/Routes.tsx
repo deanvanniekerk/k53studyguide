@@ -9,7 +9,8 @@ import ContentPage from "./pages/content/ContentPage";
 import DojoPage from "./pages/dojo/DojoPage";
 import ProfilePage from "./pages/profile/ProfilePage";
 import StudyPage from "./pages/study/StudyPage";
-import TestPage from "./pages/test/TestPage";
+import TestResultPage from "./pages/test/results/TestResultPage";
+import TestPage from "./pages/test/test/TestPage";
 
 const Routes: React.FC = () => {
     return (
@@ -19,6 +20,7 @@ const Routes: React.FC = () => {
                 <Route exact path="/content" component={ContentPage} />
                 <Route exact path="/dojo" component={DojoPage} />
                 <Route exact path="/test" component={TestPage} />
+                <Route exact path="/test-result" component={TestResultPage} />
                 <Route exact path="/arena" component={ArenaPage} />
                 <Route exact path="/profile" component={ProfilePage} />
                 <Route exact path="/" render={() => <Redirect to="/study" />} />

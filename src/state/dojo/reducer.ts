@@ -3,13 +3,20 @@ import { PersistConfig, persistReducer } from "redux-persist";
 
 import { createStorage } from "@/store/store";
 
+import { LogState, reducer as log } from "./log";
 import { reducer as test, TestState } from "./test";
 
-const testLogConfig: PersistConfig<TestState> = {
+const testConfig: PersistConfig<TestState> = {
     key: "dojo-test",
     storage: createStorage(),
 };
 
+const logConfig: PersistConfig<LogState> = {
+    key: "dojo-log",
+    storage: createStorage(),
+};
+
 export const reducer = combineReducers({
-    test: persistReducer(testLogConfig, test),
+    test: persistReducer(testConfig, test),
+    log: persistReducer(logConfig, log),
 });

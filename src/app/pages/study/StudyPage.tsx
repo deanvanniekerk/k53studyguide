@@ -55,7 +55,7 @@ const StudyPage: React.FC<Props> = props => {
 };
 
 const Content = styled(IonContent)`
-    --background: linear-gradient(to right bottom, #501a8e, #0055ba, #007bc3, #009ab4, #00b49f);
+    --background: var(--study-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

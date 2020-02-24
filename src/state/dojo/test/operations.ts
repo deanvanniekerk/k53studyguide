@@ -6,6 +6,11 @@ import { questionDataSelector } from "@/state/questions";
 import { shuffleArray } from "@/utils";
 
 import {
+    recieveQuesionSuccesfullyAnsweredDate,
+    RecieveQuesionSuccesfullyAnsweredDateAction,
+} from "../log";
+import {
+    questionAnswersSelector,
     recieveQuestionAnswers,
     RecieveQuestionAnswersAction,
     targetNavigationKeySelector,
@@ -40,5 +45,21 @@ export const loadQuestionAnswers = (): ThunkAction<
         }));
 
         dispatch(recieveQuestionAnswers(questionAnswers));
+    };
+};
+
+export const submitTest = (): ThunkAction<
+    void,
+    RootState,
+    null,
+    RecieveQuesionSuccesfullyAnsweredDateAction
+> => {
+    return (dispatch, getState) => {
+        const questionAnswers = questionAnswersSelector(getState());
+
+        questionAnswers.forEach(qa => {
+            if (qa.answer === qa.question.answer)
+                dispatch(recieveQuesionSuccesfullyAnsweredDate(qa.question.id, new Date()));
+        });
     };
 };

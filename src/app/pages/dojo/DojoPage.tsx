@@ -4,19 +4,22 @@ import { useHistory } from "react-router-dom";
 import { bindActionCreators, Dispatch } from "redux";
 import styled from "styled-components";
 
-import { loadQuestionAnswers } from "@/state/dojo/test";
+import { RootState } from "@/state";
+import { loadQuestionAnswers, totalQuestionsSelector } from "@/state/dojo/test";
 import { IonContent, IonPage } from "@ionic/react";
 
 import { Header } from "./components";
 import { DojoPageHeader } from "./DojoPageHeader";
 
-type Props = PropsFromDispatch;
+type Props = PropsFromState & PropsFromDispatch;
 
 const DojoPage: React.FC<Props> = props => {
     const history = useHistory();
 
     const onStartTestClicked = () => {
-        props.loadQuestionAnswers();
+        //If no test exists, load one, else continue with previous
+        if (props.totalQuestions === 0) props.loadQuestionAnswers();
+
         history.push(`/test`);
     };
 
@@ -31,8 +34,15 @@ const DojoPage: React.FC<Props> = props => {
 };
 
 const Content = styled(IonContent)`
-    --background: linear-gradient(to right bottom, #501a8e, #9a0684, #cc1e73, #ed4c60, #ff7b51);
+    --background: var(--dojo-background);
 `;
+
+type PropsFromState = ReturnType<typeof mapStateToProps>;
+const mapStateToProps = (state: RootState) => {
+    return {
+        totalQuestions: totalQuestionsSelector(state),
+    };
+};
 
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
 const mapDispatchToProps = (dispatch: Dispatch) => {
@@ -41,4 +51,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-export default connect(null, mapDispatchToProps)(DojoPage);
+export default connect(mapStateToProps, mapDispatchToProps)(DojoPage);

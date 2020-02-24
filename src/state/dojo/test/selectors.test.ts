@@ -1,3 +1,5 @@
+import { deepClone } from "@/utils";
+
 import { TestState } from "./";
 import * as selectors from "./selectors";
 
@@ -5,23 +7,23 @@ describe("state > study > navigation > selectors", () => {
     //Setup Data --------------------------------------------
     const questionAnswers = [
         {
-            answer: null,
+            answer: "A",
             question: {
                 id: "1",
                 answer: "C",
-                text: "When you only have a learner's licence you are not allowed to:",
+                text: "Question 1:",
                 option: [
                     {
                         id: "A",
-                        value: "Carry passengers in your car.",
+                        value: "Answer 1.",
                     },
                     {
                         id: "B",
-                        value: "Drive faster than 100km/h.",
+                        value: "Answer 2.",
                     },
                     {
                         id: "C",
-                        value: "Drive without having your licence with you.",
+                        value: "Answer 3.",
                     },
                 ],
             },
@@ -44,5 +46,40 @@ describe("state > study > navigation > selectors", () => {
         const actual = selectors.targetNavigationKeySelector.resultFunc(defaultState);
 
         expect(actual).toEqual(defaultState.targetNavigationKey);
+    });
+
+    it("totalQuestionsSelector", () => {
+        const actual = selectors.totalQuestionsSelector.resultFunc(questionAnswers);
+
+        expect(actual).toEqual(1);
+    });
+
+    it("totalQuestionsSelector > true", () => {
+        const data = deepClone([...questionAnswers, ...questionAnswers]);
+
+        const actual = selectors.allQuestionsAnsweredSelector.resultFunc(data);
+
+        expect(actual).toEqual(true);
+    });
+
+    it("totalQuestionsSelector > false", () => {
+        const data = deepClone([...questionAnswers, ...questionAnswers]);
+
+        data[0].answer = "";
+
+        const actual = selectors.allQuestionsAnsweredSelector.resultFunc(data);
+
+        expect(actual).toEqual(false);
+    });
+
+    it("totalCorrectAnswersSelector", () => {
+        const data = deepClone([...questionAnswers, ...questionAnswers]);
+
+        data[0].answer = "Z";
+        data[1].answer = data[1].question.answer;
+
+        const actual = selectors.totalCorrectAnswersSelector.resultFunc(data);
+
+        expect(actual).toEqual(1);
     });
 });

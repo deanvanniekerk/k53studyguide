@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 
 import { QuestionData, QuestionItem } from "@/data";
 
-import { loadQuestionAnswers, recieveQuestionAnswers } from "./";
+import { loadQuestionAnswers, recieveQuestionAnswers, submitTest } from "./";
 import { QuestionAnswer } from "./types";
 
 const middlewares = [thunk];
@@ -69,5 +69,43 @@ describe("state > dojo > test > operations", () => {
         expect(actions[0].payload).toEqual(
             jasmine.arrayContaining(recieveQuestionAnswers(questionAnswers).payload)
         );
+    });
+
+    it("loadQuestionAnswers - less than max", () => {
+        const answeredQuestions: QuestionAnswer[] = [
+            {
+                answer: "Z",
+                question: questions[2],
+            },
+            {
+                answer: questions[0].answer,
+                question: questions[0],
+            },
+            {
+                answer: "X",
+                question: questions[1],
+            },
+        ];
+
+        const store = mockStore({
+            dojo: {
+                test: {
+                    questionAnswers: answeredQuestions,
+                },
+            },
+        });
+
+        const spy = jest.spyOn(global, "Date");
+
+        store.dispatch(submitTest());
+
+        const actions = store.getActions();
+
+        expect(actions.length).toEqual(1);
+
+        expect(actions[0].payload.questionId).toEqual(questions[0].id);
+
+        const date = spy.mock.instances[0];
+        expect(actions[0].payload.date).toEqual(date);
     });
 });

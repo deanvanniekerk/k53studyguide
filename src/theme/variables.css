@@ -7,22 +7,58 @@
     --ion-font-size-sm: 0.8rem;
     --ion-font-size-md: 0.9rem;
     --ion-font-size-l: 1.1rem;
-    --ion-font-size-xl: 1.5rem;
+    --ion-font-size-xl: 1.3rem;
+    --ion-font-size-xxl: 1.5rem;
 
     --line-height: 1.7;
     /* ------------------------------------------ */
 
-    /* COMPONENTS -------------------------------- */
+    /* COMPONENTS ------------------------------- */
     --ion-item-background: transparent;
 
     --ion-grid-column-padding: 0;
     --ion-grid-padding: 0;
     /* ------------------------------------------ */
 
-    /* ITEM CONTAINER----------------------------- */
+    /* ITEM CONTAINER --------------------------- */
     --ic-corner-radius: 8px;
     --ic-padding: 8px;
     --ic-border: 1px solid #ffffff61;
+    /* ------------------------------------------ */
+
+    /* PAGE BACKGROUNDS ------------------------- */
+    --study-background: linear-gradient(
+        to right bottom,
+        #501a8e,
+        #0055ba,
+        #007bc3,
+        #009ab4,
+        #00b49f
+    );
+    --dojo-background: linear-gradient(
+        to right bottom,
+        #501a8e,
+        #9a0684,
+        #cc1e73,
+        #ed4c60,
+        #ff7b51
+    );
+    --arena-background: linear-gradient(
+        to right bottom,
+        #501a8e,
+        #9a0684,
+        #cc1e73,
+        #ed4c60,
+        #ff7b51
+    );
+    --profile-background: linear-gradient(
+        to right bottom,
+        #501a8e,
+        #4d2579,
+        #482c65,
+        #423251,
+        #3a363d
+    );
     /* ------------------------------------------ */
 
     /* COLORS ------------------------------------ */

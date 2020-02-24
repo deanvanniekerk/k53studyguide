@@ -8,7 +8,9 @@ import { IonItem, IonList } from "@ionic/react";
 
 import { Question } from "./";
 
-type Props = PropsFromState;
+type Props = {
+    showResult?: boolean;
+} & PropsFromState;
 
 const QuestionListComponent: React.FC<Props> = props => {
     return (
@@ -16,7 +18,11 @@ const QuestionListComponent: React.FC<Props> = props => {
             {props.questionAnswers.map((qa, index) => {
                 return (
                     <Item key={qa.question.id}>
-                        <Question questionAnswer={qa} questionNumber={index + 1} />
+                        <Question
+                            questionAnswer={qa}
+                            questionNumber={index + 1}
+                            showResult={props.showResult}
+                        />
                     </Item>
                 );
             })}
@@ -26,12 +32,11 @@ const QuestionListComponent: React.FC<Props> = props => {
 
 const List = styled(IonList)`
     padding-top: 25px;
-    padding-bottom: 25px;
 `;
 
 const Item = styled(IonItem)`
     overflow: hidden;
-    padding-bottom: 25px;
+    padding-bottom: 35px;
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

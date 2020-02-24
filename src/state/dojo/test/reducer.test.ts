@@ -1,3 +1,5 @@
+import { deepClone } from "@/utils";
+
 import { reducer, TestState } from "./reducer";
 
 describe("state > dojo > test > reducer", () => {
@@ -163,7 +165,7 @@ describe("state > dojo > test > reducer", () => {
         });
 
         //Deep clone
-        const expectedState = JSON.parse(JSON.stringify(initalState));
+        const expectedState = deepClone(initalState);
 
         expectedState.questionAnswers[2].answer = "B";
 

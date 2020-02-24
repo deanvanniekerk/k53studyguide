@@ -9,7 +9,7 @@ ion-tab-button {
 }
 
 ion-tab-button ion-icon {
-    font-size: var(--ion-font-size-xl);
+    font-size: var(--ion-font-size-xxl);
 }
 
 ion-tab-button ion-label {
@@ -32,15 +32,15 @@ ion-list ion-item {
     --inner-border-width: 0 0 0 0;
 }
 
+ion-toast {
+    text-align: center;
+}
+
 .button-med-large {
     font-family: var(--ion-font-family-bold);
     height: 3.3em;
     font-weight: bold;
     text-transform: uppercase;
-}
-
-.text-lg {
-    font-size: var(--ion-font-size-lg);
 }
 
 .text-l {

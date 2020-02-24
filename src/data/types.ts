@@ -30,14 +30,14 @@ export type QuestionItem = {
     image?: string;
     image2?: string;
     answer: string;
-    option: QuestionOptions[];
+    option: QuestionOption[];
 };
 
 export type QuestionText = {
     list: string[];
 };
 
-export type QuestionOptions = {
+export type QuestionOption = {
     id: string;
     value: string;
 };

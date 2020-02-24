@@ -1,3 +1,4 @@
+import { arrowUpCircleOutline } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -34,7 +35,7 @@ const ContentPage: React.FC<Props> = props => {
     return (
         <IonPage className="content-page">
             <Content>
-                <BackButton onClick={onBackClicked} />
+                <BackButton onClick={onBackClicked} icon={arrowUpCircleOutline} />
                 <Header />
                 <Navigator />
                 <ContentList />
@@ -44,7 +45,7 @@ const ContentPage: React.FC<Props> = props => {
 };
 
 const Content = styled(IonContent)`
-    --background: linear-gradient(to right bottom, #501a8e, #0055ba, #007bc3, #009ab4, #00b49f);
+    --background: var(--study-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

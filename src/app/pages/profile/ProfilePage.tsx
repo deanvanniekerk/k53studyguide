@@ -15,7 +15,7 @@ const ProfilePage: React.FC = () => {
 };
 
 const Content = styled(IonContent)`
-    --background: linear-gradient(to right bottom, #501a8e, #4d2579, #482c65, #423251, #3a363d);
+    --background: var(--profile-background);
 `;
 
 export default ProfilePage;

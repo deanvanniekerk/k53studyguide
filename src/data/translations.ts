@@ -19,6 +19,24 @@ const translations: Translations = {
     continue: {
         en: "Continue",
     },
+    question: {
+        en: "Question",
+    },
+    test: {
+        en: "Test",
+    },
+    allContent: {
+        en: "All Content",
+    },
+    totalQuestions: {
+        en: "Total Questions",
+    },
+    submit: {
+        en: "Submit",
+    },
+    results: {
+        en: "Results",
+    },
     "nav.vehicleControls.0.heading": {
         en: "Vehicle Controls",
     },
