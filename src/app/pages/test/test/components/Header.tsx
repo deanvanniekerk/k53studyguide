@@ -13,52 +13,44 @@ type Props = PropsFromState;
 
 const HeaderComponent: React.FC<Props> = props => {
     return (
-        <IonListHeader>
-            <IonGrid>
-                <IonRow style={{ paddingTop: 55 }}>
-                    <IonCol>
-                        <IonText>
-                            <h2>
-                                <Translate
-                                    text={
-                                        props.targetNavigationKey === ROOT_NAVIGATION_KEY
-                                            ? "allContent"
-                                            : props.targetNavigationKey
-                                    }
-                                />
-                            </h2>
-                        </IonText>
-                    </IonCol>
-                </IonRow>
-                <IonRow>
-                    <IonCol>
-                        <Breadcrumb navigationKey={props.targetNavigationKey} />
-                    </IonCol>
-                </IonRow>
-                <IonRow>
-                    <IonCol>
-                        <QuestionCount>
-                            <Translate text="totalQuestions" />: {props.totalQuestions}
-                        </QuestionCount>
-                    </IonCol>
-                </IonRow>
-                <IonRow>
-                    <IonCol>
-                        <HorizontalRule
-                            leftMargin={20}
-                            rightMargin={36}
-                            paddingBottom={0}
-                            paddingTop={20}
-                        />
-                    </IonCol>
-                </IonRow>
-            </IonGrid>
-        </IonListHeader>
+        <React.Fragment>
+            <IonListHeader>
+                <IonGrid>
+                    <IonRow style={{ paddingTop: 55 }}>
+                        <IonCol>
+                            <IonText>
+                                <h2>
+                                    <Translate
+                                        text={
+                                            props.targetNavigationKey === ROOT_NAVIGATION_KEY
+                                                ? "allContent"
+                                                : props.targetNavigationKey
+                                        }
+                                    />
+                                </h2>
+                            </IonText>
+                        </IonCol>
+                    </IonRow>
+                    <IonRow>
+                        <IonCol>
+                            <Breadcrumb navigationKey={props.targetNavigationKey} />
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
+            </IonListHeader>
+            <HorizontalRule leftMargin={20} rightMargin={36} paddingBottom={0} paddingTop={20} />
+            <QuestionCount>
+                <Translate text="totalQuestions" />: {props.totalQuestions}
+            </QuestionCount>
+            <HorizontalRule leftMargin={20} rightMargin={36} paddingBottom={0} paddingTop={20} />
+        </React.Fragment>
     );
 };
 
 const QuestionCount = styled.div`
     padding-top: 17px;
+    font-size: var(--ion-font-size-l);
+    text-align: center;
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

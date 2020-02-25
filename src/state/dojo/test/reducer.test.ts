@@ -6,6 +6,8 @@ describe("state > dojo > test > reducer", () => {
     const defaultState: TestState = {
         questionAnswers: [],
         targetNavigationKey: "nav",
+        maxQuestions: 10,
+        experienceGained: 0,
     };
 
     it("should handle DOJO_TEST_RECIEVE_QUESTION_ANSWERS", () => {
@@ -168,6 +170,42 @@ describe("state > dojo > test > reducer", () => {
         const expectedState = deepClone(initalState);
 
         expectedState.questionAnswers[2].answer = "B";
+
+        expect(actualState).toEqual(expectedState);
+    });
+
+    it("should handle DOJO_TEST_RECIEVE_MAX_QUESTIONS", () => {
+        const state: TestState = {
+            ...defaultState,
+        };
+
+        const actualState = reducer(state, {
+            type: "DOJO_TEST_RECIEVE_MAX_QUESTIONS",
+            payload: 15,
+        });
+
+        const expectedState = {
+            ...defaultState,
+            maxQuestions: 15,
+        };
+
+        expect(actualState).toEqual(expectedState);
+    });
+
+    it("should handle DOJO_TEST_RECIEVE_EXPERIENCE_GAINED", () => {
+        const state: TestState = {
+            ...defaultState,
+        };
+
+        const actualState = reducer(state, {
+            type: "DOJO_TEST_RECIEVE_EXPERIENCE_GAINED",
+            payload: 15,
+        });
+
+        const expectedState = {
+            ...defaultState,
+            experienceGained: 15,
+        };
 
         expect(actualState).toEqual(expectedState);
     });

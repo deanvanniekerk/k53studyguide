@@ -33,6 +33,8 @@ describe("state > study > navigation > selectors", () => {
     const defaultState: TestState = {
         questionAnswers: questionAnswers,
         targetNavigationKey: "key1",
+        maxQuestions: 10,
+        experienceGained: 8,
     };
     //-----------------------------------------------------------
 
@@ -81,5 +83,29 @@ describe("state > study > navigation > selectors", () => {
         const actual = selectors.totalCorrectAnswersSelector.resultFunc(data);
 
         expect(actual).toEqual(1);
+    });
+
+    it("maxQuestionsSelector", () => {
+        const actual = selectors.maxQuestionsSelector.resultFunc(defaultState);
+
+        expect(actual).toEqual(defaultState.maxQuestions);
+    });
+
+    it("questionAnswersSelector > true", () => {
+        const actual = selectors.testInProgressSelector.resultFunc(5);
+
+        expect(actual).toEqual(true);
+    });
+
+    it("questionAnswersSelector > false", () => {
+        const actual = selectors.testInProgressSelector.resultFunc(0);
+
+        expect(actual).toEqual(false);
+    });
+
+    it("experienceGainedSelector", () => {
+        const actual = selectors.experienceGainedSelector.resultFunc(defaultState);
+
+        expect(actual).toEqual(defaultState.experienceGained);
     });
 });

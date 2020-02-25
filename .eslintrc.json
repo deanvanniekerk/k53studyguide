@@ -25,6 +25,7 @@
         }
     },
     "ignorePatterns": [
-        "tools/"
+        "tools/",
+        "webpack.*"
     ]
 }

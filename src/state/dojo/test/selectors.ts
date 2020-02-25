@@ -42,3 +42,21 @@ export const totalCorrectAnswersSelector: OutputSelector<
     questionAnswersSelector,
     questionAnswers => questionAnswers.filter(qa => qa.answer === qa.question.answer).length
 );
+
+export const maxQuestionsSelector: OutputSelector<
+    RootState,
+    number,
+    (state: TestState) => number
+> = createSelector(rootSelector, root => root.maxQuestions);
+
+export const testInProgressSelector: OutputSelector<
+    RootState,
+    boolean,
+    (totalQuestions: number) => boolean
+> = createSelector(totalQuestionsSelector, totalQuestions => totalQuestions > 0);
+
+export const experienceGainedSelector: OutputSelector<
+    RootState,
+    number,
+    (state: TestState) => number
+> = createSelector(rootSelector, root => root.experienceGained);

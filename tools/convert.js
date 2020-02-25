@@ -4,6 +4,8 @@ const fs = require('fs');
 
 const questionKeys = Object.keys(questionData);
 
+let counter = 0;
+
 questionKeys.forEach(key => {
 
     const data = questionData[key];
@@ -11,6 +13,8 @@ questionKeys.forEach(key => {
     data.forEach((question, index) => {
 
         const prefix = `${key}.question.${index}`;
+
+        counter++;
 
         if (question.text.list) {
 
@@ -44,6 +48,8 @@ questionKeys.forEach(key => {
     })
 
 });
+
+console.log(counter);
 
 
 fs.writeFileSync('./output/translations.ts', `

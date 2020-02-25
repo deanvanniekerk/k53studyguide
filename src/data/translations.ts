@@ -34,8 +34,23 @@ const translations: Translations = {
     submit: {
         en: "Submit",
     },
+    level: {
+        en: "Level",
+    },
     results: {
         en: "Results",
+    },
+    result: {
+        en: "Result",
+    },
+    dojoIntro: {
+        en: "Train in the Dojo, gain experince and level up",
+    },
+    dojoLevelUpAfter: {
+        en: "Level up after {number} experience points",
+    },
+    numberExperienceGained: {
+        en: "{number} experience points gained",
     },
     "nav.vehicleControls.0.heading": {
         en: "Vehicle Controls",

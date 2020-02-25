@@ -53,4 +53,22 @@ describe("state > dojo > test > actions", () => {
 
         expect(actions.recieveAnswer("1", "A")).toEqual(expectedAction);
     });
+
+    it("recieveMaxQuestions", () => {
+        const expectedAction = {
+            type: "DOJO_TEST_RECIEVE_MAX_QUESTIONS",
+            payload: 99,
+        };
+
+        expect(actions.recieveMaxQuestions(99)).toEqual(expectedAction);
+    });
+
+    it("recieveExperienceGained", () => {
+        const expectedAction = {
+            type: "DOJO_TEST_RECIEVE_EXPERIENCE_GAINED",
+            payload: 7,
+        };
+
+        expect(actions.recieveExperienceGained(7)).toEqual(expectedAction);
+    });
 });

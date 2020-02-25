@@ -6,6 +6,7 @@ import { questionDataSelector } from "@/state/questions";
 import { shuffleArray } from "@/utils";
 
 import {
+    quesionsSuccesfullyAnsweredDatesSelector,
     recieveQuesionSuccesfullyAnsweredDate,
     RecieveQuesionSuccesfullyAnsweredDateAction,
 } from "../log";
@@ -15,6 +16,7 @@ import {
     RecieveQuestionAnswersAction,
     targetNavigationKeySelector,
 } from "./";
+import { recieveExperienceGained, RecieveExperienceGainedAction } from "./actions";
 import { QuestionAnswer } from "./types";
 
 export const loadQuestionAnswers = (): ThunkAction<
@@ -52,10 +54,23 @@ export const submitTest = (): ThunkAction<
     void,
     RootState,
     null,
-    RecieveQuesionSuccesfullyAnsweredDateAction
+    RecieveQuesionSuccesfullyAnsweredDateAction | RecieveExperienceGainedAction
 > => {
     return (dispatch, getState) => {
         const questionAnswers = questionAnswersSelector(getState());
+        const quesionsSuccesfullyAnsweredDates = quesionsSuccesfullyAnsweredDatesSelector(
+            getState()
+        );
+
+        let experienceGained = 0;
+        questionAnswers.forEach(qa => {
+            if (
+                qa.answer === qa.question.answer &&
+                !quesionsSuccesfullyAnsweredDates[qa.question.id]
+            )
+                experienceGained++;
+        });
+        dispatch(recieveExperienceGained(experienceGained));
 
         questionAnswers.forEach(qa => {
             if (qa.answer === qa.question.answer)

@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 
@@ -9,12 +10,11 @@ module.exports = merge(common, {
     },
 
     devServer: {
-        https: true,
         port: 3000,
         contentBase: "./dist",
-        //  hot: true,
+        hot: true,
         historyApiFallback: true,
     },
 
-    //plugins: [new webpack.HotModuleReplacementPlugin()]
+    plugins: [new webpack.HotModuleReplacementPlugin()]
 });

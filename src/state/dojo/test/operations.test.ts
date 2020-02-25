@@ -3,7 +3,12 @@ import thunk from "redux-thunk";
 
 import { QuestionData, QuestionItem } from "@/data";
 
-import { loadQuestionAnswers, recieveQuestionAnswers, submitTest } from "./";
+import {
+    loadQuestionAnswers,
+    recieveExperienceGained,
+    recieveQuestionAnswers,
+    submitTest,
+} from "./";
 import { QuestionAnswer } from "./types";
 
 const middlewares = [thunk];
@@ -71,7 +76,7 @@ describe("state > dojo > test > operations", () => {
         );
     });
 
-    it("loadQuestionAnswers - less than max", () => {
+    it("submitTest - 1 experience gained", () => {
         const answeredQuestions: QuestionAnswer[] = [
             {
                 answer: "Z",
@@ -89,6 +94,9 @@ describe("state > dojo > test > operations", () => {
 
         const store = mockStore({
             dojo: {
+                log: {
+                    quesionsSuccesfullyAnsweredDates: {},
+                },
                 test: {
                     questionAnswers: answeredQuestions,
                 },
@@ -101,11 +109,58 @@ describe("state > dojo > test > operations", () => {
 
         const actions = store.getActions();
 
-        expect(actions.length).toEqual(1);
+        expect(actions.length).toEqual(2);
 
-        expect(actions[0].payload.questionId).toEqual(questions[0].id);
+        expect(actions[0]).toEqual(recieveExperienceGained(1));
+
+        expect(actions[1].payload.questionId).toEqual(questions[0].id);
 
         const date = spy.mock.instances[0];
-        expect(actions[0].payload.date).toEqual(date);
+        expect(actions[1].payload.date).toEqual(date);
+    });
+
+    it("submitTest - 0 experience gained", () => {
+        const answeredQuestions: QuestionAnswer[] = [
+            {
+                answer: "Z",
+                question: questions[2],
+            },
+            {
+                answer: questions[0].answer,
+                question: questions[0],
+            },
+            {
+                answer: "X",
+                question: questions[1],
+            },
+        ];
+
+        const store = mockStore({
+            dojo: {
+                log: {
+                    quesionsSuccesfullyAnsweredDates: {
+                        [questions[0].id]: new Date(),
+                    },
+                },
+                test: {
+                    questionAnswers: answeredQuestions,
+                },
+            },
+        });
+
+        const spy = jest.spyOn(global, "Date");
+
+        store.dispatch(submitTest());
+
+        const actions = store.getActions();
+
+        expect(actions.length).toEqual(2);
+
+        expect(actions[0]).toEqual(recieveExperienceGained(0));
+
+        expect(actions[1].payload.questionId).toEqual(questions[0].id);
+
+        const date = spy.mock.instances[0];
+        expect(actions[1].payload.date).toEqual(date);
     });
 });

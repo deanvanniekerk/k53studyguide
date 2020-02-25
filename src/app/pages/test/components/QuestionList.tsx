@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 import { RootState } from "@/state";
 import { questionAnswersSelector } from "@/state/dojo/test/selectors";
-import { IonItem, IonList } from "@ionic/react";
 
 import { Question } from "./";
 
@@ -30,13 +29,14 @@ const QuestionListComponent: React.FC<Props> = props => {
     );
 };
 
-const List = styled(IonList)`
-    padding-top: 25px;
+const List = styled.div`
+    padding-top: 30px;
+    margin: 0 16px;
 `;
 
-const Item = styled(IonItem)`
+const Item = styled.div`
     overflow: hidden;
-    padding-bottom: 35px;
+    padding-bottom: 30px;
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

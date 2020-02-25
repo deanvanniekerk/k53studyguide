@@ -5,7 +5,7 @@ import { bindActionCreators, Dispatch } from "redux";
 import styled from "styled-components";
 
 import { RootState } from "@/state";
-import { loadQuestionAnswers, totalQuestionsSelector } from "@/state/dojo/test";
+import { loadQuestionAnswers, testInProgressSelector } from "@/state/dojo/test";
 import { IonContent, IonPage } from "@ionic/react";
 
 import { Header } from "./components";
@@ -18,7 +18,7 @@ const DojoPage: React.FC<Props> = props => {
 
     const onStartTestClicked = () => {
         //If no test exists, load one, else continue with previous
-        if (props.totalQuestions === 0) props.loadQuestionAnswers();
+        if (!props.testInProgress) props.loadQuestionAnswers();
 
         history.push(`/test`);
     };
@@ -40,7 +40,7 @@ const Content = styled(IonContent)`
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
     return {
-        totalQuestions: totalQuestionsSelector(state),
+        testInProgress: testInProgressSelector(state),
     };
 };
 

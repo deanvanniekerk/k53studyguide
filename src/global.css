@@ -38,8 +38,7 @@ ion-toast {
 
 .button-med-large {
     font-family: var(--ion-font-family-bold);
-    height: 3.3em;
-    font-weight: bold;
+    height: 2.8rem;
     text-transform: uppercase;
 }
 
