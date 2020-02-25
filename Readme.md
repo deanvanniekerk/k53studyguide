@@ -5,7 +5,7 @@ https://capacitor.ionicframework.com/docs/getting-started
 https://capacitor.ionicframework.com/docs/basics/workflow
 
 npm run build
-npx cap copy
+npm run sync
 
 ### Package version updates
 
