@@ -13,7 +13,7 @@ type Props = {
 }; // & PropsFromState;
 
 const NavigationItem: React.FC<Props> = props => {
-    const indicator = <div>TODO</div>;
+    const indicator = <div></div>;
 
     return (
         <NavItem

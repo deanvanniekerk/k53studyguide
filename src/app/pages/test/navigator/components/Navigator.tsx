@@ -1,23 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
 
 import { RootState } from "@/state";
-import {
-    recieveTargetNavigationKey,
-    targetNavigationChildrenSelector,
-} from "@/state/dojo/navigation";
+import { targetNavigationChildrenSelector } from "@/state/dojo/navigation";
 import { IonList } from "@ionic/react";
 
 import { NavigationItem } from "../components";
 
-type Props = PropsFromState & PropsFromDispatch;
+type Props = {
+    onNavigationItemClicked: (key: string) => void;
+} & PropsFromState;
 
 const NavigatorComponent: React.FC<Props> = props => {
-    const onNavigationItemClicked = (key: string) => {
-        props.recieveTargetNavigationKey(key);
-    };
-
     if (!props.navigationChildren) return <React.Fragment />;
 
     return (
@@ -27,7 +21,7 @@ const NavigatorComponent: React.FC<Props> = props => {
                     <NavigationItem
                         key={key}
                         navigationItemKey={key}
-                        onClick={onNavigationItemClicked}
+                        onClick={props.onNavigationItemClicked}
                         index={index}
                     />
                 );
@@ -43,13 +37,6 @@ const mapStateToProps = (state: RootState) => {
     };
 };
 
-type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
-const mapDispatchToProps = (dispatch: Dispatch) => {
-    return {
-        ...bindActionCreators({ recieveTargetNavigationKey }, dispatch),
-    };
-};
-
-const Navigator = connect(mapStateToProps, mapDispatchToProps)(NavigatorComponent);
+const Navigator = connect(mapStateToProps)(NavigatorComponent);
 
 export { Navigator };

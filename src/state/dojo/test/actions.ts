@@ -1,7 +1,6 @@
 import { QuestionAnswer } from "./";
 
 export const DOJO_TEST_RECIEVE_QUESTION_ANSWERS = "DOJO_TEST_RECIEVE_QUESTION_ANSWERS";
-export const DOJO_TEST_RECIEVE_TARGET_NAVIGATION_KEY = "DOJO_TEST_RECIEVE_TARGET_NAVIGATION_KEY";
 export const DOJO_TEST_RECIEVE_MAX_QUESTIONS = "DOJO_TEST_RECIEVE_MAX_QUESTIONS";
 export const DOJO_TEST_RECIEVE_ANSWER = "DOJO_TEST_RECIEVE_ANSWER";
 export const DOJO_TEST_RECIEVE_EXPERIENCE_GAINED = "DOJO_TEST_RECIEVE_EXPERIENCE_GAINED";
@@ -9,11 +8,6 @@ export const DOJO_TEST_RECIEVE_EXPERIENCE_GAINED = "DOJO_TEST_RECIEVE_EXPERIENCE
 export interface RecieveQuestionAnswersAction {
     type: typeof DOJO_TEST_RECIEVE_QUESTION_ANSWERS;
     payload: QuestionAnswer[];
-}
-
-export interface RecieveTargetNavigationKeyAction {
-    type: typeof DOJO_TEST_RECIEVE_TARGET_NAVIGATION_KEY;
-    payload: string;
 }
 
 export interface RecieveAnswerAction {
@@ -36,7 +30,6 @@ export interface RecieveExperienceGainedAction {
 
 export type TestActions =
     | RecieveQuestionAnswersAction
-    | RecieveTargetNavigationKeyAction
     | RecieveAnswerAction
     | RecieveMaxQuestionsAction
     | RecieveExperienceGainedAction;
@@ -46,11 +39,6 @@ export const recieveQuestionAnswers = (
 ): RecieveQuestionAnswersAction => ({
     type: DOJO_TEST_RECIEVE_QUESTION_ANSWERS,
     payload: questionAnswers,
-});
-
-export const recieveTargetNavigationKey = (key: string): RecieveTargetNavigationKeyAction => ({
-    type: DOJO_TEST_RECIEVE_TARGET_NAVIGATION_KEY,
-    payload: key,
 });
 
 export const recieveAnswer = (questionId: string, answer: string): RecieveAnswerAction => ({

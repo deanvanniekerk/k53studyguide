@@ -52,6 +52,21 @@ const translations: Translations = {
     numberExperienceGained: {
         en: "{number} experience points gained",
     },
+    startTest: {
+        en: "Start Test",
+    },
+    maxQuestions: {
+        en: "Max Questions",
+    },
+    testSettings: {
+        en: "Test Settings",
+    },
+    section: {
+        en: "Section",
+    },
+    selectSection: {
+        en: "Select Section",
+    },
     "nav.vehicleControls.0.heading": {
         en: "Vehicle Controls",
     },

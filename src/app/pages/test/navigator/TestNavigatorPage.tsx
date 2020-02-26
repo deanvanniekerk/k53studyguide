@@ -7,36 +7,50 @@ import styled from "styled-components";
 
 import { BackButton } from "@/app/components";
 import { RootState } from "@/state";
-import { navigateUp, targetNavigationParentSelector } from "@/state/dojo/navigation";
+import {
+    navigateUp,
+    recieveTargetNavigationKey,
+    targetNavigationParentSelector,
+} from "@/state/dojo/navigation";
 import { ROOT_NAVIGATION_KEY } from "@/state/study/navigation";
 import { IonContent, IonPage } from "@ionic/react";
 
 import { Header, Navigator } from "./components";
+import { TestNavigatorPageHeader } from "./TestNavigatorPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
 
 const TestNavigatorPage: React.FC<Props> = props => {
     const history = useHistory();
 
+    const navigateToDojo = () => {
+        if (history.length === 0) history.replace("/");
+        else history.goBack();
+    };
+
     const onBackClicked = () => {
         if (props.targetNavigationParent === ROOT_NAVIGATION_KEY) {
-            if (history.length === 0) history.replace("/");
-            else history.goBack();
+            navigateToDojo();
             return;
         }
         props.navigateUp();
     };
 
-    // const selectTargetNavigationItem = () => {
+    const selectTargetNavigationItem = () => {
+        navigateToDojo();
+    };
 
-    // }
+    const onNavigationItemClicked = (key: string) => {
+        props.recieveTargetNavigationKey(key);
+    };
 
     return (
         <IonPage>
+            <TestNavigatorPageHeader />
             <Content>
                 <BackButton onClick={onBackClicked} icon={arrowUp} />
-                <Header />
-                <Navigator />
+                <Header selectTargetNavigationItem={selectTargetNavigationItem} />
+                <Navigator onNavigationItemClicked={onNavigationItemClicked} />
             </Content>
         </IonPage>
     );
@@ -56,7 +70,7 @@ const mapStateToProps = (state: RootState) => {
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        ...bindActionCreators({ navigateUp }, dispatch),
+        ...bindActionCreators({ navigateUp, recieveTargetNavigationKey }, dispatch),
     };
 };
 

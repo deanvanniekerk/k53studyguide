@@ -12,8 +12,8 @@ const rootSelector: Selector<RootState, NavigationState> = (state: RootState): N
 
 export const targetNavigationKeySelector: OutputSelector<
     RootState,
-    string | null,
-    (state: NavigationState) => string | null
+    string,
+    (state: NavigationState) => string
 > = createSelector(rootSelector, root => root.targetNavigationKey);
 
 export const targetNavigationChildrenSelector: OutputSelector<

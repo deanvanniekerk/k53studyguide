@@ -8,7 +8,7 @@ import { RootState } from "@/state";
 import { loadQuestionAnswers, testInProgressSelector } from "@/state/dojo/test";
 import { IonContent, IonPage } from "@ionic/react";
 
-import { Header } from "./components";
+import { Header, Settings } from "./components";
 import { DojoPageHeader } from "./DojoPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
@@ -27,7 +27,8 @@ const DojoPage: React.FC<Props> = props => {
         <IonPage className="dojo-page">
             <DojoPageHeader />
             <Content>
-                <Header onStartTestClicked={onStartTestClicked} />
+                <Header />
+                <Settings onStartTestClicked={onStartTestClicked} />
             </Content>
         </IonPage>
     );

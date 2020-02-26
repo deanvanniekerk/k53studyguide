@@ -33,15 +33,6 @@ describe("state > dojo > test > actions", () => {
         expect(actions.recieveQuestionAnswers(expectedAction.payload)).toEqual(expectedAction);
     });
 
-    it("recieveTargetNavigationKey", () => {
-        const expectedAction = {
-            type: "DOJO_TEST_RECIEVE_TARGET_NAVIGATION_KEY",
-            payload: "99",
-        };
-
-        expect(actions.recieveTargetNavigationKey("99")).toEqual(expectedAction);
-    });
-
     it("recieveAnswer", () => {
         const expectedAction = {
             type: "DOJO_TEST_RECIEVE_ANSWER",

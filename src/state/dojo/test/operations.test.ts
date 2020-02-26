@@ -47,9 +47,11 @@ describe("state > dojo > test > operations", () => {
                 log: {
                     quesionsSuccesfullyAnsweredDates: {},
                 },
+                navigation: {
+                    targetNavigationKey: "root.child1",
+                },
                 test: {
                     maxQuestions: 10,
-                    targetNavigationKey: "root.child1",
                 },
             },
         });
@@ -94,9 +96,11 @@ describe("state > dojo > test > operations", () => {
                         [questions[5].id]: new Date(9000),
                     },
                 },
+                navigation: {
+                    targetNavigationKey: "root",
+                },
                 test: {
                     maxQuestions: 10,
-                    targetNavigationKey: "root",
                 },
             },
         });

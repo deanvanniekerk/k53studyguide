@@ -5,7 +5,8 @@ import styled from "styled-components";
 
 import { Breadcrumb, HorizontalRule } from "@/app/components";
 import { RootState } from "@/state";
-import { targetNavigationKeySelector, totalQuestionsSelector } from "@/state/dojo/test";
+import { targetNavigationKeySelector } from "@/state/dojo/navigation";
+import { totalQuestionsSelector } from "@/state/dojo/test";
 import { ROOT_NAVIGATION_KEY } from "@/state/navigation";
 import { IonCol, IonGrid, IonListHeader, IonRow, IonText } from "@ionic/react";
 

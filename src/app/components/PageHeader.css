@@ -16,7 +16,8 @@
 }
 
 .page-header .col-1 {
-    flex: 1;
+    flex: 0;
+    text-align: left;
 }
 
 .page-header .col-2 {
@@ -24,6 +25,6 @@
 }
 
 .page-header .col-3 {
-    flex: 1;
+    flex: 0;
     text-align: right;
 }

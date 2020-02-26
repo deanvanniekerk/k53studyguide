@@ -1,3 +1,3 @@
 export * from "./Header";
 export * from "./Level";
-export * from "./Target";
+export * from "./Settings";

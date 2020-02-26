@@ -14,12 +14,6 @@ export const questionAnswersSelector: OutputSelector<
     (state: TestState) => QuestionAnswer[]
 > = createSelector(rootSelector, root => root.questionAnswers);
 
-export const targetNavigationKeySelector: OutputSelector<
-    RootState,
-    string,
-    (state: TestState) => string
-> = createSelector(rootSelector, root => root.targetNavigationKey);
-
 export const totalQuestionsSelector: OutputSelector<
     RootState,
     number,

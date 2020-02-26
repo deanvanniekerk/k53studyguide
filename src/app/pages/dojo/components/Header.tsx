@@ -4,13 +4,9 @@ import styled from "styled-components";
 
 import { IonCol, IonGrid, IonRow } from "@ionic/react";
 
-import { Level, Target } from "./";
+import { Level } from "./";
 
-type Props = {
-    onStartTestClicked: () => void;
-};
-
-const Header: React.FC<Props> = props => {
+const Header: React.FC = () => {
     return (
         <IonGrid>
             <IonRow style={{ paddingTop: 45 }}>
@@ -23,11 +19,6 @@ const Header: React.FC<Props> = props => {
             <IonRow style={{ paddingTop: 25 }}>
                 <IonCol>
                     <Level />
-                </IonCol>
-            </IonRow>
-            <IonRow style={{ paddingTop: 15 }}>
-                <IonCol>
-                    <Target onStartTestClicked={props.onStartTestClicked} />
                 </IonCol>
             </IonRow>
         </IonGrid>

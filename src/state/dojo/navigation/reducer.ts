@@ -1,11 +1,13 @@
+import { ROOT_NAVIGATION_KEY } from "@/state/navigation";
+
 import { NavigationActions } from "./";
 
 export type NavigationState = {
-    readonly targetNavigationKey: string | null;
+    readonly targetNavigationKey: string;
 };
 
 export const defaultState: NavigationState = {
-    targetNavigationKey: null,
+    targetNavigationKey: ROOT_NAVIGATION_KEY,
 };
 
 export const reducer = (

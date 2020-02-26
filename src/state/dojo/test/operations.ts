@@ -10,12 +10,12 @@ import {
     recieveQuesionSuccesfullyAnsweredDate,
     RecieveQuesionSuccesfullyAnsweredDateAction,
 } from "../log";
+import { targetNavigationKeySelector } from "../navigation";
 import {
     maxQuestionsSelector,
     questionAnswersSelector,
     recieveQuestionAnswers,
     RecieveQuestionAnswersAction,
-    targetNavigationKeySelector,
 } from "./";
 import { recieveExperienceGained, RecieveExperienceGainedAction } from "./actions";
 import { QuestionAnswer } from "./types";
@@ -58,7 +58,10 @@ export const loadQuestionAnswers = (): ThunkAction<
             return 0;
         });
 
-        if (bank.length > maxQuestions) bank = bank.slice(0, maxQuestions);
+        if (bank.length > maxQuestions) {
+            console.log("trimming", bank.length, maxQuestions);
+            bank = bank.slice(0, maxQuestions);
+        }
 
         const questionAnswers: QuestionAnswer[] = bank.map(q => ({
             answer: null,

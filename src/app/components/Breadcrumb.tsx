@@ -11,6 +11,9 @@ type Props = {
     navigationKey: string;
     disableNavigation?: boolean;
     rootText?: string;
+    showLast?: boolean;
+    opacity?: number;
+    lastOpacity?: number;
 } & PropsFromDispatch;
 
 const BreadcrumbComponent: React.FC<Props> = props => {
@@ -24,13 +27,17 @@ const BreadcrumbComponent: React.FC<Props> = props => {
             {breadcrumb.map((key, index) => {
                 const isLast = index === breadcrumb.length - 1;
 
-                if (isLast) return <React.Fragment key={key} />;
+                if (!props.showLast && isLast) return <React.Fragment key={key} />;
+
+                let opacity = props.opacity === undefined ? 0.6 : props.opacity;
+
+                if (isLast && props.lastOpacity) opacity = props.lastOpacity;
 
                 return (
                     <IonText
                         key={key}
                         style={{
-                            opacity: 0.6,
+                            opacity: opacity,
                         }}
                         className="text-sm"
                         onClick={() => props.recieveCurrentNavigationKey(key)}
@@ -40,7 +47,7 @@ const BreadcrumbComponent: React.FC<Props> = props => {
                         ) : (
                             <Translate text={props.rootText ? props.rootText : "study"} />
                         )}
-                        {" / "}
+                        {isLast ? "" : " / "}
                     </IonText>
                 );
             })}
