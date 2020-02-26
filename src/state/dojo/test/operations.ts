@@ -11,6 +11,7 @@ import {
     RecieveQuesionSuccesfullyAnsweredDateAction,
 } from "../log";
 import {
+    maxQuestionsSelector,
     questionAnswersSelector,
     recieveQuestionAnswers,
     RecieveQuestionAnswersAction,
@@ -28,6 +29,10 @@ export const loadQuestionAnswers = (): ThunkAction<
     return (dispatch, getState) => {
         const targetKey = targetNavigationKeySelector(getState());
         const questionData = questionDataSelector(getState());
+        const maxQuestions = maxQuestionsSelector(getState());
+        const quesionsSuccesfullyAnsweredDates = quesionsSuccesfullyAnsweredDatesSelector(
+            getState()
+        );
 
         let bank: QuestionItem[] = [];
         const keys = Object.keys(questionData);
@@ -36,10 +41,24 @@ export const loadQuestionAnswers = (): ThunkAction<
             if (k.startsWith(targetKey)) bank.push(...questionData[k]);
         });
 
+        //Upfront shuffle
         bank = shuffleArray<QuestionItem>(bank);
 
-        //Do some ordering here...
-        if (bank.length > 10) bank = bank.slice(0, 10);
+        //Now order - unanswered first then answered by date asc
+        bank.sort((itemA: QuestionItem, itemB: QuestionItem) => {
+            const minDate = new Date(0);
+
+            const dateA = quesionsSuccesfullyAnsweredDates[itemA.id] || minDate;
+            const dateB = quesionsSuccesfullyAnsweredDates[itemB.id] || minDate;
+
+            if (dateA < dateB) return -1;
+
+            if (dateA > dateB) return 1;
+
+            return 0;
+        });
+
+        if (bank.length > maxQuestions) bank = bank.slice(0, maxQuestions);
 
         const questionAnswers: QuestionAnswer[] = bank.map(q => ({
             answer: null,
@@ -72,9 +91,11 @@ export const submitTest = (): ThunkAction<
         });
         dispatch(recieveExperienceGained(experienceGained));
 
+        const dateAnswered = new Date();
+
         questionAnswers.forEach(qa => {
             if (qa.answer === qa.question.answer)
-                dispatch(recieveQuesionSuccesfullyAnsweredDate(qa.question.id, new Date()));
+                dispatch(recieveQuesionSuccesfullyAnsweredDate(qa.question.id, dateAnswered));
         });
     };
 };

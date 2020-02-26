@@ -44,7 +44,11 @@ describe("state > dojo > test > operations", () => {
                 questionData: questionData,
             },
             dojo: {
+                log: {
+                    quesionsSuccesfullyAnsweredDates: {},
+                },
                 test: {
+                    maxQuestions: 10,
                     targetNavigationKey: "root.child1",
                 },
             },
@@ -67,13 +71,88 @@ describe("state > dojo > test > operations", () => {
             },
         ];
 
-        expect(actions[0].type).toEqual(recieveQuestionAnswers(questionAnswers).type);
-        expect(actions[0].payload.length).toEqual(
-            recieveQuestionAnswers(questionAnswers).payload.length
-        );
+        expect(actions[0].type).toEqual("DOJO_TEST_RECIEVE_QUESTION_ANSWERS");
+        expect(actions[0].payload.length).toEqual(2);
+
         expect(actions[0].payload).toEqual(
             jasmine.arrayContaining(recieveQuestionAnswers(questionAnswers).payload)
         );
+    });
+
+    it("loadQuestionAnswers - ordering", () => {
+        const store = mockStore({
+            questions: {
+                questionData: questionData,
+            },
+            dojo: {
+                log: {
+                    quesionsSuccesfullyAnsweredDates: {
+                        [questions[9].id]: new Date(5000),
+                        [questions[1].id]: new Date(6000),
+                        [questions[0].id]: new Date(7000),
+                        [questions[2].id]: new Date(8000),
+                        [questions[5].id]: new Date(9000),
+                    },
+                },
+                test: {
+                    maxQuestions: 10,
+                    targetNavigationKey: "root",
+                },
+            },
+        });
+
+        //Ordering should be
+        //3 : 4 : 6 : 7 : 8  (first 5 any order as the dates are null)
+        //9
+        //1
+        //0
+        //2
+        //5
+
+        store.dispatch(loadQuestionAnswers());
+
+        const actions = store.getActions();
+
+        expect(actions.length).toEqual(1);
+
+        //The random list
+        const questionAnswers: QuestionAnswer[] = [
+            {
+                answer: null,
+                question: questions[3],
+            },
+            {
+                answer: null,
+                question: questions[4],
+            },
+            {
+                answer: null,
+                question: questions[6],
+            },
+            {
+                answer: null,
+                question: questions[7],
+            },
+            {
+                answer: null,
+                question: questions[8],
+            },
+        ];
+
+        expect(actions[0].type).toEqual("DOJO_TEST_RECIEVE_QUESTION_ANSWERS");
+        expect(actions[0].payload.length).toEqual(10);
+
+        //Any order
+        expect(actions[0].payload).toEqual(
+            jasmine.arrayContaining(recieveQuestionAnswers(questionAnswers).payload)
+        );
+
+        //Ordered
+        expect(actions[0].payload[5].question.id).toEqual(questions[9].id);
+        expect(actions[0].payload[6].question.id).toEqual(questions[1].id);
+        expect(actions[0].payload[7].question.id).toEqual(questions[0].id);
+        expect(actions[0].payload[8].question.id).toEqual(questions[2].id);
+        expect(actions[0].payload[9].question.id).toEqual(questions[5].id);
     });
 
     it("submitTest - 1 experience gained", () => {

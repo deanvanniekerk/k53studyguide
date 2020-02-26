@@ -1,4 +1,4 @@
-import { arrowUpCircleOutline } from "ionicons/icons";
+import { arrowUp } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -35,7 +35,7 @@ const ContentPage: React.FC<Props> = props => {
     return (
         <IonPage className="content-page">
             <Content>
-                <BackButton onClick={onBackClicked} icon={arrowUpCircleOutline} />
+                <BackButton onClick={onBackClicked} icon={arrowUp} />
                 <Header />
                 <Navigator />
                 <ContentList />
