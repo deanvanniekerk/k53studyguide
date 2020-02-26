@@ -2,19 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import { bindActionCreators, Dispatch } from "redux";
+
 import { recieveCurrentNavigationKey, ROOT_NAVIGATION_KEY } from "@/state/study/navigation";
 import { navigationKeyToBreadcrumb } from "@/utils";
-
 import { IonText } from "@ionic/react";
 
 type Props = {
     navigationKey: string;
     disableNavigation?: boolean;
+    rootText?: string;
 } & PropsFromDispatch;
 
 const BreadcrumbComponent: React.FC<Props> = props => {
     const breadcrumb = navigationKeyToBreadcrumb(props.navigationKey);
-
     return (
         <div
             style={{
@@ -38,7 +38,7 @@ const BreadcrumbComponent: React.FC<Props> = props => {
                         {key !== ROOT_NAVIGATION_KEY ? (
                             <Translate text={key} />
                         ) : (
-                            <Translate text="study" />
+                            <Translate text={props.rootText ? props.rootText : "study"} />
                         )}
                         {" / "}
                     </IonText>

@@ -4,22 +4,22 @@ import { RootState } from "@/state";
 import { navigateUp as up } from "@/utils";
 
 import {
-    currentNavigationKeySelector,
-    recieveCurrentNavigationKey,
-    RecieveCurrentNavigationKeyAction,
+    recieveTargetNavigationKey,
+    RecieveTargetNavigationKeyAction,
+    targetNavigationKeySelector,
 } from "./";
 
 export const navigateUp = (): ThunkAction<
     void,
     RootState,
     null,
-    RecieveCurrentNavigationKeyAction
+    RecieveTargetNavigationKeyAction
 > => {
     return (dispatch, getState) => {
-        let key = currentNavigationKeySelector(getState());
+        let key = targetNavigationKeySelector(getState());
 
         key = up(key);
 
-        dispatch(recieveCurrentNavigationKey(key));
+        dispatch(recieveTargetNavigationKey(key));
     };
 };

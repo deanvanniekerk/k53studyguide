@@ -1,17 +1,16 @@
-import { caretForward } from "ionicons/icons";
 import React from "react";
 import { Translate } from "react-translated";
 import styled from "styled-components";
 
-import { IonButton, IonCol, IonGrid, IonIcon, IonRow } from "@ionic/react";
+import { IonCol, IonGrid, IonRow } from "@ionic/react";
 
-import { Level } from "./";
+import { Level, Target } from "./";
 
 type Props = {
     onStartTestClicked: () => void;
 };
 
-const HeaderComponent: React.FC<Props> = props => {
+const Header: React.FC<Props> = props => {
     return (
         <IonGrid>
             <IonRow style={{ paddingTop: 45 }}>
@@ -26,18 +25,9 @@ const HeaderComponent: React.FC<Props> = props => {
                     <Level />
                 </IonCol>
             </IonRow>
-            <IonRow style={{ paddingTop: 40, paddingBottom: 20 }}>
-                <IonCol style={{ textAlign: "center" }}>
-                    <IonButton
-                        color="secondary"
-                        shape="round"
-                        fill="solid"
-                        className="button-med-large"
-                        onClick={() => props.onStartTestClicked()}
-                    >
-                        <Translate text="continue" />
-                        <IonIcon slot="end" icon={caretForward} />
-                    </IonButton>
+            <IonRow style={{ paddingTop: 15 }}>
+                <IonCol>
+                    <Target onStartTestClicked={props.onStartTestClicked} />
                 </IonCol>
             </IonRow>
         </IonGrid>
@@ -49,7 +39,5 @@ const IntroText = styled.div`
     font-size: var(--ion-font-size-sm);
     font-weight: 100;
 `;
-
-const Header = HeaderComponent;
 
 export { Header };

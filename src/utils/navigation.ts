@@ -1,4 +1,4 @@
-export const navigationKeyToBreadcrumb = (key: string): string[] => {
+export const navigationKeyToBreadcrumb = (key: string | null): string[] => {
     const breadcrumb: string[] = [];
 
     const split = (key || "").split(".");
@@ -9,4 +9,17 @@ export const navigationKeyToBreadcrumb = (key: string): string[] => {
     }
 
     return breadcrumb.reverse();
+};
+
+export const navigateUp = (key: string | null): string => {
+    if (!key) key = "";
+
+    const split = key.split(".");
+
+    if (split.length > 1) {
+        split.pop(); //remove last
+        key = split.join(".");
+    }
+
+    return key;
 };
