@@ -18,6 +18,9 @@ export type Translations = {
 
 export type Translation = {
     en: string;
+    af: string;
+    zu: string;
+    xh: string;
 };
 
 export type QuestionData = {
