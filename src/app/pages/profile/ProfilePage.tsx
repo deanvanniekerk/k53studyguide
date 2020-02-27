@@ -3,19 +3,24 @@ import styled from "styled-components";
 
 import { IonContent, IonPage } from "@ionic/react";
 
+import { Settings } from "./components";
 import { ProfilePageHeader } from "./ProfilePageHeader";
 
 const ProfilePage: React.FC = () => {
     return (
-        <IonPage className="profile-page">
+        <IonPage>
             <ProfilePageHeader />
-            <Content></Content>
+            <Content>
+                <Settings />
+            </Content>
         </IonPage>
     );
 };
 
 const Content = styled(IonContent)`
     --background: var(--profile-background);
+    padding-top: 55;
+    padding-left: 16;
 `;
 
 export default ProfilePage;

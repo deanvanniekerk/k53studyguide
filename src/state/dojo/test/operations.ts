@@ -59,7 +59,6 @@ export const loadQuestionAnswers = (): ThunkAction<
         });
 
         if (bank.length > maxQuestions) {
-            console.log("trimming", bank.length, maxQuestions);
             bank = bank.slice(0, maxQuestions);
         }
 

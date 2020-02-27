@@ -1,11 +1,20 @@
 import { combineReducers } from "redux";
+import { PersistConfig, persistReducer } from "redux-persist";
+
+import { createStorage } from "@/store/store";
 
 import { reducer as content } from "./content";
 import { reducer as dojo } from "./dojo";
 import { reducer as navigation } from "./navigation";
 import { reducer as questions } from "./questions";
+import { reducer as settings, SettingsState } from "./settings";
 import { reducer as study } from "./study";
 import { reducer as translations } from "./translations";
+
+const settingsConfig: PersistConfig<SettingsState> = {
+    key: "settings",
+    storage: createStorage(),
+};
 
 const rootReducer = combineReducers({
     study: study,
@@ -14,6 +23,7 @@ const rootReducer = combineReducers({
     content: content,
     questions: questions,
     dojo: dojo,
+    settings: persistReducer(settingsConfig, settings),
 });
 
 const createRootReducer = () => rootReducer;

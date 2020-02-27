@@ -139,6 +139,18 @@ const translations: Translations = {
         zu: "Qhubeka nokuhlola",
         xh: "Qhubeka novavanyo",
     },
+    settings: {
+        en: "Settings",
+        af: "Instellings",
+        zu: "Izilungiselelo",
+        xh: "Useto",
+    },
+    language: {
+        en: "Language",
+        af: "Taal",
+        zu: "Ulimi",
+        xh: "Ulwimi",
+    },
     "nav.vehicleControls.0.heading": {
         en: "Vehicle Controls",
         af: "Voertuigkontroles",
