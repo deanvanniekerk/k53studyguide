@@ -1,5 +1,3 @@
-import "./Settings.css";
-
 import { caretForward } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
@@ -36,6 +34,7 @@ const SettingsComponent: React.FC<Props> = props => {
     const history = useHistory();
 
     const onChangeTargetNavigationItem = () => {
+        if (props.testInProgress) return;
         history.push(`/test-navigator`);
     };
 
@@ -54,7 +53,10 @@ const SettingsComponent: React.FC<Props> = props => {
                         <Translate text="section" />
                     </SettingName>
                 </SettingNameCol>
-                <SettingValueCol onClick={onChangeTargetNavigationItem}>
+                <SettingValueCol
+                    onClick={onChangeTargetNavigationItem}
+                    disabled={props.testInProgress}
+                >
                     <Breadcrumb
                         navigationKey={props.targetNavigationKey}
                         disableNavigation={true}
@@ -74,11 +76,12 @@ const SettingsComponent: React.FC<Props> = props => {
                         <Translate text="maxQuestions" />
                     </SettingName>
                 </SettingNameCol>
-                <SettingValueCol>
+                <SettingValueCol disabled={props.testInProgress}>
                     <Select
                         value={props.maxQuestions}
                         onIonChange={event => props.recieveMaxQuestions(event.detail.value)}
                         interface="action-sheet"
+                        disabled={props.testInProgress}
                     >
                         <IonSelectOption value={5}>5</IonSelectOption>
                         <IonSelectOption value={10}>10</IonSelectOption>
@@ -98,7 +101,7 @@ const SettingsComponent: React.FC<Props> = props => {
                         className="button-med-large"
                         onClick={() => props.onStartTestClicked()}
                     >
-                        <Translate text={props.testInProgress ? "continue" : "startTest"} />
+                        <Translate text={props.testInProgress ? "continueTest" : "startTest"} />
                         <IonIcon slot="end" icon={caretForward} />
                     </IonButton>
                 </IonCol>
@@ -129,7 +132,7 @@ const SettingTitleCol = styled(IonCol)`
 
 const SettingName = styled(IonText)`
     text-transform: uppercase;
-    font-size: var(--ion-font-size-sm);
+    font-size: var(--ion-font-size-md);
     font-family: var(--ion-font-family-bold);
     font-weight: bold;
 `;
@@ -140,12 +143,16 @@ const SettingNameCol = styled(IonCol)`
     padding-right: 15px;
 `;
 
-const SettingValueCol = styled(IonCol)`
-    color: var(--ion-color-tertiary);
+interface SettingValueColProps {
+    disabled: boolean;
+}
+
+const SettingValueCol = styled(IonCol)<SettingValueColProps>`
+    color: ${props => (props.disabled ? "var(--ion-color-medium)" : "var(--ion-color-dark)")};
+    opacity: ${props => (props.disabled ? "1" : "0.9")} !important;
     font-family: var(--ion-font-family-bold);
+    font-size: var(--ion-font-size-md);
     font-weight: bold;
-    font-size: var(--ion-font-size-sm);
-    opacity: 0.9;
     text-align: end;
     line-height: 1.2rem;
 `;
@@ -153,6 +160,11 @@ const SettingValueCol = styled(IonCol)`
 const Select = styled(IonSelect)`
     --padding-bottom: 0;
     --padding-top: 0;
+    color: ${props => (props.disabled ? "var(--ion-color-medium)" : "var(--ion-color-dark)")};
+    opacity: ${props => (props.disabled ? "1" : "0.9")} !important;
+    font-family: var(--ion-font-family-bold);
+    font-weight: bold;
+    font-size: var(--ion-font-size-md);
 `;
 
 const LineBreak = (

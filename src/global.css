@@ -1,11 +1,11 @@
 ion-tab-bar {
-    --background: var(--ion-color-tertiary);
+    --background: var(--ion-color-dark);
     --color: var(--ion-color-light);
     --ion-color-primary: var(--ion-color-light);
 }
 
 ion-tab-button {
-    --color: var(--ion-color-tertiary-tint);
+    --color: var(--ion-color-dark-tint);
 }
 
 ion-tab-button ion-icon {

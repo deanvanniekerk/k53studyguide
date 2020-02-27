@@ -67,6 +67,9 @@ const translations: Translations = {
     selectSection: {
         en: "Select Section",
     },
+    continueTest: {
+        en: "Continue Test",
+    },
     "nav.vehicleControls.0.heading": {
         en: "Vehicle Controls",
     },

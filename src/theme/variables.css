@@ -46,18 +46,18 @@
     --arena-background: linear-gradient(
         to right bottom,
         #501a8e,
-        #9a0684,
-        #cc1e73,
-        #ed4c60,
-        #ff7b51
+        #402b91,
+        #313691,
+        #243e8f,
+        #1b458b
     );
     --profile-background: linear-gradient(
         to right bottom,
         #501a8e,
-        #4d2579,
-        #482c65,
-        #423251,
-        #3a363d
+        #48197f,
+        #411770,
+        #391661,
+        #321453
     );
     /* ------------------------------------------ */
 
@@ -76,12 +76,12 @@
     --ion-color-secondary-shade: #e06c47;
     --ion-color-secondary-tint: #ff8862;
 
-    --ion-color-tertiary: #311343;
-    --ion-color-tertiary-rgb: 49, 19, 67;
+    --ion-color-tertiary: #e73b68;
+    --ion-color-tertiary-rgb: 231, 59, 104;
     --ion-color-tertiary-contrast: #ffffff;
     --ion-color-tertiary-contrast-rgb: 255, 255, 255;
-    --ion-color-tertiary-shade: #2b113b;
-    --ion-color-tertiary-tint: #7a608a;
+    --ion-color-tertiary-shade: #cb345c;
+    --ion-color-tertiary-tint: #e94f77;
 
     --ion-color-success: #10dc60;
     --ion-color-success-rgb: 16, 220, 96;
@@ -104,19 +104,19 @@
     --ion-color-danger-shade: #d33939;
     --ion-color-danger-tint: #f25454;
 
-    --ion-color-dark: #222428;
-    --ion-color-dark-rgb: 34, 34, 34;
+    --ion-color-dark: #311343;
+    --ion-color-dark-rgb: 49, 19, 67;
     --ion-color-dark-contrast: #ffffff;
     --ion-color-dark-contrast-rgb: 255, 255, 255;
-    --ion-color-dark-shade: #1e2023;
-    --ion-color-dark-tint: #383a3e;
+    --ion-color-dark-shade: #2b113b;
+    --ion-color-dark-tint: #7a608a;
 
-    --ion-color-medium: #989aa2;
-    --ion-color-medium-rgb: 152, 154, 162;
-    --ion-color-medium-contrast: #ffffff;
-    --ion-color-medium-contrast-rgb: 255, 255, 255;
-    --ion-color-medium-shade: #86888f;
-    --ion-color-medium-tint: #a2a4ab;
+    --ion-color-medium: #c1c5d0;
+    --ion-color-medium-rgb: 193, 197, 208;
+    --ion-color-medium-contrast: #000000;
+    --ion-color-medium-contrast-rgb: 0, 0, 0;
+    --ion-color-medium-shade: #aaadb7;
+    --ion-color-medium-tint: #c7cbd5;
 
     --ion-color-light: #ffffff;
     --ion-color-light-rgb: 244, 244, 244;
