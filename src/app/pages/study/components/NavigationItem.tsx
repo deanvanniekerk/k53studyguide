@@ -61,7 +61,7 @@ const NavigationItemComponent: React.FC<Props> = props => {
                         play={false}
                         ref={animation2}
                         duration={600}
-                        delay={delay + containerAnimationDuration + 100}
+                        delay={delay + containerAnimationDuration - 100}
                         easing="ease"
                         keyframes={[
                             { offset: 0, transform: "scale(0)" },

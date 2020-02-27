@@ -34,7 +34,10 @@ const HeaderComponent: React.FC<Props> = props => {
                     </IonRow>
                     <IonRow>
                         <IonCol>
-                            <Breadcrumb navigationKey={props.targetNavigationKey} />
+                            <Breadcrumb
+                                navigationKey={props.targetNavigationKey}
+                                rootText="allContent"
+                            />
                         </IonCol>
                     </IonRow>
                 </IonGrid>

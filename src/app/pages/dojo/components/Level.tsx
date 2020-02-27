@@ -1,4 +1,3 @@
-import { star, starOutline } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
@@ -11,35 +10,22 @@ import {
     dojoLevelSelector,
     requiredLevelUpExperiencePointsSelector,
 } from "@/state/dojo/log";
-import { IonIcon } from "@ionic/react";
+
+import { LevelText, Star } from "./";
 
 type Props = PropsFromState;
 
 const LevelComponent: React.FC<Props> = props => {
     return (
         <Wrapper>
-            <LevelText>
-                <Translate text="level" /> {props.level}
-            </LevelText>
-            <div>
-                <StarWrapper>
-                    <Star>
-                        <IonIcon icon={props.level === 1 ? star : starOutline} />
-                    </Star>
-                    <Star>
-                        <IonIcon icon={props.level === 2 ? star : starOutline} />
-                    </Star>
-                    <Star>
-                        <IonIcon icon={props.level === 3 ? star : starOutline} />
-                    </Star>
-                    <Star>
-                        <IonIcon icon={props.level === 4 ? star : starOutline} />
-                    </Star>
-                    <Star>
-                        <IonIcon icon={props.level === 5 ? star : starOutline} />
-                    </Star>
-                </StarWrapper>
-            </div>
+            <LevelText level={props.level} />
+            <StarWrapper>
+                <Star index={0} active={props.level >= 1} />
+                <Star index={1} active={props.level >= 2} />
+                <Star index={2} active={props.level >= 3} />
+                <Star index={3} active={props.level >= 4} />
+                <Star index={4} active={props.level >= 5} />
+            </StarWrapper>
             <LevelUpText>
                 <Translate
                     text="dojoLevelUpAfter"
@@ -64,20 +50,9 @@ const Wrapper = styled.div`
     padding: var(--ic-padding);
 `;
 
-const LevelText = styled.div`
-    text-align: center;
-    font-weight: bold;
-    padding: 8px 0 10px 0;
-`;
-
 const StarWrapper = styled.div`
     display: flex;
     justify-content: center;
-`;
-
-const Star = styled.div`
-    font-size: 2rem;
-    padding: 0 5px;
 `;
 
 const LevelUpText = styled.div`
