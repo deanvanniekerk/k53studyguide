@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import { Breadcrumb } from "@/app/components";
 import { RootState } from "@/state";
-import { targetNavigationKeySelector } from "@/state/dojo/test";
+import { targetNavigationKeySelector } from "@/state/dojo/navigation";
 import { ROOT_NAVIGATION_KEY } from "@/state/navigation";
 import { IonButton, IonCol, IonGrid, IonIcon, IonRow, IonText } from "@ionic/react";
 

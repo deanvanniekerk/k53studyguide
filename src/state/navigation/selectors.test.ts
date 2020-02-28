@@ -1,38 +1,58 @@
-import { NavigationData, NavigationIcons } from "@/data";
+import { ContentData, NavigationData, NavigationIcons } from "@/data";
 
-import { NavigationState } from "./";
+import { NavigationState, NavigationTreeItem } from "./";
 import * as selectors from "./selectors";
 
 describe("state > navigation > selectors", () => {
     //Setup Data --------------------------------------------
+
     const navigationData: NavigationData = {
-        nav: ["nav.roadSignals", "nav.signs"],
-        "nav.roadSignals": ["nav.roadSignals.regulatorySignals", "nav.roadSignals.warningSignals"],
-        "nav.roadSignals.regulatorySignals": [
-            "nav.roadSignals.regulatorySignals.otherRegulatorySignals",
-            "nav.roadSignals.regulatorySignals.overheadLaneDirectionControlSignals",
-            "nav.roadSignals.regulatorySignals.redFlashingSignals",
-        ],
-        "nav.roadSignals.regulatorySignals.otherRegulatorySignals": [
-            "nav.roadSignals.regulatorySignals.otherRegulatorySignals.flagSignals",
-            "nav.roadSignals.regulatorySignals.otherRegulatorySignals.handSignals",
-        ],
-        "nav.signs": [
-            "nav.signs.guidance",
-            "nav.signs.information",
-            "nav.signs.regulatory",
-            "nav.signs.warning",
-        ],
-        "nav.signs.guidance": [
-            "nav.signs.guidance.diagrammaticSigns",
-            "nav.signs.guidance.directionSigns",
-            "nav.signs.guidance.freewayDirectionSigns",
-        ],
+        nav: ["nav.child1", "nav.child2"],
+        "nav.child1": ["nav.child1.child1", "nav.child1.child2"],
     };
 
     const navigationIcons: NavigationIcons = {
-        "nav.roadSignals": "icon1",
-        "nav.signs": "ion2",
+        "nav.child1": "icon1",
+        "nav.child2": "ion2",
+    };
+
+    const contentData: ContentData = {
+        "nav.child1.child1": [
+            {
+                imageName: "rules-of-the-road/vehicleControls.png",
+                heading: "1",
+                description: "description 1",
+            },
+        ],
+        "nav.child1.child2": [
+            {
+                imageName: "",
+                heading: "1",
+                description: "description 1",
+            },
+            {
+                imageName: "",
+                heading: "2",
+                description: "description 2",
+            },
+            {
+                imageName: "",
+                heading: "3",
+                description: "description 3",
+            },
+        ],
+        "nav.child2": [
+            {
+                imageName: "",
+                heading: "1",
+                description: "description 1",
+            },
+            {
+                imageName: "",
+                heading: "2",
+                description: "description 2",
+            },
+        ],
     };
 
     const defaultState: NavigationState = {
@@ -50,12 +70,68 @@ describe("state > navigation > selectors", () => {
     it("rootNavigationChildrenSelector", () => {
         const actual = selectors.rootNavigationChildrenSelector.resultFunc(navigationData);
 
-        expect(actual).toEqual(["nav.roadSignals", "nav.signs"]);
+        expect(actual).toEqual(["nav.child1", "nav.child2"]);
     });
 
     it("navigationIconsSelector", () => {
         const actual = selectors.navigationIconsSelector.resultFunc(defaultState);
 
         expect(actual).toEqual(navigationIcons);
+    });
+
+    it("navigationTreeSelector", () => {
+        const actual = selectors.navigationTreeSelector.resultFunc(navigationData, contentData);
+
+        const expected: NavigationTreeItem = {
+            key: "nav",
+            children: [
+                {
+                    key: "nav.child1",
+                    children: [
+                        {
+                            key: "nav.child1.child1",
+                            children: [
+                                {
+                                    key: "nav.child1.child1.1",
+                                    children: [],
+                                },
+                            ],
+                        },
+                        {
+                            key: "nav.child1.child2",
+                            children: [
+                                {
+                                    key: "nav.child1.child2.1",
+                                    children: [],
+                                },
+                                {
+                                    key: "nav.child1.child2.2",
+                                    children: [],
+                                },
+                                {
+                                    key: "nav.child1.child2.3",
+                                    children: [],
+                                },
+                            ],
+                        },
+                    ],
+                },
+                {
+                    key: "nav.child2",
+                    children: [
+                        {
+                            key: "nav.child2.1",
+                            children: [],
+                        },
+                        {
+                            key: "nav.child2.2",
+                            children: [],
+                        },
+                    ],
+                },
+            ],
+        };
+
+        expect(actual).toEqual(expected);
     });
 });

@@ -2,9 +2,7 @@ import { createSelector, OutputSelector, Selector } from "reselect";
 
 import { RootState } from "@/state/rootReducer";
 
-import { TOTAL_QUESTIONS } from "../test";
-import { QuesionsSuccesfullyAnsweredDates } from "./";
-import { LogState } from "./reducer";
+import { LogState, QuesionsSuccesfullyAnsweredDates } from "./";
 
 type LevelRange = {
     level: number;
@@ -51,8 +49,8 @@ const levelRanges: LevelRange[] = [
     },
     {
         level: 5,
-        lower: TOTAL_QUESTIONS,
-        upper: TOTAL_QUESTIONS,
+        lower: 414,
+        upper: 414,
     },
 ];
 

@@ -2,8 +2,6 @@ import update from "immutability-helper";
 
 import { QuestionAnswer, TestActions } from "./";
 
-export const TOTAL_QUESTIONS = 414;
-
 export type TestState = {
     readonly questionAnswers: QuestionAnswer[];
     readonly maxQuestions: number;

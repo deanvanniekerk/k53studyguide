@@ -2,3 +2,4 @@ export * from "./actions";
 export * from "./reducer";
 export * from "./selectors";
 export * from "./operations";
+export * from "./types";

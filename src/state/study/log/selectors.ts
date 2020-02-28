@@ -1,10 +1,9 @@
 import { createSelector, OutputSelector, Selector } from "reselect";
-import { ContentData, NavigationData } from "@/data";
-import { contentDataSelector } from "@/state/content";
-import { navigationDataSelector, ROOT_NAVIGATION_KEY } from "@/state/navigation";
+
+import { NavigationTreeItem, navigationTreeSelector } from "@/state/navigation";
 import { RootState } from "@/state/rootReducer";
 
-import { NavigationTreeItem, SeenContentKeys, SeenTotal, SeenTotals } from "./";
+import { SeenContentKeys, SeenTotal, SeenTotals } from "./";
 import { LogState } from "./reducer";
 
 const rootSelector: Selector<RootState, LogState> = (state: RootState): LogState => state.study.log;
@@ -20,49 +19,6 @@ export const lastSeenParentContentKeySelector: OutputSelector<
     string,
     (state: LogState) => string
 > = createSelector(rootSelector, root => root.lastSeenParentContentKey);
-
-export const navigationTreeSelector: OutputSelector<
-    RootState,
-    NavigationTreeItem,
-    (navData: NavigationData, contentData: ContentData) => NavigationTreeItem
-> = createSelector(navigationDataSelector, contentDataSelector, (navData, contentData) => {
-    const walk = (parent: NavigationTreeItem) => {
-        const childrenKeys = navData[parent.key];
-
-        if (childrenKeys) {
-            childrenKeys.forEach(childrenKey => {
-                const child: NavigationTreeItem = {
-                    key: childrenKey,
-                    children: [],
-                };
-                parent.children.push(child);
-
-                walk(child);
-            });
-        }
-
-        const childContent = contentData[parent.key];
-
-        if (childContent) {
-            childContent.forEach((contentItem, index) => {
-                const child: NavigationTreeItem = {
-                    key: `${parent.key}.${index + 1}`,
-                    children: [],
-                };
-                parent.children.push(child);
-            });
-        }
-    };
-
-    const root: NavigationTreeItem = {
-        key: ROOT_NAVIGATION_KEY,
-        children: [],
-    };
-
-    walk(root);
-
-    return root;
-});
 
 export const seenTotalsSelector: OutputSelector<
     RootState,
