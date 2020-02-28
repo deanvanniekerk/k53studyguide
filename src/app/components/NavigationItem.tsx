@@ -1,19 +1,33 @@
 import { chevronForwardOutline } from "ionicons/icons";
-import React from "react";
+import React, { useRef } from "react";
 import { Translate } from "react-translated";
 
 import { TEXT_COLOR } from "@/data";
-import { CreateAnimation, IonIcon, IonItem, IonLabel, IonText } from "@ionic/react";
+import {
+    CreateAnimation,
+    IonIcon,
+    IonItem,
+    IonLabel,
+    IonText,
+    useIonViewWillEnter,
+} from "@ionic/react";
 
 type Props = {
     navigationItemKey: string;
     onClick: (navigationItemKey: string) => void;
     index: number;
     indicator?: React.ReactNode;
+    disableAnimation?: boolean;
 };
 
 const NavigationItem: React.FC<Props> = props => {
     const delay = props.index * 40;
+    const animation1 = useRef<CreateAnimation>(null);
+    const animation2 = useRef<CreateAnimation>(null);
+    useIonViewWillEnter(() => {
+        if (animation1.current) animation1.current.animation.play();
+        if (animation2.current && !props.disableAnimation) animation2.current.animation.play();
+    });
     return (
         <IonItem onClick={() => props.onClick(props.navigationItemKey)}>
             <IonIcon
@@ -23,7 +37,8 @@ const NavigationItem: React.FC<Props> = props => {
             />
             <IonLabel>
                 <CreateAnimation
-                    play={true}
+                    play={false}
+                    ref={animation1}
                     delay={delay}
                     duration={500}
                     easing="ease"
@@ -40,7 +55,8 @@ const NavigationItem: React.FC<Props> = props => {
                     </div>
                 </CreateAnimation>
                 <CreateAnimation
-                    play={true}
+                    play={false}
+                    ref={animation2}
                     duration={400}
                     easing="ease"
                     delay={300 + delay}

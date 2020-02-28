@@ -58,6 +58,16 @@ export const correctlyAnsweredQuestionsTotalsSelector: OutputSelector<
     (questionData, quesionsSuccesfullyAnsweredDates, navigationTree) => {
         const totals: CorrectlyAnsweredQuestionsTotals = {};
 
+        const getLevel = (current: number, total: number): number => {
+            const percent = Math.floor((current / total) * 100);
+            if (percent === 100) return 5;
+            else if (percent >= 75) return 4;
+            else if (percent >= 50) return 3;
+            else if (percent >= 25) return 2;
+            else if (percent >= 1) return 1;
+            return 0;
+        };
+
         const walk = (node: NavigationTreeItem): CorrectlyAnsweredQuestionsTotal => {
             const questions = questionData[node.key] || [];
             const correctlyAnswered = questions.filter(
@@ -67,12 +77,14 @@ export const correctlyAnsweredQuestionsTotalsSelector: OutputSelector<
             const total: CorrectlyAnsweredQuestionsTotal = {
                 correctlyAnswered: correctlyAnswered.length,
                 total: questions.length,
+                level: getLevel(correctlyAnswered.length, questions.length),
             };
 
             node.children.forEach(child => {
                 const childTotal = walk(child);
                 total.correctlyAnswered += childTotal.correctlyAnswered;
                 total.total += childTotal.total;
+                total.level = getLevel(total.correctlyAnswered, total.total);
             });
 
             totals[node.key] = total;

@@ -130,26 +130,82 @@ describe("state > study > navigation > selectors", () => {
                 root: {
                     correctlyAnswered: 0,
                     total: 10,
+                    level: 0,
                 },
                 "root.child1": {
                     correctlyAnswered: 0,
                     total: 2,
+                    level: 0,
                 },
                 "root.child2": {
                     correctlyAnswered: 0,
                     total: 1,
+                    level: 0,
                 },
                 "root.child3": {
                     correctlyAnswered: 0,
                     total: 4,
+                    level: 0,
                 },
                 "root.child3.child1": {
                     correctlyAnswered: 0,
                     total: 4,
+                    level: 0,
                 },
                 "root.child4": {
                     correctlyAnswered: 0,
                     total: 3,
+                    level: 0,
+                },
+            };
+
+            expect(actual).toEqual(expected);
+        });
+
+        it("some correct answers", () => {
+            const quesionsSuccesfullyAnsweredDates: QuesionsSuccesfullyAnsweredDates = {
+                [questions[0].id]: new Date(),
+                [questions[3].id]: new Date(),
+                [questions[7].id]: new Date(),
+                [questions[8].id]: new Date(),
+            };
+
+            const actual = selectors.correctlyAnsweredQuestionsTotalsSelector.resultFunc(
+                questionData,
+                quesionsSuccesfullyAnsweredDates,
+                navigationTreeItem
+            );
+
+            const expected = {
+                root: {
+                    correctlyAnswered: 4,
+                    total: 10,
+                    level: 2,
+                },
+                "root.child1": {
+                    correctlyAnswered: 1,
+                    total: 2,
+                    level: 3,
+                },
+                "root.child2": {
+                    correctlyAnswered: 0,
+                    total: 1,
+                    level: 0,
+                },
+                "root.child3": {
+                    correctlyAnswered: 1,
+                    total: 4,
+                    level: 2,
+                },
+                "root.child3.child1": {
+                    correctlyAnswered: 1,
+                    total: 4,
+                    level: 2,
+                },
+                "root.child4": {
+                    correctlyAnswered: 2,
+                    total: 3,
+                    level: 3,
                 },
             };
 

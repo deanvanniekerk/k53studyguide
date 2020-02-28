@@ -5,4 +5,5 @@ export type CorrectlyAnsweredQuestionsTotals = {
 export type CorrectlyAnsweredQuestionsTotal = {
     correctlyAnswered: number;
     total: number;
+    level: number;
 };

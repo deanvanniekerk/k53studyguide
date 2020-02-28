@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import styled from "styled-components";
 
-import { ProgressBar } from "@/app/components";
+import { ProgressBar, StarRating } from "@/app/components";
 import { RootState } from "@/state";
 import {
     dojoCurrentExperiencePercentSelector,
@@ -11,7 +11,7 @@ import {
     requiredLevelUpExperiencePointsSelector,
 } from "@/state/dojo/log";
 
-import { LevelText, Star } from "./";
+import { LevelText } from "./";
 
 type Props = PropsFromState;
 
@@ -19,12 +19,9 @@ const LevelComponent: React.FC<Props> = props => {
     return (
         <Wrapper>
             <LevelText level={props.level} />
+
             <StarWrapper>
-                <Star index={0} active={props.level >= 1} />
-                <Star index={1} active={props.level >= 2} />
-                <Star index={2} active={props.level >= 3} />
-                <Star index={3} active={props.level >= 4} />
-                <Star index={4} active={props.level >= 5} />
+                <StarRating total={5} current={props.level} size="2rem" padding="5px" />
             </StarWrapper>
             <LevelUpText>
                 <Translate

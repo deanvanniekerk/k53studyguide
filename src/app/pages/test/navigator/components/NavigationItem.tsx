@@ -1,19 +1,30 @@
 import React from "react";
+import { connect } from "react-redux";
 
-//import { connect } from "react-redux";
-import { NavigationItem as NavItem } from "@/app/components";
-
-//import { RootState } from "@/state";
-//import { seenTotalsSelector } from "@/state/study/log";
+import { NavigationItem as NavItem, StarRating } from "@/app/components";
+import { RootState } from "@/state";
+import { correctlyAnsweredQuestionsTotalsSelector } from "@/state/dojo/navigation";
 
 type Props = {
     navigationItemKey: string;
     onClick: (navigationItemKey: string) => void;
     index: number;
-}; // & PropsFromState;
+} & PropsFromState;
 
-const NavigationItem: React.FC<Props> = props => {
-    const indicator = <div></div>;
+const NavigationItemComponent: React.FC<Props> = props => {
+    const total = props.correctlyAnsweredQuestionsTotals[props.navigationItemKey];
+    const current = total ? total.level : 0;
+
+    const indicator = (
+        <StarRating
+            total={5}
+            current={current}
+            size="0.8rem"
+            padding="1px"
+            activeOpacity={0.7}
+            inActiveOpacity={0.3}
+        />
+    );
 
     return (
         <NavItem
@@ -21,17 +32,18 @@ const NavigationItem: React.FC<Props> = props => {
             navigationItemKey={props.navigationItemKey}
             onClick={() => props.onClick(props.navigationItemKey)}
             indicator={indicator}
+            disableAnimation={true}
         />
     );
 };
 
-// type PropsFromState = ReturnType<typeof mapStateToProps>;
-// const mapStateToProps = (state: RootState) => {
-//     return {
-//         seenTotals: seenTotalsSelector(state),
-//     };
-// };
+type PropsFromState = ReturnType<typeof mapStateToProps>;
+const mapStateToProps = (state: RootState) => {
+    return {
+        correctlyAnsweredQuestionsTotals: correctlyAnsweredQuestionsTotalsSelector(state),
+    };
+};
 
-// const NavigationItem = connect(mapStateToProps)(NavigationItemComponent);
+const NavigationItem = connect(mapStateToProps)(NavigationItemComponent);
 
 export { NavigationItem };
