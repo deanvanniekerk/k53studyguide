@@ -2,12 +2,13 @@ import { deepClone } from "@/utils";
 
 import { TestState } from "./";
 import * as selectors from "./selectors";
+import { QuestionAnswer } from "./types";
 
 describe("state > arena > test > selectors", () => {
     //Setup Data --------------------------------------------
-    const questionAnswers = [
+    const questionAnswers: QuestionAnswer[] = [
         {
-            section: "1",
+            section: "A",
             answer: "A",
             question: {
                 id: "1",

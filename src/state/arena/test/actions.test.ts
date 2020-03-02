@@ -1,3 +1,4 @@
+import { QuestionAnswer } from "./";
 import * as actions from "./actions";
 
 describe("state > arena > test > actions", () => {
@@ -6,7 +7,7 @@ describe("state > arena > test > actions", () => {
             type: "ARENA_TEST_RECIEVE_QUESTION_ANSWERS",
             payload: [
                 {
-                    section: "1",
+                    section: "A",
                     answer: null,
                     question: {
                         id: "1",
@@ -28,7 +29,7 @@ describe("state > arena > test > actions", () => {
                         ],
                     },
                 },
-            ],
+            ] as QuestionAnswer[],
         };
 
         expect(actions.recieveQuestionAnswers(expectedAction.payload)).toEqual(expectedAction);

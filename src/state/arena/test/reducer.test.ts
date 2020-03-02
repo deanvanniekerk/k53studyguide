@@ -1,5 +1,6 @@
 import { deepClone } from "@/utils";
 
+import { QuestionAnswer } from "./";
 import { reducer, TestState } from "./reducer";
 
 describe("state > arena > test > reducer", () => {
@@ -8,9 +9,9 @@ describe("state > arena > test > reducer", () => {
     };
 
     it("should handle ARENA_TEST_RECIEVE_QUESTION_ANSWERS", () => {
-        const questionAnswers = [
+        const questionAnswers: QuestionAnswer[] = [
             {
-                section: "1",
+                section: "A",
                 answer: null,
                 question: {
                     id: "1",
@@ -44,9 +45,9 @@ describe("state > arena > test > reducer", () => {
     });
 
     it("should handle ARENA_TEST_RECIEVE_QUESTION_ANSWERS", () => {
-        const questionAnswers = [
+        const questionAnswers: QuestionAnswer[] = [
             {
-                section: "1",
+                section: "A",
                 answer: "A",
                 question: {
                     id: "4",
@@ -69,7 +70,7 @@ describe("state > arena > test > reducer", () => {
                 },
             },
             {
-                section: "2",
+                section: "B",
                 answer: null,
                 question: {
                     id: "3",
@@ -92,7 +93,7 @@ describe("state > arena > test > reducer", () => {
                 },
             },
             {
-                section: "3",
+                section: "C",
                 answer: null,
                 question: {
                     id: "2",
@@ -115,7 +116,7 @@ describe("state > arena > test > reducer", () => {
                 },
             },
             {
-                section: "3",
+                section: "C",
                 answer: "C",
                 question: {
                     id: "1",
