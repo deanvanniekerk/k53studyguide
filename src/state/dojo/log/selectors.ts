@@ -14,37 +14,37 @@ type LevelRange = {
 
 /*
     LEVELS:
-    0   -> 29   = 0         
-    30  -> 79   = 1         30 steps
-    80  -> 159  = 2         50 steps
-    160 -> 269  = 3         80 steps
-    275 -> 413  = 4         115 steps
-    414         = 5         139 steps
+    0   -> 0    = 0         
+    1   -> 39   = 1         40 steps
+    40  -> 109  = 2         70 steps
+    110 -> 229  = 3         120 steps
+    230 -> 413  = 4         187 steps
+    414         = 5         
 */
 const levelRanges: LevelRange[] = [
     {
         level: 0,
         lower: 0,
-        upper: 29,
+        upper: 0,
     },
     {
         level: 1,
-        lower: 30,
-        upper: 79,
+        lower: 1,
+        upper: 39,
     },
     {
         level: 2,
-        lower: 80,
-        upper: 159,
+        lower: 40,
+        upper: 109,
     },
     {
         level: 3,
-        lower: 160,
-        upper: 274,
+        lower: 110,
+        upper: 229,
     },
     {
         level: 4,
-        lower: 275,
+        lower: 230,
         upper: 413,
     },
     {

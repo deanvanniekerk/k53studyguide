@@ -3,6 +3,7 @@ import { PersistConfig, persistReducer } from "redux-persist";
 
 import { createStorage } from "@/store/store";
 
+import { reducer as arena } from "./arena";
 import { reducer as content } from "./content";
 import { reducer as dojo } from "./dojo";
 import { reducer as navigation } from "./navigation";
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
     content: content,
     questions: questions,
     dojo: dojo,
+    arena: arena,
     settings: persistReducer(settingsConfig, settings),
 });
 

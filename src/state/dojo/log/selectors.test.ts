@@ -17,7 +17,7 @@ describe("state > study > log > selectors", () => {
     });
 
     it("dojoLevelSelector > level 0", () => {
-        const actual = selectors.dojoLevelSelector.resultFunc(10);
+        const actual = selectors.dojoLevelSelector.resultFunc(0);
 
         expect(actual).toEqual(0);
     });
@@ -29,7 +29,7 @@ describe("state > study > log > selectors", () => {
     });
 
     it("dojoLevelSelector > level 2", () => {
-        const actual = selectors.dojoLevelSelector.resultFunc(159);
+        const actual = selectors.dojoLevelSelector.resultFunc(109);
 
         expect(actual).toEqual(2);
     });
@@ -52,16 +52,16 @@ describe("state > study > log > selectors", () => {
         expect(actual).toEqual(5);
     });
 
-    it("dojoCurrentExperiencePercentSelector > level 0 > 50%", () => {
-        const actual = selectors.dojoCurrentExperiencePercentSelector.resultFunc(15, 0);
+    it("dojoCurrentExperiencePercentSelector > level 0 > 0%", () => {
+        const actual = selectors.dojoCurrentExperiencePercentSelector.resultFunc(0, 0);
 
-        expect(actual).toEqual(50);
+        expect(actual).toEqual(0);
     });
 
-    it("dojoCurrentExperiencePercentSelector > level 1 > 50%", () => {
-        const actual = selectors.dojoCurrentExperiencePercentSelector.resultFunc(55, 1);
+    it("dojoCurrentExperiencePercentSelector > level 1 > 48%", () => {
+        const actual = selectors.dojoCurrentExperiencePercentSelector.resultFunc(20, 1);
 
-        expect(actual).toEqual(50);
+        expect(actual).toEqual(48);
     });
 
     it("dojoCurrentExperiencePercentSelector > level 4 > 50%", () => {
@@ -76,15 +76,15 @@ describe("state > study > log > selectors", () => {
         expect(actual).toEqual(0);
     });
 
-    it("requiredLevelUpExperiencePointsSelector > level 0 > 30", () => {
+    it("requiredLevelUpExperiencePointsSelector > level 0 > 1", () => {
         const actual = selectors.requiredLevelUpExperiencePointsSelector.resultFunc(0);
 
-        expect(actual).toEqual(30);
+        expect(actual).toEqual(1);
     });
 
     it("requiredLevelUpExperiencePointsSelector > level 2 > 80", () => {
         const actual = selectors.requiredLevelUpExperiencePointsSelector.resultFunc(2);
 
-        expect(actual).toEqual(80);
+        expect(actual).toEqual(70);
     });
 });

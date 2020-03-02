@@ -1125,10 +1125,10 @@ const translations: Translations = {
             "<ul><li> Iibhasi ezincinci ezithwala abakhweli abahlawulayo kunye neebhasi zabahambi akufuneki zihambe ngokukhawuleza kune-100km / h. </li><li> Izithuthi ezinobunzima bezithuthi ezingaphezulu kwe-9 000kg (iilori ezinkulu) mazingaze ihambe ngokukhawuleza kune-80km / h. </li><li> Oogandaganda kwiindlela zikawonkewonke abanakuhamba ngokukhawuleza kune-35km / h. </li></ul>",
     },
     "nav.rulesOfTheRoad.driving.stopping.0.heading": {
-        en: '<span class="contentHeading2">You must stop:</span>',
-        af: '<span class="contentHeading2">U moet ophou:</span>',
-        zu: '<span class="contentHeading2">Kufanele ume:</span>',
-        xh: '<span class="contentHeading2">Kufuneka uyeke:</span>',
+        en: "You must stop:",
+        af: "U moet ophou:",
+        zu: "Kufanele ume:",
+        xh: "Kufuneka uyeke:",
     },
     "nav.rulesOfTheRoad.driving.stopping.0.description": {
         en:
@@ -1141,24 +1141,12 @@ const translations: Translations = {
             "<ul><li> Ukuthobela: <ul><li> Igosa lezendlela </li><li> Umntu ojikeleza izifundiswa </li><li> Umntu oqhuba / okhwela / okhokela izilwanyana </li><li> Ukumakishwa kwendlela </li><li> Uphawu lwendlela. </li></ul></li><li> Ukuba unengozi. </li></ul>",
     },
     "nav.rulesOfTheRoad.driving.stopping.1.heading": {
-        en: '<span class="contentHeading2">You may not stop:</span>',
-        af: '<span class="contentHeading2">U mag nie ophou nie:</span>',
-        zu: '<span class="contentHeading2">Ungahle ume:</span>',
-        xh: '<span class="contentHeading2">Awunakuyeka:</span>',
+        en: "You may not stop: Where forbidden by",
+        af: "U mag nie ophou nie: Waar verbode deur",
+        zu: "Ungahle ume: Lapho kwenqatshelwe",
+        xh: "Awunakuyeka: Apho kunqatshelwe",
     },
     "nav.rulesOfTheRoad.driving.stopping.1.description": {
-        en: " ",
-        af: " ",
-        zu: " ",
-        xh: " ",
-    },
-    "nav.rulesOfTheRoad.driving.stopping.2.heading": {
-        en: "Where forbidden by",
-        af: "Waar verbode deur",
-        zu: "Lapho kwenqatshelwe",
-        xh: "Apho kunqatshelwe",
-    },
-    "nav.rulesOfTheRoad.driving.stopping.2.description": {
         en:
             "<ul><li>A traffic officer.</li>\n<li>A road marking.</li>\n<li>A road sign.</li></ul>\n",
         af: "<ul><li> 'N Verkeersbeampte. </li><li> 'N Padmerk. </li><li> 'N Padteken. </li></ul>",
@@ -1167,13 +1155,13 @@ const translations: Translations = {
         xh:
             "<ul><li> Igosa lezendlela. </li><li> Ukumakishwa kwendlela. </li><li> Uphawu lwendlela. </li></ul>",
     },
-    "nav.rulesOfTheRoad.driving.stopping.3.heading": {
-        en: "On",
-        af: "op",
-        zu: "Kuvuliwe",
-        xh: "Vuliwe",
+    "nav.rulesOfTheRoad.driving.stopping.2.heading": {
+        en: "You may not stop: On",
+        af: "U mag nie ophou nie: op",
+        zu: "Ungahle ume: Kuvuliwe",
+        xh: "Awunakuyeka: Vuliwe",
     },
-    "nav.rulesOfTheRoad.driving.stopping.3.description": {
+    "nav.rulesOfTheRoad.driving.stopping.2.description": {
         en:
             "<ul><li>A freeway (except in a designated stopping area).</li>\n<li>A level crossing or railway.</li>\n<li>The right hand side of the road facing on-coming traffic (you may stop on the right of a one-way road).</li>\n<li>The pavement (not even with part of your car).</li>\n<li>At a place where you would cause a danger or obstruction.</li></ul>\n",
         af:
@@ -1183,13 +1171,13 @@ const translations: Translations = {
         xh:
             "<ul><li> Indlela yasimahla (ngaphandle kwendawo emiselweyo yokumisa). </li><li> Inqanaba lokuwela okanye uloliwe. </li><li> Icala lasekunene lendlela ejongene nokuhamba kwezithuthi (unokuma ngakwindlela yendlela enye). </li><li> Umbhobho wendlu (hayi ngenxalenye yemoto yakho). </li><li> Kwindawo apho ubuya kubangela ingozi okanye isithintelo. </li></ul>",
     },
-    "nav.rulesOfTheRoad.driving.stopping.4.heading": {
-        en: "Next to or opposite",
-        af: "Langs of teenoorgestelde",
-        zu: "Eduze noma okuphambene",
-        xh: "Ecaleni okanye ngokuchaseneyo",
+    "nav.rulesOfTheRoad.driving.stopping.3.heading": {
+        en: "You may not stop: Next to or opposite",
+        af: "U mag nie ophou nie: Langs of teenoorgestelde",
+        zu: "Ungahle ume: Eduze noma okuphambene",
+        xh: "Awunakuyeka: Ecaleni okanye ngokuchaseneyo",
     },
-    "nav.rulesOfTheRoad.driving.stopping.4.description": {
+    "nav.rulesOfTheRoad.driving.stopping.3.description": {
         en:
             "<ul><li>Roadworks or an excavation or other obstruction, if other traffic would be endangered or obstructed.</li>\n<li>A driveway or gate.</li>\n<li>Another vehicle if the road is narrower than 9m.</li></ul>\n",
         af:
@@ -1199,13 +1187,13 @@ const translations: Translations = {
         xh:
             "<ul><li> Umsebenzi wendlela okanye izinto ezirhubuluzayo okanye ezinye izithintelo, ukuba ezinye izithuthi ziya kuba sengozini okanye zithintelwe. </li><li> Indlela yokuqhuba okanye isango. </li><li> Enye imoto ukuba indlela incinci kune-9m. </li></ul>",
     },
-    "nav.rulesOfTheRoad.driving.stopping.5.heading": {
-        en: "Within 6m of",
-        af: "Binne 6m vanaf",
-        zu: "Ngaphakathi kwe-6m ye",
-        xh: "Ngaphakathi kwe-6m ye",
+    "nav.rulesOfTheRoad.driving.stopping.4.heading": {
+        en: "You may not stop: Within 6m of",
+        af: "U mag nie ophou nie: Binne 6m vanaf",
+        zu: "Ungahle ume: Ngaphakathi kwe-6m ye",
+        xh: "Awunakuyeka: Ngaphakathi kwe-6m ye",
     },
-    "nav.rulesOfTheRoad.driving.stopping.5.description": {
+    "nav.rulesOfTheRoad.driving.stopping.4.description": {
         en:
             "<ul><li>A tunnel.</li>\n<li>A bridge (on or under).</li>\n<li>A subway.</li>\n<li>A road that has been narrowed for any reason from its normal width.</li></ul>\n",
         af:
@@ -1215,25 +1203,25 @@ const translations: Translations = {
         xh:
             "<ul><li> Umhubhe. </li><li> Ibhulorho (kwi okanye phantsi). </li><li> Indlela ehamba phambili. </li><li> Indlela encitshisiweyo ngenxa yaso nasiphi na isizathu ukusuka kububanzi bayo obuqhelekileyo. </li></ul>",
     },
-    "nav.rulesOfTheRoad.driving.stopping.6.heading": {
-        en: "Within 9m of",
-        af: "Binne 9m vanaf",
-        zu: "Ngaphakathi 9m kwe",
-        xh: "Ngaphakathi kwi-9m ye",
+    "nav.rulesOfTheRoad.driving.stopping.5.heading": {
+        en: "You may not stop: Within 9m of",
+        af: "U mag nie ophou nie: Binne 9m vanaf",
+        zu: "Ungahle ume: Ngaphakathi 9m kwe",
+        xh: "Awunakuyeka: Ngaphakathi kwi-9m ye",
     },
-    "nav.rulesOfTheRoad.driving.stopping.6.description": {
+    "nav.rulesOfTheRoad.driving.stopping.5.description": {
         en: "<ul><li>Your approach side of a pedestrian crossing.</li></ul>",
         af: "<ul><li> U aanpakkant van 'n voetoorgang. </li></ul>",
         zu: "<ul><li> Indawo yakho yendlela yokuwela abahamba ngezinyawo. </li></ul>",
         xh: "<ul><li> Indlela yakho yecala lokuwela ngeenyawo. </li></ul>",
     },
-    "nav.rulesOfTheRoad.driving.stopping.7.heading": {
-        en: "Exceptions",
-        af: "uitsonderings",
-        zu: "Ngaphandle",
-        xh: "Ngaphandle",
+    "nav.rulesOfTheRoad.driving.stopping.6.heading": {
+        en: "You may not stop: Exceptions",
+        af: "U mag nie ophou nie: Uitsonderings",
+        zu: "Ungahle ume: Ngaphandle",
+        xh: "Awunakuyeka: Ngaphandle",
     },
-    "nav.rulesOfTheRoad.driving.stopping.7.description": {
+    "nav.rulesOfTheRoad.driving.stopping.6.description": {
         en:
             "The above rules don't apply:\n<ul><li>If you need to stop to avoid an accident or for circumstances beyond your control.</li>\n<li>To emergency/construction/police vehicles on duty displaying the correct identification lights.</li></ul>\n",
         af:
@@ -1260,10 +1248,10 @@ const translations: Translations = {
             "<ul><li> Ukupakisha kumisa ixesha elide kunokuba kufuneka kulayishwe abakhweli okanye iimpahla. </li><li> Nanini na xa upaka kufuneka usebenzise ibrakeki yokupaka / ibrake hand hand. </li></ul>",
     },
     "nav.rulesOfTheRoad.driving.parking.1.heading": {
-        en: '<span class="contentHeading2">You may not park:</span>',
-        af: '<span class="contentHeading2">U mag nie parkeer nie:</span>',
-        zu: '<span class="contentHeading2">Awungeke upake:</span>',
-        xh: '<span class="contentHeading2">Awungekhe upake:</span>',
+        en: "You may not park:",
+        af: "U mag nie parkeer nie:",
+        zu: "Awungeke upake:",
+        xh: "Awungekhe upake:",
     },
     "nav.rulesOfTheRoad.driving.parking.1.description": {
         en:

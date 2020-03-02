@@ -3,10 +3,11 @@ import { deepClone } from "@/utils";
 import { TestState } from "./";
 import * as selectors from "./selectors";
 
-describe("state > dojo > test > selectors", () => {
+describe("state > arena > test > selectors", () => {
     //Setup Data --------------------------------------------
     const questionAnswers = [
         {
+            section: "1",
             answer: "A",
             question: {
                 id: "1",
@@ -32,8 +33,6 @@ describe("state > dojo > test > selectors", () => {
 
     const defaultState: TestState = {
         questionAnswers: questionAnswers,
-        maxQuestions: 10,
-        experienceGained: 8,
     };
     //-----------------------------------------------------------
 
@@ -78,12 +77,6 @@ describe("state > dojo > test > selectors", () => {
         expect(actual).toEqual(1);
     });
 
-    it("maxQuestionsSelector", () => {
-        const actual = selectors.maxQuestionsSelector.resultFunc(defaultState);
-
-        expect(actual).toEqual(defaultState.maxQuestions);
-    });
-
     it("testInProgressSelector > true", () => {
         const actual = selectors.testInProgressSelector.resultFunc(5);
 
@@ -94,11 +87,5 @@ describe("state > dojo > test > selectors", () => {
         const actual = selectors.testInProgressSelector.resultFunc(0);
 
         expect(actual).toEqual(false);
-    });
-
-    it("experienceGainedSelector", () => {
-        const actual = selectors.experienceGainedSelector.resultFunc(defaultState);
-
-        expect(actual).toEqual(defaultState.experienceGained);
     });
 });

@@ -380,11 +380,6 @@ const contentData: ContentData = {
             heading: "nav.rulesOfTheRoad.driving.stopping.6.heading",
             description: "nav.rulesOfTheRoad.driving.stopping.6.description",
         },
-        {
-            imageName: "",
-            heading: "nav.rulesOfTheRoad.driving.stopping.7.heading",
-            description: "nav.rulesOfTheRoad.driving.stopping.7.description",
-        },
     ],
     "nav.rulesOfTheRoad.driving.parking": [
         {
