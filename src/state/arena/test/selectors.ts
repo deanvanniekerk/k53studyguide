@@ -4,7 +4,7 @@ import { RootState } from "@/state/rootReducer";
 
 import { QuestionAnswer, TestResults } from "./";
 import { TestState } from "./reducer";
-import { TestResult } from "./types";
+import { TestResult, TestSection } from "./types";
 
 const rootSelector: Selector<RootState, TestState> = (state: RootState): TestState =>
     state.arena.test;
@@ -78,3 +78,21 @@ export const testResultsSelector: OutputSelector<
 
     return results;
 });
+
+export const currentSectionSelector: OutputSelector<
+    RootState,
+    TestSection,
+    (state: TestState) => TestSection
+> = createSelector(rootSelector, root => root.currentSection);
+
+export const currentSectionQuestionsSelector: OutputSelector<
+    RootState,
+    QuestionAnswer[],
+    (questionAnswers: QuestionAnswer[], currentSection: TestSection) => QuestionAnswer[]
+> = createSelector(
+    questionAnswersSelector,
+    currentSectionSelector,
+    (questionAnswers, currentSection) => {
+        return questionAnswers.filter(q => q.section === currentSection);
+    }
+);

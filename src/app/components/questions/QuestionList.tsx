@@ -37,7 +37,6 @@ const QuestionList: React.FC<Props> = props => {
 };
 
 const List = styled.div`
-    padding-top: 30px;
     margin: 0 16px;
 `;
 

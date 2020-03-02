@@ -6,6 +6,7 @@ import { reducer, TestState } from "./reducer";
 describe("state > arena > test > reducer", () => {
     const defaultState: TestState = {
         questionAnswers: [],
+        currentSection: "A",
     };
 
     it("should handle ARENA_TEST_RECIEVE_QUESTION_ANSWERS", () => {
@@ -39,6 +40,20 @@ describe("state > arena > test > reducer", () => {
         const expectedState = {
             ...defaultState,
             questionAnswers: questionAnswers,
+        };
+
+        expect(actualState).toEqual(expectedState);
+    });
+
+    it("should handle ARENA_TEST_RECIEVE_CURRENT_SECTION", () => {
+        const actualState = reducer(defaultState, {
+            type: "ARENA_TEST_RECIEVE_CURRENT_SECTION",
+            payload: "C",
+        });
+
+        const expectedState = {
+            ...defaultState,
+            currentSection: "C",
         };
 
         expect(actualState).toEqual(expectedState);

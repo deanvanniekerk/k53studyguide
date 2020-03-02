@@ -20,7 +20,7 @@ const DojoPage: React.FC<Props> = props => {
         //If no test exists, load one, else continue with previous
         if (!props.testInProgress) props.loadQuestionAnswers();
 
-        history.push(`/test`);
+        history.push(`/dojo-test`);
     };
 
     return (

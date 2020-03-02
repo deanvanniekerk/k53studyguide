@@ -11,13 +11,15 @@ import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } 
 import { IonReactRouter } from "@ionic/react-router";
 
 import ArenaPage from "./pages/arena/ArenaPage";
+import ArenaTestResultPage from "./pages/arena/results/TestResultPage";
+import ArenaTestPage from "./pages/arena/test/TestPage";
 import ContentPage from "./pages/content/ContentPage";
 import DojoPage from "./pages/dojo/DojoPage";
+import TestNavigatorPage from "./pages/dojo/navigator/TestNavigatorPage";
+import DojoTestResultPage from "./pages/dojo/results/TestResultPage";
+import DojoTestPage from "./pages/dojo/test/TestPage";
 import ProfilePage from "./pages/profile/ProfilePage";
 import StudyPage from "./pages/study/StudyPage";
-import TestNavigatorPage from "./pages/test/navigator/TestNavigatorPage";
-import TestResultPage from "./pages/test/results/TestResultPage";
-import TestPage from "./pages/test/test/TestPage";
 
 type Props = PropsFromState;
 
@@ -30,9 +32,11 @@ const Router: React.FC<Props> = props => {
                         <Route exact path="/study" component={StudyPage} />
                         <Route exact path="/content" component={ContentPage} />
                         <Route exact path="/dojo" component={DojoPage} />
-                        <Route exact path="/test" component={TestPage} />
-                        <Route exact path="/test-result" component={TestResultPage} />
-                        <Route exact path="/test-navigator" component={TestNavigatorPage} />
+                        <Route exact path="/dojo-test" component={DojoTestPage} />
+                        <Route exact path="/dojo-test-result" component={DojoTestResultPage} />
+                        <Route exact path="/dojo-navigator" component={TestNavigatorPage} />
+                        <Route exact path="/arena-test" component={ArenaTestPage} />
+                        <Route exact path="/arena-test-result" component={ArenaTestResultPage} />
                         <Route exact path="/arena" component={ArenaPage} />
                         <Route exact path="/profile" component={ProfilePage} />
                         <Route exact path="/" render={() => <Redirect to="/study" />} />

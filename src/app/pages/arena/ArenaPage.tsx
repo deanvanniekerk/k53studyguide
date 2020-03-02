@@ -1,33 +1,33 @@
-import { caretForward } from "ionicons/icons";
 import React from "react";
-import { Translate } from "react-translated";
+import { connect } from "react-redux";
+import { useHistory } from "react-router";
+import { bindActionCreators, Dispatch } from "redux";
 import styled from "styled-components";
 
-import { IonButton, IonCol, IonContent, IonGrid, IonIcon, IonPage, IonRow } from "@ionic/react";
+import { RootState } from "@/state";
+import { loadQuestionAnswers, testInProgressSelector } from "@/state/arena/test";
+import { IonContent, IonPage } from "@ionic/react";
 
 import { ArenaPageHeader } from "./ArenaPageHeader";
+import { Header } from "./components";
 
-const ArenaPage: React.FC = () => {
+type Props = PropsFromState & PropsFromDispatch;
+
+const ArenaPage: React.FC<Props> = props => {
+    const history = useHistory();
+
+    const onStartTestClicked = () => {
+        //If no test exists, load one, else continue with previous
+        if (!props.testInProgress) props.loadQuestionAnswers();
+
+        history.push(`/arena-test`);
+    };
+
     return (
-        <IonPage className="arena-page">
+        <IonPage>
             <ArenaPageHeader />
             <Content>
-                <IonGrid>
-                    <IonRow style={{ paddingLeft: 16, paddingTop: 55 }}>
-                        <IonCol>
-                            <IonButton
-                                color="tertiary"
-                                shape="round"
-                                fill="solid"
-                                className="button-med-large"
-                                // onClick={() => props.onStartTestClicked()}
-                            >
-                                <Translate text="continue" />
-                                <IonIcon slot="end" icon={caretForward} />
-                            </IonButton>
-                        </IonCol>
-                    </IonRow>
-                </IonGrid>
+                <Header onStartTestClicked={onStartTestClicked} />
             </Content>
         </IonPage>
     );
@@ -37,4 +37,18 @@ const Content = styled(IonContent)`
     --background: var(--arena-background);
 `;
 
-export default ArenaPage;
+type PropsFromState = ReturnType<typeof mapStateToProps>;
+const mapStateToProps = (state: RootState) => {
+    return {
+        testInProgress: testInProgressSelector(state),
+    };
+};
+
+type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
+const mapDispatchToProps = (dispatch: Dispatch) => {
+    return {
+        ...bindActionCreators({ loadQuestionAnswers }, dispatch),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArenaPage);

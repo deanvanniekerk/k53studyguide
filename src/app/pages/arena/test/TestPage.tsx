@@ -7,9 +7,10 @@ import styled from "styled-components";
 import { BackButton, QuestionInfo, QuestionList } from "@/app/components";
 import { QuestionOption } from "@/data";
 import { RootState } from "@/state";
-import { questionAnswersSelector, recieveAnswer, submitTest } from "@/state/dojo/test";
+import { currentSectionQuestionsSelector, QuestionAnswer, recieveAnswer } from "@/state/arena/test";
 import { IonContent, IonPage } from "@ionic/react";
 
+import { Tabs } from "../components";
 import { Footer, Header } from "./components";
 import { TestPageHeader } from "./TestPageHeader";
 
@@ -19,23 +20,26 @@ const TestPage: React.FC<Props> = props => {
     const history = useHistory();
 
     const onBackClicked = () => {
-        if (history.length === 0) history.replace("/dojo");
+        if (history.length === 0) history.replace("/arena");
         else history.goBack();
     };
 
     const onSubmitClicked = () => {
-        props.submitTest();
-        history.replace("/test-result");
+        history.replace("/arena-test-result");
     };
 
     const onOptionClicked = (questionId: string, option: QuestionOption) => {
-        recieveAnswer(questionId, option.id);
+        props.recieveAnswer(questionId, option.id);
     };
 
-    const questions = props.questionAnswers.map<QuestionInfo>(q => ({
-        question: q.question,
-        answer: q.answer,
-    }));
+    const mapToQuestionInfo = (questionAnswer: QuestionAnswer): QuestionInfo => {
+        return {
+            question: questionAnswer.question,
+            answer: questionAnswer.answer,
+        };
+    };
+
+    const questions = props.questionAnswers.map<QuestionInfo>(mapToQuestionInfo);
 
     return (
         <IonPage>
@@ -43,6 +47,7 @@ const TestPage: React.FC<Props> = props => {
             <Content>
                 <BackButton onClick={onBackClicked} />
                 <Header />
+                <Tabs />
                 <QuestionList questions={questions} onOptionClicked={onOptionClicked} />
                 <Footer onSubmitClicked={onSubmitClicked} />
             </Content>
@@ -51,20 +56,20 @@ const TestPage: React.FC<Props> = props => {
 };
 
 const Content = styled(IonContent)`
-    --background: var(--dojo-background);
+    --background: var(--arena-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
     return {
-        questionAnswers: questionAnswersSelector(state),
+        questionAnswers: currentSectionQuestionsSelector(state),
     };
 };
 
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        ...bindActionCreators({ submitTest, recieveAnswer }, dispatch),
+        ...bindActionCreators({ recieveAnswer }, dispatch),
     };
 };
 

@@ -35,7 +35,7 @@ const SettingsComponent: React.FC<Props> = props => {
 
     const onChangeTargetNavigationItem = () => {
         if (props.testInProgress) return;
-        history.push(`/test-navigator`);
+        history.push(`/dojo-navigator`);
     };
 
     return (

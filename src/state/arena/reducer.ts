@@ -12,7 +12,7 @@ const testConfig: PersistConfig<TestState> = {
 };
 
 const logConfig: PersistConfig<LogState> = {
-    key: "arena-test",
+    key: "arena-log",
     storage: createStorage(),
 };
 

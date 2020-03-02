@@ -46,4 +46,13 @@ describe("state > arena > test > actions", () => {
 
         expect(actions.recieveAnswer("1", "A")).toEqual(expectedAction);
     });
+
+    it("recieveCurrentSection", () => {
+        const expectedAction = {
+            type: "ARENA_TEST_RECIEVE_CURRENT_SECTION",
+            payload: "B",
+        };
+
+        expect(actions.recieveCurrentSection("B")).toEqual(expectedAction);
+    });
 });

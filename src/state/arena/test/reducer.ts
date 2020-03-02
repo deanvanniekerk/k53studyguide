@@ -1,13 +1,15 @@
 import update from "immutability-helper";
 
-import { QuestionAnswer, TestActions } from "./";
+import { QuestionAnswer, TestActions, TestSection } from "./";
 
 export type TestState = {
     readonly questionAnswers: QuestionAnswer[];
+    readonly currentSection: TestSection;
 };
 
 export const defaultState: TestState = {
     questionAnswers: [],
+    currentSection: "A",
 };
 
 export const reducer = (state: TestState = defaultState, action: TestActions): TestState => {
@@ -16,6 +18,11 @@ export const reducer = (state: TestState = defaultState, action: TestActions): T
             return {
                 ...state,
                 questionAnswers: action.payload,
+            };
+        case "ARENA_TEST_RECIEVE_CURRENT_SECTION":
+            return {
+                ...state,
+                currentSection: action.payload,
             };
         case "ARENA_TEST_RECIEVE_ANSWER":
             const index = state.questionAnswers.findIndex(

@@ -46,7 +46,7 @@ const HeaderComponent: React.FC<Props> = props => {
             <QuestionCount>
                 <Translate text="totalQuestions" />: {props.totalQuestions}
             </QuestionCount>
-            <HorizontalRule leftMargin={20} rightMargin={36} paddingBottom={0} paddingTop={20} />
+            <HorizontalRule leftMargin={20} rightMargin={36} paddingBottom={30} paddingTop={20} />
         </React.Fragment>
     );
 };
