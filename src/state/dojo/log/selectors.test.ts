@@ -10,7 +10,7 @@ describe("state > study > log > selectors", () => {
     };
     //-----------------------------------------------------------
 
-    it("seenContentKeysSelector", () => {
+    it("quesionsSuccesfullyAnsweredDatesSelector", () => {
         const actual = selectors.quesionsSuccesfullyAnsweredDatesSelector.resultFunc(defaultState);
 
         expect(actual).toEqual(defaultState.quesionsSuccesfullyAnsweredDates);

@@ -12,7 +12,6 @@ type Props = {
     foregroundColor?: string;
     foregroundOpacity?: number;
     height?: number;
-    de?: number;
 };
 
 const ProgressBar: React.FC<Props> = props => {

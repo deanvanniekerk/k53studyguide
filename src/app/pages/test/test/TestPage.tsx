@@ -4,15 +4,16 @@ import { useHistory } from "react-router-dom";
 import { bindActionCreators, Dispatch } from "redux";
 import styled from "styled-components";
 
-import { BackButton } from "@/app/components";
-import { submitTest } from "@/state/dojo/test";
+import { BackButton, QuestionInfo, QuestionList } from "@/app/components";
+import { QuestionOption } from "@/data";
+import { RootState } from "@/state";
+import { questionAnswersSelector, recieveAnswer, submitTest } from "@/state/dojo/test";
 import { IonContent, IonPage } from "@ionic/react";
 
-import { QuestionList } from "../components";
 import { Footer, Header } from "./components";
 import { TestPageHeader } from "./TestPageHeader";
 
-type Props = PropsFromDispatch;
+type Props = PropsFromState & PropsFromDispatch;
 
 const TestPage: React.FC<Props> = props => {
     const history = useHistory();
@@ -27,13 +28,22 @@ const TestPage: React.FC<Props> = props => {
         history.replace("/test-result");
     };
 
+    const onOptionClicked = (questionId: string, option: QuestionOption) => {
+        recieveAnswer(questionId, option.id);
+    };
+
+    const questions = props.questionAnswers.map<QuestionInfo>(q => ({
+        question: q.question,
+        answer: q.answer,
+    }));
+
     return (
         <IonPage>
             <TestPageHeader />
             <Content>
                 <BackButton onClick={onBackClicked} />
                 <Header />
-                <QuestionList />
+                <QuestionList questions={questions} onOptionClicked={onOptionClicked} />
                 <Footer onSubmitClicked={onSubmitClicked} />
             </Content>
         </IonPage>
@@ -44,11 +54,18 @@ const Content = styled(IonContent)`
     --background: var(--dojo-background);
 `;
 
-type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
-const mapDispatchToProps = (dispatch: Dispatch) => {
+type PropsFromState = ReturnType<typeof mapStateToProps>;
+const mapStateToProps = (state: RootState) => {
     return {
-        ...bindActionCreators({ submitTest }, dispatch),
+        questionAnswers: questionAnswersSelector(state),
     };
 };
 
-export default connect(null, mapDispatchToProps)(TestPage);
+type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
+const mapDispatchToProps = (dispatch: Dispatch) => {
+    return {
+        ...bindActionCreators({ submitTest, recieveAnswer }, dispatch),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TestPage);

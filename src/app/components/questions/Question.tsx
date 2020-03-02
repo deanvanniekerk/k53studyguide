@@ -3,26 +3,39 @@ import { Translate } from "react-translated";
 import styled from "styled-components";
 
 import { HorizontalRule } from "@/app/components";
-import { QuestionAnswer } from "@/state/dojo/test";
+import { QuestionItem, QuestionOption } from "@/data";
 
 import { ImageList, OptionList, QuestionText } from "./";
 
 type Props = {
-    questionAnswer: QuestionAnswer;
+    question: QuestionItem;
+    answer: string | null;
     questionNumber: number;
     showResult?: boolean;
+    onOptionClicked?: (questionId: string, option: QuestionOption) => void;
 };
 
-const Question: React.FC<Props> = ({ questionAnswer, questionNumber, showResult }) => {
+const Question: React.FC<Props> = ({
+    question,
+    answer,
+    questionNumber,
+    showResult,
+    onOptionClicked,
+}) => {
     return (
         <Container>
             <Header>
                 <Translate text="question" />: {questionNumber}
             </Header>
-            <QuestionText question={questionAnswer.question} />
-            <ImageList question={questionAnswer.question} />
+            <QuestionText question={question} />
+            <ImageList question={question} />
             <HorizontalRule leftMargin={20} rightMargin={36} paddingBottom={0} paddingTop={20} />
-            <OptionList questionAnswer={questionAnswer} showResult={showResult} />
+            <OptionList
+                question={question}
+                answer={answer}
+                showResult={showResult}
+                onOptionClicked={onOptionClicked}
+            />
         </Container>
     );
 };
