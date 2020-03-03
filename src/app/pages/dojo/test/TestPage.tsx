@@ -29,7 +29,6 @@ const TestPage: React.FC<Props> = props => {
     };
 
     const onOptionClicked = (questionId: string, option: QuestionOption) => {
-        console.log("111111111111111", questionId, option.id);
         props.recieveAnswer(questionId, option.id);
     };
 

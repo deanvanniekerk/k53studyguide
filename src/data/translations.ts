@@ -1,6 +1,30 @@
 import { Translations } from "./";
 
 const translations: Translations = {
+    sectionA: {
+        en: "Section A",
+        af: "Afdeling A",
+        zu: "Isigaba A",
+        xh: "Icandelo A",
+    },
+    sectionB: {
+        en: "Section B",
+        af: "Afdeling B",
+        zu: "Isigaba B",
+        xh: "Icandelo B",
+    },
+    sectionC: {
+        en: "Section C",
+        af: "Afdeling C",
+        zu: "Isigaba C",
+        xh: "Icandelo C",
+    },
+    nextSection: {
+        en: "Next Section",
+        af: "Volgende Afdeling",
+        zu: "Isigaba Esilandelayo",
+        xh: "Icandelo elilandelayo",
+    },
     nav: {
         en: "Study",
         af: "Studie",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, Dispatch } from "redux";
@@ -7,7 +7,13 @@ import styled from "styled-components";
 import { BackButton, QuestionInfo, QuestionList } from "@/app/components";
 import { QuestionOption } from "@/data";
 import { RootState } from "@/state";
-import { currentSectionQuestionsSelector, QuestionAnswer, recieveAnswer } from "@/state/arena/test";
+import {
+    currentSectionQuestionsSelector,
+    QuestionAnswer,
+    recieveAnswer,
+    recieveCurrentSection,
+    submitTest,
+} from "@/state/arena/test";
 import { IonContent, IonPage } from "@ionic/react";
 
 import { Tabs } from "../components";
@@ -18,6 +24,7 @@ type Props = PropsFromState & PropsFromDispatch;
 
 const TestPage: React.FC<Props> = props => {
     const history = useHistory();
+    const content = useRef<HTMLIonContentElement>(null);
 
     const onBackClicked = () => {
         if (history.length === 0) history.replace("/arena");
@@ -25,6 +32,8 @@ const TestPage: React.FC<Props> = props => {
     };
 
     const onSubmitClicked = () => {
+        props.submitTest();
+        props.recieveCurrentSection("A");
         history.replace("/arena-test-result");
     };
 
@@ -39,17 +48,21 @@ const TestPage: React.FC<Props> = props => {
         };
     };
 
+    const onScrollTop = () => {
+        if (content.current) content.current.scrollToTop(500);
+    };
+
     const questions = props.questionAnswers.map<QuestionInfo>(mapToQuestionInfo);
 
     return (
         <IonPage>
             <TestPageHeader />
-            <Content>
+            <Content ref={content}>
                 <BackButton onClick={onBackClicked} />
                 <Header />
                 <Tabs />
                 <QuestionList questions={questions} onOptionClicked={onOptionClicked} />
-                <Footer onSubmitClicked={onSubmitClicked} />
+                <Footer onSubmitClicked={onSubmitClicked} onScrollTop={onScrollTop} />
             </Content>
         </IonPage>
     );
@@ -69,7 +82,7 @@ const mapStateToProps = (state: RootState) => {
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        ...bindActionCreators({ recieveAnswer }, dispatch),
+        ...bindActionCreators({ recieveAnswer, recieveCurrentSection, submitTest }, dispatch),
     };
 };
 

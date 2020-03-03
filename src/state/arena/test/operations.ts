@@ -5,7 +5,11 @@ import { RootState } from "@/state";
 import { questionDataSelector } from "@/state/questions";
 import { shuffleArray } from "@/utils";
 
-import { recieveQuestionAnswers, RecieveQuestionAnswersAction } from "./";
+import {
+    recieveQuesionSuccesfullyAnsweredDate,
+    RecieveQuesionSuccesfullyAnsweredDateAction,
+} from "../log";
+import { questionAnswersSelector, recieveQuestionAnswers, RecieveQuestionAnswersAction } from "./";
 import { QuestionAnswer, TestSection } from "./types";
 
 export const loadQuestionAnswers = (): ThunkAction<
@@ -62,33 +66,20 @@ export const loadQuestionAnswers = (): ThunkAction<
     };
 };
 
-// export const submitTest = (): ThunkAction<
-//     void,
-//     RootState,
-//     null,
-//     RecieveQuesionSuccesfullyAnsweredDateAction | RecieveExperienceGainedAction
-// > => {
-//     return (dispatch, getState) => {
-//         const questionAnswers = questionAnswersSelector(getState());
-//         const quesionsSuccesfullyAnsweredDates = quesionsSuccesfullyAnsweredDatesSelector(
-//             getState()
-//         );
+export const submitTest = (): ThunkAction<
+    void,
+    RootState,
+    null,
+    RecieveQuesionSuccesfullyAnsweredDateAction
+> => {
+    return (dispatch, getState) => {
+        const questionAnswers = questionAnswersSelector(getState());
 
-//         let experienceGained = 0;
-//         questionAnswers.forEach(qa => {
-//             if (
-//                 qa.answer === qa.question.answer &&
-//                 !quesionsSuccesfullyAnsweredDates[qa.question.id]
-//             )
-//                 experienceGained++;
-//         });
-//         dispatch(recieveExperienceGained(experienceGained));
+        const dateAnswered = new Date();
 
-//         const dateAnswered = new Date();
-
-//         questionAnswers.forEach(qa => {
-//             if (qa.answer === qa.question.answer)
-//                 dispatch(recieveQuesionSuccesfullyAnsweredDate(qa.question.id, dateAnswered));
-//         });
-//     };
-// };
+        questionAnswers.forEach(qa => {
+            if (qa.answer === qa.question.answer)
+                dispatch(recieveQuesionSuccesfullyAnsweredDate(qa.question.id, dateAnswered));
+        });
+    };
+};

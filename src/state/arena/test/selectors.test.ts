@@ -24,6 +24,7 @@ describe("state > arena > test > selectors", () => {
     }));
 
     const defaultState: TestState = {
+        currentSection: "A",
         questionAnswers: [
             {
                 section: "A",
@@ -146,16 +147,19 @@ describe("state > arena > test > selectors", () => {
             A: {
                 correct: 1,
                 total: 2,
+                answered: 2,
                 minimumPass: 7,
             },
             B: {
                 correct: 2,
                 total: 3,
+                answered: 3,
                 minimumPass: 23,
             },
             C: {
                 correct: 4,
                 total: 5,
+                answered: 5,
                 minimumPass: 24,
             },
         };

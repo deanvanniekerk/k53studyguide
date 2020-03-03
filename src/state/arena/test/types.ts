@@ -15,5 +15,6 @@ export type TestResults = {
 export type TestResult = {
     correct: number;
     total: number;
+    answered: number;
     minimumPass: number;
 };

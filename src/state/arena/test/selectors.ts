@@ -53,6 +53,7 @@ export const testResultsSelector: OutputSelector<
     const sectionAResult: TestResult = {
         minimumPass: 7,
         total: qas.length,
+        answered: qas.filter(q => q.answer !== null).length,
         correct: qas.filter(q => q.answer === q.question.answer).length,
     };
 
@@ -60,6 +61,7 @@ export const testResultsSelector: OutputSelector<
     const sectionBResult: TestResult = {
         minimumPass: 23,
         total: qas.length,
+        answered: qas.filter(q => q.answer !== null).length,
         correct: qas.filter(q => q.answer === q.question.answer).length,
     };
 
@@ -67,6 +69,7 @@ export const testResultsSelector: OutputSelector<
     const sectionCResult: TestResult = {
         minimumPass: 24,
         total: qas.length,
+        answered: qas.filter(q => q.answer !== null).length,
         correct: qas.filter(q => q.answer === q.question.answer).length,
     };
 

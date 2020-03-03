@@ -38,7 +38,7 @@ const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveQuestionAnswe
             <Content>
                 <BackButton onClick={onBackClicked} />
                 <Header />
-                <Tabs />
+                <Tabs hideInfo={true} />
                 <QuestionList questions={questions} showResult={true} />
             </Content>
         </IonPage>
