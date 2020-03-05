@@ -45,4 +45,4 @@ steps:
           serviceConnection: "Google Play K53 Ninja"
           apkFile: "**/*.apk"
           track: "internal"
-          displayName: "Android APK > Copy to Google Play"
+      displayName: "Android APK > Copy to Google Play"
