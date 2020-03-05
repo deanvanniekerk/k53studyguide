@@ -46,9 +46,3 @@ steps:
           contents: "**/*.apk"
           targetFolder: "$(build.artifactStagingDirectory)"
       displayName: "Android APK > Copy to Artifacts"
-    - task: GooglePlayRelease@2
-      inputs:
-          apkFile: "**/*.apk"
-          serviceEndpoint: "$(GooglePlayServiceConnectionName)"
-          track: "internal"
-      displayName: "Android APK > Copy to Google Play Store"
