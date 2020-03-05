@@ -34,4 +34,21 @@ steps:
           gradleWrapperFile: "android/gradlew"
           gradleOptions: "-Xmx3072m"
           tasks: "assembleDebug"
-      displayName: "Build Android APK"
+      displayName: "Android APK > Build"
+    - task: AndroidSigning@3
+      inputs:
+          apkFiles: "**/*.apk"
+          apksign: false
+          zipalign: true
+      displayName: "Android APK > Zip Align"
+    - task: CopyFiles@2
+      inputs:
+          contents: "**/*.apk"
+          targetFolder: "$(build.artifactStagingDirectory)"
+      displayName: "Android APK > Copy to Artifacts"
+    - task: GooglePlayRelease@2
+      inputs:
+          apkFile: "**/*.apk"
+          serviceEndpoint: "yourGooglePlayServiceConnectionName"
+          track: "internal"
+      displayName: "Android APK > Copy to Google Play Store"
