@@ -89,3 +89,4 @@ lint/tmp/
 
 # Copied web assets
 app/src/main/assets/public
+app/debug
