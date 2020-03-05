@@ -40,6 +40,14 @@ steps:
           contents: "**/*.apk"
           targetFolder: "$(Build.ArtifactStagingDirectory)"
       displayName: "Android APK > Copy to Artifacts"
+    - task: AndroidSigning@3
+      inputs:
+        apkFiles: '**/*.apk'
+        apksignerKeystoreFile: 'upload-keystore.jks'
+        apksignerKeystorePassword: 'lead2gold'
+        apksignerKeystoreAlias: 'upload'
+        apksignerKeyPassword: 'gold2lead'
+      displayName: "Android APK > Sign and Zip"
     - task: PublishBuildArtifacts@1
       inputs:
           PathtoPublish: "$(Build.ArtifactStagingDirectory)"
