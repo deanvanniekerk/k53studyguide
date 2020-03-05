@@ -67,6 +67,7 @@ const SettingTitle = styled(IonText)`
     opacity: 0.5;
     font-family: var(--ion-font-family-bold);
     font-weight: bold;
+    text-transform: uppercase;
 `;
 
 const SettingTitleCol = styled(IonCol)`
@@ -74,7 +75,6 @@ const SettingTitleCol = styled(IonCol)`
 `;
 
 const SettingName = styled(IonText)`
-    text-transform: uppercase;
     font-size: var(--ion-font-size-md);
     font-family: var(--ion-font-family-bold);
     font-weight: bold;

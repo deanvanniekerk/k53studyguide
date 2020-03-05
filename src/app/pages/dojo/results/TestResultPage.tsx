@@ -6,8 +6,7 @@ import styled from "styled-components";
 
 import { BackButton, QuestionInfo, QuestionList } from "@/app/components";
 import { RootState } from "@/state";
-import { questionAnswersSelector } from "@/state/arena/test";
-import { recieveQuestionAnswers } from "@/state/dojo/test";
+import { questionAnswersSelector, recieveQuestionAnswers } from "@/state/dojo/test";
 import { IonContent, IonPage, useIonViewWillLeave } from "@ionic/react";
 
 import { Header } from "./components";
@@ -62,4 +61,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-export default connect(null, mapDispatchToProps)(TestResultPage);
+export default connect(mapStateToProps, mapDispatchToProps)(TestResultPage);

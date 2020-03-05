@@ -19,6 +19,11 @@ export const reducer = (state: LogState = defaultState, action: LogActions): Log
                     [action.payload.questionId]: action.payload.date,
                 },
             };
+        case "DOJO_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES":
+            return {
+                ...state,
+                quesionsSuccesfullyAnsweredDates: {},
+            };
         default:
             return state;
     }

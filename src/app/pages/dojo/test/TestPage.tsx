@@ -25,7 +25,7 @@ const TestPage: React.FC<Props> = props => {
 
     const onSubmitClicked = () => {
         props.submitTest();
-        history.replace("/test-result");
+        history.replace("/dojo-test-result");
     };
 
     const onOptionClicked = (questionId: string, option: QuestionOption) => {

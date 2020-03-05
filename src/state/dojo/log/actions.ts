@@ -1,5 +1,7 @@
 export const DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE =
     "DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE";
+export const DOJO_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES =
+    "DOJO_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES";
 
 export interface RecieveQuesionSuccesfullyAnsweredDateAction {
     type: typeof DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE;
@@ -9,7 +11,13 @@ export interface RecieveQuesionSuccesfullyAnsweredDateAction {
     };
 }
 
-export type LogActions = RecieveQuesionSuccesfullyAnsweredDateAction;
+export interface ClearQuesionSuccesfullyAnsweredDatesAction {
+    type: typeof DOJO_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES;
+}
+
+export type LogActions =
+    | RecieveQuesionSuccesfullyAnsweredDateAction
+    | ClearQuesionSuccesfullyAnsweredDatesAction;
 
 export const recieveQuesionSuccesfullyAnsweredDate = (
     questionId: string,
@@ -20,4 +28,8 @@ export const recieveQuesionSuccesfullyAnsweredDate = (
         questionId,
         date,
     },
+});
+
+export const clearQuesionSuccesfullyAnsweredDates = (): ClearQuesionSuccesfullyAnsweredDatesAction => ({
+    type: DOJO_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES,
 });

@@ -99,3 +99,42 @@ export const currentSectionQuestionsSelector: OutputSelector<
         return questionAnswers.filter(q => q.section === currentSection);
     }
 );
+
+export const sectionAPassedSelector: OutputSelector<
+    RootState,
+    boolean,
+    (testResults: TestResults) => boolean
+> = createSelector(
+    testResultsSelector,
+    testResults => testResults.A.correct >= testResults.A.minimumPass
+);
+
+export const sectionBPassedSelector: OutputSelector<
+    RootState,
+    boolean,
+    (testResults: TestResults) => boolean
+> = createSelector(
+    testResultsSelector,
+    testResults => testResults.B.correct >= testResults.B.minimumPass
+);
+
+export const sectionCPassedSelector: OutputSelector<
+    RootState,
+    boolean,
+    (testResults: TestResults) => boolean
+> = createSelector(
+    testResultsSelector,
+    testResults => testResults.C.correct >= testResults.C.minimumPass
+);
+
+export const passedSelector: OutputSelector<
+    RootState,
+    boolean,
+    (sectionAPassed: boolean, sectionBPassed: boolean, sectionCPassed: boolean) => boolean
+> = createSelector(
+    sectionAPassedSelector,
+    sectionBPassedSelector,
+    sectionCPassedSelector,
+    (sectionAPassed, sectionBPassed, sectionCPassed) =>
+        sectionAPassed && sectionBPassed && sectionCPassed
+);

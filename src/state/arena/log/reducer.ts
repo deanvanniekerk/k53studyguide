@@ -26,6 +26,16 @@ export const reducer = (state: LogState = defaultState, action: LogActions): Log
                 ...state,
                 testsPassed: state.testsPassed + 1,
             };
+        case "ARENA_LOG_CLEAR_PASSED_TESTS":
+            return {
+                ...state,
+                testsPassed: 0,
+            };
+        case "ARENA_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES":
+            return {
+                ...state,
+                quesionsSuccesfullyAnsweredDates: {},
+            };
         default:
             return state;
     }

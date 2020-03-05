@@ -26,6 +26,11 @@ export const reducer = (state: LogState = defaultState, action: LogActions): Log
                 ...state,
                 lastSeenParentContentKey: action.payload,
             };
+        case "STUDY_LOG_CLEAR_SEEN_CONTENT":
+            return {
+                ...state,
+                seenContentKeys: {},
+            };
         default:
             return state;
     }

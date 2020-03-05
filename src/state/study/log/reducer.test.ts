@@ -59,4 +59,17 @@ describe("state > study > log > reducer", () => {
 
         expect(actualState).toEqual(expectedState);
     });
+
+    it("should handle STUDY_LOG_CLEAR_SEEN_CONTENT", () => {
+        const actualState = reducer(defaultState, {
+            type: "STUDY_LOG_CLEAR_SEEN_CONTENT",
+        });
+
+        const expectedState = {
+            ...defaultState,
+            seenContentKeys: {},
+        };
+
+        expect(actualState).toEqual(expectedState);
+    });
 });

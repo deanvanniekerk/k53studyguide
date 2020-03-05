@@ -1,21 +1,34 @@
 import { caretForward } from "ionicons/icons";
 import React from "react";
+import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import styled from "styled-components";
 
+import { RootState } from "@/state";
+import { testsPassedSelector } from "@/state/arena/log";
 import { IonButton, IonCol, IonGrid, IonIcon, IonRow } from "@ionic/react";
 
 type Props = {
     onStartTestClicked: () => void;
-};
-const Header: React.FC<Props> = props => {
+} & PropsFromState;
+
+const HeaderComponent: React.FC<Props> = props => {
     return (
         <IonGrid>
             <IonRow style={{ paddingTop: 45 }}>
                 <IonCol>
                     <IntroText>
-                        <Translate text="dojoIntro" />
+                        <Translate text="arenaIntro" />
                     </IntroText>
+                </IonCol>
+            </IonRow>
+            <IonRow style={{ paddingTop: 15 }}>
+                <IonCol>
+                    <CenterText>
+                        <h2>
+                            <Translate text="arenasCompleted" />: {props.testsPassed}
+                        </h2>
+                    </CenterText>
                 </IonCol>
             </IonRow>
             <IonRow style={{ paddingTop: 25 }}>
@@ -47,5 +60,14 @@ const IntroText = styled.div`
 const CenterText = styled.div`
     text-align: center;
 `;
+
+type PropsFromState = ReturnType<typeof mapStateToProps>;
+const mapStateToProps = (state: RootState) => {
+    return {
+        testsPassed: testsPassedSelector(state),
+    };
+};
+
+const Header = connect(mapStateToProps)(HeaderComponent);
 
 export { Header };

@@ -10,7 +10,7 @@ import { RootState } from "@/state";
 import {
     navigateUp,
     recieveTargetNavigationKey,
-    targetNavigationParentSelector,
+    targetNavigationKeySelector,
 } from "@/state/dojo/navigation";
 import { ROOT_NAVIGATION_KEY } from "@/state/study/navigation";
 import { IonContent, IonPage } from "@ionic/react";
@@ -29,7 +29,7 @@ const TestNavigatorPage: React.FC<Props> = props => {
     };
 
     const onBackClicked = () => {
-        if (props.targetNavigationParent === ROOT_NAVIGATION_KEY) {
+        if (props.targetNavigationKey === ROOT_NAVIGATION_KEY) {
             navigateToDojo();
             return;
         }
@@ -63,7 +63,7 @@ const Content = styled(IonContent)`
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
     return {
-        targetNavigationParent: targetNavigationParentSelector(state),
+        targetNavigationKey: targetNavigationKeySelector(state),
     };
 };
 

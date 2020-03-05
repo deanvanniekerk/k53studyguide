@@ -1,6 +1,30 @@
 import { Translations } from "./";
 
 const translations: Translations = {
+    history: {
+        en: "History",
+        af: "history",
+        zu: "history",
+        xh: "history",
+    },
+    clearSeenHistory: {
+        en: "Clear Seen History",
+        af: "clearSeenHistory",
+        zu: "clearSeenHistory",
+        xh: "clearSeenHistory",
+    },
+    clearDojoHistory: {
+        en: "Clear Dojo History",
+        af: "clearDojoHistory",
+        zu: "clearDojoHistory",
+        xh: "clearDojoHistory",
+    },
+    clearArenaHistory: {
+        en: "Clear Arena History",
+        af: "clearArenaHistory",
+        zu: "clearArenaHistory",
+        xh: "clearArenaHistory",
+    },
     sectionA: {
         en: "Section A",
         af: "Afdeling A",
@@ -108,6 +132,18 @@ const translations: Translations = {
         af: "Gevolg",
         zu: "Umphumela",
         xh: "Isiphumo",
+    },
+    arenaIntro: {
+        en: "Challange yourself in the Arena",
+        af: "arenaIntro",
+        zu: "arenaIntro",
+        xh: "arenaIntro",
+    },
+    arenasCompleted: {
+        en: "Arenas Completed",
+        af: "arenasCompleted",
+        zu: "arenasCompleted",
+        xh: "arenasCompleted",
     },
     dojoIntro: {
         en: "Train in the Dojo, gain experince and level up",

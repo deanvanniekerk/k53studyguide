@@ -13,4 +13,12 @@ describe("state > dojo > log > actions", () => {
 
         expect(actions.recieveQuesionSuccesfullyAnsweredDate("99", date)).toEqual(expectedAction);
     });
+
+    it("clearQuesionSuccesfullyAnsweredDates", () => {
+        const expectedAction = {
+            type: "DOJO_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES",
+        };
+
+        expect(actions.clearQuesionSuccesfullyAnsweredDates()).toEqual(expectedAction);
+    });
 });

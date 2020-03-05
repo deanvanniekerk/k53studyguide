@@ -6,10 +6,17 @@ import { questionDataSelector } from "@/state/questions";
 import { shuffleArray } from "@/utils";
 
 import {
+    incrementPassedTests,
+    IncrementPassedTestsAction,
     recieveQuesionSuccesfullyAnsweredDate,
     RecieveQuesionSuccesfullyAnsweredDateAction,
 } from "../log";
-import { questionAnswersSelector, recieveQuestionAnswers, RecieveQuestionAnswersAction } from "./";
+import {
+    passedSelector,
+    questionAnswersSelector,
+    recieveQuestionAnswers,
+    RecieveQuestionAnswersAction,
+} from "./";
 import { QuestionAnswer, TestSection } from "./types";
 
 export const loadQuestionAnswers = (): ThunkAction<
@@ -70,10 +77,13 @@ export const submitTest = (): ThunkAction<
     void,
     RootState,
     null,
-    RecieveQuesionSuccesfullyAnsweredDateAction
+    RecieveQuesionSuccesfullyAnsweredDateAction | IncrementPassedTestsAction
 > => {
     return (dispatch, getState) => {
         const questionAnswers = questionAnswersSelector(getState());
+        const passed = passedSelector(getState());
+
+        if (passed) dispatch(incrementPassedTests());
 
         const dateAnswered = new Date();
 

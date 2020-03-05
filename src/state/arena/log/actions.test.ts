@@ -19,6 +19,22 @@ describe("state > arena > log > actions", () => {
             type: "ARENA_LOG_INCREMENT_PASSED_TESTS",
         };
 
-        expect(actions.incrementPassedTestsAction()).toEqual(expectedAction);
+        expect(actions.incrementPassedTests()).toEqual(expectedAction);
+    });
+
+    it("clearPassedTests", () => {
+        const expectedAction = {
+            type: "ARENA_LOG_CLEAR_PASSED_TESTS",
+        };
+
+        expect(actions.clearPassedTests()).toEqual(expectedAction);
+    });
+
+    it("clearQuesionSuccesfullyAnsweredDates", () => {
+        const expectedAction = {
+            type: "ARENA_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES",
+        };
+
+        expect(actions.clearQuesionSuccesfullyAnsweredDates()).toEqual(expectedAction);
     });
 });

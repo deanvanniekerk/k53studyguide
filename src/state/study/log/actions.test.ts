@@ -18,4 +18,12 @@ describe("state > study > log > actions", () => {
 
         expect(actions.recieveLastSeenParentContentKey("88")).toEqual(expectedAction);
     });
+
+    it("clearSeenContent", () => {
+        const expectedAction = {
+            type: "STUDY_LOG_CLEAR_SEEN_CONTENT",
+        };
+
+        expect(actions.clearSeenContent()).toEqual(expectedAction);
+    });
 });

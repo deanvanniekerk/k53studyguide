@@ -77,4 +77,39 @@ describe("state > arena > log > reducer", () => {
 
         expect(actualState).toEqual(expectedState);
     });
+
+    it("should handle ARENA_LOG_CLEAR_PASSED_TESTS", () => {
+        const state = {
+            ...defaultState,
+            testsPassed: 5,
+        };
+
+        const actualState = reducer(state, {
+            type: "ARENA_LOG_CLEAR_PASSED_TESTS",
+        });
+
+        const expectedState = {
+            ...defaultState,
+            testsPassed: 0,
+        };
+
+        expect(actualState).toEqual(expectedState);
+    });
+
+    it("should handle ARENA_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES", () => {
+        const state = {
+            ...defaultState,
+        };
+
+        const actualState = reducer(state, {
+            type: "ARENA_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES",
+        });
+
+        const expectedState = {
+            ...defaultState,
+            quesionsSuccesfullyAnsweredDates: {},
+        };
+
+        expect(actualState).toEqual(expectedState);
+    });
 });

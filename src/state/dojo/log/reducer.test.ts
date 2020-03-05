@@ -58,4 +58,17 @@ describe("state > study > log > reducer", () => {
 
         expect(actualState).toEqual(expectedState);
     });
+
+    it("should handle DOJO_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES", () => {
+        const actualState = reducer(defaultState, {
+            type: "DOJO_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES",
+        });
+
+        const expectedState = {
+            ...defaultState,
+            quesionsSuccesfullyAnsweredDates: {},
+        };
+
+        expect(actualState).toEqual(expectedState);
+    });
 });

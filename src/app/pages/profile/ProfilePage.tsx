@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { IonContent, IonPage } from "@ionic/react";
 
-import { Settings } from "./components";
+import { History, Settings } from "./components";
 import { ProfilePageHeader } from "./ProfilePageHeader";
 
 const ProfilePage: React.FC = () => {
@@ -12,6 +12,7 @@ const ProfilePage: React.FC = () => {
             <ProfilePageHeader />
             <Content>
                 <Settings />
+                <History />
             </Content>
         </IonPage>
     );

@@ -3,14 +3,15 @@ import thunk from "redux-thunk";
 
 import { QuestionData, QuestionItem } from "@/data";
 
+import { incrementPassedTests } from "../log";
 import { loadQuestionAnswers, recieveQuestionAnswers, submitTest } from "./";
-import { QuestionAnswer } from "./types";
+import { QuestionAnswer, TestSection } from "./types";
 
 const middlewares = [thunk];
 const mockStore = createMockStore(middlewares);
 
 describe("state > arena > test > operations", () => {
-    const questions: QuestionItem[] = Array.from(new Array(10), (q, n) => ({
+    const questions: QuestionItem[] = Array.from(new Array(10), (_, n) => ({
         id: `${n}`,
         answer: "B",
         text: `Question ${n}:`,
@@ -148,5 +149,56 @@ describe("state > arena > test > operations", () => {
         expect(actions[0].payload.questionId).toEqual(questions[0].id);
         const date = spy.mock.instances[0];
         expect(actions[0].payload.date).toEqual(date);
+    });
+
+    it("submitTest > pass", () => {
+        const getQuestionAnswer = (
+            section: TestSection,
+            question: QuestionItem
+        ): QuestionAnswer => {
+            return {
+                section: section,
+                answer: "A",
+                question: question,
+            };
+        };
+
+        const getQuestionAnswers = (section: TestSection, count: number): QuestionAnswer[] => {
+            return Array.from(new Array(count), (_, n) => {
+                const question = {
+                    id: `${n}`,
+                    answer: "A",
+                    text: ``,
+                    option: [],
+                };
+
+                return getQuestionAnswer(section, question);
+            });
+        };
+
+        const answeredQuestions: QuestionAnswer[] = [
+            ...getQuestionAnswers("A", 8),
+            ...getQuestionAnswers("B", 28),
+            ...getQuestionAnswers("C", 28),
+        ];
+
+        const store = mockStore({
+            arena: {
+                log: {
+                    quesionsSuccesfullyAnsweredDates: {},
+                },
+                test: {
+                    questionAnswers: answeredQuestions,
+                },
+            },
+        });
+
+        store.dispatch(submitTest());
+
+        const actions = store.getActions();
+
+        expect(actions.length).toEqual(1 + 8 + 28 + 28);
+
+        expect(actions[0]).toEqual(incrementPassedTests());
     });
 });
