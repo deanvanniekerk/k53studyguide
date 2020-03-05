@@ -7,8 +7,10 @@ import { incrementPassedTests } from "../log";
 import { loadQuestionAnswers, recieveQuestionAnswers, submitTest } from "./";
 import { QuestionAnswer, TestSection } from "./types";
 
+type DispatchExts = ReturnType<typeof loadQuestionAnswers>;
+
 const middlewares = [thunk];
-const mockStore = createMockStore(middlewares);
+const mockStore = createMockStore<{}, (action: DispatchExts) => void>(middlewares);
 
 describe("state > arena > test > operations", () => {
     const questions: QuestionItem[] = Array.from(new Array(10), (_, n) => ({

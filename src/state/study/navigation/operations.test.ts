@@ -3,8 +3,10 @@ import thunk from "redux-thunk";
 
 import { navigateUp, recieveCurrentNavigationKey } from "./";
 
+type DispatchExts = ReturnType<typeof navigateUp>;
+
 const middlewares = [thunk];
-const mockStore = createMockStore(middlewares);
+const mockStore = createMockStore<{}, (action: DispatchExts) => void>(middlewares);
 
 describe("state > study > navigation > operations", () => {
     it("navigateUp - 3 levels", () => {
