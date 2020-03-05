@@ -35,12 +35,6 @@ steps:
           gradleOptions: "-Xmx3072m"
           tasks: "assembleDebug"
       displayName: "Android APK > Build"
-    - task: AndroidSigning@3
-      inputs:
-          apkFiles: "**/*.apk"
-          apksign: false
-          zipalign: true
-      displayName: "Android APK > Zip Align"
     - task: CopyFiles@2
       inputs:
           contents: "**/*.apk"
@@ -48,6 +42,7 @@ steps:
       displayName: "Android APK > Copy to Artifacts"
     - task: GooglePlayRelease@3
       inputs:
-        serviceConnection: "Google Play K53 Ninja"
-        apkFile: "**/*.apk"
-        track: "internal"
+          serviceConnection: "Google Play K53 Ninja"
+          apkFile: "**/*.apk"
+          track: "internal"
+          displayName: "Android APK > Copy to Google Play"
