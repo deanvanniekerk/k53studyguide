@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 pool:
-    vmImage: "ubuntu-latest"
+    vmImage: "macOS-latest"
 
 steps:
     - task: NodeTool@0
@@ -27,3 +27,10 @@ steps:
     - script: |
           npm run sync
       displayName: "npm run sync"
+
+    - task: Gradle@2
+      inputs:
+          workingDirectory: "android"
+          gradleWrapperFile: "gradlew"
+          gradleOptions: "-Xmx3072m"
+          tasks: "assembleDebug"
