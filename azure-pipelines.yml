@@ -40,9 +40,9 @@ steps:
           contents: "**/*.apk"
           targetFolder: "$(build.artifactStagingDirectory)"
       displayName: "Android APK > Copy to Artifacts"
-    - task: GooglePlayRelease@3
-      inputs:
-          serviceConnection: "Google Play K53 Ninja"
-          apkFile: "**/*.apk"
-          track: "internal"
-      displayName: "Android APK > Copy to Google Play"
+    # - task: GooglePlayRelease@3
+    #   inputs:
+    #       serviceConnection: "Google Play K53 Ninja"
+    #       apkFile: "**/*.apk"
+    #       track: "internal"
+    #   displayName: "Android APK > Copy to Google Play"
