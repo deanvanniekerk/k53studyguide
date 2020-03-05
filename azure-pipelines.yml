@@ -42,12 +42,13 @@ steps:
       displayName: "Android APK > Copy to Artifacts"
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'drop'
-        publishLocation: 'Container'
-    - task: GooglePlayRelease@3
-      inputs:
-          serviceConnection: "Google Play K53 Ninja"
-          apkFile: "**/app-release-unsigned.apk"
-          track: "internal"
-      displayName: "Android APK > Copy to Google Play"
+          PathtoPublish: "$(Build.ArtifactStagingDirectory)"
+          ArtifactName: "drop"
+          publishLocation: "Container"
+      displayName: "Android APK > Publish Artifacts"
+    # - task: GooglePlayRelease@3
+    #   inputs:
+    #       serviceConnection: "Google Play K53 Ninja"
+    #       apkFile: "**/app-release-unsigned.apk"
+    #       track: "internal"
+    #   displayName: "Android APK > Copy to Google Play"
