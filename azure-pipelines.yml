@@ -35,11 +35,6 @@ steps:
           gradleOptions: "-Xmx3072m"
           tasks: "build"
       displayName: "Android APK > Build"
-    - task: CopyFiles@2
-      inputs:
-          contents: "**/*.apk"
-          targetFolder: "$(Build.ArtifactStagingDirectory)"
-      displayName: "Android APK > Copy to Artifacts"
     - task: AndroidSigning@3
       inputs:
         apkFiles: '**/*.apk'
@@ -47,7 +42,13 @@ steps:
         apksignerKeystorePassword: 'lead2gold'
         apksignerKeystoreAlias: 'upload'
         apksignerKeyPassword: 'gold2lead'
+        zipalign: false
       displayName: "Android APK > Sign and Zip"
+    - task: CopyFiles@2
+      inputs:
+          contents: "**/*.apk"
+          targetFolder: "$(Build.ArtifactStagingDirectory)"
+      displayName: "Android APK > Copy to Artifacts"
     - task: PublishBuildArtifacts@1
       inputs:
           PathtoPublish: "$(Build.ArtifactStagingDirectory)"
