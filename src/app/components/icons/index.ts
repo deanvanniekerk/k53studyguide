@@ -13,3 +13,7 @@ export * from "./Shuriken1Icon";
 export * from "./Shuriken2Icon";
 export * from "./Shuriken1OutlineIcon";
 export * from "./Shuriken2OutlineIcon";
+export * from "./MapIcon";
+export * from "./ThrowBoardIcon";
+export * from "./MapOutlineIcon";
+export * from "./PagodaOutlineIcon";

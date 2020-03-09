@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { bindActionCreators, Dispatch } from "redux";
 import styled from "styled-components";
 
+import { PagodaOutlineIcon } from "@/app/components/icons";
 import { RootState } from "@/state";
 import { rootNavigationChildrenSelector } from "@/state/navigation";
 import { recieveCurrentNavigationKey } from "@/state/study/navigation";
@@ -23,8 +24,9 @@ const StudyPage: React.FC<Props> = props => {
     };
 
     return (
-        <IonPage className="study-page">
+        <Page>
             <StudyPageHeader />
+            <Watermark />
             <Content>
                 <Header onNavigationItemClicked={onNavigationItemClicked} />
                 <IonGrid style={{ padding: 10 }}>
@@ -50,12 +52,26 @@ const StudyPage: React.FC<Props> = props => {
                     </IonRow>
                 </IonGrid>
             </Content>
-        </IonPage>
+        </Page>
     );
 };
 
+const Watermark = styled(PagodaOutlineIcon)`
+    position: absolute;
+    font-size: 25rem;
+    opacity: 0.04;
+    right: -80px;
+    top: -80px;
+    fill: #ffffff;
+    transform: rotate(-20deg);
+`;
+
 const Content = styled(IonContent)`
-    --background: var(--study-background);
+    --background: transparent;
+`;
+
+const Page = styled(IonPage)`
+    background: var(--study-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
