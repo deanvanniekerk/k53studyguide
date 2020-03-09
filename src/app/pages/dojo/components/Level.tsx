@@ -21,7 +21,7 @@ const LevelComponent: React.FC<Props> = props => {
             <LevelText level={props.level} />
 
             <StarWrapper>
-                <StarRating total={5} current={props.level} size="2rem" padding="5px" />
+                <StarRating total={5} current={props.level} size="2.2rem" padding="5px" />
             </StarWrapper>
             <LevelUpText>
                 <Translate

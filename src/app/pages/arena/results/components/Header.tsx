@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-//import { Translate } from "react-translated";
+import { Translate } from "react-translated";
 import styled from "styled-components";
 
 import { HorizontalRule } from "@/app/components";
+import { NinjaDeadIcon, NinjaHappyIcon } from "@/app/components/icons";
 import { RootState } from "@/state";
 import {
     passedSelector,
@@ -25,8 +26,20 @@ const HeaderComponent: React.FC<Props> = ({
 }) => {
     return (
         <Container>
-            <PrimaryResult>{passed ? "Passed" : "Failed"}</PrimaryResult>
-
+            <PrimaryResult>
+                <SuccessIcon success={passed} size="3.7rem" />
+                <PrimaryResultText>
+                    {passed ? <Translate text="arenaSuccess" /> : <Translate text="arenaFailed" />}
+                </PrimaryResultText>
+                <PrimaryResultSubText>
+                    {passed ? (
+                        <Translate text="arenaSuccessInfo" />
+                    ) : (
+                        <Translate text="arenaFailedInfo" />
+                    )}
+                </PrimaryResultSubText>
+            </PrimaryResult>
+            <HorizontalRule leftMargin={16} rightMargin={16} paddingBottom={20} paddingTop={20} />
             <IonGrid>
                 <SectionResultRow>
                     <IonCol>
@@ -36,9 +49,7 @@ const HeaderComponent: React.FC<Props> = ({
                         {testResults.A.correct} / {testResults.A.total}
                     </IonCol>
                     <IonCol>
-                        <Result passed={sectionAPassed}>
-                            {sectionAPassed ? "Passed" : "Failed"}
-                        </Result>
+                        <SuccessIcon success={sectionAPassed} size="1.2rem" />
                     </IonCol>
                 </SectionResultRow>
                 <SectionResultRow>
@@ -49,9 +60,7 @@ const HeaderComponent: React.FC<Props> = ({
                         {testResults.B.correct} / {testResults.B.total}
                     </IonCol>
                     <IonCol>
-                        <Result passed={sectionBPassed}>
-                            {sectionBPassed ? "Passed" : "Failed"}
-                        </Result>
+                        <SuccessIcon success={sectionBPassed} size="1.2rem" />
                     </IonCol>
                 </SectionResultRow>
                 <SectionResultRow>
@@ -62,14 +71,12 @@ const HeaderComponent: React.FC<Props> = ({
                         {testResults.C.correct} / {testResults.C.total}
                     </IonCol>
                     <IonCol>
-                        <Result passed={sectionCPassed}>
-                            {sectionCPassed ? "Passed" : "Failed"}
-                        </Result>
+                        <SuccessIcon success={sectionCPassed} size="1.2rem" />
                     </IonCol>
                 </SectionResultRow>
             </IonGrid>
 
-            <HorizontalRule leftMargin={20} rightMargin={36} paddingBottom={0} paddingTop={15} />
+            <HorizontalRule leftMargin={16} rightMargin={16} paddingBottom={0} paddingTop={15} />
         </Container>
     );
 };
@@ -81,9 +88,19 @@ const Container = styled.div`
 `;
 
 const PrimaryResult = styled.div`
-    padding: 10px 0 20px 0;
-    font-size: var(--ion-font-size-xl);
     text-align: center;
+`;
+
+const PrimaryResultText = styled.div`
+    font-size: var(--ion-font-size-xl);
+    font-family: var(--ion-font-family-bold);
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 12px 0;
+`;
+
+const PrimaryResultSubText = styled.div`
+    font-size: var(--ion-font-size-md);
 `;
 
 const SectionResultRow = styled(IonRow)`
@@ -97,11 +114,15 @@ const Bold = styled.span`
     font-weight: bold;
 `;
 
-const Result = styled.div<{ passed: boolean }>`
-    color: ${props => (props.passed ? "var(--ion-color-success)" : "var(--ion-color-danger)")};
-    font-family: var(--ion-font-family-bold);
-    font-weight: bold;
-`;
+type SuccessIconProps = {
+    success: boolean;
+    size: string;
+};
+const SuccessIcon: React.FC<SuccessIconProps> = props => {
+    if (props.success) return <NinjaHappyIcon style={{ fontSize: props.size }} />;
+
+    return <NinjaDeadIcon style={{ fontSize: props.size }} />;
+};
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {

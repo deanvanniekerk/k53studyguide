@@ -45,10 +45,10 @@ const HeaderComponent: React.FC<Props> = props => {
                             <StarRating
                                 total={5}
                                 current={current}
-                                size="1vrem"
-                                padding="3px"
-                                activeOpacity={0.9}
-                                inActiveOpacity={0.5}
+                                size="1rem"
+                                padding="2.5px"
+                                activeOpacity={0.7}
+                                inActiveOpacity={0.3}
                             />
                         </IonCol>
                     </IonRow>

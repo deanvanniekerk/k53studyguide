@@ -19,10 +19,10 @@ const NavigationItemComponent: React.FC<Props> = props => {
         <StarRating
             total={5}
             current={current}
-            size="0.8rem"
+            size="0.7rem"
             padding="1px"
-            activeOpacity={0.7}
-            inActiveOpacity={0.3}
+            activeOpacity={0.5}
+            inActiveOpacity={0.2}
         />
     );
 

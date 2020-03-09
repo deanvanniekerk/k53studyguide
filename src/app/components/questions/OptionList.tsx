@@ -9,7 +9,6 @@ import React from "react";
 import { Translate } from "react-translated";
 import styled from "styled-components";
 
-import { Shuriken1Icon, Shuriken1OutlineIcon } from "@/app/components/icons";
 import { QuestionItem, QuestionOption } from "@/data";
 import { IonIcon } from "@ionic/react";
 
@@ -22,11 +21,8 @@ type Props = {
 
 const OptionList: React.FC<Props> = ({ question, answer, onOptionClicked, showResult }) => {
     const getIcon = (option: QuestionOption): React.ReactNode => {
-        if (!showResult) {
-            if (option.id === answer) return <Shuriken1Icon style={{ fontSize: "1.4rem" }} />;
-
-            return <Shuriken1OutlineIcon style={{ fontSize: "1.4rem", fill: "#FFFFFF" }} />;
-        }
+        if (!showResult)
+            return <Icon icon={option.id === answer ? radioButtonOn : radioButtonOff} />;
 
         //The correct answer (chosen)
         if (option.id === answer && answer === question.answer)

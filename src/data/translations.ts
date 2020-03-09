@@ -7,11 +7,41 @@ const translations: Translations = {
         zu: "history",
         xh: "history",
     },
+    arenaSuccess: {
+        en: "Congratulations",
+        af: "arenaSuccess",
+        zu: "arenaSuccess",
+        xh: "arenaSuccess",
+    },
+    arenaFailed: {
+        en: "You Died",
+        af: "arenaFailed",
+        zu: "arenaFailed",
+        xh: "arenaFailed",
+    },
+    arenaSuccessInfo: {
+        en: "You have successfully completed the arena",
+        af: "arenaSuccessInfo",
+        zu: "arenaSuccessInfo",
+        xh: "arenaSuccessInfo",
+    },
+    arenaFailedInfo: {
+        en: "You failed in your attempt to complete the arena, better luck next time...",
+        af: "arenaFailedInfo",
+        zu: "arenaFailedInfo",
+        xh: "arenaFailedInfo",
+    },
     clearSeenHistory: {
         en: "Clear Seen History",
         af: "clearSeenHistory",
         zu: "clearSeenHistory",
         xh: "clearSeenHistory",
+    },
+    enterArena: {
+        en: "Enter Arena",
+        af: "enterArena",
+        zu: "enterArena",
+        xh: "enterArena",
     },
     clearDojoHistory: {
         en: "Clear Dojo History",

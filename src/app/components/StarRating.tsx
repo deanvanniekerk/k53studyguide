@@ -1,8 +1,9 @@
-import { star, starOutline } from "ionicons/icons";
 import React, { useRef } from "react";
 import styled from "styled-components";
 
-import { CreateAnimation, IonIcon, useIonViewWillEnter } from "@ionic/react";
+import { CreateAnimation, useIonViewWillEnter } from "@ionic/react";
+
+import { Shuriken3Icon, Shuriken3OutlineIcon } from "./icons";
 
 type Props = {
     total: number;
@@ -29,6 +30,12 @@ const StarRating: React.FC<Props> = props => {
             ))}
         </StarWrapper>
     );
+};
+StarRating.defaultProps = {
+    activeOpacity: 1,
+    inActiveOpacity: 0.2,
+    size: "1rem",
+    padding: "2px",
 };
 
 const StarWrapper = styled.div`
@@ -65,10 +72,12 @@ const Star: React.FC<StarProps> = props => {
             ]}
         >
             <IconWrapper size={props.size} padding={props.padding}>
-                <Icon
-                    icon={props.active ? star : starOutline}
-                    opacity={props.active ? props.activeOpacity : props.inActiveOpacity}
-                />
+                {props.active && <Shuriken3Icon style={{ opacity: props.activeOpacity }} />}
+                {!props.active && (
+                    <Shuriken3OutlineIcon
+                        style={{ fill: "#FFFFFF", opacity: props.inActiveOpacity }}
+                    />
+                )}
             </IconWrapper>
         </CreateAnimation>
     );
@@ -80,16 +89,8 @@ type IconWrapperProps = {
 };
 
 const IconWrapper = styled.div<IconWrapperProps>`
-    font-size: ${props => (props.size ? props.size : "1rem")};
-    padding: 0 ${props => (props.padding ? props.padding : "2px")};
-`;
-
-type IconProps = {
-    opacity?: number;
-};
-
-const Icon = styled(IonIcon)<IconProps>`
-    opacity: ${props => (props.opacity ? props.opacity : "1")};
+    font-size: ${props => props.size};
+    padding: 0 ${props => props.padding};
 `;
 
 export { StarRating };
