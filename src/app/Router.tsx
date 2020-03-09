@@ -1,13 +1,13 @@
-import { flask, personCircle, school } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
 import { Provider as TranslationProvider } from "react-translated";
 
+import { KatanaIcon, NinjaIcon, PagodaIcon, TargetIcon } from "@/app/components/icons";
 import { translations } from "@/data";
 import { RootState } from "@/state";
 import { languageSelector } from "@/state/settings";
-import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react";
+import { IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 
 import ArenaPage from "./pages/arena/ArenaPage";
@@ -22,6 +22,10 @@ import ProfilePage from "./pages/profile/ProfilePage";
 import StudyPage from "./pages/study/StudyPage";
 
 type Props = PropsFromState;
+
+const iconStyles: React.CSSProperties = {
+    fontSize: "1.8rem",
+};
 
 const Router: React.FC<Props> = props => {
     return (
@@ -41,22 +45,21 @@ const Router: React.FC<Props> = props => {
                         <Route exact path="/profile" component={ProfilePage} />
                         <Route exact path="/" render={() => <Redirect to="/study" />} />
                     </IonRouterOutlet>
-
                     <IonTabBar slot="bottom">
                         <IonTabButton tab="study" href="/study">
-                            <IonIcon icon={school} />
+                            <PagodaIcon style={iconStyles} />
                             <IonLabel>Study</IonLabel>
                         </IonTabButton>
                         <IonTabButton tab="dojo" href="/dojo">
-                            <IonIcon icon={flask} />
+                            <TargetIcon style={iconStyles} />
                             <IonLabel>Dojo</IonLabel>
                         </IonTabButton>
                         <IonTabButton tab="arena" href="/arena">
-                            <IonIcon icon={flask} />
+                            <KatanaIcon style={iconStyles} />
                             <IonLabel>Arena</IonLabel>
                         </IonTabButton>
                         <IonTabButton tab="profile" href="/profile">
-                            <IonIcon icon={personCircle} />
+                            <NinjaIcon style={iconStyles} />
                             <IonLabel>Profile</IonLabel>
                         </IonTabButton>
                     </IonTabBar>

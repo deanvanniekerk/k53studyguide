@@ -6,6 +6,7 @@ ion-tab-bar {
 
 ion-tab-button {
     --color: var(--ion-color-dark-tint);
+    font-family: var(--ion-font-family-bold);
 }
 
 ion-tab-button ion-icon {
@@ -34,6 +35,10 @@ ion-list ion-item {
 
 ion-toast {
     text-align: center;
+}
+
+.tab-selected {
+    font-weight: bold;
 }
 
 .button-med-large {

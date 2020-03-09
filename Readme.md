@@ -7,6 +7,10 @@ https://capacitor.ionicframework.com/docs/basics/workflow
 npm run build
 npm run sync
 
+### SVG to React Component
+
+-   `npm run svg-to-component -- assets/resources/svg-solid/018-katana-1.svg`
+
 ### Package version updates
 
 -   `npm install npm-check -g`
