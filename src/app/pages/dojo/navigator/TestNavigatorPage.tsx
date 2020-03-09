@@ -15,6 +15,7 @@ import {
 import { ROOT_NAVIGATION_KEY } from "@/state/study/navigation";
 import { IonContent, IonPage } from "@ionic/react";
 
+import { DojoWatermark } from "../DojoWatermark";
 import { Header, Navigator } from "./components";
 import { TestNavigatorPageHeader } from "./TestNavigatorPageHeader";
 
@@ -45,19 +46,24 @@ const TestNavigatorPage: React.FC<Props> = props => {
     };
 
     return (
-        <IonPage>
+        <Page>
             <TestNavigatorPageHeader />
+            <DojoWatermark />
             <Content>
                 <BackButton onClick={onBackClicked} icon={arrowUp} />
                 <Header selectTargetNavigationItem={selectTargetNavigationItem} />
                 <Navigator onNavigationItemClicked={onNavigationItemClicked} />
             </Content>
-        </IonPage>
+        </Page>
     );
 };
 
 const Content = styled(IonContent)`
-    --background: var(--dojo-background);
+    --background: transparent;
+`;
+
+const Page = styled(IonPage)`
+    background: var(--dojo-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

@@ -10,6 +10,7 @@ import { RootState } from "@/state";
 import { questionAnswersSelector, recieveAnswer, submitTest } from "@/state/dojo/test";
 import { IonContent, IonPage } from "@ionic/react";
 
+import { DojoWatermark } from "../DojoWatermark";
 import { Footer, Header } from "./components";
 import { TestPageHeader } from "./TestPageHeader";
 
@@ -38,20 +39,25 @@ const TestPage: React.FC<Props> = props => {
     }));
 
     return (
-        <IonPage>
+        <Page>
             <TestPageHeader />
+            <DojoWatermark />
             <Content>
                 <BackButton onClick={onBackClicked} />
                 <Header />
                 <QuestionList questions={questions} onOptionClicked={onOptionClicked} />
                 <Footer onSubmitClicked={onSubmitClicked} />
             </Content>
-        </IonPage>
+        </Page>
     );
 };
 
 const Content = styled(IonContent)`
-    --background: var(--dojo-background);
+    --background: transparent;
+`;
+
+const Page = styled(IonPage)`
+    background: var(--dojo-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

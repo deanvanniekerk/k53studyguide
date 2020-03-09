@@ -9,6 +9,7 @@ import { loadQuestionAnswers, testInProgressSelector } from "@/state/arena/test"
 import { IonContent, IonPage } from "@ionic/react";
 
 import { ArenaPageHeader } from "./ArenaPageHeader";
+import { ArenaWatermark } from "./ArenaWatermark";
 import { Header } from "./components";
 
 type Props = PropsFromState & PropsFromDispatch;
@@ -24,17 +25,22 @@ const ArenaPage: React.FC<Props> = props => {
     };
 
     return (
-        <IonPage>
+        <Page>
             <ArenaPageHeader />
+            <ArenaWatermark />
             <Content>
                 <Header onStartTestClicked={onStartTestClicked} />
             </Content>
-        </IonPage>
+        </Page>
     );
 };
 
 const Content = styled(IonContent)`
-    --background: var(--arena-background);
+    --background: transparent;
+`;
+
+const Page = styled(IonPage)`
+    background: var(--arena-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

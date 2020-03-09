@@ -10,6 +10,7 @@ import { IonContent, IonPage } from "@ionic/react";
 
 import { Header, Settings } from "./components";
 import { DojoPageHeader } from "./DojoPageHeader";
+import { DojoWatermark } from "./DojoWatermark";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -24,18 +25,23 @@ const DojoPage: React.FC<Props> = props => {
     };
 
     return (
-        <IonPage className="dojo-page">
+        <Page>
             <DojoPageHeader />
+            <DojoWatermark />
             <Content>
                 <Header />
                 <Settings onStartTestClicked={onStartTestClicked} />
             </Content>
-        </IonPage>
+        </Page>
     );
 };
 
 const Content = styled(IonContent)`
-    --background: var(--dojo-background);
+    --background: transparent;
+`;
+
+const Page = styled(IonPage)`
+    background: var(--dojo-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

@@ -16,6 +16,7 @@ import {
 } from "@/state/arena/test";
 import { IonContent, IonPage } from "@ionic/react";
 
+import { ArenaWatermark } from "../ArenaWatermark";
 import { Tabs } from "../components";
 import { Footer, Header } from "./components";
 import { TestPageHeader } from "./TestPageHeader";
@@ -55,8 +56,9 @@ const TestPage: React.FC<Props> = props => {
     const questions = props.questionAnswers.map<QuestionInfo>(mapToQuestionInfo);
 
     return (
-        <IonPage>
+        <Page>
             <TestPageHeader />
+            <ArenaWatermark />
             <Content ref={content}>
                 <BackButton onClick={onBackClicked} />
                 <Header />
@@ -64,12 +66,16 @@ const TestPage: React.FC<Props> = props => {
                 <QuestionList questions={questions} onOptionClicked={onOptionClicked} />
                 <Footer onSubmitClicked={onSubmitClicked} onScrollTop={onScrollTop} />
             </Content>
-        </IonPage>
+        </Page>
     );
 };
 
 const Content = styled(IonContent)`
-    --background: var(--arena-background);
+    --background: transparent;
+`;
+
+const Page = styled(IonPage)`
+    background: var(--arena-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

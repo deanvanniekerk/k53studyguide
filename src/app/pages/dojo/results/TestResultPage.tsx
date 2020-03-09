@@ -9,6 +9,7 @@ import { RootState } from "@/state";
 import { questionAnswersSelector, recieveQuestionAnswers } from "@/state/dojo/test";
 import { IonContent, IonPage, useIonViewWillLeave } from "@ionic/react";
 
+import { DojoWatermark } from "../DojoWatermark";
 import { Header } from "./components";
 import { TestResultPageHeader } from "./TestResultPageHeader";
 
@@ -32,19 +33,24 @@ const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveQuestionAnswe
     }));
 
     return (
-        <IonPage>
+        <Page>
             <TestResultPageHeader />
+            <DojoWatermark />
             <Content>
                 <BackButton onClick={onBackClicked} />
                 <Header />
                 <QuestionList questions={questions} showResult={true} />
             </Content>
-        </IonPage>
+        </Page>
     );
 };
 
 const Content = styled(IonContent)`
-    --background: var(--dojo-background);
+    --background: transparent;
+`;
+
+const Page = styled(IonPage)`
+    background: var(--dojo-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

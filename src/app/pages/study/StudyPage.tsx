@@ -5,6 +5,7 @@ import { bindActionCreators, Dispatch } from "redux";
 import styled from "styled-components";
 
 import { PagodaOutlineIcon } from "@/app/components/icons";
+import { watermarkStyle } from "@/app/styles";
 import { RootState } from "@/state";
 import { rootNavigationChildrenSelector } from "@/state/navigation";
 import { recieveCurrentNavigationKey } from "@/state/study/navigation";
@@ -57,13 +58,7 @@ const StudyPage: React.FC<Props> = props => {
 };
 
 const Watermark = styled(PagodaOutlineIcon)`
-    position: absolute;
-    font-size: 25rem;
-    opacity: 0.04;
-    right: -80px;
-    top: -80px;
-    fill: #ffffff;
-    transform: rotate(-20deg);
+    ${watermarkStyle}
 `;
 
 const Content = styled(IonContent)`

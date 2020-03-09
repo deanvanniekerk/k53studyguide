@@ -6,6 +6,8 @@ import { bindActionCreators, Dispatch } from "redux";
 import styled from "styled-components";
 
 import { BackButton } from "@/app/components";
+import { PagodaOutlineIcon } from "@/app/components/icons";
+import { watermarkStyle } from "@/app/styles";
 import { RootState } from "@/state";
 import {
     currentNavigationParentSelector,
@@ -31,19 +33,28 @@ const ContentPage: React.FC<Props> = props => {
     };
 
     return (
-        <IonPage>
+        <Page>
+            <Watermark />
             <Content>
                 <BackButton onClick={onBackClicked} icon={arrowUp} />
                 <Header />
                 <Navigator />
                 <ContentList />
             </Content>
-        </IonPage>
+        </Page>
     );
 };
 
+const Watermark = styled(PagodaOutlineIcon)`
+    ${watermarkStyle}
+`;
+
 const Content = styled(IonContent)`
-    --background: var(--study-background);
+    --background: transparent;
+`;
+
+const Page = styled(IonPage)`
+    background: var(--study-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

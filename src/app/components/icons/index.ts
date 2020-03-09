@@ -17,3 +17,6 @@ export * from "./MapIcon";
 export * from "./ThrowBoardIcon";
 export * from "./MapOutlineIcon";
 export * from "./PagodaOutlineIcon";
+export * from "./NinjaOutlineIcon";
+export * from "./KatanaOutlineIcon";
+export * from "./TargetOutlineIcon";

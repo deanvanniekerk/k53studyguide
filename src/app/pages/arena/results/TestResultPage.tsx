@@ -9,6 +9,7 @@ import { RootState } from "@/state";
 import { currentSectionQuestionsSelector, recieveQuestionAnswers } from "@/state/arena/test";
 import { IonContent, IonPage, useIonViewWillLeave } from "@ionic/react";
 
+import { ArenaWatermark } from "../ArenaWatermark";
 import { Tabs } from "../components";
 import { Header } from "./components";
 import { TestResultPageHeader } from "./TestResultPageHeader";
@@ -33,20 +34,25 @@ const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveQuestionAnswe
     }));
 
     return (
-        <IonPage>
+        <Page>
             <TestResultPageHeader />
+            <ArenaWatermark />
             <Content>
                 <BackButton onClick={onBackClicked} />
                 <Header />
                 <Tabs hideInfo={true} />
                 <QuestionList questions={questions} showResult={true} />
             </Content>
-        </IonPage>
+        </Page>
     );
 };
 
 const Content = styled(IonContent)`
-    --background: var(--arena-background);
+    --background: transparent;
+`;
+
+const Page = styled(IonPage)`
+    background: var(--arena-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
