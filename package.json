@@ -37,6 +37,8 @@
         "@capacitor/core": "1.5.0",
         "@ionic/react": "5.0.4",
         "@ionic/react-router": "5.0.4",
+        "cordova-plugin-network-information": "2.0.2",
+        "cordova-plugin-purchase": "10.0.1",
         "immutability-helper": "3.0.1",
         "ionicons": "5.0.0",
         "react": "16.13.0",
