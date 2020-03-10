@@ -4,5 +4,5 @@
     <string name="title_activity_main">K53 Ninja</string>
     <string name="package_name">deanvniekerk.k53ninja.app</string>
     <string name="custom_url_scheme">deanvniekerk.k53ninja.app</string>
-    <string name="billing_key">xxxxxxxxx</string>
+    <string name="billing_key">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArEYOlyiyXWPFSO1zPCWzn/XKMKA5Zd70qhnG5d1QY8TFoWBXjPF8CgxZRsVV1k7PHcaApIrjQiV5FR6PQYTTAMxfBtOlOV/rcTQevCf1hoY++JP3Ba48l3/jPNiaqdXHV+S6H90OLw4krQ5gTx8bZH36ttbycPVUyPLNPxtKTlDIWsyXthhRmzDm666LHPffneRF1LqrUUVMwaUAyTKN9EDEuv23CiJ/08uArlMFiS9jyMdoEOI7WfQQ77p4qzeB4XvISNOZsIX1X1gztKlHBr6l9Ku3H/kJxTLNKxvF3Xdw3bDubdTM3d06hqswMtBMa3E1DNbwDFJFYmAqrX8oPwIDAQAB</string>
 </resources>
