@@ -14,19 +14,19 @@ steps:
 
     - script: |
           npm install
-      displayName: "npm install"
+      displayName: "React App > Install"
     - script: |
           npm run lint
-      displayName: "npm run lint"
+      displayName: "React App > Lint"
     - script: |
           npm run test
-      displayName: "npm run test"
+      displayName: "React App > Test"
     - script: |
           npm run build
-      displayName: "npm run build"
+      displayName: "React App > Build"
     - script: |
-          npm run sync
-      displayName: "npm run sync"
+          npm run cap-copy
+      displayName: "React App > Copy to Navtive Projects"
 
     - task: Gradle@2
       inputs:
@@ -37,12 +37,12 @@ steps:
       displayName: "Android APK > Build"
     - task: AndroidSigning@3
       inputs:
-        apkFiles: '**/app-release-unsigned.apk'
-        apksignerKeystoreFile: 'upload-keystore.jks'
-        apksignerKeystorePassword: 'lead2gold'
-        apksignerKeystoreAlias: 'upload'
-        apksignerKeyPassword: 'gold2lead'
-        zipalign: false
+          apkFiles: "**/app-release-unsigned.apk"
+          apksignerKeystoreFile: "upload-keystore.jks"
+          apksignerKeystorePassword: "lead2gold"
+          apksignerKeystoreAlias: "upload"
+          apksignerKeyPassword: "gold2lead"
+          zipalign: false
       displayName: "Android APK > Sign"
     - task: CopyFiles@2
       inputs:
@@ -56,9 +56,3 @@ steps:
           ArtifactName: "drop"
           publishLocation: "Container"
       displayName: "Android APK > Publish Artifacts"
-    # - task: GooglePlayRelease@3
-    #   inputs:
-    #       serviceConnection: "Google Play K53 Ninja"
-    #       apkFile: "**/app-release-unsigned.apk"
-    #       track: "internal"
-    #   displayName: "Android APK > Copy to Google Play"

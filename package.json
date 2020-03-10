@@ -17,7 +17,7 @@
         "test:coverage": "jest --coverage --verbose --config=jest.config.json",
         "test:watch": "jest --watch --config=jest.config.json",
         "tsc": "tsc",
-        "sync": "cap copy",
+        "cap-copy": "cap copy",
         "svg-to-component": "npx @svgr/cli --icon"
     },
     "browserslist": {
