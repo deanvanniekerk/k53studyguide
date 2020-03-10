@@ -20,11 +20,15 @@ import React from "react";
 import { Provider } from "react-redux";
 
 import { configureStore } from "@/state/configureStore";
-import { IonApp } from "@ionic/react";
+import { IonApp, setupConfig } from "@ionic/react";
 
 import Router from "./app/Router";
 
 const { store } = configureStore();
+
+setupConfig({
+    mode: "md",
+});
 
 const App: React.FC = () => (
     <IonApp>
