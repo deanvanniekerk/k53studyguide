@@ -1,5 +1,9 @@
-export type RegisterProduct = () => void;
+import { Store } from "redux";
 
-export type Purchase = {
-    registerProduct: RegisterProduct;
-};
+export interface PurchaseServiceConstructor {
+    new (reduxStore: Store): PurchaseService;
+}
+
+export interface PurchaseService {
+    registerProduct: () => void;
+}

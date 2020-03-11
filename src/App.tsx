@@ -23,8 +23,9 @@ import { configureStore } from "@/state/configureStore";
 import { IonApp, setupConfig } from "@ionic/react";
 
 import Router from "./app/Router";
+import { PurchaseContext } from "./context";
 
-const { store } = configureStore();
+const { store, purchaseService } = configureStore();
 
 setupConfig({
     mode: "md",
@@ -33,7 +34,9 @@ setupConfig({
 const App: React.FC = () => (
     <IonApp>
         <Provider store={store}>
-            <Router />
+            <PurchaseContext.Provider value={purchaseService}>
+                <Router />
+            </PurchaseContext.Provider>
         </Provider>
     </IonApp>
 );

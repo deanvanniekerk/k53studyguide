@@ -1,4 +1,4 @@
-declare var store: store.IStore;
+declare const store: store.Store;
 
 declare namespace store {
     export type StoreProductType =
@@ -7,37 +7,36 @@ declare namespace store {
         | "free subscription"
         | "paid subscription";
 
-    export interface IError {
+    export interface Error {
         code: number;
         message: string;
     }
 
-    export interface IWhen {
-        approved(callback: (product: IStoreProduct) => void): IWhen;
-        error(callback: (err: IError, product: IStoreProduct) => void): IWhen;
-        loaded(callback: (product: IStoreProduct) => void): IWhen;
-        updated(callback: (product: IStoreProduct) => void): IWhen;
-        owned(callback: (product: IStoreProduct) => void): IWhen;
-        cancelled(callback: (product: IStoreProduct) => void): IWhen;
-        refunded(callback: (product: IStoreProduct) => void): IWhen;
-        verified(callback: (product: IStoreProduct) => void): IWhen;
-        unverified(callback: (product: IStoreProduct) => void): IWhen;
+    export interface When {
+        approved(callback: (product: StoreProduct) => void): When;
+        error(callback: (err: IError, product: StoreProduct) => void): When;
+        loaded(callback: (product: StoreProduct) => void): When;
+        updated(callback: (product: StoreProduct) => void): When;
+        owned(callback: (product: StoreProduct) => void): When;
+        cancelled(callback: (product: StoreProduct) => void): When;
+        refunded(callback: (product: StoreProduct) => void): When;
+        verified(callback: (product: StoreProduct) => void): When;
+        unverified(callback: (product: StoreProduct) => void): When;
         downloading(
-            callback: (product: IStoreProduct, progress: number, timeRemaining: number) => void
-        ): IWhen;
-        downloaded(callback: (product: IStoreProduct) => void): IWhen;
-        verified(callback: (product: IStoreProduct) => void): IWhen;
+            callback: (product: StoreProduct, progress: number, timeRemaining: number) => void
+        ): When;
+        downloaded(callback: (product: StoreProduct) => void): When;
     }
 
-    export interface IValidatorCallback {
-        (success: boolean, data: any): void;
+    export interface ValidatorCallback {
+        (success: boolean, data: never): void;
     }
 
-    export interface IValidator {
-        (product: IStoreProduct, callback: IValidatorCallback): void;
+    export interface Validator {
+        (product: StoreProduct, callback: ValidatorCallback): void;
     }
 
-    export interface IStore {
+    export interface Store {
         NON_CONSUMABLE: StoreProductType;
         PAID_SUBSCRIPTION: StoreProductType;
         NON_RENEWING_SUBSCRIPTION: StoreProductType;
@@ -49,11 +48,11 @@ declare namespace store {
         validator: string | IValidator;
 
         error(callback: (err: IError) => void): void;
-        get(id: string): IStoreProduct;
-        once(query: string, action: string, callback: any): void;
+        get(id: string): StoreProduct;
+        once(query: string, action: string, callback: () => void): void;
         register(request: IRegisterRequest): void;
         when(query: string): IWhen;
-        when(action: string, query: string, callback: (product: IStoreProduct) => void): IWhen;
+        when(action: string, query: string, callback: (product: StoreProduct) => void): IWhen;
         ready(callback: () => void): void;
         refresh(): void;
         off(callback: Function): void;
@@ -75,7 +74,7 @@ declare namespace store {
         | "requested"
         | "valid";
 
-    export interface ITransaction {
+    export interface Transaction {
         id: string;
         // Android only
         type: TransactionType;
@@ -87,13 +86,13 @@ declare namespace store {
         transactionReceipt?: string;
     }
 
-    export interface IRegisterRequest {
+    export interface RegisterRequest {
         id: string;
         alias: string;
         type: StoreProductType;
     }
 
-    export interface IStoreProduct extends IRegisterRequest {
+    export interface StoreProduct extends RegisterRequest {
         canPurchase: boolean;
         currency: string;
         description: string;

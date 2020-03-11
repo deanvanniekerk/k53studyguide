@@ -2,6 +2,8 @@ import { applyMiddleware, compose, createStore } from "redux";
 import { persistStore } from "redux-persist";
 import thunk from "redux-thunk";
 
+import { createPurchaseService, LocalPurchaseService } from "@/purchase";
+
 import createRootReducer from "./rootReducer";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,6 +22,9 @@ export const configureStore = () => {
     );
 
     const persistor = persistStore(store);
+    const purchaseService = createPurchaseService(LocalPurchaseService, store);
 
-    return { store, persistor };
+    purchaseService.registerProduct();
+
+    return { store, persistor, purchaseService };
 };

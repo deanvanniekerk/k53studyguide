@@ -1,3 +1,4 @@
 export * from "./types";
-export * from "./web-purchase";
-export * from "./cordova-purchase";
+export * from "./factory";
+export * from "./CordovaPurchaseService";
+export * from "./LocalPurchaseService";
