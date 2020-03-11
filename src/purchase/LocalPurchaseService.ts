@@ -11,5 +11,10 @@ export class LocalPurchaseService implements PurchaseService {
 
     registerProduct() {
         console.log("LocalPurchaseService > registering product");
+        this.refresh();
+    }
+
+    refresh() {
+        console.log("LocalPurchaseService > refresh");
     }
 }

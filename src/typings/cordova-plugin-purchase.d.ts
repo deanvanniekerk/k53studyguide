@@ -4,6 +4,7 @@ declare namespace store {
     export type StoreProductType =
         | "consumable"
         | "non consumable"
+        | "non renewing subscription"
         | "free subscription"
         | "paid subscription";
 
@@ -14,7 +15,7 @@ declare namespace store {
 
     export interface When {
         approved(callback: (product: StoreProduct) => void): When;
-        error(callback: (err: IError, product: StoreProduct) => void): When;
+        error(callback: (err: Error, product: StoreProduct) => void): When;
         loaded(callback: (product: StoreProduct) => void): When;
         updated(callback: (product: StoreProduct) => void): When;
         owned(callback: (product: StoreProduct) => void): When;
@@ -37,22 +38,36 @@ declare namespace store {
     }
 
     export interface Store {
-        NON_CONSUMABLE: StoreProductType;
+        FREE_SUBSCRIPTION: StoreProductType;
         PAID_SUBSCRIPTION: StoreProductType;
         NON_RENEWING_SUBSCRIPTION: StoreProductType;
+        CONSUMABLE: StoreProductType;
+        NON_CONSUMABLE: StoreProductType;
+
+        REGISTERED: StoreProductState;
+        INVALID: StoreProductState;
+        VALID: StoreProductState;
+        REQUESTED: StoreProductState;
+        INITIATED: StoreProductState;
+        APPROVED: StoreProductState;
+        FINISHED: StoreProductState;
+        OWNED: StoreProductState;
+        DOWNLOADING: StoreProductState;
+        DOWNLOADED: StoreProductState;
+
         DEBUG: number;
 
         ERR_PURCHASE: number;
 
         verbosity: number | boolean;
-        validator: string | IValidator;
+        validator: string | Validator;
 
-        error(callback: (err: IError) => void): void;
+        error(callback: (err: Error) => void): void;
         get(id: string): StoreProduct;
         once(query: string, action: string, callback: () => void): void;
-        register(request: IRegisterRequest): void;
-        when(query: string): IWhen;
-        when(action: string, query: string, callback: (product: StoreProduct) => void): IWhen;
+        register(request: RegisterRequest): void;
+        when(query: string): When;
+        when(action: string, query: string, callback: (product: StoreProduct) => void): When;
         ready(callback: () => void): void;
         refresh(): void;
         off(callback: Function): void;
@@ -101,11 +116,13 @@ declare namespace store {
         finish: () => void;
         loaded: string | boolean;
         owned: boolean;
+        canPurchase: boolean;
         price: string;
         state: StoreProductState;
         title: string;
-        transaction: ITransaction;
+        transaction: Transaction;
         valid: boolean;
         verify: () => void;
+        expiryDate: Date | null;
     }
 }
