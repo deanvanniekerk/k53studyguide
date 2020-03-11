@@ -9,12 +9,11 @@ export class LocalPurchaseService implements PurchaseService {
         this._reduxStore = reduxStore;
     }
 
-    registerProduct() {
+    initialize() {
         console.log("LocalPurchaseService > registering product");
-        this.refresh();
     }
 
-    refresh() {
-        console.log("LocalPurchaseService > refresh");
+    purchase() {
+        console.log("LocalPurchaseService > purchase");
     }
 }

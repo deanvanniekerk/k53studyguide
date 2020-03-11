@@ -5,6 +5,6 @@ export interface PurchaseServiceConstructor {
 }
 
 export interface PurchaseService {
-    registerProduct: () => void;
-    refresh: () => void;
+    initialize: () => void;
+    purchase: () => void;
 }

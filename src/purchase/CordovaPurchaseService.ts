@@ -1,43 +1,59 @@
 import { Store } from "redux";
 
+import { recievePurchaseStatus } from "@/state/purchase";
+
 import { PurchaseService } from "./types";
 
 export class CordovaPurchaseService implements PurchaseService {
     private _reduxStore: Store;
-    private _productId = "premium_1_year";
+    private _productId = "full_access_lifetime";
 
     constructor(reduxStore: Store) {
         this._reduxStore = reduxStore;
     }
 
-    registerProduct() {
+    initialize() {
+        //Register
         store.register({
             id: this._productId,
-            alias: "1 Year Premium Subscription",
+            alias: "K53 Ninja - Full Access",
             type: store.NON_RENEWING_SUBSCRIPTION,
         });
+
+        //Refresh
         this.refresh();
 
-        //Load product (price etc)
-        //store.get(...)
-        //  dispatch to redux
-        //      price, name, owned, expiry
+        //Initial load of product
+        const product = store.get(this._productId);
+        this.handleProductChange(product);
 
-        store.when(this._productId).updated(this.listener);
+        //Subscribe to any additional changes
+        store.when(this._productId).updated(this.handleProductChange);
     }
 
     refresh() {
         store.refresh();
     }
 
-    listener(product: store.StoreProduct) {
-        //Logging?
-        //dispatch productUpdated... product.id, product.state, product.owned etc
-
+    handleProductChange(product: store.StoreProduct) {
         if (product.state === store.APPROVED) {
-            //  dispatch to redux
-            //      owned, expiry
             product.finish();
         }
+
+        const action = recievePurchaseStatus(
+            product.owned,
+            product.canPurchase,
+            product.expiryDate,
+            product.state,
+            product.price,
+            product.title,
+            product.description
+        );
+
+        this._reduxStore.dispatch(action);
+    }
+
+    purchase() {
+        store.order(this._productId);
     }
 }
