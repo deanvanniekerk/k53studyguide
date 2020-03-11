@@ -18,6 +18,7 @@
         "test:watch": "jest --watch --config=jest.config.json",
         "tsc": "tsc",
         "cap-copy": "cap copy",
+        "cap-sync": "cap sync",
         "svg-to-component": "npx @svgr/cli --icon"
     },
     "browserslist": {
