@@ -13,12 +13,16 @@ export class CordovaPurchaseService implements PurchaseService {
     }
 
     initialize() {
+        console.log("CordovaPurchaseService > initialize");
+
         //Register
         store.register({
             id: this._productId,
             alias: "K53 Ninja - Full Access",
             type: store.NON_RENEWING_SUBSCRIPTION,
         });
+
+        console.log("CordovaPurchaseService > refresh");
 
         //Refresh
         this.refresh();
@@ -50,10 +54,14 @@ export class CordovaPurchaseService implements PurchaseService {
             product.description
         );
 
+        console.log("CordovaPurchaseService > product changed", JSON.stringify(product, null, 4));
+
         this._reduxStore.dispatch(action);
     }
 
     purchase() {
+        console.log("CordovaPurchaseService > ordering product");
+
         store.order(this._productId);
     }
 }

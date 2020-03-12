@@ -1,5 +1,7 @@
 import { Store } from "redux";
 
+import { recievePurchaseStatus } from "@/state/purchase";
+
 import { PurchaseService } from "./types";
 
 export class LocalPurchaseService implements PurchaseService {
@@ -15,5 +17,17 @@ export class LocalPurchaseService implements PurchaseService {
 
     purchase() {
         console.log("LocalPurchaseService > purchase");
+
+        const action = recievePurchaseStatus(
+            true,
+            false,
+            new Date(),
+            "DEBUG",
+            "R25",
+            "title",
+            "description"
+        );
+
+        this._reduxStore.dispatch(action);
     }
 }

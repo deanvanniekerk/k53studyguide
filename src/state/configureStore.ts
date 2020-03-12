@@ -2,7 +2,7 @@ import { applyMiddleware, compose, createStore } from "redux";
 import { persistStore } from "redux-persist";
 import thunk from "redux-thunk";
 
-import { createPurchaseService, LocalPurchaseService } from "@/purchase";
+import { CordovaPurchaseService, createPurchaseService, LocalPurchaseService } from "@/purchase";
 
 import createRootReducer from "./rootReducer";
 
@@ -22,9 +22,13 @@ export const configureStore = () => {
     );
 
     const persistor = persistStore(store);
-    const purchaseService = createPurchaseService(LocalPurchaseService, store);
 
-    purchaseService.registerProduct();
+    let purchaseService = createPurchaseService(LocalPurchaseService, store);
+
+    if (__ENVIRONMENT__ === "production")
+        purchaseService = createPurchaseService(CordovaPurchaseService, store);
+
+    purchaseService.initialize();
 
     return { store, persistor, purchaseService };
 };

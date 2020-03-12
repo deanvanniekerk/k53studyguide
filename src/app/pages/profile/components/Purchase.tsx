@@ -3,15 +3,41 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import { HorizontalRule } from "@/app/components";
+import { PurchaseContext } from "@/context";
 import { RootState } from "@/state";
 import { purchaseSelector } from "@/state/purchase";
-import { IonCol, IonGrid, IonRow } from "@ionic/react";
+import { IonButton, IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
 
 type Props = PropsFromState;
 
 const PurchaseComponent: React.FC<Props> = props => {
     return (
         <Grid>
+            <Row>
+                <TitleCol>
+                    <Title>Purchase</Title>
+                </TitleCol>
+            </Row>
+            <Row>
+                <Col>
+                    <PurchaseContext.Consumer>
+                        {service => {
+                            if (!service) return <React.Fragment />;
+
+                            return (
+                                <IonButton
+                                    color="tertiary"
+                                    shape="round"
+                                    fill="solid"
+                                    onClick={() => service.purchase()}
+                                >
+                                    Purchase
+                                </IonButton>
+                            );
+                        }}
+                    </PurchaseContext.Consumer>
+                </Col>
+            </Row>
             <Row>
                 <Col>{JSON.stringify(props.purchase)}</Col>
             </Row>
@@ -24,12 +50,23 @@ const PurchaseComponent: React.FC<Props> = props => {
 
 const Grid = styled(IonGrid)`
     padding: 0 16px;
-    margin-top: 55px;
+    margin-top: 15px;
 `;
 
 const Row = styled(IonRow)`
     padding: 7px 0;
     align-items: center;
+`;
+
+const Title = styled(IonText)`
+    opacity: 0.5;
+    font-family: var(--ion-font-family-bold);
+    font-weight: bold;
+    text-transform: uppercase;
+`;
+
+const TitleCol = styled(IonCol)`
+    padding-bottom: 5px;
 `;
 
 const Col = styled(IonCol)`

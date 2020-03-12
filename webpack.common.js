@@ -1,7 +1,11 @@
 const path = require("path");
+const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const config = require("config");
+
+const environment = config.get("environment");
 
 module.exports = {
     entry: {
@@ -58,5 +62,8 @@ module.exports = {
                 to: path.resolve(__dirname, "build/assets"),
             },
         ]),
+        new webpack.DefinePlugin({
+            __ENVIRONMENT__: JSON.stringify(environment),
+        }),
     ],
 };
