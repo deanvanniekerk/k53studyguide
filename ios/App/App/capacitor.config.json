@@ -1,0 +1,8 @@
+{
+    "appId": "deanvniekerk.k53ninja.app",
+    "appName": "K53 Ninja",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "build",
+    "cordova": {}
+}
