@@ -25,6 +25,9 @@ steps:
           npm run build
       displayName: "React App > Build"
     - script: |
+          npm run cap-sync
+      displayName: "React App > Sync to Navtive Projects"
+    - script: |
           npm run cap-copy
       displayName: "React App > Copy to Navtive Projects"
 
