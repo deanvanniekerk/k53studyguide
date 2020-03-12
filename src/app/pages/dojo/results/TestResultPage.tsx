@@ -23,8 +23,7 @@ const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveQuestionAnswe
     });
 
     const onBackClicked = () => {
-        if (history.length === 0) history.replace("/dojo");
-        else history.goBack();
+        history.replace("/dojo");
     };
 
     const questions = questionAnswers.map<QuestionInfo>(q => ({

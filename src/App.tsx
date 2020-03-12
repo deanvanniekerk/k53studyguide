@@ -18,14 +18,15 @@ import "./global.css";
 
 import React from "react";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
 import { configureStore } from "@/state/configureStore";
 import { IonApp, setupConfig } from "@ionic/react";
 
-import Router from "./app/Router";
+import Startup from "./app/Startup";
 import { PurchaseContext } from "./context";
 
-const { store, purchaseService } = configureStore();
+const { store, purchaseService, persistor } = configureStore();
 
 setupConfig({
     mode: "md",
@@ -35,7 +36,9 @@ const App: React.FC = () => (
     <IonApp>
         <Provider store={store}>
             <PurchaseContext.Provider value={purchaseService}>
-                <Router />
+                <PersistGate loading={null} persistor={persistor}>
+                    <Startup />
+                </PersistGate>
             </PurchaseContext.Provider>
         </Provider>
     </IonApp>

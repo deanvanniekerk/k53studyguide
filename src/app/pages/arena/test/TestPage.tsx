@@ -28,8 +28,7 @@ const TestPage: React.FC<Props> = props => {
     const content = useRef<HTMLIonContentElement>(null);
 
     const onBackClicked = () => {
-        if (history.length === 0) history.replace("/arena");
-        else history.goBack();
+        history.replace("/arena");
     };
 
     const onSubmitClicked = () => {
@@ -50,7 +49,10 @@ const TestPage: React.FC<Props> = props => {
     };
 
     const onScrollTop = () => {
-        if (content.current) content.current.scrollToTop(500);
+        if (content.current) {
+            content.current.scrollHeight;
+            content.current.scrollToTop(500);
+        }
     };
 
     const questions = props.questionAnswers.map<QuestionInfo>(mapToQuestionInfo);

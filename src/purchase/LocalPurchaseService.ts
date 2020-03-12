@@ -13,6 +13,18 @@ export class LocalPurchaseService implements PurchaseService {
 
     initialize() {
         console.log("LocalPurchaseService > registering product");
+
+        const action = recievePurchaseStatus(
+            true,
+            false,
+            new Date(),
+            "INITIALIZE",
+            "R25",
+            "title",
+            "description"
+        );
+
+        this._reduxStore.dispatch(action);
     }
 
     purchase() {
@@ -22,7 +34,7 @@ export class LocalPurchaseService implements PurchaseService {
             true,
             false,
             new Date(),
-            "DEBUG",
+            "PURCHASE",
             "R25",
             "title",
             "description"

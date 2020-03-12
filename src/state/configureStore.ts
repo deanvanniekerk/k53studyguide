@@ -28,7 +28,5 @@ export const configureStore = () => {
     if (__ENVIRONMENT__ === "production")
         purchaseService = createPurchaseService(CordovaPurchaseService, store);
 
-    purchaseService.initialize();
-
     return { store, persistor, purchaseService };
 };
