@@ -39,7 +39,9 @@ const PurchaseComponent: React.FC<Props> = props => {
                 </Col>
             </Row>
             <Row>
-                <Col>{JSON.stringify(props.purchase)}</Col>
+                <Col>
+                    <pre>{JSON.stringify(props.purchase, null, 4)}</pre>
+                </Col>
             </Row>
             <Row>
                 <IonCol>{LineBreak}</IonCol>
