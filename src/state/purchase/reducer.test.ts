@@ -4,7 +4,7 @@ describe("state > settings > reducer", () => {
     const defaultState: PurchaseState = {
         owned: false,
         canPurchase: false,
-        expiryDate: null,
+        expiryDate: undefined,
         status: "",
         price: "",
         title: "",

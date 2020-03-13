@@ -5,7 +5,7 @@ export interface RecievePurchaseStatusAction {
     payload: {
         owned: boolean;
         canPurchase: boolean;
-        expiryDate: Date | null;
+        expiryDate: Date | undefined;
         status: string;
         price: string;
         title: string;
@@ -18,7 +18,7 @@ export type PuchaseActions = RecievePurchaseStatusAction;
 export const recievePurchaseStatus = (
     owned: boolean,
     canPurchase: boolean,
-    expiryDate: Date | null,
+    expiryDate: Date | undefined,
     status: string,
     price: string,
     title: string,

@@ -2,6 +2,7 @@ import { Store } from "redux";
 
 import { recieveLogMessage } from "@/state/log";
 import { recievePurchaseStatus } from "@/state/purchase";
+import { IAPProduct, InAppPurchase2 } from "@ionic-native/in-app-purchase-2";
 
 import { LogData } from "../";
 import { PurchaseService } from "./types";
@@ -9,6 +10,7 @@ import { PurchaseService } from "./types";
 export class CordovaPurchaseService implements PurchaseService {
     private _reduxStore: Store;
     private _productId = "full_access_lifetime";
+    private _product: IAPProduct | null = null;
 
     constructor(reduxStore: Store) {
         this._reduxStore = reduxStore;
@@ -17,36 +19,35 @@ export class CordovaPurchaseService implements PurchaseService {
     initialize() {
         this.log("CordovaPurchaseService > initialize");
 
+        //InAppPurchase2.verbosity = InAppPurchase2.DEBUG;
+
         //Register
-        store.register({
+        InAppPurchase2.register({
             id: this._productId,
-            alias: "K53 Ninja - Full Access",
-            type: store.NON_RENEWING_SUBSCRIPTION,
+            type: InAppPurchase2.NON_RENEWING_SUBSCRIPTION,
         });
 
-        this.log("CordovaPurchaseService > refresh");
+        //Subscribe to any additional changes
+        InAppPurchase2.when(this._productId).updated(this.handleProductChange);
 
         //Refresh
         this.refresh();
 
         //Initial load of product
-        const product = store.get(this._productId);
-        this.handleProductChange(product);
-
-        //Subscribe to any additional changes
-        store.when(this._productId).updated(this.handleProductChange);
+        this._product = InAppPurchase2.get(this._productId);
+        this.handleProductChange(this._product);
     }
 
     refresh() {
-        store.refresh();
+        InAppPurchase2.refresh();
     }
 
-    handleProductChange(product: store.StoreProduct) {
+    handleProductChange(product: IAPProduct) {
         this.log("CordovaPurchaseService > product changed", {
             product: JSON.stringify(product, null, 4),
         });
 
-        if (product.state === store.APPROVED) {
+        if (product.state === InAppPurchase2.APPROVED) {
             product.finish();
         }
 
@@ -64,9 +65,11 @@ export class CordovaPurchaseService implements PurchaseService {
     }
 
     purchase() {
+        if (!this._product) return;
+
         this.log("CordovaPurchaseService > ordering product");
 
-        store.order(this._productId);
+        InAppPurchase2.order(this._product);
     }
 
     log(message: string, data?: LogData) {

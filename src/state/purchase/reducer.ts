@@ -3,7 +3,7 @@ import { PuchaseActions } from "./";
 export type PurchaseState = {
     readonly owned: boolean;
     readonly canPurchase: boolean;
-    readonly expiryDate: Date | null;
+    readonly expiryDate: Date | undefined;
     readonly status: string;
     readonly price: string;
     readonly title: string;
@@ -13,7 +13,7 @@ export type PurchaseState = {
 export const defaultState: PurchaseState = {
     owned: false,
     canPurchase: false,
-    expiryDate: null,
+    expiryDate: undefined,
     status: "",
     price: "",
     title: "",
