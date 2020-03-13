@@ -25,8 +25,7 @@ const TestNavigatorPage: React.FC<Props> = props => {
     const history = useHistory();
 
     const navigateToDojo = () => {
-        if (history.length === 0) history.replace("/");
-        else history.goBack();
+        history.replace("/dojo");
     };
 
     const onBackClicked = () => {

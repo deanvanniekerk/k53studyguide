@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
+
 import { RootState } from "@/state";
 import {
     currentNavigationChildrenSelector,
     recieveCurrentNavigationKey,
 } from "@/state/study/navigation";
-
 import { IonList } from "@ionic/react";
 
 import { NavigationItem } from "../components";

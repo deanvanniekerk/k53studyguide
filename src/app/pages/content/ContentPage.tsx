@@ -1,5 +1,5 @@
 import { arrowUp } from "ionicons/icons";
-import React from "react";
+import React, { useRef } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, Dispatch } from "redux";
@@ -22,20 +22,26 @@ type Props = PropsFromState & PropsFromDispatch;
 
 const ContentPage: React.FC<Props> = props => {
     const history = useHistory();
+    const content = useRef<HTMLIonContentElement>(null);
 
     const onBackClicked = () => {
+        // if (content.current) {
+        //     console.log("scrollHeight", content.current.scrollHeight);
+        //     console.log("scrollTop", content.current.scrollTop);
+        // }
+
         if (props.currentNavigationParent === ROOT_NAVIGATION_KEY) {
-            if (history.length === 0) history.replace("/");
-            else history.goBack();
+            history.replace("/study");
             return;
         }
+
         props.navigateUp();
     };
 
     return (
         <Page>
             <Watermark />
-            <Content>
+            <Content ref={content}>
                 <BackButton onClick={onBackClicked} icon={arrowUp} />
                 <Header />
                 <Navigator />

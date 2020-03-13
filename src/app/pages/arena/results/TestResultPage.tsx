@@ -24,8 +24,7 @@ const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveQuestionAnswe
     });
 
     const onBackClicked = () => {
-        if (history.length === 0) history.replace("/arena");
-        else history.goBack();
+        history.replace("/arena");
     };
 
     const questions = questionAnswers.map<QuestionInfo>(q => ({

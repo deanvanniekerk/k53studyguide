@@ -20,8 +20,7 @@ const TestPage: React.FC<Props> = props => {
     const history = useHistory();
 
     const onBackClicked = () => {
-        if (history.length === 0) history.replace("/dojo");
-        else history.goBack();
+        history.replace("/dojo");
     };
 
     const onSubmitClicked = () => {
