@@ -1,7 +1,9 @@
 import { Store } from "redux";
 
+import { recieveLogMessage } from "@/state/log";
 import { recievePurchaseStatus } from "@/state/purchase";
 
+import { LogData } from "../";
 import { PurchaseService } from "./types";
 
 export class CordovaPurchaseService implements PurchaseService {
@@ -13,7 +15,7 @@ export class CordovaPurchaseService implements PurchaseService {
     }
 
     initialize() {
-        console.log("CordovaPurchaseService > initialize");
+        this.log("CordovaPurchaseService > initialize");
 
         //Register
         store.register({
@@ -22,7 +24,7 @@ export class CordovaPurchaseService implements PurchaseService {
             type: store.NON_RENEWING_SUBSCRIPTION,
         });
 
-        console.log("CordovaPurchaseService > refresh");
+        this.log("CordovaPurchaseService > refresh");
 
         //Refresh
         this.refresh();
@@ -40,6 +42,10 @@ export class CordovaPurchaseService implements PurchaseService {
     }
 
     handleProductChange(product: store.StoreProduct) {
+        this.log("CordovaPurchaseService > product changed", {
+            product: JSON.stringify(product, null, 4),
+        });
+
         if (product.state === store.APPROVED) {
             product.finish();
         }
@@ -54,14 +60,18 @@ export class CordovaPurchaseService implements PurchaseService {
             product.description
         );
 
-        console.log("CordovaPurchaseService > product changed", JSON.stringify(product, null, 4));
-
         this._reduxStore.dispatch(action);
     }
 
     purchase() {
-        console.log("CordovaPurchaseService > ordering product");
+        this.log("CordovaPurchaseService > ordering product");
 
         store.order(this._productId);
+    }
+
+    log(message: string, data?: LogData) {
+        const action = recieveLogMessage("DEBUG", message, data);
+
+        this._reduxStore.dispatch(action);
     }
 }

@@ -22,6 +22,9 @@ const getLevel = (level: LogLevel | "NONE"): number => {
 };
 
 export default () => (next: Dispatch) => (action: AnyAction) => {
+    //Dont log redux persit actions
+    if (action.type.indexOf("persist/") === 0) return next(action);
+
     if (action.type === "LOG_RECIEVE_MESSAGE") {
         const a = action as RecieveLogMessageAction;
 
@@ -31,7 +34,7 @@ export default () => (next: Dispatch) => (action: AnyAction) => {
         if (actionLogLevel <= logLevel) logger.log(a.payload.message, a.payload.data);
     } else {
         if (__LOG_LEVEL__ === "DEBUG") {
-            logger.log(`REDUX ACTION: ${action.type}`, action);
+            logger.log(`Redux Action: ${action.type}`, action);
         }
     }
 

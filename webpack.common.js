@@ -6,7 +6,8 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const config = require("config");
 
 const environment = config.get("environment");
-const azureStorageConnectionString = config.get("azureStorageConnectionString");
+const azureStorageTableUrl = config.get("azureStorageTableUrl");
+const azureStorageTableSasToken = config.get("azureStorageTableSasToken");
 const logLevel = config.get("logLevel");
 
 module.exports = {
@@ -66,7 +67,8 @@ module.exports = {
         ]),
         new webpack.DefinePlugin({
             __ENVIRONMENT__: JSON.stringify(environment),
-            __AZURE_STORAGE_CONNECTION_STRING__: JSON.stringify(azureStorageConnectionString),
+            __AZURE_STORAGE_TABLE_URL__: JSON.stringify(azureStorageTableUrl),
+            __AZURE_STORAGE_TABLE_SAS_TOKEN__: JSON.stringify(azureStorageTableSasToken),
             __LOG_LEVEL__: JSON.stringify(logLevel),
         }),
     ],

@@ -1,5 +1,6 @@
 {
     "environment": "production",
-    "azureStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=k53ninjastore;AccountKey=***REMOVED***;EndpointSuffix=core.windows.net",
-    "logLevel": "DEBUG"
+    "logLevel": "DEBUG",
+    "azureStorageTableUrl": "https://k53ninjastore.table.core.windows.net",
+    "azureStorageTableSasToken": "?***REMOVED***"
 }
