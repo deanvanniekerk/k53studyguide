@@ -1,6 +1,9 @@
 import azure from "azure-storage";
+import { v4 as uuidv4 } from "uuid";
 
 import { LoggerService } from "./";
+
+//https://www.npmjs.com/package/azure-storage
 
 const tableService = azure.createTableService(__AZURE_STORAGE_CONNECTION_STRING__);
 const entGen = azure.TableUtilities.entityGenerator;
@@ -16,8 +19,8 @@ export class AzureStorageLoggerService implements LoggerService {
 
     log(message: string, data?: object) {
         const entity = {
-            PartitionKey: entGen.String("part2"),
-            RowKey: entGen.String("row1"),
+            PartitionKey: entGen.String("todo"),
+            RowKey: entGen.String(uuidv4()),
             Message: entGen.String(message),
             Data: data,
         };
