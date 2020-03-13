@@ -4,6 +4,7 @@ import thunk from "redux-thunk";
 
 import { CordovaPurchaseService, createPurchaseService, LocalPurchaseService } from "@/services";
 
+import loggerMiddleware from "./middleware/loggerMiddleware";
 import createRootReducer from "./rootReducer";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -12,7 +13,7 @@ if (window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"]) {
     enhancers.push(window["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"]());
 }
 
-const middleware = [thunk];
+const middleware = [thunk, loggerMiddleware];
 
 export const configureStore = () => {
     const store = createStore(

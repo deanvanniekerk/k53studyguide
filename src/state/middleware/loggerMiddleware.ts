@@ -1,7 +1,6 @@
-import { AnyAction, Dispatch, Store } from "redux";
+import { AnyAction, Dispatch } from "redux";
 
 import { AzureStorageLoggerService, createLoggerService, LogLevel } from "@/services";
-import { RootState } from "@/state";
 import { RecieveLogMessageAction } from "@/state/log";
 
 const logger = createLoggerService(AzureStorageLoggerService);
@@ -22,7 +21,7 @@ const getLevel = (level: LogLevel | "NONE"): number => {
     }
 };
 
-export default (_store: Store<RootState>) => (next: Dispatch) => (action: AnyAction) => {
+export default () => (next: Dispatch) => (action: AnyAction) => {
     if (action.type === "LOG_RECIEVE_MESSAGE") {
         const a = action as RecieveLogMessageAction;
 
