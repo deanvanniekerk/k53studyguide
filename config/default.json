@@ -1,4 +1,4 @@
 {
     "environment": "development",
-    "azureStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=k53ninjastore;AccountKey=***REMOVED***;EndpointSuffix=core.windows.net"
+    "azureStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=k53ninjastoredev;AccountKey=***REMOVED***;EndpointSuffix=core.windows.net"
 }
