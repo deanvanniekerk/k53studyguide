@@ -2,7 +2,7 @@ import { applyMiddleware, compose, createStore } from "redux";
 import { persistStore } from "redux-persist";
 import thunk from "redux-thunk";
 
-import { CordovaPurchaseService, createPurchaseService, LocalPurchaseService } from "@/purchase";
+import { CordovaPurchaseService, createPurchaseService, LocalPurchaseService } from "@/services";
 
 import createRootReducer from "./rootReducer";
 

@@ -1,3 +1,4 @@
 {
-    "environment": "production"
+    "environment": "production",
+    "azureStorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=k53ninjastore;AccountKey=***REMOVED***;EndpointSuffix=core.windows.net"
 }

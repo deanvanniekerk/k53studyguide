@@ -6,6 +6,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const config = require("config");
 
 const environment = config.get("environment");
+const azureStorageConnectionString = config.get("azureStorageConnectionString");
 
 module.exports = {
     entry: {
@@ -64,6 +65,7 @@ module.exports = {
         ]),
         new webpack.DefinePlugin({
             __ENVIRONMENT__: JSON.stringify(environment),
+            __AZURE_STORAGE_CONNECTION_STRING__: JSON.stringify(azureStorageConnectionString),
         }),
     ],
 };
