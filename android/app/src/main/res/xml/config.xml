@@ -6,6 +6,10 @@
     <param name="android-package" value="com.smartmobilesoftware.inappbilling.InAppBillingPlugin"/>
   </feature>
 
+  <feature name="InAppBillingPlugin">
+    <param name="android-package" value="cc.fovea.PurchasePlugin"/>
+  </feature>
+
   <feature name="UniqueDeviceID">
     <param name="android-package" value="hu.dpal.phonegap.plugins.UniqueDeviceID"/>
   </feature>

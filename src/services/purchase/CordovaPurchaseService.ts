@@ -19,23 +19,36 @@ export class CordovaPurchaseService implements PurchaseService {
     initialize() {
         this.log("CordovaPurchaseService > initialize");
 
-        //InAppPurchase2.verbosity = InAppPurchase2.DEBUG;
+        InAppPurchase2.verbosity = InAppPurchase2.DEBUG;
 
-        //Register
-        InAppPurchase2.register({
-            id: this._productId,
-            type: InAppPurchase2.NON_RENEWING_SUBSCRIPTION,
+        InAppPurchase2.ready(() => {
+            this.log("CordovaPurchaseService > ready");
+
+            //Register
+            InAppPurchase2.register({
+                id: this._productId,
+                type: InAppPurchase2.NON_RENEWING_SUBSCRIPTION,
+            });
+
+            //Subscribe to any additional changes
+            InAppPurchase2.when(this._productId).updated(this.handleProductChange);
+
+            //Refresh
+            this.refresh();
+
+            //Initial load of product
+            this._product = InAppPurchase2.get(this._productId);
+            this.handleProductChange(this._product);
+
+            InAppPurchase2.when(this._product).approved((product: IAPProduct) => {
+                this.log("CordovaPurchaseService > product approved");
+                this.handleProductChange(product);
+            });
         });
 
-        //Subscribe to any additional changes
-        InAppPurchase2.when(this._productId).updated(this.handleProductChange);
-
-        //Refresh
-        this.refresh();
-
-        //Initial load of product
-        this._product = InAppPurchase2.get(this._productId);
-        this.handleProductChange(this._product);
+        InAppPurchase2.error((error: unknown) => {
+            this.log("CordovaPurchaseService > Error : " + JSON.stringify(error));
+        });
     }
 
     refresh() {
