@@ -47,6 +47,7 @@ export class CordovaPurchaseService implements PurchaseService {
         });
 
         InAppPurchase2.error((error: unknown) => {
+            this.log("CordovaPurchaseService > Error");
             this.log("CordovaPurchaseService > Error : " + JSON.stringify(error));
         });
     }
