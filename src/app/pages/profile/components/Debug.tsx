@@ -1,21 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import { HorizontalRule } from "@/app/components";
-import { UniqueDeviceID } from "@ionic-native/unique-device-id";
+import { Device } from "@ionic-native/device";
 import { IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
 
 const Debug: React.FC = () => {
-    const [deviceId, setDeviceId] = useState("");
-
-    useEffect(() => {
-        const loadDeviceId = async () => {
-            const id = await UniqueDeviceID.get();
-            setDeviceId(id);
-        };
-        loadDeviceId();
-    }, []);
-
     return (
         <Grid>
             <Row>
@@ -24,8 +14,20 @@ const Debug: React.FC = () => {
                 </TitleCol>
             </Row>
             <Row>
+                <NameCol>Device Model</NameCol>
+                <ValueCol>{Device.model}</ValueCol>
+            </Row>
+            <Row>
                 <NameCol>Device Id</NameCol>
-                <ValueCol>{deviceId}</ValueCol>
+                <ValueCol>{Device.uuid}</ValueCol>
+            </Row>
+            <Row>
+                <NameCol>Device Serial</NameCol>
+                <ValueCol>{Device.serial}</ValueCol>
+            </Row>
+            <Row>
+                <NameCol>Device Version</NameCol>
+                <ValueCol>{Device.version}</ValueCol>
             </Row>
             <Row>
                 <IonCol>{LineBreak}</IonCol>

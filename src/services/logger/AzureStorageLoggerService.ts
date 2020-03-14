@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-import { UniqueDeviceID } from "@ionic-native/unique-device-id";
+import { Device } from "@ionic-native/device";
 
 import { LoggerService } from "./";
 import { insertEntity } from "./azureStorage";
@@ -10,7 +10,7 @@ export class AzureStorageLoggerService implements LoggerService {
     private _deviceId = "";
 
     async initialize() {
-        this._deviceId = await UniqueDeviceID.get();
+        this._deviceId = Device.uuid;
     }
 
     log(message: string, data?: object) {
