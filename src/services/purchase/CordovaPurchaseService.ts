@@ -1,19 +1,28 @@
 import { Store } from "redux";
+import { v4 as uuidv4 } from "uuid";
 
 import { recieveLogMessage } from "@/state/log";
-import { recievePurchaseStatus } from "@/state/purchase";
+import {
+    recievePurchaseOwned,
+    recievePurchaseProduct,
+    recievePurchaseStatus,
+} from "@/state/purchase";
+import { Device } from "@ionic-native/device";
 import { IAPProduct, InAppPurchase2 } from "@ionic-native/in-app-purchase-2";
 
 import { LogData } from "../";
-import { PurchaseService } from "./types";
+import { insertEntity, query } from "../azureStorage";
+import { PurchaseRecord, PurchaseService } from "./types";
 
 export class CordovaPurchaseService implements PurchaseService {
-    private _reduxStore: Store;
-    private _productId = "full_access_lifetime";
-    private _product: IAPProduct | null = null;
+    private readonly _reduxStore: Store;
+    private readonly _tableName = "Purchases";
+    private readonly _productId = "full_access_lifetime";
+    private readonly _deviceId: string;
 
     constructor(reduxStore: Store) {
         this._reduxStore = reduxStore;
+        this._deviceId = Device.uuid;
     }
 
     initialize() {
@@ -33,48 +42,79 @@ export class CordovaPurchaseService implements PurchaseService {
                 product: JSON.stringify(product, null, 4),
             });
 
+            //Product has been purchased, record it
             if (product.state === InAppPurchase2.APPROVED) {
-                product.finish();
+                const now = new Date();
+                const record: PurchaseRecord = {
+                    PartitionKey: this._deviceId,
+                    RowKey: uuidv4(),
+                    Owned: true,
+                    PurchaseDate: now.toISOString(),
+                    Transaction: product.transaction ? JSON.stringify(product.transaction) : "",
+                };
+                insertEntity(this._tableName, record).then(success => {
+                    if (!success) return;
+
+                    //Dispatch Owned
+                    const ownedAction = recievePurchaseOwned(true, now);
+                    this._reduxStore.dispatch(ownedAction);
+
+                    //Tell store purchase is successfull
+                    product.finish();
+                });
             }
 
-            const action = recievePurchaseStatus(
-                product.owned,
-                product.canPurchase,
-                product.expiryDate,
-                product.state,
+            //Dispatch Status
+            const statusAction = recievePurchaseStatus(product.canPurchase, product.state);
+            this._reduxStore.dispatch(statusAction);
+
+            //Dispatch Product
+            const productAction = recievePurchaseProduct(
                 product.price,
                 product.title,
                 product.description
             );
-
-            this._reduxStore.dispatch(action);
+            this._reduxStore.dispatch(productAction);
         });
-
-        //Initial load of product
-        //this._product = InAppPurchase2.get(this._productId);
-        //this.handleProductChange(this._product);
-
-        // InAppPurchase2.when(this._product).approved((product: IAPProduct) => {
-        //     this.log("CordovaPurchaseService > product approved");
-        //     this.handleProductChange(product);
-        // });
 
         InAppPurchase2.error((error: unknown) => {
             this.log("CordovaPurchaseService > Error : " + JSON.stringify(error));
         });
 
         //Refresh
-        this.refresh();
-    }
-
-    refresh() {
         InAppPurchase2.refresh();
     }
 
     purchase() {
         this.log("CordovaPurchaseService > ordering product");
-
         InAppPurchase2.order(this._productId);
+    }
+
+    loadPurchase() {
+        this.log("CordovaPurchaseService > loading owned");
+
+        const selectKeys = ["PartitionKey", "RowKey", "Owned", "PurchaseDate", "Transaction"];
+
+        query<PurchaseRecord>(this._tableName, this._deviceId, selectKeys).then(records => {
+            this.log("CordovaPurchaseService > query response", {
+                records: JSON.stringify(records),
+            });
+
+            if (records.length > 0) {
+                //Sort by purchase date
+                const sorted = records.sort((a, b) => {
+                    return +new Date(b.PurchaseDate) - +new Date(a.PurchaseDate);
+                });
+
+                const record = sorted[0];
+                //Dispatch Owned
+                const ownedAction = recievePurchaseOwned(
+                    record.Owned,
+                    new Date(record.PurchaseDate)
+                );
+                this._reduxStore.dispatch(ownedAction);
+            }
+        });
     }
 
     log(message: string, data?: LogData) {

@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import { bindActionCreators, Dispatch } from "redux";
 import styled from "styled-components";
 
+import { PurchaseContext } from "@/context";
 import { RootState } from "@/state";
 import { loadQuestionAnswers, testInProgressSelector } from "@/state/arena/test";
+import { hasFullAccessSelector } from "@/state/purchase";
 import { IonContent, IonPage } from "@ionic/react";
 
 import { ArenaPageHeader } from "./ArenaPageHeader";
@@ -16,6 +18,11 @@ type Props = PropsFromState & PropsFromDispatch;
 
 const ArenaPage: React.FC<Props> = props => {
     const history = useHistory();
+    const purchaseService = useContext(PurchaseContext);
+
+    useEffect(() => {
+        if (!props.hasFullAccess && purchaseService) purchaseService.loadPurchase();
+    }, [props.hasFullAccess]);
 
     const onStartTestClicked = () => {
         //If no test exists, load one, else continue with previous
@@ -47,6 +54,7 @@ type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
     return {
         testInProgress: testInProgressSelector(state),
+        hasFullAccess: hasFullAccessSelector(state),
     };
 };
 

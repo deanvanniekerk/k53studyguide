@@ -2,25 +2,27 @@ import { v4 as uuidv4 } from "uuid";
 
 import { Device } from "@ionic-native/device";
 
-import { LoggerService } from "./";
-import { insertEntity } from "./azureStorage";
+import { insertEntity } from "../azureStorage";
+import { LoggerService, LogRecord } from "./";
 
 export class AzureStorageLoggerService implements LoggerService {
     private _tableName = "Logs";
     private _deviceId = "";
 
     async initialize() {
-        this._deviceId = Device.uuid;
+        this._deviceId = Device.uuid || "no-device-id";
     }
 
     log(message: string, data?: object) {
-        const entity = {
-            PartitionKey: this._deviceId || "no-device-id",
+        const entity: LogRecord = {
+            PartitionKey: this._deviceId,
             RowKey: uuidv4(),
             Message: message,
             Data: data ? JSON.stringify(data) : "",
         };
 
-        insertEntity(this._tableName, entity);
+        insertEntity(this._tableName, entity).then(success => {
+            if (!success) console.log("Error writing log record");
+        });
     }
 }

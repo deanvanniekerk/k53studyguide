@@ -2,8 +2,8 @@ import { PuchaseActions } from "./";
 
 export type PurchaseState = {
     readonly owned: boolean;
+    readonly purchaseDate: Date | null;
     readonly canPurchase: boolean;
-    readonly expiryDate: Date | undefined;
     readonly status: string;
     readonly price: string;
     readonly title: string;
@@ -12,8 +12,8 @@ export type PurchaseState = {
 
 export const defaultState: PurchaseState = {
     owned: false,
+    purchaseDate: null,
     canPurchase: false,
-    expiryDate: undefined,
     status: "",
     price: "",
     title: "",
@@ -28,13 +28,21 @@ export const reducer = (
         case "PURCHASE_RECIEVE_STATUS":
             return {
                 ...state,
-                owned: action.payload.owned,
                 canPurchase: action.payload.canPurchase,
-                expiryDate: action.payload.expiryDate,
                 status: action.payload.status,
+            };
+        case "PURCHASE_RECIEVE_PRODUCT":
+            return {
+                ...state,
                 price: action.payload.price,
                 title: action.payload.title,
                 description: action.payload.description,
+            };
+        case "PURCHASE_RECIEVE_OWNED":
+            return {
+                ...state,
+                owned: action.payload.owned,
+                purchaseDate: action.payload.purchaseDate,
             };
         default:
             return state;

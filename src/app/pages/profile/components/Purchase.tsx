@@ -1,51 +1,54 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
 import { HorizontalRule } from "@/app/components";
 import { PurchaseContext } from "@/context";
 import { RootState } from "@/state";
-import { purchaseSelector } from "@/state/purchase";
+import { canPurchaseSelector, hasFullAccessSelector, purchaseSelector } from "@/state/purchase";
 import { IonButton, IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
+
+import { Row } from "./";
 
 type Props = PropsFromState;
 
 const PurchaseComponent: React.FC<Props> = props => {
+    const purchaseService = useContext(PurchaseContext);
+
+    useEffect(() => {
+        if (!props.hasFullAccess && purchaseService) purchaseService.loadPurchase();
+    }, [props.hasFullAccess]);
+
     return (
         <Grid>
-            <Row>
+            <FullRow>
                 <TitleCol>
                     <Title>Purchase</Title>
                 </TitleCol>
-            </Row>
-            <Row>
+            </FullRow>
+            <FullRow>
                 <Col>
-                    <PurchaseContext.Consumer>
-                        {service => {
-                            if (!service) return <React.Fragment />;
-
-                            return (
-                                <IonButton
-                                    color="tertiary"
-                                    shape="round"
-                                    fill="solid"
-                                    onClick={() => service.purchase()}
-                                >
-                                    Purchase
-                                </IonButton>
-                            );
-                        }}
-                    </PurchaseContext.Consumer>
+                    {props.canPurchase && !!purchaseService && (
+                        <IonButton
+                            color="tertiary"
+                            shape="round"
+                            fill="solid"
+                            onClick={() => purchaseService.purchase()}
+                        >
+                            Purchase
+                        </IonButton>
+                    )}
                 </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <pre>{JSON.stringify(props.purchase, null, 4)}</pre>
-                </Col>
-            </Row>
-            <Row>
+            </FullRow>
+            {props.purchase.owned && (
+                <React.Fragment>
+                    <Row name="Full Access Purchased" value={props.purchase.owned} />
+                    <Row name="Purchase Date" value={props.purchase.purchaseDate} />
+                </React.Fragment>
+            )}
+            <FullRow>
                 <IonCol>{LineBreak}</IonCol>
-            </Row>
+            </FullRow>
         </Grid>
     );
 };
@@ -55,7 +58,7 @@ const Grid = styled(IonGrid)`
     margin-top: 15px;
 `;
 
-const Row = styled(IonRow)`
+const FullRow = styled(IonRow)`
     padding: 7px 0;
     align-items: center;
 `;
@@ -83,6 +86,8 @@ type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
     return {
         purchase: purchaseSelector(state),
+        hasFullAccess: hasFullAccessSelector(state),
+        canPurchase: canPurchaseSelector(state),
     };
 };
 

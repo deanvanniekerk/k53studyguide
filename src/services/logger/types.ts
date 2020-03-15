@@ -7,8 +7,15 @@ export interface LoggerService {
     log: (message: string, data?: LogData) => void;
 }
 
+export type LogRecord = {
+    PartitionKey: string;
+    RowKey: string;
+    Message: string;
+    Data: string;
+};
+
 export type LogData = {
-    [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+    [key: string]: string;
 };
 
 export type LogLevel = "DEBUG" | "INFO" | "WARNING" | "ERROR" | "DEBUG";
