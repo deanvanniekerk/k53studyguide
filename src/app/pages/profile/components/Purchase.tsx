@@ -26,9 +26,9 @@ const PurchaseComponent: React.FC<Props> = props => {
                     <Title>Purchase</Title>
                 </TitleCol>
             </FullRow>
-            <FullRow>
-                <Col>
-                    {props.canPurchase && !!purchaseService && (
+            {props.canPurchase && !!purchaseService && (
+                <FullRow>
+                    <Col>
                         <IonButton
                             color="tertiary"
                             shape="round"
@@ -37,9 +37,9 @@ const PurchaseComponent: React.FC<Props> = props => {
                         >
                             Purchase
                         </IonButton>
-                    )}
-                </Col>
-            </FullRow>
+                    </Col>
+                </FullRow>
+            )}
             {props.purchase.owned && (
                 <React.Fragment>
                     <Row name="Full Access Purchased" value={props.purchase.owned ? "Yes" : "No"} />

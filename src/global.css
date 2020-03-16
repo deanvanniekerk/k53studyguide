@@ -2,6 +2,7 @@ ion-tab-bar {
     --background: var(--ion-color-dark);
     --color: var(--ion-color-light);
     --ion-color-primary: var(--ion-color-light);
+    height: 70px;
 }
 
 ion-tab-button {

@@ -24,7 +24,7 @@ import StudyPage from "./pages/study/StudyPage";
 type Props = PropsFromState;
 
 const iconStyles: React.CSSProperties = {
-    fontSize: "1.8rem",
+    fontSize: "2rem",
 };
 
 const Router: React.FC<Props> = props => {

@@ -89,8 +89,6 @@ export class LocalPurchaseService implements PurchaseService {
                 //Dispatch Owned
                 const ownedAction = recievePurchaseOwned(record.Owned, record.PurchaseDate);
 
-                console.log("ownedAction", ownedAction);
-
                 this._reduxStore.dispatch(ownedAction);
             }
         });
