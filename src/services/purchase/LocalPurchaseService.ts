@@ -45,30 +45,33 @@ export class LocalPurchaseService implements PurchaseService {
         statusAction = recievePurchaseStatus(false, "initiated");
         this._reduxStore.dispatch(statusAction);
 
-        statusAction = recievePurchaseStatus(false, "approved");
-        this._reduxStore.dispatch(statusAction);
-
-        const now = new Date();
-        const record: PurchaseRecord = {
-            PartitionKey: this._deviceId,
-            RowKey: uuidv4(),
-            Owned: true,
-            PurchaseDate: now.toISOString(),
-            Transaction: "Mock transaction data",
-        };
-        insertEntity(this._tableName, record).then(success => {
-            if (!success) return;
-
-            //Dispatch Owned
-            const ownedAction = recievePurchaseOwned(true, now.toISOString());
-            this._reduxStore.dispatch(ownedAction);
-
-            statusAction = recievePurchaseStatus(false, "finished");
+        //Add delay to simulate comms with server
+        setTimeout(() => {
+            statusAction = recievePurchaseStatus(false, "approved");
             this._reduxStore.dispatch(statusAction);
 
-            statusAction = recievePurchaseStatus(false, "valid");
-            this._reduxStore.dispatch(statusAction);
-        });
+            const now = new Date();
+            const record: PurchaseRecord = {
+                PartitionKey: this._deviceId,
+                RowKey: uuidv4(),
+                Owned: true,
+                PurchaseDate: now.toISOString(),
+                Transaction: "Mock transaction data",
+            };
+            insertEntity(this._tableName, record).then(success => {
+                if (!success) return;
+
+                //Dispatch Owned
+                const ownedAction = recievePurchaseOwned(true, now.toISOString());
+                this._reduxStore.dispatch(ownedAction);
+
+                statusAction = recievePurchaseStatus(false, "finished");
+                this._reduxStore.dispatch(statusAction);
+
+                statusAction = recievePurchaseStatus(true, "valid");
+                this._reduxStore.dispatch(statusAction);
+            });
+        }, 2000);
     }
 
     loadPurchase() {
@@ -79,7 +82,11 @@ export class LocalPurchaseService implements PurchaseService {
         query<PurchaseRecord>(this._tableName, this._deviceId, selectKeys).then(records => {
             console.log("LocalPurchaseService > query response", records);
 
-            if (records.length > 0) {
+            if (records.length === 0) {
+                //Dispatch Owned
+                const ownedAction = recievePurchaseOwned(false, null);
+                this._reduxStore.dispatch(ownedAction);
+            } else {
                 //Sort by purchase date
                 const sorted = records.sort((a, b) => {
                     return +new Date(b.PurchaseDate) - +new Date(a.PurchaseDate);

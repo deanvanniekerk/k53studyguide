@@ -23,6 +23,9 @@ const Container = styled(IonRow)`
 `;
 
 const NameCol = styled(IonCol)`
+    font-size: var(--ion-font-size-md);
+    font-family: var(--ion-font-family-bold);
+    font-weight: bold;
     flex: 0;
     white-space: nowrap;
     padding-right: 15px;
@@ -30,6 +33,7 @@ const NameCol = styled(IonCol)`
 
 const ValueCol = styled(IonCol)`
     text-align: right;
+    font-size: var(--ion-font-size-md);
 `;
 
 export { Row };

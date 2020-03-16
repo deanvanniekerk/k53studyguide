@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
 import { HorizontalRule } from "@/app/components";
+import PurchaseModal from "@/app/modals/PurchaseModal";
 import { PurchaseContext } from "@/context";
 import { RootState } from "@/state";
 import { canPurchaseSelector, hasFullAccessSelector, purchaseSelector } from "@/state/purchase";
@@ -14,6 +15,7 @@ type Props = PropsFromState;
 
 const PurchaseComponent: React.FC<Props> = props => {
     const purchaseService = useContext(PurchaseContext);
+    const [purchaseModalVisible, setPurchaseModalVisible] = useState(false);
 
     useIonViewWillEnter(() => {
         if (!props.hasFullAccess && purchaseService) purchaseService.loadPurchase();
@@ -23,32 +25,45 @@ const PurchaseComponent: React.FC<Props> = props => {
         <Grid>
             <FullRow>
                 <TitleCol>
-                    <Title>Purchase</Title>
+                    <Title>Account</Title>
                 </TitleCol>
             </FullRow>
-            {props.canPurchase && !!purchaseService && (
+            {props.canPurchase && (
                 <FullRow>
                     <Col>
                         <IonButton
                             color="tertiary"
                             shape="round"
                             fill="solid"
-                            onClick={() => purchaseService.purchase()}
+                            onClick={() => setPurchaseModalVisible(true)}
                         >
-                            Purchase
+                            Go Premium
                         </IonButton>
                     </Col>
                 </FullRow>
             )}
             {props.purchase.owned && (
                 <React.Fragment>
-                    <Row name="Full Access Purchased" value={props.purchase.owned ? "Yes" : "No"} />
-                    <Row name="Purchase Date" value={props.purchase.purchaseDate || ""} />
+                    <Row name="Premium Purchased" value={props.purchase.owned ? "Yes" : "No"} />
+                    <Row
+                        name="Purchase Date"
+                        value={
+                            props.purchase.purchaseDate
+                                ? new Date(props.purchase.purchaseDate).toLocaleDateString()
+                                : ""
+                        }
+                    />
                 </React.Fragment>
             )}
             <FullRow>
                 <IonCol>{LineBreak}</IonCol>
             </FullRow>
+            <PurchaseModal
+                isOpen={purchaseModalVisible}
+                onDidDismiss={() => {
+                    setPurchaseModalVisible(false);
+                }}
+            />
         </Grid>
     );
 };

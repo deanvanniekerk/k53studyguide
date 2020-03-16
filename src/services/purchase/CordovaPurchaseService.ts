@@ -100,7 +100,11 @@ export class CordovaPurchaseService implements PurchaseService {
                 records: JSON.stringify(records),
             });
 
-            if (records.length > 0) {
+            if (records.length === 0) {
+                //Dispatch Owned
+                const ownedAction = recievePurchaseOwned(false, null);
+                this._reduxStore.dispatch(ownedAction);
+            } else {
                 //Sort by purchase date
                 const sorted = records.sort((a, b) => {
                     return +new Date(b.PurchaseDate) - +new Date(a.PurchaseDate);
@@ -109,6 +113,7 @@ export class CordovaPurchaseService implements PurchaseService {
                 const record = sorted[0];
                 //Dispatch Owned
                 const ownedAction = recievePurchaseOwned(record.Owned, record.PurchaseDate);
+
                 this._reduxStore.dispatch(ownedAction);
             }
         });
