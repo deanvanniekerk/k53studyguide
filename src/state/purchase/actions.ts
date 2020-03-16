@@ -23,7 +23,7 @@ export interface RecievePurchaseOwnedAction {
     type: typeof PURCHASE_RECIEVE_OWNED;
     payload: {
         owned: boolean;
-        purchaseDate: Date | null;
+        purchaseDate: string | null;
     };
 }
 
@@ -58,7 +58,7 @@ export const recievePurchaseProduct = (
 
 export const recievePurchaseOwned = (
     owned: boolean,
-    purchaseDate: Date | null
+    purchaseDate: string | null
 ): RecievePurchaseOwnedAction => ({
     type: PURCHASE_RECIEVE_OWNED,
     payload: {

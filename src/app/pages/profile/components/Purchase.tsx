@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
@@ -6,7 +6,7 @@ import { HorizontalRule } from "@/app/components";
 import { PurchaseContext } from "@/context";
 import { RootState } from "@/state";
 import { canPurchaseSelector, hasFullAccessSelector, purchaseSelector } from "@/state/purchase";
-import { IonButton, IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
+import { IonButton, IonCol, IonGrid, IonRow, IonText, useIonViewWillEnter } from "@ionic/react";
 
 import { Row } from "./";
 
@@ -15,9 +15,9 @@ type Props = PropsFromState;
 const PurchaseComponent: React.FC<Props> = props => {
     const purchaseService = useContext(PurchaseContext);
 
-    useEffect(() => {
+    useIonViewWillEnter(() => {
         if (!props.hasFullAccess && purchaseService) purchaseService.loadPurchase();
-    }, [props.hasFullAccess]);
+    });
 
     return (
         <Grid>
@@ -42,8 +42,8 @@ const PurchaseComponent: React.FC<Props> = props => {
             </FullRow>
             {props.purchase.owned && (
                 <React.Fragment>
-                    <Row name="Full Access Purchased" value={props.purchase.owned} />
-                    <Row name="Purchase Date" value={props.purchase.purchaseDate} />
+                    <Row name="Full Access Purchased" value={props.purchase.owned ? "Yes" : "No"} />
+                    <Row name="Purchase Date" value={props.purchase.purchaseDate || ""} />
                 </React.Fragment>
             )}
             <FullRow>

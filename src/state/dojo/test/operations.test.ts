@@ -91,11 +91,11 @@ describe("state > dojo > test > operations", () => {
             dojo: {
                 log: {
                     quesionsSuccesfullyAnsweredDates: {
-                        [questions[9].id]: new Date(5000),
-                        [questions[1].id]: new Date(6000),
-                        [questions[0].id]: new Date(7000),
-                        [questions[2].id]: new Date(8000),
-                        [questions[5].id]: new Date(9000),
+                        [questions[9].id]: new Date(5000).toISOString(),
+                        [questions[1].id]: new Date(6000).toISOString(),
+                        [questions[0].id]: new Date(7000).toISOString(),
+                        [questions[2].id]: new Date(8000).toISOString(),
+                        [questions[5].id]: new Date(9000).toISOString(),
                     },
                 },
                 navigation: {
@@ -188,7 +188,9 @@ describe("state > dojo > test > operations", () => {
             },
         });
 
-        const spy = jest.spyOn(global, "Date");
+        const now = new Date();
+        //@ts-ignore
+        const spy = jest.spyOn(global, "Date").mockImplementation(() => now);
 
         store.dispatch(submitTest());
 
@@ -200,8 +202,10 @@ describe("state > dojo > test > operations", () => {
 
         expect(actions[1].payload.questionId).toEqual(questions[0].id);
 
-        const date = spy.mock.instances[0];
-        expect(actions[1].payload.date).toEqual(date);
+        expect(actions[1].payload.date).toEqual(now.toISOString());
+
+        spy.mockReset();
+        spy.mockRestore();
     });
 
     it("submitTest - 0 experience gained", () => {
@@ -224,7 +228,7 @@ describe("state > dojo > test > operations", () => {
             dojo: {
                 log: {
                     quesionsSuccesfullyAnsweredDates: {
-                        [questions[0].id]: new Date(),
+                        [questions[0].id]: new Date().toISOString(),
                     },
                 },
                 test: {
@@ -233,7 +237,9 @@ describe("state > dojo > test > operations", () => {
             },
         });
 
-        const spy = jest.spyOn(global, "Date");
+        const now = new Date();
+        //@ts-ignore
+        const spy = jest.spyOn(global, "Date").mockImplementation(() => now);
 
         store.dispatch(submitTest());
 
@@ -245,7 +251,9 @@ describe("state > dojo > test > operations", () => {
 
         expect(actions[1].payload.questionId).toEqual(questions[0].id);
 
-        const date = spy.mock.instances[0];
-        expect(actions[1].payload.date).toEqual(date);
+        expect(actions[1].payload.date).toEqual(now.toISOString());
+
+        spy.mockReset();
+        spy.mockRestore();
     });
 });

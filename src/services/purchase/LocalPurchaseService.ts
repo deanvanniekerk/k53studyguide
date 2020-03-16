@@ -60,7 +60,7 @@ export class LocalPurchaseService implements PurchaseService {
             if (!success) return;
 
             //Dispatch Owned
-            const ownedAction = recievePurchaseOwned(true, now);
+            const ownedAction = recievePurchaseOwned(true, now.toISOString());
             this._reduxStore.dispatch(ownedAction);
 
             statusAction = recievePurchaseStatus(false, "finished");
@@ -87,10 +87,10 @@ export class LocalPurchaseService implements PurchaseService {
 
                 const record = sorted[0];
                 //Dispatch Owned
-                const ownedAction = recievePurchaseOwned(
-                    record.Owned,
-                    new Date(record.PurchaseDate)
-                );
+                const ownedAction = recievePurchaseOwned(record.Owned, record.PurchaseDate);
+
+                console.log("ownedAction", ownedAction);
+
                 this._reduxStore.dispatch(ownedAction);
             }
         });

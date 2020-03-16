@@ -164,10 +164,10 @@ describe("state > study > navigation > selectors", () => {
 
         it("some correct answers", () => {
             const quesionsSuccesfullyAnsweredDates: QuesionsSuccesfullyAnsweredDates = {
-                [questions[0].id]: new Date(),
-                [questions[3].id]: new Date(),
-                [questions[7].id]: new Date(),
-                [questions[8].id]: new Date(),
+                [questions[0].id]: new Date().toISOString(),
+                [questions[3].id]: new Date().toISOString(),
+                [questions[7].id]: new Date().toISOString(),
+                [questions[8].id]: new Date().toISOString(),
             };
 
             const actual = selectors.correctlyAnsweredQuestionsTotalsSelector.resultFunc(

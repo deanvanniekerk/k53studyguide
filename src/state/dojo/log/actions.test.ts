@@ -7,11 +7,13 @@ describe("state > dojo > log > actions", () => {
             type: "DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE",
             payload: {
                 questionId: "99",
-                date: date,
+                date: date.toISOString(),
             },
         };
 
-        expect(actions.recieveQuesionSuccesfullyAnsweredDate("99", date)).toEqual(expectedAction);
+        expect(actions.recieveQuesionSuccesfullyAnsweredDate("99", date.toISOString())).toEqual(
+            expectedAction
+        );
     });
 
     it("clearQuesionSuccesfullyAnsweredDates", () => {

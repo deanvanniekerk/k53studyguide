@@ -31,10 +31,11 @@ export default () => (next: Dispatch) => (action: AnyAction) => {
         const actionLogLevel = getLevel(a.payload.level);
         const logLevel = getLevel(__LOG_LEVEL__);
 
-        if (actionLogLevel <= logLevel) logger.log(a.payload.message, a.payload.data);
+        if (actionLogLevel <= logLevel)
+            logger.log(a.payload.level, a.payload.message, a.payload.data);
     } else {
         if (__LOG_LEVEL__ === "DEBUG") {
-            logger.log(`Redux Action: ${action.type}`, action);
+            logger.log("DEBUG", `Redux Action: ${action.type}`, action);
         }
     }
 

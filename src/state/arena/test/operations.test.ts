@@ -131,7 +131,7 @@ describe("state > arena > test > operations", () => {
             arena: {
                 log: {
                     quesionsSuccesfullyAnsweredDates: {
-                        [questions[0].id]: new Date(),
+                        [questions[0].id]: new Date().toISOString(),
                     },
                 },
                 test: {
@@ -140,7 +140,9 @@ describe("state > arena > test > operations", () => {
             },
         });
 
-        const spy = jest.spyOn(global, "Date");
+        const now = new Date();
+        //@ts-ignore
+        const spy = jest.spyOn(global, "Date").mockImplementation(() => now);
 
         store.dispatch(submitTest());
 
@@ -149,8 +151,11 @@ describe("state > arena > test > operations", () => {
         expect(actions.length).toEqual(1);
 
         expect(actions[0].payload.questionId).toEqual(questions[0].id);
-        const date = spy.mock.instances[0];
-        expect(actions[0].payload.date).toEqual(date);
+
+        expect(actions[0].payload.date).toEqual(now.toISOString());
+
+        spy.mockReset();
+        spy.mockRestore();
     });
 
     it("submitTest > pass", () => {

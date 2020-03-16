@@ -5,7 +5,7 @@ describe("state > study > log > selectors", () => {
     //Setup Data --------------------------------------------
     const defaultState: LogState = {
         quesionsSuccesfullyAnsweredDates: {
-            "1": new Date(),
+            "1": new Date().toISOString(),
         },
     };
     //-----------------------------------------------------------

@@ -5,7 +5,7 @@ describe("state > arena > log > selectors", () => {
     //Setup Data --------------------------------------------
     const defaultState: LogState = {
         quesionsSuccesfullyAnsweredDates: {
-            "1": new Date(),
+            "1": new Date().toISOString(),
         },
         testsPassed: 5,
     };

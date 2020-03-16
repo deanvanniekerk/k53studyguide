@@ -9,7 +9,7 @@ export interface RecieveQuesionSuccesfullyAnsweredDateAction {
     type: typeof ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE;
     payload: {
         questionId: string;
-        date: Date;
+        date: string;
     };
 }
 
@@ -33,7 +33,7 @@ export type LogActions =
 
 export const recieveQuesionSuccesfullyAnsweredDate = (
     questionId: string,
-    date: Date
+    date: string
 ): RecieveQuesionSuccesfullyAnsweredDateAction => ({
     type: ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE,
     payload: {

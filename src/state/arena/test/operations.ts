@@ -89,7 +89,12 @@ export const submitTest = (): ThunkAction<
 
         questionAnswers.forEach(qa => {
             if (qa.answer === qa.question.answer)
-                dispatch(recieveQuesionSuccesfullyAnsweredDate(qa.question.id, dateAnswered));
+                dispatch(
+                    recieveQuesionSuccesfullyAnsweredDate(
+                        qa.question.id,
+                        dateAnswered.toISOString()
+                    )
+                );
         });
     };
 };

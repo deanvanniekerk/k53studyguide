@@ -4,7 +4,7 @@ describe("state > study > log > reducer", () => {
     const date1 = new Date();
     const defaultState: LogState = {
         quesionsSuccesfullyAnsweredDates: {
-            "1": date1,
+            "1": date1.toISOString(),
         },
     };
 
@@ -14,7 +14,7 @@ describe("state > study > log > reducer", () => {
             type: "DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE",
             payload: {
                 questionId: "2",
-                date: date2,
+                date: date2.toISOString(),
             },
         });
 
@@ -22,7 +22,7 @@ describe("state > study > log > reducer", () => {
             ...defaultState,
             quesionsSuccesfullyAnsweredDates: {
                 ...defaultState.quesionsSuccesfullyAnsweredDates,
-                "2": date2,
+                "2": date2.toISOString(),
             },
         };
 
@@ -36,7 +36,7 @@ describe("state > study > log > reducer", () => {
             ...defaultState,
             quesionsSuccesfullyAnsweredDates: {
                 ...defaultState.quesionsSuccesfullyAnsweredDates,
-                "2": date2,
+                "2": date2.toISOString(),
             },
         };
 
@@ -44,7 +44,7 @@ describe("state > study > log > reducer", () => {
             type: "DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE",
             payload: {
                 questionId: "2",
-                date: date3,
+                date: date3.toISOString(),
             },
         });
 
@@ -52,7 +52,7 @@ describe("state > study > log > reducer", () => {
             ...defaultState,
             quesionsSuccesfullyAnsweredDates: {
                 ...defaultState.quesionsSuccesfullyAnsweredDates,
-                "2": date2,
+                "2": date2.toISOString(),
             },
         };
 

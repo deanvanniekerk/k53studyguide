@@ -4,12 +4,13 @@ export interface LoggerServiceConstructor {
 
 export interface LoggerService {
     initialize: () => void;
-    log: (message: string, data?: LogData) => void;
+    log: (level: LogLevel, message: string, data?: LogData) => void;
 }
 
 export type LogRecord = {
     PartitionKey: string;
     RowKey: string;
+    Level: LogLevel;
     Message: string;
     Data: string;
 };

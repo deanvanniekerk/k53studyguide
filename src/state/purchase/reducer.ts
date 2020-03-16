@@ -2,7 +2,7 @@ import { PuchaseActions } from "./";
 
 export type PurchaseState = {
     readonly owned: boolean;
-    readonly purchaseDate: Date | null;
+    readonly purchaseDate: string | null;
     readonly canPurchase: boolean;
     readonly status: string;
     readonly price: string;

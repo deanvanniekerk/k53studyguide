@@ -48,8 +48,12 @@ export const loadQuestionAnswers = (): ThunkAction<
         bank.sort((itemA: QuestionItem, itemB: QuestionItem) => {
             const minDate = new Date(0);
 
-            const dateA = quesionsSuccesfullyAnsweredDates[itemA.id] || minDate;
-            const dateB = quesionsSuccesfullyAnsweredDates[itemB.id] || minDate;
+            const dateA = quesionsSuccesfullyAnsweredDates[itemA.id]
+                ? new Date(quesionsSuccesfullyAnsweredDates[itemA.id])
+                : minDate;
+            const dateB = quesionsSuccesfullyAnsweredDates[itemB.id]
+                ? new Date(quesionsSuccesfullyAnsweredDates[itemB.id])
+                : minDate;
 
             if (dateA < dateB) return -1;
 
@@ -97,7 +101,12 @@ export const submitTest = (): ThunkAction<
 
         questionAnswers.forEach(qa => {
             if (qa.answer === qa.question.answer)
-                dispatch(recieveQuesionSuccesfullyAnsweredDate(qa.question.id, dateAnswered));
+                dispatch(
+                    recieveQuesionSuccesfullyAnsweredDate(
+                        qa.question.id,
+                        dateAnswered.toISOString()
+                    )
+                );
         });
     };
 };

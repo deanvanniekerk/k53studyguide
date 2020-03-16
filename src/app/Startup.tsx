@@ -8,7 +8,10 @@ const Startup: React.FC = () => {
     const purchaseService = useContext(PurchaseContext);
 
     useEffect(() => {
-        if (purchaseService) purchaseService.initialize();
+        if (purchaseService) {
+            purchaseService.initialize();
+            purchaseService.loadPurchase();
+        }
     }, []);
 
     return <Router />;

@@ -34,10 +34,10 @@ describe("state > purchase > actions", () => {
             type: "PURCHASE_RECIEVE_OWNED",
             payload: {
                 owned: true,
-                purchaseDate: now,
+                purchaseDate: now.toISOString(),
             },
         };
 
-        expect(actions.recievePurchaseOwned(true, now)).toEqual(expectedAction);
+        expect(actions.recievePurchaseOwned(true, now.toISOString())).toEqual(expectedAction);
     });
 });

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import { bindActionCreators, Dispatch } from "redux";
@@ -8,7 +8,7 @@ import { PurchaseContext } from "@/context";
 import { RootState } from "@/state";
 import { loadQuestionAnswers, testInProgressSelector } from "@/state/arena/test";
 import { hasFullAccessSelector } from "@/state/purchase";
-import { IonContent, IonPage } from "@ionic/react";
+import { IonContent, IonPage, useIonViewWillEnter } from "@ionic/react";
 
 import { ArenaPageHeader } from "./ArenaPageHeader";
 import { ArenaWatermark } from "./ArenaWatermark";
@@ -20,9 +20,9 @@ const ArenaPage: React.FC<Props> = props => {
     const history = useHistory();
     const purchaseService = useContext(PurchaseContext);
 
-    useEffect(() => {
+    useIonViewWillEnter(() => {
         if (!props.hasFullAccess && purchaseService) purchaseService.loadPurchase();
-    }, [props.hasFullAccess]);
+    });
 
     const onStartTestClicked = () => {
         //If no test exists, load one, else continue with previous
