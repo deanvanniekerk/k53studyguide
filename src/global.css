@@ -15,7 +15,7 @@ ion-tab-button ion-icon {
 }
 
 ion-tab-button ion-label {
-    margin-top: 2px;
+    margin-top: 4px;
     font-size: var(--ion-font-size-sm);
 }
 
@@ -38,20 +38,26 @@ ion-toast {
     text-align: center;
 }
 
+ion-button {
+    text-transform: uppercase;
+}
+
 .tab-selected {
     font-weight: bold;
 }
 
+.alert-button.sc-ion-alert-md {
+    color: var(--ion-color-dark);
+}
+
 .button-x-small {
     height: 1rem;
-    text-transform: uppercase;
     font-size: 0.6rem;
 }
 
 .button-med-large {
     font-family: var(--ion-font-family-bold);
     height: 2.8rem;
-    text-transform: uppercase;
 }
 
 .text-l {

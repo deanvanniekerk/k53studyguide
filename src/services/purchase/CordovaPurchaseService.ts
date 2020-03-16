@@ -14,6 +14,7 @@ import { LogData, LogLevel } from "../";
 import { insertEntity, query } from "../azureStorage";
 import { PurchaseRecord, PurchaseService } from "./types";
 
+//InApp Purchase: https://github.com/j3k0/cordova-plugin-purchase/blob/master/doc/api.md
 export class CordovaPurchaseService implements PurchaseService {
     private readonly _reduxStore: Store;
     private readonly _tableName = "Purchases";

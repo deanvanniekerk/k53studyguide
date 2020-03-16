@@ -1,13 +1,23 @@
 import { closeOutline } from "ionicons/icons";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import { GongIcon, KatanaIcon } from "@/app/components/icons";
+import { GongIcon, KatanaIcon, Shuriken1OutlineIcon } from "@/app/components/icons";
 import { PurchaseContext } from "@/context";
 import { RootState } from "@/state";
 import { purchaseSelector } from "@/state/purchase";
-import { IonButton, IonContent, IonIcon, IonModal, IonSlide, IonSlides } from "@ionic/react";
+import {
+    IonButton,
+    IonContent,
+    IonIcon,
+    IonModal,
+    IonSlide,
+    IonSlides,
+    IonToast,
+} from "@ionic/react";
+
+import { watermarkStyle } from "../styles";
 
 type Props = {
     isOpen: boolean;
@@ -17,10 +27,15 @@ type Props = {
 const PurchaseModal: React.FC<Props> = props => {
     const purchaseService = useContext(PurchaseContext);
 
+    const [showOwnedToast, setShowOwnedToast] = useState(false);
+
     //Close the modal if its owned
     useEffect(() => {
         if (props.purchase.owned) {
             props.onDidDismiss();
+        }
+        if (props.purchase.status == "finished") {
+            setShowOwnedToast(true);
         }
     }, [props.purchase]);
 
@@ -35,14 +50,23 @@ const PurchaseModal: React.FC<Props> = props => {
 
     return (
         <IonContent>
-            <Modal isOpen={props.isOpen} onDidDismiss={props.onDidDismiss}>
+            <IonToast
+                isOpen={showOwnedToast}
+                onDidDismiss={() => setShowOwnedToast(false)}
+                message="Purchase Successful! <br/> Thank you for you support"
+                duration={5000}
+                color="success"
+                position="top"
+            />
+            <Modal mode="ios" isOpen={props.isOpen} onDidDismiss={props.onDidDismiss}>
+                <Watermark />
                 <div>
                     <div>
                         <CloseIcon icon={closeOutline} onClick={() => props.onDidDismiss()} />
                     </div>
                     <Header>K53 Ninja</Header>
                     <SubHeader>
-                        <IonButton color="tertiary" fill="solid" class="button-x-small">
+                        <IonButton mode="md" color="tertiary" fill="solid" class="button-x-small">
                             Premium
                         </IonButton>
                     </SubHeader>
@@ -52,7 +76,7 @@ const PurchaseModal: React.FC<Props> = props => {
                                 <div>
                                     <div>
                                         <KatanaIcon style={{ fontSize: "4rem" }} />
-                                        <SlideText>Unlock the Arena</SlideText>
+                                        <SlideText>Access the Arena</SlideText>
                                         <SlideSubText>
                                             Write tests that are structured and marked like the real
                                             one
@@ -78,6 +102,7 @@ const PurchaseModal: React.FC<Props> = props => {
                     </PurchasePriceText>
                     <PurchasePriceButton>
                         <IonButton
+                            mode="md"
                             color="tertiary"
                             shape="round"
                             fill="solid"
@@ -95,6 +120,12 @@ const PurchaseModal: React.FC<Props> = props => {
         </IonContent>
     );
 };
+
+const Watermark = styled(Shuriken1OutlineIcon)`
+    ${watermarkStyle}
+    fill: #000000;
+    opacity: 0.06;
+`;
 
 const CloseIcon = styled(IonIcon)`
     color: var(--ion-color-light);

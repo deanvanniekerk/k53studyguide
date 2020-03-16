@@ -1,4 +1,4 @@
-import { trashBinOutline } from "ionicons/icons";
+import { lockClosed, trashBinOutline } from "ionicons/icons";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
@@ -6,20 +6,31 @@ import { bindActionCreators, Dispatch } from "redux";
 import styled from "styled-components";
 
 import { HorizontalRule } from "@/app/components";
+import { RootState } from "@/state";
 import {
     clearPassedTests,
     clearQuesionSuccesfullyAnsweredDates as clearArenaQuesionSuccesfullyAnsweredDates,
 } from "@/state/arena/log";
 import { clearQuesionSuccesfullyAnsweredDates as clearDojoQuesionSuccesfullyAnsweredDates } from "@/state/dojo/log";
+import { hasFullAccessSelector } from "@/state/purchase";
 import { clearSeenContent } from "@/state/study/log";
 import { IonAlert, IonCol, IonGrid, IonIcon, IonRow, IonText } from "@ionic/react";
 
-type Props = PropsFromDispatch;
+type Props = PropsFromState & PropsFromDispatch;
 
 const HistoryComponent: React.FC<Props> = props => {
     const [showClearSeenHistory, setShowClearSeenHistory] = useState(false);
     const [showClearDojoHistory, setShowClearDojoHistory] = useState(false);
     const [showClearArenaHistory, setShowClearArenaHistory] = useState(false);
+
+    const [showFullAccessAlert, setShowFullAccessAlert] = useState(false);
+
+    const checkFullAccess = (): boolean => {
+        if (props.hasFullAccess) return true;
+
+        setShowFullAccessAlert(true);
+        return false;
+    };
 
     return (
         <React.Fragment>
@@ -27,11 +38,14 @@ const HistoryComponent: React.FC<Props> = props => {
                 <Row>
                     <TitleCol>
                         <Title>
+                            {!props.hasFullAccess && (
+                                <IonIcon icon={lockClosed} style={{ marginRight: 5 }} />
+                            )}
                             <Translate text="history" />
                         </Title>
                     </TitleCol>
                 </Row>
-                <Row onClick={() => setShowClearSeenHistory(true)}>
+                <Row onClick={() => (checkFullAccess() ? setShowClearSeenHistory(true) : null)}>
                     <NameCol>
                         <Name>
                             <Translate text="clearSeenHistory" />
@@ -41,7 +55,7 @@ const HistoryComponent: React.FC<Props> = props => {
                         <IonIcon icon={trashBinOutline} />
                     </ValueCol>
                 </Row>
-                <Row onClick={() => setShowClearDojoHistory(true)}>
+                <Row onClick={() => (checkFullAccess() ? setShowClearDojoHistory(true) : null)}>
                     <NameCol>
                         <Name>
                             <Translate text="clearDojoHistory" />
@@ -51,7 +65,7 @@ const HistoryComponent: React.FC<Props> = props => {
                         <IonIcon icon={trashBinOutline} />
                     </ValueCol>
                 </Row>
-                <Row onClick={() => setShowClearArenaHistory(true)}>
+                <Row onClick={() => (checkFullAccess() ? setShowClearArenaHistory(true) : null)}>
                     <NameCol>
                         <Name>
                             <Translate text="clearArenaHistory" />
@@ -114,6 +128,13 @@ const HistoryComponent: React.FC<Props> = props => {
                     },
                 ]}
             />
+            <IonAlert
+                isOpen={showFullAccessAlert}
+                onDidDismiss={() => setShowFullAccessAlert(false)}
+                header={"Premium Access Required"}
+                message={"In order to reset history please purchase premium access"}
+                buttons={["Ok"]}
+            />
         </React.Fragment>
     );
 };
@@ -159,6 +180,13 @@ const LineBreak = (
     <HorizontalRule leftMargin={0} rightMargin={0} paddingBottom={0} paddingTop={0} />
 );
 
+type PropsFromState = ReturnType<typeof mapStateToProps>;
+const mapStateToProps = (state: RootState) => {
+    return {
+        hasFullAccess: hasFullAccessSelector(state),
+    };
+};
+
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
@@ -174,6 +202,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-const History = connect(null, mapDispatchToProps)(HistoryComponent);
+const History = connect(mapStateToProps, mapDispatchToProps)(HistoryComponent);
 
 export { History };
