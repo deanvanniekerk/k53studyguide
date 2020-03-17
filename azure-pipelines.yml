@@ -25,34 +25,57 @@ steps:
           npm run build
       displayName: "React App > Build"
     - script: |
-          npm run cap-sync-android
-      displayName: "React App > Sync to Navtive Projects"
+          npm run cap-sync-ios
+      displayName: "React App > Sync to IOS Project"
     - script: |
-          npm run cap-copy-android
-      displayName: "React App > Copy to Navtive Projects"
+          npm run cap-copy-ios
+      displayName: "React App > Copy to IOS Project"
+    # - script: |
+    #       npm run cap-sync-android
+    #   displayName: "React App > Sync to Android Project"
+    # - script: |
+    #       npm run cap-copy-android
+    #   displayName: "React App > Copy to Android Project"
 
-    - task: Gradle@2
+    - task: Xcode@5
       inputs:
-          workingDirectory: "android"
-          gradleWrapperFile: "android/gradlew"
-          gradleOptions: "-Xmx3072m"
-          tasks: "build"
-      displayName: "Android APK > Build"
-    - task: AndroidSigning@3
-      inputs:
-          apkFiles: "**/app-release-unsigned.apk"
-          apksignerKeystoreFile: "upload-keystore.jks"
-          apksignerKeystorePassword: "lead2gold"
-          apksignerKeystoreAlias: "upload"
-          apksignerKeyPassword: "gold2lead"
-          zipalign: false
-      displayName: "Android APK > Sign"
+          sdk: "iphoneos"
+          scheme: ""
+          configuration: "Release"
+          xcodeVersion: "default"
+          exportPath: "$(agent.buildDirectory)/output/iphoneos/Release"
+          packageApp: false
+          workingDirectory: "ios"
     - task: CopyFiles@2
       inputs:
-          contents: "**/app-release-unsigned.apk"
+          contents: '**/*.ipa'
           flattenFolders: true
           targetFolder: "$(Build.ArtifactStagingDirectory)"
-      displayName: "Android APK > Copy to Artifacts"
+      displayName: "IOS IPA > Copy to Artifacts"
+      
+    # - task: Gradle@2
+    #   inputs:
+    #       workingDirectory: "android"
+    #       gradleWrapperFile: "android/gradlew"
+    #       gradleOptions: "-Xmx3072m"
+    #       tasks: "build"
+    #   displayName: "Android APK > Build"
+    # - task: AndroidSigning@3
+    #   inputs:
+    #       apkFiles: "**/app-release-unsigned.apk"
+    #       apksignerKeystoreFile: "upload-keystore.jks"
+    #       apksignerKeystorePassword: "lead2gold"
+    #       apksignerKeystoreAlias: "upload"
+    #       apksignerKeyPassword: "gold2lead"
+    #       zipalign: false
+    #   displayName: "Android APK > Sign"
+    # - task: CopyFiles@2
+    #   inputs:
+    #       contents: "**/app-release-unsigned.apk"
+    #       flattenFolders: true
+    #       targetFolder: "$(Build.ArtifactStagingDirectory)"
+    #   displayName: "Android APK > Copy to Artifacts"
+
     - task: PublishBuildArtifacts@1
       inputs:
           PathtoPublish: "$(Build.ArtifactStagingDirectory)"
@@ -60,11 +83,4 @@ steps:
           publishLocation: "Container"
       displayName: "Android APK > Publish Artifacts"
 
-    - task: Xcode@5
-      inputs:
-          sdk: "iphoneos"
-          scheme: ""
-          configuration: "Release"
-          xcodeVersion: "default" # Options: default, 10, 9, 8, specifyPath
-          exportPath: "$(agent.buildDirectory)/output/iphoneos/Release"
-          packageApp: false
+    
