@@ -45,7 +45,7 @@ steps:
           xcodeVersion: "default"
           exportPath: "$(agent.buildDirectory)/output/iphoneos/Release"
           packageApp: false
-          workingDirectory: "ios/App/App.xcworkspace"
+          xcWorkspacePath: "ios/App/App.xcworkspace"
     - task: CopyFiles@2
       inputs:
           contents: "**/*.ipa"
