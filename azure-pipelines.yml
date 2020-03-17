@@ -40,7 +40,7 @@ steps:
     - task: Xcode@5
       inputs:
           sdk: "iphoneos"
-          scheme: ""
+          scheme: "App"
           configuration: "Release"
           xcodeVersion: "default"
           exportPath: "$(agent.buildDirectory)/output/iphoneos/Release"
