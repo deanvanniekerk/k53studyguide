@@ -124,8 +124,8 @@ const HeaderComponent: React.FC<Props> = props => {
                         {!props.hasFullAccess && (
                             <React.Fragment>
                                 <FullAccessText>
-                                    In order to access the Arena you need to first purchase premium
-                                    content
+                                    In order to access the Arena you need to first purchase the
+                                    premium package
                                 </FullAccessText>
                                 <IonButton
                                     color="tertiary"

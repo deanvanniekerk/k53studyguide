@@ -1,9 +1,10 @@
 import { closeOutline } from "ionicons/icons";
 import React, { useContext, useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { Translate, Translator } from "react-translated";
 import styled from "styled-components";
 
-import { GongIcon, KatanaIcon, Shuriken1OutlineIcon } from "@/app/components/icons";
+import { GongIcon, KatanaIcon, Shuriken1OutlineIcon, YinYangIcon } from "@/app/components/icons";
 import { PurchaseContext } from "@/context";
 import { RootState } from "@/state";
 import { purchaseSelector } from "@/state/purchase";
@@ -50,24 +51,30 @@ const PurchaseModal: React.FC<Props> = props => {
 
     return (
         <IonContent>
-            <IonToast
-                isOpen={showOwnedToast}
-                onDidDismiss={() => setShowOwnedToast(false)}
-                message="Purchase Successful! <br/> Thank you for you support"
-                duration={5000}
-                color="success"
-                position="top"
-            />
+            <Translator>
+                {({ translate }) => (
+                    <IonToast
+                        isOpen={showOwnedToast}
+                        onDidDismiss={() => setShowOwnedToast(false)}
+                        message={translate({ text: "purchaseSuccessful" })}
+                        duration={5000}
+                        color="success"
+                        position="top"
+                    />
+                )}
+            </Translator>
             <Modal mode="ios" isOpen={props.isOpen} onDidDismiss={props.onDidDismiss}>
                 <Watermark />
                 <div>
                     <div>
                         <CloseIcon icon={closeOutline} onClick={() => props.onDidDismiss()} />
                     </div>
-                    <Header>K53 Ninja</Header>
+                    <Header>
+                        <Translate text="k53Ninja" />
+                    </Header>
                     <SubHeader>
                         <IonButton mode="md" color="tertiary" fill="solid" class="button-x-small">
-                            Premium
+                            <Translate text="premium" />
                         </IonButton>
                     </SubHeader>
                     <SlidesContainer>
@@ -76,10 +83,11 @@ const PurchaseModal: React.FC<Props> = props => {
                                 <div>
                                     <div>
                                         <KatanaIcon style={{ fontSize: "4rem" }} />
-                                        <SlideText>Access the Arena</SlideText>
+                                        <SlideText>
+                                            <Translate text="accessTheArena" />
+                                        </SlideText>
                                         <SlideSubText>
-                                            Write tests that are structured and marked like the real
-                                            one
+                                            <Translate text="accessTheArenaInfo" />
                                         </SlideSubText>
                                     </div>
                                 </div>
@@ -88,9 +96,24 @@ const PurchaseModal: React.FC<Props> = props => {
                                 <div>
                                     <div>
                                         <GongIcon style={{ fontSize: "4rem" }} />
-                                        <SlideText>Reset your History</SlideText>
+                                        <SlideText>
+                                            <Translate text="resetYourHistory" />
+                                        </SlideText>
                                         <SlideSubText>
-                                            Reset your Seen, Dojo and Arena History
+                                            <Translate text="resetYourHistoryInfo" />
+                                        </SlideSubText>
+                                    </div>
+                                </div>
+                            </Slide>
+                            <Slide>
+                                <div>
+                                    <div>
+                                        <YinYangIcon style={{ fontSize: "4rem" }} />
+                                        <SlideText>
+                                            <Translate text="supportTheDev" />
+                                        </SlideText>
+                                        <SlideSubText>
+                                            <Translate text="supportTheDevInfo" />
                                         </SlideSubText>
                                     </div>
                                 </div>
@@ -98,7 +121,10 @@ const PurchaseModal: React.FC<Props> = props => {
                         </Slides>
                     </SlidesContainer>
                     <PurchasePriceText>
-                        Purchase Premium Access for {props.purchase.price}
+                        <Translate
+                            text="purchasePremiumFor"
+                            data={{ price: props.purchase.price }}
+                        />
                     </PurchasePriceText>
                     <PurchasePriceButton>
                         <IonButton
@@ -111,10 +137,12 @@ const PurchaseModal: React.FC<Props> = props => {
                                 if (purchaseService) purchaseService.purchase();
                             }}
                         >
-                            Get Premium
+                            <Translate text="getPremium" />
                         </IonButton>
                     </PurchasePriceButton>
-                    <DisclaimerText>* purchases are for this device only</DisclaimerText>
+                    <DisclaimerText>
+                        <Translate text="purchaseDeviceDisclaimer" />
+                    </DisclaimerText>
                 </div>
             </Modal>
         </IonContent>
@@ -157,7 +185,7 @@ const Slides = styled(IonSlides)`
 `;
 
 const Slide = styled(IonSlide)`
-    height: 220px;
+    height: 235px;
 `;
 
 const SlideText = styled.div`

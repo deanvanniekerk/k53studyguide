@@ -24,12 +24,15 @@ const crunch = async () => {
 
         console.log(`---------------------------------`);
 
-
-
         try {
 
             let t = "";
 
+
+            delete translation.af
+            delete translation.zu
+            delete translation.xh
+            /*
             //Afrikaans 
             if (!translation.af) {
                 [t] = await translate.translate(translation.en, { from: 'en', to: 'af' });
@@ -50,6 +53,7 @@ const crunch = async () => {
                 console.log(`xh: ${t.substring(0, Math.min(20, t.length - 1))}`);
                 translation.xh = t;
             }
+            */
 
         }
         catch (error) {

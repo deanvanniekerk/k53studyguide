@@ -1,7 +1,7 @@
 import { lockClosed, trashBinOutline } from "ionicons/icons";
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Translate } from "react-translated";
+import { Translate, Translator } from "react-translated";
 import { bindActionCreators, Dispatch } from "redux";
 import styled from "styled-components";
 
@@ -79,62 +79,68 @@ const HistoryComponent: React.FC<Props> = props => {
                     <IonCol>{LineBreak}</IonCol>
                 </Row>
             </Grid>
-            <IonAlert
-                isOpen={showClearSeenHistory}
-                onDidDismiss={() => setShowClearSeenHistory(false)}
-                message={"Are you sure you want to clear all seen content history?"}
-                buttons={[
-                    {
-                        text: "No",
-                    },
-                    {
-                        text: "Yes",
-                        handler: () => {
-                            props.clearSeenContent();
-                        },
-                    },
-                ]}
-            />
-            <IonAlert
-                isOpen={showClearDojoHistory}
-                onDidDismiss={() => setShowClearDojoHistory(false)}
-                message={"Are you sure you want to clear all Dojo test history?"}
-                buttons={[
-                    {
-                        text: "No",
-                    },
-                    {
-                        text: "Yes",
-                        handler: () => {
-                            props.clearDojoQuesionSuccesfullyAnsweredDates();
-                        },
-                    },
-                ]}
-            />
-            <IonAlert
-                isOpen={showClearArenaHistory}
-                onDidDismiss={() => setShowClearArenaHistory(false)}
-                message={"Are you sure you want to clear all Arena test history?"}
-                buttons={[
-                    {
-                        text: "No",
-                    },
-                    {
-                        text: "Yes",
-                        handler: () => {
-                            props.clearArenaQuesionSuccesfullyAnsweredDates();
-                            props.clearPassedTests();
-                        },
-                    },
-                ]}
-            />
-            <IonAlert
-                isOpen={showFullAccessAlert}
-                onDidDismiss={() => setShowFullAccessAlert(false)}
-                header={"Premium Access Required"}
-                message={"In order to reset history please purchase premium access"}
-                buttons={["Ok"]}
-            />
+            <Translator>
+                {({ translate }) => (
+                    <React.Fragment>
+                        <IonAlert
+                            isOpen={showClearSeenHistory}
+                            onDidDismiss={() => setShowClearSeenHistory(false)}
+                            message={translate({ text: "historyCleanSeenConfirm" })}
+                            buttons={[
+                                {
+                                    text: translate({ text: "no" }),
+                                },
+                                {
+                                    text: translate({ text: "yes" }),
+                                    handler: () => {
+                                        props.clearSeenContent();
+                                    },
+                                },
+                            ]}
+                        />
+                        <IonAlert
+                            isOpen={showClearDojoHistory}
+                            onDidDismiss={() => setShowClearDojoHistory(false)}
+                            message={translate({ text: "historyCleanDojoConfirm" })}
+                            buttons={[
+                                {
+                                    text: translate({ text: "no" }),
+                                },
+                                {
+                                    text: translate({ text: "yes" }),
+                                    handler: () => {
+                                        props.clearDojoQuesionSuccesfullyAnsweredDates();
+                                    },
+                                },
+                            ]}
+                        />
+                        <IonAlert
+                            isOpen={showClearArenaHistory}
+                            onDidDismiss={() => setShowClearArenaHistory(false)}
+                            message={translate({ text: "historyCleanArenaConfirm" })}
+                            buttons={[
+                                {
+                                    text: translate({ text: "no" }),
+                                },
+                                {
+                                    text: translate({ text: "yes" }),
+                                    handler: () => {
+                                        props.clearArenaQuesionSuccesfullyAnsweredDates();
+                                        props.clearPassedTests();
+                                    },
+                                },
+                            ]}
+                        />
+                        <IonAlert
+                            isOpen={showFullAccessAlert}
+                            onDidDismiss={() => setShowFullAccessAlert(false)}
+                            header={translate({ text: "premiumPackageRequired" })}
+                            message={translate({ text: "historyPurchaseFullAccess" })}
+                            buttons={[translate({ text: "ok" })]}
+                        />
+                    </React.Fragment>
+                )}
+            </Translator>
         </React.Fragment>
     );
 };

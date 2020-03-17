@@ -27,6 +27,7 @@
     "ignorePatterns": [
         "tools/",
         "public/",
-        "webpack.*"
+        "webpack.*",
+        "src/typings"
     ]
 }

@@ -23,3 +23,4 @@ export * from "./NinjaOutlineIcon";
 export * from "./KatanaOutlineIcon";
 export * from "./TargetOutlineIcon";
 export * from "./GongIcon";
+export * from "./YinYangIcon";

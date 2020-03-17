@@ -19,22 +19,7 @@ type Props = {
     navigationKey: string;
 } & PropsFromDispatch;
 
-type Translator = (translate: Translate) => React.ReactNode;
-
-type Translate = {
-    translate: (data: TranslationData) => string;
-};
-
-type TranslationData = {
-    text: string;
-};
-
 const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenContentKey }) => {
-    const translator: Translator = ({ translate }) => {
-        const text = translate({ text: item.description });
-        return <div dangerouslySetInnerHTML={{ __html: text }}></div>;
-    };
-
     const visibilityChange = (visible: boolean) => {
         if (visible) recieveSeenContentKey(navigationKey);
     };
@@ -65,7 +50,15 @@ const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenCon
             <IonRow>
                 <IonCol className="content-html">
                     <Description>
-                        <Translator>{translator}</Translator>
+                        <Translator>
+                            {({ translate }) => (
+                                <div
+                                    dangerouslySetInnerHTML={{
+                                        __html: translate({ text: item.description }),
+                                    }}
+                                ></div>
+                            )}
+                        </Translator>
                     </Description>
                 </IonCol>
             </IonRow>

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { connect } from "react-redux";
+import { Translate, Translator } from "react-translated";
 import styled from "styled-components";
 
 import { HorizontalRule } from "@/app/components";
@@ -25,7 +26,9 @@ const PurchaseComponent: React.FC<Props> = props => {
         <Grid>
             <FullRow>
                 <TitleCol>
-                    <Title>Account</Title>
+                    <Title>
+                        <Translate text="account" />
+                    </Title>
                 </TitleCol>
             </FullRow>
             {props.canPurchase && (
@@ -37,23 +40,34 @@ const PurchaseComponent: React.FC<Props> = props => {
                             fill="solid"
                             onClick={() => setPurchaseModalVisible(true)}
                         >
-                            Go Premium
+                            <Translate text="goPremium" />
                         </IonButton>
                     </Col>
                 </FullRow>
             )}
             {props.purchase.owned && (
-                <React.Fragment>
-                    <Row name="Premium Purchased" value={props.purchase.owned ? "Yes" : "No"} />
-                    <Row
-                        name="Purchase Date"
-                        value={
-                            props.purchase.purchaseDate
-                                ? new Date(props.purchase.purchaseDate).toLocaleDateString()
-                                : ""
-                        }
-                    />
-                </React.Fragment>
+                <Translator>
+                    {({ translate }) => (
+                        <React.Fragment>
+                            <Row
+                                name={translate({ text: "premiumPurchased" })}
+                                value={
+                                    props.purchase.owned
+                                        ? translate({ text: "yes" })
+                                        : translate({ text: "no" })
+                                }
+                            />
+                            <Row
+                                name={translate({ text: "purchaseDate" })}
+                                value={
+                                    props.purchase.purchaseDate
+                                        ? new Date(props.purchase.purchaseDate).toLocaleDateString()
+                                        : ""
+                                }
+                            />
+                        </React.Fragment>
+                    )}
+                </Translator>
             )}
             <FullRow>
                 <IonCol>{LineBreak}</IonCol>

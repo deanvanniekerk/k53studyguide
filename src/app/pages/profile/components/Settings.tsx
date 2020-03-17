@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Translate } from "react-translated";
+import { Translate, Translator } from "react-translated";
 import { bindActionCreators, Dispatch } from "redux";
 import styled from "styled-components";
 
@@ -31,19 +31,24 @@ const SettingsComponent: React.FC<Props> = props => {
                     </SettingName>
                 </SettingNameCol>
                 <SettingValueCol>
-                    <Select
-                        value={language}
-                        onIonChange={event => {
-                            setLanguage(event.detail.value);
-                            props.recieveLanguage(event.detail.value);
-                        }}
-                        interface="action-sheet"
-                    >
-                        <IonSelectOption value="en">English</IonSelectOption>
-                        <IonSelectOption value="af">Afrikaans</IonSelectOption>
-                        <IonSelectOption value="zu">Zulu</IonSelectOption>
-                        <IonSelectOption value="xh">Xhosa</IonSelectOption>
-                    </Select>
+                    <Translator>
+                        {({ translate }) => (
+                            <Select
+                                value={language}
+                                onIonChange={event => {
+                                    setLanguage(event.detail.value);
+                                    props.recieveLanguage(event.detail.value);
+                                }}
+                                interface="action-sheet"
+                                cancelText={translate({ text: "cancel" })}
+                            >
+                                <IonSelectOption value="en">English</IonSelectOption>
+                                <IonSelectOption value="af">Afrikaans</IonSelectOption>
+                                <IonSelectOption value="zu">Zulu</IonSelectOption>
+                                <IonSelectOption value="xh">Xhosa</IonSelectOption>
+                            </Select>
+                        )}
+                    </Translator>
                 </SettingValueCol>
             </Row>
             <Row>

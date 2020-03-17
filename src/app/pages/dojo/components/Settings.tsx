@@ -2,7 +2,7 @@ import { caretForward } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Translate } from "react-translated";
+import { Translate, Translator } from "react-translated";
 import { bindActionCreators, Dispatch } from "redux";
 import styled from "styled-components";
 
@@ -77,16 +77,21 @@ const SettingsComponent: React.FC<Props> = props => {
                     </SettingName>
                 </SettingNameCol>
                 <SettingValueCol disabled={props.testInProgress}>
-                    <Select
-                        value={props.maxQuestions}
-                        onIonChange={event => props.recieveMaxQuestions(event.detail.value)}
-                        interface="action-sheet"
-                        disabled={props.testInProgress}
-                    >
-                        <IonSelectOption value={5}>5</IonSelectOption>
-                        <IonSelectOption value={10}>10</IonSelectOption>
-                        <IonSelectOption value={15}>15</IonSelectOption>
-                    </Select>
+                    <Translator>
+                        {({ translate }) => (
+                            <Select
+                                value={props.maxQuestions}
+                                onIonChange={event => props.recieveMaxQuestions(event.detail.value)}
+                                interface="action-sheet"
+                                disabled={props.testInProgress}
+                                cancelText={translate({ text: "cancel" })}
+                            >
+                                <IonSelectOption value={5}>5</IonSelectOption>
+                                <IonSelectOption value={10}>10</IonSelectOption>
+                                <IonSelectOption value={15}>15</IonSelectOption>
+                            </Select>
+                        )}
+                    </Translator>
                 </SettingValueCol>
             </Row>
             <Row>

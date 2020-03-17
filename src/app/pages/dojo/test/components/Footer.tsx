@@ -1,7 +1,7 @@
 import { checkmarkCircleOutline } from "ionicons/icons";
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Translate } from "react-translated";
+import { Translate, Translator } from "react-translated";
 import styled from "styled-components";
 
 import { RootState } from "@/state";
@@ -37,14 +37,18 @@ const FooterComponent: React.FC<Props> = props => {
                 <IonIcon slot="end" icon={checkmarkCircleOutline} />
             </IonButton>
 
-            <IonToast
-                isOpen={showNotComplete}
-                message="Please answer all questions."
-                onDidDismiss={() => setShowNotComplete(false)}
-                duration={3000}
-                position="top"
-                color="light"
-            />
+            <Translator>
+                {({ translate }) => (
+                    <IonToast
+                        isOpen={showNotComplete}
+                        message={translate({ text: "pleaseAnswerAllQuestions" })}
+                        onDidDismiss={() => setShowNotComplete(false)}
+                        duration={3000}
+                        position="top"
+                        color="light"
+                    />
+                )}
+            </Translator>
         </Wrapper>
     );
 };
