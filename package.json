@@ -17,8 +17,10 @@
         "test:coverage": "jest --coverage --verbose --config=jest.config.json",
         "test:watch": "jest --watch --config=jest.config.json",
         "tsc": "tsc",
-        "cap-copy": "cap copy android",
-        "cap-sync": "cap sync android",
+        "cap-copy-android": "cap copy android",
+        "cap-sync-android": "cap sync android",
+        "cap-copy-ios": "cap copy ios",
+        "cap-sync-ios": "cap sync ios",
         "svg-to-component": "npx @svgr/cli --icon"
     },
     "browserslist": {
