@@ -6,7 +6,7 @@
     "scripts": {
         "analyze:build": "webpack --progress --mode production --config webpack.production.js --profile --json > stats.json",
         "analyze:run": "webpack-bundle-analyzer stats.json",
-        "build": "NODE_ENV='production' webpack  --progress --mode production --config webpack.production.js",
+        "build": "NODE_ENV='production' webpack --mode production --config webpack.production.js",
         "lint": "npm run lint:tsc && npm run lint:scripts",
         "lint-fix": "npm run lint-fix:script",
         "lint-fix:script": "npm run lint:script -- --fix",
