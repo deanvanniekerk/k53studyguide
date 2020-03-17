@@ -5,7 +5,13 @@ const translations: Translations = {
         en: "K53 Ninja",
     },
     purchaseSuccessful: {
-        en: "Purchase Successful! <br/> Thank you for you support",
+        en: "Purchase Successful! <br/> Thank you for your support",
+    },
+    purchaseFailed: {
+        en: "Purchase Failed!",
+    },
+    purchaseCancelled: {
+        en: "Purchase Cancelled",
     },
     history: {
         en: "History",
@@ -75,7 +81,7 @@ const translations: Translations = {
         en: "Purchase Premium Access for {price}",
     },
     historyCleanSeenConfirm: {
-        en: "Are you sure you want to clear all seen content history?",
+        en: "Are you sure you want to clear all seen Study material history?",
     },
     historyCleanDojoConfirm: {
         en: "Are you sure you want to clear all Dojo test history?",

@@ -29,6 +29,8 @@ const PurchaseModal: React.FC<Props> = props => {
     const purchaseService = useContext(PurchaseContext);
 
     const [showOwnedToast, setShowOwnedToast] = useState(false);
+    const [showFailedToast, setShowFailedToast] = useState(false);
+    const [showCancelledToast, setShowCancelledToast] = useState(false);
 
     //Close the modal if its owned
     useEffect(() => {
@@ -37,6 +39,12 @@ const PurchaseModal: React.FC<Props> = props => {
         }
         if (props.purchase.status == "finished") {
             setShowOwnedToast(true);
+        }
+        if (props.purchase.orderStatus == "failed") {
+            setShowFailedToast(true);
+        }
+        if (props.purchase.orderStatus == "cancelled") {
+            setShowCancelledToast(true);
         }
     }, [props.purchase]);
 
@@ -53,14 +61,32 @@ const PurchaseModal: React.FC<Props> = props => {
         <IonContent>
             <Translator>
                 {({ translate }) => (
-                    <IonToast
-                        isOpen={showOwnedToast}
-                        onDidDismiss={() => setShowOwnedToast(false)}
-                        message={translate({ text: "purchaseSuccessful" })}
-                        duration={5000}
-                        color="success"
-                        position="top"
-                    />
+                    <React.Fragment>
+                        <IonToast
+                            isOpen={showOwnedToast}
+                            onDidDismiss={() => setShowOwnedToast(false)}
+                            message={translate({ text: "purchaseSuccessful" })}
+                            duration={5000}
+                            color="success"
+                            position="top"
+                        />
+                        <IonToast
+                            isOpen={showCancelledToast}
+                            onDidDismiss={() => setShowCancelledToast(false)}
+                            message={translate({ text: "purchaseCancelled" })}
+                            duration={5000}
+                            color="light"
+                            position="top"
+                        />
+                        <IonToast
+                            isOpen={showFailedToast}
+                            onDidDismiss={() => setShowFailedToast(false)}
+                            message={translate({ text: "purchaseFailed" })}
+                            duration={5000}
+                            color="danger"
+                            position="top"
+                        />
+                    </React.Fragment>
                 )}
             </Translator>
             <Modal mode="ios" isOpen={props.isOpen} onDidDismiss={props.onDidDismiss}>

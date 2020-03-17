@@ -9,6 +9,7 @@ describe("state > settings > reducer", () => {
         price: "",
         title: "",
         description: "",
+        orderStatus: "ready",
     };
 
     it("should handle PURCHASE_RECIEVE_STATUS", () => {
@@ -64,6 +65,20 @@ describe("state > settings > reducer", () => {
             ...defaultState,
             owned: true,
             purchaseDate: now.toISOString(),
+        };
+
+        expect(actualState).toEqual(expectedState);
+    });
+
+    it("should handle PURCHASE_RECIEVE_ORDER_STATUS", () => {
+        const actualState = reducer(defaultState, {
+            type: "PURCHASE_RECIEVE_ORDER_STATUS",
+            payload: "cancelled",
+        });
+
+        const expectedState = {
+            ...defaultState,
+            orderStatus: "cancelled",
         };
 
         expect(actualState).toEqual(expectedState);

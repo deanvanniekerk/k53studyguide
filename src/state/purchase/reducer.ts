@@ -1,4 +1,4 @@
-import { PuchaseActions } from "./";
+import { OrderStatus, PuchaseActions } from "./";
 
 export type PurchaseState = {
     readonly owned: boolean;
@@ -8,6 +8,7 @@ export type PurchaseState = {
     readonly price: string;
     readonly title: string;
     readonly description: string;
+    readonly orderStatus: OrderStatus;
 };
 
 export const defaultState: PurchaseState = {
@@ -18,6 +19,7 @@ export const defaultState: PurchaseState = {
     price: "",
     title: "",
     description: "",
+    orderStatus: "ready",
 };
 
 export const reducer = (
@@ -30,6 +32,11 @@ export const reducer = (
                 ...state,
                 canPurchase: action.payload.canPurchase,
                 status: action.payload.status,
+            };
+        case "PURCHASE_RECIEVE_ORDER_STATUS":
+            return {
+                ...state,
+                orderStatus: action.payload,
             };
         case "PURCHASE_RECIEVE_PRODUCT":
             return {

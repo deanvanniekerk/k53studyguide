@@ -3,12 +3,13 @@ import { v4 as uuidv4 } from "uuid";
 
 import { recieveLogMessage } from "@/state/log";
 import {
+    recievePurchaseOrderStatus,
     recievePurchaseOwned,
     recievePurchaseProduct,
     recievePurchaseStatus,
 } from "@/state/purchase";
 import { Device } from "@ionic-native/device";
-import { IAPProduct, InAppPurchase2 } from "@ionic-native/in-app-purchase-2";
+import { IAPError, IAPProduct, InAppPurchase2 } from "@ionic-native/in-app-purchase-2";
 
 import { LogData, LogLevel } from "../";
 import { insertEntity, query } from "../azureStorage";
@@ -43,6 +44,11 @@ export class CordovaPurchaseService implements PurchaseService {
                 product: JSON.stringify(product, null, 4),
             });
 
+            if (product.state === InAppPurchase2.INITIATED) {
+                const statusAction = recievePurchaseOrderStatus("ready");
+                this._reduxStore.dispatch(statusAction);
+            }
+
             //Product has been purchased, record it
             if (product.state === InAppPurchase2.APPROVED) {
                 const now = new Date();
@@ -76,6 +82,18 @@ export class CordovaPurchaseService implements PurchaseService {
                 product.description
             );
             this._reduxStore.dispatch(productAction);
+        });
+
+        InAppPurchase2.when(this._productId).error((error: IAPError) => {
+            this.log("DEBUG", "CordovaPurchaseService > Product Error : " + error.message);
+            const statusAction = recievePurchaseOrderStatus("failed");
+            this._reduxStore.dispatch(statusAction);
+        });
+
+        InAppPurchase2.when(this._productId).cancelled(() => {
+            this.log("DEBUG", "CordovaPurchaseService > Product Cancelled");
+            const statusAction = recievePurchaseOrderStatus("cancelled");
+            this._reduxStore.dispatch(statusAction);
         });
 
         InAppPurchase2.error((error: unknown) => {

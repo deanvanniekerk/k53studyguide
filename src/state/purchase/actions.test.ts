@@ -13,6 +13,15 @@ describe("state > purchase > actions", () => {
         expect(actions.recievePurchaseStatus(true, "wow wow wow wow")).toEqual(expectedAction);
     });
 
+    it("recievePurchaseOrderStatus", () => {
+        const expectedAction = {
+            type: "PURCHASE_RECIEVE_ORDER_STATUS",
+            payload: "failed",
+        };
+
+        expect(actions.recievePurchaseOrderStatus("failed")).toEqual(expectedAction);
+    });
+
     it("recievePurchaseProduct", () => {
         const expectedAction = {
             type: "PURCHASE_RECIEVE_PRODUCT",
