@@ -10,11 +10,26 @@ const translations: Translations = {
     history: {
         en: "History",
     },
+    checklistReadAll: {
+        en: "Read through all Study material",
+    },
+    checklistReachLevel: {
+        en: "Reach Level 5 in the Dojo",
+    },
+    checklistCompleteArena: {
+        en: "Complete 3 Arena Runs",
+    },
+    levelNumber: {
+        en: "Level {number}",
+    },
     cancel: {
         en: "Cancel",
     },
     premium: {
         en: "Premium",
+    },
+    checklist: {
+        en: "Checklist",
     },
     accessTheArena: {
         en: "Access the Arena",

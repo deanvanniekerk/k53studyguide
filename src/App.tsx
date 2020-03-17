@@ -23,6 +23,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { configureStore } from "@/state/configureStore";
 import { IonApp, setupConfig } from "@ionic/react";
 
+import { ErrorBoundary } from "./app/components";
 import Startup from "./app/Startup";
 import { PurchaseContext } from "./context";
 
@@ -35,11 +36,13 @@ setupConfig({
 const App: React.FC = () => (
     <IonApp>
         <Provider store={store}>
-            <PurchaseContext.Provider value={purchaseService}>
-                <PersistGate loading={null} persistor={persistor}>
-                    <Startup />
-                </PersistGate>
-            </PurchaseContext.Provider>
+            <ErrorBoundary>
+                <PurchaseContext.Provider value={purchaseService}>
+                    <PersistGate loading={null} persistor={persistor}>
+                        <Startup />
+                    </PersistGate>
+                </PurchaseContext.Provider>
+            </ErrorBoundary>
         </Provider>
     </IonApp>
 );

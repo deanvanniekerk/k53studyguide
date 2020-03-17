@@ -6,3 +6,4 @@ export * from "./BackButton";
 export * from "./NavigationItem";
 export * from "./StarRating";
 export * from "./questions";
+export * from "./ErrorBoundary";
