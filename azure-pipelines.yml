@@ -6,7 +6,7 @@
 pool:
     vmImage: "macOS-latest"
 
-parameters:
+variables:
     buildAndroid: true
     buildIOS: true
 
