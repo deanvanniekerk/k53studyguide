@@ -43,7 +43,7 @@ steps:
           gradleWrapperFile: "android/gradlew"
           gradleOptions: "-Xmx3072m"
           tasks: "build"
-      displayName: "Android APK > Build"
+      displayName: "Android > Build"
       condition: eq('${{ variables.buildAndroid }}', true)
     - task: AndroidSigning@3
       inputs:
@@ -81,6 +81,7 @@ steps:
           exportPath: "$(agent.buildDirectory)/output/iphoneos/Release"
           packageApp: false
           xcWorkspacePath: "ios/App/App.xcworkspace"
+      displayName: "IOS > Build"
       condition: eq('${{ variables.buildIOS }}', true)
     # - task: CopyFiles@2
     #   inputs:
