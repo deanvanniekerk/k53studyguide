@@ -91,11 +91,11 @@ export const dojoCurrentExperiencePercentSelector: OutputSelector<
 export const requiredLevelUpExperiencePointsSelector: OutputSelector<
     RootState,
     number,
-    (level: number) => number
-> = createSelector(dojoLevelSelector, level => {
+    (current: number, level: number) => number
+> = createSelector(quesionsSuccesfullyAnsweredSelector, dojoLevelSelector, (current, level) => {
     const range = levelRanges.find(r => r.level === level);
 
     if (!range) return 0;
 
-    return range.upper + 1 - range.lower;
+    return range.upper + 1 - current;
 });

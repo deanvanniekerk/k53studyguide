@@ -77,14 +77,14 @@ describe("state > study > log > selectors", () => {
     });
 
     it("requiredLevelUpExperiencePointsSelector > level 0 > 1", () => {
-        const actual = selectors.requiredLevelUpExperiencePointsSelector.resultFunc(0);
+        const actual = selectors.requiredLevelUpExperiencePointsSelector.resultFunc(0, 0);
 
         expect(actual).toEqual(1);
     });
 
     it("requiredLevelUpExperiencePointsSelector > level 2 > 80", () => {
-        const actual = selectors.requiredLevelUpExperiencePointsSelector.resultFunc(2);
+        const actual = selectors.requiredLevelUpExperiencePointsSelector.resultFunc(100, 2);
 
-        expect(actual).toEqual(70);
+        expect(actual).toEqual(10);
     });
 });

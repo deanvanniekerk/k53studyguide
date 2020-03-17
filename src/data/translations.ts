@@ -193,7 +193,7 @@ const translations: Translations = {
         en: "Train in the Dojo, gain experince and level up",
     },
     dojoLevelUpAfter: {
-        en: "Level up after {number} experience points",
+        en: "Level up after {number} more experience points",
     },
     numberExperienceGained: {
         en: "{number} experience points gained",

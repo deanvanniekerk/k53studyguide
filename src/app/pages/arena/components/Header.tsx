@@ -177,7 +177,7 @@ const CenterText = styled.div`
 
 const FullAccessText = styled.div`
     font-size: var(--ion-font-size-sm);
-    padding-bottom: 10px;
+    padding-bottom: 25px;
     padding-right: 20px;
     padding-left: 20px;
 `;

@@ -74,7 +74,7 @@ const PurchaseModal: React.FC<Props> = props => {
                             isOpen={showCancelledToast}
                             onDidDismiss={() => setShowCancelledToast(false)}
                             message={translate({ text: "purchaseCancelled" })}
-                            duration={5000}
+                            duration={2500}
                             color="light"
                             position="top"
                         />
