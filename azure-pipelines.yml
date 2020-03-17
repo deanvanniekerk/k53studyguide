@@ -6,10 +6,6 @@
 pool:
     vmImage: "macOS-latest"
 
-parameters:
-    buildAndroid: true
-    buildIOS: true
-
 jobs:
     - job: BuildReactApp
       steps:
