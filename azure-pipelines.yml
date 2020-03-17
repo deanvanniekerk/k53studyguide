@@ -11,7 +11,7 @@ parameters:
     buildIOS: true
 
 jobs:
-    - job: Build React App
+    - job: BuildReactApp
       steps:
           - task: NodeTool@0
             inputs:
@@ -30,8 +30,8 @@ jobs:
                 npm run build
             displayName: "React App > Build"
 
-    - job: Build for Android
-      condition: eq('${{ parameters.buildAndroid }}', true)
+    - job: BuildAndroid
+      condition: eq('${{ variables.buildAndroid }}', true)
       steps:
           - script: |
                 npm run cap-sync-android
@@ -63,8 +63,8 @@ jobs:
                 targetFolder: "$(Build.ArtifactStagingDirectory)"
             displayName: "Android APK > Copy to Artifacts"
 
-    - job: Build for IOS
-      condition: eq('${{ parameters.buildIOS }}', true)
+    - job: BuildIOS
+      condition: eq('${{ variables.buildIOS }}', true)
       steps:
           - script: |
                 npm run cap-sync-ios
@@ -89,7 +89,7 @@ jobs:
           #       targetFolder: "$(Build.ArtifactStagingDirectory)"
           #   displayName: "IOS IPA > Copy to Artifacts"
 
-    - job: Copy to Artifacts
+    - job: Publish
       steps:
           - task: PublishBuildArtifacts@1
             inputs:
