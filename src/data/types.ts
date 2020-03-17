@@ -45,10 +45,6 @@ export type QuestionOption = {
     value: string;
 };
 
-export type NavigationIcons = {
-    [key: string]: string;
-};
-
 export type IconStyle = {
     [key: string]: string;
 };

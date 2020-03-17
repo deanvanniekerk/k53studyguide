@@ -42,6 +42,9 @@ describe("state > arena > test > operations", () => {
                 questionData: questionData,
             },
             arena: {
+                log: {
+                    quesionsSuccesfullyAnsweredDates: {},
+                },
                 test: { questionAnswers: [] },
             },
         });

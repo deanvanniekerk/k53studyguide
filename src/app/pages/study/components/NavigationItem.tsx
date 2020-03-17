@@ -4,10 +4,18 @@ import { eye } from "ionicons/icons";
 import React, { useRef } from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
+import styled from "styled-components";
 
 import { ProgressBar } from "@/app/components";
+import {
+    CarIcon,
+    RoadIcon,
+    SpeedometerIcon,
+    StopIcon,
+    TestIcon,
+    TrafficLightIcon,
+} from "@/app/components/icons";
 import { RootState } from "@/state";
-import { navigationIconsSelector } from "@/state/navigation";
 import { seenTotalsSelector } from "@/state/study/log";
 import { CreateAnimation, IonIcon, IonLabel, IonText, useIonViewWillEnter } from "@ionic/react";
 
@@ -69,10 +77,7 @@ const NavigationItemComponent: React.FC<Props> = props => {
                             { offset: 1, transform: "scale(1)" },
                         ]}
                     >
-                        <IonIcon
-                            icon={props.navigationIcons[props.navigationItemKey]}
-                            className="icon"
-                        />
+                        <Icon>{navigationIcons[props.navigationItemKey]}</Icon>
                     </CreateAnimation>
                     <IonLabel>
                         <div>
@@ -106,10 +111,27 @@ const NavigationItemComponent: React.FC<Props> = props => {
     );
 };
 
+const Icon = styled.div`
+    position: absolute;
+    color: #ffffff;
+    right: 5px;
+    bottom: -2px;
+    font-size: 2.5rem;
+    opacity: 0.7;
+`;
+
+const navigationIcons: { [key: string]: React.ReactNode } = {
+    "nav.vehicleControls": <SpeedometerIcon />,
+    "nav.rulesOfTheRoad": <TestIcon />,
+    "nav.defensiveDriving": <CarIcon />,
+    "nav.roadMarkings": <RoadIcon />,
+    "nav.roadSignals": <TrafficLightIcon />,
+    "nav.signs": <StopIcon />,
+};
+
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
     return {
-        navigationIcons: navigationIconsSelector(state),
         seenTotals: seenTotalsSelector(state),
     };
 };

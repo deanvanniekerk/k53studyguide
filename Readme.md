@@ -9,7 +9,7 @@ npm run sync
 
 ### SVG to React Component
 
--   `npm run svg-to-component -- assets/resources/svg-solid/018-katana-1.svg`
+-   `npm run svg-to-component -- assets/resources/ninja/svg-solid/018-katana-1.svg`
 
 ### Package version updates
 

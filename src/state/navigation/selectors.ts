@@ -1,6 +1,6 @@
 import { createSelector, OutputSelector, Selector } from "reselect";
 
-import { ContentData, NavigationData, NavigationIcons } from "@/data";
+import { ContentData, NavigationData } from "@/data";
 import { contentDataSelector } from "@/state/content";
 import { RootState } from "@/state/rootReducer";
 
@@ -20,12 +20,6 @@ export const rootNavigationChildrenSelector: OutputSelector<
     string[],
     (data: NavigationData) => string[]
 > = createSelector(navigationDataSelector, data => data[ROOT_NAVIGATION_KEY]);
-
-export const navigationIconsSelector: OutputSelector<
-    RootState,
-    NavigationIcons,
-    (state: NavigationState) => NavigationIcons
-> = createSelector(rootSelector, root => root.navigationIcons);
 
 export const navigationTreeSelector: OutputSelector<
     RootState,

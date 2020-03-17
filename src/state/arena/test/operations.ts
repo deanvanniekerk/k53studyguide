@@ -8,6 +8,7 @@ import { shuffleArray } from "@/utils";
 import {
     incrementPassedTests,
     IncrementPassedTestsAction,
+    quesionsSuccesfullyAnsweredDatesSelector,
     recieveQuesionSuccesfullyAnsweredDate,
     RecieveQuesionSuccesfullyAnsweredDateAction,
 } from "../log";
@@ -27,6 +28,9 @@ export const loadQuestionAnswers = (): ThunkAction<
 > => {
     return (dispatch, getState) => {
         const questionData = questionDataSelector(getState());
+        const quesionsSuccesfullyAnsweredDates = quesionsSuccesfullyAnsweredDatesSelector(
+            getState()
+        );
 
         const keys = Object.keys(questionData);
 
@@ -49,6 +53,28 @@ export const loadQuestionAnswers = (): ThunkAction<
         sectionABank = shuffleArray<QuestionItem>(sectionABank);
         sectionBBank = shuffleArray<QuestionItem>(sectionBBank);
         sectionCBank = shuffleArray<QuestionItem>(sectionCBank);
+
+        const sortByDate = (itemA: QuestionItem, itemB: QuestionItem) => {
+            const minDate = new Date(0);
+
+            const dateA = quesionsSuccesfullyAnsweredDates[itemA.id]
+                ? new Date(quesionsSuccesfullyAnsweredDates[itemA.id])
+                : minDate;
+            const dateB = quesionsSuccesfullyAnsweredDates[itemB.id]
+                ? new Date(quesionsSuccesfullyAnsweredDates[itemB.id])
+                : minDate;
+
+            if (dateA < dateB) return -1;
+
+            if (dateA > dateB) return 1;
+
+            return 0;
+        };
+
+        //Now order - unanswered first then answered by date asc
+        sectionABank.sort(sortByDate);
+        sectionBBank.sort(sortByDate);
+        sectionCBank.sort(sortByDate);
 
         sectionABank = sectionABank.slice(0, Math.min(8, sectionABank.length));
         sectionBBank = sectionBBank.slice(0, Math.min(28, sectionBBank.length));

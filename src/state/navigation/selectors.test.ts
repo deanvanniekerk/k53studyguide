@@ -1,4 +1,4 @@
-import { ContentData, NavigationData, NavigationIcons } from "@/data";
+import { ContentData, NavigationData } from "@/data";
 
 import { NavigationState, NavigationTreeItem } from "./";
 import * as selectors from "./selectors";
@@ -9,11 +9,6 @@ describe("state > navigation > selectors", () => {
     const navigationData: NavigationData = {
         nav: ["nav.child1", "nav.child2"],
         "nav.child1": ["nav.child1.child1", "nav.child1.child2"],
-    };
-
-    const navigationIcons: NavigationIcons = {
-        "nav.child1": "icon1",
-        "nav.child2": "ion2",
     };
 
     const contentData: ContentData = {
@@ -57,7 +52,6 @@ describe("state > navigation > selectors", () => {
 
     const defaultState: NavigationState = {
         navigationData: {},
-        navigationIcons: navigationIcons,
     };
     //-----------------------------------------------------------
 
@@ -71,12 +65,6 @@ describe("state > navigation > selectors", () => {
         const actual = selectors.rootNavigationChildrenSelector.resultFunc(navigationData);
 
         expect(actual).toEqual(["nav.child1", "nav.child2"]);
-    });
-
-    it("navigationIconsSelector", () => {
-        const actual = selectors.navigationIconsSelector.resultFunc(defaultState);
-
-        expect(actual).toEqual(navigationIcons);
     });
 
     it("navigationTreeSelector", () => {

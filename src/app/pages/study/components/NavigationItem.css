@@ -6,15 +6,6 @@
     height: 75px;
 }
 
-.root-navigation-item .icon {
-    position: absolute;
-    color: #ffffff;
-    right: 0px;
-    bottom: -2px;
-    font-size: 2.5rem;
-    opacity: 0.4;
-}
-
 .root-navigation-item .progress-bar {
     position: absolute;
     left: 0px;
