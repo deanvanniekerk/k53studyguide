@@ -45,14 +45,14 @@ steps:
           xcodeVersion: "default"
           exportPath: "$(agent.buildDirectory)/output/iphoneos/Release"
           packageApp: false
-          workingDirectory: "ios/App"
+          workingDirectory: "ios/App/App.xcworkspace"
     - task: CopyFiles@2
       inputs:
-          contents: '**/*.ipa'
+          contents: "**/*.ipa"
           flattenFolders: true
           targetFolder: "$(Build.ArtifactStagingDirectory)"
       displayName: "IOS IPA > Copy to Artifacts"
-      
+
     # - task: Gradle@2
     #   inputs:
     #       workingDirectory: "android"
@@ -82,5 +82,3 @@ steps:
           ArtifactName: "drop"
           publishLocation: "Container"
       displayName: "Android APK > Publish Artifacts"
-
-    
