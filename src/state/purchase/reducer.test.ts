@@ -1,6 +1,6 @@
 import { PurchaseState, reducer } from "./reducer";
 
-describe("state > settings > reducer", () => {
+describe("state > purchase > reducer", () => {
     const defaultState: PurchaseState = {
         owned: false,
         purchaseDate: null,

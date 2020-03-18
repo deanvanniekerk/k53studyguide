@@ -20,6 +20,7 @@ import DojoTestResultPage from "./pages/dojo/results/TestResultPage";
 import DojoTestPage from "./pages/dojo/test/TestPage";
 import ProfilePage from "./pages/profile/ProfilePage";
 import StudyPage from "./pages/study/StudyPage";
+import WelcomePage from "./pages/welcome/WelcomePage";
 
 type Props = PropsFromState;
 
@@ -43,6 +44,7 @@ const Router: React.FC<Props> = props => {
                         <Route exact path="/arena-test-result" component={ArenaTestResultPage} />
                         <Route exact path="/arena" component={ArenaPage} />
                         <Route exact path="/profile" component={ProfilePage} />
+                        <Route exact path="/welcome" component={WelcomePage} />
                         <Route exact path="/" render={() => <Redirect to="/study" />} />
                     </IonRouterOutlet>
                     <IonTabBar slot="bottom">

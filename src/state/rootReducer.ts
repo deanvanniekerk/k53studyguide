@@ -7,6 +7,7 @@ import { reducer as arena } from "./arena";
 import { reducer as content } from "./content";
 import { reducer as dojo } from "./dojo";
 import { reducer as navigation } from "./navigation";
+import { NotificationsState, reducer as notifications } from "./notifications";
 import { PurchaseState, reducer as purchase } from "./purchase";
 import { reducer as questions } from "./questions";
 import { reducer as settings, SettingsState } from "./settings";
@@ -23,6 +24,11 @@ const purchaseConfig: PersistConfig<PurchaseState> = {
     storage: createStorage(),
 };
 
+const notificationConfig: PersistConfig<NotificationsState> = {
+    key: "notifications",
+    storage: createStorage(),
+};
+
 const rootReducer = combineReducers({
     study: study,
     translations: translations,
@@ -33,6 +39,7 @@ const rootReducer = combineReducers({
     arena: arena,
     settings: persistReducer(settingsConfig, settings),
     purchase: persistReducer(purchaseConfig, purchase),
+    notifications: persistReducer(notificationConfig, notifications),
 });
 
 const createRootReducer = () => rootReducer;
