@@ -16,4 +16,8 @@ export type PurchaseRecord = {
     PurchaseDate: string;
     Owned: boolean;
     Transaction: string;
+    Platform: string;
+    DeviceModel: string;
+    DeviceVersion: string;
+    AppVersionNumber: string;
 };

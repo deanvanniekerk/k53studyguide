@@ -8,6 +8,7 @@ import {
     recievePurchaseProduct,
     recievePurchaseStatus,
 } from "@/state/purchase";
+import { AppVersion } from "@ionic-native/app-version";
 import { Device } from "@ionic-native/device";
 import { IAPError, IAPProduct, InAppPurchase2 } from "@ionic-native/in-app-purchase-2";
 
@@ -20,15 +21,15 @@ export class CordovaPurchaseService implements PurchaseService {
     private readonly _reduxStore: Store;
     private readonly _tableName = "Purchases";
     private readonly _productId = "full_access_lifetime";
-    private readonly _deviceId: string;
-
+    private _appVersionNumber = "";
     constructor(reduxStore: Store) {
         this._reduxStore = reduxStore;
-        this._deviceId = Device.uuid;
     }
 
-    initialize() {
+    async initialize() {
         this.log("DEBUG", "CordovaPurchaseService > initialize");
+
+        this._appVersionNumber = await AppVersion.getVersionNumber();
 
         InAppPurchase2.verbosity = InAppPurchase2.DEBUG;
 
@@ -53,11 +54,15 @@ export class CordovaPurchaseService implements PurchaseService {
             if (product.state === InAppPurchase2.APPROVED) {
                 const now = new Date();
                 const record: PurchaseRecord = {
-                    PartitionKey: this._deviceId,
+                    PartitionKey: Device.uuid,
                     RowKey: uuidv4(),
                     Owned: true,
                     PurchaseDate: now.toISOString(),
                     Transaction: product.transaction ? JSON.stringify(product.transaction) : "",
+                    Platform: Device.platform,
+                    AppVersionNumber: this._appVersionNumber,
+                    DeviceModel: Device.model,
+                    DeviceVersion: Device.version,
                 };
                 insertEntity(this._tableName, record).then(success => {
                     if (!success) return;
@@ -114,7 +119,7 @@ export class CordovaPurchaseService implements PurchaseService {
 
         const selectKeys = ["PartitionKey", "RowKey", "Owned", "PurchaseDate", "Transaction"];
 
-        query<PurchaseRecord>(this._tableName, this._deviceId, selectKeys).then(records => {
+        query<PurchaseRecord>(this._tableName, Device.uuid, selectKeys).then(records => {
             this.log("DEBUG", "CordovaPurchaseService > query response", {
                 records: JSON.stringify(records),
             });

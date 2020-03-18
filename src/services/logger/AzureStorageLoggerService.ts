@@ -1,23 +1,28 @@
 import { v4 as uuidv4 } from "uuid";
 
+import { AppVersion } from "@ionic-native/app-version";
 import { Device } from "@ionic-native/device";
 
 import { insertEntity } from "../azureStorage";
 import { LoggerService, LogLevel, LogRecord } from "./";
 
 export class AzureStorageLoggerService implements LoggerService {
-    private _tableName = "Logs";
-    private _deviceId = "";
+    private readonly _tableName = "Logs";
+    private _appVersionNumber = "";
 
     async initialize() {
-        this._deviceId = Device.uuid || "no-device-id";
+        this._appVersionNumber = await AppVersion.getVersionNumber();
     }
 
     log(level: LogLevel, message: string, data?: object) {
         const entity: LogRecord = {
-            PartitionKey: this._deviceId,
+            PartitionKey: Device.uuid || "no-device-id",
             RowKey: uuidv4(),
             Level: level,
+            Platform: Device.platform,
+            AppVersionNumber: this._appVersionNumber,
+            DeviceModel: Device.model,
+            DeviceVersion: Device.version,
             Message: message,
             Data: data ? JSON.stringify(data) : "",
         };

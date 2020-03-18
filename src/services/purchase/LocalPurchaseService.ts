@@ -57,6 +57,10 @@ export class LocalPurchaseService implements PurchaseService {
                 Owned: true,
                 PurchaseDate: now.toISOString(),
                 Transaction: "Mock transaction data",
+                Platform: "Local Web",
+                AppVersionNumber: "?.?",
+                DeviceModel: "",
+                DeviceVersion: "",
             };
             insertEntity(this._tableName, record).then(success => {
                 if (!success) return;

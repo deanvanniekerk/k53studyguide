@@ -11,6 +11,10 @@ export type LogRecord = {
     PartitionKey: string;
     RowKey: string;
     Level: LogLevel;
+    Platform: string;
+    DeviceModel: string;
+    DeviceVersion: string;
+    AppVersionNumber: string;
     Message: string;
     Data: string;
 };
