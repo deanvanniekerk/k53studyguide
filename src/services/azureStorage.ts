@@ -30,7 +30,7 @@ export const query = <T>(
     selectKeys: string[]
 ): Promise<T[]> => {
     let url = `${__AZURE_STORAGE_TABLE_URL__}/${tableName}()`;
-    url = `${url}?&filter=PartitionKey%20eq%20'${partitionKey}'`;
+    url = `${url}?$filter=(PartitionKey+eq+%27${partitionKey}%27)`;
     url = `${url}&$select=${selectKeys.join(",")}`;
     url = `${url}&${__AZURE_STORAGE_TABLE_SAS_TOKEN__}`;
 

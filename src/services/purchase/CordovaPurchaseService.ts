@@ -36,7 +36,7 @@ export class CordovaPurchaseService implements PurchaseService {
         //Register
         InAppPurchase2.register({
             id: this._productId,
-            type: InAppPurchase2.NON_RENEWING_SUBSCRIPTION,
+            type: InAppPurchase2.NON_CONSUMABLE,
         });
 
         //Subscribe to any additional changes
