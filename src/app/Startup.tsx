@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 
 import { PurchaseContext } from "@/context";
+import { AppRate } from "@ionic-native/app-rate";
 
 import Router from "./Router";
 
@@ -12,6 +13,15 @@ const Startup: React.FC = () => {
             purchaseService.initialize();
             purchaseService.loadPurchase();
         }
+
+        //https://github.com/pushandplay/cordova-plugin-apprate
+        AppRate.preferences = {
+            storeAppURL: {
+                android: "market://details?id=deanvniekerk.k53ninja.app",
+                ios: "",
+            },
+        };
+        AppRate.promptForRating(false);
     }, []);
 
     return <Router />;
