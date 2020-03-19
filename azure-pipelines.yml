@@ -93,7 +93,8 @@ steps:
           xcodeVersion: "default"
           exportPath: "$(agent.buildDirectory)/output/iphoneos/Release"
           xcWorkspacePath: "ios/App/App.xcworkspace"
-          signingOption: "default"
+          signingOption: "manual"
+          provisioningProfileName: "K53 Ninja"
           useXcpretty: "false"
       displayName: "IOS > Build"
       condition: eq('${{ variables.buildIOS }}', true)
