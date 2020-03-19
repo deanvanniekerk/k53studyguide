@@ -94,6 +94,7 @@ steps:
           exportPath: "$(agent.buildDirectory)/output/iphoneos/Release"
           xcWorkspacePath: "ios/App/App.xcworkspace"
           signingOption: "manual"
+          signingIdentity: "K53 Ninja Key",
           provisioningProfileName: "K53 Ninja Profile"
           teamId: "2Y26AXFP33"
           useXcpretty: "false"
