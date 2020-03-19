@@ -6,9 +6,9 @@
 pool:
     vmImage: "macOS-latest"
 
-variables:
-    buildAndroid: true
-    buildIOS: true
+# variables:
+#     buildAndroid: true
+#     buildIOS: true
 
 steps:
     - task: NodeTool@0
@@ -72,23 +72,35 @@ steps:
       displayName: "React App > Copy to IOS Project"
       condition: eq('${{ variables.buildIOS }}', true)
 
+    - task: InstallAppleCertificate@2
+      inputs:
+          certSecureFile: "IOSCertificates.p12"
+          certPwd: lead2gold
+      displayName: "Install Apple Certificate"
+    - task: InstallAppleProvisioningProfile@1
+      inputs:
+          provProfileSecureFile: "K53_Ninja.mobileprovision"
+      displayName: "Install Apple Provisioning Profile"
+
     - task: Xcode@5
       inputs:
+          actions: "build"
           sdk: "iphoneos"
           scheme: "App"
           configuration: "Release"
           xcodeVersion: "default"
           exportPath: "$(agent.buildDirectory)/output/iphoneos/Release"
-          packageApp: false
           xcWorkspacePath: "ios/App/App.xcworkspace"
+          signingOption: "default"
+          useXcpretty: "false"
       displayName: "IOS > Build"
       condition: eq('${{ variables.buildIOS }}', true)
-    # - task: CopyFiles@2
-    #   inputs:
-    #       contents: "**/*.ipa"
-    #       flattenFolders: true
-    #       targetFolder: "$(Build.ArtifactStagingDirectory)"
-    #   displayName: "IOS IPA > Copy to Artifacts"
+    - task: CopyFiles@2
+      inputs:
+          contents: "**/*.ipa"
+          flattenFolders: true
+          targetFolder: "$(Build.ArtifactStagingDirectory)"
+      displayName: "IOS IPA > Copy to Artifacts"
 
     - task: PublishBuildArtifacts@1
       inputs:
