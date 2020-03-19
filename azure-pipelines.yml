@@ -95,6 +95,7 @@ steps:
           xcWorkspacePath: "ios/App/App.xcworkspace"
           signingOption: "manual"
           provisioningProfileName: "K53 Ninja"
+          teamId: "2Y26AXFP33"
           useXcpretty: "false"
       displayName: "IOS > Build"
       condition: eq('${{ variables.buildIOS }}', true)
