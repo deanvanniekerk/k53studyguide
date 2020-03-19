@@ -15,18 +15,18 @@ steps:
       inputs:
           versionSpec: "10.x"
       displayName: "Install Node.js"
-    - script: |
-          npm install
-      displayName: "React App > Install"
-    - script: |
-          npm run lint
-      displayName: "React App > Lint"
-    - script: |
-          npm run test
-      displayName: "React App > Test"
-    - script: |
-          npm run build
-      displayName: "React App > Build"
+    # - script: |
+    #       npm install
+    #   displayName: "React App > Install"
+    # - script: |
+    #       npm run lint
+    #   displayName: "React App > Lint"
+    # - script: |
+    #       npm run test
+    #   displayName: "React App > Test"
+    # - script: |
+    #       npm run build
+    #   displayName: "React App > Build"
 
     - script: |
           npm run cap-sync-android
@@ -80,7 +80,7 @@ steps:
       condition: eq('${{ variables.buildIOS }}', true)
     - task: InstallAppleProvisioningProfile@1
       inputs:
-          provProfileSecureFile: "K53_Ninja.mobileprovision"
+          provProfileSecureFile: "K53_Ninja_Profile.mobileprovision"
       displayName: "Install Apple Provisioning Profile"
       condition: eq('${{ variables.buildIOS }}', true)
 
@@ -94,7 +94,7 @@ steps:
           exportPath: "$(agent.buildDirectory)/output/iphoneos/Release"
           xcWorkspacePath: "ios/App/App.xcworkspace"
           signingOption: "manual"
-          provisioningProfileName: "K53 Ninja"
+          provisioningProfileName: "K53 Ninja Profile"
           teamId: "2Y26AXFP33"
           useXcpretty: "false"
       displayName: "IOS > Build"
