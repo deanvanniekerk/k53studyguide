@@ -6,9 +6,9 @@
 pool:
     vmImage: "macOS-latest"
 
-# variables:
-#     buildAndroid: true
-#     buildIOS: true
+variables:
+    buildAndroid: false
+    buildIOS: true
 
 steps:
     - task: NodeTool@0
@@ -77,10 +77,12 @@ steps:
           certSecureFile: "IOSCertificates.p12"
           certPwd: lead2gold
       displayName: "Install Apple Certificate"
+      condition: eq('${{ variables.buildIOS }}', true)
     - task: InstallAppleProvisioningProfile@1
       inputs:
           provProfileSecureFile: "K53_Ninja.mobileprovision"
       displayName: "Install Apple Provisioning Profile"
+      condition: eq('${{ variables.buildIOS }}', true)
 
     - task: Xcode@5
       inputs:
@@ -101,6 +103,7 @@ steps:
           flattenFolders: true
           targetFolder: "$(Build.ArtifactStagingDirectory)"
       displayName: "IOS IPA > Copy to Artifacts"
+      condition: eq('${{ variables.buildIOS }}', true)
 
     - task: PublishBuildArtifacts@1
       inputs:
