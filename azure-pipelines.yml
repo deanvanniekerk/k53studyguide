@@ -74,7 +74,7 @@ steps:
 
     - task: InstallAppleCertificate@2
       inputs:
-          certSecureFile: "IOSCertificates.p12"
+          certSecureFile: "DistributionCertificates.p12"
           certPwd: lead2gold
       displayName: "Install Apple Certificate"
       condition: eq('${{ variables.buildIOS }}', true)
