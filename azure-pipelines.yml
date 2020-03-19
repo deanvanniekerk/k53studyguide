@@ -86,17 +86,16 @@ steps:
 
     - task: Xcode@5
       inputs:
-          actions: "build"
+          actions: "build archive"
           sdk: "iphoneos"
           scheme: "App"
-          packageApp: true
           configuration: "Release"
           xcodeVersion: "default"
-          exportPath: "$(agent.buildDirectory)/output/iphoneos/Release"
           xcWorkspacePath: "ios/App/App.xcworkspace"
           signingOption: "manual"
           signingIdentity: "$(APPLE_CERTIFICATE_SIGNING_IDENTITY)"
           provisioningProfileUuid: "$(APPLE_PROV_PROFILE_UUID)"
+          packageApp: true
           useXcpretty: "false"
       displayName: "IOS > Build"
       condition: eq('${{ variables.buildIOS }}', true)
