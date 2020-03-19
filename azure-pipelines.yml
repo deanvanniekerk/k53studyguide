@@ -86,9 +86,10 @@ steps:
 
     - task: Xcode@5
       inputs:
-          actions: "archive"
+          actions: "build"
           sdk: "iphoneos"
           scheme: "App"
+          packageApp: true
           configuration: "Release"
           xcodeVersion: "default"
           exportPath: "$(agent.buildDirectory)/output/iphoneos/Release"
