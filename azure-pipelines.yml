@@ -15,18 +15,18 @@ steps:
       inputs:
           versionSpec: "10.x"
       displayName: "Install Node.js"
-    # - script: |
-    #       npm install
-    #   displayName: "React App > Install"
-    # - script: |
-    #       npm run lint
-    #   displayName: "React App > Lint"
-    # - script: |
-    #       npm run test
-    #   displayName: "React App > Test"
-    # - script: |
-    #       npm run build
-    #   displayName: "React App > Build"
+    - script: |
+          npm install
+      displayName: "React App > Install"
+    - script: |
+          npm run lint
+      displayName: "React App > Lint"
+    - script: |
+          npm run test
+      displayName: "React App > Test"
+    - script: |
+          npm run build
+      displayName: "React App > Build"
 
     - script: |
           npm run cap-sync-android
