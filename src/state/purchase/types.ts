@@ -1,1 +1,1 @@
-export type OrderStatus = "ready" | "failed" | "cancelled";
+export type OrderStatus = "ready" | "failed" | "cancelled" | "refunded";

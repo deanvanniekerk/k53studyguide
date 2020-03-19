@@ -7,8 +7,8 @@ pool:
     vmImage: "macOS-latest"
 
 variables:
-    buildAndroid: false
-    buildIOS: true
+    buildAndroid: true
+    buildIOS: false
 
 steps:
     - task: NodeTool@0
