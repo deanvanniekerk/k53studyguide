@@ -86,7 +86,7 @@ steps:
 
     - task: Xcode@5
       inputs:
-          actions: "build"
+          actions: "archive"
           sdk: "iphoneos"
           scheme: "App"
           configuration: "Release"
