@@ -8,10 +8,12 @@ import { GongIcon, KatanaIcon, Shuriken1OutlineIcon, YinYangIcon } from "@/app/c
 import { PurchaseContext } from "@/context";
 import { RootState } from "@/state";
 import { purchaseSelector } from "@/state/purchase";
+import { Device } from "@ionic-native/device";
 import {
     IonButton,
     IonContent,
     IonIcon,
+    IonLoading,
     IonModal,
     IonSlide,
     IonSlides,
@@ -34,16 +36,16 @@ const PurchaseModal: React.FC<Props> = props => {
 
     //Close the modal if its owned
     useEffect(() => {
-        if (props.purchase.owned) {
-            props.onDidDismiss();
-        }
-        if (props.purchase.status == "finished") {
+        if (props.purchase.productState == "finished") {
             setShowOwnedToast(true);
         }
-        if (props.purchase.orderStatus == "failed") {
+        if (props.purchase.productState == "owned") {
+            props.onDidDismiss();
+        }
+        if (props.purchase.orderState == "failed") {
             setShowFailedToast(true);
         }
-        if (props.purchase.orderStatus == "cancelled") {
+        if (props.purchase.orderState == "cancelled") {
             setShowCancelledToast(true);
         }
     }, [props.purchase]);
@@ -91,6 +93,15 @@ const PurchaseModal: React.FC<Props> = props => {
             </Translator>
             <Modal mode="ios" isOpen={props.isOpen} onDidDismiss={props.onDidDismiss}>
                 <Watermark />
+                <Translator>
+                    {({ translate }) => (
+                        <IonLoading
+                            isOpen={props.purchase.productState === "initiated"}
+                            message={translate({ text: "processingPayment" })}
+                            mode={Device.platform == "Android" ? "md" : "ios"}
+                        />
+                    )}
+                </Translator>
                 <div>
                     <div>
                         <CloseIcon icon={closeOutline} onClick={() => props.onDidDismiss()} />

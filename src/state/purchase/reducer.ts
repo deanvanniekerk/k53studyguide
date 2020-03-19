@@ -1,25 +1,22 @@
-import { OrderStatus, PuchaseActions } from "./";
+import { PuchaseActions } from "./";
+import { OrderState, ProductState } from "./types";
 
 export type PurchaseState = {
-    readonly owned: boolean;
-    readonly purchaseDate: string | null;
     readonly canPurchase: boolean;
-    readonly status: string;
+    readonly productState: ProductState;
+    readonly orderState: OrderState;
     readonly price: string;
     readonly title: string;
     readonly description: string;
-    readonly orderStatus: OrderStatus;
 };
 
 export const defaultState: PurchaseState = {
-    owned: false,
-    purchaseDate: null,
     canPurchase: false,
-    status: "",
+    productState: "registered",
+    orderState: "ready",
     price: "",
     title: "",
     description: "",
-    orderStatus: "ready",
 };
 
 export const reducer = (
@@ -27,16 +24,16 @@ export const reducer = (
     action: PuchaseActions
 ): PurchaseState => {
     switch (action.type) {
-        case "PURCHASE_RECIEVE_STATUS":
+        case "PURCHASE_RECIEVE_PRODUCT_STATE":
             return {
                 ...state,
                 canPurchase: action.payload.canPurchase,
-                status: action.payload.status,
+                productState: action.payload.productState,
             };
-        case "PURCHASE_RECIEVE_ORDER_STATUS":
+        case "PURCHASE_RECIEVE_ORDER_STATE":
             return {
                 ...state,
-                orderStatus: action.payload,
+                orderState: action.payload,
             };
         case "PURCHASE_RECIEVE_PRODUCT":
             return {
@@ -44,11 +41,6 @@ export const reducer = (
                 price: action.payload.price,
                 title: action.payload.title,
                 description: action.payload.description,
-            };
-        case "PURCHASE_RECIEVE_OWNED":
-            return {
-                ...state,
-                owned: action.payload.owned,
             };
         default:
             return state;

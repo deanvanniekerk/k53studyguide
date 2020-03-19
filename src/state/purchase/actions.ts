@@ -1,21 +1,20 @@
-import { OrderStatus } from "./";
+import { OrderState, ProductState } from "./";
 
-export const PURCHASE_RECIEVE_STATUS = "PURCHASE_RECIEVE_STATUS";
-export const PURCHASE_RECIEVE_ORDER_STATUS = "PURCHASE_RECIEVE_ORDER_STATUS";
+export const PURCHASE_RECIEVE_PRODUCT_STATE = "PURCHASE_RECIEVE_PRODUCT_STATE";
+export const PURCHASE_RECIEVE_ORDER_STATE = "PURCHASE_RECIEVE_ORDER_STATE";
 export const PURCHASE_RECIEVE_PRODUCT = "PURCHASE_RECIEVE_PRODUCT";
-export const PURCHASE_RECIEVE_OWNED = "PURCHASE_RECIEVE_OWNED";
 
-export interface RecievePurchaseStatusAction {
-    type: typeof PURCHASE_RECIEVE_STATUS;
+export interface RecievePurchaseProductStateAction {
+    type: typeof PURCHASE_RECIEVE_PRODUCT_STATE;
     payload: {
         canPurchase: boolean;
-        status: string;
+        productState: ProductState;
     };
 }
 
-export interface RecievePurchaseOrderStatusAction {
-    type: typeof PURCHASE_RECIEVE_ORDER_STATUS;
-    payload: OrderStatus;
+export interface RecievePurchaseOrderStateAction {
+    type: typeof PURCHASE_RECIEVE_ORDER_STATE;
+    payload: OrderState;
 }
 
 export interface RecievePurchaseProductAction {
@@ -27,35 +26,27 @@ export interface RecievePurchaseProductAction {
     };
 }
 
-export interface RecievePurchaseOwnedAction {
-    type: typeof PURCHASE_RECIEVE_OWNED;
-    payload: {
-        owned: boolean;
-    };
-}
-
 export type PuchaseActions =
-    | RecievePurchaseStatusAction
-    | RecievePurchaseOrderStatusAction
+    | RecievePurchaseProductStateAction
     | RecievePurchaseProductAction
-    | RecievePurchaseOwnedAction;
+    | RecievePurchaseOrderStateAction;
 
-export const recievePurchaseStatus = (
+export const recievePurchaseProductState = (
     canPurchase: boolean,
-    status: string
-): RecievePurchaseStatusAction => ({
-    type: PURCHASE_RECIEVE_STATUS,
+    productState: ProductState
+): RecievePurchaseProductStateAction => ({
+    type: PURCHASE_RECIEVE_PRODUCT_STATE,
     payload: {
         canPurchase,
-        status,
+        productState,
     },
 });
 
-export const recievePurchaseOrderStatus = (
-    status: OrderStatus
-): RecievePurchaseOrderStatusAction => ({
-    type: PURCHASE_RECIEVE_ORDER_STATUS,
-    payload: status,
+export const recievePurchaseOrderState = (
+    orderState: OrderState
+): RecievePurchaseOrderStateAction => ({
+    type: PURCHASE_RECIEVE_ORDER_STATE,
+    payload: orderState,
 });
 
 export const recievePurchaseProduct = (
@@ -68,12 +59,5 @@ export const recievePurchaseProduct = (
         price,
         title,
         description,
-    },
-});
-
-export const recievePurchaseOwned = (owned: boolean): RecievePurchaseOwnedAction => ({
-    type: PURCHASE_RECIEVE_OWNED,
-    payload: {
-        owned,
     },
 });

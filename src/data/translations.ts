@@ -201,6 +201,9 @@ const translations: Translations = {
     startTest: {
         en: "Start Test",
     },
+    processingPayment: {
+        en: "Processing Payment",
+    },
     maxQuestions: {
         en: "Max Questions",
     },

@@ -8,7 +8,7 @@ pool:
 
 variables:
     buildAndroid: true
-    buildIOS: false
+    buildIOS: true
 
 steps:
     - task: NodeTool@0

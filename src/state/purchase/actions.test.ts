@@ -1,25 +1,25 @@
 import * as actions from "./actions";
 
 describe("state > purchase > actions", () => {
-    it("recievePurchaseStatus", () => {
+    it("recievePurchaseProductState", () => {
         const expectedAction = {
-            type: "PURCHASE_RECIEVE_STATUS",
+            type: "PURCHASE_RECIEVE_PRODUCT_STATE",
             payload: {
                 canPurchase: true,
-                status: "wow wow wow wow",
+                productState: "registered",
             },
         };
 
-        expect(actions.recievePurchaseStatus(true, "wow wow wow wow")).toEqual(expectedAction);
+        expect(actions.recievePurchaseProductState(true, "registered")).toEqual(expectedAction);
     });
 
-    it("recievePurchaseOrderStatus", () => {
+    it("recievePurchaseOrderState", () => {
         const expectedAction = {
-            type: "PURCHASE_RECIEVE_ORDER_STATUS",
+            type: "PURCHASE_RECIEVE_ORDER_STATE",
             payload: "failed",
         };
 
-        expect(actions.recievePurchaseOrderStatus("failed")).toEqual(expectedAction);
+        expect(actions.recievePurchaseOrderState("failed")).toEqual(expectedAction);
     });
 
     it("recievePurchaseProduct", () => {
@@ -35,16 +35,5 @@ describe("state > purchase > actions", () => {
         expect(actions.recievePurchaseProduct("R25", "title", "description")).toEqual(
             expectedAction
         );
-    });
-
-    it("recievePurchaseOwned", () => {
-        const expectedAction = {
-            type: "PURCHASE_RECIEVE_OWNED",
-            payload: {
-                owned: true,
-            },
-        };
-
-        expect(actions.recievePurchaseOwned(true)).toEqual(expectedAction);
     });
 });

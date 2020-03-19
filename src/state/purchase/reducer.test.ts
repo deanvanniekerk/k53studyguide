@@ -2,29 +2,41 @@ import { PurchaseState, reducer } from "./reducer";
 
 describe("state > purchase > reducer", () => {
     const defaultState: PurchaseState = {
-        owned: false,
-        purchaseDate: null,
         canPurchase: false,
-        status: "",
+        productState: "initiated",
+        orderState: "ready",
         price: "",
         title: "",
         description: "",
-        orderStatus: "ready",
     };
 
     it("should handle PURCHASE_RECIEVE_STATUS", () => {
         const actualState = reducer(defaultState, {
-            type: "PURCHASE_RECIEVE_STATUS",
+            type: "PURCHASE_RECIEVE_PRODUCT_STATE",
             payload: {
                 canPurchase: true,
-                status: "wow",
+                productState: "owned",
             },
         });
 
         const expectedState = {
             ...defaultState,
             canPurchase: true,
-            status: "wow",
+            status: "owned",
+        };
+
+        expect(actualState).toEqual(expectedState);
+    });
+
+    it("should handle PURCHASE_RECIEVE_ORDER_STATE", () => {
+        const actualState = reducer(defaultState, {
+            type: "PURCHASE_RECIEVE_ORDER_STATE",
+            payload: "cancelled",
+        });
+
+        const expectedState = {
+            ...defaultState,
+            orderState: "cancelled",
         };
 
         expect(actualState).toEqual(expectedState);
@@ -45,36 +57,6 @@ describe("state > purchase > reducer", () => {
             price: "R25",
             title: "title",
             description: "description",
-        };
-
-        expect(actualState).toEqual(expectedState);
-    });
-
-    it("should handle PURCHASE_RECIEVE_OWNED", () => {
-        const actualState = reducer(defaultState, {
-            type: "PURCHASE_RECIEVE_OWNED",
-            payload: {
-                owned: true,
-            },
-        });
-
-        const expectedState = {
-            ...defaultState,
-            owned: true,
-        };
-
-        expect(actualState).toEqual(expectedState);
-    });
-
-    it("should handle PURCHASE_RECIEVE_ORDER_STATUS", () => {
-        const actualState = reducer(defaultState, {
-            type: "PURCHASE_RECIEVE_ORDER_STATUS",
-            payload: "cancelled",
-        });
-
-        const expectedState = {
-            ...defaultState,
-            orderStatus: "cancelled",
         };
 
         expect(actualState).toEqual(expectedState);
