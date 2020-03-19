@@ -16,7 +16,7 @@ import { PurchaseService } from "./types";
 //InApp Purchase: https://github.com/j3k0/cordova-plugin-purchase/blob/master/doc/api.md
 export class CordovaPurchaseService implements PurchaseService {
     private readonly _reduxStore: Store;
-    private readonly _productId = "full_access_lifetime";
+    private readonly _productId = "premium_access";
     constructor(reduxStore: Store) {
         this._reduxStore = reduxStore;
     }
