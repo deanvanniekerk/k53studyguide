@@ -7,7 +7,6 @@ export interface PurchaseServiceConstructor {
 export interface PurchaseService {
     initialize: () => void;
     purchase: () => void;
-    loadPurchase: () => void;
 }
 
 export type PurchaseRecord = {

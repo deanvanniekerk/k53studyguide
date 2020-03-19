@@ -49,7 +49,6 @@ export const reducer = (
             return {
                 ...state,
                 owned: action.payload.owned,
-                purchaseDate: action.payload.purchaseDate,
             };
         default:
             return state;

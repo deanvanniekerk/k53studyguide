@@ -11,14 +11,13 @@ const Startup: React.FC = () => {
     useEffect(() => {
         if (purchaseService) {
             purchaseService.initialize();
-            purchaseService.loadPurchase();
         }
 
         //https://github.com/pushandplay/cordova-plugin-apprate
         AppRate.preferences = {
             storeAppURL: {
                 android: "market://details?id=deanvniekerk.k53ninja.app",
-                ios: "",
+                ios: "1503354808",
             },
         };
         AppRate.promptForRating(false);

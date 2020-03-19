@@ -1,16 +1,15 @@
 import { caretForward, lockClosedOutline } from "ionicons/icons";
-import React, { useContext, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import styled from "styled-components";
 
 import { KatanaIcon } from "@/app/components/icons";
 import PurchaseModal from "@/app/modals/PurchaseModal";
-import { PurchaseContext } from "@/context";
 import { RootState } from "@/state";
 import { testsPassedSelector } from "@/state/arena/log";
 import { testInProgressSelector } from "@/state/arena/test";
-import { hasFullAccessSelector } from "@/state/purchase";
+import { canPurchaseSelector, hasFullAccessSelector } from "@/state/purchase";
 import {
     CreateAnimation,
     IonButton,
@@ -26,16 +25,12 @@ type Props = {
 } & PropsFromState;
 
 const HeaderComponent: React.FC<Props> = props => {
-    const purchaseService = useContext(PurchaseContext);
-
     const animationIcon = useRef<CreateAnimation>(null);
     const animationCounter = useRef<CreateAnimation>(null);
 
     const [purchaseModalVisible, setPurchaseModalVisible] = useState(false);
 
     useIonViewWillEnter(() => {
-        if (!props.hasFullAccess && purchaseService) purchaseService.loadPurchase();
-
         if (animationIcon.current) animationIcon.current.animation.play();
         if (animationCounter.current) animationCounter.current.animation.play();
     });
@@ -132,6 +127,7 @@ const HeaderComponent: React.FC<Props> = props => {
                                     shape="round"
                                     fill="solid"
                                     className="button-med-large"
+                                    disabled={!props.canPurchase}
                                     onClick={() => setPurchaseModalVisible(true)}
                                 >
                                     Go Premium
@@ -188,6 +184,7 @@ const mapStateToProps = (state: RootState) => {
         hasFullAccess: hasFullAccessSelector(state),
         testsPassed: testsPassedSelector(state),
         testInProgress: testInProgressSelector(state),
+        canPurchase: canPurchaseSelector(state),
     };
 };
 

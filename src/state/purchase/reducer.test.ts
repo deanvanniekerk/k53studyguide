@@ -51,20 +51,16 @@ describe("state > purchase > reducer", () => {
     });
 
     it("should handle PURCHASE_RECIEVE_OWNED", () => {
-        const now = new Date();
-
         const actualState = reducer(defaultState, {
             type: "PURCHASE_RECIEVE_OWNED",
             payload: {
                 owned: true,
-                purchaseDate: now.toISOString(),
             },
         });
 
         const expectedState = {
             ...defaultState,
             owned: true,
-            purchaseDate: now.toISOString(),
         };
 
         expect(actualState).toEqual(expectedState);

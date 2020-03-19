@@ -38,15 +38,13 @@ describe("state > purchase > actions", () => {
     });
 
     it("recievePurchaseOwned", () => {
-        const now = new Date();
         const expectedAction = {
             type: "PURCHASE_RECIEVE_OWNED",
             payload: {
                 owned: true,
-                purchaseDate: now.toISOString(),
             },
         };
 
-        expect(actions.recievePurchaseOwned(true, now.toISOString())).toEqual(expectedAction);
+        expect(actions.recievePurchaseOwned(true)).toEqual(expectedAction);
     });
 });

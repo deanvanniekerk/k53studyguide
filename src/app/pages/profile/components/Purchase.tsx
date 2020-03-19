@@ -1,26 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Translate, Translator } from "react-translated";
 import styled from "styled-components";
 
 import { HorizontalRule } from "@/app/components";
 import PurchaseModal from "@/app/modals/PurchaseModal";
-import { PurchaseContext } from "@/context";
 import { RootState } from "@/state";
 import { canPurchaseSelector, hasFullAccessSelector, purchaseSelector } from "@/state/purchase";
-import { IonButton, IonCol, IonGrid, IonRow, IonText, useIonViewWillEnter } from "@ionic/react";
+import { IonButton, IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
 
 import { Row } from "./";
 
 type Props = PropsFromState;
 
 const PurchaseComponent: React.FC<Props> = props => {
-    const purchaseService = useContext(PurchaseContext);
     const [purchaseModalVisible, setPurchaseModalVisible] = useState(false);
-
-    useIonViewWillEnter(() => {
-        if (!props.hasFullAccess && purchaseService) purchaseService.loadPurchase();
-    });
 
     return (
         <Grid>
@@ -31,13 +25,14 @@ const PurchaseComponent: React.FC<Props> = props => {
                     </Title>
                 </TitleCol>
             </FullRow>
-            {props.canPurchase && (
+            {!props.hasFullAccess && (
                 <FullRow>
                     <Col>
                         <IonButton
                             color="tertiary"
                             shape="round"
                             fill="solid"
+                            disabled={!props.canPurchase}
                             onClick={() => setPurchaseModalVisible(true)}
                         >
                             <Translate text="goPremium" />
@@ -45,25 +40,13 @@ const PurchaseComponent: React.FC<Props> = props => {
                     </Col>
                 </FullRow>
             )}
-            {props.purchase.owned && (
+            {props.hasFullAccess && (
                 <Translator>
                     {({ translate }) => (
                         <React.Fragment>
                             <Row
                                 name={translate({ text: "premiumPurchased" })}
-                                value={
-                                    props.purchase.owned
-                                        ? translate({ text: "yes" })
-                                        : translate({ text: "no" })
-                                }
-                            />
-                            <Row
-                                name={translate({ text: "purchaseDate" })}
-                                value={
-                                    props.purchase.purchaseDate
-                                        ? new Date(props.purchase.purchaseDate).toLocaleDateString()
-                                        : ""
-                                }
+                                value={translate({ text: "yes" })}
                             />
                         </React.Fragment>
                     )}
