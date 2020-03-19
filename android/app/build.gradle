@@ -6,7 +6,7 @@ android {
         applicationId "deanvniekerk.k53ninja.app"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 0.15
+        versionCode 15
         versionName "0.15"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

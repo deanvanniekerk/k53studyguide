@@ -12,7 +12,7 @@ npm run sync
 #### Android
 
 -   `android/app/build.gradle`
-    -   `versionCode: x.x`
+    -   `versionCode: x`
     -   `versionName: x.x`
 
 #### OIS
