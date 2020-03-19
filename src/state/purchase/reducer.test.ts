@@ -22,7 +22,7 @@ describe("state > purchase > reducer", () => {
         const expectedState = {
             ...defaultState,
             canPurchase: true,
-            status: "owned",
+            productState: "owned",
         };
 
         expect(actualState).toEqual(expectedState);
