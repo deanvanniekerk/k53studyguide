@@ -38,8 +38,8 @@ const StudyPage: React.FC<Props> = props => {
                                     key={key}
                                     sizeXs="12"
                                     sizeSm="4"
-                                    sizeMd="3"
-                                    sizeLg="2"
+                                    sizeMd="4"
+                                    sizeLg="3"
                                     style={{ overflow: "hidden" }}
                                 >
                                     <NavigationItem
