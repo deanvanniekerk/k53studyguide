@@ -27,7 +27,7 @@ const Debug: React.FC = () => {
         <Grid>
             <FullRow>
                 <TitleCol>
-                    <Title>Debug</Title>
+                    <Title>Device</Title>
                 </TitleCol>
             </FullRow>
             <Row name="App Version Number" value={appVersionNumber} />
