@@ -74,9 +74,6 @@ const translations: Translations = {
     pleaseAnswerAllQuestions: {
         en: "Please answer all questions",
     },
-    purchaseDeviceDisclaimer: {
-        en: "* purchases are for this device only",
-    },
     purchasePremiumFor: {
         en: "Purchase Premium Access for {price}",
     },

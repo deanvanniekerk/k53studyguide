@@ -15,8 +15,8 @@ export class LocalPurchaseService implements PurchaseService {
         console.log("LocalPurchaseService > initialize product");
 
         //Dispatch Status
-        //const statusAction = recievePurchaseProductState(true, "valid"); //Test purchase
-        const statusAction = recievePurchaseProductState(false, "owned"); //Already purchased
+        const statusAction = recievePurchaseProductState(true, "valid"); //Test purchase
+        //const statusAction = recievePurchaseProductState(false, "owned"); //Already purchased
         this._reduxStore.dispatch(statusAction);
 
         //Dispatch Product

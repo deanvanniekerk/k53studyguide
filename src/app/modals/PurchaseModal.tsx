@@ -177,9 +177,6 @@ const PurchaseModal: React.FC<Props> = props => {
                             <Translate text="getPremium" />
                         </IonButton>
                     </PurchasePriceButton>
-                    <DisclaimerText>
-                        <Translate text="purchaseDeviceDisclaimer" />
-                    </DisclaimerText>
                 </div>
             </Modal>
         </IonContent>
@@ -254,14 +251,6 @@ const PurchasePriceText = styled.div`
 const PurchasePriceButton = styled.div`
     padding-top: 12px;
     text-align: center;
-`;
-
-const DisclaimerText = styled.div`
-    padding-top: 25px;
-    padding-left: var(--default-padding);
-    color: var(--ion-color-light);
-    font-size: var(--ion-font-size-xs);
-    opacity: 0.9;
 `;
 
 const Modal = styled(IonModal)`
