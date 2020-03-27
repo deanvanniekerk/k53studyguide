@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import { bindActionCreators, Dispatch } from "redux";
@@ -6,8 +6,10 @@ import styled from "styled-components";
 
 import { RootState } from "@/state";
 import { loadQuestionAnswers, testInProgressSelector } from "@/state/arena/test";
+import { notificationsSelector, recieveRecieveNotificationState } from "@/state/notifications";
 import { IonContent, IonPage } from "@ionic/react";
 
+import { ArenaInfoModal } from "./ArenaInfoModal";
 import { ArenaPageHeader } from "./ArenaPageHeader";
 import { ArenaWatermark } from "./ArenaWatermark";
 import { Header } from "./components";
@@ -16,6 +18,19 @@ type Props = PropsFromState & PropsFromDispatch;
 
 const ArenaPage: React.FC<Props> = props => {
     const history = useHistory();
+
+    const [infoModalVisible, setInfoModalVisible] = useState(false);
+
+    useEffect(() => {
+        if (!props.infoSeen) {
+            showInfoModal();
+        }
+    }, [props.infoSeen]);
+
+    const showInfoModal = () => {
+        setInfoModalVisible(true);
+        props.recieveRecieveNotificationState("arenaInfo", { seen: true });
+    };
 
     const onStartTestClicked = () => {
         //If no test exists, load one, else continue with previous
@@ -26,6 +41,12 @@ const ArenaPage: React.FC<Props> = props => {
 
     return (
         <Page>
+            <ArenaInfoModal
+                isOpen={infoModalVisible}
+                onDidDismiss={() => {
+                    setInfoModalVisible(false);
+                }}
+            />
             <ArenaPageHeader />
             <ArenaWatermark />
             <Content>
@@ -47,13 +68,14 @@ type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
     return {
         testInProgress: testInProgressSelector(state),
+        infoSeen: notificationsSelector(state).arenaInfo.seen,
     };
 };
 
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        ...bindActionCreators({ loadQuestionAnswers }, dispatch),
+        ...bindActionCreators({ loadQuestionAnswers, recieveRecieveNotificationState }, dispatch),
     };
 };
 
