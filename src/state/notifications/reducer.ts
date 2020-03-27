@@ -6,7 +6,13 @@ export type NotificationsState = {
 
 export const defaultState: NotificationsState = {
     notifications: {
-        welcome: {
+        studyInfo: {
+            seen: false,
+        },
+        dojoInfo: {
+            seen: false,
+        },
+        arenaInfo: {
             seen: false,
         },
     },

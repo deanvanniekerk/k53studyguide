@@ -5,7 +5,7 @@ describe("state > notification > actions", () => {
         const expectedAction = {
             type: "NOTIFICATION_RECIEVE_NOTIFICATION_STATE",
             payload: {
-                name: "welcome",
+                name: "studyInfo",
                 state: {
                     seen: true,
                 },
@@ -13,7 +13,7 @@ describe("state > notification > actions", () => {
         };
 
         expect(
-            actions.recieveRecieveNotificationState("welcome", {
+            actions.recieveRecieveNotificationState("studyInfo", {
                 seen: true,
             })
         ).toEqual(expectedAction);

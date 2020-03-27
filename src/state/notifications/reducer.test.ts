@@ -3,7 +3,13 @@ import { NotificationsState, reducer } from "./reducer";
 describe("state > notifications > reducer", () => {
     const defaultState: NotificationsState = {
         notifications: {
-            welcome: {
+            studyInfo: {
+                seen: false,
+            },
+            dojoInfo: {
+                seen: false,
+            },
+            arenaInfo: {
                 seen: false,
             },
         },
@@ -13,7 +19,7 @@ describe("state > notifications > reducer", () => {
         const actualState = reducer(defaultState, {
             type: "NOTIFICATION_RECIEVE_NOTIFICATION_STATE",
             payload: {
-                name: "welcome",
+                name: "studyInfo",
                 state: {
                     seen: true,
                 },
@@ -24,7 +30,7 @@ describe("state > notifications > reducer", () => {
             ...defaultState,
             notifications: {
                 ...defaultState.notifications,
-                welcome: {
+                studyInfo: {
                     seen: true,
                 },
             },

@@ -11,7 +11,6 @@ import { purchaseSelector } from "@/state/purchase";
 import { Device } from "@ionic-native/device";
 import {
     IonButton,
-    IonContent,
     IonIcon,
     IonLoading,
     IonModal,
@@ -60,7 +59,7 @@ const PurchaseModal: React.FC<Props> = props => {
     };
 
     return (
-        <IonContent>
+        <React.Fragment>
             <Translator>
                 {({ translate }) => (
                     <React.Fragment>
@@ -179,7 +178,7 @@ const PurchaseModal: React.FC<Props> = props => {
                     </PurchasePriceButton>
                 </div>
             </Modal>
-        </IonContent>
+        </React.Fragment>
     );
 };
 
@@ -254,7 +253,7 @@ const PurchasePriceButton = styled.div`
 `;
 
 const Modal = styled(IonModal)`
-    --background: linear-gradient(to right bottom, #501a8e, #00419b, #004d85, #005262, #005247);
+    --background: var(--purchase-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

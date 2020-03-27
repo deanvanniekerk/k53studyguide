@@ -1,43 +1,36 @@
+import { informationCircleOutline } from "ionicons/icons";
 import React from "react";
-import { connect } from "react-redux";
-import { PageHeader, ProgressBar } from "@/app/components";
-import { RootState } from "@/state";
-import { seenTotalsSelector } from "@/state/study/log";
-import { ROOT_NAVIGATION_KEY } from "@/state/study/navigation";
+import styled from "styled-components";
 
-type Props = PropsFromState;
+import { PageHeader } from "@/app/components";
+import { IonIcon } from "@ionic/react";
 
-const StudyPageHeaderComponent: React.FC<Props> = props => {
-    const total = props.seenTotals[ROOT_NAVIGATION_KEY];
+type Props = {
+    onInfoClicked: () => void;
+};
 
-    if (!total) return <React.Fragment />;
-
-    const seenProgress = Math.floor((total.seen / total.total) * 100);
-
+const StudyPageHeader: React.FC<Props> = props => {
     return (
         <PageHeader
             text="study"
             rightComponent={
-                <div style={{ width: "50%", float: "right" }}>
-                    <ProgressBar
-                        height={8}
-                        progress={seenProgress}
-                        backgroundOpacity={0.2}
-                        foregroundOpacity={0.6}
-                    />
-                </div>
+                <IconWrapper onClick={props.onInfoClicked}>
+                    <InfoIcon icon={informationCircleOutline} />
+                </IconWrapper>
             }
         />
     );
 };
 
-type PropsFromState = ReturnType<typeof mapStateToProps>;
-const mapStateToProps = (state: RootState) => {
-    return {
-        seenTotals: seenTotalsSelector(state),
-    };
-};
+const IconWrapper = styled.div`
+    position: relative;
+`;
 
-const StudyPageHeader = connect(mapStateToProps)(StudyPageHeaderComponent);
+const InfoIcon = styled(IonIcon)`
+    left: -16px;
+    top: -3px;
+    position: absolute;
+    font-size: var(--ion-font-size-xl);
+`;
 
 export { StudyPageHeader };
