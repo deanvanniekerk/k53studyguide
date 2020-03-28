@@ -13,7 +13,7 @@ import {
     sectionCPassedSelector,
     testResultsSelector,
 } from "@/state/arena/test";
-import { IonCol, IonGrid, IonRow } from "@ionic/react";
+import { CreateAnimation, IonCol, IonGrid, IonRow } from "@ionic/react";
 
 type Props = PropsFromState;
 
@@ -27,10 +27,10 @@ const HeaderComponent: React.FC<Props> = ({
     return (
         <Container>
             <PrimaryResult>
-                <SuccessIcon success={passed} size="3.7rem" />
-                <PrimaryResultText>
-                    {passed ? <Translate text="arenaSuccess" /> : <Translate text="arenaFailed" />}
-                </PrimaryResultText>
+                <NinjaIcon passed={passed} />
+                <div style={{ overflow: "hidden" }}>
+                    <ResultText passed={passed} />
+                </div>
                 <PrimaryResultSubText>
                     {passed ? (
                         <Translate text="arenaSuccessInfo" />
@@ -78,6 +78,58 @@ const HeaderComponent: React.FC<Props> = ({
 
             <HorizontalRule leftMargin={16} rightMargin={16} paddingBottom={0} paddingTop={15} />
         </Container>
+    );
+};
+
+type NinjaIconProps = {
+    passed: boolean;
+};
+
+const NinjaIcon: React.FC<NinjaIconProps> = props => {
+    return (
+        <CreateAnimation
+            play={true}
+            duration={700}
+            easing="ease"
+            delay={600}
+            keyframes={[
+                { offset: 0, transform: "scale(1)" },
+                { offset: 0.5, transform: "scale(1.3)" },
+                { offset: 1, transform: "scale(1)" },
+            ]}
+        >
+            <div>
+                <SuccessIcon success={props.passed} size="3.7rem" />
+            </div>
+        </CreateAnimation>
+    );
+};
+
+type ResultTextProps = {
+    passed: boolean;
+};
+
+const ResultText: React.FC<ResultTextProps> = props => {
+    return (
+        <CreateAnimation
+            play={true}
+            duration={700}
+            easing="ease"
+            delay={200}
+            fromTo={{
+                property: "transform",
+                fromValue: "translateY(80px)",
+                toValue: "translateY(0px)",
+            }}
+        >
+            <PrimaryResultText>
+                {props.passed ? (
+                    <Translate text="arenaSuccess" />
+                ) : (
+                    <Translate text="arenaFailed" />
+                )}
+            </PrimaryResultText>
+        </CreateAnimation>
     );
 };
 

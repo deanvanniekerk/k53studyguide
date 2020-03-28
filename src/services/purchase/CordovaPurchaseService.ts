@@ -22,7 +22,7 @@ export class CordovaPurchaseService implements PurchaseService {
     }
 
     async initialize() {
-        this.log("DEBUG", "CordovaPurchaseService > initialize");
+        this.log("INFO", "CordovaPurchaseService > initialize");
 
         InAppPurchase2.verbosity = InAppPurchase2.DEBUG;
 
@@ -34,7 +34,7 @@ export class CordovaPurchaseService implements PurchaseService {
 
         //Subscribe to any additional changes
         InAppPurchase2.when(this._productId).updated((product: IAPProduct) => {
-            this.log("DEBUG", "CordovaPurchaseService > product changed", {
+            this.log("INFO", "CordovaPurchaseService > product changed", {
                 product: JSON.stringify(product),
             });
 
@@ -47,7 +47,7 @@ export class CordovaPurchaseService implements PurchaseService {
         });
 
         InAppPurchase2.when(this._productId).registered((product: IAPProduct) => {
-            this.log("DEBUG", "CordovaPurchaseService > Product Registered");
+            this.log("INFO", "CordovaPurchaseService > Product Registered");
             const productAction = recievePurchaseProduct(
                 product.price,
                 product.title,
@@ -57,24 +57,24 @@ export class CordovaPurchaseService implements PurchaseService {
         });
 
         InAppPurchase2.when(this._productId).approved((product: IAPProduct) => {
-            this.log("DEBUG", "CordovaPurchaseService > Product Approved");
+            this.log("INFO", "CordovaPurchaseService > Product Approved");
             product.finish();
         });
 
         InAppPurchase2.when(this._productId).error((error: IAPError) => {
-            this.log("DEBUG", "CordovaPurchaseService > Product Error : " + error.message);
+            this.log("INFO", "CordovaPurchaseService > Product Error : " + error.message);
             const stateAction = recievePurchaseOrderState("failed");
             this._reduxStore.dispatch(stateAction);
         });
 
         InAppPurchase2.when(this._productId).cancelled(() => {
-            this.log("DEBUG", "CordovaPurchaseService > Product Cancelled");
+            this.log("INFO", "CordovaPurchaseService > Product Cancelled");
             const stateAction = recievePurchaseOrderState("cancelled");
             this._reduxStore.dispatch(stateAction);
         });
 
         InAppPurchase2.when(this._productId).refunded(() => {
-            this.log("DEBUG", "CordovaPurchaseService > Product Refunded");
+            this.log("INFO", "CordovaPurchaseService > Product Refunded");
         });
 
         InAppPurchase2.error((error: unknown) => {
@@ -86,7 +86,7 @@ export class CordovaPurchaseService implements PurchaseService {
     }
 
     purchase() {
-        this.log("DEBUG", "CordovaPurchaseService > ordering product");
+        this.log("INFO", "CordovaPurchaseService > ordering product");
         InAppPurchase2.order(this._productId);
     }
 
