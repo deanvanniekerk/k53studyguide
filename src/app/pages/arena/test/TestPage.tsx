@@ -14,7 +14,7 @@ import {
     recieveCurrentSection,
     submitTest,
 } from "@/state/arena/test";
-import { IonContent, IonPage } from "@ionic/react";
+import { IonContent, IonPage, useIonViewWillEnter } from "@ionic/react";
 
 import { ArenaWatermark } from "../ArenaWatermark";
 import { Tabs } from "../components";
@@ -26,6 +26,10 @@ type Props = PropsFromState & PropsFromDispatch;
 const TestPage: React.FC<Props> = props => {
     const history = useHistory();
     const content = useRef<HTMLIonContentElement>(null);
+
+    useIonViewWillEnter(() => {
+        onScrollTop(0);
+    });
 
     const onBackClicked = () => {
         history.replace("/arena");
@@ -48,10 +52,9 @@ const TestPage: React.FC<Props> = props => {
         };
     };
 
-    const onScrollTop = () => {
+    const onScrollTop = (duration = 500) => {
         if (content.current) {
-            content.current.scrollHeight;
-            content.current.scrollToTop(500);
+            content.current.scrollToTop(duration);
         }
     };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, Dispatch } from "redux";
@@ -8,7 +8,7 @@ import { BackButton, QuestionInfo, QuestionList } from "@/app/components";
 import { QuestionOption } from "@/data";
 import { RootState } from "@/state";
 import { questionAnswersSelector, recieveAnswer, submitTest } from "@/state/dojo/test";
-import { IonContent, IonPage } from "@ionic/react";
+import { IonContent, IonPage, useIonViewWillEnter } from "@ionic/react";
 
 import { DojoWatermark } from "../DojoWatermark";
 import { Footer, Header } from "./components";
@@ -18,6 +18,11 @@ type Props = PropsFromState & PropsFromDispatch;
 
 const TestPage: React.FC<Props> = props => {
     const history = useHistory();
+    const content = useRef<HTMLIonContentElement>(null);
+
+    useIonViewWillEnter(() => {
+        scrollTop();
+    });
 
     const onBackClicked = () => {
         history.replace("/dojo");
@@ -32,6 +37,12 @@ const TestPage: React.FC<Props> = props => {
         props.recieveAnswer(questionId, option.id);
     };
 
+    const scrollTop = () => {
+        if (content.current) {
+            content.current.scrollToTop(0);
+        }
+    };
+
     const questions = props.questionAnswers.map<QuestionInfo>(q => ({
         question: q.question,
         answer: q.answer,
@@ -41,7 +52,7 @@ const TestPage: React.FC<Props> = props => {
         <Page>
             <TestPageHeader />
             <DojoWatermark />
-            <Content>
+            <Content ref={content}>
                 <BackButton onClick={onBackClicked} />
                 <Header />
                 <QuestionList questions={questions} onOptionClicked={onOptionClicked} />

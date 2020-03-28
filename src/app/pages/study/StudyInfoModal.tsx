@@ -1,4 +1,4 @@
-import { closeOutline, eye, eyeOff, trashBin } from "ionicons/icons";
+import { closeOutline, eyeOffOutline, eyeOutline, trashBinOutline } from "ionicons/icons";
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
@@ -80,7 +80,7 @@ const SeenIcon: React.FC = () => {
     useInterval(() => {
         setIcon(icon === "eye" ? "eyeOff" : "eye");
         if (animation1.current) animation1.current.animation.play();
-    }, 4000);
+    }, 6000);
 
     return (
         <CreateAnimation
@@ -90,13 +90,13 @@ const SeenIcon: React.FC = () => {
             easing="ease"
             keyframes={[
                 { offset: 0, transform: "scale(1)" },
-                { offset: 0.5, transform: "scale(1.1)" },
+                { offset: 0.5, transform: "scale(1.05)" },
                 { offset: 1, transform: "scale(1)" },
             ]}
         >
             <div>
                 <LargeIcon
-                    icon={icon === "eye" ? eye : eyeOff}
+                    icon={icon === "eye" ? eyeOutline : eyeOffOutline}
                     style={{
                         opacity: icon === "eye" ? 0.8 : 0.5,
                     }}
@@ -109,11 +109,15 @@ const SeenIcon: React.FC = () => {
 const ProgressBarIndicator: React.FC = () => {
     const [percent, setPercent] = useState(25);
 
-    useInterval(() => {
-        let next = percent + 25;
-        if (next > 100) next = 25;
-        setPercent(next);
-    }, 3000);
+    useInterval(
+        () => {
+            let next = percent + 25;
+            if (next > 100) next = 25;
+            setPercent(next);
+        },
+        6000,
+        2000
+    );
 
     return (
         <ProgressBarWrapper>
@@ -125,9 +129,13 @@ const ProgressBarIndicator: React.FC = () => {
 const TrashIcon: React.FC = () => {
     const animation1 = useRef<CreateAnimation>(null);
 
-    useInterval(() => {
-        if (animation1.current) animation1.current.animation.play();
-    }, 4000);
+    useInterval(
+        () => {
+            if (animation1.current) animation1.current.animation.play();
+        },
+        6000,
+        4000
+    );
 
     return (
         <CreateAnimation
@@ -146,9 +154,9 @@ const TrashIcon: React.FC = () => {
         >
             <div>
                 <LargeIcon
-                    icon={trashBin}
+                    icon={trashBinOutline}
                     style={{
-                        opacity: 0.6,
+                        opacity: 0.8,
                     }}
                 />
             </div>
@@ -166,6 +174,8 @@ const Watermark = styled(PagodaOutlineIcon)`
 `;
 
 const CloseIcon = styled(IonIcon)`
+    position: absolute;
+    z-index: 102;
     font-size: var(--ion-font-size-xxxl);
     padding-left: var(--default-padding);
     padding-top: var(--default-padding);
@@ -182,6 +192,7 @@ const Header = styled.div`
 const SubHeader = styled.div`
     text-align: center;
     padding-bottom: 20px;
+    padding-top: 55px;
 `;
 
 const Paragraph = styled.p`

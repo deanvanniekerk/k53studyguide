@@ -1,8 +1,14 @@
-import { closeOutline, eye, eyeOff, trashBin } from "ionicons/icons";
+import {
+    closeOutline,
+    flashOffOutline,
+    flashOutline,
+    optionsOutline,
+    trashBinOutline,
+} from "ionicons/icons";
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
-import { HorizontalRule, ProgressBar } from "@/app/components";
+import { HorizontalRule, StarRating } from "@/app/components";
 import { useInterval } from "@/app/hooks";
 import { CreateAnimation, IonContent, IonIcon, IonModal } from "@ionic/react";
 
@@ -21,10 +27,9 @@ const DojoInfoModal: React.FC<Props> = props => {
             <Content>
                 <Container>
                     <SubHeader>Welcome to the</SubHeader>
-                    <Header>Study Section</Header>
+                    <Header>Dojo</Header>
                     <ParagraphCenter>
-                        The study section contains all the K53 material you need to study in order
-                        to pass your leaners license test
+                        In the <b>Dojo</b> you can <b>train</b> by completing <b>test questions</b>
                     </ParagraphCenter>
 
                     <HorizontalRule
@@ -34,25 +39,40 @@ const DojoInfoModal: React.FC<Props> = props => {
                         paddingBottom={20}
                     />
                     <Center>
-                        <SeenIcon />
+                        <StarsIndicator />
                     </Center>
                     <ParagraphCenter>
-                        All sections that have been <b>read</b> through are tracked, this is
-                        indicated by the <b>seen</b> icon
+                        The <b>5 star level</b> indicator shows your <b>proficiency</b> for a
+                        particular section
+                    </ParagraphCenter>
+
+                    <HorizontalRule
+                        leftMargin={10}
+                        rightMargin={10}
+                        paddingTop={25}
+                        paddingBottom={35}
+                    />
+                    <Center>
+                        <ExperienceIcon />
+                    </Center>
+                    <ParagraphCenter>
+                        Your can <b>level up</b> by gaining <b>experience</b> points. Gain{" "}
+                        <b>experience</b> points by answering test questions correctly for the{" "}
+                        <b>first</b> time.
                     </ParagraphCenter>
 
                     <HorizontalRule
                         leftMargin={10}
                         rightMargin={10}
                         paddingTop={20}
-                        paddingBottom={20}
+                        paddingBottom={35}
                     />
                     <Center>
-                        <ProgressBarIndicator />
+                        <OptionsIcon />
                     </Center>
                     <ParagraphCenter>
-                        Progress bars indictate <b>cumulative</b> totals of sections that have been
-                        read through
+                        You can <b></b>control the <b>settings</b> of the <b>tests</b> by changing
+                        the <b>Section</b> and <b>Max Questions</b>
                     </ParagraphCenter>
 
                     <HorizontalRule
@@ -65,7 +85,7 @@ const DojoInfoModal: React.FC<Props> = props => {
                         <TrashIcon />
                     </Center>
                     <ParagraphCenter>
-                        Your <b>read</b> history can be <b>reset</b> in the <b>Profile</b> tab
+                        Your <b>Dojo test</b> history can be <b>reset</b> in the <b>Profile</b> tab
                     </ParagraphCenter>
                 </Container>
             </Content>
@@ -73,14 +93,34 @@ const DojoInfoModal: React.FC<Props> = props => {
     );
 };
 
-const SeenIcon: React.FC = () => {
-    const [icon, setIcon] = useState("eyeOff");
-    const animation1 = useRef<CreateAnimation>(null);
+const StarsIndicator: React.FC = () => {
+    const [level, setLevel] = useState(1);
 
     useInterval(() => {
-        setIcon(icon === "eye" ? "eyeOff" : "eye");
-        if (animation1.current) animation1.current.animation.play();
-    }, 4000);
+        let next = level + 2;
+        if (next > 5) next = 1;
+        setLevel(next);
+    }, 6000);
+
+    return (
+        <StarWrapper>
+            <StarRating total={5} current={level} size="2rem" padding="6px" />
+        </StarWrapper>
+    );
+};
+
+const ExperienceIcon: React.FC = () => {
+    const [icon, setIcon] = useState("flash");
+    const animation1 = useRef<CreateAnimation>(null);
+
+    useInterval(
+        () => {
+            setIcon(icon === "flash" ? "flashOff" : "flash");
+            if (animation1.current) animation1.current.animation.play();
+        },
+        6000,
+        2000
+    );
 
     return (
         <CreateAnimation
@@ -90,15 +130,15 @@ const SeenIcon: React.FC = () => {
             easing="ease"
             keyframes={[
                 { offset: 0, transform: "scale(1)" },
-                { offset: 0.5, transform: "scale(1.1)" },
+                { offset: 0.5, transform: "scale(1.05)" },
                 { offset: 1, transform: "scale(1)" },
             ]}
         >
             <div>
                 <LargeIcon
-                    icon={icon === "eye" ? eye : eyeOff}
+                    icon={icon === "flash" ? flashOutline : flashOffOutline}
                     style={{
-                        opacity: icon === "eye" ? 0.8 : 0.5,
+                        opacity: icon === "flash" ? 0.8 : 0.5,
                     }}
                 />
             </div>
@@ -106,28 +146,16 @@ const SeenIcon: React.FC = () => {
     );
 };
 
-const ProgressBarIndicator: React.FC = () => {
-    const [percent, setPercent] = useState(25);
-
-    useInterval(() => {
-        let next = percent + 25;
-        if (next > 100) next = 25;
-        setPercent(next);
-    }, 3000);
-
-    return (
-        <ProgressBarWrapper>
-            <ProgressBar progress={percent} height={8} />
-        </ProgressBarWrapper>
-    );
-};
-
 const TrashIcon: React.FC = () => {
     const animation1 = useRef<CreateAnimation>(null);
 
-    useInterval(() => {
-        if (animation1.current) animation1.current.animation.play();
-    }, 4000);
+    useInterval(
+        () => {
+            if (animation1.current) animation1.current.animation.play();
+        },
+        6000,
+        4000
+    );
 
     return (
         <CreateAnimation
@@ -146,13 +174,24 @@ const TrashIcon: React.FC = () => {
         >
             <div>
                 <LargeIcon
-                    icon={trashBin}
+                    icon={trashBinOutline}
                     style={{
-                        opacity: 0.6,
+                        opacity: 0.8,
                     }}
                 />
             </div>
         </CreateAnimation>
+    );
+};
+
+const OptionsIcon: React.FC = () => {
+    return (
+        <LargeIcon
+            icon={optionsOutline}
+            style={{
+                opacity: 0.8,
+            }}
+        />
     );
 };
 
@@ -162,6 +201,8 @@ const Container = styled.div`
 `;
 
 const CloseIcon = styled(IonIcon)`
+    position: absolute;
+    z-index: 102;
     font-size: var(--ion-font-size-xxxl);
     padding-left: var(--default-padding);
     padding-top: var(--default-padding);
@@ -178,6 +219,7 @@ const Header = styled.div`
 const SubHeader = styled.div`
     text-align: center;
     padding-bottom: 20px;
+    padding-top: 55px;
 `;
 
 const Paragraph = styled.p`
@@ -196,12 +238,15 @@ const LargeIcon = styled(IonIcon)`
     font-size: 4rem;
 `;
 
-const ProgressBarWrapper = styled.div`
-    padding: 22px 25px;
-`;
-
 const Content = styled(IonContent)`
     --background: transparent;
+`;
+
+const StarWrapper = styled.div`
+    padding-top: 10px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: center;
 `;
 
 const Modal = styled(IonModal)`

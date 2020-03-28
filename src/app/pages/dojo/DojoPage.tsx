@@ -47,7 +47,7 @@ const DojoPage: React.FC<Props> = props => {
                     setInfoModalVisible(false);
                 }}
             />
-            <DojoPageHeader />
+            <DojoPageHeader onInfoClicked={() => showInfoModal()} />
             <DojoWatermark />
             <Content>
                 <Header />

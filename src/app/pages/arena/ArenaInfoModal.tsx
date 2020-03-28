@@ -1,8 +1,8 @@
-import { closeOutline, eye, eyeOff, trashBin } from "ionicons/icons";
-import React, { useRef, useState } from "react";
+import { closeOutline, search, shuffle, trashBin } from "ionicons/icons";
+import React, { useRef } from "react";
 import styled from "styled-components";
 
-import { HorizontalRule, ProgressBar } from "@/app/components";
+import { HorizontalRule } from "@/app/components";
 import { useInterval } from "@/app/hooks";
 import { CreateAnimation, IonContent, IonIcon, IonModal } from "@ionic/react";
 
@@ -21,10 +21,10 @@ const ArenaInfoModal: React.FC<Props> = props => {
             <Content>
                 <Container>
                     <SubHeader>Welcome to the</SubHeader>
-                    <Header>Study Section</Header>
+                    <Header>Arena</Header>
                     <ParagraphCenter>
-                        The study section contains all the K53 material you need to study in order
-                        to pass your leaners license test
+                        The Arena is a <b>test</b> that is <b>set up</b> and <b> marked</b> in the{" "}
+                        <b>same way</b> as the <b>real learners license test</b>
                     </ParagraphCenter>
 
                     <HorizontalRule
@@ -34,11 +34,11 @@ const ArenaInfoModal: React.FC<Props> = props => {
                         paddingBottom={20}
                     />
                     <Center>
-                        <SeenIcon />
+                        <ShuffleIcon />
                     </Center>
                     <ParagraphCenter>
-                        All sections that have been <b>read</b> through are tracked, this is
-                        indicated by the <b>seen</b> icon
+                        <b>Arena</b> test questions are <b>randomly</b> selected from a bank of over{" "}
+                        <b>400 questions</b>
                     </ParagraphCenter>
 
                     <HorizontalRule
@@ -48,11 +48,15 @@ const ArenaInfoModal: React.FC<Props> = props => {
                         paddingBottom={20}
                     />
                     <Center>
-                        <ProgressBarIndicator />
+                        <SearchIcon />
                     </Center>
                     <ParagraphCenter>
-                        Progress bars indictate <b>cumulative</b> totals of sections that have been
-                        read through
+                        We apply a <b>weighting</b> when selecting your test questions. This means
+                        you more likely to see{" "}
+                        <i>
+                            <b>new</b>
+                        </i>{" "}
+                        questions or ones you <b>previously</b> answered <b>incorrectly</b>
                     </ParagraphCenter>
 
                     <HorizontalRule
@@ -65,7 +69,7 @@ const ArenaInfoModal: React.FC<Props> = props => {
                         <TrashIcon />
                     </Center>
                     <ParagraphCenter>
-                        Your <b>read</b> history can be <b>reset</b> in the <b>Profile</b> tab
+                        Your <b>Arena test</b> history can be <b>reset</b> in the <b>Profile</b> tab
                     </ParagraphCenter>
                 </Container>
             </Content>
@@ -73,14 +77,47 @@ const ArenaInfoModal: React.FC<Props> = props => {
     );
 };
 
-const SeenIcon: React.FC = () => {
-    const [icon, setIcon] = useState("eyeOff");
+const ShuffleIcon: React.FC = () => {
     const animation1 = useRef<CreateAnimation>(null);
 
     useInterval(() => {
-        setIcon(icon === "eye" ? "eyeOff" : "eye");
         if (animation1.current) animation1.current.animation.play();
-    }, 4000);
+    }, 6000);
+
+    return (
+        <CreateAnimation
+            play={false}
+            ref={animation1}
+            duration={700}
+            easing="ease"
+            keyframes={[
+                { offset: 0, transform: "rotateX(0)" },
+                { offset: 0.5, transform: "rotateX(190deg)" },
+                { offset: 1, transform: "rotateX(360deg)" },
+            ]}
+        >
+            <div>
+                <LargeIcon
+                    icon={shuffle}
+                    style={{
+                        opacity: 0.8,
+                    }}
+                />
+            </div>
+        </CreateAnimation>
+    );
+};
+
+const SearchIcon: React.FC = () => {
+    const animation1 = useRef<CreateAnimation>(null);
+
+    useInterval(
+        () => {
+            if (animation1.current) animation1.current.animation.play();
+        },
+        6000,
+        2000
+    );
 
     return (
         <CreateAnimation
@@ -90,15 +127,15 @@ const SeenIcon: React.FC = () => {
             easing="ease"
             keyframes={[
                 { offset: 0, transform: "scale(1)" },
-                { offset: 0.5, transform: "scale(1.1)" },
+                { offset: 0.5, transform: "scale(0.85)" },
                 { offset: 1, transform: "scale(1)" },
             ]}
         >
             <div>
                 <LargeIcon
-                    icon={icon === "eye" ? eye : eyeOff}
+                    icon={search}
                     style={{
-                        opacity: icon === "eye" ? 0.8 : 0.5,
+                        opacity: 0.8,
                     }}
                 />
             </div>
@@ -106,28 +143,16 @@ const SeenIcon: React.FC = () => {
     );
 };
 
-const ProgressBarIndicator: React.FC = () => {
-    const [percent, setPercent] = useState(25);
-
-    useInterval(() => {
-        let next = percent + 25;
-        if (next > 100) next = 25;
-        setPercent(next);
-    }, 3000);
-
-    return (
-        <ProgressBarWrapper>
-            <ProgressBar progress={percent} height={8} />
-        </ProgressBarWrapper>
-    );
-};
-
 const TrashIcon: React.FC = () => {
     const animation1 = useRef<CreateAnimation>(null);
 
-    useInterval(() => {
-        if (animation1.current) animation1.current.animation.play();
-    }, 4000);
+    useInterval(
+        () => {
+            if (animation1.current) animation1.current.animation.play();
+        },
+        6000,
+        4000
+    );
 
     return (
         <CreateAnimation
@@ -148,7 +173,7 @@ const TrashIcon: React.FC = () => {
                 <LargeIcon
                     icon={trashBin}
                     style={{
-                        opacity: 0.6,
+                        opacity: 0.8,
                     }}
                 />
             </div>
@@ -162,6 +187,8 @@ const Container = styled.div`
 `;
 
 const CloseIcon = styled(IonIcon)`
+    position: absolute;
+    z-index: 102;
     font-size: var(--ion-font-size-xxxl);
     padding-left: var(--default-padding);
     padding-top: var(--default-padding);
@@ -178,6 +205,7 @@ const Header = styled.div`
 const SubHeader = styled.div`
     text-align: center;
     padding-bottom: 20px;
+    padding-top: 55px;
 `;
 
 const Paragraph = styled.p`
@@ -194,10 +222,6 @@ const Center = styled.div`
 
 const LargeIcon = styled(IonIcon)`
     font-size: 4rem;
-`;
-
-const ProgressBarWrapper = styled.div`
-    padding: 22px 25px;
 `;
 
 const Content = styled(IonContent)`

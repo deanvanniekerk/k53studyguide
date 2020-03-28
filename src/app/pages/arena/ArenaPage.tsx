@@ -47,7 +47,7 @@ const ArenaPage: React.FC<Props> = props => {
                     setInfoModalVisible(false);
                 }}
             />
-            <ArenaPageHeader />
+            <ArenaPageHeader onInfoClicked={() => showInfoModal()} />
             <ArenaWatermark />
             <Content>
                 <Header onStartTestClicked={onStartTestClicked} />

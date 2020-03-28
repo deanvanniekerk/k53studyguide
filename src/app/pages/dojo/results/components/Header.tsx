@@ -1,3 +1,4 @@
+import { flash, flashOffOutline } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
@@ -11,6 +12,7 @@ import {
     totalCorrectAnswersSelector,
     totalQuestionsSelector,
 } from "@/state/dojo/test";
+import { IonIcon } from "@ionic/react";
 
 type Props = PropsFromState;
 
@@ -30,6 +32,7 @@ const HeaderComponent: React.FC<Props> = props => {
                 </h2>
             </Result>
             <ExperienceGained>
+                <ExperienceIcon icon={props.experienceGained === 0 ? flashOffOutline : flash} />
                 <Translate
                     text="numberExperienceGained"
                     data={{ number: props.experienceGained.toString() }}
@@ -51,6 +54,10 @@ const Result = styled.div`
 const ExperienceGained = styled.div`
     padding-top: 12px;
     text-align: center;
+`;
+
+const ExperienceIcon = styled(IonIcon)`
+    margin-right: 7px;
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

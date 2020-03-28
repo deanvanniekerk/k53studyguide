@@ -1,3 +1,4 @@
+import { flashOutline } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
@@ -10,6 +11,7 @@ import {
     dojoLevelSelector,
     requiredLevelUpExperiencePointsSelector,
 } from "@/state/dojo/log";
+import { IonIcon } from "@ionic/react";
 
 import { LevelText } from "./";
 
@@ -30,11 +32,17 @@ const LevelComponent: React.FC<Props> = props => {
                 />
             </LevelUpText>
             <ProgressBarWrapper>
-                <ProgressBar
-                    progress={props.dojoCurrentExperiencePercent}
-                    backgroundOpacity={0.1}
-                    foregroundOpacity={0.4}
-                ></ProgressBar>
+                <ProgressBarColumn>
+                    <ProgressBar
+                        progress={props.dojoCurrentExperiencePercent}
+                        backgroundOpacity={0.1}
+                        foregroundOpacity={0.4}
+                        height={5}
+                    ></ProgressBar>
+                </ProgressBarColumn>
+                <div>
+                    <ExperienceIcon icon={flashOutline} />
+                </div>
             </ProgressBarWrapper>
         </Wrapper>
     );
@@ -61,7 +69,19 @@ const LevelUpText = styled.div`
 `;
 
 const ProgressBarWrapper = styled.div`
-    padding: 5px 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 15px;
+`;
+
+const ProgressBarColumn = styled.div`
+    flex: 1;
+`;
+
+const ExperienceIcon = styled(IonIcon)`
+    font-size: var(--ion-font-size-xs);
+    margin-left: 5px;
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
