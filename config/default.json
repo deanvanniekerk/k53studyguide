@@ -1,6 +1,6 @@
 {
     "environment": "development",
-    "logLevel": "DEBUG",
+    "logLevel": "NONE",
     "azureStorageTableUrl": "https://k53ninjastoredev.table.core.windows.net",
     "azureStorageTableSasToken": "***REMOVED***"
 }
