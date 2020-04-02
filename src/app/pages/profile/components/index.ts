@@ -4,3 +4,4 @@ export * from "./Purchase";
 export * from "./Debug";
 export * from "./Row";
 export * from "./Checklist";
+export * from "./RateApp";
