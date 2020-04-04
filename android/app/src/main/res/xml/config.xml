@@ -18,6 +18,10 @@
     <param name="android-package" value="org.apache.cordova.dialogs.Notification"/>
   </feature>
 
+  <feature name="InAppBrowser">
+    <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser"/>
+  </feature>
+
   <feature name="NativeStorage">
     <param name="android-package" value="NativeStorage"/>
   </feature>

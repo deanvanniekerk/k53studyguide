@@ -29,7 +29,9 @@ const RateApp: React.FC = () => {
                         color="dark"
                         shape="round"
                         fill="solid"
-                        onClick={() => AppRate.navigateToAppStore()}
+                        onClick={() => {
+                            AppRate.navigateToAppStore();
+                        }}
                     >
                         <Translate text="rateApp" />
                     </IonButton>

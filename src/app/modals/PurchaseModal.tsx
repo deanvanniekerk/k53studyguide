@@ -2,12 +2,13 @@ import { closeOutline } from "ionicons/icons";
 import React, { useContext, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Translate, Translator } from "react-translated";
+import { bindActionCreators, Dispatch } from "redux";
 import styled from "styled-components";
 
 import { GongIcon, KatanaIcon, Shuriken1OutlineIcon, YinYangIcon } from "@/app/components/icons";
 import { PurchaseContext } from "@/context";
 import { RootState } from "@/state";
-import { purchaseSelector } from "@/state/purchase";
+import { purchaseSelector, recievePurchaseOrderState } from "@/state/purchase";
 import { Device } from "@ionic-native/device";
 import {
     IonButton,
@@ -24,7 +25,8 @@ import { watermarkStyle } from "../styles";
 type Props = {
     isOpen: boolean;
     onDidDismiss: () => void;
-} & PropsFromState;
+} & PropsFromState &
+    PropsFromDispatch;
 
 const PurchaseModal: React.FC<Props> = props => {
     const purchaseService = useContext(PurchaseContext);
@@ -43,9 +45,11 @@ const PurchaseModal: React.FC<Props> = props => {
         }
         if (props.purchase.orderState == "failed") {
             setShowFailedToast(true);
+            props.recievePurchaseOrderState("ready"); //reset
         }
         if (props.purchase.orderState == "cancelled") {
             setShowCancelledToast(true);
+            props.recievePurchaseOrderState("ready"); //reset
         }
     }, [props.purchase]);
 
@@ -263,4 +267,16 @@ const mapStateToProps = (state: RootState) => {
     };
 };
 
-export default connect(mapStateToProps)(PurchaseModal);
+type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
+const mapDispatchToProps = (dispatch: Dispatch) => {
+    return {
+        ...bindActionCreators(
+            {
+                recievePurchaseOrderState,
+            },
+            dispatch
+        ),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PurchaseModal);

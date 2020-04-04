@@ -1,3 +1,4 @@
+import { checkmarkCircle, checkmarkCircleOutline, closeCircle } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { Translate, Translator } from "react-translated";
@@ -9,7 +10,7 @@ import { testsPassedSelector } from "@/state/arena/log";
 import { dojoLevelSelector } from "@/state/dojo/log";
 import { ROOT_NAVIGATION_KEY } from "@/state/navigation";
 import { seenTotalsSelector } from "@/state/study/log";
-import { IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
+import { IonCol, IonGrid, IonIcon, IonRow, IonText } from "@ionic/react";
 
 import { Row } from "./";
 
@@ -24,6 +25,7 @@ const ChecklistComponent: React.FC<Props> = props => {
             <FullRow>
                 <TitleCol>
                     <Title>
+                        <IonIcon icon={checkmarkCircleOutline} style={{ marginRight: 5 }} />
                         <Translate text="checklist" />
                     </Title>
                 </TitleCol>
@@ -34,6 +36,8 @@ const ChecklistComponent: React.FC<Props> = props => {
                         <Row
                             name={translate({ text: "checklistReadAll" })}
                             value={`${seenProgress}%`}
+                            icon={seenProgress === 100 ? checkmarkCircle : closeCircle}
+                            iconColor={seenProgress === 100 ? "success" : "danger"}
                         />
                         <Row
                             name={translate({ text: "checklistReachLevel" })}
@@ -41,10 +45,14 @@ const ChecklistComponent: React.FC<Props> = props => {
                                 text: "levelNumber",
                                 data: { number: props.dojoLevel },
                             })}
+                            icon={props.dojoLevel === 5 ? checkmarkCircle : closeCircle}
+                            iconColor={props.dojoLevel === 5 ? "success" : "danger"}
                         />
                         <Row
                             name={translate({ text: "checklistCompleteArena" })}
                             value={props.areaTestsPassed}
+                            icon={props.areaTestsPassed >= 3 ? checkmarkCircle : closeCircle}
+                            iconColor={props.areaTestsPassed >= 3 ? "success" : "danger"}
                         />
                         <FullRow>
                             <IonCol>{LineBreak}</IonCol>
