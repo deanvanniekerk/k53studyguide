@@ -1,5 +1,5 @@
 import { caretForward } from "ionicons/icons";
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Translate, Translator } from "react-translated";
@@ -15,6 +15,7 @@ import {
     testInProgressSelector,
 } from "@/state/dojo/test";
 import {
+    IonAlert,
     IonButton,
     IonCol,
     IonGrid,
@@ -32,86 +33,114 @@ type Props = {
 
 const SettingsComponent: React.FC<Props> = props => {
     const history = useHistory();
+    const [showCompleteTestAlert, setShowCompleteTestAlert] = useState(false);
 
     const onChangeTargetNavigationItem = () => {
-        if (props.testInProgress) return;
+        if (!checkCanChangeTestSettings()) return;
         history.push(`/dojo-navigator`);
     };
 
+    const checkCanChangeTestSettings = () => {
+        if (props.testInProgress) {
+            setShowCompleteTestAlert(true);
+            return false;
+        }
+        return true;
+    };
+
     return (
-        <Grid>
-            <Row>
-                <SettingTitleCol>
-                    <SettingTitle>
-                        <Translate text="testSettings" />
-                    </SettingTitle>
-                </SettingTitleCol>
-            </Row>
-            <Row>
-                <SettingNameCol>
-                    <SettingName>
-                        <Translate text="section" />
-                    </SettingName>
-                </SettingNameCol>
-                <SettingValueCol
-                    onClick={onChangeTargetNavigationItem}
-                    disabled={props.testInProgress}
-                >
-                    <Breadcrumb
-                        navigationKey={props.targetNavigationKey}
-                        disableNavigation={true}
-                        rootText="allContent"
-                        showLast={true}
-                        opacity={0.7}
-                        lastOpacity={0.9}
-                    />
-                </SettingValueCol>
-            </Row>
-            <Row>
-                <IonCol>{LineBreak}</IonCol>
-            </Row>
-            <Row>
-                <SettingNameCol>
-                    <SettingName>
-                        <Translate text="maxQuestions" />
-                    </SettingName>
-                </SettingNameCol>
-                <SettingValueCol disabled={props.testInProgress}>
-                    <Translator>
-                        {({ translate }) => (
-                            <Select
-                                value={props.maxQuestions}
-                                onIonChange={event => props.recieveMaxQuestions(event.detail.value)}
-                                interface="action-sheet"
-                                disabled={props.testInProgress}
-                                cancelText={translate({ text: "cancel" })}
-                            >
-                                <IonSelectOption value={5}>5</IonSelectOption>
-                                <IonSelectOption value={10}>10</IonSelectOption>
-                                <IonSelectOption value={15}>15</IonSelectOption>
-                            </Select>
-                        )}
-                    </Translator>
-                </SettingValueCol>
-            </Row>
-            <Row>
-                <IonCol>{LineBreak}</IonCol>
-            </Row>
-            <IonRow style={{ paddingTop: 15, paddingBottom: 20 }}>
-                <IonCol style={{ textAlign: "center" }}>
-                    <IonButton
-                        color="secondary"
-                        shape="round"
-                        fill="solid"
-                        className="button-med-large"
-                        onClick={() => props.onStartTestClicked()}
+        <>
+            <Grid>
+                <Row>
+                    <SettingTitleCol>
+                        <SettingTitle>
+                            <Translate text="testSettings" />
+                        </SettingTitle>
+                    </SettingTitleCol>
+                </Row>
+                <Row>
+                    <SettingNameCol>
+                        <SettingName>
+                            <Translate text="section" />
+                        </SettingName>
+                    </SettingNameCol>
+                    <SettingValueCol
+                        onClick={onChangeTargetNavigationItem}
+                        disabled={props.testInProgress}
                     >
-                        <Translate text={props.testInProgress ? "continueTest" : "startTest"} />
-                        <IonIcon slot="end" icon={caretForward} />
-                    </IonButton>
-                </IonCol>
-            </IonRow>
-        </Grid>
+                        <Breadcrumb
+                            navigationKey={props.targetNavigationKey}
+                            disableNavigation={true}
+                            rootText="allContent"
+                            showLast={true}
+                            opacity={0.7}
+                            lastOpacity={0.9}
+                        />
+                    </SettingValueCol>
+                </Row>
+                <Row>
+                    <IonCol>{LineBreak}</IonCol>
+                </Row>
+                <Row>
+                    <SettingNameCol>
+                        <SettingName>
+                            <Translate text="maxQuestions" />
+                        </SettingName>
+                    </SettingNameCol>
+                    <SettingValueCol
+                        disabled={props.testInProgress}
+                        onClick={checkCanChangeTestSettings}
+                    >
+                        <Translator>
+                            {({ translate }) => (
+                                <Select
+                                    value={props.maxQuestions}
+                                    onIonChange={event =>
+                                        props.recieveMaxQuestions(event.detail.value)
+                                    }
+                                    interface="action-sheet"
+                                    disabled={props.testInProgress}
+                                    cancelText={translate({ text: "cancel" })}
+                                >
+                                    <IonSelectOption value={5}>5</IonSelectOption>
+                                    <IonSelectOption value={10}>10</IonSelectOption>
+                                    <IonSelectOption value={15}>15</IonSelectOption>
+                                </Select>
+                            )}
+                        </Translator>
+                    </SettingValueCol>
+                </Row>
+                <Row>
+                    <IonCol>{LineBreak}</IonCol>
+                </Row>
+                <IonRow style={{ paddingTop: 15, paddingBottom: 20 }}>
+                    <IonCol style={{ textAlign: "center" }}>
+                        <IonButton
+                            color="secondary"
+                            shape="round"
+                            fill="solid"
+                            className="button-med-large"
+                            onClick={() => props.onStartTestClicked()}
+                        >
+                            <Translate text={props.testInProgress ? "continueTest" : "startTest"} />
+                            <IonIcon slot="end" icon={caretForward} />
+                        </IonButton>
+                    </IonCol>
+                </IonRow>
+            </Grid>
+
+            <Translator>
+                {({ translate }) => (
+                    <IonAlert
+                        isOpen={showCompleteTestAlert}
+                        onDidDismiss={() => setShowCompleteTestAlert(false)}
+                        //header={translate({ text: "premiumPackageRequired" })}
+                        message={translate({ text: "completeTestToChangeSettings" })}
+                        buttons={[translate({ text: "ok" })]}
+                    />
+                )}
+            </Translator>
+        </>
     );
 };
 

@@ -40,6 +40,9 @@ const translations: Translations = {
     app: {
         en: "App",
     },
+    completeTestToChangeSettings: {
+        en: "You must complete the current test before you can change the test settings",
+    },
     rateApp: {
         en: "Rate App",
     },
