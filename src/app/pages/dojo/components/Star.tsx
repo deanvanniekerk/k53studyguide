@@ -9,7 +9,7 @@ type Props = {
     index: number;
 };
 
-const Star: React.FC<Props> = props => {
+const Star: React.FC<Props> = (props) => {
     const delay = props.index * 75;
     const animation = useRef<CreateAnimation>(null);
     useIonViewWillEnter(() => {

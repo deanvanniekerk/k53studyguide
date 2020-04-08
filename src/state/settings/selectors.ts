@@ -11,4 +11,4 @@ export const languageSelector: OutputSelector<
     RootState,
     string,
     (state: SettingsState) => string
-> = createSelector(rootSelector, root => root.language);
+> = createSelector(rootSelector, (root) => root.language);

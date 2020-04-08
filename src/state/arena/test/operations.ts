@@ -38,7 +38,7 @@ export const loadQuestionAnswers = (): ThunkAction<
         let sectionBBank: QuestionItem[] = [];
         let sectionCBank: QuestionItem[] = [];
 
-        keys.forEach(k => {
+        keys.forEach((k) => {
             if (k.startsWith("nav.vehicleControls")) sectionABank.push(...questionData[k]);
             else if (
                 k.startsWith("nav.rulesOfTheRoad") ||
@@ -83,7 +83,7 @@ export const loadQuestionAnswers = (): ThunkAction<
         const questionAnswers: QuestionAnswer[] = [];
 
         const load = (section: TestSection, bank: QuestionItem[]) => {
-            const qas: QuestionAnswer[] = bank.map(q => ({
+            const qas: QuestionAnswer[] = bank.map((q) => ({
                 section: section,
                 answer: null,
                 question: q,
@@ -113,7 +113,7 @@ export const submitTest = (): ThunkAction<
 
         const dateAnswered = new Date();
 
-        questionAnswers.forEach(qa => {
+        questionAnswers.forEach((qa) => {
             if (qa.answer === qa.question.answer)
                 dispatch(
                     recieveQuesionSuccesfullyAnsweredDate(

@@ -25,7 +25,7 @@ type Props = {
     index: number;
 } & PropsFromState;
 
-const NavigationItemComponent: React.FC<Props> = props => {
+const NavigationItemComponent: React.FC<Props> = (props) => {
     const animation1 = useRef<CreateAnimation>(null);
     const animation2 = useRef<CreateAnimation>(null);
 

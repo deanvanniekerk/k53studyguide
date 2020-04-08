@@ -11,7 +11,7 @@ type Props = {
     navigationKey: string;
 } & PropsFromState;
 
-const SeenProgressComponent: React.FC<Props> = props => {
+const SeenProgressComponent: React.FC<Props> = (props) => {
     const total = props.seenTotals[props.navigationKey];
 
     if (!total) return <React.Fragment />;

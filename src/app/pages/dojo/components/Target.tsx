@@ -14,7 +14,7 @@ type Props = {
     onStartTestClicked: () => void;
 } & PropsFromState;
 
-const TargetComponent: React.FC<Props> = props => {
+const TargetComponent: React.FC<Props> = (props) => {
     return (
         <Grid>
             <IonRow style={{ paddingTop: 15 }}>

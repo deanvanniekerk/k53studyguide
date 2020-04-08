@@ -11,7 +11,7 @@ type Props = {
     index: number;
 } & PropsFromState;
 
-const NavigationItemComponent: React.FC<Props> = props => {
+const NavigationItemComponent: React.FC<Props> = (props) => {
     const seenTotal = props.seenTotals[props.navigationItemKey];
     const seenProgress = seenTotal ? Math.floor((seenTotal.seen / seenTotal.total) * 100) : 0;
 

@@ -18,7 +18,7 @@ import { StudyPageHeader } from "./StudyPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
 
-const StudyPage: React.FC<Props> = props => {
+const StudyPage: React.FC<Props> = (props) => {
     const history = useHistory();
     const [infoModalVisible, setInfoModalVisible] = useState(false);
 

@@ -8,7 +8,7 @@ type Props = {
     onClick: () => void;
 };
 
-const PageHeaderInfoIcon: React.FC<Props> = props => {
+const PageHeaderInfoIcon: React.FC<Props> = (props) => {
     return (
         <IconWrapper onClick={props.onClick}>
             <InfoIcon icon={informationCircleOutline} />

@@ -8,7 +8,7 @@ type Props = {
     level: number;
 };
 
-const LevelText: React.FC<Props> = props => {
+const LevelText: React.FC<Props> = (props) => {
     const animation = useRef<CreateAnimation>(null);
     useIonViewWillEnter(() => {
         if (animation.current) animation.current.animation.play();

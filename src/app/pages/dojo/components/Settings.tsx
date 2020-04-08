@@ -31,7 +31,7 @@ type Props = {
 } & PropsFromState &
     PropsFromDispatch;
 
-const SettingsComponent: React.FC<Props> = props => {
+const SettingsComponent: React.FC<Props> = (props) => {
     const history = useHistory();
     const [showCompleteTestAlert, setShowCompleteTestAlert] = useState(false);
 
@@ -95,7 +95,7 @@ const SettingsComponent: React.FC<Props> = props => {
                             {({ translate }) => (
                                 <Select
                                     value={props.maxQuestions}
-                                    onIonChange={event =>
+                                    onIonChange={(event) =>
                                         props.recieveMaxQuestions(event.detail.value)
                                     }
                                     interface="action-sheet"
@@ -182,8 +182,8 @@ interface SettingValueColProps {
 }
 
 const SettingValueCol = styled(IonCol)<SettingValueColProps>`
-    color: ${props => (props.disabled ? "var(--ion-color-medium)" : "var(--ion-color-dark)")};
-    opacity: ${props => (props.disabled ? "1" : "0.9")} !important;
+    color: ${(props) => (props.disabled ? "var(--ion-color-medium)" : "var(--ion-color-dark)")};
+    opacity: ${(props) => (props.disabled ? "1" : "0.9")} !important;
     font-family: var(--ion-font-family-bold);
     font-size: var(--ion-font-size-md);
     font-weight: bold;
@@ -194,8 +194,8 @@ const SettingValueCol = styled(IonCol)<SettingValueColProps>`
 const Select = styled(IonSelect)`
     --padding-bottom: 0;
     --padding-top: 0;
-    color: ${props => (props.disabled ? "var(--ion-color-medium)" : "var(--ion-color-dark)")};
-    opacity: ${props => (props.disabled ? "1" : "0.9")} !important;
+    color: ${(props) => (props.disabled ? "var(--ion-color-medium)" : "var(--ion-color-dark)")};
+    opacity: ${(props) => (props.disabled ? "1" : "0.9")} !important;
     font-family: var(--ion-font-family-bold);
     font-weight: bold;
     font-size: var(--ion-font-size-md);

@@ -12,4 +12,4 @@ export const questionDataSelector: OutputSelector<
     RootState,
     QuestionData,
     (state: QuestionState) => QuestionData
-> = createSelector(rootSelector, root => root.questionData);
+> = createSelector(rootSelector, (root) => root.questionData);

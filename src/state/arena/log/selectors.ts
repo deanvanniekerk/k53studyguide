@@ -10,10 +10,10 @@ export const quesionsSuccesfullyAnsweredDatesSelector: OutputSelector<
     RootState,
     QuesionsSuccesfullyAnsweredDates,
     (state: LogState) => QuesionsSuccesfullyAnsweredDates
-> = createSelector(rootSelector, root => root.quesionsSuccesfullyAnsweredDates);
+> = createSelector(rootSelector, (root) => root.quesionsSuccesfullyAnsweredDates);
 
 export const testsPassedSelector: OutputSelector<
     RootState,
     number,
     (state: LogState) => number
-> = createSelector(rootSelector, root => root.testsPassed);
+> = createSelector(rootSelector, (root) => root.testsPassed);

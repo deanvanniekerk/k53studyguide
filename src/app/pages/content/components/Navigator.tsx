@@ -13,7 +13,7 @@ import { NavigationItem } from "../components";
 
 type Props = PropsFromState & PropsFromDispatch;
 
-const NavigatorComponent: React.FC<Props> = props => {
+const NavigatorComponent: React.FC<Props> = (props) => {
     const onNavigationItemClicked = (key: string) => {
         props.recieveCurrentNavigationKey(key);
     };

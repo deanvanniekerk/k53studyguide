@@ -9,7 +9,7 @@ type Data = {
 export const insertEntity = (tableName: string, data: Data): Promise<boolean> => {
     const url = `${__AZURE_STORAGE_TABLE_URL__}/${tableName}?${__AZURE_STORAGE_TABLE_SAS_TOKEN__}`;
 
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
         fetch(url, {
             method: "POST",
             headers: {
@@ -18,7 +18,7 @@ export const insertEntity = (tableName: string, data: Data): Promise<boolean> =>
                 "Content-Length": JSON.stringify(data).length.toString(),
             },
             body: JSON.stringify(data),
-        }).then(response => {
+        }).then((response) => {
             resolve(response.ok);
         });
     });
@@ -41,9 +41,9 @@ export const query = <T>(
                 Accept: "application/json;odata=nometadata",
                 "x-ms-date": new Date().toUTCString(),
             },
-        }).then(response => {
+        }).then((response) => {
             if (response.ok) {
-                response.json().then(data => resolve(data.value));
+                response.json().then((data) => resolve(data.value));
             } else reject();
         });
     });

@@ -17,7 +17,7 @@ import { LevelText } from "./";
 
 type Props = PropsFromState;
 
-const LevelComponent: React.FC<Props> = props => {
+const LevelComponent: React.FC<Props> = (props) => {
     return (
         <Wrapper>
             <LevelText level={props.level} />

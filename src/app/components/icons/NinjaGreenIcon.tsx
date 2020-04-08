@@ -2,7 +2,7 @@ import React from "react";
 
 type Props = React.SVGProps<SVGSVGElement>;
 
-const NinjaGreenIcon: React.FC<Props> = props => {
+const NinjaGreenIcon: React.FC<Props> = (props) => {
     return (
         <svg height="1em" viewBox="-1 0 512.001 512" width="1em" {...props}>
             <path

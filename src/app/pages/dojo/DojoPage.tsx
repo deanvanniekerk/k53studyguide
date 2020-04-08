@@ -16,7 +16,7 @@ import { DojoWatermark } from "./DojoWatermark";
 
 type Props = PropsFromState & PropsFromDispatch;
 
-const DojoPage: React.FC<Props> = props => {
+const DojoPage: React.FC<Props> = (props) => {
     const history = useHistory();
 
     const [infoModalVisible, setInfoModalVisible] = useState(false);

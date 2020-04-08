@@ -10,7 +10,7 @@ type Props = {
     icon?: string;
 };
 
-const BackButton: React.FC<Props> = props => {
+const BackButton: React.FC<Props> = (props) => {
     return (
         <IonFab vertical="top" horizontal="start" slot="fixed" onClick={props.onClick}>
             <IonIcon className="back-button" icon={props.icon || arrowBackOutline} />

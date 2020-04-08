@@ -21,7 +21,7 @@ export const targetNavigationKeySelector: OutputSelector<
     RootState,
     string,
     (state: NavigationState) => string
-> = createSelector(rootSelector, root => root.targetNavigationKey);
+> = createSelector(rootSelector, (root) => root.targetNavigationKey);
 
 export const targetNavigationChildrenSelector: OutputSelector<
     RootState,
@@ -35,7 +35,7 @@ export const targetNavigationParentSelector: OutputSelector<
     RootState,
     string,
     (key: string) => string
-> = createSelector(targetNavigationKeySelector, key => {
+> = createSelector(targetNavigationKeySelector, (key) => {
     const breadcrumb = navigationKeyToBreadcrumb(key);
 
     if (breadcrumb.length <= 1) return breadcrumb[0];
@@ -71,7 +71,7 @@ export const correctlyAnsweredQuestionsTotalsSelector: OutputSelector<
         const walk = (node: NavigationTreeItem): CorrectlyAnsweredQuestionsTotal => {
             const questions = questionData[node.key] || [];
             const correctlyAnswered = questions.filter(
-                q => !!quesionsSuccesfullyAnsweredDates[q.id]
+                (q) => !!quesionsSuccesfullyAnsweredDates[q.id]
             );
 
             const total: CorrectlyAnsweredQuestionsTotal = {
@@ -80,7 +80,7 @@ export const correctlyAnsweredQuestionsTotalsSelector: OutputSelector<
                 level: getLevel(correctlyAnswered.length, questions.length),
             };
 
-            node.children.forEach(child => {
+            node.children.forEach((child) => {
                 const childTotal = walk(child);
                 total.correctlyAnswered += childTotal.correctlyAnswered;
                 total.total += childTotal.total;

@@ -12,20 +12,20 @@ export const questionAnswersSelector: OutputSelector<
     RootState,
     QuestionAnswer[],
     (state: TestState) => QuestionAnswer[]
-> = createSelector(rootSelector, root => root.questionAnswers);
+> = createSelector(rootSelector, (root) => root.questionAnswers);
 
 export const totalQuestionsSelector: OutputSelector<
     RootState,
     number,
     (questionAnswers: QuestionAnswer[]) => number
-> = createSelector(questionAnswersSelector, questionAnswers => questionAnswers.length);
+> = createSelector(questionAnswersSelector, (questionAnswers) => questionAnswers.length);
 
 export const allQuestionsAnsweredSelector: OutputSelector<
     RootState,
     boolean,
     (questionAnswers: QuestionAnswer[]) => boolean
-> = createSelector(questionAnswersSelector, questionAnswers => {
-    return !questionAnswers.some(q => !q.answer);
+> = createSelector(questionAnswersSelector, (questionAnswers) => {
+    return !questionAnswers.some((q) => !q.answer);
 });
 
 export const totalCorrectAnswersSelector: OutputSelector<
@@ -34,23 +34,23 @@ export const totalCorrectAnswersSelector: OutputSelector<
     (questionAnswers: QuestionAnswer[]) => number
 > = createSelector(
     questionAnswersSelector,
-    questionAnswers => questionAnswers.filter(qa => qa.answer === qa.question.answer).length
+    (questionAnswers) => questionAnswers.filter((qa) => qa.answer === qa.question.answer).length
 );
 
 export const maxQuestionsSelector: OutputSelector<
     RootState,
     number,
     (state: TestState) => number
-> = createSelector(rootSelector, root => root.maxQuestions);
+> = createSelector(rootSelector, (root) => root.maxQuestions);
 
 export const testInProgressSelector: OutputSelector<
     RootState,
     boolean,
     (totalQuestions: number) => boolean
-> = createSelector(totalQuestionsSelector, totalQuestions => totalQuestions > 0);
+> = createSelector(totalQuestionsSelector, (totalQuestions) => totalQuestions > 0);
 
 export const experienceGainedSelector: OutputSelector<
     RootState,
     number,
     (state: TestState) => number
-> = createSelector(rootSelector, root => root.experienceGained);
+> = createSelector(rootSelector, (root) => root.experienceGained);

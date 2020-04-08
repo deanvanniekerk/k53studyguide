@@ -27,7 +27,7 @@ const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveQuestionAnswe
         history.replace("/arena");
     };
 
-    const questions = questionAnswers.map<QuestionInfo>(q => ({
+    const questions = questionAnswers.map<QuestionInfo>((q) => ({
         question: q.question,
         answer: q.answer,
     }));

@@ -39,7 +39,7 @@ const OptionList: React.FC<Props> = ({ question, answer, onOptionClicked, showRe
 
     return (
         <Container>
-            {question.option.map(option => {
+            {question.option.map((option) => {
                 return (
                     <Row
                         key={option.id}

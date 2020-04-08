@@ -14,7 +14,7 @@ type Props = {
     height?: number;
 };
 
-const ProgressBar: React.FC<Props> = props => {
+const ProgressBar: React.FC<Props> = (props) => {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {

@@ -12,13 +12,13 @@ export const seenContentKeysSelector: OutputSelector<
     RootState,
     SeenContentKeys,
     (state: LogState) => SeenContentKeys
-> = createSelector(rootSelector, root => root.seenContentKeys);
+> = createSelector(rootSelector, (root) => root.seenContentKeys);
 
 export const lastSeenParentContentKeySelector: OutputSelector<
     RootState,
     string,
     (state: LogState) => string
-> = createSelector(rootSelector, root => root.lastSeenParentContentKey);
+> = createSelector(rootSelector, (root) => root.lastSeenParentContentKey);
 
 export const seenTotalsSelector: OutputSelector<
     RootState,
@@ -38,7 +38,7 @@ export const seenTotalsSelector: OutputSelector<
                 total: isleaf ? 1 : 0,
             };
 
-            node.children.forEach(child => {
+            node.children.forEach((child) => {
                 const childTotal = walk(child);
                 total.seen += childTotal.seen;
                 total.total += childTotal.total;

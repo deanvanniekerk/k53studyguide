@@ -2,7 +2,7 @@ import React from "react";
 
 type Props = React.SVGProps<SVGSVGElement>;
 
-const Shuriken1OutlineIcon: React.FC<Props> = props => {
+const Shuriken1OutlineIcon: React.FC<Props> = (props) => {
     return (
         <svg height="1em" viewBox="0 0 512 512.003" width="1em" {...props}>
             <path d="M295.652 259.422c0-22.094-17.976-40.067-40.066-40.067-22.094 0-40.066 17.973-40.066 40.067 0 22.09 17.972 40.062 40.066 40.062 22.09 0 40.066-17.972 40.066-40.062zm-60.097 0c0-11.047 8.984-20.035 20.03-20.035 11.048 0 20.032 8.988 20.032 20.035 0 11.043-8.984 20.031-20.031 20.031-11.047 0-20.031-8.988-20.031-20.031zm0 0" />

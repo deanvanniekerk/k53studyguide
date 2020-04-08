@@ -8,5 +8,5 @@ const rootSelector = (state: RootState): TranslationsState => state.translations
 
 export const translationsSelector: (state: RootState) => Translations = createSelector(
     rootSelector,
-    root => root.translations
+    (root) => root.translations
 );

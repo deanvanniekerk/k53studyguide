@@ -11,7 +11,7 @@ import { IonCol, IonGrid, IonRow, IonSelect, IonSelectOption, IonText } from "@i
 
 type Props = PropsFromState & PropsFromDispatch;
 
-const SettingsComponent: React.FC<Props> = props => {
+const SettingsComponent: React.FC<Props> = (props) => {
     //Mini hack to get around to resetting issue....
     const [language, setLanguage] = useState(props.language);
 
@@ -35,7 +35,7 @@ const SettingsComponent: React.FC<Props> = props => {
                         {({ translate }) => (
                             <Select
                                 value={language}
-                                onIonChange={event => {
+                                onIonChange={(event) => {
                                     setLanguage(event.detail.value);
                                     props.recieveLanguage(event.detail.value);
                                 }}

@@ -27,7 +27,7 @@ export class AzureStorageLoggerService implements LoggerService {
             Data: data ? JSON.stringify(data) : "",
         };
 
-        insertEntity(this._tableName, entity).then(success => {
+        insertEntity(this._tableName, entity).then((success) => {
             if (!success) console.log("Error writing log record");
         });
     }

@@ -16,7 +16,7 @@ import { TestPageHeader } from "./TestPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
 
-const TestPage: React.FC<Props> = props => {
+const TestPage: React.FC<Props> = (props) => {
     const history = useHistory();
     const content = useRef<HTMLIonContentElement>(null);
 
@@ -43,7 +43,7 @@ const TestPage: React.FC<Props> = props => {
         }
     };
 
-    const questions = props.questionAnswers.map<QuestionInfo>(q => ({
+    const questions = props.questionAnswers.map<QuestionInfo>((q) => ({
         question: q.question,
         answer: q.answer,
     }));

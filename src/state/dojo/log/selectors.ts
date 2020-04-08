@@ -60,20 +60,23 @@ export const quesionsSuccesfullyAnsweredDatesSelector: OutputSelector<
     RootState,
     QuesionsSuccesfullyAnsweredDates,
     (state: LogState) => QuesionsSuccesfullyAnsweredDates
-> = createSelector(rootSelector, root => root.quesionsSuccesfullyAnsweredDates);
+> = createSelector(rootSelector, (root) => root.quesionsSuccesfullyAnsweredDates);
 
 export const quesionsSuccesfullyAnsweredSelector: OutputSelector<
     RootState,
     number,
     (state: LogState) => number
-> = createSelector(rootSelector, root => Object.keys(root.quesionsSuccesfullyAnsweredDates).length);
+> = createSelector(
+    rootSelector,
+    (root) => Object.keys(root.quesionsSuccesfullyAnsweredDates).length
+);
 
 export const dojoLevelSelector: OutputSelector<
     RootState,
     number,
     (current: number) => number
-> = createSelector(quesionsSuccesfullyAnsweredSelector, current => {
-    return levelRanges.filter(r => current <= r.upper)[0].level;
+> = createSelector(quesionsSuccesfullyAnsweredSelector, (current) => {
+    return levelRanges.filter((r) => current <= r.upper)[0].level;
 });
 
 export const dojoCurrentExperiencePercentSelector: OutputSelector<
@@ -81,7 +84,7 @@ export const dojoCurrentExperiencePercentSelector: OutputSelector<
     number,
     (current: number, level: number) => number
 > = createSelector(quesionsSuccesfullyAnsweredSelector, dojoLevelSelector, (current, level) => {
-    const range = levelRanges.find(r => r.level === level);
+    const range = levelRanges.find((r) => r.level === level);
 
     if (!range) return 0;
 
@@ -93,7 +96,7 @@ export const requiredLevelUpExperiencePointsSelector: OutputSelector<
     number,
     (current: number, level: number) => number
 > = createSelector(quesionsSuccesfullyAnsweredSelector, dojoLevelSelector, (current, level) => {
-    const range = levelRanges.find(r => r.level === level);
+    const range = levelRanges.find((r) => r.level === level);
 
     if (!range) return 0;
 

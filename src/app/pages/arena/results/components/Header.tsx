@@ -85,7 +85,7 @@ type NinjaIconProps = {
     passed: boolean;
 };
 
-const NinjaIcon: React.FC<NinjaIconProps> = props => {
+const NinjaIcon: React.FC<NinjaIconProps> = (props) => {
     return (
         <CreateAnimation
             play={true}
@@ -109,7 +109,7 @@ type ResultTextProps = {
     passed: boolean;
 };
 
-const ResultText: React.FC<ResultTextProps> = props => {
+const ResultText: React.FC<ResultTextProps> = (props) => {
     return (
         <CreateAnimation
             play={true}
@@ -170,7 +170,7 @@ type SuccessIconProps = {
     success: boolean;
     size: string;
 };
-const SuccessIcon: React.FC<SuccessIconProps> = props => {
+const SuccessIcon: React.FC<SuccessIconProps> = (props) => {
     if (props.success) return <NinjaHappyIcon style={{ fontSize: props.size }} />;
 
     return <NinjaDeadIcon style={{ fontSize: props.size }} />;

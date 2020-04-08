@@ -17,7 +17,7 @@ type Props = {
     selectTargetNavigationItem: () => void;
 } & PropsFromState;
 
-const HeaderComponent: React.FC<Props> = props => {
+const HeaderComponent: React.FC<Props> = (props) => {
     const total = props.correctlyAnsweredQuestionsTotals[props.targetNavigationKey];
     const current = total ? total.level : 0;
 

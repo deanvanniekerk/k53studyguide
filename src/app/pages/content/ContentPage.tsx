@@ -20,7 +20,7 @@ import { ContentList, Header, Navigator } from "./components";
 
 type Props = PropsFromState & PropsFromDispatch;
 
-const ContentPage: React.FC<Props> = props => {
+const ContentPage: React.FC<Props> = (props) => {
     const history = useHistory();
     const content = useRef<HTMLIonContentElement>(null);
 

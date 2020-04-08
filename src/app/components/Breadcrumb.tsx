@@ -16,7 +16,7 @@ type Props = {
     lastOpacity?: number;
 } & PropsFromDispatch;
 
-const BreadcrumbComponent: React.FC<Props> = props => {
+const BreadcrumbComponent: React.FC<Props> = (props) => {
     const breadcrumb = navigationKeyToBreadcrumb(props.navigationKey);
     return (
         <div

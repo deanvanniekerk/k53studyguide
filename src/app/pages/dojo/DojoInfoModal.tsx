@@ -19,7 +19,7 @@ type Props = {
     onDidDismiss: () => void;
 };
 
-const DojoInfoModal: React.FC<Props> = props => {
+const DojoInfoModal: React.FC<Props> = (props) => {
     return (
         <Modal mode="ios" isOpen={props.isOpen} onDidDismiss={props.onDidDismiss}>
             <DojoWatermark />

@@ -16,7 +16,7 @@ type Props = {
     onOptionClicked?: (questionId: string, option: QuestionOption) => void;
 };
 
-const QuestionList: React.FC<Props> = props => {
+const QuestionList: React.FC<Props> = (props) => {
     return (
         <List>
             {props.questions.map((q, index) => {

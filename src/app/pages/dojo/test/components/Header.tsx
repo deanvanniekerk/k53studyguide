@@ -12,7 +12,7 @@ import { IonCol, IonGrid, IonListHeader, IonRow, IonText } from "@ionic/react";
 
 type Props = PropsFromState;
 
-const HeaderComponent: React.FC<Props> = props => {
+const HeaderComponent: React.FC<Props> = (props) => {
     return (
         <React.Fragment>
             <IonListHeader>

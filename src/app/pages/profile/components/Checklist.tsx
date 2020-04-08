@@ -16,7 +16,7 @@ import { Row } from "./";
 
 type Props = PropsFromState;
 
-const ChecklistComponent: React.FC<Props> = props => {
+const ChecklistComponent: React.FC<Props> = (props) => {
     const total = props.seenTotals[ROOT_NAVIGATION_KEY] || 0;
     const seenProgress = Math.floor((total.seen / total.total) * 100);
 

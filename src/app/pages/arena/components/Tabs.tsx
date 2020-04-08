@@ -77,14 +77,14 @@ const Tab = styled.div<{ selected: boolean }>`
     font-size: var(--ion-font-size-md);
     padding-bottom: 15px;
     font-family: var(--ion-font-family-bold);
-    font-weight: ${props => (props.selected ? "bold" : "100")};
-    border-bottom: ${props => (props.selected ? "2px" : "0")} solid #ffffffc9;
+    font-weight: ${(props) => (props.selected ? "bold" : "100")};
+    border-bottom: ${(props) => (props.selected ? "2px" : "0")} solid #ffffffc9;
 `;
 
 const TabInfo = styled.div<{ selected: boolean }>`
     font-size: var(--ion-font-size-xs);
     font-family: var(--ion-font-family-bold);
-    font-weight: ${props => (props.selected ? "bold" : "100")};
+    font-weight: ${(props) => (props.selected ? "bold" : "100")};
     display: block;
     padding-top: 5px;
     opacity: 0.7;

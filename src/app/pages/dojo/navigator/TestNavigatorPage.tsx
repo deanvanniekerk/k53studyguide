@@ -21,7 +21,7 @@ import { TestNavigatorPageHeader } from "./TestNavigatorPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
 
-const TestNavigatorPage: React.FC<Props> = props => {
+const TestNavigatorPage: React.FC<Props> = (props) => {
     const history = useHistory();
 
     const navigateToDojo = () => {

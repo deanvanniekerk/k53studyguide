@@ -20,7 +20,7 @@ type Props = {
 } & PropsFromState &
     PropsFromDispatch;
 
-const FooterComponent: React.FC<Props> = props => {
+const FooterComponent: React.FC<Props> = (props) => {
     const [showNotComplete, setShowNotComplete] = useState(false);
 
     const onSubmitClicked = () => {

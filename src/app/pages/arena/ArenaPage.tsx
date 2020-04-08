@@ -16,7 +16,7 @@ import { Header } from "./components";
 
 type Props = PropsFromState & PropsFromDispatch;
 
-const ArenaPage: React.FC<Props> = props => {
+const ArenaPage: React.FC<Props> = (props) => {
     const history = useHistory();
 
     const [infoModalVisible, setInfoModalVisible] = useState(false);

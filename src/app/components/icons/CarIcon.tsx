@@ -2,7 +2,7 @@ import React from "react";
 
 type Props = React.SVGProps<SVGSVGElement>;
 
-const CarIcon: React.FC<Props> = props => {
+const CarIcon: React.FC<Props> = (props) => {
     return (
         <svg viewBox="0 0 512.002 512.002" width="1em" height="1em" {...props}>
             <g fillRule="evenodd" clipRule="evenodd">

@@ -14,7 +14,7 @@ export const currentNavigationKeySelector: OutputSelector<
     RootState,
     string,
     (state: NavigationState) => string
-> = createSelector(rootSelector, root => root.currentNavigationKey);
+> = createSelector(rootSelector, (root) => root.currentNavigationKey);
 
 export const currentNavigationChildrenSelector: OutputSelector<
     RootState,
@@ -28,7 +28,7 @@ export const currentNavigationParentSelector: OutputSelector<
     RootState,
     string,
     (key: string) => string
-> = createSelector(currentNavigationKeySelector, key => {
+> = createSelector(currentNavigationKeySelector, (key) => {
     const breadcrumb = navigationKeyToBreadcrumb(key);
 
     if (breadcrumb.length <= 1) return breadcrumb[0];

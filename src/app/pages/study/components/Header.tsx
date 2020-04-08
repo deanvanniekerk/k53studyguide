@@ -14,7 +14,7 @@ type Props = {
     onNavigationItemClicked: (navigationItemKey: string) => void;
 } & PropsFromState;
 
-const HeaderComponent: React.FC<Props> = props => {
+const HeaderComponent: React.FC<Props> = (props) => {
     return (
         <IonListHeader>
             <IonGrid>

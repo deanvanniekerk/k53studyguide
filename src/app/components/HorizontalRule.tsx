@@ -7,7 +7,7 @@ type Props = {
     paddingBottom?: number;
 };
 
-const HorizontalRule: React.FC<Props> = props => {
+const HorizontalRule: React.FC<Props> = (props) => {
     return (
         <div
             style={{

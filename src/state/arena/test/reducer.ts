@@ -26,7 +26,7 @@ export const reducer = (state: TestState = defaultState, action: TestActions): T
             };
         case "ARENA_TEST_RECIEVE_ANSWER":
             const index = state.questionAnswers.findIndex(
-                q => q.question.id === action.payload.questionId
+                (q) => q.question.id === action.payload.questionId
             );
             return {
                 ...state,

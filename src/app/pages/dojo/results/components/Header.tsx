@@ -16,7 +16,7 @@ import { CreateAnimation, IonIcon } from "@ionic/react";
 
 type Props = PropsFromState;
 
-const HeaderComponent: React.FC<Props> = props => {
+const HeaderComponent: React.FC<Props> = (props) => {
     const allCorrect = props.totalCorrectAnswers === props.totalQuestions;
 
     if (props.totalQuestions === 0) return <React.Fragment />;
@@ -48,7 +48,7 @@ type NinjaIconProps = {
     allCorrect: boolean;
 };
 
-const NinjaIcon: React.FC<NinjaIconProps> = props => {
+const NinjaIcon: React.FC<NinjaIconProps> = (props) => {
     return (
         <CreateAnimation
             play={true}
@@ -74,7 +74,7 @@ type ResultTextProps = {
     totalQuestions: number;
 };
 
-const ResultText: React.FC<ResultTextProps> = props => {
+const ResultText: React.FC<ResultTextProps> = (props) => {
     return (
         <CreateAnimation
             play={true}

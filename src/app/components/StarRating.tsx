@@ -14,7 +14,7 @@ type Props = {
     inActiveOpacity?: number;
 };
 
-const StarRating: React.FC<Props> = props => {
+const StarRating: React.FC<Props> = (props) => {
     return (
         <StarWrapper>
             {Array.from(Array(props.total)).map((_, index) => (
@@ -51,7 +51,7 @@ type StarProps = {
     inActiveOpacity?: number;
 };
 
-const Star: React.FC<StarProps> = props => {
+const Star: React.FC<StarProps> = (props) => {
     const delay = props.index * 75;
     const animation = useRef<CreateAnimation>(null);
     useIonViewWillEnter(() => {
@@ -89,8 +89,8 @@ type IconWrapperProps = {
 };
 
 const IconWrapper = styled.div<IconWrapperProps>`
-    font-size: ${props => props.size};
-    padding: 0 ${props => props.padding};
+    font-size: ${(props) => props.size};
+    padding: 0 ${(props) => props.padding};
 `;
 
 export { StarRating };

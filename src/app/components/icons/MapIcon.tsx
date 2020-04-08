@@ -2,7 +2,7 @@ import React from "react";
 
 type Props = React.SVGProps<SVGSVGElement>;
 
-const MapIcon: React.FC<Props> = props => {
+const MapIcon: React.FC<Props> = (props) => {
     return (
         <svg height="1em" viewBox="0 -61 512 512" width="1em" {...props}>
             <path

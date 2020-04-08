@@ -27,7 +27,7 @@ const iconStyles: React.CSSProperties = {
     fontSize: "2rem",
 };
 
-const Router: React.FC<Props> = props => {
+const Router: React.FC<Props> = (props) => {
     return (
         <TranslationProvider language={props.language} translation={translations}>
             <IonReactRouter>

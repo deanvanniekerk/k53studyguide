@@ -11,7 +11,7 @@ type Props = {
     onNavigationItemClicked: (key: string) => void;
 } & PropsFromState;
 
-const NavigatorComponent: React.FC<Props> = props => {
+const NavigatorComponent: React.FC<Props> = (props) => {
     if (!props.navigationChildren) return <React.Fragment />;
 
     return (

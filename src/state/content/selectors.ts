@@ -11,4 +11,4 @@ export const contentDataSelector: OutputSelector<
     RootState,
     ContentData,
     (state: ContentState) => ContentData
-> = createSelector(rootSelector, root => root.contentData);
+> = createSelector(rootSelector, (root) => root.contentData);

@@ -6,7 +6,7 @@ type Props = {
     onInfoClicked: () => void;
 };
 
-const ArenaPageHeaderComponent: React.FC<Props> = props => {
+const ArenaPageHeaderComponent: React.FC<Props> = (props) => {
     return (
         <PageHeader
             text="arena"

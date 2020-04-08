@@ -37,7 +37,7 @@ export const loadQuestionAnswers = (): ThunkAction<
         let bank: QuestionItem[] = [];
         const keys = Object.keys(questionData);
 
-        keys.forEach(k => {
+        keys.forEach((k) => {
             if (k.startsWith(targetKey)) bank.push(...questionData[k]);
         });
 
@@ -66,7 +66,7 @@ export const loadQuestionAnswers = (): ThunkAction<
             bank = bank.slice(0, maxQuestions);
         }
 
-        const questionAnswers: QuestionAnswer[] = bank.map(q => ({
+        const questionAnswers: QuestionAnswer[] = bank.map((q) => ({
             answer: null,
             question: q,
         }));
@@ -88,7 +88,7 @@ export const submitTest = (): ThunkAction<
         );
 
         let experienceGained = 0;
-        questionAnswers.forEach(qa => {
+        questionAnswers.forEach((qa) => {
             if (
                 qa.answer === qa.question.answer &&
                 !quesionsSuccesfullyAnsweredDates[qa.question.id]
@@ -99,7 +99,7 @@ export const submitTest = (): ThunkAction<
 
         const dateAnswered = new Date();
 
-        questionAnswers.forEach(qa => {
+        questionAnswers.forEach((qa) => {
             if (qa.answer === qa.question.answer)
                 dispatch(
                     recieveQuesionSuccesfullyAnsweredDate(

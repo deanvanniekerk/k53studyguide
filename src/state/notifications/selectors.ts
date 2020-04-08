@@ -13,4 +13,4 @@ export const notificationsSelector: OutputSelector<
     RootState,
     Notifications,
     (state: NotificationsState) => Notifications
-> = createSelector(rootSelector, root => root.notifications);
+> = createSelector(rootSelector, (root) => root.notifications);

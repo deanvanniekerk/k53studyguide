@@ -2,7 +2,7 @@ import React from "react";
 
 type Props = React.SVGProps<SVGSVGElement>;
 
-const KimonoYellowIcon: React.FC<Props> = props => {
+const KimonoYellowIcon: React.FC<Props> = (props) => {
     return (
         <svg height="1em" viewBox="-26 0 512 512" width="1em" {...props}>
             <path

@@ -11,7 +11,7 @@ type Props = {
     index: number;
 } & PropsFromState;
 
-const NavigationItemComponent: React.FC<Props> = props => {
+const NavigationItemComponent: React.FC<Props> = (props) => {
     const total = props.correctlyAnsweredQuestionsTotals[props.navigationItemKey];
     const current = total ? total.level : 0;
 

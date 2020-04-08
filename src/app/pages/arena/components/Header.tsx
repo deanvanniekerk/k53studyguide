@@ -24,7 +24,7 @@ type Props = {
     onStartTestClicked: () => void;
 } & PropsFromState;
 
-const HeaderComponent: React.FC<Props> = props => {
+const HeaderComponent: React.FC<Props> = (props) => {
     const animationIcon = useRef<CreateAnimation>(null);
     const animationCounter = useRef<CreateAnimation>(null);
 

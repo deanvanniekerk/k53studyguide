@@ -12,7 +12,7 @@ import { SeenProgress } from "./SeenProgress";
 
 type Props = PropsFromState;
 
-const HeaderComponent: React.FC<Props> = props => {
+const HeaderComponent: React.FC<Props> = (props) => {
     return (
         <>
             <IonListHeader>

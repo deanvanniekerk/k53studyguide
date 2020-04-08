@@ -20,7 +20,7 @@ type Props = {
     disableAnimation?: boolean;
 };
 
-const NavigationItem: React.FC<Props> = props => {
+const NavigationItem: React.FC<Props> = (props) => {
     const delay = props.index * 40;
     const animation1 = useRef<CreateAnimation>(null);
     const animation2 = useRef<CreateAnimation>(null);

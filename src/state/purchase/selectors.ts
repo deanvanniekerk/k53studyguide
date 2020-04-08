@@ -11,16 +11,16 @@ export const purchaseSelector: OutputSelector<
     RootState,
     PurchaseState,
     (state: PurchaseState) => PurchaseState
-> = createSelector(rootSelector, root => root);
+> = createSelector(rootSelector, (root) => root);
 
 export const hasFullAccessSelector: OutputSelector<
     RootState,
     boolean,
     (state: PurchaseState) => boolean
-> = createSelector(rootSelector, root => root.productState == "owned");
+> = createSelector(rootSelector, (root) => root.productState == "owned");
 
 export const canPurchaseSelector: OutputSelector<
     RootState,
     boolean,
     (state: PurchaseState) => boolean
-> = createSelector(rootSelector, root => root.canPurchase);
+> = createSelector(rootSelector, (root) => root.canPurchase);

@@ -13,7 +13,7 @@ type Props = {
     onDidDismiss: () => void;
 };
 
-const ArenaInfoModal: React.FC<Props> = props => {
+const ArenaInfoModal: React.FC<Props> = (props) => {
     return (
         <Modal mode="ios" isOpen={props.isOpen} onDidDismiss={props.onDidDismiss}>
             <ArenaWatermark />

@@ -2,7 +2,7 @@ import React from "react";
 
 type Props = React.SVGProps<SVGSVGElement>;
 
-const Shuriken1Icon: React.FC<Props> = props => {
+const Shuriken1Icon: React.FC<Props> = (props) => {
     return (
         <svg height="1em" viewBox="0 0 512 512.003" width="1em" {...props}>
             <g fill="#ff5d5d">

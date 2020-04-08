@@ -10,7 +10,7 @@ type Props = {
     iconColor?: "danger" | "success";
 };
 
-const Row: React.FC<Props> = props => {
+const Row: React.FC<Props> = (props) => {
     return (
         <Container>
             <NameCol>

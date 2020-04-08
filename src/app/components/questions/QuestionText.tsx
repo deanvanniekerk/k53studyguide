@@ -17,7 +17,7 @@ const QuestionText: React.FC<Props> = ({ question }) => {
 
             return (
                 <List>
-                    {list.map(item => (
+                    {list.map((item) => (
                         <ListItem key={item}>{<Translate text={item} />}</ListItem>
                     ))}
                 </List>

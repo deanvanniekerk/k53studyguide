@@ -23,7 +23,7 @@ import { TestPageHeader } from "./TestPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
 
-const TestPage: React.FC<Props> = props => {
+const TestPage: React.FC<Props> = (props) => {
     const history = useHistory();
     const content = useRef<HTMLIonContentElement>(null);
 

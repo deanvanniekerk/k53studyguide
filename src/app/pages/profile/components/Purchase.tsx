@@ -13,7 +13,7 @@ import { Row } from "./";
 
 type Props = PropsFromState;
 
-const PurchaseComponent: React.FC<Props> = props => {
+const PurchaseComponent: React.FC<Props> = (props) => {
     const [purchaseModalVisible, setPurchaseModalVisible] = useState(false);
 
     return (

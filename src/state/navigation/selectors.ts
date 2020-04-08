@@ -13,13 +13,13 @@ export const navigationDataSelector: OutputSelector<
     RootState,
     NavigationData,
     (state: NavigationState) => NavigationData
-> = createSelector(rootSelector, root => root.navigationData);
+> = createSelector(rootSelector, (root) => root.navigationData);
 
 export const rootNavigationChildrenSelector: OutputSelector<
     RootState,
     string[],
     (data: NavigationData) => string[]
-> = createSelector(navigationDataSelector, data => data[ROOT_NAVIGATION_KEY]);
+> = createSelector(navigationDataSelector, (data) => data[ROOT_NAVIGATION_KEY]);
 
 export const navigationTreeSelector: OutputSelector<
     RootState,
@@ -30,7 +30,7 @@ export const navigationTreeSelector: OutputSelector<
         const childrenKeys = navData[parent.key];
 
         if (childrenKeys) {
-            childrenKeys.forEach(childrenKey => {
+            childrenKeys.forEach((childrenKey) => {
                 const child: NavigationTreeItem = {
                     key: childrenKey,
                     children: [],

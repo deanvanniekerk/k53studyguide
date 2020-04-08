@@ -8,7 +8,7 @@ type Props = {
     rightComponent?: React.ReactNode;
 };
 
-const PageHeader: React.FC<Props> = props => {
+const PageHeader: React.FC<Props> = (props) => {
     return (
         <div className="page-header">
             <div className="col-1"></div>

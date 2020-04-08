@@ -18,7 +18,7 @@ import { IonAlert, IonCol, IonGrid, IonIcon, IonRow, IonText } from "@ionic/reac
 
 type Props = PropsFromState & PropsFromDispatch;
 
-const HistoryComponent: React.FC<Props> = props => {
+const HistoryComponent: React.FC<Props> = (props) => {
     const [showClearSeenHistory, setShowClearSeenHistory] = useState(false);
     const [showClearDojoHistory, setShowClearDojoHistory] = useState(false);
     const [showClearArenaHistory, setShowClearArenaHistory] = useState(false);

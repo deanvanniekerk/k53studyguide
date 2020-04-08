@@ -28,7 +28,7 @@ type Props = {
 } & PropsFromState &
     PropsFromDispatch;
 
-const PurchaseModal: React.FC<Props> = props => {
+const PurchaseModal: React.FC<Props> = (props) => {
     const purchaseService = useContext(PurchaseContext);
 
     const [showOwnedToast, setShowOwnedToast] = useState(false);
