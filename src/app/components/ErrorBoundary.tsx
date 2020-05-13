@@ -13,7 +13,9 @@ type State = {
     hasError: boolean;
 };
 
-type Props = PropsFromDispatch;
+type Props = {
+    children: React.ReactNode;
+} & PropsFromDispatch;
 
 export class ErrorBoundaryComponent extends React.Component<Props, State> {
     constructor(props: Props) {
