@@ -5,7 +5,7 @@ import { NinjaOutlineIcon } from "@/app/components/icons";
 import { watermarkStyle } from "@/app/styles";
 import { IonContent, IonPage } from "@ionic/react";
 
-import { Checklist, Debug, History, Purchase, RateApp } from "./components";
+import { Checklist, Debug, History, RateApp } from "./components";
 import { ProfilePageHeader } from "./ProfilePageHeader";
 
 const ProfilePage: React.FC = () => {
@@ -16,7 +16,7 @@ const ProfilePage: React.FC = () => {
             <Content>
                 <Checklist />
                 <History />
-                <Purchase />
+                {/* <Purchase /> */}
                 <RateApp />
                 <Debug />
             </Content>

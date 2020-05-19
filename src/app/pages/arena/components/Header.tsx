@@ -1,4 +1,5 @@
-import { caretForward, lockClosedOutline } from "ionicons/icons";
+//import { caretForward, lockClosedOutline } from "ionicons/icons";
+import { caretForward } from "ionicons/icons";
 import React, { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
@@ -67,13 +68,14 @@ const HeaderComponent: React.FC<Props> = (props) => {
             <IonRow style={{ paddingTop: 25 }}>
                 <IonCol>
                     <CenterText>
-                        <PrimaryText>
-                            {props.hasFullAccess ? "Areans Completed" : "Arena Locked"}
-                        </PrimaryText>
+                        {/* <PrimaryText>
+                            {props.hasFullAccess ? "Arenas Completed" : "Arena Locked"}
+                        </PrimaryText> */}
+                        <PrimaryText>Arena</PrimaryText>
                     </CenterText>
                 </IonCol>
             </IonRow>
-            <IonRow style={{ paddingTop: 25 }}>
+            {/* <IonRow style={{ paddingTop: 25 }}>
                 <IonCol>
                     <CenterText>
                         {props.hasFullAccess && (
@@ -97,7 +99,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
                         )}
                     </CenterText>
                 </IonCol>
-            </IonRow>
+            </IonRow> */}
 
             <IonRow style={{ paddingTop: 25 }}>
                 <IonCol>
@@ -118,11 +120,12 @@ const HeaderComponent: React.FC<Props> = (props) => {
                         )}
                         {!props.hasFullAccess && (
                             <React.Fragment>
-                                <FullAccessText>
+                                {/* <FullAccessText>
                                     In order to access the Arena you need to first purchase the
                                     premium package
-                                </FullAccessText>
-                                <IonButton
+                                </FullAccessText> */}
+                                <FullAccessText>Arena access comming soon!</FullAccessText>
+                                {/* <IonButton
                                     color="tertiary"
                                     shape="round"
                                     fill="solid"
@@ -131,7 +134,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
                                     onClick={() => setPurchaseModalVisible(true)}
                                 >
                                     Go Premium
-                                </IonButton>
+                                </IonButton> */}
                             </React.Fragment>
                         )}
                     </CenterText>
@@ -160,11 +163,11 @@ const PrimaryText = styled.div`
     text-transform: uppercase;
 `;
 
-const Counter = styled.div`
-    font-size: 4rem;
-    font-family: var(--ion-font-family-bold);
-    font-weight: bold;
-`;
+// const Counter = styled.div`
+//     font-size: 4rem;
+//     font-family: var(--ion-font-family-bold);
+//     font-weight: bold;
+// `;
 
 const CenterText = styled.div`
     text-align: center;
