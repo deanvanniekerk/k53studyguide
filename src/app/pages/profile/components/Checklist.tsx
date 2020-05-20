@@ -48,12 +48,12 @@ const ChecklistComponent: React.FC<Props> = (props) => {
                             icon={props.dojoLevel === 5 ? checkmarkCircle : closeCircle}
                             iconColor={props.dojoLevel === 5 ? "success" : "danger"}
                         />
-                        <Row
+                        {/* <Row
                             name={translate({ text: "checklistCompleteArena" })}
                             value={props.areaTestsPassed}
                             icon={props.areaTestsPassed >= 3 ? checkmarkCircle : closeCircle}
                             iconColor={props.areaTestsPassed >= 3 ? "success" : "danger"}
-                        />
+                        /> */}
                         <FullRow>
                             <IonCol>{LineBreak}</IonCol>
                         </FullRow>
