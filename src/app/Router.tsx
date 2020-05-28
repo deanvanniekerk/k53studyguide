@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
 import { Provider as TranslationProvider } from "react-translated";
 
-import { NinjaIcon, PagodaIcon, TargetIcon } from "@/app/components/icons";
+import { KatanaIcon, NinjaIcon, PagodaIcon, TargetIcon } from "@/app/components/icons";
 import { translations } from "@/data";
 import { RootState } from "@/state";
 import { languageSelector } from "@/state/settings";
@@ -54,10 +54,10 @@ const Router: React.FC<Props> = (props) => {
                             <TargetIcon style={iconStyles} />
                             <IonLabel>Dojo</IonLabel>
                         </IonTabButton>
-                        {/* <IonTabButton tab="arena" href="/arena">
+                        <IonTabButton tab="arena" href="/arena">
                             <KatanaIcon style={iconStyles} />
                             <IonLabel>Arena</IonLabel>
-                        </IonTabButton> */}
+                        </IonTabButton>
                         <IonTabButton tab="profile" href="/profile">
                             <NinjaIcon style={iconStyles} />
                             <IonLabel>Profile</IonLabel>
