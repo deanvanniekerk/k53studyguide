@@ -2,21 +2,19 @@
 
 ![banner](https://i.ibb.co/g9wC6vb/Feature-Graphic.png)
 
-K53 Ninja will guide you through the process of preparing for your K53 learners license test.
+K53 Ninja guides learners through the process of preparing for the K53 learners license test.
 
 Some of K53 Ninja features include:
 
--   The Study section: contains all the K53 study material and a tracker which logs the sections you have read through.
--   The Dojo section: practise by completing test questions, all your progress is tracked and indicated by Level.
--   The Arena section: test your skill by completing mock tests that are set up and marked in the same way as the real one.
+-   The Study section: contains all K53 study material and a tracker which logs the sections that have been read through.
+-   The Dojo section: learners practise by completing test questions, all progress is tracked and indicated by Level.
+-   The Arena section: leaners test their skills by completing mock tests that are set up and marked in the same way as the real one.
 
-K53 Ninja contains a bank of over 400 tough test questions. Test are dynamically generated so you will never feel like you are repeating tests.
-
-We are very confident that if you attain Level 5 in the Dojo and complete the Arena at least 3 times that you will easily pass on the big day of the test.
+K53 Ninja contains a bank of over 400 tough test questions. Test are dynamically generated so learners will never feel like they are repeating tests.
 
 ### Listings
 
--   [Android Listing](https://play.google.com/store/apps/details?id=deanvniekerk.k53ninja.app&hl=en-GB)
+-   [Play Store Listing](https://play.google.com/store/apps/details?id=deanvniekerk.k53ninja.app&hl=en-GB)
 -   App Store Listing: Comming Soon!
 
 ## Development
@@ -56,8 +54,8 @@ We are very confident that if you attain Level 5 in the Dojo and complete the Ar
 ### IOS
 
 -   `ios/App/App.xcodeproj/project.pbxproj`
-    -   `CURRENT_PROJECT_VERSION = x.x;` > 2 places
-    -   `MARKETING_VERSION = x.x;` > 2 places
+    -   `CURRENT_PROJECT_VERSION = x.x;` >
+    -   `MARKETING_VERSION = x.x;`
 
 ## SVG to React Component Tool
 
