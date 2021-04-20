@@ -39,12 +39,8 @@
     },
     "dependencies": {
         "@capacitor/android": "2.4.7",
-        "@capacitor/app": "0.3.6",
         "@capacitor/core": "2.4.7",
-        "@capacitor/haptics": "0.3.6",
         "@capacitor/ios": "2.4.7",
-        "@capacitor/keyboard": "0.5.6",
-        "@capacitor/storage": "0.3.6",
         "@ionic-native/app-rate": "5.32.1",
         "@ionic-native/app-version": "5.32.1",
         "@ionic-native/core": "5.32.1",
