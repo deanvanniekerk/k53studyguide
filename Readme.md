@@ -21,27 +21,27 @@ K53 Ninja contains a bank of **over 400** tough test questions. Test are **dynam
 
 ### Getting started
 
--   `npm install`
--   `npm start`
+-   `yarn install`
+-   `yarn start`
 -   Application should now be available at `https://localhost:3000`
 
 ### Testing
 
--   `npm run test`
+-   `yarn test`
 
 ### Linting
 
--   `npm run lint`
--   `npm run lint-fix`
+-   `yarn lint`
+-   `yarn lint-fix`
 
 ### Webpack Bundle Analyzer
 
--   `npm run analyze:build`
--   `npm run analyze:run`
+-   `yarn analyze:build`
+-   `yarn analyze:run`
 
 ### Package version updates
 
--   `npm-check -u -E`
+-   `yarn upgrade-interactive --latest`
 
 ## Updating App Versions
 
@@ -59,4 +59,4 @@ K53 Ninja contains a bank of **over 400** tough test questions. Test are **dynam
 
 ## SVG to React Component Tool
 
--   `npm run svg-to-component -- assets/resources/ninja/svg-solid/018-katana-1.svg`
+-   `yarn svg-to-component -- assets/resources/ninja/svg-solid/018-katana-1.svg`
