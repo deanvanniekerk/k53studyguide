@@ -14,7 +14,7 @@ export class AzureStorageLoggerService implements LoggerService {
         this._appVersionNumber = await AppVersion.getVersionNumber();
     }
 
-    log(level: LogLevel, message: string, data?: object) {
+    log(level: LogLevel, message: string, data?: unknown) {
         const entity: LogRecord = {
             PartitionKey: Device.uuid || "no-device-id",
             RowKey: uuidv4(),

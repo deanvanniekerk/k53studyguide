@@ -59,12 +59,14 @@ module.exports = {
             template: path.resolve(__dirname, "public/index.html"),
             filename: "index.html",
         }),
-        new CopyWebpackPlugin([
-            {
-                from: path.resolve(__dirname, "public/assets/"),
-                to: path.resolve(__dirname, "build/assets"),
-            },
-        ]),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, "public/assets/"),
+                    to: path.resolve(__dirname, "build/assets"),
+                },
+            ],
+        }),
         new webpack.DefinePlugin({
             __ENVIRONMENT__: JSON.stringify(environment),
             __AZURE_STORAGE_TABLE_URL__: JSON.stringify(azureStorageTableUrl),

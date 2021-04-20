@@ -1,3 +1,4 @@
+import "@capacitor/core";
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -7,6 +8,7 @@ const rootElement = document.getElementById("root");
 // Create a reusable render method that we can call more than once
 const render = () => {
     // Dynamically import our main App component, and render it
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const App = require("./App").default;
 
     ReactDOM.render(<App />, rootElement);

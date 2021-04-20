@@ -6,7 +6,9 @@ import { navigateUp, recieveTargetNavigationKey } from "./";
 type DispatchExts = ReturnType<typeof navigateUp>;
 
 const middlewares = [thunk];
-const mockStore = createMockStore<{}, (action: DispatchExts) => void>(middlewares);
+const mockStore = createMockStore<Record<string, unknown>, (action: DispatchExts) => void>(
+    middlewares
+);
 
 describe("state > dojo > navigation > operations", () => {
     it("navigateUp - 3 levels", () => {

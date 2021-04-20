@@ -23,7 +23,7 @@ export class ErrorBoundaryComponent extends React.Component<Props, State> {
         this.state = { hasError: false };
     }
 
-    componentDidCatch(error: Error | null, info: object) {
+    componentDidCatch(error: Error | null, info: unknown) {
         // Display fallback UI
         this.setState({ hasError: true });
 

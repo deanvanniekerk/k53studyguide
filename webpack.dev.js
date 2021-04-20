@@ -1,8 +1,10 @@
+const { merge } = require("webpack-merge");
 const webpack = require("webpack");
-const merge = require("webpack-merge");
 const common = require("./webpack.common.js");
 
 module.exports = merge(common, {
+    mode: "development",
+
     devtool: "eval-source-map",
 
     output: {
@@ -16,5 +18,5 @@ module.exports = merge(common, {
         historyApiFallback: true,
     },
 
-    plugins: [new webpack.HotModuleReplacementPlugin()]
+    plugins: [new webpack.HotModuleReplacementPlugin()],
 });
