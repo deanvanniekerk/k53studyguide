@@ -18,7 +18,7 @@ const Startup: React.FC = () => {
             ...AppRate.preferences,
             simpleMode: true,
             storeAppURL: {
-                android: "market://details?id=deanvniekerk.k53ninja.app",
+                android: "market://details?id=deanvniekerk.learntodrive.app",
                 ios: "1503354808",
             },
             customLocale: {
