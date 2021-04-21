@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { recieveLogMessage } from "@/state/log";
 import { IonButton, IonContent, IonIcon, IonPage } from "@ionic/react";
 
-import { NinjaDeadIcon } from "./icons";
+import { TestFailedIcon } from "./icons";
 
 type State = {
     hasError: boolean;
@@ -46,9 +46,9 @@ export class ErrorBoundaryComponent extends React.Component<Props, State> {
                 <Page>
                     <Content>
                         <Icon>
-                            <NinjaDeadIcon />
+                            <TestFailedIcon />
                         </Icon>
-                        <Header>K53 Ninja has Crashed</Header>
+                        <Header>Learn to Drive has Crashed</Header>
 
                         <Button>
                             <IonButton

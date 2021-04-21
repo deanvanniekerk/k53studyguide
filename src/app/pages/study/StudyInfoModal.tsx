@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
 import { HorizontalRule, ProgressBar } from "@/app/components";
-import { PagodaOutlineIcon } from "@/app/components/icons";
+import { BookOutlineIcon } from "@/app/components/icons";
 import { useInterval } from "@/app/hooks";
 import { watermarkStyle } from "@/app/styles";
 import { CreateAnimation, IonContent, IonIcon, IonModal } from "@ionic/react";
@@ -169,7 +169,7 @@ const Container = styled.div`
     padding-bottom: 50px;
 `;
 
-const Watermark = styled(PagodaOutlineIcon)`
+const Watermark = styled(BookOutlineIcon)`
     ${watermarkStyle}
 `;
 

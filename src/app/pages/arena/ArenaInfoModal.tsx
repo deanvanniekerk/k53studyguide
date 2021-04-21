@@ -21,9 +21,9 @@ const ArenaInfoModal: React.FC<Props> = (props) => {
             <Content>
                 <Container>
                     <SubHeader>Welcome to the</SubHeader>
-                    <Header>Arena</Header>
+                    <Header>Test</Header>
                     <ParagraphCenter>
-                        The Arena is a <b>test</b> that is <b>set up</b> and <b> marked</b> in the{" "}
+                        The Test is a <b>test</b> that is <b>set up</b> and <b> marked</b> in the{" "}
                         <b>same way</b> as the <b>real learners license test</b>
                     </ParagraphCenter>
 
@@ -37,7 +37,7 @@ const ArenaInfoModal: React.FC<Props> = (props) => {
                         <ShuffleIcon />
                     </Center>
                     <ParagraphCenter>
-                        <b>Arena</b> test questions are <b>randomly</b> selected from a bank of over{" "}
+                        <b>Test</b> questions are <b>randomly</b> selected from a bank of over{" "}
                         <b>400 questions</b>
                     </ParagraphCenter>
 
@@ -69,7 +69,7 @@ const ArenaInfoModal: React.FC<Props> = (props) => {
                         <TrashIcon />
                     </Center>
                     <ParagraphCenter>
-                        Your <b>Arena test</b> history can be <b>reset</b> in the <b>Profile</b> tab
+                        Your <b>Test</b> history can be <b>reset</b> in the <b>Profile</b> tab
                     </ParagraphCenter>
                 </Container>
             </Content>

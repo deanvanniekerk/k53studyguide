@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
 import { Provider as TranslationProvider } from "react-translated";
 
-import { KatanaIcon, NinjaIcon, PagodaIcon, TargetIcon } from "@/app/components/icons";
+import { TestPenIcon, SettingsIcon, BookIcon, BrainIcon } from "@/app/components/icons";
 import { translations } from "@/data";
 import { RootState } from "@/state";
 import { languageSelector } from "@/state/settings";
@@ -47,19 +47,19 @@ const Router: React.FC<Props> = (props) => {
                     </IonRouterOutlet>
                     <IonTabBar slot="bottom">
                         <IonTabButton tab="study" href="/study">
-                            <PagodaIcon style={iconStyles} />
+                            <BookIcon style={iconStyles} />
                             <IonLabel>Study</IonLabel>
                         </IonTabButton>
                         <IonTabButton tab="dojo" href="/dojo">
-                            <TargetIcon style={iconStyles} />
-                            <IonLabel>Dojo</IonLabel>
+                            <BrainIcon style={iconStyles} />
+                            <IonLabel>Quiz</IonLabel>
                         </IonTabButton>
                         <IonTabButton tab="arena" href="/arena">
-                            <KatanaIcon style={iconStyles} />
-                            <IonLabel>Arena</IonLabel>
+                            <TestPenIcon style={iconStyles} />
+                            <IonLabel>Test</IonLabel>
                         </IonTabButton>
                         <IonTabButton tab="profile" href="/profile">
-                            <NinjaIcon style={iconStyles} />
+                            <SettingsIcon style={iconStyles} />
                             <IonLabel>Profile</IonLabel>
                         </IonTabButton>
                     </IonTabBar>

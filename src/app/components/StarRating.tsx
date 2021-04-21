@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { CreateAnimation, useIonViewWillEnter } from "@ionic/react";
 
-import { Shuriken3Icon, Shuriken3OutlineIcon } from "./icons";
+import { StarIcon, StarOutlineIcon } from "./icons";
 
 type Props = {
     total: number;
@@ -72,11 +72,9 @@ const Star: React.FC<StarProps> = (props) => {
             ]}
         >
             <IconWrapper size={props.size} padding={props.padding}>
-                {props.active && <Shuriken3Icon style={{ opacity: props.activeOpacity }} />}
+                {props.active && <StarIcon style={{ opacity: props.activeOpacity }} />}
                 {!props.active && (
-                    <Shuriken3OutlineIcon
-                        style={{ fill: "#FFFFFF", opacity: props.inActiveOpacity }}
-                    />
+                    <StarOutlineIcon style={{ fill: "#FFFFFF", opacity: props.inActiveOpacity }} />
                 )}
             </IconWrapper>
         </CreateAnimation>

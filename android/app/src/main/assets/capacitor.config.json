@@ -1,6 +1,6 @@
 {
-    "appId": "deanvniekerk.k53ninja.app",
-    "appName": "K53 Ninja",
+    "appId": "deanvniekerk.learntodrive.app",
+    "appName": "Learn to Drive",
     "bundledWebRuntime": false,
     "npmClient": "yarn",
     "webDir": "build",

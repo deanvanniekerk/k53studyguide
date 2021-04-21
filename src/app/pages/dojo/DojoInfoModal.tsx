@@ -27,9 +27,10 @@ const DojoInfoModal: React.FC<Props> = (props) => {
             <Content>
                 <Container>
                     <SubHeader>Welcome to the</SubHeader>
-                    <Header>Dojo</Header>
+                    <Header>Quiz</Header>
                     <ParagraphCenter>
-                        In the <b>Dojo</b> you can <b>train</b> by completing <b>test questions</b>
+                        In the <b>Quiz</b> you can <b>practise</b> by completing{" "}
+                        <b>test questions</b>
                     </ParagraphCenter>
 
                     <HorizontalRule
@@ -56,9 +57,8 @@ const DojoInfoModal: React.FC<Props> = (props) => {
                         <ExperienceIcon />
                     </Center>
                     <ParagraphCenter>
-                        Your can <b>level up</b> by gaining <b>experience</b> points. Gain{" "}
-                        <b>experience</b> points by answering test questions correctly for the{" "}
-                        <b>first</b> time.
+                        Your can <b>level up</b> by obtaining <b>quiz</b> points. Obtain <b>Quiz</b>{" "}
+                        points by answering test questions correctly for the <b>first</b> time.
                     </ParagraphCenter>
 
                     <HorizontalRule
@@ -71,7 +71,7 @@ const DojoInfoModal: React.FC<Props> = (props) => {
                         <OptionsIcon />
                     </Center>
                     <ParagraphCenter>
-                        You can <b></b>control the <b>settings</b> of the <b>tests</b> by changing
+                        You can <b></b>control the <b>settings</b> of the <b>quiz</b> by changing
                         the <b>Section</b> and <b>Max Questions</b>
                     </ParagraphCenter>
 
@@ -85,7 +85,7 @@ const DojoInfoModal: React.FC<Props> = (props) => {
                         <TrashIcon />
                     </Center>
                     <ParagraphCenter>
-                        Your <b>Dojo test</b> history can be <b>reset</b> in the <b>Profile</b> tab
+                        Your <b>Quiz</b> history can be <b>reset</b> in the <b>Profile</b> tab
                     </ParagraphCenter>
                 </Container>
             </Content>

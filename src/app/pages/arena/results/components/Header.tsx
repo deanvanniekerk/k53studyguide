@@ -4,7 +4,7 @@ import { Translate } from "react-translated";
 import styled from "styled-components";
 
 import { HorizontalRule } from "@/app/components";
-import { NinjaDeadIcon, NinjaHappyIcon } from "@/app/components/icons";
+import { TestFailedIcon, TestPassedIcon } from "@/app/components/icons";
 import { RootState } from "@/state";
 import {
     passedSelector,
@@ -171,9 +171,9 @@ type SuccessIconProps = {
     size: string;
 };
 const SuccessIcon: React.FC<SuccessIconProps> = (props) => {
-    if (props.success) return <NinjaHappyIcon style={{ fontSize: props.size }} />;
+    if (props.success) return <TestPassedIcon style={{ fontSize: props.size }} />;
 
-    return <NinjaDeadIcon style={{ fontSize: props.size }} />;
+    return <TestFailedIcon style={{ fontSize: props.size }} />;
 };
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

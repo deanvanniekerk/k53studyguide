@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { NinjaOutlineIcon } from "@/app/components/icons";
+import { SettingsOutlineIcon } from "@/app/components/icons";
 import { watermarkStyle } from "@/app/styles";
 import { IonContent, IonPage } from "@ionic/react";
 
@@ -24,7 +24,7 @@ const ProfilePage: React.FC = () => {
     );
 };
 
-const Watermark = styled(NinjaOutlineIcon)`
+const Watermark = styled(SettingsOutlineIcon)`
     ${watermarkStyle}
     fill: #000000;
     opacity: 0.06;

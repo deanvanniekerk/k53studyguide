@@ -22,7 +22,7 @@ const Startup: React.FC = () => {
                 ios: "1503354808",
             },
             customLocale: {
-                title: "Would you mind rating K53 Ninja?",
+                title: "Would you mind rating Learn to Drive?",
                 message: "Any feedback would be greatly appreciated. Thank you for your support!",
                 cancelButtonLabel: "No thanks",
                 laterButtonLabel: "Remind me later",

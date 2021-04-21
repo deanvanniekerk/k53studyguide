@@ -5,7 +5,7 @@ import { Translate } from "react-translated";
 import styled from "styled-components";
 
 import { HorizontalRule } from "@/app/components";
-import { NinjaHappyIcon, NinjaSadIcon } from "@/app/components/icons";
+import { TestFailedIcon, TestPassedIcon } from "@/app/components/icons";
 import { RootState } from "@/state";
 import {
     experienceGainedSelector,
@@ -24,7 +24,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
     return (
         <React.Fragment>
             <Result>
-                <NinjaIcon allCorrect={allCorrect} />
+                <ResultIcon allCorrect={allCorrect} />
                 <div style={{ overflow: "hidden" }}>
                     <ResultText
                         totalCorrectAnswers={props.totalCorrectAnswers}
@@ -44,11 +44,11 @@ const HeaderComponent: React.FC<Props> = (props) => {
     );
 };
 
-type NinjaIconProps = {
+type ResultIconProps = {
     allCorrect: boolean;
 };
 
-const NinjaIcon: React.FC<NinjaIconProps> = (props) => {
+const ResultIcon: React.FC<ResultIconProps> = (props) => {
     return (
         <CreateAnimation
             play={true}
@@ -62,8 +62,8 @@ const NinjaIcon: React.FC<NinjaIconProps> = (props) => {
             ]}
         >
             <div>
-                {props.allCorrect && <NinjaHappyIcon style={{ fontSize: "3.7rem" }} />}
-                {!props.allCorrect && <NinjaSadIcon style={{ fontSize: "3.7rem" }} />}
+                {props.allCorrect && <TestPassedIcon style={{ fontSize: "3.7rem" }} />}
+                {!props.allCorrect && <TestFailedIcon style={{ fontSize: "3.7rem" }} />}
             </div>
         </CreateAnimation>
     );

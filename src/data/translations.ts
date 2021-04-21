@@ -2,7 +2,7 @@ import { Translations } from "./";
 
 const translations: Translations = {
     k53Ninja: {
-        en: "K53 Ninja",
+        en: "Learn to Drive",
     },
     purchaseSuccessful: {
         en: "Purchase Successful! <br/> Thank you for your support",
@@ -20,10 +20,10 @@ const translations: Translations = {
         en: "Read through all Study material",
     },
     checklistReachLevel: {
-        en: "Reach Level 5 in the Dojo",
+        en: "Reach Level 5 in the Quiz",
     },
     checklistCompleteArena: {
-        en: "Complete 3 Arena Runs",
+        en: "Pass 3 Tests",
     },
     levelNumber: {
         en: "Level {number}",
@@ -41,7 +41,7 @@ const translations: Translations = {
         en: "App",
     },
     completeTestToChangeSettings: {
-        en: "You must complete the current test before you can change the test settings",
+        en: "You must complete the current quiz before you can change the quiz settings",
     },
     rateApp: {
         en: "Rate App",
@@ -50,7 +50,7 @@ const translations: Translations = {
         en: "Please show your support by rating our app, any feedback would be much appreciated",
     },
     accessTheArena: {
-        en: "Access the Arena",
+        en: "Access the Test",
     },
     accessTheArenaInfo: {
         en: "Write tests that are structured and marked like the real one",
@@ -59,7 +59,7 @@ const translations: Translations = {
         en: "Reset your History",
     },
     resetYourHistoryInfo: {
-        en: "Reset your Seen, Dojo and Arena History",
+        en: "Reset your Seen, Quiz and Test History",
     },
     supportTheDev: {
         en: "Support the Dev",
@@ -93,10 +93,10 @@ const translations: Translations = {
         en: "Are you sure you want to clear all seen Study material history?",
     },
     historyCleanDojoConfirm: {
-        en: "Are you sure you want to clear all Dojo test history?",
+        en: "Are you sure you want to clear all Quiz history?",
     },
     historyCleanArenaConfirm: {
-        en: "Are you sure you want to clear all Arena test history?",
+        en: "Are you sure you want to clear all Test history?",
     },
     historyPurchaseFullAccess: {
         en:
@@ -118,25 +118,25 @@ const translations: Translations = {
         en: "Congratulations",
     },
     arenaFailed: {
-        en: "You Died",
+        en: "You Failed",
     },
     arenaSuccessInfo: {
-        en: "You have successfully completed the arena",
+        en: "You have successfully passed the Test",
     },
     arenaFailedInfo: {
-        en: "You failed in your attempt to complete the arena, better luck next time...",
+        en: "You failed in your attempt to pass the test, better luck next time...",
     },
     clearSeenHistory: {
         en: "Clear Seen History",
     },
     enterArena: {
-        en: "Enter Arena",
+        en: "Start Test",
     },
     clearDojoHistory: {
-        en: "Clear Dojo History",
+        en: "Clear Quiz History",
     },
     clearArenaHistory: {
-        en: "Clear Arena History",
+        en: "Clear Test History",
     },
     sectionA: {
         en: "Section A",
@@ -157,10 +157,10 @@ const translations: Translations = {
         en: "Study",
     },
     dojo: {
-        en: "Dojo",
+        en: "Quiz",
     },
     arena: {
-        en: "Arena",
+        en: "Test",
     },
     profile: {
         en: "Profile",
@@ -193,22 +193,22 @@ const translations: Translations = {
         en: "Result",
     },
     arenaIntro: {
-        en: "Challange yourself in the Arena",
+        en: "Challange yourself in the mock Test",
     },
     arenasCompleted: {
-        en: "Arenas Completed",
+        en: "Tests Passed",
     },
     dojoIntro: {
-        en: "Train in the Dojo, gain experince and level up",
+        en: "Practise by completing quizzes, gain experince and level up",
     },
     dojoLevelUpAfter: {
-        en: "Level up after {number} more experience points",
+        en: "Level up after {number} more quiz points",
     },
     numberExperienceGained: {
-        en: "{number} experience points gained",
+        en: "{number} quiz points gained",
     },
     startTest: {
-        en: "Start Test",
+        en: "Start Quiz",
     },
     processingPayment: {
         en: "Processing Payment",
@@ -217,7 +217,7 @@ const translations: Translations = {
         en: "Max Questions",
     },
     testSettings: {
-        en: "Test Settings",
+        en: "Quiz Settings",
     },
     section: {
         en: "Section",
@@ -226,7 +226,7 @@ const translations: Translations = {
         en: "Select Section",
     },
     continueTest: {
-        en: "Continue Test",
+        en: "Continue Quiz",
     },
     settings: {
         en: "Settings",
@@ -235,7 +235,7 @@ const translations: Translations = {
         en: "Language",
     },
     selectSectionWithLowLevel: {
-        en: "Select sections with low level scores to gain more experience points",
+        en: "Select sections with low level scores to gain more quiz points",
     },
     "nav.vehicleControls.0.heading": {
         en: "Vehicle Controls",

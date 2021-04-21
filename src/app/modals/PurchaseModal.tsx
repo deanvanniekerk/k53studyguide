@@ -5,7 +5,7 @@ import { Translate, Translator } from "react-translated";
 import { bindActionCreators, Dispatch } from "redux";
 import styled from "styled-components";
 
-import { GongIcon, KatanaIcon, Shuriken1OutlineIcon, YinYangIcon } from "@/app/components/icons";
+import { ResetIcon, TestPenIcon, BookOutlineIcon, YinYangIcon } from "@/app/components/icons";
 import { PurchaseContext } from "@/context";
 import { RootState } from "@/state";
 import { purchaseSelector, recievePurchaseOrderState } from "@/state/purchase";
@@ -122,7 +122,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
                             <Slide>
                                 <div>
                                     <div>
-                                        <KatanaIcon style={{ fontSize: "4rem" }} />
+                                        <TestPenIcon style={{ fontSize: "4rem" }} />
                                         <SlideText>
                                             <Translate text="accessTheArena" />
                                         </SlideText>
@@ -135,7 +135,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
                             <Slide>
                                 <div>
                                     <div>
-                                        <GongIcon style={{ fontSize: "4rem" }} />
+                                        <ResetIcon style={{ fontSize: "4rem" }} />
                                         <SlideText>
                                             <Translate text="resetYourHistory" />
                                         </SlideText>
@@ -186,7 +186,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
     );
 };
 
-const Watermark = styled(Shuriken1OutlineIcon)`
+const Watermark = styled(BookOutlineIcon)`
     ${watermarkStyle}
     fill: #000000;
     opacity: 0.06;

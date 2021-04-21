@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import styled from "styled-components";
 
-import { KatanaIcon } from "@/app/components/icons";
+import { TestPenIcon } from "@/app/components/icons";
 import PurchaseModal from "@/app/modals/PurchaseModal";
 import { RootState } from "@/state";
 import { testsPassedSelector } from "@/state/arena/log";
@@ -59,7 +59,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
                         ]}
                     >
                         <div>
-                            <KatanaIcon style={{ fontSize: "8rem" }} />
+                            <TestPenIcon style={{ fontSize: "8rem" }} />
                         </div>
                     </CreateAnimation>
                 </IonCol>
@@ -68,7 +68,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
                 <IonCol>
                     <CenterText>
                         <PrimaryText>
-                            {props.hasFullAccess ? "Arenas Completed" : "Arena Locked"}
+                            {props.hasFullAccess ? "Tests Passed" : "Test Locked"}
                         </PrimaryText>
                     </CenterText>
                 </IonCol>
@@ -119,7 +119,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
                         {!props.hasFullAccess && (
                             <React.Fragment>
                                 <FullAccessText>
-                                    In order to access the Arena you need to first purchase the
+                                    In order to access the Test you need to first purchase the
                                     premium package
                                 </FullAccessText>
                                 <IonButton

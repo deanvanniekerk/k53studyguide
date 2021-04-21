@@ -1,4 +1,4 @@
-package deanvniekerk.k53ninja.app;
+package deanvniekerk.learntodrive.app;
 
 import android.os.Bundle;
 
