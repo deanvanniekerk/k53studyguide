@@ -2,7 +2,7 @@ import { Translations } from "./";
 
 const translations: Translations = {
     k53Ninja: {
-        en: "Learn to Drive",
+        en: "K53 Study Guide",
     },
     purchaseSuccessful: {
         en: "Purchase Successful! <br/> Thank you for your support",

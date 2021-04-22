@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">Learn to Drive</string>
-    <string name="title_activity_main">Learn to Drive</string>
-    <string name="package_name">deanvniekerk.learntodrive.app</string>
-    <string name="custom_url_scheme">deanvniekerk.learntodrive.app</string>
-</resources>

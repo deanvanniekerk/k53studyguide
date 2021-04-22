@@ -1,8 +1,0 @@
-{
-    "appId": "deanvniekerk.learntodrive.app",
-    "appName": "Learn to Drive",
-    "bundledWebRuntime": false,
-    "npmClient": "yarn",
-    "webDir": "build",
-    "cordova": {}
-}

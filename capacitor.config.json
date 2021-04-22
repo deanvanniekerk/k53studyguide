@@ -1,6 +1,6 @@
 {
-    "appId": "deanvniekerk.learntodrive.app",
-    "appName": "Learn to Drive",
+    "appId": "deanvniekerk.k53studyguide.app",
+    "appName": "K53 Study Guide",
     "bundledWebRuntime": false,
     "npmClient": "yarn",
     "webDir": "build",

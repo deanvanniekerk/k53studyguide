@@ -18,11 +18,11 @@ const Startup: React.FC = () => {
             ...AppRate.preferences,
             simpleMode: true,
             storeAppURL: {
-                android: "market://details?id=deanvniekerk.learntodrive.app",
+                android: "market://details?id=deanvniekerk.k53studyguide.app",
                 ios: "1503354808",
             },
             customLocale: {
-                title: "Would you mind rating Learn to Drive?",
+                title: "Would you mind rating K53 Study Guide?",
                 message: "Any feedback would be greatly appreciated. Thank you for your support!",
                 cancelButtonLabel: "No thanks",
                 laterButtonLabel: "Remind me later",

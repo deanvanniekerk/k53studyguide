@@ -48,7 +48,7 @@ export class ErrorBoundaryComponent extends React.Component<Props, State> {
                         <Icon>
                             <TestFailedIcon />
                         </Icon>
-                        <Header>Learn to Drive has Crashed</Header>
+                        <Header>K53 Study Guide has Crashed</Header>
 
                         <Button>
                             <IonButton

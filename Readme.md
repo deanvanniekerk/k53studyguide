@@ -14,7 +14,7 @@ K53 Ninja contains a bank of **over 400** tough test questions. Test are **dynam
 
 ### Listings
 
--   [Play Store Listing](https://play.google.com/store/apps/details?id=deanvniekerk.learntodrive.app&hl=en-GB)
+-   [Play Store Listing](https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en-GB)
 -   App Store Listing: Comming Soon!
 
 ## Development
