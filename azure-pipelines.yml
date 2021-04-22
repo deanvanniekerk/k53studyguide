@@ -63,49 +63,49 @@ steps:
       displayName: "Android APK > Copy to Artifacts"
       condition: eq('${{ variables.buildAndroid }}', true)
 
-    - script: |
-          yarn cap-sync-ios
-      displayName: "React App > Sync to IOS Project"
-      condition: eq('${{ variables.buildIOS }}', true)
-    - script: |
-          yarn cap-copy-ios
-      displayName: "React App > Copy to IOS Project"
-      condition: eq('${{ variables.buildIOS }}', true)
+    # - script: |
+    #       yarn cap-sync-ios
+    #   displayName: "React App > Sync to IOS Project"
+    #   condition: eq('${{ variables.buildIOS }}', true)
+    # - script: |
+    #       yarn cap-copy-ios
+    #   displayName: "React App > Copy to IOS Project"
+    #   condition: eq('${{ variables.buildIOS }}', true)
 
-    - task: InstallAppleCertificate@2
-      inputs:
-          certSecureFile: "DistributionCertificates.p12"
-          certPwd: lead2gold
-      displayName: "Install Apple Certificate"
-      condition: eq('${{ variables.buildIOS }}', true)
-    - task: InstallAppleProvisioningProfile@1
-      inputs:
-          provProfileSecureFile: "K53_Ninja_Profile.mobileprovision"
-      displayName: "Install Apple Provisioning Profile"
-      condition: eq('${{ variables.buildIOS }}', true)
+    # - task: InstallAppleCertificate@2
+    #   inputs:
+    #       certSecureFile: "DistributionCertificates.p12"
+    #       certPwd: lead2gold
+    #   displayName: "Install Apple Certificate"
+    #   condition: eq('${{ variables.buildIOS }}', true)
+    # - task: InstallAppleProvisioningProfile@1
+    #   inputs:
+    #       provProfileSecureFile: "K53_Ninja_Profile.mobileprovision"
+    #   displayName: "Install Apple Provisioning Profile"
+    #   condition: eq('${{ variables.buildIOS }}', true)
 
-    - task: Xcode@5
-      inputs:
-          actions: "build archive"
-          sdk: "iphoneos"
-          scheme: "App"
-          configuration: "Release"
-          xcodeVersion: "default"
-          xcWorkspacePath: "ios/App/App.xcworkspace"
-          signingOption: "manual"
-          signingIdentity: "$(APPLE_CERTIFICATE_SIGNING_IDENTITY)"
-          provisioningProfileUuid: "$(APPLE_PROV_PROFILE_UUID)"
-          packageApp: true
-          useXcpretty: "false"
-      displayName: "IOS > Build"
-      condition: eq('${{ variables.buildIOS }}', true)
-    - task: CopyFiles@2
-      inputs:
-          contents: "**/*.ipa"
-          flattenFolders: true
-          targetFolder: "$(Build.ArtifactStagingDirectory)"
-      displayName: "IOS IPA > Copy to Artifacts"
-      condition: eq('${{ variables.buildIOS }}', true)
+    # - task: Xcode@5
+    #   inputs:
+    #       actions: "build archive"
+    #       sdk: "iphoneos"
+    #       scheme: "App"
+    #       configuration: "Release"
+    #       xcodeVersion: "default"
+    #       xcWorkspacePath: "ios/App/App.xcworkspace"
+    #       signingOption: "manual"
+    #       signingIdentity: "$(APPLE_CERTIFICATE_SIGNING_IDENTITY)"
+    #       provisioningProfileUuid: "$(APPLE_PROV_PROFILE_UUID)"
+    #       packageApp: true
+    #       useXcpretty: "false"
+    #   displayName: "IOS > Build"
+    #   condition: eq('${{ variables.buildIOS }}', true)
+    # - task: CopyFiles@2
+    #   inputs:
+    #       contents: "**/*.ipa"
+    #       flattenFolders: true
+    #       targetFolder: "$(Build.ArtifactStagingDirectory)"
+    #   displayName: "IOS IPA > Copy to Artifacts"
+    #   condition: eq('${{ variables.buildIOS }}', true)
 
     - task: PublishBuildArtifacts@1
       inputs:

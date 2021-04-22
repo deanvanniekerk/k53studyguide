@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">K53 Study Guide</string>
+    <string name="title_activity_main">K53 Study Guide</string>
+    <string name="package_name">deanvniekerk.k53studyguide.app</string>
+    <string name="custom_url_scheme">deanvniekerk.k53studyguide.app</string>
+</resources>
