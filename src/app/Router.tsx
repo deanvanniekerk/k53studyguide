@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
 import { Provider as TranslationProvider } from "react-translated";
 
-import { TestPenIcon, SettingsIcon, BookIcon, BrainIcon } from "@/app/components/icons";
+import { TestPenIcon, SettingsIcon, BookIcon, QuizIcon } from "@/app/components/icons";
 import { translations } from "@/data";
 import { RootState } from "@/state";
 import { languageSelector } from "@/state/settings";
@@ -51,7 +51,7 @@ const Router: React.FC<Props> = (props) => {
                             <IonLabel>Study</IonLabel>
                         </IonTabButton>
                         <IonTabButton tab="dojo" href="/dojo">
-                            <BrainIcon style={iconStyles} />
+                            <QuizIcon style={iconStyles} />
                             <IonLabel>Quiz</IonLabel>
                         </IonTabButton>
                         <IonTabButton tab="arena" href="/arena">

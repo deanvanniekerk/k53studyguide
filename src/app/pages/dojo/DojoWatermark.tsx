@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-import { BrainOutlineIcon } from "@/app/components/icons";
+import { QuizOutlineIcon } from "@/app/components/icons";
 import { watermarkStyle } from "@/app/styles";
 
-export const DojoWatermark = styled(BrainOutlineIcon)`
+export const DojoWatermark = styled(QuizOutlineIcon)`
     ${watermarkStyle}
     opacity: 0.04;
 `;
