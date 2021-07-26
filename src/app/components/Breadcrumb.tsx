@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import { bindActionCreators, Dispatch } from "redux";
+import styled from "styled-components";
 
 import { recieveCurrentNavigationKey, ROOT_NAVIGATION_KEY } from "@/state/study/navigation";
 import { navigationKeyToBreadcrumb } from "@/utils";
@@ -9,7 +10,6 @@ import { IonText } from "@ionic/react";
 
 type Props = {
     navigationKey: string;
-    disableNavigation?: boolean;
     rootText?: string;
     showLast?: boolean;
     opacity?: number;
@@ -34,7 +34,7 @@ const BreadcrumbComponent: React.FC<Props> = (props) => {
                 if (isLast && props.lastOpacity) opacity = props.lastOpacity;
 
                 return (
-                    <IonText
+                    <BreadcrumbText
                         key={key}
                         style={{
                             opacity: opacity,
@@ -48,12 +48,16 @@ const BreadcrumbComponent: React.FC<Props> = (props) => {
                             <Translate text={props.rootText ? props.rootText : "study"} />
                         )}
                         {isLast ? "" : " / "}
-                    </IonText>
+                    </BreadcrumbText>
                 );
             })}
         </div>
     );
 };
+
+const BreadcrumbText = styled(IonText)`
+    color: var(--ion-color-light);
+`;
 
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
 const mapDispatchToProps = (dispatch: Dispatch) => {

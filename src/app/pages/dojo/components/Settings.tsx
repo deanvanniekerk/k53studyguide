@@ -70,7 +70,6 @@ const SettingsComponent: React.FC<Props> = (props) => {
                     >
                         <Breadcrumb
                             navigationKey={props.targetNavigationKey}
-                            disableNavigation={true}
                             rootText="allContent"
                             showLast={true}
                             opacity={0.7}
