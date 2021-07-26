@@ -29,10 +29,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
                 </IonRow>
                 <IonRow style={{ paddingBottom: 5, paddingTop: 8 }}>
                     <IonCol>
-                        <Breadcrumb
-                            navigationKey={props.lastSeenParentContentKey}
-                            disableNavigation={true}
-                        />
+                        <Breadcrumb navigationKey={props.lastSeenParentContentKey} />
                     </IonCol>
                 </IonRow>
                 <IonRow style={{ paddingBottom: 10, paddingTop: 10 }}>

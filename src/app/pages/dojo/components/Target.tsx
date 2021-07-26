@@ -34,11 +34,7 @@ const TargetComponent: React.FC<Props> = (props) => {
             </IonRow>
             <IonRow style={{ paddingBottom: 5, paddingTop: 8 }}>
                 <IonCol>
-                    <Breadcrumb
-                        navigationKey={props.targetNavigationKey}
-                        disableNavigation={true}
-                        rootText="allContent"
-                    />
+                    <Breadcrumb navigationKey={props.targetNavigationKey} rootText="allContent" />
                 </IonCol>
             </IonRow>
             <IonRow style={{ paddingTop: 40, paddingBottom: 20 }}>
