@@ -3,10 +3,11 @@ import { Translate } from "react-translated";
 import styled from "styled-components";
 
 import { HorizontalRule } from "@/app/components";
-import { AppRate } from "@ionic-native/app-rate";
 import { IonButton, IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
+import { useAppRate } from "@/app/hooks/useAppRate";
 
 const RateApp: React.FC = () => {
+    const appRate = useAppRate();
     return (
         <Grid>
             <FullRow>
@@ -30,7 +31,7 @@ const RateApp: React.FC = () => {
                         shape="round"
                         fill="solid"
                         onClick={() => {
-                            AppRate.navigateToAppStore();
+                            appRate.navigateToAppStore();
                         }}
                     >
                         <Translate text="rateApp" />
