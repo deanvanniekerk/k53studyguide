@@ -18,11 +18,13 @@ import { IonContent, IonPage } from "@ionic/react";
 import { DojoWatermark } from "../DojoWatermark";
 import { Header, Navigator } from "./components";
 import { TestNavigatorPageHeader } from "./TestNavigatorPageHeader";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
 
 type Props = PropsFromState & PropsFromDispatch;
 
 const TestNavigatorPage: React.FC<Props> = (props) => {
     const history = useHistory();
+    const { logEvent } = useAnalytics();
 
     const navigateToDojo = () => {
         history.replace("/dojo");
@@ -41,6 +43,7 @@ const TestNavigatorPage: React.FC<Props> = (props) => {
     };
 
     const onNavigationItemClicked = (key: string) => {
+        logEvent("NAVIGATE", { key: key, component: "QuizPage:TestNavigatorPage" });
         props.recieveTargetNavigationKey(key);
     };
 

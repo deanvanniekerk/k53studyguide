@@ -13,12 +13,15 @@ import { IonContent, IonPage, useIonViewWillEnter } from "@ionic/react";
 import { DojoWatermark } from "../DojoWatermark";
 import { Footer, Header } from "./components";
 import { TestPageHeader } from "./TestPageHeader";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
 
 type Props = PropsFromState & PropsFromDispatch;
 
 const TestPage: React.FC<Props> = (props) => {
     const history = useHistory();
     const content = useRef<HTMLIonContentElement>(null);
+
+    useAnalytics("QuizPage:TestPage");
 
     useIonViewWillEnter(() => {
         scrollTop();

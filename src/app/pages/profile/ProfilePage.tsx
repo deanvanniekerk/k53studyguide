@@ -7,8 +7,10 @@ import { IonContent, IonPage } from "@ionic/react";
 
 import { Checklist, Debug, History, Purchase, RateApp } from "./components";
 import { ProfilePageHeader } from "./ProfilePageHeader";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
 
 const ProfilePage: React.FC = () => {
+    useAnalytics("ProfilePage");
     return (
         <Page>
             <ProfilePageHeader />

@@ -12,11 +12,14 @@ import { IonContent, IonPage, useIonViewWillLeave } from "@ionic/react";
 import { DojoWatermark } from "../DojoWatermark";
 import { Header } from "./components";
 import { TestResultPageHeader } from "./TestResultPageHeader";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
 
 type Props = PropsFromState & PropsFromDispatch;
 
 const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveQuestionAnswers }) => {
     const history = useHistory();
+
+    useAnalytics("QuizPage:TestResultPage");
 
     useIonViewWillLeave(() => {
         recieveQuestionAnswers([]); //Clear test

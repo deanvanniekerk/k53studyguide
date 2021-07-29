@@ -17,12 +17,15 @@ import {
 import { IonContent, IonPage } from "@ionic/react";
 
 import { ContentList, Header, Navigator } from "./components";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
 
 type Props = PropsFromState & PropsFromDispatch;
 
 const ContentPage: React.FC<Props> = (props) => {
     const history = useHistory();
     const content = useRef<HTMLIonContentElement>(null);
+
+    useAnalytics("ContentPage");
 
     const onBackClicked = () => {
         // if (content.current) {

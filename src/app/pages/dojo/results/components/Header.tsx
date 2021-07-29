@@ -1,5 +1,5 @@
 import { flash, flashOffOutline } from "ionicons/icons";
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import styled from "styled-components";
@@ -13,10 +13,21 @@ import {
     totalQuestionsSelector,
 } from "@/state/dojo/test";
 import { CreateAnimation, IonIcon } from "@ionic/react";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
 
 type Props = PropsFromState;
 
 const HeaderComponent: React.FC<Props> = (props) => {
+    const { logEvent } = useAnalytics();
+
+    useEffect(() => {
+        logEvent("QUIZ_RESULT", {
+            totalQuestions: props.totalQuestions,
+            totalCorrectAnswers: props.totalCorrectAnswers,
+            experienceGained: props.experienceGained,
+        });
+    }, []);
+
     const allCorrect = props.totalCorrectAnswers === props.totalQuestions;
 
     if (props.totalQuestions === 0) return <React.Fragment />;

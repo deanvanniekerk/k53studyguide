@@ -13,11 +13,14 @@ import { ArenaWatermark } from "../ArenaWatermark";
 import { Tabs } from "../components";
 import { Header } from "./components";
 import { TestResultPageHeader } from "./TestResultPageHeader";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
 
 type Props = PropsFromState & PropsFromDispatch;
 
 const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveQuestionAnswers }) => {
     const history = useHistory();
+
+    useAnalytics("TestPage:TestResultPage");
 
     useIonViewWillLeave(() => {
         recieveQuestionAnswers([]); //Clear test

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import styled from "styled-components";
@@ -14,6 +14,7 @@ import {
     testResultsSelector,
 } from "@/state/arena/test";
 import { CreateAnimation, IonCol, IonGrid, IonRow } from "@ionic/react";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
 
 type Props = PropsFromState;
 
@@ -24,6 +25,18 @@ const HeaderComponent: React.FC<Props> = ({
     sectionCPassed,
     passed,
 }) => {
+    const { logEvent } = useAnalytics();
+
+    useEffect(() => {
+        logEvent("TEST_RESULT", {
+            testResults: testResults,
+            sectionAPassed: sectionAPassed,
+            sectionBPassed: sectionBPassed,
+            sectionCPassed: sectionCPassed,
+            passed: passed,
+        });
+    }, []);
+
     return (
         <Container>
             <PrimaryResult>

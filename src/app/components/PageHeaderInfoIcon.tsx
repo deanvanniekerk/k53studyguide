@@ -21,11 +21,11 @@ const IconWrapper = styled.div`
 `;
 
 const InfoIcon = styled(IonIcon)`
-    left: -16px;
-    top: -3px;
+    left: -30px;
+    top: -2px;
     position: absolute;
-    font-size: var(--ion-font-size-xl);
-    opacity: 0.7;
+    font-size: 28px;
+    opacity: 0.8;
 `;
 
 export { PageHeaderInfoIcon };

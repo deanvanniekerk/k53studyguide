@@ -13,11 +13,14 @@ import { Header, Settings } from "./components";
 import { DojoInfoModal } from "./DojoInfoModal";
 import { DojoPageHeader } from "./DojoPageHeader";
 import { DojoWatermark } from "./DojoWatermark";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
 
 type Props = PropsFromState & PropsFromDispatch;
 
 const DojoPage: React.FC<Props> = (props) => {
     const history = useHistory();
+
+    const { logEvent } = useAnalytics("QuizPage");
 
     const [infoModalVisible, setInfoModalVisible] = useState(false);
 
@@ -33,6 +36,8 @@ const DojoPage: React.FC<Props> = (props) => {
     };
 
     const onStartTestClicked = () => {
+        logEvent(props.testInProgress ? "CONTINUE_QUIZ" : "START_QUIZ");
+
         //If no test exists, load one, else continue with previous
         if (!props.testInProgress) props.loadQuestionAnswers();
 

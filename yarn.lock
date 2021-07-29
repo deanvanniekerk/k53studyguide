@@ -1052,45 +1052,52 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@ionic-native/app-rate@5.32.1":
-  version "5.32.1"
-  resolved "https://registry.yarnpkg.com/@ionic-native/app-rate/-/app-rate-5.32.1.tgz#057ccacd5126abf8d67fc6f029081cb4b000d11e"
-  integrity sha512-vVgutzaLU2x6tsZ8cZVN0GhZEFCnLvR5rY+bse92ESeYt1WIXKsbPPhANVYEiB5DxxW85kFtJp7cNNSko/g62Q==
+"@ionic-native/analytics-firebase@5.34.0":
+  version "5.34.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/analytics-firebase/-/analytics-firebase-5.34.0.tgz#e6ae36248eb567d5d1454880516512fe88ffe02d"
+  integrity sha512-s7rM1cX4pCpSPCYdpHt9Z4KCIuP4z8gCxtCOhmUbCy3OKYDOoVO0KGbnNAPI4JBo2DuvK13+xr1je/EyLcIXqw==
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/app-version@5.32.1":
-  version "5.32.1"
-  resolved "https://registry.yarnpkg.com/@ionic-native/app-version/-/app-version-5.32.1.tgz#58c90196fed37babd9b7d7bbc2a14c78c483e79c"
-  integrity sha512-sIQskf5Fkq2xHhwXN6MvYkcUGdItozhT9Q43KQgk4ROjCwB8VSTraYmrj/GXZglmf0WVAw5P4DI4YOTeiRYN7A==
+"@ionic-native/app-rate@5.34.0":
+  version "5.34.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/app-rate/-/app-rate-5.34.0.tgz#e732ea326aa83d4fb8509d87800615433e73d721"
+  integrity sha512-jpAbst8vGboMhrOAgM4BMFoxvSFn2a1buFRDXhRQyZyzJrOXol2+zqIEpEs5E8KQGAnAGa99r45rZFT/TdEVgg==
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/core@5.32.1":
-  version "5.32.1"
-  resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-5.32.1.tgz#bff0ea83b24d0a3776ed0b9c88b160caa1a88952"
-  integrity sha512-SdOQ1hxR05wI7ep9UebZ2Uqo9EMrBhS4pgadmBNHChiNnJ8VkbMVtfsabojwTQ8ZAgJ8UR8zUWVTCgM4AB9HVw==
+"@ionic-native/app-version@5.34.0":
+  version "5.34.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/app-version/-/app-version-5.34.0.tgz#8edf1c6bc11b1980dd628e04bd54c8ce8cbc5871"
+  integrity sha512-5+tF8mm26s8oQjqbtlDTWYv/Y3QV7XXLCwVNAQ1InY8mqJ8Y2aJExhFkVlllfASnTwIMdwsMIUQGUXQe2tiUuA==
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/device@5.32.1":
-  version "5.32.1"
-  resolved "https://registry.yarnpkg.com/@ionic-native/device/-/device-5.32.1.tgz#70aa0b3e84819ab698d5cef358d012629343bf92"
-  integrity sha512-MrETyUZIgdGmQ2VrXgJwhXwI1t6nxTsQp/RVVbrmu9h9qBYyaQEJZkU/RqGKcU/z6pkGJllbZR5yOnedmeukfw==
+"@ionic-native/core@5.34.0":
+  version "5.34.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-5.34.0.tgz#80d91bfd49a8d67965c2bb9ecc8e9803ff23d3e1"
+  integrity sha512-x3xZNe4ZpifVV6nI/rliJ7j9dwiI56HTaJfrA19w8JSgVcW7ZcTvwX1RPWR1b47INOgU8RAsxVohlBQKggap1g==
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/in-app-browser@5.32.1":
-  version "5.32.1"
-  resolved "https://registry.yarnpkg.com/@ionic-native/in-app-browser/-/in-app-browser-5.32.1.tgz#2786c9cc4a6372e5f5cafc57ce3779f259f0af09"
-  integrity sha512-Lp4mu1w6C99yr3RLOGtfOLTy776/XMehb650O0JSv76XwbJoJO3wSTOhuYWlT3sASA2ot1EOueZTllEe2+uvHg==
+"@ionic-native/device@5.34.0":
+  version "5.34.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/device/-/device-5.34.0.tgz#4ddf855d4abbc7ec4f299247dc6b0ff0d6acc14e"
+  integrity sha512-WuBOOS2OYioReSkXAuuSZAq/bfbOc/0ToIC5kA4A/nF5CIQwQGrjBUxPwB7kjDmCa+t1Z+97318Sk2eLVjJQiA==
   dependencies:
     "@types/cordova" latest
 
-"@ionic-native/in-app-purchase-2@5.32.1":
-  version "5.32.1"
-  resolved "https://registry.yarnpkg.com/@ionic-native/in-app-purchase-2/-/in-app-purchase-2-5.32.1.tgz#aa35af6020c7ed302ffbd844fad47cf8d1e1c9ae"
-  integrity sha512-4q7pqIOJApz84ZP6jQ6e83QPLYK7kS2NRLXfHaxmlBT8yJMMCrTDOZKYRPJSB6INXcbloFdlUkA85CLuVgm3xw==
+"@ionic-native/in-app-browser@5.34.0":
+  version "5.34.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/in-app-browser/-/in-app-browser-5.34.0.tgz#d6a5b98c2094939ac262bde961df1beafdc0a7fb"
+  integrity sha512-WEThNoBN01DRzR2pbA6Y7RVt4OjLy6YbVsG19SI4KLFfqM4vxXKiGS8RFSsi3H8F4O+RxPC1EYs6h672xZcNLQ==
+  dependencies:
+    "@types/cordova" latest
+
+"@ionic-native/in-app-purchase-2@5.34.0":
+  version "5.34.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/in-app-purchase-2/-/in-app-purchase-2-5.34.0.tgz#2783cd698126cd541f1d87afb070f8db62c291de"
+  integrity sha512-tw1CQReUZYPeEfZaUikhoBYxwQpmbhM+sy3IHgZ3AGa29OAdb8SX9PgN+KkX2kxeyFBrewpF6SH1eT3lVStQBg==
   dependencies:
     "@types/cordova" latest
 
@@ -3007,6 +3014,21 @@ copy-webpack-plugin@8.1.1:
     p-limit "^3.1.0"
     schema-utils "^3.0.0"
     serialize-javascript "^5.0.1"
+
+cordova-annotated-plugin-android@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/cordova-annotated-plugin-android/-/cordova-annotated-plugin-android-1.0.4.tgz#d8eb61b29a6fd32b324ccc62842c966acbefea42"
+  integrity sha512-rGBUp9YMBWrw+v+7tgl8Mx5PzR0fA6Bs2ZATisdmSW/qlzQtd5P9yeOsqkMoaDSzM8IcKEsvY4ingcEbv3oYFA==
+
+cordova-play-services-version-adapter@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/cordova-play-services-version-adapter/-/cordova-play-services-version-adapter-1.1.0.tgz#c8fc7ce6a15c2c9c703ae59b9df9d9dae1a14aac"
+  integrity sha512-Qsd9VSu6eA2/+6t2aRtuONZcb0wAGtXyQYVfj+iEQokT28ovt31+Abn6D3A8tD0zXP49OrmY2tPLtdiEmRUEcQ==
+
+cordova-plugin-analytics@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-analytics/-/cordova-plugin-analytics-2.0.0.tgz#2f726c8e5a01a2daabad255b2d6371b13c540ed6"
+  integrity sha512-cZo0PT8GXF77SCuerBjeEngdZ3Ic0HuOGmRkzdj7pOx/gYSW8b/EZE+tHkBiUzFCaPTfVwjJfK5QonoAsUGO8Q==
 
 cordova-plugin-app-version@0.1.12:
   version "0.1.12"

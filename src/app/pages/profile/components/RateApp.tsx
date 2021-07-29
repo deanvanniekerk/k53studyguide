@@ -5,9 +5,11 @@ import styled from "styled-components";
 import { HorizontalRule } from "@/app/components";
 import { IonButton, IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
 import { useAppRate } from "@/app/hooks/useAppRate";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
 
 const RateApp: React.FC = () => {
     const appRate = useAppRate();
+    const { logEvent } = useAnalytics();
     return (
         <Grid>
             <FullRow>
@@ -31,6 +33,7 @@ const RateApp: React.FC = () => {
                         shape="round"
                         fill="solid"
                         onClick={() => {
+                            logEvent("RATE_APP");
                             appRate.navigateToAppStore();
                         }}
                     >

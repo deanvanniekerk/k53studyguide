@@ -15,12 +15,15 @@ import { IonCol, IonContent, IonGrid, IonPage, IonRow } from "@ionic/react";
 import { Header, NavigationItem } from "./components";
 import { StudyInfoModal } from "./StudyInfoModal";
 import { StudyPageHeader } from "./StudyPageHeader";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
 
 type Props = PropsFromState & PropsFromDispatch;
 
 const StudyPage: React.FC<Props> = (props) => {
     const history = useHistory();
     const [infoModalVisible, setInfoModalVisible] = useState(false);
+
+    const { logEvent } = useAnalytics("StudyPage");
 
     useEffect(() => {
         if (!props.infoSeen) {
@@ -34,6 +37,7 @@ const StudyPage: React.FC<Props> = (props) => {
     };
 
     const onNavigationItemClicked = (key: string) => {
+        logEvent("NAVIGATE", { key: key, component: "StudyPage" });
         props.recieveCurrentNavigationKey(key);
         history.push(`/content`);
     };

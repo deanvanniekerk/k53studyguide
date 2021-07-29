@@ -21,6 +21,7 @@ import {
 } from "@ionic/react";
 
 import { watermarkStyle } from "../styles";
+import { useAnalytics } from "../hooks/useAnalytics";
 
 type Props = {
     isOpen: boolean;
@@ -29,11 +30,17 @@ type Props = {
     PropsFromDispatch;
 
 const PurchaseModal: React.FC<Props> = (props) => {
+    const { logEvent } = useAnalytics();
+
     const purchaseService = useContext(PurchaseContext);
 
     const [showOwnedToast, setShowOwnedToast] = useState(false);
     const [showFailedToast, setShowFailedToast] = useState(false);
     const [showCancelledToast, setShowCancelledToast] = useState(false);
+
+    useEffect(() => {
+        if (props.isOpen) logEvent("PRESENT_OFFER");
+    }, [props.isOpen]);
 
     //Close the modal if its owned
     useEffect(() => {

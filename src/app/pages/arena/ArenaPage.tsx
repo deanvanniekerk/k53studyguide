@@ -13,11 +13,14 @@ import { ArenaInfoModal } from "./ArenaInfoModal";
 import { ArenaPageHeader } from "./ArenaPageHeader";
 import { ArenaWatermark } from "./ArenaWatermark";
 import { Header } from "./components";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
 
 type Props = PropsFromState & PropsFromDispatch;
 
 const ArenaPage: React.FC<Props> = (props) => {
     const history = useHistory();
+
+    const { logEvent } = useAnalytics("TestPage");
 
     const [infoModalVisible, setInfoModalVisible] = useState(false);
 
@@ -33,6 +36,8 @@ const ArenaPage: React.FC<Props> = (props) => {
     };
 
     const onStartTestClicked = () => {
+        logEvent(props.testInProgress ? "CONTINUE_TEST" : "START_TEST");
+
         //If no test exists, load one, else continue with previous
         if (!props.testInProgress) props.loadQuestionAnswers();
 

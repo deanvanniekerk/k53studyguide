@@ -15,10 +15,13 @@ import { clearQuesionSuccesfullyAnsweredDates as clearDojoQuesionSuccesfullyAnsw
 import { hasFullAccessSelector } from "@/state/purchase";
 import { clearSeenContent } from "@/state/study/log";
 import { IonAlert, IonCol, IonGrid, IonIcon, IonRow, IonText } from "@ionic/react";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
 
 type Props = PropsFromState & PropsFromDispatch;
 
 const HistoryComponent: React.FC<Props> = (props) => {
+    const { logEvent } = useAnalytics();
+
     const [showClearSeenHistory, setShowClearSeenHistory] = useState(false);
     const [showClearDojoHistory, setShowClearDojoHistory] = useState(false);
     const [showClearArenaHistory, setShowClearArenaHistory] = useState(false);
@@ -93,6 +96,7 @@ const HistoryComponent: React.FC<Props> = (props) => {
                                 {
                                     text: translate({ text: "yes" }),
                                     handler: () => {
+                                        logEvent("CLEAR_HISTORY", { type: "seen" });
                                         props.clearSeenContent();
                                     },
                                 },
@@ -109,6 +113,7 @@ const HistoryComponent: React.FC<Props> = (props) => {
                                 {
                                     text: translate({ text: "yes" }),
                                     handler: () => {
+                                        logEvent("CLEAR_HISTORY", { type: "dojo" });
                                         props.clearDojoQuesionSuccesfullyAnsweredDates();
                                     },
                                 },
@@ -125,6 +130,7 @@ const HistoryComponent: React.FC<Props> = (props) => {
                                 {
                                     text: translate({ text: "yes" }),
                                     handler: () => {
+                                        logEvent("CLEAR_HISTORY", { type: "arena" });
                                         props.clearArenaQuesionSuccesfullyAnsweredDates();
                                         props.clearPassedTests();
                                     },

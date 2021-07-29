@@ -10,11 +10,15 @@ import {
 import { IonList } from "@ionic/react";
 
 import { NavigationItem } from "../components";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
 
 type Props = PropsFromState & PropsFromDispatch;
 
 const NavigatorComponent: React.FC<Props> = (props) => {
+    const { logEvent } = useAnalytics();
+
     const onNavigationItemClicked = (key: string) => {
+        logEvent("NAVIGATE", { key: key, component: "ContentPage:NavigatorComponent" });
         props.recieveCurrentNavigationKey(key);
     };
 
