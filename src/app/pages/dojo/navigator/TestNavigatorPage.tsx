@@ -19,6 +19,7 @@ import { DojoWatermark } from "../DojoWatermark";
 import { Header, Navigator } from "./components";
 import { TestNavigatorPageHeader } from "./TestNavigatorPageHeader";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
+import { loadQuestionAnswers } from "@/state/dojo/test";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -39,7 +40,8 @@ const TestNavigatorPage: React.FC<Props> = (props) => {
     };
 
     const selectTargetNavigationItem = () => {
-        navigateToDojo();
+        props.loadQuestionAnswers();
+        history.push(`/test-dojo`);
     };
 
     const onNavigationItemClicked = (key: string) => {
@@ -78,7 +80,10 @@ const mapStateToProps = (state: RootState) => {
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        ...bindActionCreators({ navigateUp, recieveTargetNavigationKey }, dispatch),
+        ...bindActionCreators(
+            { loadQuestionAnswers, navigateUp, recieveTargetNavigationKey },
+            dispatch
+        ),
     };
 };
 

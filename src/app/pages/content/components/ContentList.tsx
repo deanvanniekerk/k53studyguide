@@ -21,7 +21,7 @@ const ContentListComponent: React.FC<Props> = ({
 }) => {
     useEffect(() => {
         if (contentItems.length > 0) recieveLastSeenParentContentKey(currentNavigationKey);
-    }, [contentItems, currentNavigationKey, recieveLastSeenParentContentKey]);
+    }, [contentItems, currentNavigationKey]);
 
     if (contentItems.length === 0) return <React.Fragment />;
 

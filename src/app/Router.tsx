@@ -36,11 +36,11 @@ const Router: React.FC<Props> = (props) => {
                         <Route exact path="/study" component={StudyPage} />
                         <Route exact path="/content" component={ContentPage} />
                         <Route exact path="/dojo" component={DojoPage} />
-                        <Route exact path="/dojo-test" component={DojoTestPage} />
-                        <Route exact path="/dojo-test-result" component={DojoTestResultPage} />
-                        <Route exact path="/dojo-navigator" component={TestNavigatorPage} />
-                        <Route exact path="/arena-test" component={ArenaTestPage} />
-                        <Route exact path="/arena-test-result" component={ArenaTestResultPage} />
+                        <Route exact path="/test-dojo" component={DojoTestPage} />
+                        <Route exact path="/test-result-dojo" component={DojoTestResultPage} />
+                        <Route exact path="/navigator-dojo" component={TestNavigatorPage} />
+                        <Route exact path="/test-arena" component={ArenaTestPage} />
+                        <Route exact path="/test-result-arena" component={ArenaTestResultPage} />
                         <Route exact path="/arena" component={ArenaPage} />
                         <Route exact path="/profile" component={ProfilePage} />
                         <Route exact path="/" render={() => <Redirect to="/study" />} />

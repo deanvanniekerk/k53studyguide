@@ -37,7 +37,7 @@ const SettingsComponent: React.FC<Props> = (props) => {
 
     const onChangeTargetNavigationItem = () => {
         if (!checkCanChangeTestSettings()) return;
-        history.push(`/dojo-navigator`);
+        history.push(`/navigator-dojo`);
     };
 
     const checkCanChangeTestSettings = () => {
@@ -133,7 +133,6 @@ const SettingsComponent: React.FC<Props> = (props) => {
                     <IonAlert
                         isOpen={showCompleteTestAlert}
                         onDidDismiss={() => setShowCompleteTestAlert(false)}
-                        //header={translate({ text: "premiumPackageRequired" })}
                         message={translate({ text: "completeTestToChangeSettings" })}
                         buttons={[translate({ text: "ok" })]}
                     />

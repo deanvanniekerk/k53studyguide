@@ -13,6 +13,7 @@ import { DojoWatermark } from "../DojoWatermark";
 import { Header } from "./components";
 import { TestResultPageHeader } from "./TestResultPageHeader";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
+import { Footer } from "./components/Footer";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -42,6 +43,7 @@ const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveQuestionAnswe
                 <BackButton onClick={onBackClicked} />
                 <Header />
                 <QuestionList questions={questions} showResult={true} />
+                <Footer />
             </Content>
         </Page>
     );

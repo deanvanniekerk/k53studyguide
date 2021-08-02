@@ -33,7 +33,7 @@ const TestPage: React.FC<Props> = (props) => {
 
     const onSubmitClicked = () => {
         props.submitTest();
-        history.replace("/dojo-test-result");
+        history.replace("/test-result-dojo");
     };
 
     const onOptionClicked = (questionId: string, option: QuestionOption) => {

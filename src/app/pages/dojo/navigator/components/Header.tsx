@@ -69,7 +69,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
                                 fill="solid"
                                 onClick={props.selectTargetNavigationItem}
                             >
-                                <Translate text="select" />
+                                <Translate text="startTest" />
                             </IonButton>
                         </IonCol>
                     </IonRow>

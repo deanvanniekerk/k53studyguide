@@ -41,7 +41,7 @@ const TestPage: React.FC<Props> = (props) => {
     const onSubmitClicked = () => {
         props.submitTest();
         props.recieveCurrentSection("A");
-        history.replace("/arena-test-result");
+        history.replace("/test-result-arena");
     };
 
     const onOptionClicked = (questionId: string, option: QuestionOption) => {
