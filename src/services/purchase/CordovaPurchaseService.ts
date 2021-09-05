@@ -49,7 +49,7 @@ export class CordovaPurchaseService implements PurchaseService {
         InAppPurchase2.when(this._productId).registered((product: IAPProduct) => {
             this.log("INFO", "CordovaPurchaseService > Product Registered");
             const productAction = recievePurchaseProduct(
-                product.price,
+                JSON.stringify(product),
                 product.title,
                 product.description
             );
