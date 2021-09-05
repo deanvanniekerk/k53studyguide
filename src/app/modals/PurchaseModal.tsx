@@ -167,12 +167,10 @@ const PurchaseModal: React.FC<Props> = (props) => {
                             </Slide>
                         </Slides>
                     </SlidesContainer>
-                    <PurchasePriceText>
-                        <Translate
-                            text="purchasePremiumFor"
-                            data={{ price: props.purchase.price }}
-                        />
-                    </PurchasePriceText>
+                    <PurchaseDescriptionText>
+                        <Translate text="purchasePremiumFor" />
+                    </PurchaseDescriptionText>
+                    <PurchasePriceText>{props.purchase.price}</PurchasePriceText>
                     <PurchasePriceButton>
                         <IonButton
                             mode="md"
@@ -249,7 +247,7 @@ const SlideSubText = styled.div`
     opacity: 0.6;
 `;
 
-const PurchasePriceText = styled.div`
+const PurchaseDescriptionText = styled.div`
     color: var(--ion-color-light);
     font-size: var(--ion-font-size-sm);
     font-family: var(--ion-font-family-bold);
@@ -258,8 +256,17 @@ const PurchasePriceText = styled.div`
     padding-top: 30px;
 `;
 
+const PurchasePriceText = styled.div`
+    color: var(--ion-color-light);
+    font-size: var(--ion-font-size-xxl);
+    font-family: var(--ion-font-family-bold);
+    font-weight: bold;
+    text-align: center;
+    padding-top: 20px;
+`;
+
 const PurchasePriceButton = styled.div`
-    padding-top: 12px;
+    padding-top: 15px;
     text-align: center;
 `;
 

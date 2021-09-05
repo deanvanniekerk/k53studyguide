@@ -66,7 +66,7 @@ const translations: Translations = {
     },
     supportTheDevInfo: {
         en:
-            "K53 Ninja is powered by a one man team, your purchase will help toward maintenance and new features",
+            "K53 Study Guide is powered by a one man team, your purchase will help toward maintenance and new features",
     },
     getPremium: {
         en: "Get Premium",
@@ -87,7 +87,7 @@ const translations: Translations = {
         en: "Please answer all questions",
     },
     purchasePremiumFor: {
-        en: "Purchase Premium Access for {price}",
+        en: "Purchase Premium Access for",
     },
     historyCleanSeenConfirm: {
         en: "Are you sure you want to clear all seen Study material history?",
@@ -249,7 +249,7 @@ const translations: Translations = {
     },
     "nav.rulesOfTheRoad.theDriver.learnerDrivers.0.description": {
         en:
-            "If you have a learner's licence you may drive a car, subject to the following rules:<ul><li>You must carry your learner's licence with you at all times while driving</li><li>You need to have a supervisor with you at all times who:<ul><li>Has a valid licence for the  same class of vehicle</li><li>Has to sit in the passenger seat or behind the driver's seat if s/he can't sit in the passenger seat</li><li>Can't be under the influence of drugs or alcohol</li></ul></li><li>You don't have to use L plates by law, but other drivers are more likely to be patient with you if you do (remember to remove them after each driving session)</li><li>You may have other passengers in the car, but not paying passengers</li><li>You may tow a caravan/trailer</li><li>You may go on freeways.</li></ul>",
+            "If you have a learner's licence you may drive a car, subject to the following rules:<ul><li>You must carry your learner's licence with you at all times while driving</li><li>You need to have a supervisor with you at all times who:<ul><li>Has a valid licence for the  same class of vehicle</li><li>Has to sit in the passenger seat or behind the driver's seat if s/he can't sit in the passenger seat</li><li>Can't be under the influence of drugs or alcohol</li></ul></li><li>You don't have to use L plates by law, but other drivers are more likely to be patient with you if you do (remember to remove them after each driving session)</li><li>You may have other passengers in the car, but not paying passengers</li><li>You may go on freeways.</li></ul>",
     },
     "nav.rulesOfTheRoad.theDriver.learnerDrivers.1.heading": {
         en: "How long is the Learner's Licence valid for? ",
