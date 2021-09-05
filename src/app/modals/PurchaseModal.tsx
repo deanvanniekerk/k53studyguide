@@ -258,7 +258,7 @@ const PurchaseDescriptionText = styled.div`
 
 const PurchasePriceText = styled.div`
     color: var(--ion-color-light);
-    font-size: var(--ion-font-size-sm);
+    font-size: var(--ion-font-size-xxl);
     font-family: var(--ion-font-family-bold);
     font-weight: bold;
     text-align: center;

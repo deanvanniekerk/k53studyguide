@@ -25,21 +25,21 @@ const PurchaseComponent: React.FC<Props> = (props) => {
                     </Title>
                 </TitleCol>
             </FullRow>
-            {/* {!props.hasFullAccess && ( */}
-            <FullRow>
-                <Col>
-                    <IonButton
-                        color="tertiary"
-                        shape="round"
-                        fill="solid"
-                        // disabled={!props.canPurchase}
-                        onClick={() => setPurchaseModalVisible(true)}
-                    >
-                        <Translate text="goPremium" />
-                    </IonButton>
-                </Col>
-            </FullRow>
-            {/* )} */}
+            {!props.hasFullAccess && (
+                <FullRow>
+                    <Col>
+                        <IonButton
+                            color="tertiary"
+                            shape="round"
+                            fill="solid"
+                            disabled={!props.canPurchase}
+                            onClick={() => setPurchaseModalVisible(true)}
+                        >
+                            <Translate text="goPremium" />
+                        </IonButton>
+                    </Col>
+                </FullRow>
+            )}
             {props.hasFullAccess && (
                 <Translator>
                     {({ translate }) => (

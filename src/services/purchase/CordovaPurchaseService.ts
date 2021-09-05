@@ -44,17 +44,25 @@ export class CordovaPurchaseService implements PurchaseService {
                 product.state as ProductState
             );
             this._reduxStore.dispatch(stateAction);
-        });
 
-        InAppPurchase2.when(this._productId).registered((product: IAPProduct) => {
-            this.log("INFO", "CordovaPurchaseService > Product Registered");
             const productAction = recievePurchaseProduct(
-                JSON.stringify(product),
+                product.price,
                 product.title,
                 product.description
             );
             this._reduxStore.dispatch(productAction);
         });
+
+        // not firing...
+        // InAppPurchase2.when(this._productId).registered((product: IAPProduct) => {
+        //     this.log("INFO", "CordovaPurchaseService > Product Registered");
+        //     const productAction = recievePurchaseProduct(
+        //         JSON.stringify(product),
+        //         product.title,
+        //         product.description
+        //     );
+        //     this._reduxStore.dispatch(productAction);
+        // });
 
         InAppPurchase2.when(this._productId).approved((product: IAPProduct) => {
             this.log("INFO", "CordovaPurchaseService > Product Approved");
