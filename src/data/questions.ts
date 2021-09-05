@@ -59,32 +59,32 @@ const questionData: QuestionData = {
                 },
             ],
         },
-        {
-            id: "4",
-            answer: "C",
-            text: {
-                list: [
-                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.text.list.0.text",
-                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.text.list.1.text",
-                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.text.list.2.text",
-                    "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.text.list.3.text",
-                ],
-            },
-            option: [
-                {
-                    id: "A",
-                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.option.0.text",
-                },
-                {
-                    id: "B",
-                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.option.1.text",
-                },
-                {
-                    id: "C",
-                    value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.option.2.text",
-                },
-            ],
-        },
+        // {
+        //     id: "4",
+        //     answer: "C",
+        //     text: {
+        //         list: [
+        //             "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.text.list.0.text",
+        //             "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.text.list.1.text",
+        //             "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.text.list.2.text",
+        //             "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.text.list.3.text",
+        //         ],
+        //     },
+        //     option: [
+        //         {
+        //             id: "A",
+        //             value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.option.0.text",
+        //         },
+        //         {
+        //             id: "B",
+        //             value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.option.1.text",
+        //         },
+        //         {
+        //             id: "C",
+        //             value: "nav.rulesOfTheRoad.theDriver.learnerDrivers.question.3.option.2.text",
+        //         },
+        //     ],
+        // },
         {
             id: "5",
             answer: "C",
