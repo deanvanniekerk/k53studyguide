@@ -6,8 +6,8 @@ android {
         applicationId "deanvniekerk.k53studyguide.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 19
-        versionName "1.9"
+        versionCode 20
+        versionName "1.20"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

@@ -32,7 +32,7 @@ const PurchaseComponent: React.FC<Props> = (props) => {
                         color="tertiary"
                         shape="round"
                         fill="solid"
-                        disabled={!props.canPurchase}
+                        // disabled={!props.canPurchase}
                         onClick={() => setPurchaseModalVisible(true)}
                     >
                         <Translate text="goPremium" />
