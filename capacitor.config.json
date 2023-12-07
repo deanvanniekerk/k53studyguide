@@ -1,8 +1,0 @@
-{
-    "appId": "deanvniekerk.k53studyguide.app",
-    "appName": "K53 Study Guide",
-    "bundledWebRuntime": false,
-    "npmClient": "yarn",
-    "webDir": "build",
-    "cordova": {}
-}

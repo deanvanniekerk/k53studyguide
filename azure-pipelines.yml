@@ -37,7 +37,7 @@ steps:
       displayName: "React App > Copy to Android Project"
       condition: eq('${{ variables.buildAndroid }}', true)
 
-    - task: Gradle@2
+    - task: Gradle@3
       inputs:
           workingDirectory: "android"
           gradleWrapperFile: "android/gradlew"

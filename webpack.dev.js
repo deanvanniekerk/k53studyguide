@@ -13,7 +13,7 @@ module.exports = merge(common, {
 
     devServer: {
         port: 3000,
-        contentBase: "./dist",
+        static: "./dist",
         hot: true,
         historyApiFallback: true,
     },
