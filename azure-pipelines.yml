@@ -43,6 +43,8 @@ steps:
           gradleWrapperFile: "android/gradlew"
           gradleOptions: "-Xmx3072m"
           tasks: "build"
+          javaHomeOption: 'JDKVersion'
+          jdkVersionOption: '1.17'
       displayName: "Android > Build"
       condition: eq('${{ variables.buildAndroid }}', true)
     - task: AndroidSigning@3
@@ -57,9 +59,9 @@ steps:
       condition: eq('${{ variables.buildAndroid }}', true)
     - task: CopyFiles@2
       inputs:
-          contents: "**/app-release-unsigned.apk"
+          Contents: "**/app-release-unsigned.apk"
           flattenFolders: true
-          targetFolder: "$(Build.ArtifactStagingDirectory)"
+          TargetFolder: "$(Build.ArtifactStagingDirectory)"
       displayName: "Android APK > Copy to Artifacts"
       condition: eq('${{ variables.buildAndroid }}', true)
 
