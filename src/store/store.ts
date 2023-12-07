@@ -1,11 +1,11 @@
-import { Storage } from '@capacitor/storage';
+import { Preferences } from '@capacitor/preferences';
 
 const createStorage = () => {
   return {
     getItem: (key: string): Promise<string | null> => {
       return new Promise((resolve) => {
         (async () => {
-          const { value } = await Storage.get({ key: key });
+          const { value } = await Preferences.get({ key: key });
           resolve(value);
         })();
       });
@@ -13,7 +13,7 @@ const createStorage = () => {
     setItem: (key: string, item: string): Promise<void> => {
       return new Promise((resolve) => {
         (async () => {
-          await Storage.set({ key: key, value: item });
+          await Preferences.set({ key: key, value: item });
           resolve();
         })();
       });
@@ -21,7 +21,7 @@ const createStorage = () => {
     removeItem: (key: string): Promise<void> => {
       return new Promise((resolve) => {
         (async () => {
-          await Storage.remove({ key: key });
+          await Preferences.remove({ key: key });
           resolve();
         })();
       });

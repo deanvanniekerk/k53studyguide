@@ -9,7 +9,7 @@ android {
 
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
-    implementation project(':capacitor-storage')
+    implementation project(':capacitor-preferences')
     implementation "com.google.firebase:firebase-analytics:15.0.0"
     implementation "com.google.android.play:core:1.+"
     implementation "com.google.firebase:firebase-analytics:17.4.3"
