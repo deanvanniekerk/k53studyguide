@@ -1,39 +1,37 @@
-import * as actions from "./actions";
+import * as actions from './actions';
 
-describe("state > purchase > actions", () => {
-    it("recievePurchaseProductState", () => {
-        const expectedAction = {
-            type: "PURCHASE_RECIEVE_PRODUCT_STATE",
-            payload: {
-                canPurchase: true,
-                productState: "registered",
-            },
-        };
+describe('state > purchase > actions', () => {
+  it('recievePurchaseProductState', () => {
+    const expectedAction = {
+      type: 'PURCHASE_RECIEVE_PRODUCT_STATE',
+      payload: {
+        canPurchase: true,
+        productState: 'registered',
+      },
+    };
 
-        expect(actions.recievePurchaseProductState(true, "registered")).toEqual(expectedAction);
-    });
+    expect(actions.recievePurchaseProductState(true, 'registered')).toEqual(expectedAction);
+  });
 
-    it("recievePurchaseOrderState", () => {
-        const expectedAction = {
-            type: "PURCHASE_RECIEVE_ORDER_STATE",
-            payload: "failed",
-        };
+  it('recievePurchaseOrderState', () => {
+    const expectedAction = {
+      type: 'PURCHASE_RECIEVE_ORDER_STATE',
+      payload: 'failed',
+    };
 
-        expect(actions.recievePurchaseOrderState("failed")).toEqual(expectedAction);
-    });
+    expect(actions.recievePurchaseOrderState('failed')).toEqual(expectedAction);
+  });
 
-    it("recievePurchaseProduct", () => {
-        const expectedAction = {
-            type: "PURCHASE_RECIEVE_PRODUCT",
-            payload: {
-                title: "title",
-                description: "description",
-                price: "R25",
-            },
-        };
+  it('recievePurchaseProduct', () => {
+    const expectedAction = {
+      type: 'PURCHASE_RECIEVE_PRODUCT',
+      payload: {
+        title: 'title',
+        description: 'description',
+        price: 'R25',
+      },
+    };
 
-        expect(actions.recievePurchaseProduct("R25", "title", "description")).toEqual(
-            expectedAction
-        );
-    });
+    expect(actions.recievePurchaseProduct('R25', 'title', 'description')).toEqual(expectedAction);
+  });
 });

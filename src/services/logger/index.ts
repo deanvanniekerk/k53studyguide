@@ -1,3 +1,3 @@
-export * from "./types";
-export * from "./factory";
-export * from "./AzureStorageLoggerService";
+export * from './AzureStorageLoggerService';
+export * from './factory';
+export * from './types';

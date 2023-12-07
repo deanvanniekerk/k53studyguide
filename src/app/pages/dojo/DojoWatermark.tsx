@@ -1,9 +1,8 @@
-import styled from "styled-components";
-
-import { QuizOutlineIcon } from "@/app/components/icons";
-import { watermarkStyle } from "@/app/styles";
+import { QuizOutlineIcon } from '@/app/components/icons';
+import { watermarkStyle } from '@/app/styles';
+import styled from 'styled-components';
 
 export const DojoWatermark = styled(QuizOutlineIcon)`
-    ${watermarkStyle}
-    opacity: 0.04;
+  ${watermarkStyle}
+  opacity: 0.04;
 `;

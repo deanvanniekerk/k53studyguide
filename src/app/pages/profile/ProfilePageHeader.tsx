@@ -1,8 +1,8 @@
-import React from "react";
-import { PageHeader } from "@/app/components";
+import { PageHeader } from '@/app/components';
+import React from 'react';
 
 const ProfilePageHeaderComponent: React.FC = () => {
-    return <PageHeader text="profile" />;
+  return <PageHeader text="profile" />;
 };
 
 const ProfilePageHeader = ProfilePageHeaderComponent;

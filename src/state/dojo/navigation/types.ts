@@ -1,9 +1,9 @@
 export type CorrectlyAnsweredQuestionsTotals = {
-    [key: string]: CorrectlyAnsweredQuestionsTotal;
+  [key: string]: CorrectlyAnsweredQuestionsTotal;
 };
 
 export type CorrectlyAnsweredQuestionsTotal = {
-    correctlyAnswered: number;
-    total: number;
-    level: number;
+  correctlyAnswered: number;
+  total: number;
+  level: number;
 };

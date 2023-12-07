@@ -1,3 +1,3 @@
 export type QuesionsSuccesfullyAnsweredDates = {
-    [key: string]: string;
+  [key: string]: string;
 };

@@ -1,104 +1,103 @@
-import { deepClone } from "@/utils";
+import { deepClone } from '@/utils';
+import { TestState } from './';
+import * as selectors from './selectors';
 
-import { TestState } from "./";
-import * as selectors from "./selectors";
+describe('state > dojo > test > selectors', () => {
+  //Setup Data --------------------------------------------
+  const questionAnswers = [
+    {
+      answer: 'A',
+      question: {
+        id: '1',
+        answer: 'C',
+        text: 'Question 1:',
+        option: [
+          {
+            id: 'A',
+            value: 'Answer 1.',
+          },
+          {
+            id: 'B',
+            value: 'Answer 2.',
+          },
+          {
+            id: 'C',
+            value: 'Answer 3.',
+          },
+        ],
+      },
+    },
+  ];
 
-describe("state > dojo > test > selectors", () => {
-    //Setup Data --------------------------------------------
-    const questionAnswers = [
-        {
-            answer: "A",
-            question: {
-                id: "1",
-                answer: "C",
-                text: "Question 1:",
-                option: [
-                    {
-                        id: "A",
-                        value: "Answer 1.",
-                    },
-                    {
-                        id: "B",
-                        value: "Answer 2.",
-                    },
-                    {
-                        id: "C",
-                        value: "Answer 3.",
-                    },
-                ],
-            },
-        },
-    ];
+  const defaultState: TestState = {
+    questionAnswers: questionAnswers,
+    maxQuestions: 10,
+    experienceGained: 8,
+  };
+  //-----------------------------------------------------------
 
-    const defaultState: TestState = {
-        questionAnswers: questionAnswers,
-        maxQuestions: 10,
-        experienceGained: 8,
-    };
-    //-----------------------------------------------------------
+  it('questionAnswersSelector', () => {
+    const actual = selectors.questionAnswersSelector.resultFunc(defaultState);
 
-    it("questionAnswersSelector", () => {
-        const actual = selectors.questionAnswersSelector.resultFunc(defaultState);
+    expect(actual).toEqual(questionAnswers);
+  });
 
-        expect(actual).toEqual(questionAnswers);
-    });
+  it('totalQuestionsSelector', () => {
+    const actual = selectors.totalQuestionsSelector.resultFunc(questionAnswers);
 
-    it("totalQuestionsSelector", () => {
-        const actual = selectors.totalQuestionsSelector.resultFunc(questionAnswers);
+    expect(actual).toEqual(1);
+  });
 
-        expect(actual).toEqual(1);
-    });
+  it('totalQuestionsSelector > true', () => {
+    const data = deepClone([...questionAnswers, ...questionAnswers]);
 
-    it("totalQuestionsSelector > true", () => {
-        const data = deepClone([...questionAnswers, ...questionAnswers]);
+    const actual = selectors.allQuestionsAnsweredSelector.resultFunc(data);
 
-        const actual = selectors.allQuestionsAnsweredSelector.resultFunc(data);
+    expect(actual).toEqual(true);
+  });
 
-        expect(actual).toEqual(true);
-    });
+  it('totalQuestionsSelector > false', () => {
+    const data = deepClone([...questionAnswers, ...questionAnswers]);
 
-    it("totalQuestionsSelector > false", () => {
-        const data = deepClone([...questionAnswers, ...questionAnswers]);
+    data[0].answer = '';
 
-        data[0].answer = "";
+    const actual = selectors.allQuestionsAnsweredSelector.resultFunc(data);
 
-        const actual = selectors.allQuestionsAnsweredSelector.resultFunc(data);
+    expect(actual).toEqual(false);
+  });
 
-        expect(actual).toEqual(false);
-    });
+  it('totalCorrectAnswersSelector', () => {
+    const data = deepClone([...questionAnswers, ...questionAnswers]);
 
-    it("totalCorrectAnswersSelector", () => {
-        const data = deepClone([...questionAnswers, ...questionAnswers]);
+    data[0].answer = 'Z';
+    data[1].answer = data[1].question.answer;
 
-        data[0].answer = "Z";
-        data[1].answer = data[1].question.answer;
+    const actual = selectors.totalCorrectAnswersSelector.resultFunc(data);
 
-        const actual = selectors.totalCorrectAnswersSelector.resultFunc(data);
+    expect(actual).toEqual(1);
+  });
 
-        expect(actual).toEqual(1);
-    });
+  it('maxQuestionsSelector', () => {
+    const actual = selectors.maxQuestionsSelector.resultFunc(defaultState);
 
-    it("maxQuestionsSelector", () => {
-        const actual = selectors.maxQuestionsSelector.resultFunc(defaultState);
+    expect(actual).toEqual(defaultState.maxQuestions);
+  });
 
-        expect(actual).toEqual(defaultState.maxQuestions);
-    });
+  it('testInProgressSelector > true', () => {
+    const actual = selectors.testInProgressSelector.resultFunc(5);
 
-    it("testInProgressSelector > true", () => {
-        const actual = selectors.testInProgressSelector.resultFunc(5);
+    expect(actual).toEqual(true);
+  });
 
-        expect(actual).toEqual(true);
-    });
+  it('testInProgressSelector > false', () => {
+    const actual = selectors.testInProgressSelector.resultFunc(0);
 
-    it("testInProgressSelector > false", () => {
-        const actual = selectors.testInProgressSelector.resultFunc(0);
+    expect(actual).toEqual(false);
+  });
 
-        expect(actual).toEqual(false);
-    });
+  it('experienceGainedSelector', () => {
+    const actual = selectors.experienceGainedSelector.resultFunc(defaultState);
 
-    it("experienceGainedSelector", () => {
-        const actual = selectors.experienceGainedSelector.resultFunc(defaultState);
-
-        expect(actual).toEqual(defaultState.experienceGained);
-    });
+    expect(actual).toEqual(defaultState.experienceGained);
+  });
 });

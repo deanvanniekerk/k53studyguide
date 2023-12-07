@@ -1,1 +1,1 @@
-export const TEXT_COLOR = "#FFFFFF";
+export const TEXT_COLOR = '#FFFFFF';

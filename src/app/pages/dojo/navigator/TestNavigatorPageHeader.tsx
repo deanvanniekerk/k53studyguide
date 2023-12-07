@@ -1,9 +1,8 @@
-import React from "react";
-
-import { PageHeader } from "@/app/components";
+import { PageHeader } from '@/app/components';
+import React from 'react';
 
 const TestNavigatorPageHeader: React.FC = () => {
-    return <PageHeader text="selectSection" />;
+  return <PageHeader text="selectSection" />;
 };
 
 export { TestNavigatorPageHeader };

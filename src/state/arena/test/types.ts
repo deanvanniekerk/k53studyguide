@@ -1,20 +1,20 @@
-import { QuestionItem } from "@/data";
+import { QuestionItem } from '@/data';
 
-export type TestSection = "A" | "B" | "C";
+export type TestSection = 'A' | 'B' | 'C';
 
 export type QuestionAnswer = {
-    section: TestSection;
-    answer: string | null;
-    question: QuestionItem;
+  section: TestSection;
+  answer: string | null;
+  question: QuestionItem;
 };
 
 export type TestResults = {
-    [key in TestSection]: TestResult;
+  [key in TestSection]: TestResult;
 };
 
 export type TestResult = {
-    correct: number;
-    total: number;
-    answered: number;
-    minimumPass: number;
+  correct: number;
+  total: number;
+  answered: number;
+  minimumPass: number;
 };

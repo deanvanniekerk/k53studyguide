@@ -1,65 +1,62 @@
-import { createSelector, OutputSelector, Selector } from "reselect";
+import { ContentData, NavigationData } from '@/data';
+import { contentDataSelector } from '@/state/content';
+import { RootState } from '@/state/rootReducer';
+import { createSelector, OutputSelector, Selector } from 'reselect';
+import { NavigationState, NavigationTreeItem, ROOT_NAVIGATION_KEY } from './';
 
-import { ContentData, NavigationData } from "@/data";
-import { contentDataSelector } from "@/state/content";
-import { RootState } from "@/state/rootReducer";
-
-import { NavigationState, NavigationTreeItem, ROOT_NAVIGATION_KEY } from "./";
-
-const rootSelector: Selector<RootState, NavigationState> = (state: RootState): NavigationState =>
-    state.navigation;
+const rootSelector: Selector<RootState, NavigationState> = (state: RootState): NavigationState => state.navigation;
 
 export const navigationDataSelector: OutputSelector<
-    RootState,
-    NavigationData,
-    (state: NavigationState) => NavigationData
+  RootState,
+  NavigationData,
+  (state: NavigationState) => NavigationData
 > = createSelector(rootSelector, (root) => root.navigationData);
 
 export const rootNavigationChildrenSelector: OutputSelector<
-    RootState,
-    string[],
-    (data: NavigationData) => string[]
+  RootState,
+  string[],
+  (data: NavigationData) => string[]
 > = createSelector(navigationDataSelector, (data) => data[ROOT_NAVIGATION_KEY]);
 
 export const navigationTreeSelector: OutputSelector<
-    RootState,
-    NavigationTreeItem,
-    (navData: NavigationData, contentData: ContentData) => NavigationTreeItem
+  RootState,
+  NavigationTreeItem,
+  (navData: NavigationData, contentData: ContentData) => NavigationTreeItem
 > = createSelector(navigationDataSelector, contentDataSelector, (navData, contentData) => {
-    const walk = (parent: NavigationTreeItem) => {
-        const childrenKeys = navData[parent.key];
+  const walk = (parent: NavigationTreeItem) => {
+    const childrenKeys = navData[parent.key];
 
-        if (childrenKeys) {
-            childrenKeys.forEach((childrenKey) => {
-                const child: NavigationTreeItem = {
-                    key: childrenKey,
-                    children: [],
-                };
-                parent.children.push(child);
+    if (childrenKeys) {
+      childrenKeys.forEach((childrenKey) => {
+        const child: NavigationTreeItem = {
+          key: childrenKey,
+          children: [],
+        };
+        parent.children.push(child);
 
-                walk(child);
-            });
-        }
+        walk(child);
+      });
+    }
 
-        const childContent = contentData[parent.key];
+    const childContent = contentData[parent.key];
 
-        if (childContent) {
-            childContent.forEach((contentItem, index) => {
-                const child: NavigationTreeItem = {
-                    key: `${parent.key}.${index + 1}`,
-                    children: [],
-                };
-                parent.children.push(child);
-            });
-        }
-    };
+    if (childContent) {
+      childContent.forEach((contentItem, index) => {
+        const child: NavigationTreeItem = {
+          key: `${parent.key}.${index + 1}`,
+          children: [],
+        };
+        parent.children.push(child);
+      });
+    }
+  };
 
-    const root: NavigationTreeItem = {
-        key: ROOT_NAVIGATION_KEY,
-        children: [],
-    };
+  const root: NavigationTreeItem = {
+    key: ROOT_NAVIGATION_KEY,
+    children: [],
+  };
 
-    walk(root);
+  walk(root);
 
-    return root;
+  return root;
 });

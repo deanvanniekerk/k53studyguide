@@ -1,115 +1,115 @@
-import { LogState, reducer } from "./reducer";
+import { LogState, reducer } from './reducer';
 
-describe("state > arena > log > reducer", () => {
-    const date1 = new Date();
-    const defaultState: LogState = {
-        quesionsSuccesfullyAnsweredDates: {
-            "1": date1.toISOString(),
-        },
-        testsPassed: 0,
+describe('state > arena > log > reducer', () => {
+  const date1 = new Date();
+  const defaultState: LogState = {
+    quesionsSuccesfullyAnsweredDates: {
+      '1': date1.toISOString(),
+    },
+    testsPassed: 0,
+  };
+
+  it('should handle ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE', () => {
+    const date2 = new Date();
+    const actualState = reducer(defaultState, {
+      type: 'ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE',
+      payload: {
+        questionId: '2',
+        date: date2.toISOString(),
+      },
+    });
+
+    const expectedState = {
+      ...defaultState,
+      quesionsSuccesfullyAnsweredDates: {
+        ...defaultState.quesionsSuccesfullyAnsweredDates,
+        '2': date2.toISOString(),
+      },
     };
 
-    it("should handle ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE", () => {
-        const date2 = new Date();
-        const actualState = reducer(defaultState, {
-            type: "ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE",
-            payload: {
-                questionId: "2",
-                date: date2.toISOString(),
-            },
-        });
+    expect(actualState).toEqual(expectedState);
+  });
 
-        const expectedState = {
-            ...defaultState,
-            quesionsSuccesfullyAnsweredDates: {
-                ...defaultState.quesionsSuccesfullyAnsweredDates,
-                "2": date2.toISOString(),
-            },
-        };
+  it('should handle ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE - already answered', () => {
+    const date2 = new Date();
+    const date3 = new Date();
+    const state = {
+      ...defaultState,
+      quesionsSuccesfullyAnsweredDates: {
+        ...defaultState.quesionsSuccesfullyAnsweredDates,
+        '2': date2.toISOString(),
+      },
+    };
 
-        expect(actualState).toEqual(expectedState);
+    const actualState = reducer(state, {
+      type: 'ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE',
+      payload: {
+        questionId: '2',
+        date: date3.toISOString(),
+      },
     });
 
-    it("should handle ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE - already answered", () => {
-        const date2 = new Date();
-        const date3 = new Date();
-        const state = {
-            ...defaultState,
-            quesionsSuccesfullyAnsweredDates: {
-                ...defaultState.quesionsSuccesfullyAnsweredDates,
-                "2": date2.toISOString(),
-            },
-        };
+    const expectedState = {
+      ...defaultState,
+      quesionsSuccesfullyAnsweredDates: {
+        ...defaultState.quesionsSuccesfullyAnsweredDates,
+        '2': date2.toISOString(),
+      },
+    };
 
-        const actualState = reducer(state, {
-            type: "ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE",
-            payload: {
-                questionId: "2",
-                date: date3.toISOString(),
-            },
-        });
+    expect(actualState).toEqual(expectedState);
+  });
 
-        const expectedState = {
-            ...defaultState,
-            quesionsSuccesfullyAnsweredDates: {
-                ...defaultState.quesionsSuccesfullyAnsweredDates,
-                "2": date2.toISOString(),
-            },
-        };
+  it('should handle ARENA_LOG_INCREMENT_PASSED_TESTS', () => {
+    const state = {
+      ...defaultState,
+      testsPassed: 5,
+    };
 
-        expect(actualState).toEqual(expectedState);
+    const actualState = reducer(state, {
+      type: 'ARENA_LOG_INCREMENT_PASSED_TESTS',
     });
 
-    it("should handle ARENA_LOG_INCREMENT_PASSED_TESTS", () => {
-        const state = {
-            ...defaultState,
-            testsPassed: 5,
-        };
+    const expectedState = {
+      ...defaultState,
+      testsPassed: 6,
+    };
 
-        const actualState = reducer(state, {
-            type: "ARENA_LOG_INCREMENT_PASSED_TESTS",
-        });
+    expect(actualState).toEqual(expectedState);
+  });
 
-        const expectedState = {
-            ...defaultState,
-            testsPassed: 6,
-        };
+  it('should handle ARENA_LOG_CLEAR_PASSED_TESTS', () => {
+    const state = {
+      ...defaultState,
+      testsPassed: 5,
+    };
 
-        expect(actualState).toEqual(expectedState);
+    const actualState = reducer(state, {
+      type: 'ARENA_LOG_CLEAR_PASSED_TESTS',
     });
 
-    it("should handle ARENA_LOG_CLEAR_PASSED_TESTS", () => {
-        const state = {
-            ...defaultState,
-            testsPassed: 5,
-        };
+    const expectedState = {
+      ...defaultState,
+      testsPassed: 0,
+    };
 
-        const actualState = reducer(state, {
-            type: "ARENA_LOG_CLEAR_PASSED_TESTS",
-        });
+    expect(actualState).toEqual(expectedState);
+  });
 
-        const expectedState = {
-            ...defaultState,
-            testsPassed: 0,
-        };
+  it('should handle ARENA_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES', () => {
+    const state = {
+      ...defaultState,
+    };
 
-        expect(actualState).toEqual(expectedState);
+    const actualState = reducer(state, {
+      type: 'ARENA_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES',
     });
 
-    it("should handle ARENA_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES", () => {
-        const state = {
-            ...defaultState,
-        };
+    const expectedState = {
+      ...defaultState,
+      quesionsSuccesfullyAnsweredDates: {},
+    };
 
-        const actualState = reducer(state, {
-            type: "ARENA_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES",
-        });
-
-        const expectedState = {
-            ...defaultState,
-            quesionsSuccesfullyAnsweredDates: {},
-        };
-
-        expect(actualState).toEqual(expectedState);
-    });
+    expect(actualState).toEqual(expectedState);
+  });
 });

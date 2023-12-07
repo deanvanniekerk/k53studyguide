@@ -1,5 +1,5 @@
-import { AnalyticsFirebase } from "@ionic-native/analytics-firebase";
-import { useCallback, useEffect } from "react";
+import { AnalyticsFirebase } from '@ionic-native/analytics-firebase';
+import { useCallback, useEffect } from 'react';
 
 // ADD_PAYMENT_INFO;
 // ADD_TO_CART;
@@ -34,32 +34,32 @@ import { useCallback, useEffect } from "react";
 // VIEW_SEARCH_RESULTS;
 
 type Event =
-    | "PRESENT_OFFER"
-    | "NAVIGATE"
-    | "RATE_APP"
-    | "CLEAR_HISTORY"
-    | "START_QUIZ"
-    | "CONTINUE_QUIZ"
-    | "QUIZ_RESULT"
-    | "START_TEST"
-    | "CONTINUE_TEST"
-    | "TEST_RESULT";
+  | 'PRESENT_OFFER'
+  | 'NAVIGATE'
+  | 'RATE_APP'
+  | 'CLEAR_HISTORY'
+  | 'START_QUIZ'
+  | 'CONTINUE_QUIZ'
+  | 'QUIZ_RESULT'
+  | 'START_TEST'
+  | 'CONTINUE_TEST'
+  | 'TEST_RESULT';
 
 export const useAnalytics = (screen?: string) => {
-    const setCurrentScreen = useCallback((screen: string) => {
-        AnalyticsFirebase.setCurrentScreen(screen);
-    }, []);
+  const setCurrentScreen = useCallback((screen: string) => {
+    AnalyticsFirebase.setCurrentScreen(screen);
+  }, []);
 
-    const logEvent = useCallback((event: Event, eventParams?: Record<string, unknown>) => {
-        AnalyticsFirebase.logEvent(event, eventParams);
-    }, []);
+  const logEvent = useCallback((event: Event, eventParams?: Record<string, unknown>) => {
+    AnalyticsFirebase.logEvent(event, eventParams);
+  }, []);
 
-    useEffect(() => {
-        if (screen) setCurrentScreen(screen);
-    });
+  useEffect(() => {
+    if (screen) setCurrentScreen(screen);
+  });
 
-    return {
-        setCurrentScreen,
-        logEvent,
-    };
+  return {
+    setCurrentScreen,
+    logEvent,
+  };
 };

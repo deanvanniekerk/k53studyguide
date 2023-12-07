@@ -1,16 +1,16 @@
-import { SettingsState } from "./reducer";
-import * as selectors from "./selectors";
+import { SettingsState } from './reducer';
+import * as selectors from './selectors';
 
-describe("state > settings > selectors", () => {
-    //Setup Data --------------------------------------------
-    const defaultState: SettingsState = {
-        language: "af",
-    };
-    //-----------------------------------------------------------
+describe('state > settings > selectors', () => {
+  //Setup Data --------------------------------------------
+  const defaultState: SettingsState = {
+    language: 'af',
+  };
+  //-----------------------------------------------------------
 
-    it("languageSelector", () => {
-        const actual = selectors.languageSelector.resultFunc(defaultState);
+  it('languageSelector', () => {
+    const actual = selectors.languageSelector.resultFunc(defaultState);
 
-        expect(actual).toEqual("af");
-    });
+    expect(actual).toEqual('af');
+  });
 });

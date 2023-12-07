@@ -1,26 +1,26 @@
 export interface LoggerServiceConstructor {
-    new (): LoggerService;
+  new (): LoggerService;
 }
 
 export interface LoggerService {
-    initialize: () => void;
-    log: (level: LogLevel, message: string, data?: LogData) => void;
+  initialize: () => void;
+  log: (level: LogLevel, message: string, data?: LogData) => void;
 }
 
 export type LogRecord = {
-    PartitionKey: string;
-    RowKey: string;
-    Level: LogLevel;
-    Platform: string;
-    DeviceModel: string;
-    DeviceVersion: string;
-    AppVersionNumber: string;
-    Message: string;
-    Data: string;
+  PartitionKey: string;
+  RowKey: string;
+  Level: LogLevel;
+  Platform: string;
+  DeviceModel: string;
+  DeviceVersion: string;
+  AppVersionNumber: string;
+  Message: string;
+  Data: string;
 };
 
 export type LogData = {
-    [key: string]: string;
+  [key: string]: string;
 };
 
-export type LogLevel = "DEBUG" | "INFO" | "WARNING" | "ERROR" | "DEBUG";
+export type LogLevel = 'DEBUG' | 'INFO' | 'WARNING' | 'ERROR' | 'DEBUG';

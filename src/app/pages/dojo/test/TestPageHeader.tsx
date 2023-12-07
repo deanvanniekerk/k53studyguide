@@ -1,9 +1,8 @@
-import React from "react";
-
-import { PageHeader } from "@/app/components";
+import { PageHeader } from '@/app/components';
+import React from 'react';
 
 const TestPageHeader: React.FC = () => {
-    return <PageHeader text="test" />;
+  return <PageHeader text="test" />;
 };
 
 export { TestPageHeader };

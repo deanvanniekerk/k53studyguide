@@ -1,9 +1,9 @@
-export type NotificationName = "studyInfo" | "dojoInfo" | "arenaInfo";
+export type NotificationName = 'studyInfo' | 'dojoInfo' | 'arenaInfo';
 
 export type NotificationState = {
-    seen: boolean;
+  seen: boolean;
 };
 
 export type Notifications = {
-    [key in NotificationName]: NotificationState;
+  [key in NotificationName]: NotificationState;
 };

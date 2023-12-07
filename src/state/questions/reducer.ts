@@ -1,13 +1,13 @@
-import { QuestionData, questionData } from "@/data";
+import { QuestionData, questionData } from '@/data';
 
 export type QuestionState = {
-    readonly questionData: QuestionData;
+  readonly questionData: QuestionData;
 };
 
 export const defaultState: QuestionState = {
-    questionData: questionData,
+  questionData: questionData,
 };
 
 export const reducer = (state: QuestionState = defaultState): QuestionState => {
-    return state;
+  return state;
 };

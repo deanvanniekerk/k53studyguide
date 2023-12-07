@@ -1,10 +1,10 @@
-export type OrderState = "ready" | "failed" | "cancelled";
+export type OrderState = 'ready' | 'failed' | 'cancelled';
 export type ProductState =
-    | "registered"
-    | "invalid"
-    | "valid"
-    | "requested"
-    | "initiated"
-    | "approved"
-    | "finished"
-    | "owned";
+  | 'registered'
+  | 'invalid'
+  | 'valid'
+  | 'requested'
+  | 'initiated'
+  | 'approved'
+  | 'finished'
+  | 'owned';

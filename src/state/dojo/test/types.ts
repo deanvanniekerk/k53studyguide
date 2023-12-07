@@ -1,6 +1,6 @@
-import { QuestionItem } from "@/data";
+import { QuestionItem } from '@/data';
 
 export type QuestionAnswer = {
-    question: QuestionItem;
-    answer: string | null;
+  question: QuestionItem;
+  answer: string | null;
 };

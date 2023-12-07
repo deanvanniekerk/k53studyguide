@@ -1,13 +1,13 @@
-import { ContentData, contentData } from "@/data";
+import { ContentData, contentData } from '@/data';
 
 export type ContentState = {
-    readonly contentData: ContentData;
+  readonly contentData: ContentData;
 };
 
 export const defaultState: ContentState = {
-    contentData: contentData,
+  contentData: contentData,
 };
 
 export const reducer = (state: ContentState = defaultState): ContentState => {
-    return state;
+  return state;
 };

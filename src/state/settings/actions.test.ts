@@ -1,12 +1,12 @@
-import * as actions from "./actions";
+import * as actions from './actions';
 
-describe("state > settings > actions", () => {
-    it("recieveTargetNavigationKey", () => {
-        const expectedAction = {
-            type: "SETTINGS_RECIEVE_LANGUAGE",
-            payload: "zu",
-        };
+describe('state > settings > actions', () => {
+  it('recieveTargetNavigationKey', () => {
+    const expectedAction = {
+      type: 'SETTINGS_RECIEVE_LANGUAGE',
+      payload: 'zu',
+    };
 
-        expect(actions.recieveLanguage("zu")).toEqual(expectedAction);
-    });
+    expect(actions.recieveLanguage('zu')).toEqual(expectedAction);
+  });
 });

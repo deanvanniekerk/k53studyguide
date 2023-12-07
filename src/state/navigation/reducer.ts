@@ -1,15 +1,15 @@
-import { NavigationData, navigationData } from "@/data";
+import { NavigationData, navigationData } from '@/data';
 
-export const ROOT_NAVIGATION_KEY = "nav";
+export const ROOT_NAVIGATION_KEY = 'nav';
 
 export type NavigationState = {
-    readonly navigationData: NavigationData;
+  readonly navigationData: NavigationData;
 };
 
 export const defaultState: NavigationState = {
-    navigationData: navigationData,
+  navigationData: navigationData,
 };
 
 export const reducer = (state: NavigationState = defaultState): NavigationState => {
-    return state;
+  return state;
 };
