@@ -1,4 +1,4 @@
-import { AppRateOriginal } from '@ionic-native/app-rate';
+import { AppRateOriginal } from '@awesome-cordova-plugins/app-rate';
 
 export const getAppRate = (): AppRateOriginal => {
   // @ts-ignore

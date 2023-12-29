@@ -1,4 +1,4 @@
-import { AnalyticsFirebase } from '@ionic-native/analytics-firebase';
+import { AnalyticsFirebase } from '@awesome-cordova-plugins/analytics-firebase';
 import { useCallback, useEffect } from 'react';
 
 // ADD_PAYMENT_INFO;

@@ -6,7 +6,7 @@ import {
   recievePurchaseProduct,
   recievePurchaseProductState,
 } from '@/state/purchase';
-import { IAPError, IAPProduct, InAppPurchase2 } from '@ionic-native/in-app-purchase-2';
+import { IAPError, IAPProduct, InAppPurchase2 } from '@awesome-cordova-plugins/in-app-purchase-2';
 import { Store } from 'redux';
 import { LogData, LogLevel } from '../';
 import { PurchaseService } from './types';
@@ -20,7 +20,10 @@ export class CordovaPurchaseService implements PurchaseService {
   }
 
   async initialize() {
-    this.log('INFO', 'CordovaPurchaseService > initialize');
+    this.log('INFO', 'CordovaPurchaseService > initialize', {
+      productId: this._productId,
+      type: InAppPurchase2.NON_CONSUMABLE,
+    });
 
     InAppPurchase2.verbosity = InAppPurchase2.DEBUG;
 

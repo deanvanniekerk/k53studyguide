@@ -1,5 +1,5 @@
-import { AppVersion } from '@ionic-native/app-version';
-import { Device } from '@ionic-native/device';
+import { AppVersion } from '@awesome-cordova-plugins/app-version';
+import { Device } from '@awesome-cordova-plugins/device';
 import { v4 as uuidv4 } from 'uuid';
 import { insertEntity } from '../azureStorage';
 import { LoggerService, LogLevel, LogRecord } from './';
@@ -24,6 +24,8 @@ export class AzureStorageLoggerService implements LoggerService {
       Message: message,
       Data: data ? JSON.stringify(data) : '',
     };
+
+    console.log(`Logging to Azure Storage: ${JSON.stringify(entity)}`);
 
     insertEntity(this._tableName, entity).then((success) => {
       if (!success) console.log('Error writing log record');

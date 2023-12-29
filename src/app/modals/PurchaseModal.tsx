@@ -2,7 +2,7 @@ import { BookOutlineIcon, ResetIcon, TestPenIcon, YinYangIcon } from '@/app/comp
 import { PurchaseContext } from '@/context';
 import { RootState } from '@/state';
 import { purchaseSelector, recievePurchaseOrderState } from '@/state/purchase';
-import { Device } from '@ionic-native/device';
+import { Device } from '@awesome-cordova-plugins/device';
 import { IonButton, IonIcon, IonLoading, IonModal, IonSlide, IonSlides, IonToast } from '@ionic/react';
 import { closeOutline } from 'ionicons/icons';
 import React, { useContext, useEffect, useState } from 'react';

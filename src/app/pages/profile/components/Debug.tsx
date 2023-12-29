@@ -1,6 +1,6 @@
 import { HorizontalRule } from '@/app/components';
-import { AppVersion } from '@ionic-native/app-version';
-import { Device } from '@ionic-native/device';
+import { AppVersion } from '@awesome-cordova-plugins/app-version';
+import { Device } from '@awesome-cordova-plugins/device';
 import { IonCol, IonGrid, IonRow, IonText } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
