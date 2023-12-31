@@ -6,7 +6,7 @@ import {
   clearQuesionSuccesfullyAnsweredDates as clearArenaQuesionSuccesfullyAnsweredDates,
 } from '@/state/arena/log';
 import { clearQuesionSuccesfullyAnsweredDates as clearDojoQuesionSuccesfullyAnsweredDates } from '@/state/dojo/log';
-import { hasFullAccessSelector } from '@/state/purchase';
+import { ownedSelector } from '@/state/purchase';
 import { clearSeenContent } from '@/state/study/log';
 import { IonAlert, IonCol, IonGrid, IonIcon, IonRow, IonText } from '@ionic/react';
 import { lockClosed, trashBinOutline } from 'ionicons/icons';
@@ -190,7 +190,7 @@ const LineBreak = <HorizontalRule leftMargin={0} rightMargin={0} paddingBottom={
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
   return {
-    hasFullAccess: hasFullAccessSelector(state),
+    hasFullAccess: ownedSelector(state),
   };
 };
 

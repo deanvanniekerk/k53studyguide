@@ -3,7 +3,7 @@ import PurchaseModal from '@/app/modals/PurchaseModal';
 import { RootState } from '@/state';
 import { testsPassedSelector } from '@/state/arena/log';
 import { testInProgressSelector } from '@/state/arena/test';
-import { canPurchaseSelector, hasFullAccessSelector } from '@/state/purchase';
+import { canPurchaseSelector, ownedSelector } from '@/state/purchase';
 import { CreateAnimation, IonButton, IonCol, IonGrid, IonIcon, IonRow, useIonViewWillEnter } from '@ionic/react';
 import { caretForward, lockClosedOutline } from 'ionicons/icons';
 import React, { useRef, useState } from 'react';
@@ -165,7 +165,7 @@ const FullAccessText = styled.div`
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
   return {
-    hasFullAccess: hasFullAccessSelector(state),
+    hasFullAccess: ownedSelector(state),
     testsPassed: testsPassedSelector(state),
     testInProgress: testInProgressSelector(state),
     canPurchase: canPurchaseSelector(state),

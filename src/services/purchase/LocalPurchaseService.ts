@@ -1,4 +1,9 @@
-import { recievePurchaseProduct, recievePurchaseProductState } from '@/state/purchase';
+import {
+  recievePurchaseOrderState,
+  recievePurchaseProduct,
+  recievePurchaseProductCanPurchase,
+  recievePurchaseProductOwned,
+} from '@/state/purchase';
 import { Store } from 'redux';
 import { PurchaseService } from './types';
 
@@ -13,9 +18,14 @@ export class LocalPurchaseService implements PurchaseService {
     console.log('LocalPurchaseService > initialize product');
 
     //Dispatch Status
-    const statusAction = recievePurchaseProductState(true, 'valid'); //Test purchase
-    //const statusAction = recievePurchaseProductState(false, "owned"); //Already purchased
-    this._reduxStore.dispatch(statusAction);
+    const canPurchaseAction = recievePurchaseProductCanPurchase(true); //Test purchase
+    this._reduxStore.dispatch(canPurchaseAction);
+
+    // Already purchased
+    // const canPurchaseAction = recievePurchaseProductCanPurchase(false);
+    // this._reduxStore.dispatch(canPurchaseAction);
+    // const ownedAction = recievePurchaseProductOwned(true);
+    // this._reduxStore.dispatch(ownedAction);
 
     //Dispatch Product
     const productAction = recievePurchaseProduct(
@@ -30,22 +40,22 @@ export class LocalPurchaseService implements PurchaseService {
   purchase() {
     console.log('LocalPurchaseService > purchase');
 
-    let statusAction = recievePurchaseProductState(false, 'requested');
-    this._reduxStore.dispatch(statusAction);
-
-    statusAction = recievePurchaseProductState(false, 'initiated');
+    let statusAction = recievePurchaseOrderState('pending');
     this._reduxStore.dispatch(statusAction);
 
     //Add delay to simulate comms with server
     setTimeout(() => {
-      statusAction = recievePurchaseProductState(false, 'approved');
+      statusAction = recievePurchaseOrderState('approved');
       this._reduxStore.dispatch(statusAction);
 
-      statusAction = recievePurchaseProductState(false, 'finished');
+      statusAction = recievePurchaseOrderState('finished');
       this._reduxStore.dispatch(statusAction);
 
-      statusAction = recievePurchaseProductState(false, 'owned');
-      this._reduxStore.dispatch(statusAction);
+      const canPurchaseAction = recievePurchaseProductCanPurchase(false);
+      this._reduxStore.dispatch(canPurchaseAction);
+
+      const ownedAction = recievePurchaseProductOwned(true);
+      this._reduxStore.dispatch(ownedAction);
     }, 1000);
   }
 }

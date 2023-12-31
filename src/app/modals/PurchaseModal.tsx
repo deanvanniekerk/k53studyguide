@@ -34,13 +34,13 @@ const PurchaseModal: React.FC<Props> = (props) => {
 
   //Close the modal if its owned
   useEffect(() => {
-    if (props.purchase.productState == 'finished') {
+    if (props.purchase.orderState == 'finished') {
       setShowOwnedToast(true);
     }
-    if (props.purchase.productState == 'owned') {
-      props.onDidDismiss();
+    if (props.purchase.owned) {
+      setTimeout(props.onDidDismiss, 500);
     }
-    if (props.purchase.orderState == 'failed') {
+    if (props.purchase.orderState == 'error') {
       setShowFailedToast(true);
       props.recievePurchaseOrderState('ready'); //reset
     }
@@ -96,7 +96,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
         <Translator>
           {({ translate }) => (
             <IonLoading
-              isOpen={props.purchase.productState === 'initiated'}
+              isOpen={props.purchase.orderState === 'pending'}
               message={translate({ text: 'processingPayment' })}
               mode={Device.platform == 'Android' ? 'md' : 'ios'}
             />

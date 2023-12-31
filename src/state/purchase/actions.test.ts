@@ -1,25 +1,35 @@
 import * as actions from './actions';
 
 describe('state > purchase > actions', () => {
-  it('recievePurchaseProductState', () => {
+  it('recievePurchaseProductCanPurchase', () => {
     const expectedAction = {
-      type: 'PURCHASE_RECIEVE_PRODUCT_STATE',
+      type: 'PURCHASE_RECIEVE_PRODUCT_CAN_PURCHASE',
       payload: {
         canPurchase: true,
-        productState: 'registered',
       },
     };
 
-    expect(actions.recievePurchaseProductState(true, 'registered')).toEqual(expectedAction);
+    expect(actions.recievePurchaseProductCanPurchase(true)).toEqual(expectedAction);
+  });
+
+  it('recievePurchaseProductOwned', () => {
+    const expectedAction = {
+      type: 'PURCHASE_RECIEVE_PRODUCT_OWNED',
+      payload: {
+        owned: true,
+      },
+    };
+
+    expect(actions.recievePurchaseProductOwned(true)).toEqual(expectedAction);
   });
 
   it('recievePurchaseOrderState', () => {
     const expectedAction = {
       type: 'PURCHASE_RECIEVE_ORDER_STATE',
-      payload: 'failed',
+      payload: 'error',
     };
 
-    expect(actions.recievePurchaseOrderState('failed')).toEqual(expectedAction);
+    expect(actions.recievePurchaseOrderState('error')).toEqual(expectedAction);
   });
 
   it('recievePurchaseProduct', () => {

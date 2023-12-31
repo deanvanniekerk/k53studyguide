@@ -1,7 +1,7 @@
 import { HorizontalRule } from '@/app/components';
 import PurchaseModal from '@/app/modals/PurchaseModal';
 import { RootState } from '@/state';
-import { canPurchaseSelector, hasFullAccessSelector, purchaseSelector } from '@/state/purchase';
+import { canPurchaseSelector, ownedSelector, purchaseSelector } from '@/state/purchase';
 import { IonButton, IonCol, IonGrid, IonRow, IonText } from '@ionic/react';
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
@@ -91,7 +91,7 @@ type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
   return {
     purchase: purchaseSelector(state),
-    hasFullAccess: hasFullAccessSelector(state),
+    hasFullAccess: ownedSelector(state),
     canPurchase: canPurchaseSelector(state),
   };
 };

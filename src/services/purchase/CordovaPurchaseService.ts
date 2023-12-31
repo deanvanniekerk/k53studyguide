@@ -1,95 +1,132 @@
 //import { v4 as uuidv4 } from "uuid";
 import { recieveLogMessage } from '@/state/log';
 import {
-  ProductState,
   recievePurchaseOrderState,
   recievePurchaseProduct,
-  recievePurchaseProductState,
+  recievePurchaseProductCanPurchase,
+  recievePurchaseProductOwned,
 } from '@/state/purchase';
-import { IAPError, IAPProduct, InAppPurchase2 } from '@awesome-cordova-plugins/in-app-purchase-2';
+import 'cordova-plugin-purchase/www/store';
 import { Store } from 'redux';
-import { LogData, LogLevel } from '../';
+import { LogData, LogLevel } from '..';
 import { PurchaseService } from './types';
 
 //InApp Purchase: https://github.com/j3k0/cordova-plugin-purchase/blob/master/doc/api.md
+
+// try: https://github.com/danielsogl/awesome-cordova-plugins/issues/4457#issuecomment-1825177796
+
 export class CordovaPurchaseService implements PurchaseService {
   private readonly _reduxStore: Store;
-  private readonly _productId = 'premium_access';
+  // private readonly _productId = 'premium_access';
+  private readonly _productId = 'premium_access_test';
   constructor(reduxStore: Store) {
     this._reduxStore = reduxStore;
   }
 
   async initialize() {
-    this.log('INFO', 'CordovaPurchaseService > initialize', {
-      productId: this._productId,
-      type: InAppPurchase2.NON_CONSUMABLE,
-    });
+    document.addEventListener(
+      'deviceready',
+      async () => {
+        const { store, ProductType, Platform, LogLevel } = window.CdvPurchase; // window is important
 
-    InAppPurchase2.verbosity = InAppPurchase2.DEBUG;
+        this.log('INFO', 'CordovaPurchaseService > initialize', {
+          productId: this._productId,
+          type: ProductType.NON_CONSUMABLE,
+        });
 
-    //Register
-    InAppPurchase2.register({
-      id: this._productId,
-      type: InAppPurchase2.NON_CONSUMABLE,
-    });
+        store.verbosity = LogLevel.DEBUG;
 
-    //Subscribe to any additional changes
-    InAppPurchase2.when(this._productId).updated((product: IAPProduct) => {
-      this.log('INFO', 'CordovaPurchaseService > product changed', {
-        product: JSON.stringify(product),
-      });
+        store.register([
+          {
+            id: this._productId,
+            type: ProductType.NON_CONSUMABLE,
+            platform: Platform.GOOGLE_PLAY,
+          },
+        ]);
 
-      //Dispatch Status
-      const stateAction = recievePurchaseProductState(product.canPurchase, product.state as ProductState);
-      this._reduxStore.dispatch(stateAction);
+        store
+          .when()
+          .productUpdated((product) => {
+            this.log('INFO', 'CordovaPurchaseService > product changed', {
+              product: JSON.stringify(product),
+            });
 
-      const productAction = recievePurchaseProduct(product.price, product.title, product.description);
-      this._reduxStore.dispatch(productAction);
-    });
+            //Dispatch Status
+            const canPurchaseAction = recievePurchaseProductCanPurchase(product.canPurchase);
+            this._reduxStore.dispatch(canPurchaseAction);
 
-    // not firing...
-    // InAppPurchase2.when(this._productId).registered((product: IAPProduct) => {
-    //     this.log("INFO", "CordovaPurchaseService > Product Registered");
-    //     const productAction = recievePurchaseProduct(
-    //         JSON.stringify(product),
-    //         product.title,
-    //         product.description
-    //     );
-    //     this._reduxStore.dispatch(productAction);
-    // });
+            const ownedAction = recievePurchaseProductOwned(product.owned);
+            this._reduxStore.dispatch(ownedAction);
 
-    InAppPurchase2.when(this._productId).approved((product: IAPProduct) => {
-      this.log('INFO', 'CordovaPurchaseService > Product Approved');
-      product.finish();
-    });
+            const productAction = recievePurchaseProduct(
+              product.pricing?.price ?? '',
+              product.title,
+              product.description,
+            );
+            this._reduxStore.dispatch(productAction);
+          })
+          .pending(() => {
+            this.log('INFO', 'CordovaPurchaseService > product pending');
+            const stateAction = recievePurchaseOrderState('pending');
+            this._reduxStore.dispatch(stateAction);
+          })
+          .approved((p) => {
+            this.log('INFO', 'CordovaPurchaseService > product approved');
+            const stateAction = recievePurchaseOrderState('approved');
+            this._reduxStore.dispatch(stateAction);
+            p.finish();
+          })
+          .finished(() => {
+            this.log('INFO', 'CordovaPurchaseService > product finished');
+            const stateAction = recievePurchaseOrderState('finished');
+            this._reduxStore.dispatch(stateAction);
 
-    InAppPurchase2.when(this._productId).error((error: IAPError) => {
-      this.log('INFO', 'CordovaPurchaseService > Product Error : ' + error.message);
-      const stateAction = recievePurchaseOrderState('failed');
-      this._reduxStore.dispatch(stateAction);
-    });
+            const canPurchaseAction = recievePurchaseProductCanPurchase(false);
+            this._reduxStore.dispatch(canPurchaseAction);
 
-    InAppPurchase2.when(this._productId).cancelled(() => {
-      this.log('INFO', 'CordovaPurchaseService > Product Cancelled');
-      const stateAction = recievePurchaseOrderState('cancelled');
-      this._reduxStore.dispatch(stateAction);
-    });
+            const ownedAction = recievePurchaseProductOwned(true);
+            this._reduxStore.dispatch(ownedAction);
+          });
 
-    InAppPurchase2.when(this._productId).refunded(() => {
-      this.log('INFO', 'CordovaPurchaseService > Product Refunded');
-    });
-
-    InAppPurchase2.error((error: unknown) => {
-      this.log('ERROR', 'CordovaPurchaseService > Error : ' + JSON.stringify(error));
-    });
-
-    //Refresh
-    InAppPurchase2.refresh();
+        store.initialize([Platform.GOOGLE_PLAY]);
+      },
+      false,
+    );
   }
 
-  purchase() {
+  async purchase() {
+    const { store, ErrorCode } = window.CdvPurchase; // window is important
+
+    const product = store.get(this._productId);
+
+    if (!product) {
+      this.log('ERROR', 'CordovaPurchaseService > ordering product > cant get product');
+      return;
+    }
+
+    const offer = product.getOffer();
+
+    if (!offer) {
+      this.log('ERROR', 'CordovaPurchaseService > ordering product > cant get offer');
+      return;
+    }
+
     this.log('INFO', 'CordovaPurchaseService > ordering product');
-    InAppPurchase2.order(this._productId);
+
+    let stateAction = recievePurchaseOrderState('pending');
+    this._reduxStore.dispatch(stateAction);
+
+    const error = await store.order(offer);
+
+    if (error) {
+      this.log('ERROR', 'CordovaPurchaseService > purchase > error', {
+        isError: error.isError ? 'true' : 'false',
+        code: error.code.toString(),
+        message: error.message,
+      });
+      stateAction = recievePurchaseOrderState(error.code === ErrorCode.PAYMENT_CANCELLED ? 'cancelled' : 'error');
+      this._reduxStore.dispatch(stateAction);
+    }
   }
 
   log(level: LogLevel, message: string, data?: LogData) {

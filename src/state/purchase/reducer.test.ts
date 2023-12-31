@@ -3,26 +3,40 @@ import { PurchaseState, reducer } from './reducer';
 describe('state > purchase > reducer', () => {
   const defaultState: PurchaseState = {
     canPurchase: false,
-    productState: 'initiated',
+    owned: false,
     orderState: 'ready',
     price: '',
     title: '',
     description: '',
   };
 
-  it('should handle PURCHASE_RECIEVE_STATUS', () => {
+  it('should handle PURCHASE_RECIEVE_PRODUCT_CAN_PURCHASE', () => {
     const actualState = reducer(defaultState, {
-      type: 'PURCHASE_RECIEVE_PRODUCT_STATE',
+      type: 'PURCHASE_RECIEVE_PRODUCT_CAN_PURCHASE',
       payload: {
         canPurchase: true,
-        productState: 'owned',
       },
     });
 
     const expectedState = {
       ...defaultState,
       canPurchase: true,
-      productState: 'owned',
+    };
+
+    expect(actualState).toEqual(expectedState);
+  });
+
+  it('should handle PURCHASE_RECIEVE_PRODUCT_OWNED', () => {
+    const actualState = reducer(defaultState, {
+      type: 'PURCHASE_RECIEVE_PRODUCT_OWNED',
+      payload: {
+        owned: true,
+      },
+    });
+
+    const expectedState = {
+      ...defaultState,
+      owned: true,
     };
 
     expect(actualState).toEqual(expectedState);
