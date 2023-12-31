@@ -11,14 +11,12 @@ import { Store } from 'redux';
 import { LogData, LogLevel } from '..';
 import { PurchaseService } from './types';
 
-//InApp Purchase: https://github.com/j3k0/cordova-plugin-purchase/blob/master/doc/api.md
-
 // try: https://github.com/danielsogl/awesome-cordova-plugins/issues/4457#issuecomment-1825177796
 
 export class CordovaPurchaseService implements PurchaseService {
   private readonly _reduxStore: Store;
-  // private readonly _productId = 'premium_access';
-  private readonly _productId = 'premium_access_test';
+  private readonly _productId = 'premium_access';
+  // private readonly _productId = 'premium_access_test';
   constructor(reduxStore: Store) {
     this._reduxStore = reduxStore;
   }
