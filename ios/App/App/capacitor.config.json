@@ -4,5 +4,9 @@
 	"webDir": "build",
 	"bundledWebRuntime": false,
 	"npmClient": "yarn",
-	"cordova": {}
+	"cordova": {},
+	"packageClassList": [
+		"PreferencesPlugin",
+		"CDVPlugin"
+	]
 }
