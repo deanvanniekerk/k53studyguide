@@ -44,8 +44,8 @@ steps:
           gradleWrapperFile: "android/gradlew"
           gradleOptions: "-Xmx3072m"
           tasks: "build"
-          javaHomeOption: 'JDKVersion'
-          jdkVersionOption: '1.17'
+          javaHomeOption: "Path"
+          jdkDirectory: "$(JAVA_HOME_21_X64)"
       displayName: "Android > Build"
       condition: eq('${{ variables.buildAndroid }}', true)
     - task: AndroidSigning@3
