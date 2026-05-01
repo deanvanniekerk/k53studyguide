@@ -4,11 +4,11 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 pool:
-    vmImage: "macOS-latest"
+    vmImage: "macOS-15"
 
 variables:
     buildAndroid: true
-    buildIOS: true
+    buildIOS: false
 
 steps:
     - task: UseNode@1
@@ -38,7 +38,7 @@ steps:
       displayName: "React App > Copy to Android Project"
       condition: eq('${{ variables.buildAndroid }}', true)
 
-    - task: Gradle@3
+    - task: Gradle@4
       inputs:
           workingDirectory: "android"
           gradleWrapperFile: "android/gradlew"
@@ -52,10 +52,10 @@ steps:
       inputs:
           apkFiles: "**/app-release-unsigned.apk"
           apksignerKeystoreFile: "upload-keystore.jks"
-          apksignerKeystorePassword: "lead2gold"
+          apksignerKeystorePassword: "$(ANDROID_KEYSTORE_PASSWORD)"
           apksignerKeystoreAlias: "upload"
-          apksignerKeyPassword: "gold2lead"
-          zipalign: false
+          apksignerKeyPassword: "$(ANDROID_KEY_PASSWORD)"
+          zipalign: true
       displayName: "Android APK > Sign"
       condition: eq('${{ variables.buildAndroid }}', true)
     - task: CopyFiles@2
@@ -110,9 +110,8 @@ steps:
     #   displayName: "IOS IPA > Copy to Artifacts"
     #   condition: eq('${{ variables.buildIOS }}', true)
 
-    - task: PublishBuildArtifacts@1
+    - task: PublishPipelineArtifact@1
       inputs:
-          PathtoPublish: "$(Build.ArtifactStagingDirectory)"
-          ArtifactName: "drop"
-          publishLocation: "Container"
+          targetPath: "$(Build.ArtifactStagingDirectory)"
+          artifact: "drop"
       displayName: "Publish Artifacts"
