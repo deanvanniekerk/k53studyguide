@@ -1,6 +1,6 @@
-import { QuestionItem } from '@/data';
-import React from 'react';
-import styled from 'styled-components';
+import type React from "react";
+import styled from "styled-components";
+import type { QuestionItem } from "@/data";
 
 type Props = {
   question: QuestionItem;
@@ -11,12 +11,12 @@ const ImageList: React.FC<Props> = ({ question }) => {
     <>
       {question.image && (
         <ImageWrapper>
-          <img alt="" src={`assets/images/${question.image}`} style={{ maxWidth: '100%' }} />
+          <img alt="" src={`assets/images/${question.image}`} style={{ maxWidth: "100%" }} />
         </ImageWrapper>
       )}
       {question.image2 && (
         <ImageWrapper>
-          <img alt="" src={`assets/images/${question.image2}`} style={{ maxWidth: '100%' }} />
+          <img alt="" src={`assets/images/${question.image2}`} style={{ maxWidth: "100%" }} />
         </ImageWrapper>
       )}
     </>

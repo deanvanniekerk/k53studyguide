@@ -1,5 +1,5 @@
-import { PageHeader, PageHeaderInfoIcon } from '@/app/components';
-import React from 'react';
+import type React from "react";
+import { PageHeader, PageHeaderInfoIcon } from "@/app/components";
 
 type Props = {
   onInfoClicked: () => void;

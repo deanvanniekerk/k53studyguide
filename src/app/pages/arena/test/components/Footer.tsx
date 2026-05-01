@@ -1,17 +1,18 @@
-import { RootState } from '@/state';
+import { IonButton, IonIcon, IonToast } from "@ionic/react";
+import { arrowForwardOutline, checkmarkCircleOutline } from "ionicons/icons";
+import type React from "react";
+import { useState } from "react";
+import { connect } from "react-redux";
+import { Translate, Translator } from "react-translated";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import type { RootState } from "@/state";
 import {
   allQuestionsAnsweredSelector,
   currentSectionSelector,
   recieveCurrentSection,
-  TestSection,
-} from '@/state/arena/test';
-import { IonButton, IonIcon, IonToast } from '@ionic/react';
-import { arrowForwardOutline, checkmarkCircleOutline } from 'ionicons/icons';
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { Translate, Translator } from 'react-translated';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
+  type TestSection,
+} from "@/state/arena/test";
 
 type Props = {
   onSubmitClicked: () => void;
@@ -38,31 +39,31 @@ const FooterComponent: React.FC<Props> = (props) => {
 
   return (
     <Wrapper>
-      {props.currentSection === 'A' && (
+      {props.currentSection === "A" && (
         <IonButton
           color="tertiary"
           shape="round"
           fill="outline"
           className="button-med-large"
-          onClick={() => changeCurrentSection('B')}
+          onClick={() => changeCurrentSection("B")}
         >
           <Translate text="nextSection" />
           <IonIcon slot="end" icon={arrowForwardOutline} />
         </IonButton>
       )}
-      {props.currentSection === 'B' && (
+      {props.currentSection === "B" && (
         <IonButton
           color="tertiary"
           shape="round"
           fill="outline"
           className="button-med-large"
-          onClick={() => changeCurrentSection('C')}
+          onClick={() => changeCurrentSection("C")}
         >
           <Translate text="nextSection" />
           <IonIcon slot="end" icon={arrowForwardOutline} />
         </IonButton>
       )}
-      {props.currentSection === 'C' && (
+      {props.currentSection === "C" && (
         <IonButton color="tertiary" shape="round" fill="solid" className="button-med-large" onClick={onSubmitClicked}>
           <Translate text="submit" />
           <IonIcon slot="end" icon={checkmarkCircleOutline} />
@@ -73,7 +74,7 @@ const FooterComponent: React.FC<Props> = (props) => {
         {({ translate }) => (
           <IonToast
             isOpen={showNotComplete}
-            message={translate({ text: 'pleaseAnswerAllQuestions' })}
+            message={translate({ text: "pleaseAnswerAllQuestions" })}
             onDidDismiss={() => setShowNotComplete(false)}
             duration={3000}
             position="top"

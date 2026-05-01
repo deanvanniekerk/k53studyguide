@@ -1,16 +1,16 @@
-import { createStorage } from '@/store/store';
-import { combineReducers } from 'redux';
-import { PersistConfig, persistReducer } from 'redux-persist';
-import { LogState, reducer as log } from './log';
-import { NavigationState, reducer as navigation } from './navigation';
+import { combineReducers } from "redux";
+import { type PersistConfig, persistReducer } from "redux-persist";
+import { createStorage } from "@/store/store";
+import { type LogState, reducer as log } from "./log";
+import { type NavigationState, reducer as navigation } from "./navigation";
 
 const persistLogConfig: PersistConfig<LogState> = {
-  key: 'study-log',
+  key: "study-log",
   storage: createStorage(),
 };
 
 const persistNavigationConfig: PersistConfig<NavigationState> = {
-  key: 'study-navigation',
+  key: "study-navigation",
   storage: createStorage(),
 };
 

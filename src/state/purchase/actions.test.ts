@@ -1,9 +1,9 @@
-import * as actions from './actions';
+import * as actions from "./actions";
 
-describe('state > purchase > actions', () => {
-  it('recievePurchaseProductCanPurchase', () => {
+describe("state > purchase > actions", () => {
+  it("recievePurchaseProductCanPurchase", () => {
     const expectedAction = {
-      type: 'PURCHASE_RECIEVE_PRODUCT_CAN_PURCHASE',
+      type: "PURCHASE_RECIEVE_PRODUCT_CAN_PURCHASE",
       payload: {
         canPurchase: true,
       },
@@ -12,9 +12,9 @@ describe('state > purchase > actions', () => {
     expect(actions.recievePurchaseProductCanPurchase(true)).toEqual(expectedAction);
   });
 
-  it('recievePurchaseProductOwned', () => {
+  it("recievePurchaseProductOwned", () => {
     const expectedAction = {
-      type: 'PURCHASE_RECIEVE_PRODUCT_OWNED',
+      type: "PURCHASE_RECIEVE_PRODUCT_OWNED",
       payload: {
         owned: true,
       },
@@ -23,25 +23,25 @@ describe('state > purchase > actions', () => {
     expect(actions.recievePurchaseProductOwned(true)).toEqual(expectedAction);
   });
 
-  it('recievePurchaseOrderState', () => {
+  it("recievePurchaseOrderState", () => {
     const expectedAction = {
-      type: 'PURCHASE_RECIEVE_ORDER_STATE',
-      payload: 'error',
+      type: "PURCHASE_RECIEVE_ORDER_STATE",
+      payload: "error",
     };
 
-    expect(actions.recievePurchaseOrderState('error')).toEqual(expectedAction);
+    expect(actions.recievePurchaseOrderState("error")).toEqual(expectedAction);
   });
 
-  it('recievePurchaseProduct', () => {
+  it("recievePurchaseProduct", () => {
     const expectedAction = {
-      type: 'PURCHASE_RECIEVE_PRODUCT',
+      type: "PURCHASE_RECIEVE_PRODUCT",
       payload: {
-        title: 'title',
-        description: 'description',
-        price: 'R25',
+        title: "title",
+        description: "description",
+        price: "R25",
       },
     };
 
-    expect(actions.recievePurchaseProduct('R25', 'title', 'description')).toEqual(expectedAction);
+    expect(actions.recievePurchaseProduct("R25", "title", "description")).toEqual(expectedAction);
   });
 });

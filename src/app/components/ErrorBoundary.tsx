@@ -1,11 +1,11 @@
-import { recieveLogMessage } from '@/state/log';
-import { IonButton, IonContent, IonIcon, IonPage } from '@ionic/react';
-import { reload } from 'ionicons/icons';
-import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
-import { TestFailedIcon } from './icons';
+import { IonButton, IonContent, IonIcon, IonPage } from "@ionic/react";
+import { reload } from "ionicons/icons";
+import React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import { recieveLogMessage } from "@/state/log";
+import { TestFailedIcon } from "./icons";
 
 type State = {
   hasError: boolean;
@@ -25,8 +25,8 @@ export class ErrorBoundaryComponent extends React.Component<Props, State> {
     // Display fallback UI
     this.setState({ hasError: true });
 
-    const message = `Error Boundary: ${error ? error.message : ''}`;
-    const name = error ? error.name : '';
+    const message = `Error Boundary: ${error ? error.message : ""}`;
+    const name = error ? error.name : "";
 
     const data = {
       message: message,
@@ -34,7 +34,7 @@ export class ErrorBoundaryComponent extends React.Component<Props, State> {
       info: JSON.stringify(info),
     };
 
-    this.props.recieveLogMessage('ERROR', message, data);
+    this.props.recieveLogMessage("ERROR", message, data);
   }
 
   render() {

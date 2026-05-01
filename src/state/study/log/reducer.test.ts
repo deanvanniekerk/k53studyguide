@@ -1,17 +1,17 @@
-import { LogState, reducer } from './reducer';
+import { type LogState, reducer } from "./reducer";
 
-describe('state > study > log > reducer', () => {
+describe("state > study > log > reducer", () => {
   const defaultState: LogState = {
     seenContentKeys: {
       key1: true,
     },
-    lastSeenParentContentKey: 'key1',
+    lastSeenParentContentKey: "key1",
   };
 
-  it('should handle STUDY_LOG_RECIEVE_SEEN_CONTENT_KEY', () => {
+  it("should handle STUDY_LOG_RECIEVE_SEEN_CONTENT_KEY", () => {
     const actualState = reducer(defaultState, {
-      type: 'STUDY_LOG_RECIEVE_SEEN_CONTENT_KEY',
-      payload: 'key2',
+      type: "STUDY_LOG_RECIEVE_SEEN_CONTENT_KEY",
+      payload: "key2",
     });
 
     const expectedState = {
@@ -25,7 +25,7 @@ describe('state > study > log > reducer', () => {
     expect(actualState).toEqual(expectedState);
   });
 
-  it('should handle STUDY_LOG_RECIEVE_SEEN_CONTENT_KEY - already seen', () => {
+  it("should handle STUDY_LOG_RECIEVE_SEEN_CONTENT_KEY - already seen", () => {
     const state = {
       ...defaultState,
       seenContentKeys: {
@@ -35,8 +35,8 @@ describe('state > study > log > reducer', () => {
     };
 
     const actualState = reducer(state, {
-      type: 'STUDY_LOG_RECIEVE_SEEN_CONTENT_KEY',
-      payload: 'key2',
+      type: "STUDY_LOG_RECIEVE_SEEN_CONTENT_KEY",
+      payload: "key2",
     });
 
     const expectedState = {
@@ -46,23 +46,23 @@ describe('state > study > log > reducer', () => {
     expect(actualState).toEqual(expectedState);
   });
 
-  it('should handle STUDY_LOG_RECIEVE_LAST_SEEN_PARENT_CONTENT_KEY', () => {
+  it("should handle STUDY_LOG_RECIEVE_LAST_SEEN_PARENT_CONTENT_KEY", () => {
     const actualState = reducer(defaultState, {
-      type: 'STUDY_LOG_RECIEVE_LAST_SEEN_PARENT_CONTENT_KEY',
-      payload: 'key2',
+      type: "STUDY_LOG_RECIEVE_LAST_SEEN_PARENT_CONTENT_KEY",
+      payload: "key2",
     });
 
     const expectedState = {
       ...defaultState,
-      lastSeenParentContentKey: 'key2',
+      lastSeenParentContentKey: "key2",
     };
 
     expect(actualState).toEqual(expectedState);
   });
 
-  it('should handle STUDY_LOG_CLEAR_SEEN_CONTENT', () => {
+  it("should handle STUDY_LOG_CLEAR_SEEN_CONTENT", () => {
     const actualState = reducer(defaultState, {
-      type: 'STUDY_LOG_CLEAR_SEEN_CONTENT',
+      type: "STUDY_LOG_CLEAR_SEEN_CONTENT",
     });
 
     const expectedState = {

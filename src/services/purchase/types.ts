@@ -1,7 +1,9 @@
-import { Store } from 'redux';
+import type { AnyAction, Store } from "redux";
+
+export type PurchaseStore = Store<unknown, AnyAction>;
 
 export interface PurchaseServiceConstructor {
-  new (reduxStore: Store): PurchaseService;
+  new (reduxStore: PurchaseStore): PurchaseService;
 }
 
 export interface PurchaseService {

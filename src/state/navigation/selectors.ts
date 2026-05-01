@@ -1,8 +1,13 @@
-import { ContentData, NavigationData } from '@/data';
-import { contentDataSelector } from '@/state/content';
-import { RootState } from '@/state/rootReducer';
-import { createSelector, OutputSelector, Selector } from 'reselect';
-import { NavigationState, NavigationTreeItem, ROOT_NAVIGATION_KEY } from './';
+import { createSelector, type Selector } from "reselect";
+import type { ContentData, NavigationData } from "@/data";
+import { contentDataSelector } from "@/state/content";
+import type { RootState } from "@/state/rootReducer";
+
+type OutputSelector<State, Result, Combiner> = Selector<State, Result> & {
+  resultFunc: Combiner;
+};
+
+import { type NavigationState, type NavigationTreeItem, ROOT_NAVIGATION_KEY } from "./";
 
 const rootSelector: Selector<RootState, NavigationState> = (state: RootState): NavigationState => state.navigation;
 
@@ -12,11 +17,8 @@ export const navigationDataSelector: OutputSelector<
   (state: NavigationState) => NavigationData
 > = createSelector(rootSelector, (root) => root.navigationData);
 
-export const rootNavigationChildrenSelector: OutputSelector<
-  RootState,
-  string[],
-  (data: NavigationData) => string[]
-> = createSelector(navigationDataSelector, (data) => data[ROOT_NAVIGATION_KEY]);
+export const rootNavigationChildrenSelector: OutputSelector<RootState, string[], (data: NavigationData) => string[]> =
+  createSelector(navigationDataSelector, (data) => data[ROOT_NAVIGATION_KEY]);
 
 export const navigationTreeSelector: OutputSelector<
   RootState,
@@ -41,7 +43,7 @@ export const navigationTreeSelector: OutputSelector<
     const childContent = contentData[parent.key];
 
     if (childContent) {
-      childContent.forEach((contentItem, index) => {
+      childContent.forEach((_contentItem, index) => {
         const child: NavigationTreeItem = {
           key: `${parent.key}.${index + 1}`,
           children: [],

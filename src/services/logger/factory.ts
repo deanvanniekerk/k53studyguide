@@ -1,4 +1,4 @@
-import { LoggerService, LoggerServiceConstructor } from './types';
+import type { LoggerService, LoggerServiceConstructor } from "./types";
 
 const createLoggerService = (ctor: LoggerServiceConstructor): LoggerService => {
   return new ctor();

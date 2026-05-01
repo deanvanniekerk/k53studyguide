@@ -1,24 +1,24 @@
-import { NavigationState, reducer } from './reducer';
+import { type NavigationState, reducer } from "./reducer";
 
-describe('state > dojo > navigation > reducer', () => {
+describe("state > dojo > navigation > reducer", () => {
   const defaultState: NavigationState = {
-    targetNavigationKey: 'nav',
+    targetNavigationKey: "nav",
   };
 
-  it('should handle DOJO_NAV_RECIEVE_TARGET_NAVIGATION_KEY', () => {
+  it("should handle DOJO_NAV_RECIEVE_TARGET_NAVIGATION_KEY", () => {
     const state: NavigationState = {
       ...defaultState,
-      targetNavigationKey: 'oldKey',
+      targetNavigationKey: "oldKey",
     };
 
     const actualState = reducer(state, {
-      type: 'DOJO_NAV_RECIEVE_TARGET_NAVIGATION_KEY',
-      payload: 'newKey',
+      type: "DOJO_NAV_RECIEVE_TARGET_NAVIGATION_KEY",
+      payload: "newKey",
     });
 
     const expectedState = {
       ...defaultState,
-      targetNavigationKey: 'newKey',
+      targetNavigationKey: "newKey",
     };
 
     expect(actualState).toEqual(expectedState);

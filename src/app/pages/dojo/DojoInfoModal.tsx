@@ -1,10 +1,11 @@
-import { HorizontalRule, StarRating } from '@/app/components';
-import { useInterval } from '@/app/hooks';
-import { CreateAnimation, IonContent, IonIcon, IonModal } from '@ionic/react';
-import { closeOutline, flashOffOutline, flashOutline, optionsOutline, trashBinOutline } from 'ionicons/icons';
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
-import { DojoWatermark } from './DojoWatermark';
+import { CreateAnimation, IonContent, IonIcon, IonModal } from "@ionic/react";
+import { flashOffOutline, flashOutline, optionsOutline, trashBinOutline } from "ionicons/icons";
+import type React from "react";
+import { useRef, useState } from "react";
+import styled from "styled-components";
+import { CloseButton, HorizontalRule, StarRating } from "@/app/components";
+import { useInterval } from "@/app/hooks";
+import { DojoWatermark } from "./DojoWatermark";
 
 type Props = {
   isOpen: boolean;
@@ -15,7 +16,7 @@ const DojoInfoModal: React.FC<Props> = (props) => {
   return (
     <Modal mode="ios" isOpen={props.isOpen} onDidDismiss={props.onDidDismiss}>
       <DojoWatermark />
-      <CloseIcon icon={closeOutline} onClick={() => props.onDidDismiss()} />
+      <CloseButton onClick={() => props.onDidDismiss()} />
       <Content>
         <Container>
           <SubHeader>Welcome to the</SubHeader>
@@ -46,7 +47,7 @@ const DojoInfoModal: React.FC<Props> = (props) => {
             <OptionsIcon />
           </Center>
           <ParagraphCenter>
-            You can <b></b>control the <b>settings</b> of the <b>quiz</b> by changing the <b>Section</b> and{' '}
+            You can <b></b>control the <b>settings</b> of the <b>quiz</b> by changing the <b>Section</b> and{" "}
             <b>Max Questions</b>
           </ParagraphCenter>
 
@@ -80,12 +81,12 @@ const StarsIndicator: React.FC = () => {
 };
 
 const ExperienceIcon: React.FC = () => {
-  const [icon, setIcon] = useState('flash');
+  const [icon, setIcon] = useState("flash");
   const animation1 = useRef<CreateAnimation>(null);
 
   useInterval(
     () => {
-      setIcon(icon === 'flash' ? 'flashOff' : 'flash');
+      setIcon(icon === "flash" ? "flashOff" : "flash");
       if (animation1.current) animation1.current.animation.play();
     },
     6000,
@@ -99,16 +100,16 @@ const ExperienceIcon: React.FC = () => {
       duration={700}
       easing="ease"
       keyframes={[
-        { offset: 0, transform: 'scale(1)' },
-        { offset: 0.5, transform: 'scale(1.05)' },
-        { offset: 1, transform: 'scale(1)' },
+        { offset: 0, transform: "scale(1)" },
+        { offset: 0.5, transform: "scale(1.05)" },
+        { offset: 1, transform: "scale(1)" },
       ]}
     >
       <div>
         <LargeIcon
-          icon={icon === 'flash' ? flashOutline : flashOffOutline}
+          icon={icon === "flash" ? flashOutline : flashOffOutline}
           style={{
-            opacity: icon === 'flash' ? 0.8 : 0.5,
+            opacity: icon === "flash" ? 0.8 : 0.5,
           }}
         />
       </div>
@@ -134,12 +135,12 @@ const TrashIcon: React.FC = () => {
       duration={300}
       easing="ease"
       keyframes={[
-        { offset: 0, transform: 'rotate(0deg)' },
-        { offset: 0.2, transform: 'rotate(5deg)' },
-        { offset: 0.4, transform: 'rotate(-5deg)' },
-        { offset: 0.6, transform: 'rotate(5deg)' },
-        { offset: 0.8, transform: 'rotate(-5deg)' },
-        { offset: 1, transform: 'rotate(0deg)' },
+        { offset: 0, transform: "rotate(0deg)" },
+        { offset: 0.2, transform: "rotate(5deg)" },
+        { offset: 0.4, transform: "rotate(-5deg)" },
+        { offset: 0.6, transform: "rotate(5deg)" },
+        { offset: 0.8, transform: "rotate(-5deg)" },
+        { offset: 1, transform: "rotate(0deg)" },
       ]}
     >
       <div>
@@ -168,14 +169,6 @@ const OptionsIcon: React.FC = () => {
 const Container = styled.div`
   padding: 0 var(--default-padding);
   padding-bottom: 50px;
-`;
-
-const CloseIcon = styled(IonIcon)`
-  position: absolute;
-  z-index: 102;
-  font-size: var(--ion-font-size-xxxl);
-  padding-left: var(--default-padding);
-  padding-top: var(--default-padding);
 `;
 
 const Header = styled.div`

@@ -1,22 +1,21 @@
-import { NavigationTreeItem, navigationTreeSelector } from '@/state/navigation';
-import { RootState } from '@/state/rootReducer';
-import { createSelector, OutputSelector, Selector } from 'reselect';
-import { SeenContentKeys, SeenTotal, SeenTotals } from './';
-import { LogState } from './reducer';
+import { createSelector, type Selector } from "reselect";
+import { type NavigationTreeItem, navigationTreeSelector } from "@/state/navigation";
+import type { RootState } from "@/state/rootReducer";
+
+type OutputSelector<State, Result, Combiner> = Selector<State, Result> & {
+  resultFunc: Combiner;
+};
+
+import type { SeenContentKeys, SeenTotal, SeenTotals } from "./";
+import type { LogState } from "./reducer";
 
 const rootSelector: Selector<RootState, LogState> = (state: RootState): LogState => state.study.log;
 
-export const seenContentKeysSelector: OutputSelector<
-  RootState,
-  SeenContentKeys,
-  (state: LogState) => SeenContentKeys
-> = createSelector(rootSelector, (root) => root.seenContentKeys);
+export const seenContentKeysSelector: OutputSelector<RootState, SeenContentKeys, (state: LogState) => SeenContentKeys> =
+  createSelector(rootSelector, (root) => root.seenContentKeys);
 
-export const lastSeenParentContentKeySelector: OutputSelector<
-  RootState,
-  string,
-  (state: LogState) => string
-> = createSelector(rootSelector, (root) => root.lastSeenParentContentKey);
+export const lastSeenParentContentKeySelector: OutputSelector<RootState, string, (state: LogState) => string> =
+  createSelector(rootSelector, (root) => root.lastSeenParentContentKey);
 
 export const seenTotalsSelector: OutputSelector<
   RootState,

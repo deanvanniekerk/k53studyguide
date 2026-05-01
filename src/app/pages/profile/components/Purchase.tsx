@@ -1,13 +1,13 @@
-import { HorizontalRule } from '@/app/components';
-import PurchaseModal from '@/app/modals/PurchaseModal';
-import { RootState } from '@/state';
-import { canPurchaseSelector, ownedSelector, purchaseSelector } from '@/state/purchase';
-import { IonButton, IonCol, IonGrid, IonRow, IonText } from '@ionic/react';
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { Translate, Translator } from 'react-translated';
-import styled from 'styled-components';
-import { Row } from './';
+import { IonButton, IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { Translate, Translator } from "react-translated";
+import styled from "styled-components";
+import { HorizontalRule } from "@/app/components";
+import PurchaseModal from "@/app/modals/PurchaseModal";
+import type { RootState } from "@/state";
+import { canPurchaseSelector, ownedSelector, purchaseSelector } from "@/state/purchase";
+import { Row } from "./";
 
 type Props = PropsFromState;
 
@@ -42,7 +42,7 @@ const PurchaseComponent: React.FC<Props> = (props) => {
         <Translator>
           {({ translate }) => (
             <React.Fragment>
-              <Row name={translate({ text: 'premiumPurchased' })} value={translate({ text: 'yes' })} />
+              <Row name={translate({ text: "premiumPurchased" })} value={translate({ text: "yes" })} />
             </React.Fragment>
           )}
         </Translator>

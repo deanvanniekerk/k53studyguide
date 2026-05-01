@@ -3,7 +3,7 @@
 	"appName": "K53 Study Guide",
 	"webDir": "build",
 	"bundledWebRuntime": false,
-	"npmClient": "yarn",
+	"npmClient": "pnpm",
 	"cordova": {},
 	"packageClassList": [
 		"PreferencesPlugin",

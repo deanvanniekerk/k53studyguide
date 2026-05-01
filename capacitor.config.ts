@@ -1,12 +1,12 @@
-import { CapacitorConfig } from "@capacitor/cli";
+import type { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-    appId: "deanvniekerk.k53studyguide.app",
-    appName: "K53 Study Guide",
-    webDir: "build",
-    bundledWebRuntime: false,
-    npmClient: "yarn",
-    cordova: {},
+  appId: "deanvniekerk.k53studyguide.app",
+  appName: "K53 Study Guide",
+  webDir: "build",
+  bundledWebRuntime: false,
+  npmClient: "pnpm",
+  cordova: {},
 };
 
 export default config;

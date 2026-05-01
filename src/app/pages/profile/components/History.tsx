@@ -1,20 +1,20 @@
-import { HorizontalRule } from '@/app/components';
-import { useAnalytics } from '@/app/hooks/useAnalytics';
-import { RootState } from '@/state';
+import { IonAlert, IonCol, IonGrid, IonIcon, IonRow, IonText } from "@ionic/react";
+import { lockClosed, trashBinOutline } from "ionicons/icons";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { Translate, Translator } from "react-translated";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import { HorizontalRule } from "@/app/components";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
+import type { RootState } from "@/state";
 import {
-  clearPassedTests,
   clearQuesionSuccesfullyAnsweredDates as clearArenaQuesionSuccesfullyAnsweredDates,
-} from '@/state/arena/log';
-import { clearQuesionSuccesfullyAnsweredDates as clearDojoQuesionSuccesfullyAnsweredDates } from '@/state/dojo/log';
-import { ownedSelector } from '@/state/purchase';
-import { clearSeenContent } from '@/state/study/log';
-import { IonAlert, IonCol, IonGrid, IonIcon, IonRow, IonText } from '@ionic/react';
-import { lockClosed, trashBinOutline } from 'ionicons/icons';
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { Translate, Translator } from 'react-translated';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
+  clearPassedTests,
+} from "@/state/arena/log";
+import { clearQuesionSuccesfullyAnsweredDates as clearDojoQuesionSuccesfullyAnsweredDates } from "@/state/dojo/log";
+import { ownedSelector } from "@/state/purchase";
+import { clearSeenContent } from "@/state/study/log";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -85,15 +85,15 @@ const HistoryComponent: React.FC<Props> = (props) => {
             <IonAlert
               isOpen={showClearSeenHistory}
               onDidDismiss={() => setShowClearSeenHistory(false)}
-              message={translate({ text: 'historyCleanSeenConfirm' })}
+              message={translate({ text: "historyCleanSeenConfirm" })}
               buttons={[
                 {
-                  text: translate({ text: 'no' }),
+                  text: translate({ text: "no" }),
                 },
                 {
-                  text: translate({ text: 'yes' }),
+                  text: translate({ text: "yes" }),
                   handler: () => {
-                    logEvent('CLEAR_HISTORY', { type: 'seen' });
+                    logEvent("CLEAR_HISTORY", { type: "seen" });
                     props.clearSeenContent();
                   },
                 },
@@ -102,15 +102,15 @@ const HistoryComponent: React.FC<Props> = (props) => {
             <IonAlert
               isOpen={showClearDojoHistory}
               onDidDismiss={() => setShowClearDojoHistory(false)}
-              message={translate({ text: 'historyCleanDojoConfirm' })}
+              message={translate({ text: "historyCleanDojoConfirm" })}
               buttons={[
                 {
-                  text: translate({ text: 'no' }),
+                  text: translate({ text: "no" }),
                 },
                 {
-                  text: translate({ text: 'yes' }),
+                  text: translate({ text: "yes" }),
                   handler: () => {
-                    logEvent('CLEAR_HISTORY', { type: 'dojo' });
+                    logEvent("CLEAR_HISTORY", { type: "dojo" });
                     props.clearDojoQuesionSuccesfullyAnsweredDates();
                   },
                 },
@@ -119,15 +119,15 @@ const HistoryComponent: React.FC<Props> = (props) => {
             <IonAlert
               isOpen={showClearArenaHistory}
               onDidDismiss={() => setShowClearArenaHistory(false)}
-              message={translate({ text: 'historyCleanArenaConfirm' })}
+              message={translate({ text: "historyCleanArenaConfirm" })}
               buttons={[
                 {
-                  text: translate({ text: 'no' }),
+                  text: translate({ text: "no" }),
                 },
                 {
-                  text: translate({ text: 'yes' }),
+                  text: translate({ text: "yes" }),
                   handler: () => {
-                    logEvent('CLEAR_HISTORY', { type: 'arena' });
+                    logEvent("CLEAR_HISTORY", { type: "arena" });
                     props.clearArenaQuesionSuccesfullyAnsweredDates();
                     props.clearPassedTests();
                   },
@@ -137,9 +137,9 @@ const HistoryComponent: React.FC<Props> = (props) => {
             <IonAlert
               isOpen={showFullAccessAlert}
               onDidDismiss={() => setShowFullAccessAlert(false)}
-              header={translate({ text: 'premiumPackageRequired' })}
-              message={translate({ text: 'historyPurchaseFullAccess' })}
-              buttons={[translate({ text: 'ok' })]}
+              header={translate({ text: "premiumPackageRequired" })}
+              message={translate({ text: "historyPurchaseFullAccess" })}
+              buttons={[translate({ text: "ok" })]}
             />
           </React.Fragment>
         )}

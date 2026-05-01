@@ -1,39 +1,42 @@
-import { QuestionData, QuestionItem } from '@/data';
-import createMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-import { loadQuestionAnswers, recieveExperienceGained, recieveQuestionAnswers, submitTest } from './';
-import { QuestionAnswer } from './types';
+import createMockStore from "redux-mock-store";
+import { thunk } from "redux-thunk";
+import { vi } from "vitest";
+import type { QuestionData, QuestionItem } from "@/data";
+import { loadQuestionAnswers, recieveExperienceGained, recieveQuestionAnswers, submitTest } from "./";
+import type { QuestionAnswer } from "./types";
 
 type DispatchExts = ReturnType<typeof loadQuestionAnswers> | ReturnType<typeof submitTest>;
 
-const middlewares = [thunk];
-const mockStore = createMockStore<Record<string, unknown>, (action: DispatchExts) => void>(middlewares);
+import type { Middleware } from "redux";
 
-describe('state > dojo > test > operations', () => {
-  const questions: QuestionItem[] = Array.from(new Array(10), (q, n) => ({
+const middlewares = [thunk] as unknown as Middleware[];
+const mockStore = createMockStore<Record<string, unknown>, (action: DispatchExts) => void>(middlewares as never);
+
+describe("state > dojo > test > operations", () => {
+  const questions: QuestionItem[] = Array.from(new Array(10), (_q, n) => ({
     id: `${n}`,
-    answer: 'B',
+    answer: "B",
     text: `Question ${n}:`,
     option: [
       {
-        id: 'A',
-        value: 'Answer A.',
+        id: "A",
+        value: "Answer A.",
       },
       {
-        id: 'B',
-        value: 'Answer B.',
+        id: "B",
+        value: "Answer B.",
       },
     ],
   }));
 
   const questionData: QuestionData = {
-    'root.child1': [questions[0], questions[1]],
-    'root.child2': [questions[2]],
-    'root.child3.child1': [questions[3], questions[4], questions[5], questions[6]],
-    'root.child4': [questions[7], questions[8], questions[9]],
+    "root.child1": [questions[0], questions[1]],
+    "root.child2": [questions[2]],
+    "root.child3.child1": [questions[3], questions[4], questions[5], questions[6]],
+    "root.child4": [questions[7], questions[8], questions[9]],
   };
 
-  it('loadQuestionAnswers - less than max', () => {
+  it("loadQuestionAnswers - less than max", () => {
     const store = mockStore({
       questions: {
         questionData: questionData,
@@ -43,7 +46,7 @@ describe('state > dojo > test > operations', () => {
           quesionsSuccesfullyAnsweredDates: {},
         },
         navigation: {
-          targetNavigationKey: 'root.child1',
+          targetNavigationKey: "root.child1",
         },
         test: {
           maxQuestions: 10,
@@ -68,13 +71,13 @@ describe('state > dojo > test > operations', () => {
       },
     ];
 
-    expect(actions[0].type).toEqual('DOJO_TEST_RECIEVE_QUESTION_ANSWERS');
+    expect(actions[0].type).toEqual("DOJO_TEST_RECIEVE_QUESTION_ANSWERS");
     expect(actions[0].payload.length).toEqual(2);
 
-    expect(actions[0].payload).toEqual(jasmine.arrayContaining(recieveQuestionAnswers(questionAnswers).payload));
+    expect(actions[0].payload).toEqual(expect.arrayContaining(recieveQuestionAnswers(questionAnswers).payload));
   });
 
-  it('loadQuestionAnswers - ordering', () => {
+  it("loadQuestionAnswers - ordering", () => {
     const store = mockStore({
       questions: {
         questionData: questionData,
@@ -90,7 +93,7 @@ describe('state > dojo > test > operations', () => {
           },
         },
         navigation: {
-          targetNavigationKey: 'root',
+          targetNavigationKey: "root",
         },
         test: {
           maxQuestions: 10,
@@ -136,11 +139,11 @@ describe('state > dojo > test > operations', () => {
       },
     ];
 
-    expect(actions[0].type).toEqual('DOJO_TEST_RECIEVE_QUESTION_ANSWERS');
+    expect(actions[0].type).toEqual("DOJO_TEST_RECIEVE_QUESTION_ANSWERS");
     expect(actions[0].payload.length).toEqual(10);
 
     //Any order
-    expect(actions[0].payload).toEqual(jasmine.arrayContaining(recieveQuestionAnswers(questionAnswers).payload));
+    expect(actions[0].payload).toEqual(expect.arrayContaining(recieveQuestionAnswers(questionAnswers).payload));
 
     //Ordered
     expect(actions[0].payload[5].question.id).toEqual(questions[9].id);
@@ -150,10 +153,10 @@ describe('state > dojo > test > operations', () => {
     expect(actions[0].payload[9].question.id).toEqual(questions[5].id);
   });
 
-  it('submitTest - 1 experience gained', () => {
+  it("submitTest - 1 experience gained", () => {
     const answeredQuestions: QuestionAnswer[] = [
       {
-        answer: 'Z',
+        answer: "Z",
         question: questions[2],
       },
       {
@@ -161,7 +164,7 @@ describe('state > dojo > test > operations', () => {
         question: questions[0],
       },
       {
-        answer: 'X',
+        answer: "X",
         question: questions[1],
       },
     ];
@@ -178,8 +181,8 @@ describe('state > dojo > test > operations', () => {
     });
 
     const now = new Date();
-    //@ts-ignore
-    const spy = jest.spyOn(global, 'Date').mockImplementation(() => now);
+    vi.useFakeTimers();
+    vi.setSystemTime(now);
 
     store.dispatch(submitTest());
 
@@ -193,14 +196,13 @@ describe('state > dojo > test > operations', () => {
 
     expect(actions[1].payload.date).toEqual(now.toISOString());
 
-    spy.mockReset();
-    spy.mockRestore();
+    vi.useRealTimers();
   });
 
-  it('submitTest - 0 experience gained', () => {
+  it("submitTest - 0 experience gained", () => {
     const answeredQuestions: QuestionAnswer[] = [
       {
-        answer: 'Z',
+        answer: "Z",
         question: questions[2],
       },
       {
@@ -208,7 +210,7 @@ describe('state > dojo > test > operations', () => {
         question: questions[0],
       },
       {
-        answer: 'X',
+        answer: "X",
         question: questions[1],
       },
     ];
@@ -227,8 +229,8 @@ describe('state > dojo > test > operations', () => {
     });
 
     const now = new Date();
-    //@ts-ignore
-    const spy = jest.spyOn(global, 'Date').mockImplementation(() => now);
+    vi.useFakeTimers();
+    vi.setSystemTime(now);
 
     store.dispatch(submitTest());
 
@@ -242,7 +244,6 @@ describe('state > dojo > test > operations', () => {
 
     expect(actions[1].payload.date).toEqual(now.toISOString());
 
-    spy.mockReset();
-    spy.mockRestore();
+    vi.useRealTimers();
   });
 });

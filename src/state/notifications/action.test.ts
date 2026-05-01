@@ -1,11 +1,11 @@
-import * as actions from './actions';
+import * as actions from "./actions";
 
-describe('state > notification > actions', () => {
-  it('recieveRecieveNotificationState', () => {
+describe("state > notification > actions", () => {
+  it("recieveRecieveNotificationState", () => {
     const expectedAction = {
-      type: 'NOTIFICATION_RECIEVE_NOTIFICATION_STATE',
+      type: "NOTIFICATION_RECIEVE_NOTIFICATION_STATE",
       payload: {
-        name: 'studyInfo',
+        name: "studyInfo",
         state: {
           seen: true,
         },
@@ -13,7 +13,7 @@ describe('state > notification > actions', () => {
     };
 
     expect(
-      actions.recieveRecieveNotificationState('studyInfo', {
+      actions.recieveRecieveNotificationState("studyInfo", {
         seen: true,
       }),
     ).toEqual(expectedAction);

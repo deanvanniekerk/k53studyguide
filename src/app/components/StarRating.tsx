@@ -1,7 +1,8 @@
-import { CreateAnimation, useIonViewWillEnter } from '@ionic/react';
-import React, { useRef } from 'react';
-import styled from 'styled-components';
-import { StarIcon, StarOutlineIcon } from './icons';
+import { CreateAnimation, useIonViewWillEnter } from "@ionic/react";
+import type React from "react";
+import { useRef } from "react";
+import styled from "styled-components";
+import { StarIcon, StarOutlineIcon } from "./icons";
 
 type Props = {
   total: number;
@@ -12,28 +13,29 @@ type Props = {
   inActiveOpacity?: number;
 };
 
-const StarRating: React.FC<Props> = (props) => {
+const StarRating: React.FC<Props> = ({
+  total,
+  current,
+  activeOpacity = 1,
+  inActiveOpacity = 0.2,
+  size = "1rem",
+  padding = "2px",
+}) => {
   return (
     <StarWrapper>
-      {Array.from(Array(props.total)).map((_, index) => (
+      {Array.from(Array(total)).map((_, index) => (
         <Star
           key={index}
           index={index}
-          active={props.current > index}
-          size={props.size}
-          padding={props.padding}
-          activeOpacity={props.activeOpacity}
-          inActiveOpacity={props.inActiveOpacity}
+          active={current > index}
+          size={size}
+          padding={padding}
+          activeOpacity={activeOpacity}
+          inActiveOpacity={inActiveOpacity}
         />
       ))}
     </StarWrapper>
   );
-};
-StarRating.defaultProps = {
-  activeOpacity: 1,
-  inActiveOpacity: 0.2,
-  size: '1rem',
-  padding: '2px',
 };
 
 const StarWrapper = styled.div`
@@ -64,14 +66,14 @@ const Star: React.FC<StarProps> = (props) => {
       delay={delay}
       easing="ease"
       keyframes={[
-        { offset: 0, transform: 'scale(0)' },
-        { offset: 0.8, transform: 'scale(1.2)' },
-        { offset: 1, transform: 'scale(1)' },
+        { offset: 0, transform: "scale(0)" },
+        { offset: 0.8, transform: "scale(1.2)" },
+        { offset: 1, transform: "scale(1)" },
       ]}
     >
       <IconWrapper size={props.size} padding={props.padding}>
         {props.active && <StarIcon style={{ opacity: props.activeOpacity }} />}
-        {!props.active && <StarOutlineIcon style={{ fill: '#FFFFFF', opacity: props.inActiveOpacity }} />}
+        {!props.active && <StarOutlineIcon style={{ fill: "#FFFFFF", opacity: props.inActiveOpacity }} />}
       </IconWrapper>
     </CreateAnimation>
   );

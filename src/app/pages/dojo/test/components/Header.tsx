@@ -1,13 +1,13 @@
-import { Breadcrumb, HorizontalRule } from '@/app/components';
-import { RootState } from '@/state';
-import { targetNavigationKeySelector } from '@/state/dojo/navigation';
-import { totalQuestionsSelector } from '@/state/dojo/test';
-import { ROOT_NAVIGATION_KEY } from '@/state/navigation';
-import { IonCol, IonGrid, IonListHeader, IonRow, IonText } from '@ionic/react';
-import React from 'react';
-import { connect } from 'react-redux';
-import { Translate } from 'react-translated';
-import styled from 'styled-components';
+import { IonCol, IonGrid, IonListHeader, IonRow, IonText } from "@ionic/react";
+import React from "react";
+import { connect } from "react-redux";
+import { Translate } from "react-translated";
+import styled from "styled-components";
+import { Breadcrumb, HorizontalRule } from "@/app/components";
+import type { RootState } from "@/state";
+import { targetNavigationKeySelector } from "@/state/dojo/navigation";
+import { totalQuestionsSelector } from "@/state/dojo/test";
+import { ROOT_NAVIGATION_KEY } from "@/state/navigation";
 
 type Props = PropsFromState;
 
@@ -16,12 +16,12 @@ const HeaderComponent: React.FC<Props> = (props) => {
     <React.Fragment>
       <IonListHeader>
         <IonGrid>
-          <IonRow style={{ paddingTop: 55 }}>
+          <IonRow className="app-page-content-offset">
             <IonCol>
               <IonText>
                 <h2>
                   <Translate
-                    text={props.targetNavigationKey === ROOT_NAVIGATION_KEY ? 'allContent' : props.targetNavigationKey}
+                    text={props.targetNavigationKey === ROOT_NAVIGATION_KEY ? "allContent" : props.targetNavigationKey}
                   />
                 </h2>
               </IonText>

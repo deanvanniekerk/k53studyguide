@@ -1,44 +1,42 @@
-// prettier-ignore
-
 declare module "react-translated" {
-    
-import React from "react";
+  import React from "react";
 
-    type TranslatedType = {
-        getIsDebugging: () => boolean;
-        getLanguage: () => string;
-        getTranslation: () => Record<string, any>;
-    };
+  type TranslatedType = {
+    getIsDebugging: () => boolean;
+    getLanguage: () => string;
+    getTranslation: () => Record<string, unknown>;
+  };
 
-    type TranslateData = {
-        text: string;
-        data?: Record<string, any>;
-    };
+  type TranslateData = {
+    text: string;
+    data?: Record<string, unknown>;
+  };
 
-    type TranslateFn = (data: TranslateData) => string;
+  type TranslateFn = (data: TranslateData) => string;
 
-    type TranslateObj = {
-        translate: TranslateFn;
-    };
+  type TranslateObj = {
+    translate: TranslateFn;
+  };
 
-    interface TranslatorProps {
-        children: (t: TranslateObj) => React.Node;
-        translated?: TranslatedType;
-    }
+  interface TranslatorProps {
+    children: (t: TranslateObj) => React.Node;
+    translated?: TranslatedType;
+  }
 
-    class Translator extends React.Component<TranslatorProps> {}
+  class Translator extends React.Component<TranslatorProps> {}
 
-    interface TranslateProps {
-        text: string;
-        data?: Record<string, any>;
-    }
+  interface TranslateProps {
+    text: string;
+    data?: Record<string, unknown>;
+  }
 
-    class Translate extends React.Component<TranslateProps> {}
+  class Translate extends React.Component<TranslateProps> {}
 
-    interface ProviderProps {
-        language: string;
-        translation: Record<string, any>;
-    }
+  interface ProviderProps {
+    children?: React.ReactNode;
+    language: string;
+    translation: Record<string, unknown>;
+  }
 
-    class Provider extends React.Component<ProviderProps> {}
+  class Provider extends React.Component<ProviderProps> {}
 }

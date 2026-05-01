@@ -1,10 +1,11 @@
-import { HorizontalRule } from '@/app/components';
-import { useInterval } from '@/app/hooks';
-import { CreateAnimation, IonContent, IonIcon, IonModal } from '@ionic/react';
-import { closeOutline, search, shuffle, trashBin } from 'ionicons/icons';
-import React, { useRef } from 'react';
-import styled from 'styled-components';
-import { ArenaWatermark } from './ArenaWatermark';
+import { CreateAnimation, IonContent, IonIcon, IonModal } from "@ionic/react";
+import { search, shuffle, trashBin } from "ionicons/icons";
+import type React from "react";
+import { useRef } from "react";
+import styled from "styled-components";
+import { CloseButton, HorizontalRule } from "@/app/components";
+import { useInterval } from "@/app/hooks";
+import { ArenaWatermark } from "./ArenaWatermark";
 
 type Props = {
   isOpen: boolean;
@@ -15,13 +16,13 @@ const ArenaInfoModal: React.FC<Props> = (props) => {
   return (
     <Modal mode="ios" isOpen={props.isOpen} onDidDismiss={props.onDidDismiss}>
       <ArenaWatermark />
-      <CloseIcon icon={closeOutline} onClick={() => props.onDidDismiss()} />
+      <CloseButton onClick={() => props.onDidDismiss()} />
       <Content>
         <Container>
           <SubHeader>Welcome to the</SubHeader>
           <Header>Test</Header>
           <ParagraphCenter>
-            The Test is a <b>test</b> that is <b>set up</b> and <b> marked</b> in the <b>same way</b> as the{' '}
+            The Test is a <b>test</b> that is <b>set up</b> and <b> marked</b> in the <b>same way</b> as the{" "}
             <b>real learners license test</b>
           </ParagraphCenter>
 
@@ -38,10 +39,10 @@ const ArenaInfoModal: React.FC<Props> = (props) => {
             <SearchIcon />
           </Center>
           <ParagraphCenter>
-            We apply a <b>weighting</b> when selecting your test questions. This means you more likely to see{' '}
+            We apply a <b>weighting</b> when selecting your test questions. This means you more likely to see{" "}
             <i>
               <b>new</b>
-            </i>{' '}
+            </i>{" "}
             questions or ones you <b>previously</b> answered <b>incorrectly</b>
           </ParagraphCenter>
 
@@ -72,9 +73,9 @@ const ShuffleIcon: React.FC = () => {
       duration={700}
       easing="ease"
       keyframes={[
-        { offset: 0, transform: 'rotateX(0)' },
-        { offset: 0.5, transform: 'rotateX(190deg)' },
-        { offset: 1, transform: 'rotateX(360deg)' },
+        { offset: 0, transform: "rotateX(0)" },
+        { offset: 0.5, transform: "rotateX(190deg)" },
+        { offset: 1, transform: "rotateX(360deg)" },
       ]}
     >
       <div>
@@ -107,9 +108,9 @@ const SearchIcon: React.FC = () => {
       duration={700}
       easing="ease"
       keyframes={[
-        { offset: 0, transform: 'scale(1)' },
-        { offset: 0.5, transform: 'scale(0.85)' },
-        { offset: 1, transform: 'scale(1)' },
+        { offset: 0, transform: "scale(1)" },
+        { offset: 0.5, transform: "scale(0.85)" },
+        { offset: 1, transform: "scale(1)" },
       ]}
     >
       <div>
@@ -142,12 +143,12 @@ const TrashIcon: React.FC = () => {
       duration={300}
       easing="ease"
       keyframes={[
-        { offset: 0, transform: 'rotate(0deg)' },
-        { offset: 0.2, transform: 'rotate(5deg)' },
-        { offset: 0.4, transform: 'rotate(-5deg)' },
-        { offset: 0.6, transform: 'rotate(5deg)' },
-        { offset: 0.8, transform: 'rotate(-5deg)' },
-        { offset: 1, transform: 'rotate(0deg)' },
+        { offset: 0, transform: "rotate(0deg)" },
+        { offset: 0.2, transform: "rotate(5deg)" },
+        { offset: 0.4, transform: "rotate(-5deg)" },
+        { offset: 0.6, transform: "rotate(5deg)" },
+        { offset: 0.8, transform: "rotate(-5deg)" },
+        { offset: 1, transform: "rotate(0deg)" },
       ]}
     >
       <div>
@@ -165,14 +166,6 @@ const TrashIcon: React.FC = () => {
 const Container = styled.div`
   padding: 0 var(--default-padding);
   padding-bottom: 50px;
-`;
-
-const CloseIcon = styled(IonIcon)`
-  position: absolute;
-  z-index: 102;
-  font-size: var(--ion-font-size-xxxl);
-  padding-left: var(--default-padding);
-  padding-top: var(--default-padding);
 `;
 
 const Header = styled.div`

@@ -1,17 +1,17 @@
-import { QuestionItem } from '@/data';
-import { RootState } from '@/state';
-import { questionDataSelector } from '@/state/questions';
-import { shuffleArray } from '@/utils';
-import { ThunkAction } from 'redux-thunk';
+import type { ThunkAction } from "redux-thunk";
+import type { QuestionItem } from "@/data";
+import type { RootState } from "@/state";
+import { questionDataSelector } from "@/state/questions";
+import { shuffleArray } from "@/utils";
 import {
+  type IncrementPassedTestsAction,
   incrementPassedTests,
-  IncrementPassedTestsAction,
   quesionsSuccesfullyAnsweredDatesSelector,
+  type RecieveQuesionSuccesfullyAnsweredDateAction,
   recieveQuesionSuccesfullyAnsweredDate,
-  RecieveQuesionSuccesfullyAnsweredDateAction,
-} from '../log';
-import { passedSelector, questionAnswersSelector, recieveQuestionAnswers, RecieveQuestionAnswersAction } from './';
-import { QuestionAnswer, TestSection } from './types';
+} from "../log";
+import { passedSelector, questionAnswersSelector, type RecieveQuestionAnswersAction, recieveQuestionAnswers } from "./";
+import type { QuestionAnswer, TestSection } from "./types";
 
 export const loadQuestionAnswers = (): ThunkAction<void, RootState, null, RecieveQuestionAnswersAction> => {
   return (dispatch, getState) => {
@@ -25,11 +25,11 @@ export const loadQuestionAnswers = (): ThunkAction<void, RootState, null, Reciev
     let sectionCBank: QuestionItem[] = [];
 
     keys.forEach((k) => {
-      if (k.startsWith('nav.vehicleControls')) sectionABank.push(...questionData[k]);
+      if (k.startsWith("nav.vehicleControls")) sectionABank.push(...questionData[k]);
       else if (
-        k.startsWith('nav.rulesOfTheRoad') ||
-        k.startsWith('nav.defensiveDriving') ||
-        k.startsWith('nav.roadSignals')
+        k.startsWith("nav.rulesOfTheRoad") ||
+        k.startsWith("nav.defensiveDriving") ||
+        k.startsWith("nav.roadSignals")
       )
         sectionBBank.push(...questionData[k]);
       else sectionCBank.push(...questionData[k]);
@@ -77,9 +77,9 @@ export const loadQuestionAnswers = (): ThunkAction<void, RootState, null, Reciev
       questionAnswers.push(...qas);
     };
 
-    load('A', sectionABank);
-    load('B', sectionBBank);
-    load('C', sectionCBank);
+    load("A", sectionABank);
+    load("B", sectionBBank);
+    load("C", sectionCBank);
 
     dispatch(recieveQuestionAnswers(questionAnswers));
   };

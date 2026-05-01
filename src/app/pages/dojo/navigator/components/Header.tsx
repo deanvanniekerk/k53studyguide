@@ -1,13 +1,13 @@
-import { HorizontalRule, StarRating } from '@/app/components';
-import { Breadcrumb } from '@/app/components/Breadcrumb';
-import { RootState } from '@/state';
-import { correctlyAnsweredQuestionsTotalsSelector, targetNavigationKeySelector } from '@/state/dojo/navigation';
-import { ROOT_NAVIGATION_KEY } from '@/state/navigation';
-import { IonButton, IonCol, IonGrid, IonListHeader, IonRow, IonText } from '@ionic/react';
-import React from 'react';
-import { connect } from 'react-redux';
-import { Translate } from 'react-translated';
-import styled from 'styled-components';
+import { IonButton, IonCol, IonGrid, IonListHeader, IonRow, IonText } from "@ionic/react";
+import type React from "react";
+import { connect } from "react-redux";
+import { Translate } from "react-translated";
+import styled from "styled-components";
+import { HorizontalRule, StarRating } from "@/app/components";
+import { Breadcrumb } from "@/app/components/Breadcrumb";
+import type { RootState } from "@/state";
+import { correctlyAnsweredQuestionsTotalsSelector, targetNavigationKeySelector } from "@/state/dojo/navigation";
+import { ROOT_NAVIGATION_KEY } from "@/state/navigation";
 
 type Props = {
   selectTargetNavigationItem: () => void;
@@ -18,60 +18,58 @@ const HeaderComponent: React.FC<Props> = (props) => {
   const current = total ? total.level : 0;
 
   return (
-    <>
-      <IonListHeader>
-        <IonGrid>
-          <IonRow style={{ paddingTop: 55 }}>
-            <IonCol>
-              <IonText>
-                <h2>
-                  <Translate
-                    text={props.targetNavigationKey === ROOT_NAVIGATION_KEY ? 'allContent' : props.targetNavigationKey}
-                  />
-                </h2>
-              </IonText>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <StarRating
-                total={5}
-                current={current}
-                size="1rem"
-                padding="2.5px"
-                activeOpacity={0.7}
-                inActiveOpacity={0.3}
-              />
-            </IonCol>
-          </IonRow>
-          <IonRow style={{ paddingTop: 10 }}>
-            <IonCol>
-              <Breadcrumb navigationKey={props.targetNavigationKey || ''} rootText="allContent" />
-            </IonCol>
-          </IonRow>
+    <IonListHeader>
+      <IonGrid>
+        <IonRow className="app-page-content-offset">
+          <IonCol>
+            <IonText>
+              <h2>
+                <Translate
+                  text={props.targetNavigationKey === ROOT_NAVIGATION_KEY ? "allContent" : props.targetNavigationKey}
+                />
+              </h2>
+            </IonText>
+          </IonCol>
+        </IonRow>
+        <IonRow>
+          <IonCol>
+            <StarRating
+              total={5}
+              current={current}
+              size="1rem"
+              padding="2.5px"
+              activeOpacity={0.7}
+              inActiveOpacity={0.3}
+            />
+          </IonCol>
+        </IonRow>
+        <IonRow style={{ paddingTop: 10 }}>
+          <IonCol>
+            <Breadcrumb navigationKey={props.targetNavigationKey || ""} rootText="allContent" />
+          </IonCol>
+        </IonRow>
 
-          <IonRow style={{ paddingTop: 18 }}>
-            <IonCol>
-              <IonButton color="secondary" shape="round" fill="solid" onClick={props.selectTargetNavigationItem}>
-                <Translate text="startTest" />
-              </IonButton>
-            </IonCol>
-          </IonRow>
-          <IonRow style={{ paddingTop: 12 }}>
-            <IonCol>
-              <IntroText>
-                <Translate text="selectSectionWithLowLevel" />
-              </IntroText>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <HorizontalRule leftMargin={20} rightMargin={36} paddingBottom={0} paddingTop={15} />
-            </IonCol>
-          </IonRow>
-        </IonGrid>
-      </IonListHeader>
-    </>
+        <IonRow style={{ paddingTop: 18 }}>
+          <IonCol>
+            <IonButton color="secondary" shape="round" fill="solid" onClick={props.selectTargetNavigationItem}>
+              <Translate text="startTest" />
+            </IonButton>
+          </IonCol>
+        </IonRow>
+        <IonRow style={{ paddingTop: 12 }}>
+          <IonCol>
+            <IntroText>
+              <Translate text="selectSectionWithLowLevel" />
+            </IntroText>
+          </IonCol>
+        </IonRow>
+        <IonRow>
+          <IonCol>
+            <HorizontalRule leftMargin={20} rightMargin={36} paddingBottom={0} paddingTop={15} />
+          </IonCol>
+        </IonRow>
+      </IonGrid>
+    </IonListHeader>
   );
 };
 

@@ -1,6 +1,6 @@
-import { NotificationsState, reducer } from './reducer';
+import { type NotificationsState, reducer } from "./reducer";
 
-describe('state > notifications > reducer', () => {
+describe("state > notifications > reducer", () => {
   const defaultState: NotificationsState = {
     notifications: {
       studyInfo: {
@@ -15,11 +15,11 @@ describe('state > notifications > reducer', () => {
     },
   };
 
-  it('should handle NOTIFICATION_RECIEVE_NOTIFICATION_STATE', () => {
+  it("should handle NOTIFICATION_RECIEVE_NOTIFICATION_STATE", () => {
     const actualState = reducer(defaultState, {
-      type: 'NOTIFICATION_RECIEVE_NOTIFICATION_STATE',
+      type: "NOTIFICATION_RECIEVE_NOTIFICATION_STATE",
       payload: {
-        name: 'studyInfo',
+        name: "studyInfo",
         state: {
           seen: true,
         },

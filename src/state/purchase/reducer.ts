@@ -1,5 +1,5 @@
-import { PuchaseActions } from './';
-import { OrderState } from './types';
+import type { PuchaseActions } from "./";
+import type { OrderState } from "./types";
 
 export type PurchaseState = {
   readonly canPurchase: boolean;
@@ -13,30 +13,30 @@ export type PurchaseState = {
 export const defaultState: PurchaseState = {
   canPurchase: false,
   owned: false,
-  orderState: 'ready',
-  price: '',
-  title: '',
-  description: '',
+  orderState: "ready",
+  price: "",
+  title: "",
+  description: "",
 };
 
 export const reducer = (state: PurchaseState = defaultState, action: PuchaseActions): PurchaseState => {
   switch (action.type) {
-    case 'PURCHASE_RECIEVE_PRODUCT_CAN_PURCHASE':
+    case "PURCHASE_RECIEVE_PRODUCT_CAN_PURCHASE":
       return {
         ...state,
         canPurchase: action.payload.canPurchase,
       };
-    case 'PURCHASE_RECIEVE_PRODUCT_OWNED':
+    case "PURCHASE_RECIEVE_PRODUCT_OWNED":
       return {
         ...state,
         owned: action.payload.owned,
       };
-    case 'PURCHASE_RECIEVE_ORDER_STATE':
+    case "PURCHASE_RECIEVE_ORDER_STATE":
       return {
         ...state,
         orderState: action.payload,
       };
-    case 'PURCHASE_RECIEVE_PRODUCT':
+    case "PURCHASE_RECIEVE_PRODUCT":
       return {
         ...state,
         price: action.payload.price,

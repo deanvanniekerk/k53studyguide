@@ -1,6 +1,6 @@
-import { NavigationActions } from './';
+import type { NavigationActions } from "./";
 
-export const ROOT_NAVIGATION_KEY = 'nav';
+export const ROOT_NAVIGATION_KEY = "nav";
 
 export type NavigationState = {
   readonly currentNavigationKey: string;
@@ -12,7 +12,7 @@ export const defaultState: NavigationState = {
 
 export const reducer = (state: NavigationState = defaultState, action: NavigationActions): NavigationState => {
   switch (action.type) {
-    case 'STUDY_NAV_RECIEVE_CURRENT_NAVIGATION_KEY':
+    case "STUDY_NAV_RECIEVE_CURRENT_NAVIGATION_KEY":
       return {
         ...state,
         currentNavigationKey: action.payload,

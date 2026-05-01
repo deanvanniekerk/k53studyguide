@@ -1,11 +1,11 @@
-import { recieveCurrentNavigationKey, ROOT_NAVIGATION_KEY } from '@/state/study/navigation';
-import { navigationKeyToBreadcrumb } from '@/utils';
-import { IonText } from '@ionic/react';
-import React from 'react';
-import { connect } from 'react-redux';
-import { Translate } from 'react-translated';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
+import { IonText } from "@ionic/react";
+import React from "react";
+import { connect } from "react-redux";
+import { Translate } from "react-translated";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import { ROOT_NAVIGATION_KEY, recieveCurrentNavigationKey } from "@/state/study/navigation";
+import { navigationKeyToBreadcrumb } from "@/utils";
 
 type Props = {
   navigationKey: string;
@@ -20,7 +20,7 @@ const BreadcrumbComponent: React.FC<Props> = (props) => {
   return (
     <div
       style={{
-        flexDirection: 'row',
+        flexDirection: "row",
       }}
     >
       {breadcrumb.map((key, index) => {
@@ -44,9 +44,9 @@ const BreadcrumbComponent: React.FC<Props> = (props) => {
             {key !== ROOT_NAVIGATION_KEY ? (
               <Translate text={key} />
             ) : (
-              <Translate text={props.rootText ? props.rootText : 'study'} />
+              <Translate text={props.rootText ? props.rootText : "study"} />
             )}
-            {isLast ? '' : ' / '}
+            {isLast ? "" : " / "}
           </BreadcrumbText>
         );
       })}

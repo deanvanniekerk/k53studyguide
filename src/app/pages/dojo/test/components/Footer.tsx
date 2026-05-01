@@ -1,11 +1,12 @@
-import { RootState } from '@/state';
-import { allQuestionsAnsweredSelector } from '@/state/dojo/test';
-import { IonButton, IonIcon, IonToast } from '@ionic/react';
-import { checkmarkCircleOutline } from 'ionicons/icons';
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { Translate, Translator } from 'react-translated';
-import styled from 'styled-components';
+import { IonButton, IonIcon, IonToast } from "@ionic/react";
+import { checkmarkCircleOutline } from "ionicons/icons";
+import type React from "react";
+import { useState } from "react";
+import { connect } from "react-redux";
+import { Translate, Translator } from "react-translated";
+import styled from "styled-components";
+import type { RootState } from "@/state";
+import { allQuestionsAnsweredSelector } from "@/state/dojo/test";
 
 type Props = {
   onSubmitClicked: () => void;
@@ -34,7 +35,7 @@ const FooterComponent: React.FC<Props> = (props) => {
         {({ translate }) => (
           <IonToast
             isOpen={showNotComplete}
-            message={translate({ text: 'pleaseAnswerAllQuestions' })}
+            message={translate({ text: "pleaseAnswerAllQuestions" })}
             onDidDismiss={() => setShowNotComplete(false)}
             duration={3000}
             position="top"

@@ -1,9 +1,10 @@
-import { RootState } from '@/state';
-import { seenTotalsSelector } from '@/state/study/log';
-import { CreateAnimation, IonIcon } from '@ionic/react';
-import { eye, eyeOff } from 'ionicons/icons';
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { CreateAnimation, IonIcon } from "@ionic/react";
+import { eye, eyeOff } from "ionicons/icons";
+import type React from "react";
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import type { RootState } from "@/state";
+import { seenTotalsSelector } from "@/state/study/log";
 
 type Props = {
   navigationKey: string;
@@ -30,9 +31,9 @@ const ContentSeenIndicatorComponent: React.FC<Props> = ({ navigationKey, seenTot
       duration={700}
       easing="ease"
       keyframes={[
-        { offset: 0, transform: 'scale(1)' },
-        { offset: 0.7, transform: 'scale(1.6)' },
-        { offset: 1, transform: 'scale(1)' },
+        { offset: 0, transform: "scale(1)" },
+        { offset: 0.7, transform: "scale(1.6)" },
+        { offset: 1, transform: "scale(1)" },
       ]}
     >
       <div style={{ paddingLeft: 8, paddingRight: 5 }}>

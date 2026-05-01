@@ -1,9 +1,9 @@
-import { HorizontalRule } from '@/app/components';
-import { QuestionItem, QuestionOption } from '@/data';
-import React from 'react';
-import { Translate } from 'react-translated';
-import styled from 'styled-components';
-import { ImageList, OptionList, QuestionText } from './';
+import type React from "react";
+import { Translate } from "react-translated";
+import styled from "styled-components";
+import { HorizontalRule } from "@/app/components";
+import type { QuestionItem, QuestionOption } from "@/data";
+import { ImageList, OptionList, QuestionText } from "./";
 
 type Props = {
   question: QuestionItem;

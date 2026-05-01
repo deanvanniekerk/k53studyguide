@@ -1,10 +1,10 @@
-import { ProgressBar } from '@/app/components';
-import { RootState } from '@/state';
-import { seenTotalsSelector } from '@/state/study/log';
-import { IonCol, IonGrid, IonIcon, IonRow, IonText } from '@ionic/react';
-import { eye } from 'ionicons/icons';
-import React from 'react';
-import { connect } from 'react-redux';
+import { IonCol, IonGrid, IonIcon, IonRow, IonText } from "@ionic/react";
+import { eye } from "ionicons/icons";
+import React from "react";
+import { connect } from "react-redux";
+import { ProgressBar } from "@/app/components";
+import type { RootState } from "@/state";
+import { seenTotalsSelector } from "@/state/study/log";
 
 type Props = {
   navigationKey: string;
@@ -38,7 +38,7 @@ const SeenProgressComponent: React.FC<Props> = (props) => {
         <IonCol>
           <IonText className="text-xs" style={{ opacity: 0.9, marginTop: 5 }}>
             {total.seen}
-            {' / '}
+            {" / "}
             {total.total} Seen
           </IonText>
         </IonCol>

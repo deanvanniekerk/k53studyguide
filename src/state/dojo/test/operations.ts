@@ -1,22 +1,22 @@
-import { QuestionItem } from '@/data';
-import { RootState } from '@/state';
-import { questionDataSelector } from '@/state/questions';
-import { shuffleArray } from '@/utils';
-import { ThunkAction } from 'redux-thunk';
+import type { ThunkAction } from "redux-thunk";
+import type { QuestionItem } from "@/data";
+import type { RootState } from "@/state";
+import { questionDataSelector } from "@/state/questions";
+import { shuffleArray } from "@/utils";
 import {
   quesionsSuccesfullyAnsweredDatesSelector,
+  type RecieveQuesionSuccesfullyAnsweredDateAction,
   recieveQuesionSuccesfullyAnsweredDate,
-  RecieveQuesionSuccesfullyAnsweredDateAction,
-} from '../log';
-import { targetNavigationKeySelector } from '../navigation';
+} from "../log";
+import { targetNavigationKeySelector } from "../navigation";
 import {
   maxQuestionsSelector,
   questionAnswersSelector,
+  type RecieveQuestionAnswersAction,
   recieveQuestionAnswers,
-  RecieveQuestionAnswersAction,
-} from './';
-import { recieveExperienceGained, RecieveExperienceGainedAction } from './actions';
-import { QuestionAnswer } from './types';
+} from "./";
+import { type RecieveExperienceGainedAction, recieveExperienceGained } from "./actions";
+import type { QuestionAnswer } from "./types";
 
 export const loadQuestionAnswers = (): ThunkAction<void, RootState, null, RecieveQuestionAnswersAction> => {
   return (dispatch, getState) => {

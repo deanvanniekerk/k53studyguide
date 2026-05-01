@@ -1,4 +1,4 @@
-import { QuestionData, questionData } from '@/data';
+import { type QuestionData, questionData } from "@/data";
 
 export type QuestionState = {
   readonly questionData: QuestionData;

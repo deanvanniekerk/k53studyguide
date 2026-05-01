@@ -1,5 +1,5 @@
-import update from 'immutability-helper';
-import { QuestionAnswer, TestActions } from './';
+import update from "immutability-helper";
+import type { QuestionAnswer, TestActions } from "./";
 
 export type TestState = {
   readonly questionAnswers: QuestionAnswer[];
@@ -15,22 +15,22 @@ export const defaultState: TestState = {
 
 export const reducer = (state: TestState = defaultState, action: TestActions): TestState => {
   switch (action.type) {
-    case 'DOJO_TEST_RECIEVE_QUESTION_ANSWERS':
+    case "DOJO_TEST_RECIEVE_QUESTION_ANSWERS":
       return {
         ...state,
         questionAnswers: action.payload,
       };
-    case 'DOJO_TEST_RECIEVE_MAX_QUESTIONS':
+    case "DOJO_TEST_RECIEVE_MAX_QUESTIONS":
       return {
         ...state,
         maxQuestions: action.payload,
       };
-    case 'DOJO_TEST_RECIEVE_EXPERIENCE_GAINED':
+    case "DOJO_TEST_RECIEVE_EXPERIENCE_GAINED":
       return {
         ...state,
         experienceGained: action.payload,
       };
-    case 'DOJO_TEST_RECIEVE_ANSWER':
+    case "DOJO_TEST_RECIEVE_ANSWER": {
       const index = state.questionAnswers.findIndex((q) => q.question.id === action.payload.questionId);
       return {
         ...state,
@@ -42,6 +42,7 @@ export const reducer = (state: TestState = defaultState, action: TestActions): T
           },
         }),
       };
+    }
     default:
       return state;
   }

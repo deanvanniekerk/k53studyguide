@@ -1,20 +1,20 @@
-import { LogState, reducer } from './reducer';
+import { type LogState, reducer } from "./reducer";
 
-describe('state > arena > log > reducer', () => {
+describe("state > arena > log > reducer", () => {
   const date1 = new Date();
   const defaultState: LogState = {
     quesionsSuccesfullyAnsweredDates: {
-      '1': date1.toISOString(),
+      "1": date1.toISOString(),
     },
     testsPassed: 0,
   };
 
-  it('should handle ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE', () => {
+  it("should handle ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE", () => {
     const date2 = new Date();
     const actualState = reducer(defaultState, {
-      type: 'ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE',
+      type: "ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE",
       payload: {
-        questionId: '2',
+        questionId: "2",
         date: date2.toISOString(),
       },
     });
@@ -23,28 +23,28 @@ describe('state > arena > log > reducer', () => {
       ...defaultState,
       quesionsSuccesfullyAnsweredDates: {
         ...defaultState.quesionsSuccesfullyAnsweredDates,
-        '2': date2.toISOString(),
+        "2": date2.toISOString(),
       },
     };
 
     expect(actualState).toEqual(expectedState);
   });
 
-  it('should handle ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE - already answered', () => {
+  it("should handle ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE - already answered", () => {
     const date2 = new Date();
     const date3 = new Date();
     const state = {
       ...defaultState,
       quesionsSuccesfullyAnsweredDates: {
         ...defaultState.quesionsSuccesfullyAnsweredDates,
-        '2': date2.toISOString(),
+        "2": date2.toISOString(),
       },
     };
 
     const actualState = reducer(state, {
-      type: 'ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE',
+      type: "ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE",
       payload: {
-        questionId: '2',
+        questionId: "2",
         date: date3.toISOString(),
       },
     });
@@ -53,21 +53,21 @@ describe('state > arena > log > reducer', () => {
       ...defaultState,
       quesionsSuccesfullyAnsweredDates: {
         ...defaultState.quesionsSuccesfullyAnsweredDates,
-        '2': date2.toISOString(),
+        "2": date2.toISOString(),
       },
     };
 
     expect(actualState).toEqual(expectedState);
   });
 
-  it('should handle ARENA_LOG_INCREMENT_PASSED_TESTS', () => {
+  it("should handle ARENA_LOG_INCREMENT_PASSED_TESTS", () => {
     const state = {
       ...defaultState,
       testsPassed: 5,
     };
 
     const actualState = reducer(state, {
-      type: 'ARENA_LOG_INCREMENT_PASSED_TESTS',
+      type: "ARENA_LOG_INCREMENT_PASSED_TESTS",
     });
 
     const expectedState = {
@@ -78,14 +78,14 @@ describe('state > arena > log > reducer', () => {
     expect(actualState).toEqual(expectedState);
   });
 
-  it('should handle ARENA_LOG_CLEAR_PASSED_TESTS', () => {
+  it("should handle ARENA_LOG_CLEAR_PASSED_TESTS", () => {
     const state = {
       ...defaultState,
       testsPassed: 5,
     };
 
     const actualState = reducer(state, {
-      type: 'ARENA_LOG_CLEAR_PASSED_TESTS',
+      type: "ARENA_LOG_CLEAR_PASSED_TESTS",
     });
 
     const expectedState = {
@@ -96,13 +96,13 @@ describe('state > arena > log > reducer', () => {
     expect(actualState).toEqual(expectedState);
   });
 
-  it('should handle ARENA_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES', () => {
+  it("should handle ARENA_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES", () => {
     const state = {
       ...defaultState,
     };
 
     const actualState = reducer(state, {
-      type: 'ARENA_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES',
+      type: "ARENA_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES",
     });
 
     const expectedState = {

@@ -1,17 +1,18 @@
-import { BackButton, QuestionInfo, QuestionList } from '@/app/components';
-import { useAnalytics } from '@/app/hooks/useAnalytics';
-import { QuestionOption } from '@/data';
-import { RootState } from '@/state';
-import { questionAnswersSelector, recieveAnswer, submitTest } from '@/state/dojo/test';
-import { IonContent, IonPage, useIonViewWillEnter } from '@ionic/react';
-import React, { useRef } from 'react';
-import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
-import { DojoWatermark } from '../DojoWatermark';
-import { Footer, Header } from './components';
-import { TestPageHeader } from './TestPageHeader';
+import { IonContent, IonPage, useIonViewWillEnter } from "@ionic/react";
+import type React from "react";
+import { useRef } from "react";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import { BackButton, type QuestionInfo, QuestionList } from "@/app/components";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
+import type { QuestionOption } from "@/data";
+import type { RootState } from "@/state";
+import { questionAnswersSelector, recieveAnswer, submitTest } from "@/state/dojo/test";
+import { DojoWatermark } from "../DojoWatermark";
+import { Footer, Header } from "./components";
+import { TestPageHeader } from "./TestPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -19,19 +20,19 @@ const TestPage: React.FC<Props> = (props) => {
   const history = useHistory();
   const content = useRef<HTMLIonContentElement>(null);
 
-  useAnalytics('QuizPage:TestPage');
+  useAnalytics("QuizPage:TestPage");
 
   useIonViewWillEnter(() => {
     scrollTop();
   });
 
   const onBackClicked = () => {
-    history.replace('/dojo');
+    history.replace("/dojo");
   };
 
   const onSubmitClicked = () => {
     props.submitTest();
-    history.replace('/test-result-dojo');
+    history.replace("/test-result-dojo");
   };
 
   const onOptionClicked = (questionId: string, option: QuestionOption) => {

@@ -1,5 +1,5 @@
-import { QuesionsSuccesfullyAnsweredDates } from './';
-import { LogActions } from './actions';
+import type { QuesionsSuccesfullyAnsweredDates } from "./";
+import type { LogActions } from "./actions";
 
 export type LogState = {
   readonly quesionsSuccesfullyAnsweredDates: QuesionsSuccesfullyAnsweredDates;
@@ -11,7 +11,7 @@ export const defaultState: LogState = {
 
 export const reducer = (state: LogState = defaultState, action: LogActions): LogState => {
   switch (action.type) {
-    case 'DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE':
+    case "DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE":
       return {
         ...state,
         quesionsSuccesfullyAnsweredDates: {
@@ -19,7 +19,7 @@ export const reducer = (state: LogState = defaultState, action: LogActions): Log
           [action.payload.questionId]: action.payload.date,
         },
       };
-    case 'DOJO_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES':
+    case "DOJO_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES":
       return {
         ...state,
         quesionsSuccesfullyAnsweredDates: {},

@@ -1,29 +1,29 @@
-import { deepClone } from '@/utils';
-import { reducer, TestState } from './reducer';
+import { deepClone } from "@/utils";
+import { reducer, type TestState } from "./reducer";
 
-describe('state > dojo > test > reducer', () => {
+describe("state > dojo > test > reducer", () => {
   const defaultState: TestState = {
     questionAnswers: [],
     maxQuestions: 10,
     experienceGained: 0,
   };
 
-  it('should handle DOJO_TEST_RECIEVE_QUESTION_ANSWERS', () => {
+  it("should handle DOJO_TEST_RECIEVE_QUESTION_ANSWERS", () => {
     const questionAnswers = [
       {
         answer: null,
         question: {
-          id: '1',
-          answer: 'B',
-          text: 'Question 1:',
+          id: "1",
+          answer: "B",
+          text: "Question 1:",
           option: [
             {
-              id: 'A',
-              value: 'Option 1.',
+              id: "A",
+              value: "Option 1.",
             },
             {
-              id: 'B',
-              value: 'Option 2.',
+              id: "B",
+              value: "Option 2.",
             },
           ],
         },
@@ -31,7 +31,7 @@ describe('state > dojo > test > reducer', () => {
     ];
 
     const actualState = reducer(defaultState, {
-      type: 'DOJO_TEST_RECIEVE_QUESTION_ANSWERS',
+      type: "DOJO_TEST_RECIEVE_QUESTION_ANSWERS",
       payload: questionAnswers,
     });
 
@@ -43,26 +43,26 @@ describe('state > dojo > test > reducer', () => {
     expect(actualState).toEqual(expectedState);
   });
 
-  it('should handle DOJO_TEST_RECIEVE_QUESTION_ANSWERS', () => {
+  it("should handle DOJO_TEST_RECIEVE_QUESTION_ANSWERS", () => {
     const questionAnswers = [
       {
-        answer: 'A',
+        answer: "A",
         question: {
-          id: '4',
-          answer: 'B',
-          text: 'Question 1:',
+          id: "4",
+          answer: "B",
+          text: "Question 1:",
           option: [
             {
-              id: 'A',
-              value: 'Option 1.',
+              id: "A",
+              value: "Option 1.",
             },
             {
-              id: 'B',
-              value: 'Option 2.',
+              id: "B",
+              value: "Option 2.",
             },
             {
-              id: 'C',
-              value: 'Option 3.',
+              id: "C",
+              value: "Option 3.",
             },
           ],
         },
@@ -70,21 +70,21 @@ describe('state > dojo > test > reducer', () => {
       {
         answer: null,
         question: {
-          id: '3',
-          answer: 'B',
-          text: 'Question 1:',
+          id: "3",
+          answer: "B",
+          text: "Question 1:",
           option: [
             {
-              id: 'A',
-              value: 'Option 1.',
+              id: "A",
+              value: "Option 1.",
             },
             {
-              id: 'B',
-              value: 'Option 2.',
+              id: "B",
+              value: "Option 2.",
             },
             {
-              id: 'C',
-              value: 'Option 3.',
+              id: "C",
+              value: "Option 3.",
             },
           ],
         },
@@ -92,43 +92,43 @@ describe('state > dojo > test > reducer', () => {
       {
         answer: null,
         question: {
-          id: '2',
-          answer: 'B',
-          text: 'Question 1:',
+          id: "2",
+          answer: "B",
+          text: "Question 1:",
           option: [
             {
-              id: 'A',
-              value: 'Option 1.',
+              id: "A",
+              value: "Option 1.",
             },
             {
-              id: 'B',
-              value: 'Option 2.',
+              id: "B",
+              value: "Option 2.",
             },
             {
-              id: 'C',
-              value: 'Option 3.',
+              id: "C",
+              value: "Option 3.",
             },
           ],
         },
       },
       {
-        answer: 'C',
+        answer: "C",
         question: {
-          id: '1',
-          answer: 'B',
-          text: 'Question 1:',
+          id: "1",
+          answer: "B",
+          text: "Question 1:",
           option: [
             {
-              id: 'A',
-              value: 'Option 1.',
+              id: "A",
+              value: "Option 1.",
             },
             {
-              id: 'B',
-              value: 'Option 2.',
+              id: "B",
+              value: "Option 2.",
             },
             {
-              id: 'C',
-              value: 'Option 3.',
+              id: "C",
+              value: "Option 3.",
             },
           ],
         },
@@ -138,28 +138,28 @@ describe('state > dojo > test > reducer', () => {
     const initalState = { ...defaultState, questionAnswers };
 
     const actualState = reducer(initalState, {
-      type: 'DOJO_TEST_RECIEVE_ANSWER',
+      type: "DOJO_TEST_RECIEVE_ANSWER",
       payload: {
-        questionId: '2',
-        answer: 'B',
+        questionId: "2",
+        answer: "B",
       },
     });
 
     //Deep clone
     const expectedState = deepClone(initalState);
 
-    expectedState.questionAnswers[2].answer = 'B';
+    expectedState.questionAnswers[2].answer = "B";
 
     expect(actualState).toEqual(expectedState);
   });
 
-  it('should handle DOJO_TEST_RECIEVE_MAX_QUESTIONS', () => {
+  it("should handle DOJO_TEST_RECIEVE_MAX_QUESTIONS", () => {
     const state: TestState = {
       ...defaultState,
     };
 
     const actualState = reducer(state, {
-      type: 'DOJO_TEST_RECIEVE_MAX_QUESTIONS',
+      type: "DOJO_TEST_RECIEVE_MAX_QUESTIONS",
       payload: 15,
     });
 
@@ -171,13 +171,13 @@ describe('state > dojo > test > reducer', () => {
     expect(actualState).toEqual(expectedState);
   });
 
-  it('should handle DOJO_TEST_RECIEVE_EXPERIENCE_GAINED', () => {
+  it("should handle DOJO_TEST_RECIEVE_EXPERIENCE_GAINED", () => {
     const state: TestState = {
       ...defaultState,
     };
 
     const actualState = reducer(state, {
-      type: 'DOJO_TEST_RECIEVE_EXPERIENCE_GAINED',
+      type: "DOJO_TEST_RECIEVE_EXPERIENCE_GAINED",
       payload: 15,
     });
 

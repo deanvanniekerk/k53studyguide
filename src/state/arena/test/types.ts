@@ -1,6 +1,6 @@
-import { QuestionItem } from '@/data';
+import type { QuestionItem } from "@/data";
 
-export type TestSection = 'A' | 'B' | 'C';
+export type TestSection = "A" | "B" | "C";
 
 export type QuestionAnswer = {
   section: TestSection;

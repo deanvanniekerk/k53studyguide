@@ -1,17 +1,17 @@
-import { BookOutlineIcon, ResetIcon, TestPenIcon, YinYangIcon } from '@/app/components/icons';
-import { PurchaseContext } from '@/context';
-import { RootState } from '@/state';
-import { purchaseSelector, recievePurchaseOrderState } from '@/state/purchase';
-import { Device } from '@awesome-cordova-plugins/device';
-import { IonButton, IonIcon, IonLoading, IonModal, IonSlide, IonSlides, IonToast } from '@ionic/react';
-import { closeOutline } from 'ionicons/icons';
-import React, { useContext, useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { Translate, Translator } from 'react-translated';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
-import { useAnalytics } from '../hooks/useAnalytics';
-import { watermarkStyle } from '../styles';
+import { Device } from "@awesome-cordova-plugins/device";
+import { IonButton, IonLoading, IonModal, IonToast } from "@ionic/react";
+import React, { useContext, useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { Translate, Translator } from "react-translated";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import { CloseButton } from "@/app/components";
+import { BookOutlineIcon, ResetIcon, TestPenIcon, YinYangIcon } from "@/app/components/icons";
+import { PurchaseContext } from "@/context";
+import type { RootState } from "@/state";
+import { purchaseSelector, recievePurchaseOrderState } from "@/state/purchase";
+import { useAnalytics } from "../hooks/useAnalytics";
+import { watermarkStyle } from "../styles";
 
 type Props = {
   isOpen: boolean;
@@ -29,35 +29,26 @@ const PurchaseModal: React.FC<Props> = (props) => {
   const [showCancelledToast, setShowCancelledToast] = useState(false);
 
   useEffect(() => {
-    if (props.isOpen) logEvent('PRESENT_OFFER');
+    if (props.isOpen) logEvent("PRESENT_OFFER");
   }, [props.isOpen]);
 
   //Close the modal if its owned
   useEffect(() => {
-    if (props.purchase.orderState == 'finished') {
+    if (props.purchase.orderState === "finished") {
       setShowOwnedToast(true);
     }
     if (props.purchase.owned) {
       setTimeout(props.onDidDismiss, 500);
     }
-    if (props.purchase.orderState == 'error') {
+    if (props.purchase.orderState === "error") {
       setShowFailedToast(true);
-      props.recievePurchaseOrderState('ready'); //reset
+      props.recievePurchaseOrderState("ready"); //reset
     }
-    if (props.purchase.orderState == 'cancelled') {
+    if (props.purchase.orderState === "cancelled") {
       setShowCancelledToast(true);
-      props.recievePurchaseOrderState('ready'); //reset
+      props.recievePurchaseOrderState("ready"); //reset
     }
   }, [props.purchase]);
-
-  const slideOpts = {
-    initialSlide: 0,
-    speed: 300,
-    loop: true,
-    autoplay: {
-      delay: 4000,
-    },
-  };
 
   return (
     <React.Fragment>
@@ -67,7 +58,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
             <IonToast
               isOpen={showOwnedToast}
               onDidDismiss={() => setShowOwnedToast(false)}
-              message={translate({ text: 'purchaseSuccessful' })}
+              message={translate({ text: "purchaseSuccessful" })}
               duration={5000}
               color="success"
               position="top"
@@ -75,7 +66,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
             <IonToast
               isOpen={showCancelledToast}
               onDidDismiss={() => setShowCancelledToast(false)}
-              message={translate({ text: 'purchaseCancelled' })}
+              message={translate({ text: "purchaseCancelled" })}
               duration={2500}
               color="light"
               position="top"
@@ -83,7 +74,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
             <IonToast
               isOpen={showFailedToast}
               onDidDismiss={() => setShowFailedToast(false)}
-              message={translate({ text: 'purchaseFailed' })}
+              message={translate({ text: "purchaseFailed" })}
               duration={5000}
               color="danger"
               position="top"
@@ -96,30 +87,28 @@ const PurchaseModal: React.FC<Props> = (props) => {
         <Translator>
           {({ translate }) => (
             <IonLoading
-              isOpen={props.purchase.orderState === 'pending'}
-              message={translate({ text: 'processingPayment' })}
-              mode={Device.platform == 'Android' ? 'md' : 'ios'}
+              isOpen={props.purchase.orderState === "pending"}
+              message={translate({ text: "processingPayment" })}
+              mode={Device.platform === "Android" ? "md" : "ios"}
             />
           )}
         </Translator>
         <div>
-          <div>
-            <CloseIcon icon={closeOutline} onClick={() => props.onDidDismiss()} />
-          </div>
+          <CloseButton onClick={() => props.onDidDismiss()} />
           <Header>
             <Translate text="k53Ninja" />
           </Header>
           <SubHeader>
-            <IonButton mode="md" color="tertiary" fill="solid" class="button-x-small">
+            <IonButton mode="md" color="tertiary" fill="solid" className="button-x-small">
               <Translate text="premium" />
             </IonButton>
           </SubHeader>
           <SlidesContainer>
-            <Slides pager={true} options={slideOpts}>
+            <Slides>
               <Slide>
                 <div>
                   <div>
-                    <TestPenIcon style={{ fontSize: '4rem' }} />
+                    <TestPenIcon style={{ fontSize: "4rem" }} />
                     <SlideText>
                       <Translate text="accessTheArena" />
                     </SlideText>
@@ -132,7 +121,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
               <Slide>
                 <div>
                   <div>
-                    <ResetIcon style={{ fontSize: '4rem' }} />
+                    <ResetIcon style={{ fontSize: "4rem" }} />
                     <SlideText>
                       <Translate text="resetYourHistory" />
                     </SlideText>
@@ -145,7 +134,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
               <Slide>
                 <div>
                   <div>
-                    <YinYangIcon style={{ fontSize: '4rem' }} />
+                    <YinYangIcon style={{ fontSize: "4rem" }} />
                     <SlideText>
                       <Translate text="supportTheDev" />
                     </SlideText>
@@ -187,13 +176,6 @@ const Watermark = styled(BookOutlineIcon)`
   opacity: 0.06;
 `;
 
-const CloseIcon = styled(IonIcon)`
-  color: var(--ion-color-light);
-  font-size: var(--ion-font-size-xxxl);
-  padding-left: var(--default-padding);
-  padding-top: var(--default-padding);
-`;
-
 const Header = styled.div`
   color: var(--ion-color-light);
   font-size: var(--ion-font-size-xxl);
@@ -211,13 +193,15 @@ const SlidesContainer = styled.div`
   padding: 0;
 `;
 
-const Slides = styled(IonSlides)`
-  --bullet-background: #000000;
-  --bullet-background-active: #ffffff;
+const Slides = styled.div`
+  display: flex;
+  overflow: hidden;
 `;
 
-const Slide = styled(IonSlide)`
+const Slide = styled.div`
+  flex: 0 0 100%;
   height: 235px;
+  text-align: center;
 `;
 
 const SlideText = styled.div`

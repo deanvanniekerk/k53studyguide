@@ -1,13 +1,13 @@
-import { IonCol, IonGrid, IonRow } from '@ionic/react';
-import React from 'react';
-import { Translate } from 'react-translated';
-import styled from 'styled-components';
-import { Level } from './';
+import { IonCol, IonGrid, IonRow } from "@ionic/react";
+import type React from "react";
+import { Translate } from "react-translated";
+import styled from "styled-components";
+import { Level } from "./";
 
 const Header: React.FC = () => {
   return (
     <IonGrid>
-      <IonRow style={{ paddingTop: 45 }}>
+      <IonRow className="app-page-content-offset">
         <IonCol>
           <IntroText>
             <Translate text="dojoIntro" />

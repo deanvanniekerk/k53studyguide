@@ -1,19 +1,19 @@
-import { LogState, reducer } from './reducer';
+import { type LogState, reducer } from "./reducer";
 
-describe('state > study > log > reducer', () => {
+describe("state > study > log > reducer", () => {
   const date1 = new Date();
   const defaultState: LogState = {
     quesionsSuccesfullyAnsweredDates: {
-      '1': date1.toISOString(),
+      "1": date1.toISOString(),
     },
   };
 
-  it('should handle DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE', () => {
+  it("should handle DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE", () => {
     const date2 = new Date();
     const actualState = reducer(defaultState, {
-      type: 'DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE',
+      type: "DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE",
       payload: {
-        questionId: '2',
+        questionId: "2",
         date: date2.toISOString(),
       },
     });
@@ -22,28 +22,28 @@ describe('state > study > log > reducer', () => {
       ...defaultState,
       quesionsSuccesfullyAnsweredDates: {
         ...defaultState.quesionsSuccesfullyAnsweredDates,
-        '2': date2.toISOString(),
+        "2": date2.toISOString(),
       },
     };
 
     expect(actualState).toEqual(expectedState);
   });
 
-  it('should handle DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE - already answered', () => {
+  it("should handle DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE - already answered", () => {
     const date2 = new Date();
     const date3 = new Date();
     const state = {
       ...defaultState,
       quesionsSuccesfullyAnsweredDates: {
         ...defaultState.quesionsSuccesfullyAnsweredDates,
-        '2': date2.toISOString(),
+        "2": date2.toISOString(),
       },
     };
 
     const actualState = reducer(state, {
-      type: 'DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE',
+      type: "DOJO_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE",
       payload: {
-        questionId: '2',
+        questionId: "2",
         date: date3.toISOString(),
       },
     });
@@ -52,16 +52,16 @@ describe('state > study > log > reducer', () => {
       ...defaultState,
       quesionsSuccesfullyAnsweredDates: {
         ...defaultState.quesionsSuccesfullyAnsweredDates,
-        '2': date2.toISOString(),
+        "2": date2.toISOString(),
       },
     };
 
     expect(actualState).toEqual(expectedState);
   });
 
-  it('should handle DOJO_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES', () => {
+  it("should handle DOJO_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES", () => {
     const actualState = reducer(defaultState, {
-      type: 'DOJO_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES',
+      type: "DOJO_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES",
     });
 
     const expectedState = {

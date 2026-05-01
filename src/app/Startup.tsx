@@ -1,7 +1,8 @@
-import { PurchaseContext } from '@/context';
-import React, { useContext, useEffect } from 'react';
-import { useAppRate } from './hooks/useAppRate';
-import Router from './Router';
+import type React from "react";
+import { useContext, useEffect } from "react";
+import { PurchaseContext } from "@/context";
+import { useAppRate } from "./hooks/useAppRate";
+import Router from "./Router";
 
 const Startup: React.FC = () => {
   const purchaseService = useContext(PurchaseContext);
@@ -15,14 +16,14 @@ const Startup: React.FC = () => {
     const preferences = appRate.getPreferences();
     preferences.simpleMode = true;
     preferences.customLocale = {
-      title: 'Would you mind rating K53 Study Guide?',
-      message: 'Any feedback would be greatly appreciated. Thank you for your support!',
-      cancelButtonLabel: 'No thanks',
-      laterButtonLabel: 'Remind me later',
-      rateButtonLabel: 'Rate it Now',
+      title: "Would you mind rating K53 Study Guide?",
+      message: "Any feedback would be greatly appreciated. Thank you for your support!",
+      cancelButtonLabel: "No thanks",
+      laterButtonLabel: "Remind me later",
+      rateButtonLabel: "Rate it Now",
     };
     preferences.storeAppURL = {
-      android: 'market://details?id=deanvniekerk.k53studyguide.app',
+      android: "market://details?id=deanvniekerk.k53studyguide.app",
     };
     appRate.setPreferences(preferences);
 

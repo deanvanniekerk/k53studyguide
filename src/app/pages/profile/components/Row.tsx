@@ -1,24 +1,24 @@
-import { IonCol, IonIcon, IonRow } from '@ionic/react';
-import React from 'react';
-import styled from 'styled-components';
+import { IonCol, IonIcon, IonRow } from "@ionic/react";
+import type React from "react";
+import styled from "styled-components";
 
 type Props = {
   name: string;
   value: React.ReactNode;
   icon?: string;
-  iconColor?: 'danger' | 'success';
+  iconColor?: "danger" | "success";
 };
 
 const Row: React.FC<Props> = (props) => {
   return (
     <Container>
       <NameCol>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <div>
             {props.icon && (
               <IonIcon
                 icon={props.icon}
-                style={{ marginRight: 5, fontSize: '1.3rem' }}
+                style={{ marginRight: 5, fontSize: "1.3rem" }}
                 color={props.iconColor ? props.iconColor : undefined}
               />
             )}

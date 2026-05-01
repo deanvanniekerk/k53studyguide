@@ -1,11 +1,11 @@
-import { useAnalytics } from '@/app/hooks/useAnalytics';
-import { RootState } from '@/state';
-import { currentNavigationChildrenSelector, recieveCurrentNavigationKey } from '@/state/study/navigation';
-import { IonList } from '@ionic/react';
-import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
-import { NavigationItem } from '../components';
+import { IonList } from "@ionic/react";
+import React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators, type Dispatch } from "redux";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
+import type { RootState } from "@/state";
+import { currentNavigationChildrenSelector, recieveCurrentNavigationKey } from "@/state/study/navigation";
+import { NavigationItem } from "../components";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -13,7 +13,7 @@ const NavigatorComponent: React.FC<Props> = (props) => {
   const { logEvent } = useAnalytics();
 
   const onNavigationItemClicked = (key: string) => {
-    logEvent('NAVIGATE', { key: key, component: 'ContentPage:NavigatorComponent' });
+    logEvent("NAVIGATE", { key: key, component: "ContentPage:NavigatorComponent" });
     props.recieveCurrentNavigationKey(key);
   };
 

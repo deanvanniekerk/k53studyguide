@@ -1,7 +1,7 @@
-import { RootState } from '@/state';
-import { navigateUp as up } from '@/utils';
-import { ThunkAction } from 'redux-thunk';
-import { recieveTargetNavigationKey, RecieveTargetNavigationKeyAction, targetNavigationKeySelector } from './';
+import type { ThunkAction } from "redux-thunk";
+import type { RootState } from "@/state";
+import { navigateUp as up } from "@/utils";
+import { type RecieveTargetNavigationKeyAction, recieveTargetNavigationKey, targetNavigationKeySelector } from "./";
 
 export const navigateUp = (): ThunkAction<void, RootState, null, RecieveTargetNavigationKeyAction> => {
   return (dispatch, getState) => {

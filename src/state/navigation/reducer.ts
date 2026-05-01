@@ -1,6 +1,6 @@
-import { NavigationData, navigationData } from '@/data';
+import { type NavigationData, navigationData } from "@/data";
 
-export const ROOT_NAVIGATION_KEY = 'nav';
+export const ROOT_NAVIGATION_KEY = "nav";
 
 export type NavigationState = {
   readonly navigationData: NavigationData;

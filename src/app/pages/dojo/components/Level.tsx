@@ -1,17 +1,17 @@
-import { ProgressBar, StarRating } from '@/app/components';
-import { RootState } from '@/state';
+import { IonIcon } from "@ionic/react";
+import { flashOutline } from "ionicons/icons";
+import type React from "react";
+import { connect } from "react-redux";
+import { Translate } from "react-translated";
+import styled from "styled-components";
+import { ProgressBar, StarRating } from "@/app/components";
+import type { RootState } from "@/state";
 import {
   dojoCurrentExperiencePercentSelector,
   dojoLevelSelector,
   requiredLevelUpExperiencePointsSelector,
-} from '@/state/dojo/log';
-import { IonIcon } from '@ionic/react';
-import { flashOutline } from 'ionicons/icons';
-import React from 'react';
-import { connect } from 'react-redux';
-import { Translate } from 'react-translated';
-import styled from 'styled-components';
-import { LevelText } from './';
+} from "@/state/dojo/log";
+import { LevelText } from "./";
 
 type Props = PropsFromState;
 

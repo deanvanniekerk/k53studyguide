@@ -1,24 +1,25 @@
-import { BackButton, QuestionInfo, QuestionList } from '@/app/components';
-import { useAnalytics } from '@/app/hooks/useAnalytics';
-import { QuestionOption } from '@/data';
-import { RootState } from '@/state';
+import { IonContent, IonPage, useIonViewWillEnter } from "@ionic/react";
+import type React from "react";
+import { useRef } from "react";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import { BackButton, type QuestionInfo, QuestionList } from "@/app/components";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
+import type { QuestionOption } from "@/data";
+import type { RootState } from "@/state";
 import {
   currentSectionQuestionsSelector,
-  QuestionAnswer,
+  type QuestionAnswer,
   recieveAnswer,
   recieveCurrentSection,
   submitTest,
-} from '@/state/arena/test';
-import { IonContent, IonPage, useIonViewWillEnter } from '@ionic/react';
-import React, { useRef } from 'react';
-import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
-import { ArenaWatermark } from '../ArenaWatermark';
-import { Tabs } from '../components';
-import { Footer, Header } from './components';
-import { TestPageHeader } from './TestPageHeader';
+} from "@/state/arena/test";
+import { ArenaWatermark } from "../ArenaWatermark";
+import { Tabs } from "../components";
+import { Footer, Header } from "./components";
+import { TestPageHeader } from "./TestPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -26,20 +27,20 @@ const TestPage: React.FC<Props> = (props) => {
   const history = useHistory();
   const content = useRef<HTMLIonContentElement>(null);
 
-  useAnalytics('TestPage:TestPage');
+  useAnalytics("TestPage:TestPage");
 
   useIonViewWillEnter(() => {
     onScrollTop(0);
   });
 
   const onBackClicked = () => {
-    history.replace('/arena');
+    history.replace("/arena");
   };
 
   const onSubmitClicked = () => {
     props.submitTest();
-    props.recieveCurrentSection('A');
-    history.replace('/test-result-arena');
+    props.recieveCurrentSection("A");
+    history.replace("/test-result-arena");
   };
 
   const onOptionClicked = (questionId: string, option: QuestionOption) => {

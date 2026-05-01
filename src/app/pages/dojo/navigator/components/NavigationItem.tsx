@@ -1,8 +1,8 @@
-import { NavigationItem as NavItem, StarRating } from '@/app/components';
-import { RootState } from '@/state';
-import { correctlyAnsweredQuestionsTotalsSelector } from '@/state/dojo/navigation';
-import React from 'react';
-import { connect } from 'react-redux';
+import type React from "react";
+import { connect } from "react-redux";
+import { NavigationItem as NavItem, StarRating } from "@/app/components";
+import type { RootState } from "@/state";
+import { correctlyAnsweredQuestionsTotalsSelector } from "@/state/dojo/navigation";
 
 type Props = {
   navigationItemKey: string;

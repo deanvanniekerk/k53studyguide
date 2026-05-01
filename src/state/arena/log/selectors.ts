@@ -1,6 +1,11 @@
-import { RootState } from '@/state/rootReducer';
-import { createSelector, OutputSelector, Selector } from 'reselect';
-import { LogState, QuesionsSuccesfullyAnsweredDates } from './';
+import { createSelector, type Selector } from "reselect";
+import type { RootState } from "@/state/rootReducer";
+
+type OutputSelector<State, Result, Combiner> = Selector<State, Result> & {
+  resultFunc: Combiner;
+};
+
+import type { LogState, QuesionsSuccesfullyAnsweredDates } from "./";
 
 const rootSelector: Selector<RootState, LogState> = (state: RootState): LogState => state.arena.log;
 

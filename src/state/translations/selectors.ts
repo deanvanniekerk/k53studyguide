@@ -1,7 +1,7 @@
-import { Translations } from '@/data';
-import { RootState } from '@/state/rootReducer';
-import { createSelector } from 'reselect';
-import { TranslationsState } from './reducer';
+import { createSelector } from "reselect";
+import type { Translations } from "@/data";
+import type { RootState } from "@/state/rootReducer";
+import type { TranslationsState } from "./reducer";
 
 const rootSelector = (state: RootState): TranslationsState => state.translations;
 

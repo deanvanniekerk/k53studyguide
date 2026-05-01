@@ -1,14 +1,15 @@
-import { ProgressBar } from '@/app/components';
-import { CarIcon, RoadIcon, SpeedometerIcon, StopIcon, TestIcon, TrafficLightIcon } from '@/app/components/icons';
-import { RootState } from '@/state';
-import { seenTotalsSelector } from '@/state/study/log';
-import { CreateAnimation, IonIcon, IonLabel, IonText, useIonViewWillEnter } from '@ionic/react';
-import { eye } from 'ionicons/icons';
-import React, { useRef } from 'react';
-import { connect } from 'react-redux';
-import { Translate } from 'react-translated';
-import styled from 'styled-components';
-import './NavigationItem.css';
+import { CreateAnimation, IonIcon, IonLabel, IonText, useIonViewWillEnter } from "@ionic/react";
+import { eye } from "ionicons/icons";
+import type React from "react";
+import { useRef } from "react";
+import { connect } from "react-redux";
+import { Translate } from "react-translated";
+import styled from "styled-components";
+import { ProgressBar } from "@/app/components";
+import { CarIcon, RoadIcon, SpeedometerIcon, StopIcon, TestIcon, TrafficLightIcon } from "@/app/components/icons";
+import type { RootState } from "@/state";
+import { seenTotalsSelector } from "@/state/study/log";
+import "./NavigationItem.css";
 
 type Props = {
   navigationItemKey: string;
@@ -39,18 +40,18 @@ const NavigationItemComponent: React.FC<Props> = (props) => {
       duration={containerAnimationDuration}
       easing="ease"
       fromTo={{
-        property: 'transform',
-        fromValue: 'translateY(85px)',
-        toValue: 'translateY(0px)',
+        property: "transform",
+        fromValue: "translateY(85px)",
+        toValue: "translateY(0px)",
       }}
     >
       <div className="root-navigation-item" onClick={() => props.onClick(props.navigationItemKey)}>
         <div
           style={{
-            width: '100%',
-            height: '100%',
-            position: 'relative',
-            overflow: 'hidden',
+            width: "100%",
+            height: "100%",
+            position: "relative",
+            overflow: "hidden",
           }}
         >
           <CreateAnimation
@@ -60,16 +61,16 @@ const NavigationItemComponent: React.FC<Props> = (props) => {
             delay={delay + containerAnimationDuration - 100}
             easing="ease"
             keyframes={[
-              { offset: 0, transform: 'scale(0)' },
-              { offset: 0.8, transform: 'scale(1.2)' },
-              { offset: 1, transform: 'scale(1)' },
+              { offset: 0, transform: "scale(0)" },
+              { offset: 0.8, transform: "scale(1.2)" },
+              { offset: 1, transform: "scale(1)" },
             ]}
           >
             <Icon>{navigationIcons[props.navigationItemKey]}</Icon>
           </CreateAnimation>
           <IonLabel>
             <div>
-              <IonText className="text-md" style={{ fontWeight: 'bold' }}>
+              <IonText className="text-md" style={{ fontWeight: "bold" }}>
                 <Translate text={props.navigationItemKey} />
               </IonText>
             </div>
@@ -105,12 +106,12 @@ const Icon = styled.div`
 `;
 
 const navigationIcons: { [key: string]: React.ReactNode } = {
-  'nav.vehicleControls': <SpeedometerIcon />,
-  'nav.rulesOfTheRoad': <TestIcon />,
-  'nav.defensiveDriving': <CarIcon />,
-  'nav.roadMarkings': <RoadIcon />,
-  'nav.roadSignals': <TrafficLightIcon />,
-  'nav.signs': <StopIcon />,
+  "nav.vehicleControls": <SpeedometerIcon />,
+  "nav.rulesOfTheRoad": <TestIcon />,
+  "nav.defensiveDriving": <CarIcon />,
+  "nav.roadMarkings": <RoadIcon />,
+  "nav.roadSignals": <TrafficLightIcon />,
+  "nav.signs": <StopIcon />,
 };
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

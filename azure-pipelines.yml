@@ -1,5 +1,5 @@
 # Node.js
-# Build a general Node.js project with yarn.
+# Build a general Node.js project with pnpm.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
@@ -16,24 +16,25 @@ steps:
           version: "20.x"
       displayName: "Install Node.js"
     - script: |
-          yarn install
+          corepack enable
+          pnpm install --frozen-lockfile
       displayName: "React App > Install"
     - script: |
-          yarn lint
+          pnpm lint
       displayName: "React App > Lint"
     - script: |
-          yarn test
+          pnpm test
       displayName: "React App > Test"
     - script: |
-          yarn build
+          pnpm build
       displayName: "React App > Build"
 
     - script: |
-          yarn cap-sync-android
+          pnpm cap-sync-android
       displayName: "React App > Sync to Android Project"
       condition: eq('${{ variables.buildAndroid }}', true)
     - script: |
-          yarn cap-copy-android
+          pnpm cap-copy-android
       displayName: "React App > Copy to Android Project"
       condition: eq('${{ variables.buildAndroid }}', true)
 
@@ -66,11 +67,11 @@ steps:
       condition: eq('${{ variables.buildAndroid }}', true)
 
     # - script: |
-    #       yarn cap-sync-ios
+    #       pnpm cap-sync-ios
     #   displayName: "React App > Sync to IOS Project"
     #   condition: eq('${{ variables.buildIOS }}', true)
     # - script: |
-    #       yarn cap-copy-ios
+    #       pnpm cap-copy-ios
     #   displayName: "React App > Copy to IOS Project"
     #   condition: eq('${{ variables.buildIOS }}', true)
 

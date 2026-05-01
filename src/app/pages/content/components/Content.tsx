@@ -1,15 +1,15 @@
-import { HorizontalRule } from '@/app/components';
-import { ContentItem } from '@/data';
-import { recieveSeenContentKey } from '@/state/study/log';
-import { IonCol, IonGrid, IonRow, IonText } from '@ionic/react';
-import React from 'react';
-import { connect } from 'react-redux';
-import { Translate, Translator } from 'react-translated';
-import VisibilitySensor from 'react-visibility-sensor';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
-import './Content.css';
-import { ContentSeenIndicator } from './ContentSeenIndicator';
+import { IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
+import type React from "react";
+import { connect } from "react-redux";
+import { Translate, Translator } from "react-translated";
+import VisibilitySensor from "react-visibility-sensor";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import { HorizontalRule } from "@/app/components";
+import type { ContentItem } from "@/data";
+import { recieveSeenContentKey } from "@/state/study/log";
+import "./Content.css";
+import { ContentSeenIndicator } from "./ContentSeenIndicator";
 
 type Props = {
   item: ContentItem;
@@ -25,7 +25,7 @@ const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenCon
     <IonGrid style={{ paddingBottom: 15 }} className="study-content">
       <IonRow style={{ paddingBottom: 8 }}>
         <IonCol>
-          <IonText className="text-md" style={{ fontWeight: 'bold' }}>
+          <IonText className="text-md" style={{ fontWeight: "bold" }}>
             <Translate text={item.heading} />
           </IonText>
         </IonCol>
@@ -35,8 +35,8 @@ const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenCon
       </IonRow>
       {item.imageName && (
         <IonRow>
-          <IonCol style={{ textAlign: 'center', paddingTop: 20, paddingBottom: 20 }}>
-            <img src={`assets/images/${item.imageName}`} alt="" style={{ maxWidth: '100%' }} />
+          <IonCol style={{ textAlign: "center", paddingTop: 20, paddingBottom: 20 }}>
+            <img src={`assets/images/${item.imageName}`} alt="" style={{ maxWidth: "100%" }} />
           </IonCol>
         </IonRow>
       )}

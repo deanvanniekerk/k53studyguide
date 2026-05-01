@@ -1,8 +1,9 @@
-import { TEXT_COLOR } from '@/data';
-import { CreateAnimation, IonIcon, IonItem, IonLabel, IonText, useIonViewWillEnter } from '@ionic/react';
-import { chevronForwardOutline } from 'ionicons/icons';
-import React, { useRef } from 'react';
-import { Translate } from 'react-translated';
+import { CreateAnimation, IonIcon, IonItem, IonLabel, IonText, useIonViewWillEnter } from "@ionic/react";
+import { chevronForwardOutline } from "ionicons/icons";
+import type React from "react";
+import { useRef } from "react";
+import { Translate } from "react-translated";
+import { TEXT_COLOR } from "@/data";
 
 type Props = {
   navigationItemKey: string;
@@ -31,9 +32,9 @@ const NavigationItem: React.FC<Props> = (props) => {
           duration={500}
           easing="ease"
           fromTo={{
-            property: 'transform',
-            fromValue: 'translateY(30px)',
-            toValue: 'translateY(0px)',
+            property: "transform",
+            fromValue: "translateY(30px)",
+            toValue: "translateY(0px)",
           }}
         >
           <div>
@@ -49,9 +50,9 @@ const NavigationItem: React.FC<Props> = (props) => {
           easing="ease"
           delay={300 + delay}
           fromTo={{
-            property: 'transform',
-            fromValue: 'translateX(-80px)',
-            toValue: 'translateX(0px)',
+            property: "transform",
+            fromValue: "translateX(-80px)",
+            toValue: "translateX(0px)",
           }}
         >
           {props.indicator && <div style={{ paddingTop: 6, width: 60 }}>{props.indicator}</div>}

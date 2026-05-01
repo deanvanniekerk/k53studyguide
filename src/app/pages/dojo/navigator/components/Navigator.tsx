@@ -1,9 +1,9 @@
-import { RootState } from '@/state';
-import { targetNavigationChildrenSelector } from '@/state/dojo/navigation';
-import { IonList } from '@ionic/react';
-import React from 'react';
-import { connect } from 'react-redux';
-import { NavigationItem } from '../components';
+import { IonList } from "@ionic/react";
+import React from "react";
+import { connect } from "react-redux";
+import type { RootState } from "@/state";
+import { targetNavigationChildrenSelector } from "@/state/dojo/navigation";
+import { NavigationItem } from "../components";
 
 type Props = {
   onNavigationItemClicked: (key: string) => void;

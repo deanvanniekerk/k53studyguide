@@ -1,28 +1,28 @@
-import { BookIcon, QuizIcon, SettingsIcon, TestPenIcon } from '@/app/components/icons';
-import { translations } from '@/data';
-import { RootState } from '@/state';
-import { languageSelector } from '@/state/settings';
-import { IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import React from 'react';
-import { connect } from 'react-redux';
-import { Redirect, Route } from 'react-router-dom';
-import { Provider as TranslationProvider } from 'react-translated';
-import ArenaPage from './pages/arena/ArenaPage';
-import ArenaTestResultPage from './pages/arena/results/TestResultPage';
-import ArenaTestPage from './pages/arena/test/TestPage';
-import ContentPage from './pages/content/ContentPage';
-import DojoPage from './pages/dojo/DojoPage';
-import TestNavigatorPage from './pages/dojo/navigator/TestNavigatorPage';
-import DojoTestResultPage from './pages/dojo/results/TestResultPage';
-import DojoTestPage from './pages/dojo/test/TestPage';
-import ProfilePage from './pages/profile/ProfilePage';
-import StudyPage from './pages/study/StudyPage';
+import { IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react";
+import { IonReactRouter } from "@ionic/react-router";
+import type React from "react";
+import { connect } from "react-redux";
+import { Redirect, Route } from "react-router-dom";
+import { Provider as TranslationProvider } from "react-translated";
+import { BookIcon, QuizIcon, SettingsIcon, TestPenIcon } from "@/app/components/icons";
+import { translations } from "@/data";
+import type { RootState } from "@/state";
+import { languageSelector } from "@/state/settings";
+import ArenaPage from "./pages/arena/ArenaPage";
+import ArenaTestResultPage from "./pages/arena/results/TestResultPage";
+import ArenaTestPage from "./pages/arena/test/TestPage";
+import ContentPage from "./pages/content/ContentPage";
+import DojoPage from "./pages/dojo/DojoPage";
+import TestNavigatorPage from "./pages/dojo/navigator/TestNavigatorPage";
+import DojoTestResultPage from "./pages/dojo/results/TestResultPage";
+import DojoTestPage from "./pages/dojo/test/TestPage";
+import ProfilePage from "./pages/profile/ProfilePage";
+import StudyPage from "./pages/study/StudyPage";
 
 type Props = PropsFromState;
 
 const iconStyles: React.CSSProperties = {
-  fontSize: '2rem',
+  fontSize: "2rem",
 };
 
 const Router: React.FC<Props> = (props) => {

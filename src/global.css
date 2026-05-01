@@ -1,81 +1,85 @@
 ion-tab-bar {
-    --background: var(--ion-color-dark);
-    --color: var(--ion-color-light);
-    --ion-color-primary: var(--ion-color-light);
-    height: 70px;
+  --background: var(--ion-color-dark);
+  --color: var(--ion-color-light);
+  --ion-color-primary: var(--ion-color-light);
+  height: 70px;
 }
 
 ion-tab-button {
-    --color: var(--ion-color-dark-tint);
-    font-family: var(--ion-font-family-bold);
+  --color: var(--ion-color-dark-tint);
+  font-family: var(--ion-font-family-bold);
 }
 
 ion-tab-button ion-icon {
-    font-size: var(--ion-font-size-xxl);
+  font-size: var(--ion-font-size-xxl);
 }
 
 ion-tab-button ion-label {
-    margin-top: 4px;
-    font-size: var(--ion-font-size-sm);
+  margin-top: 4px;
+  font-size: var(--ion-font-size-sm);
 }
 
 ion-list-header {
-    padding-right: var(--default-padding);
+  padding-right: var(--default-padding);
 }
 
 ion-content,
 ion-text,
 ion-item,
 ion-list-header {
-    --color: var(--ion-color-light);
+  --color: var(--ion-color-light);
 }
 
 ion-item {
-    --min-height: 60px;
+  --min-height: 60px;
 }
 
 ion-list ion-item {
-    --inner-border-width: 0 0 0 0;
+  --inner-border-width: 0 0 0 0;
 }
 
 ion-toast {
-    text-align: center;
+  text-align: center;
 }
 
 ion-button {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .tab-selected {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .alert-button.sc-ion-alert-md {
-    color: var(--ion-color-dark);
+  color: var(--ion-color-dark);
 }
 
 .button-x-small {
-    height: 1rem;
-    font-size: 0.6rem;
+  height: 1rem;
+  font-size: 0.6rem;
 }
 
 .button-med-large {
-    font-family: var(--ion-font-family-bold);
-    height: 2.8rem;
+  font-family: var(--ion-font-family-bold);
+  height: 2.8rem;
+}
+
+.app-page-content-offset {
+  padding-top: var(--app-page-content-top);
 }
 
 .text-l {
-    font-size: var(--ion-font-size-l);
+  font-size: var(--ion-font-size-l);
 }
 
 .text-md {
-    font-size: var(--ion-font-size-md);
+  font-size: var(--ion-font-size-md);
 }
 
 .text-sm {
-    font-size: var(--ion-font-size-sm);
+  font-size: var(--ion-font-size-sm);
 }
 
 .text-xs {
-    font-size: var(--ion-font-size-xs);
+  font-size: var(--ion-font-size-xs);
 }

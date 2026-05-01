@@ -1,15 +1,15 @@
-import { TestPenIcon } from '@/app/components/icons';
-import PurchaseModal from '@/app/modals/PurchaseModal';
-import { RootState } from '@/state';
-import { testsPassedSelector } from '@/state/arena/log';
-import { testInProgressSelector } from '@/state/arena/test';
-import { canPurchaseSelector, ownedSelector } from '@/state/purchase';
-import { CreateAnimation, IonButton, IonCol, IonGrid, IonIcon, IonRow, useIonViewWillEnter } from '@ionic/react';
-import { caretForward, lockClosedOutline } from 'ionicons/icons';
-import React, { useRef, useState } from 'react';
-import { connect } from 'react-redux';
-import { Translate } from 'react-translated';
-import styled from 'styled-components';
+import { CreateAnimation, IonButton, IonCol, IonGrid, IonIcon, IonRow, useIonViewWillEnter } from "@ionic/react";
+import { caretForward, lockClosedOutline } from "ionicons/icons";
+import React, { useRef, useState } from "react";
+import { connect } from "react-redux";
+import { Translate } from "react-translated";
+import styled from "styled-components";
+import { TestPenIcon } from "@/app/components/icons";
+import PurchaseModal from "@/app/modals/PurchaseModal";
+import type { RootState } from "@/state";
+import { testsPassedSelector } from "@/state/arena/log";
+import { testInProgressSelector } from "@/state/arena/test";
+import { canPurchaseSelector, ownedSelector } from "@/state/purchase";
 
 type Props = {
   onStartTestClicked: () => void;
@@ -28,7 +28,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
 
   return (
     <IonGrid>
-      <IonRow style={{ paddingTop: 45 }}>
+      <IonRow className="app-page-content-offset">
         <IonCol>
           <IntroText>
             <Translate text="arenaIntro" />
@@ -36,7 +36,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
         </IonCol>
       </IonRow>
       <IonRow style={{ paddingTop: 35 }}>
-        <IonCol style={{ textAlign: 'center' }}>
+        <IonCol style={{ textAlign: "center" }}>
           <CreateAnimation
             play={false}
             ref={animationIcon}
@@ -44,13 +44,13 @@ const HeaderComponent: React.FC<Props> = (props) => {
             delay={100}
             easing="ease"
             keyframes={[
-              { offset: 0, transform: 'scale(0)' },
-              { offset: 0.8, transform: 'scale(1.2)' },
-              { offset: 1, transform: 'scale(1)' },
+              { offset: 0, transform: "scale(0)" },
+              { offset: 0.8, transform: "scale(1.2)" },
+              { offset: 1, transform: "scale(1)" },
             ]}
           >
             <div>
-              <TestPenIcon style={{ fontSize: '8rem' }} />
+              <TestPenIcon style={{ fontSize: "8rem" }} />
             </div>
           </CreateAnimation>
         </IonCol>
@@ -58,7 +58,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
       <IonRow style={{ paddingTop: 25 }}>
         <IonCol>
           <CenterText>
-            <PrimaryText>{props.hasFullAccess ? 'Tests Passed' : 'Test Locked'}</PrimaryText>
+            <PrimaryText>{props.hasFullAccess ? "Tests Passed" : "Test Locked"}</PrimaryText>
           </CenterText>
         </IonCol>
       </IonRow>
@@ -73,15 +73,15 @@ const HeaderComponent: React.FC<Props> = (props) => {
                 duration={500}
                 easing="ease"
                 fromTo={{
-                  property: 'transform',
-                  fromValue: 'translateY(85px)',
-                  toValue: 'translateY(0px)',
+                  property: "transform",
+                  fromValue: "translateY(85px)",
+                  toValue: "translateY(0px)",
                 }}
               >
                 <Counter>{props.testsPassed}</Counter>
               </CreateAnimation>
             )}
-            {!props.hasFullAccess && <IonIcon icon={lockClosedOutline} style={{ fontSize: '4rem' }} />}
+            {!props.hasFullAccess && <IonIcon icon={lockClosedOutline} style={{ fontSize: "4rem" }} />}
           </CenterText>
         </IonCol>
       </IonRow>
@@ -97,7 +97,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
                 className="button-med-large"
                 onClick={() => props.onStartTestClicked()}
               >
-                <Translate text={props.testInProgress ? 'continue' : 'enterArena'} />
+                <Translate text={props.testInProgress ? "continue" : "enterArena"} />
                 <IonIcon slot="end" icon={caretForward} />
               </IonButton>
             )}

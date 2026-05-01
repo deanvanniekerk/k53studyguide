@@ -1,24 +1,24 @@
-import { NavigationState, reducer } from './reducer';
+import { type NavigationState, reducer } from "./reducer";
 
-describe('state > study > navigation > reducer', () => {
+describe("state > study > navigation > reducer", () => {
   const defaultState: NavigationState = {
-    currentNavigationKey: 'nav',
+    currentNavigationKey: "nav",
   };
 
-  it('should handle STUDY_NAV_RECIEVE_CURRENT_NAVIGATION_KEY', () => {
+  it("should handle STUDY_NAV_RECIEVE_CURRENT_NAVIGATION_KEY", () => {
     const state: NavigationState = {
       ...defaultState,
-      currentNavigationKey: 'oldKey',
+      currentNavigationKey: "oldKey",
     };
 
     const actualState = reducer(state, {
-      type: 'STUDY_NAV_RECIEVE_CURRENT_NAVIGATION_KEY',
-      payload: 'newKey',
+      type: "STUDY_NAV_RECIEVE_CURRENT_NAVIGATION_KEY",
+      payload: "newKey",
     });
 
     const expectedState = {
       ...defaultState,
-      currentNavigationKey: 'newKey',
+      currentNavigationKey: "newKey",
     };
 
     expect(actualState).toEqual(expectedState);

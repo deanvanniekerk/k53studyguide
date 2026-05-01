@@ -3,19 +3,18 @@ import {
   recievePurchaseProduct,
   recievePurchaseProductCanPurchase,
   recievePurchaseProductOwned,
-} from '@/state/purchase';
-import { Store } from 'redux';
-import { PurchaseService } from './types';
+} from "@/state/purchase";
+import type { PurchaseService, PurchaseStore } from "./types";
 
 export class LocalPurchaseService implements PurchaseService {
-  private readonly _reduxStore: Store;
+  private readonly _reduxStore: PurchaseStore;
 
-  constructor(reduxStore: Store) {
+  constructor(reduxStore: PurchaseStore) {
     this._reduxStore = reduxStore;
   }
 
   initialize() {
-    console.log('LocalPurchaseService > initialize product');
+    console.log("LocalPurchaseService > initialize product");
 
     //Dispatch Status
     const canPurchaseAction = recievePurchaseProductCanPurchase(true); //Test purchase
@@ -29,26 +28,26 @@ export class LocalPurchaseService implements PurchaseService {
 
     //Dispatch Product
     const productAction = recievePurchaseProduct(
-      'R25',
-      'K53 Ninja - Full Access',
-      'Gives you full Access to all K53 Ninja Content',
+      "R25",
+      "K53 Ninja - Full Access",
+      "Gives you full Access to all K53 Ninja Content",
     );
     this._reduxStore.dispatch(productAction);
   }
 
   //in app purchase flow: https://github.com/j3k0/cordova-plugin-purchase/blob/master/doc/api.md
   purchase() {
-    console.log('LocalPurchaseService > purchase');
+    console.log("LocalPurchaseService > purchase");
 
-    let statusAction = recievePurchaseOrderState('pending');
+    let statusAction = recievePurchaseOrderState("pending");
     this._reduxStore.dispatch(statusAction);
 
     //Add delay to simulate comms with server
     setTimeout(() => {
-      statusAction = recievePurchaseOrderState('approved');
+      statusAction = recievePurchaseOrderState("approved");
       this._reduxStore.dispatch(statusAction);
 
-      statusAction = recievePurchaseOrderState('finished');
+      statusAction = recievePurchaseOrderState("finished");
       this._reduxStore.dispatch(statusAction);
 
       const canPurchaseAction = recievePurchaseProductCanPurchase(false);

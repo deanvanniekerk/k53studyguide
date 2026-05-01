@@ -1,16 +1,16 @@
-import { createStorage } from '@/store/store';
-import { combineReducers } from 'redux';
-import { PersistConfig, persistReducer } from 'redux-persist';
-import { LogState, reducer as log } from './log';
-import { reducer as test, TestState } from './test';
+import { combineReducers } from "redux";
+import { type PersistConfig, persistReducer } from "redux-persist";
+import { createStorage } from "@/store/store";
+import { type LogState, reducer as log } from "./log";
+import { type TestState, reducer as test } from "./test";
 
 const testConfig: PersistConfig<TestState> = {
-  key: 'arena-test',
+  key: "arena-test",
   storage: createStorage(),
 };
 
 const logConfig: PersistConfig<LogState> = {
-  key: 'arena-log',
+  key: "arena-log",
   storage: createStorage(),
 };
 

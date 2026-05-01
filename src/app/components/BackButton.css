@@ -1,7 +1,10 @@
+ion-fab.app-back-button {
+  top: calc(var(--app-safe-area-top) + 8px);
+  left: 8px;
+}
+
 .back-button {
-    color: var(--ion-color-light);
-    font-size: var(--ion-font-size-xxl);
-    opacity: 0.8;
-    padding-top: 10px;
-    padding-left: 5px;
+  color: var(--ion-color-light);
+  font-size: var(--ion-font-size-xxl);
+  opacity: 0.8;
 }

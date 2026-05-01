@@ -1,40 +1,43 @@
-import { QuestionData, QuestionItem } from '@/data';
-import createMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-import { incrementPassedTests } from '../log';
-import { loadQuestionAnswers, recieveQuestionAnswers, submitTest } from './';
-import { QuestionAnswer, TestSection } from './types';
+import createMockStore from "redux-mock-store";
+import { thunk } from "redux-thunk";
+import { vi } from "vitest";
+import type { QuestionData, QuestionItem } from "@/data";
+import { incrementPassedTests } from "../log";
+import { loadQuestionAnswers, recieveQuestionAnswers, submitTest } from "./";
+import type { QuestionAnswer, TestSection } from "./types";
 
 type DispatchExts = ReturnType<typeof loadQuestionAnswers>;
 
-const middlewares = [thunk];
-const mockStore = createMockStore<Record<string, unknown>, (action: DispatchExts) => void>(middlewares);
+import type { Middleware } from "redux";
 
-describe('state > arena > test > operations', () => {
+const middlewares = [thunk] as unknown as Middleware[];
+const mockStore = createMockStore<Record<string, unknown>, (action: DispatchExts) => void>(middlewares as never);
+
+describe("state > arena > test > operations", () => {
   const questions: QuestionItem[] = Array.from(new Array(10), (_, n) => ({
     id: `${n}`,
-    answer: 'B',
+    answer: "B",
     text: `Question ${n}:`,
     option: [
       {
-        id: 'A',
-        value: 'Answer A.',
+        id: "A",
+        value: "Answer A.",
       },
       {
-        id: 'B',
-        value: 'Answer B.',
+        id: "B",
+        value: "Answer B.",
       },
     ],
   }));
 
   const questionData: QuestionData = {
-    'nav.vehicleControls': [questions[0], questions[1]],
-    'nav.rulesOfTheRoad': [questions[2]],
-    'nav.rulesOfTheRoad.child1': [questions[3], questions[4], questions[5], questions[6]],
-    'nav.roadMarkings': [questions[7], questions[8], questions[9]],
+    "nav.vehicleControls": [questions[0], questions[1]],
+    "nav.rulesOfTheRoad": [questions[2]],
+    "nav.rulesOfTheRoad.child1": [questions[3], questions[4], questions[5], questions[6]],
+    "nav.roadMarkings": [questions[7], questions[8], questions[9]],
   };
 
-  it('loadQuestionAnswers', () => {
+  it("loadQuestionAnswers", () => {
     const store = mockStore({
       questions: {
         questionData: questionData,
@@ -55,72 +58,72 @@ describe('state > arena > test > operations', () => {
 
     const questionAnswers: QuestionAnswer[] = [
       {
-        section: 'A',
+        section: "A",
         answer: null,
         question: questions[0],
       },
       {
-        section: 'A',
+        section: "A",
         answer: null,
         question: questions[1],
       },
       {
-        section: 'B',
+        section: "B",
         answer: null,
         question: questions[2],
       },
       {
-        section: 'B',
+        section: "B",
         answer: null,
         question: questions[3],
       },
       {
-        section: 'B',
+        section: "B",
         answer: null,
         question: questions[4],
       },
       {
-        section: 'B',
+        section: "B",
         answer: null,
         question: questions[5],
       },
       {
-        section: 'B',
+        section: "B",
         answer: null,
         question: questions[6],
       },
       {
-        section: 'C',
+        section: "C",
         answer: null,
         question: questions[7],
       },
       {
-        section: 'C',
+        section: "C",
         answer: null,
         question: questions[8],
       },
       {
-        section: 'C',
+        section: "C",
         answer: null,
         question: questions[9],
       },
     ];
 
-    expect(actions[0].type).toEqual('ARENA_TEST_RECIEVE_QUESTION_ANSWERS');
+    expect(actions[0].type).toEqual("ARENA_TEST_RECIEVE_QUESTION_ANSWERS");
     expect(actions[0].payload.length).toEqual(10);
 
-    expect(actions[0].payload).toEqual(jasmine.arrayContaining(recieveQuestionAnswers(questionAnswers).payload));
+    expect(actions[0].payload).toEqual(expect.arrayContaining(recieveQuestionAnswers(questionAnswers).payload));
   });
 
-  it('submitTest', () => {
+  it("submitTest", () => {
     const answeredQuestions: QuestionAnswer[] = [
       {
-        section: 'A',
-        answer: 'Z',
+        section: "A",
+        answer: "Z",
         question: questions[2],
       },
       {
-        section: 'A',
+        section: "A",
         answer: questions[0].answer,
         question: questions[0],
       },
@@ -140,8 +143,8 @@ describe('state > arena > test > operations', () => {
     });
 
     const now = new Date();
-    //@ts-ignore
-    const spy = jest.spyOn(global, 'Date').mockImplementation(() => now);
+    vi.useFakeTimers();
+    vi.setSystemTime(now);
 
     store.dispatch(submitTest());
 
@@ -153,15 +156,14 @@ describe('state > arena > test > operations', () => {
 
     expect(actions[0].payload.date).toEqual(now.toISOString());
 
-    spy.mockReset();
-    spy.mockRestore();
+    vi.useRealTimers();
   });
 
-  it('submitTest > pass', () => {
+  it("submitTest > pass", () => {
     const getQuestionAnswer = (section: TestSection, question: QuestionItem): QuestionAnswer => {
       return {
         section: section,
-        answer: 'A',
+        answer: "A",
         question: question,
       };
     };
@@ -170,7 +172,7 @@ describe('state > arena > test > operations', () => {
       return Array.from(new Array(count), (_, n) => {
         const question = {
           id: `${n}`,
-          answer: 'A',
+          answer: "A",
           text: ``,
           option: [],
         };
@@ -180,9 +182,9 @@ describe('state > arena > test > operations', () => {
     };
 
     const answeredQuestions: QuestionAnswer[] = [
-      ...getQuestionAnswers('A', 8),
-      ...getQuestionAnswers('B', 28),
-      ...getQuestionAnswers('C', 28),
+      ...getQuestionAnswers("A", 8),
+      ...getQuestionAnswers("B", 28),
+      ...getQuestionAnswers("C", 28),
     ];
 
     const store = mockStore({

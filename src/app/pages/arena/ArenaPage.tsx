@@ -1,24 +1,25 @@
-import { useAnalytics } from '@/app/hooks/useAnalytics';
-import { RootState } from '@/state';
-import { loadQuestionAnswers, testInProgressSelector } from '@/state/arena/test';
-import { notificationsSelector, recieveRecieveNotificationState } from '@/state/notifications';
-import { IonContent, IonPage } from '@ionic/react';
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { useHistory } from 'react-router';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
-import { ArenaInfoModal } from './ArenaInfoModal';
-import { ArenaPageHeader } from './ArenaPageHeader';
-import { ArenaWatermark } from './ArenaWatermark';
-import { Header } from './components';
+import { IonContent, IonPage } from "@ionic/react";
+import type React from "react";
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { useHistory } from "react-router";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
+import type { RootState } from "@/state";
+import { loadQuestionAnswers, testInProgressSelector } from "@/state/arena/test";
+import { notificationsSelector, recieveRecieveNotificationState } from "@/state/notifications";
+import { ArenaInfoModal } from "./ArenaInfoModal";
+import { ArenaPageHeader } from "./ArenaPageHeader";
+import { ArenaWatermark } from "./ArenaWatermark";
+import { Header } from "./components";
 
 type Props = PropsFromState & PropsFromDispatch;
 
 const ArenaPage: React.FC<Props> = (props) => {
   const history = useHistory();
 
-  const { logEvent } = useAnalytics('TestPage');
+  const { logEvent } = useAnalytics("TestPage");
 
   const [infoModalVisible, setInfoModalVisible] = useState(false);
 
@@ -30,11 +31,11 @@ const ArenaPage: React.FC<Props> = (props) => {
 
   const showInfoModal = () => {
     setInfoModalVisible(true);
-    props.recieveRecieveNotificationState('arenaInfo', { seen: true });
+    props.recieveRecieveNotificationState("arenaInfo", { seen: true });
   };
 
   const onStartTestClicked = () => {
-    logEvent(props.testInProgress ? 'CONTINUE_TEST' : 'START_TEST');
+    logEvent(props.testInProgress ? "CONTINUE_TEST" : "START_TEST");
 
     //If no test exists, load one, else continue with previous
     if (!props.testInProgress) props.loadQuestionAnswers();

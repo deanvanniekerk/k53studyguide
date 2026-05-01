@@ -1,8 +1,8 @@
-import { NavigationItem as NavItem, ProgressBar } from '@/app/components';
-import { RootState } from '@/state';
-import { seenTotalsSelector } from '@/state/study/log';
-import React from 'react';
-import { connect } from 'react-redux';
+import type React from "react";
+import { connect } from "react-redux";
+import { NavigationItem as NavItem, ProgressBar } from "@/app/components";
+import type { RootState } from "@/state";
+import { seenTotalsSelector } from "@/state/study/log";
 
 type Props = {
   navigationItemKey: string;

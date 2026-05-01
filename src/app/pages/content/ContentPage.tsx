@@ -1,17 +1,18 @@
-import { BackButton } from '@/app/components';
-import { BookOutlineIcon } from '@/app/components/icons';
-import { useAnalytics } from '@/app/hooks/useAnalytics';
-import { watermarkStyle } from '@/app/styles';
-import { RootState } from '@/state';
-import { currentNavigationParentSelector, navigateUp, ROOT_NAVIGATION_KEY } from '@/state/study/navigation';
-import { IonContent, IonPage } from '@ionic/react';
-import { arrowUp } from 'ionicons/icons';
-import React, { useRef } from 'react';
-import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
-import { ContentList, Header, Navigator } from './components';
+import { IonContent, IonPage } from "@ionic/react";
+import { arrowUp } from "ionicons/icons";
+import type React from "react";
+import { useRef } from "react";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import { BackButton } from "@/app/components";
+import { BookOutlineIcon } from "@/app/components/icons";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
+import { watermarkStyle } from "@/app/styles";
+import type { RootState } from "@/state";
+import { currentNavigationParentSelector, navigateUp, ROOT_NAVIGATION_KEY } from "@/state/study/navigation";
+import { ContentList, Header, Navigator } from "./components";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -19,7 +20,7 @@ const ContentPage: React.FC<Props> = (props) => {
   const history = useHistory();
   const content = useRef<HTMLIonContentElement>(null);
 
-  useAnalytics('ContentPage');
+  useAnalytics("ContentPage");
 
   const onBackClicked = () => {
     // if (content.current) {
@@ -28,7 +29,7 @@ const ContentPage: React.FC<Props> = (props) => {
     // }
 
     if (props.currentNavigationParent === ROOT_NAVIGATION_KEY) {
-      history.replace('/study');
+      history.replace("/study");
       return;
     }
 

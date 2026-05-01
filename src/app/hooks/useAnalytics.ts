@@ -1,5 +1,5 @@
-import { AnalyticsFirebase } from '@awesome-cordova-plugins/analytics-firebase';
-import { useCallback, useEffect } from 'react';
+import { AnalyticsFirebase } from "@awesome-cordova-plugins/analytics-firebase";
+import { useCallback, useEffect } from "react";
 
 // ADD_PAYMENT_INFO;
 // ADD_TO_CART;
@@ -34,16 +34,16 @@ import { useCallback, useEffect } from 'react';
 // VIEW_SEARCH_RESULTS;
 
 type Event =
-  | 'PRESENT_OFFER'
-  | 'NAVIGATE'
-  | 'RATE_APP'
-  | 'CLEAR_HISTORY'
-  | 'START_QUIZ'
-  | 'CONTINUE_QUIZ'
-  | 'QUIZ_RESULT'
-  | 'START_TEST'
-  | 'CONTINUE_TEST'
-  | 'TEST_RESULT';
+  | "PRESENT_OFFER"
+  | "NAVIGATE"
+  | "RATE_APP"
+  | "CLEAR_HISTORY"
+  | "START_QUIZ"
+  | "CONTINUE_QUIZ"
+  | "QUIZ_RESULT"
+  | "START_TEST"
+  | "CONTINUE_TEST"
+  | "TEST_RESULT";
 
 export const useAnalytics = (screen?: string) => {
   const setCurrentScreen = useCallback((screen: string) => {

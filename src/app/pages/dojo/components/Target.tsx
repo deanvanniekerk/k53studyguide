@@ -1,13 +1,13 @@
-import { Breadcrumb } from '@/app/components';
-import { RootState } from '@/state';
-import { targetNavigationKeySelector } from '@/state/dojo/navigation';
-import { ROOT_NAVIGATION_KEY } from '@/state/navigation';
-import { IonButton, IonCol, IonGrid, IonIcon, IonRow, IonText } from '@ionic/react';
-import { caretForward } from 'ionicons/icons';
-import React from 'react';
-import { connect } from 'react-redux';
-import { Translate } from 'react-translated';
-import styled from 'styled-components';
+import { IonButton, IonCol, IonGrid, IonIcon, IonRow, IonText } from "@ionic/react";
+import { caretForward } from "ionicons/icons";
+import type React from "react";
+import { connect } from "react-redux";
+import { Translate } from "react-translated";
+import styled from "styled-components";
+import { Breadcrumb } from "@/app/components";
+import type { RootState } from "@/state";
+import { targetNavigationKeySelector } from "@/state/dojo/navigation";
+import { ROOT_NAVIGATION_KEY } from "@/state/navigation";
 
 type Props = {
   onStartTestClicked: () => void;
@@ -19,9 +19,9 @@ const TargetComponent: React.FC<Props> = (props) => {
       <IonRow style={{ paddingTop: 15 }}>
         <IonCol>
           <IonText>
-            <h2 style={{ fontWeight: 'bold', marginBottom: 0 }}>
+            <h2 style={{ fontWeight: "bold", marginBottom: 0 }}>
               <Translate
-                text={props.targetNavigationKey === ROOT_NAVIGATION_KEY ? 'allContent' : props.targetNavigationKey}
+                text={props.targetNavigationKey === ROOT_NAVIGATION_KEY ? "allContent" : props.targetNavigationKey}
               />
             </h2>
           </IonText>
@@ -33,7 +33,7 @@ const TargetComponent: React.FC<Props> = (props) => {
         </IonCol>
       </IonRow>
       <IonRow style={{ paddingTop: 40, paddingBottom: 20 }}>
-        <IonCol style={{ textAlign: 'center' }}>
+        <IonCol style={{ textAlign: "center" }}>
           <IonButton
             color="secondary"
             shape="round"

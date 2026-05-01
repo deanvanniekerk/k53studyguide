@@ -1,7 +1,7 @@
-import { IonIcon } from '@ionic/react';
-import { informationCircleOutline } from 'ionicons/icons';
-import React from 'react';
-import styled from 'styled-components';
+import { IonIcon } from "@ionic/react";
+import { informationCircleOutline } from "ionicons/icons";
+import type React from "react";
+import styled from "styled-components";
 
 type Props = {
   onClick: () => void;
@@ -9,21 +9,28 @@ type Props = {
 
 const PageHeaderInfoIcon: React.FC<Props> = (props) => {
   return (
-    <IconWrapper onClick={props.onClick}>
-      <InfoIcon icon={informationCircleOutline} />
-    </IconWrapper>
+    <InfoButton type="button" aria-label="Show information" onClick={props.onClick}>
+      <IonIcon icon={informationCircleOutline} />
+    </InfoButton>
   );
 };
 
-const IconWrapper = styled.div`
-  position: relative;
-`;
+const InfoButton = styled.button`
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ion-color-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 
-const InfoIcon = styled(IonIcon)`
-  left: -30px;
-  top: -2px;
-  position: absolute;
-  font-size: 28px;
+  ion-icon {
+    font-size: 28px;
+  }
+
   opacity: 0.8;
 `;
 

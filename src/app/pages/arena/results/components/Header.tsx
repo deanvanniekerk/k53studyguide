@@ -1,19 +1,20 @@
-import { HorizontalRule } from '@/app/components';
-import { TestFailedIcon, TestPassedIcon } from '@/app/components/icons';
-import { useAnalytics } from '@/app/hooks/useAnalytics';
-import { RootState } from '@/state';
+import { CreateAnimation, IonCol, IonGrid, IonRow } from "@ionic/react";
+import type React from "react";
+import { useEffect } from "react";
+import { connect } from "react-redux";
+import { Translate } from "react-translated";
+import styled from "styled-components";
+import { HorizontalRule } from "@/app/components";
+import { TestFailedIcon, TestPassedIcon } from "@/app/components/icons";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
+import type { RootState } from "@/state";
 import {
   passedSelector,
   sectionAPassedSelector,
   sectionBPassedSelector,
   sectionCPassedSelector,
   testResultsSelector,
-} from '@/state/arena/test';
-import { CreateAnimation, IonCol, IonGrid, IonRow } from '@ionic/react';
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Translate } from 'react-translated';
-import styled from 'styled-components';
+} from "@/state/arena/test";
 
 type Props = PropsFromState;
 
@@ -21,7 +22,7 @@ const HeaderComponent: React.FC<Props> = ({ testResults, sectionAPassed, section
   const { logEvent } = useAnalytics();
 
   useEffect(() => {
-    logEvent('TEST_RESULT', {
+    logEvent("TEST_RESULT", {
       testResults: testResults,
       sectionAPassed: sectionAPassed,
       sectionBPassed: sectionBPassed,
@@ -34,7 +35,7 @@ const HeaderComponent: React.FC<Props> = ({ testResults, sectionAPassed, section
     <Container>
       <PrimaryResult>
         <NinjaIcon passed={passed} />
-        <div style={{ overflow: 'hidden' }}>
+        <div style={{ overflow: "hidden" }}>
           <ResultText passed={passed} />
         </div>
         <PrimaryResultSubText>
@@ -95,9 +96,9 @@ const NinjaIcon: React.FC<NinjaIconProps> = (props) => {
       easing="ease"
       delay={600}
       keyframes={[
-        { offset: 0, transform: 'scale(1)' },
-        { offset: 0.5, transform: 'scale(1.3)' },
-        { offset: 1, transform: 'scale(1)' },
+        { offset: 0, transform: "scale(1)" },
+        { offset: 0.5, transform: "scale(1.3)" },
+        { offset: 1, transform: "scale(1)" },
       ]}
     >
       <div>
@@ -119,9 +120,9 @@ const ResultText: React.FC<ResultTextProps> = (props) => {
       easing="ease"
       delay={200}
       fromTo={{
-        property: 'transform',
-        fromValue: 'translateY(80px)',
-        toValue: 'translateY(0px)',
+        property: "transform",
+        fromValue: "translateY(80px)",
+        toValue: "translateY(0px)",
       }}
     >
       <PrimaryResultText>
@@ -132,7 +133,7 @@ const ResultText: React.FC<ResultTextProps> = (props) => {
 };
 
 const Container = styled.div`
-  padding-top: 55px;
+  padding-top: var(--app-page-content-top);
   padding-left: 16px;
   padding-right: 16px;
 `;

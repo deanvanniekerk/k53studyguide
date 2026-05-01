@@ -1,16 +1,16 @@
 .root-navigation-item {
-    border-radius: var(--ic-corner-radius);
-    border: var(--ic-border);
-    padding: var(--ic-padding);
-    margin: 8px;
-    height: 75px;
+  border-radius: var(--ic-corner-radius);
+  border: var(--ic-border);
+  padding: var(--ic-padding);
+  margin: 8px;
+  height: 75px;
 }
 
 .root-navigation-item .progress-bar {
-    position: absolute;
-    left: 0px;
-    bottom: -3px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  position: absolute;
+  left: 0px;
+  bottom: -3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

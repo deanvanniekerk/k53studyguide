@@ -1,6 +1,6 @@
-import { LogData, LogLevel } from '@/services';
+import type { LogData, LogLevel } from "@/services";
 
-export const LOG_RECIEVE_MESSAGE = 'LOG_RECIEVE_MESSAGE';
+export const LOG_RECIEVE_MESSAGE = "LOG_RECIEVE_MESSAGE";
 
 export interface RecieveLogMessageAction {
   type: typeof LOG_RECIEVE_MESSAGE;

@@ -1,30 +1,30 @@
-import { QuestionAnswer } from './';
-import * as actions from './actions';
+import type { QuestionAnswer } from "./";
+import * as actions from "./actions";
 
-describe('state > arena > test > actions', () => {
-  it('recieveQuestionAnswers', () => {
+describe("state > arena > test > actions", () => {
+  it("recieveQuestionAnswers", () => {
     const expectedAction = {
-      type: 'ARENA_TEST_RECIEVE_QUESTION_ANSWERS',
+      type: "ARENA_TEST_RECIEVE_QUESTION_ANSWERS",
       payload: [
         {
-          section: 'A',
+          section: "A",
           answer: null,
           question: {
-            id: '1',
-            answer: 'C',
+            id: "1",
+            answer: "C",
             text: "When you only have a learner's licence you are not allowed to:",
             option: [
               {
-                id: 'A',
-                value: 'Carry passengers in your car.',
+                id: "A",
+                value: "Carry passengers in your car.",
               },
               {
-                id: 'B',
-                value: 'Drive faster than 100km/h.',
+                id: "B",
+                value: "Drive faster than 100km/h.",
               },
               {
-                id: 'C',
-                value: 'Drive without having your licence with you.',
+                id: "C",
+                value: "Drive without having your licence with you.",
               },
             ],
           },
@@ -35,24 +35,24 @@ describe('state > arena > test > actions', () => {
     expect(actions.recieveQuestionAnswers(expectedAction.payload)).toEqual(expectedAction);
   });
 
-  it('recieveAnswer', () => {
+  it("recieveAnswer", () => {
     const expectedAction = {
-      type: 'ARENA_TEST_RECIEVE_ANSWER',
+      type: "ARENA_TEST_RECIEVE_ANSWER",
       payload: {
-        questionId: '1',
-        answer: 'A',
+        questionId: "1",
+        answer: "A",
       },
     };
 
-    expect(actions.recieveAnswer('1', 'A')).toEqual(expectedAction);
+    expect(actions.recieveAnswer("1", "A")).toEqual(expectedAction);
   });
 
-  it('recieveCurrentSection', () => {
+  it("recieveCurrentSection", () => {
     const expectedAction = {
-      type: 'ARENA_TEST_RECIEVE_CURRENT_SECTION',
-      payload: 'B',
+      type: "ARENA_TEST_RECIEVE_CURRENT_SECTION",
+      payload: "B",
     };
 
-    expect(actions.recieveCurrentSection('B')).toEqual(expectedAction);
+    expect(actions.recieveCurrentSection("B")).toEqual(expectedAction);
   });
 });

@@ -1,24 +1,25 @@
-import { useAnalytics } from '@/app/hooks/useAnalytics';
-import { RootState } from '@/state';
-import { loadQuestionAnswers, testInProgressSelector } from '@/state/dojo/test';
-import { notificationsSelector, recieveRecieveNotificationState } from '@/state/notifications';
-import { IonContent, IonPage } from '@ionic/react';
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
-import { Header, Settings } from './components';
-import { DojoInfoModal } from './DojoInfoModal';
-import { DojoPageHeader } from './DojoPageHeader';
-import { DojoWatermark } from './DojoWatermark';
+import { IonContent, IonPage } from "@ionic/react";
+import type React from "react";
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
+import type { RootState } from "@/state";
+import { loadQuestionAnswers, testInProgressSelector } from "@/state/dojo/test";
+import { notificationsSelector, recieveRecieveNotificationState } from "@/state/notifications";
+import { Header, Settings } from "./components";
+import { DojoInfoModal } from "./DojoInfoModal";
+import { DojoPageHeader } from "./DojoPageHeader";
+import { DojoWatermark } from "./DojoWatermark";
 
 type Props = PropsFromState & PropsFromDispatch;
 
 const DojoPage: React.FC<Props> = (props) => {
   const history = useHistory();
 
-  const { logEvent } = useAnalytics('QuizPage');
+  const { logEvent } = useAnalytics("QuizPage");
 
   const [infoModalVisible, setInfoModalVisible] = useState(false);
 
@@ -30,11 +31,11 @@ const DojoPage: React.FC<Props> = (props) => {
 
   const showInfoModal = () => {
     setInfoModalVisible(true);
-    props.recieveRecieveNotificationState('dojoInfo', { seen: true });
+    props.recieveRecieveNotificationState("dojoInfo", { seen: true });
   };
 
   const onStartTestClicked = () => {
-    logEvent(props.testInProgress ? 'CONTINUE_QUIZ' : 'START_QUIZ');
+    logEvent(props.testInProgress ? "CONTINUE_QUIZ" : "START_QUIZ");
 
     //If no test exists, load one, else continue with previous
     if (!props.testInProgress) props.loadQuestionAnswers();

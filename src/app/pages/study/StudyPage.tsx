@@ -1,19 +1,20 @@
-import { BookOutlineIcon } from '@/app/components/icons';
-import { useAnalytics } from '@/app/hooks/useAnalytics';
-import { watermarkStyle } from '@/app/styles';
-import { RootState } from '@/state';
-import { rootNavigationChildrenSelector } from '@/state/navigation';
-import { notificationsSelector, recieveRecieveNotificationState } from '@/state/notifications';
-import { recieveCurrentNavigationKey } from '@/state/study/navigation';
-import { IonCol, IonContent, IonGrid, IonPage, IonRow } from '@ionic/react';
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
-import { Header, NavigationItem } from './components';
-import { StudyInfoModal } from './StudyInfoModal';
-import { StudyPageHeader } from './StudyPageHeader';
+import { IonCol, IonContent, IonGrid, IonPage, IonRow } from "@ionic/react";
+import type React from "react";
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import { BookOutlineIcon } from "@/app/components/icons";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
+import { watermarkStyle } from "@/app/styles";
+import type { RootState } from "@/state";
+import { rootNavigationChildrenSelector } from "@/state/navigation";
+import { notificationsSelector, recieveRecieveNotificationState } from "@/state/notifications";
+import { recieveCurrentNavigationKey } from "@/state/study/navigation";
+import { Header, NavigationItem } from "./components";
+import { StudyInfoModal } from "./StudyInfoModal";
+import { StudyPageHeader } from "./StudyPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -21,7 +22,7 @@ const StudyPage: React.FC<Props> = (props) => {
   const history = useHistory();
   const [infoModalVisible, setInfoModalVisible] = useState(false);
 
-  const { logEvent } = useAnalytics('StudyPage');
+  const { logEvent } = useAnalytics("StudyPage");
 
   useEffect(() => {
     if (!props.infoSeen) {
@@ -31,11 +32,11 @@ const StudyPage: React.FC<Props> = (props) => {
 
   const showInfoModal = () => {
     setInfoModalVisible(true);
-    props.recieveRecieveNotificationState('studyInfo', { seen: true });
+    props.recieveRecieveNotificationState("studyInfo", { seen: true });
   };
 
   const onNavigationItemClicked = (key: string) => {
-    logEvent('NAVIGATE', { key: key, component: 'StudyPage' });
+    logEvent("NAVIGATE", { key: key, component: "StudyPage" });
     props.recieveCurrentNavigationKey(key);
     history.push(`/content`);
   };
@@ -56,7 +57,7 @@ const StudyPage: React.FC<Props> = (props) => {
           <IonRow>
             {props.navigationChildren.map((key, index) => {
               return (
-                <IonCol key={key} sizeXs="12" sizeSm="4" sizeMd="4" sizeLg="3" style={{ overflow: 'hidden' }}>
+                <IonCol key={key} sizeXs="12" sizeSm="4" sizeMd="4" sizeLg="3" style={{ overflow: "hidden" }}>
                   <NavigationItem navigationItemKey={key} onClick={onNavigationItemClicked} index={index} />
                 </IonCol>
               );

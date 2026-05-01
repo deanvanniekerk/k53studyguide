@@ -1,4 +1,4 @@
-import { QuestionItem } from '@/data';
+import type { QuestionItem } from "@/data";
 
 export type QuestionAnswer = {
   question: QuestionItem;

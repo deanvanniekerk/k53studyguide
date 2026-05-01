@@ -1,4 +1,4 @@
-import { Notifications, NotifictionActions } from './';
+import type { Notifications, NotifictionActions } from "./";
 
 export type NotificationsState = {
   readonly notifications: Notifications;
@@ -20,7 +20,7 @@ export const defaultState: NotificationsState = {
 
 export const reducer = (state: NotificationsState = defaultState, action: NotifictionActions): NotificationsState => {
   switch (action.type) {
-    case 'NOTIFICATION_RECIEVE_NOTIFICATION_STATE':
+    case "NOTIFICATION_RECIEVE_NOTIFICATION_STATE":
       return {
         ...state,
         notifications: {

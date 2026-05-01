@@ -1,30 +1,35 @@
-import { CordovaPurchaseService, createPurchaseService, LocalPurchaseService } from '@/services';
-import { applyMiddleware, compose, createStore } from 'redux';
-import { persistStore } from 'redux-persist';
-import thunk from 'redux-thunk';
-import loggerMiddleware from './middleware/loggerMiddleware';
-import createRootReducer from './rootReducer';
+import type { Middleware, StoreEnhancer } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
+import { persistStore } from "redux-persist";
+import { thunk } from "redux-thunk";
+import { CordovaPurchaseService, createPurchaseService, LocalPurchaseService } from "@/services";
+import type { PurchaseStore } from "@/services/purchase/types";
+import loggerMiddleware from "./middleware/loggerMiddleware";
+import createRootReducer from "./rootReducer";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const enhancers = [] as any;
-if (window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__']) {
-  enhancers.push(window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__']());
+const enhancers: StoreEnhancer[] = [];
+if (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
+  enhancers.push(window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() as StoreEnhancer);
 }
 
-const middleware = [thunk, loggerMiddleware];
+const middleware = [thunk, loggerMiddleware as Middleware];
 
 export const configureStore = () => {
+  const middlewareEnhancer = applyMiddleware(...middleware) as StoreEnhancer;
+  const storeEnhancer = compose(middlewareEnhancer, ...enhancers) as StoreEnhancer;
+
   const store = createStore(
     createRootReducer(),
     undefined, // preloaded state
-    compose(applyMiddleware(...middleware), ...enhancers),
+    storeEnhancer,
   );
 
-  const persistor = persistStore(store);
+  const persistor = persistStore(store as unknown as PurchaseStore);
 
-  let purchaseService = createPurchaseService(LocalPurchaseService, store);
+  const purchaseStore = store as unknown as PurchaseStore;
+  let purchaseService = createPurchaseService(LocalPurchaseService, purchaseStore);
 
-  if (__ENVIRONMENT__ === 'production') purchaseService = createPurchaseService(CordovaPurchaseService, store);
+  if (__ENVIRONMENT__ === "production") purchaseService = createPurchaseService(CordovaPurchaseService, purchaseStore);
 
   return { store, persistor, purchaseService };
 };

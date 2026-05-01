@@ -1,4 +1,4 @@
-export const SETTINGS_RECIEVE_LANGUAGE = 'SETTINGS_RECIEVE_LANGUAGE';
+export const SETTINGS_RECIEVE_LANGUAGE = "SETTINGS_RECIEVE_LANGUAGE";
 
 export interface RecieveLanguageAction {
   type: typeof SETTINGS_RECIEVE_LANGUAGE;

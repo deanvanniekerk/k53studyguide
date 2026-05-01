@@ -1,11 +1,11 @@
-import { RootState } from '@/state';
-import { currentSectionSelector, recieveCurrentSection, testResultsSelector } from '@/state/arena/test';
-import { IonCol, IonGrid, IonRow } from '@ionic/react';
-import React from 'react';
-import { connect } from 'react-redux';
-import { Translate } from 'react-translated';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
+import { IonCol, IonGrid, IonRow } from "@ionic/react";
+import type React from "react";
+import { connect } from "react-redux";
+import { Translate } from "react-translated";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import type { RootState } from "@/state";
+import { currentSectionSelector, recieveCurrentSection, testResultsSelector } from "@/state/arena/test";
 
 type Props = {
   hideInfo?: boolean;
@@ -16,37 +16,37 @@ const TabsComponent: React.FC<Props> = ({ currentSection, testResults, recieveCu
   return (
     <IonGrid>
       <IonRow style={{ paddingTop: 10, paddingBottom: 10 }}>
-        <IonCol size="4" onClick={() => recieveCurrentSection('A')}>
+        <IonCol size="4" onClick={() => recieveCurrentSection("A")}>
           <TabWrapper>
-            <Tab selected={currentSection === 'A'}>
+            <Tab selected={currentSection === "A"}>
               <Translate text="sectionA" />
               {!hideInfo && (
                 <TabInfo
-                  selected={currentSection === 'A'}
+                  selected={currentSection === "A"}
                 >{`${testResults.A.answered} / ${testResults.A.total}`}</TabInfo>
               )}
             </Tab>
           </TabWrapper>
         </IonCol>
-        <IonCol size="4" onClick={() => recieveCurrentSection('B')}>
+        <IonCol size="4" onClick={() => recieveCurrentSection("B")}>
           <TabWrapper>
-            <Tab selected={currentSection === 'B'}>
+            <Tab selected={currentSection === "B"}>
               <Translate text="sectionB" />
               {!hideInfo && (
                 <TabInfo
-                  selected={currentSection === 'B'}
+                  selected={currentSection === "B"}
                 >{`${testResults.B.answered} / ${testResults.B.total}`}</TabInfo>
               )}
             </Tab>
           </TabWrapper>
         </IonCol>
-        <IonCol size="4" onClick={() => recieveCurrentSection('C')}>
+        <IonCol size="4" onClick={() => recieveCurrentSection("C")}>
           <TabWrapper>
-            <Tab selected={currentSection === 'C'}>
+            <Tab selected={currentSection === "C"}>
               <Translate text="sectionC" />
               {!hideInfo && (
                 <TabInfo
-                  selected={currentSection === 'C'}
+                  selected={currentSection === "C"}
                 >{`${testResults.C.answered} / ${testResults.C.total}`}</TabInfo>
               )}
             </Tab>
@@ -67,14 +67,14 @@ const Tab = styled.div<{ selected: boolean }>`
   font-size: var(--ion-font-size-md);
   padding-bottom: 15px;
   font-family: var(--ion-font-family-bold);
-  font-weight: ${(props) => (props.selected ? 'bold' : '100')};
-  border-bottom: ${(props) => (props.selected ? '2px' : '0')} solid #ffffffc9;
+  font-weight: ${(props) => (props.selected ? "bold" : "100")};
+  border-bottom: ${(props) => (props.selected ? "2px" : "0")} solid #ffffffc9;
 `;
 
 const TabInfo = styled.div<{ selected: boolean }>`
   font-size: var(--ion-font-size-xs);
   font-family: var(--ion-font-family-bold);
-  font-weight: ${(props) => (props.selected ? 'bold' : '100')};
+  font-weight: ${(props) => (props.selected ? "bold" : "100")};
   display: block;
   padding-top: 5px;
   opacity: 0.7;

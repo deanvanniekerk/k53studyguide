@@ -1,10 +1,10 @@
-import { HorizontalRule } from '@/app/components';
-import { useAnalytics } from '@/app/hooks/useAnalytics';
-import { useAppRate } from '@/app/hooks/useAppRate';
-import { IonButton, IonCol, IonGrid, IonRow, IonText } from '@ionic/react';
-import React from 'react';
-import { Translate } from 'react-translated';
-import styled from 'styled-components';
+import { IonButton, IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
+import type React from "react";
+import { Translate } from "react-translated";
+import styled from "styled-components";
+import { HorizontalRule } from "@/app/components";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
+import { useAppRate } from "@/app/hooks/useAppRate";
 
 const RateApp: React.FC = () => {
   const appRate = useAppRate();
@@ -32,7 +32,7 @@ const RateApp: React.FC = () => {
             shape="round"
             fill="solid"
             onClick={() => {
-              logEvent('RATE_APP');
+              logEvent("RATE_APP");
               appRate.navigateToAppStore();
             }}
           >

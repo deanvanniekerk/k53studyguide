@@ -1,7 +1,12 @@
-import { RootState } from '@/state/rootReducer';
-import { createSelector, OutputSelector, Selector } from 'reselect';
-import { QuestionAnswer } from './';
-import { TestState } from './reducer';
+import { createSelector, type Selector } from "reselect";
+import type { RootState } from "@/state/rootReducer";
+
+type OutputSelector<State, Result, Combiner> = Selector<State, Result> & {
+  resultFunc: Combiner;
+};
+
+import type { QuestionAnswer } from "./";
+import type { TestState } from "./reducer";
 
 const rootSelector: Selector<RootState, TestState> = (state: RootState): TestState => state.dojo.test;
 
@@ -11,11 +16,8 @@ export const questionAnswersSelector: OutputSelector<
   (state: TestState) => QuestionAnswer[]
 > = createSelector(rootSelector, (root) => root.questionAnswers);
 
-export const totalQuestionsSelector: OutputSelector<
-  RootState,
-  number,
-  (questionAnswers: QuestionAnswer[]) => number
-> = createSelector(questionAnswersSelector, (questionAnswers) => questionAnswers.length);
+export const totalQuestionsSelector: OutputSelector<RootState, number, (questionAnswers: QuestionAnswer[]) => number> =
+  createSelector(questionAnswersSelector, (questionAnswers) => questionAnswers.length);
 
 export const allQuestionsAnsweredSelector: OutputSelector<
   RootState,
@@ -39,11 +41,8 @@ export const maxQuestionsSelector: OutputSelector<RootState, number, (state: Tes
   (root) => root.maxQuestions,
 );
 
-export const testInProgressSelector: OutputSelector<
-  RootState,
-  boolean,
-  (totalQuestions: number) => boolean
-> = createSelector(totalQuestionsSelector, (totalQuestions) => totalQuestions > 0);
+export const testInProgressSelector: OutputSelector<RootState, boolean, (totalQuestions: number) => boolean> =
+  createSelector(totalQuestionsSelector, (totalQuestions) => totalQuestions > 0);
 
 export const experienceGainedSelector: OutputSelector<RootState, number, (state: TestState) => number> = createSelector(
   rootSelector,

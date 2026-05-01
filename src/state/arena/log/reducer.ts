@@ -1,5 +1,5 @@
-import { QuesionsSuccesfullyAnsweredDates } from './';
-import { LogActions } from './actions';
+import type { QuesionsSuccesfullyAnsweredDates } from "./";
+import type { LogActions } from "./actions";
 
 export type LogState = {
   readonly quesionsSuccesfullyAnsweredDates: QuesionsSuccesfullyAnsweredDates;
@@ -13,7 +13,7 @@ export const defaultState: LogState = {
 
 export const reducer = (state: LogState = defaultState, action: LogActions): LogState => {
   switch (action.type) {
-    case 'ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE':
+    case "ARENA_LOG_RECIEVE_QUESTION_SUCCESSFULLY_ANSWERED_DATE":
       return {
         ...state,
         quesionsSuccesfullyAnsweredDates: {
@@ -21,17 +21,17 @@ export const reducer = (state: LogState = defaultState, action: LogActions): Log
           [action.payload.questionId]: action.payload.date,
         },
       };
-    case 'ARENA_LOG_INCREMENT_PASSED_TESTS':
+    case "ARENA_LOG_INCREMENT_PASSED_TESTS":
       return {
         ...state,
         testsPassed: state.testsPassed + 1,
       };
-    case 'ARENA_LOG_CLEAR_PASSED_TESTS':
+    case "ARENA_LOG_CLEAR_PASSED_TESTS":
       return {
         ...state,
         testsPassed: 0,
       };
-    case 'ARENA_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES':
+    case "ARENA_LOG_CLEAR_QUESTION_SUCCESSFULLY_ANSWERED_DATES":
       return {
         ...state,
         quesionsSuccesfullyAnsweredDates: {},

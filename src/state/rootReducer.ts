@@ -1,29 +1,29 @@
-import { createStorage } from '@/store/store';
-import { combineReducers } from 'redux';
-import { PersistConfig, persistReducer } from 'redux-persist';
-import { reducer as arena } from './arena';
-import { reducer as content } from './content';
-import { reducer as dojo } from './dojo';
-import { reducer as navigation } from './navigation';
-import { NotificationsState, reducer as notifications } from './notifications';
-import { PurchaseState, reducer as purchase } from './purchase';
-import { reducer as questions } from './questions';
-import { reducer as settings, SettingsState } from './settings';
-import { reducer as study } from './study';
-import { reducer as translations } from './translations';
+import { combineReducers } from "redux";
+import { type PersistConfig, persistReducer } from "redux-persist";
+import { createStorage } from "@/store/store";
+import { reducer as arena } from "./arena";
+import { reducer as content } from "./content";
+import { reducer as dojo } from "./dojo";
+import { reducer as navigation } from "./navigation";
+import { type NotificationsState, reducer as notifications } from "./notifications";
+import { type PurchaseState, reducer as purchase } from "./purchase";
+import { reducer as questions } from "./questions";
+import { type SettingsState, reducer as settings } from "./settings";
+import { reducer as study } from "./study";
+import { reducer as translations } from "./translations";
 
 const settingsConfig: PersistConfig<SettingsState> = {
-  key: 'settings',
+  key: "settings",
   storage: createStorage(),
 };
 
 const purchaseConfig: PersistConfig<PurchaseState> = {
-  key: 'purchase',
+  key: "purchase",
   storage: createStorage(),
 };
 
 const notificationConfig: PersistConfig<NotificationsState> = {
-  key: 'notifications',
+  key: "notifications",
   storage: createStorage(),
 };
 

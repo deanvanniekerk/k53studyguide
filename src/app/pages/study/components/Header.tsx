@@ -1,12 +1,12 @@
-import { Breadcrumb } from '@/app/components/Breadcrumb';
-import { RootState } from '@/state';
-import { lastSeenParentContentKeySelector } from '@/state/study/log';
-import { IonButton, IonCol, IonGrid, IonIcon, IonListHeader, IonRow, IonText } from '@ionic/react';
-import { caretForward } from 'ionicons/icons';
-import React from 'react';
-import { connect } from 'react-redux';
-import { Translate } from 'react-translated';
-import { SeenProgress } from './';
+import { IonButton, IonCol, IonGrid, IonIcon, IonListHeader, IonRow, IonText } from "@ionic/react";
+import { caretForward } from "ionicons/icons";
+import type React from "react";
+import { connect } from "react-redux";
+import { Translate } from "react-translated";
+import { Breadcrumb } from "@/app/components/Breadcrumb";
+import type { RootState } from "@/state";
+import { lastSeenParentContentKeySelector } from "@/state/study/log";
+import { SeenProgress } from "./";
 
 type Props = {
   onNavigationItemClicked: (navigationItemKey: string) => void;
@@ -16,10 +16,10 @@ const HeaderComponent: React.FC<Props> = (props) => {
   return (
     <IonListHeader>
       <IonGrid>
-        <IonRow style={{ paddingTop: 55 }}>
+        <IonRow className="app-page-content-offset">
           <IonCol>
             <IonText>
-              <h2 style={{ fontWeight: 'bold', marginBottom: 0 }}>
+              <h2 style={{ fontWeight: "bold", marginBottom: 0 }}>
                 <Translate text={props.lastSeenParentContentKey} />
               </h2>
             </IonText>

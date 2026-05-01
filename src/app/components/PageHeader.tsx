@@ -1,6 +1,6 @@
-import React from 'react';
-import { Translate } from 'react-translated';
-import './PageHeader.css';
+import type React from "react";
+import { Translate } from "react-translated";
+import "./PageHeader.css";
 
 type Props = {
   text: string;

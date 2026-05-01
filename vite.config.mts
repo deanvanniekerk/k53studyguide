@@ -1,0 +1,58 @@
+import { existsSync } from "node:fs";
+import { createRequire } from "node:module";
+import path from "node:path";
+import react from "@vitejs/plugin-react";
+import { visualizer } from "rollup-plugin-visualizer";
+import { defineConfig } from "vitest/config";
+
+process.env.SUPPRESS_NO_CONFIG_WARNING = process.env.SUPPRESS_NO_CONFIG_WARNING || "true";
+
+const require = createRequire(import.meta.url);
+const shouldLoadConfig = Boolean(process.env.NODE_CONFIG) || existsSync(path.resolve(process.cwd(), "config"));
+const config = shouldLoadConfig
+  ? (require("config") as {
+      get<T>(key: string): T;
+      has(key: string): boolean;
+    })
+  : undefined;
+
+const getConfig = (key: string, fallback: string): string => {
+  return config?.has(key) ? config.get<string>(key) : fallback;
+};
+
+export default defineConfig(({ mode }) => ({
+  plugins: [
+    react(),
+    mode === "analyze" &&
+      visualizer({
+        filename: "stats.html",
+        gzipSize: true,
+        open: false,
+      }),
+  ],
+  build: {
+    assetsDir: "dist",
+    cssMinify: "esbuild",
+    outDir: "build",
+  },
+  define: {
+    __ENVIRONMENT__: JSON.stringify(getConfig("environment", mode === "production" ? "production" : "development")),
+    __AZURE_STORAGE_TABLE_URL__: JSON.stringify(getConfig("azureStorageTableUrl", "")),
+    __AZURE_STORAGE_TABLE_SAS_TOKEN__: JSON.stringify(getConfig("azureStorageTableSasToken", "")),
+    __LOG_LEVEL__: JSON.stringify(getConfig("logLevel", "INFO")),
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(process.cwd(), "src"),
+    },
+  },
+  server: {
+    host: "0.0.0.0",
+    port: 3000,
+  },
+  test: {
+    environment: "node",
+    globals: true,
+    include: ["src/**/*.{test,spec}.{ts,tsx,js,jsx}"],
+  },
+}));

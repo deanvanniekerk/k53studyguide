@@ -1,14 +1,15 @@
-import { HorizontalRule } from '@/app/components';
-import { AppVersion } from '@awesome-cordova-plugins/app-version';
-import { Device } from '@awesome-cordova-plugins/device';
-import { IonCol, IonGrid, IonRow, IonText } from '@ionic/react';
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { Row } from './';
+import { AppVersion } from "@awesome-cordova-plugins/app-version";
+import { Device } from "@awesome-cordova-plugins/device";
+import { IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
+import type React from "react";
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import { HorizontalRule } from "@/app/components";
+import { Row } from "./";
 
 const Debug: React.FC = () => {
-  const [appVersionNumber, setAppVersionNumber] = useState('');
-  const [appVersionCode, setAppVersionCode] = useState('');
+  const [appVersionNumber, setAppVersionNumber] = useState("");
+  const [appVersionCode, setAppVersionCode] = useState("");
 
   useEffect(() => {
     const load = async () => {

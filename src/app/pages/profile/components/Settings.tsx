@@ -1,12 +1,13 @@
-import { HorizontalRule } from '@/app/components';
-import { RootState } from '@/state';
-import { languageSelector, recieveLanguage } from '@/state/settings';
-import { IonCol, IonGrid, IonRow, IonSelect, IonSelectOption, IonText } from '@ionic/react';
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { Translate, Translator } from 'react-translated';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
+import { IonCol, IonGrid, IonRow, IonSelect, IonSelectOption, IonText } from "@ionic/react";
+import type React from "react";
+import { useState } from "react";
+import { connect } from "react-redux";
+import { Translate, Translator } from "react-translated";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import { HorizontalRule } from "@/app/components";
+import type { RootState } from "@/state";
+import { languageSelector, recieveLanguage } from "@/state/settings";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -39,7 +40,7 @@ const SettingsComponent: React.FC<Props> = (props) => {
                   props.recieveLanguage(event.detail.value);
                 }}
                 interface="action-sheet"
-                cancelText={translate({ text: 'cancel' })}
+                cancelText={translate({ text: "cancel" })}
               >
                 <IonSelectOption value="en">English</IonSelectOption>
                 <IonSelectOption value="af">Afrikaans</IonSelectOption>

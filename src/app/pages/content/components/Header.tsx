@@ -1,30 +1,33 @@
-import { HorizontalRule } from '@/app/components';
-import { Breadcrumb } from '@/app/components/Breadcrumb';
-import { RootState } from '@/state';
-import { recieveTargetNavigationKey } from '@/state/dojo/navigation';
-import { loadQuestionAnswers } from '@/state/dojo/test';
-import { recieveLastSeenParentContentKey } from '@/state/study/log';
-import { currentNavigationKeySelector } from '@/state/study/navigation';
-import { IonAlert, IonButton, IonCol, IonGrid, IonIcon, IonListHeader, IonRow, IonText } from '@ionic/react';
-import { help } from 'ionicons/icons';
-import React, { useState } from 'react';
-import { connect, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
-import { Translate, Translator } from 'react-translated';
-import { SeenProgress } from './SeenProgress';
+import { IonAlert, IonButton, IonCol, IonGrid, IonIcon, IonListHeader, IonRow, IonText } from "@ionic/react";
+import { help } from "ionicons/icons";
+import type React from "react";
+import { useState } from "react";
+import { connect, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { Translate, Translator } from "react-translated";
+import type { AnyAction, Dispatch } from "redux";
+import type { ThunkDispatch } from "redux-thunk";
+import { HorizontalRule } from "@/app/components";
+import { Breadcrumb } from "@/app/components/Breadcrumb";
+import type { RootState } from "@/state";
+import { recieveTargetNavigationKey } from "@/state/dojo/navigation";
+import { loadQuestionAnswers } from "@/state/dojo/test";
+import { recieveLastSeenParentContentKey } from "@/state/study/log";
+import { currentNavigationKeySelector } from "@/state/study/navigation";
+import { SeenProgress } from "./SeenProgress";
 
 type Props = PropsFromState;
 
 const HeaderComponent: React.FC<Props> = (props) => {
   const history = useHistory();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<Dispatch<AnyAction> & ThunkDispatch<RootState, null, AnyAction>>();
   const [showStartQuizAlert, setShowStartQuizAlert] = useState(false);
 
   return (
     <>
       <IonListHeader>
         <IonGrid>
-          <IonRow style={{ paddingTop: 55 }}>
+          <IonRow className="app-page-content-offset">
             <IonCol>
               <IonText>
                 <h2>
@@ -72,13 +75,13 @@ const HeaderComponent: React.FC<Props> = (props) => {
             })}' content?`}
             buttons={[
               {
-                text: 'Cancel',
+                text: "Cancel",
                 handler: () => {
                   setShowStartQuizAlert(false);
                 },
               },
               {
-                text: 'Yes',
+                text: "Yes",
                 handler: () => {
                   // so that we can continue
                   dispatch(recieveLastSeenParentContentKey(props.currentNavigationKey));

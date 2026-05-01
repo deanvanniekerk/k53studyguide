@@ -1,11 +1,11 @@
-import { RootState } from '@/state';
-import { recieveLastSeenParentContentKey } from '@/state/study/log';
-import { currentContentItemsSelector, currentNavigationKeySelector } from '@/state/study/navigation';
-import { IonItem, IonList } from '@ionic/react';
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
-import { Content } from './Content';
+import { IonItem, IonList } from "@ionic/react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators, type Dispatch } from "redux";
+import type { RootState } from "@/state";
+import { recieveLastSeenParentContentKey } from "@/state/study/log";
+import { currentContentItemsSelector, currentNavigationKeySelector } from "@/state/study/navigation";
+import { Content } from "./Content";
 
 type Props = PropsFromState & PropsFromDispatch;
 

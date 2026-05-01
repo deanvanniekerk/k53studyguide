@@ -1,7 +1,6 @@
-import { Store } from 'redux';
-import { PurchaseService, PurchaseServiceConstructor } from './types';
+import type { PurchaseService, PurchaseServiceConstructor, PurchaseStore } from "./types";
 
-const createPurchaseService = (ctor: PurchaseServiceConstructor, reduxStore: Store): PurchaseService => {
+const createPurchaseService = (ctor: PurchaseServiceConstructor, reduxStore: PurchaseStore): PurchaseService => {
   return new ctor(reduxStore);
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from "react";
 
 type Props = {
   leftMargin?: number;
@@ -7,32 +7,26 @@ type Props = {
   paddingBottom?: number;
 };
 
-const HorizontalRule: React.FC<Props> = (props) => {
+const HorizontalRule: React.FC<Props> = ({ leftMargin = 0, rightMargin = 0, paddingTop = 15, paddingBottom = 15 }) => {
   return (
     <div
       style={{
         flex: 1,
-        marginLeft: props.leftMargin,
-        marginRight: props.rightMargin,
-        paddingTop: props.paddingTop,
-        paddingBottom: props.paddingBottom,
+        marginLeft: leftMargin,
+        marginRight: rightMargin,
+        paddingTop,
+        paddingBottom,
       }}
     >
       <div
         style={{
           backgroundColor: `rgba(255,255,255, 0.1)`,
           height: 1,
-          width: '100%',
+          width: "100%",
         }}
       ></div>
     </div>
   );
-};
-HorizontalRule.defaultProps = {
-  rightMargin: 0,
-  leftMargin: 0,
-  paddingTop: 15,
-  paddingBottom: 15,
 };
 
 export { HorizontalRule };

@@ -1,5 +1,5 @@
-import { ROOT_NAVIGATION_KEY } from '@/state/navigation';
-import { NavigationActions } from './';
+import { ROOT_NAVIGATION_KEY } from "@/state/navigation";
+import type { NavigationActions } from "./";
 
 export type NavigationState = {
   readonly targetNavigationKey: string;
@@ -11,7 +11,7 @@ export const defaultState: NavigationState = {
 
 export const reducer = (state: NavigationState = defaultState, action: NavigationActions): NavigationState => {
   switch (action.type) {
-    case 'DOJO_NAV_RECIEVE_TARGET_NAVIGATION_KEY':
+    case "DOJO_NAV_RECIEVE_TARGET_NAVIGATION_KEY":
       return {
         ...state,
         targetNavigationKey: action.payload,

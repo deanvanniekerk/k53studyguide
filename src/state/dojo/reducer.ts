@@ -1,22 +1,22 @@
-import { createStorage } from '@/store/store';
-import { combineReducers } from 'redux';
-import { PersistConfig, persistReducer } from 'redux-persist';
-import { LogState, reducer as log } from './log';
-import { NavigationState, reducer as navigation } from './navigation';
-import { reducer as test, TestState } from './test';
+import { combineReducers } from "redux";
+import { type PersistConfig, persistReducer } from "redux-persist";
+import { createStorage } from "@/store/store";
+import { type LogState, reducer as log } from "./log";
+import { type NavigationState, reducer as navigation } from "./navigation";
+import { type TestState, reducer as test } from "./test";
 
 const testConfig: PersistConfig<TestState> = {
-  key: 'dojo-test',
+  key: "dojo-test",
   storage: createStorage(),
 };
 
 const logConfig: PersistConfig<LogState> = {
-  key: 'dojo-log',
+  key: "dojo-log",
   storage: createStorage(),
 };
 
 const persistNavigationConfig: PersistConfig<NavigationState> = {
-  key: 'dojo-navigation',
+  key: "dojo-navigation",
   storage: createStorage(),
 };
 

@@ -1,31 +1,31 @@
-import { BackButton, QuestionInfo, QuestionList } from '@/app/components';
-import { useAnalytics } from '@/app/hooks/useAnalytics';
-import { RootState } from '@/state';
-import { currentSectionQuestionsSelector, recieveQuestionAnswers } from '@/state/arena/test';
-import { IonContent, IonPage, useIonViewWillLeave } from '@ionic/react';
-import React from 'react';
-import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
-import { ArenaWatermark } from '../ArenaWatermark';
-import { Tabs } from '../components';
-import { Header } from './components';
-import { TestResultPageHeader } from './TestResultPageHeader';
+import { IonContent, IonPage, useIonViewWillLeave } from "@ionic/react";
+import type React from "react";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import { BackButton, type QuestionInfo, QuestionList } from "@/app/components";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
+import type { RootState } from "@/state";
+import { currentSectionQuestionsSelector, recieveQuestionAnswers } from "@/state/arena/test";
+import { ArenaWatermark } from "../ArenaWatermark";
+import { Tabs } from "../components";
+import { Header } from "./components";
+import { TestResultPageHeader } from "./TestResultPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
 
 const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveQuestionAnswers }) => {
   const history = useHistory();
 
-  useAnalytics('TestPage:TestResultPage');
+  useAnalytics("TestPage:TestResultPage");
 
   useIonViewWillLeave(() => {
     recieveQuestionAnswers([]); //Clear test
   });
 
   const onBackClicked = () => {
-    history.replace('/arena');
+    history.replace("/arena");
   };
 
   const questions = questionAnswers.map<QuestionInfo>((q) => ({

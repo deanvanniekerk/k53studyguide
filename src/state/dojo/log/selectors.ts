@@ -1,6 +1,11 @@
-import { RootState } from '@/state/rootReducer';
-import { createSelector, OutputSelector, Selector } from 'reselect';
-import { LogState, QuesionsSuccesfullyAnsweredDates } from './';
+import { createSelector, type Selector } from "reselect";
+import type { RootState } from "@/state/rootReducer";
+
+type OutputSelector<State, Result, Combiner> = Selector<State, Result> & {
+  resultFunc: Combiner;
+};
+
+import type { LogState, QuesionsSuccesfullyAnsweredDates } from "./";
 
 type LevelRange = {
   level: number;
@@ -60,11 +65,8 @@ export const quesionsSuccesfullyAnsweredDatesSelector: OutputSelector<
   (state: LogState) => QuesionsSuccesfullyAnsweredDates
 > = createSelector(rootSelector, (root) => root.quesionsSuccesfullyAnsweredDates);
 
-export const quesionsSuccesfullyAnsweredSelector: OutputSelector<
-  RootState,
-  number,
-  (state: LogState) => number
-> = createSelector(rootSelector, (root) => Object.keys(root.quesionsSuccesfullyAnsweredDates).length);
+export const quesionsSuccesfullyAnsweredSelector: OutputSelector<RootState, number, (state: LogState) => number> =
+  createSelector(rootSelector, (root) => Object.keys(root.quesionsSuccesfullyAnsweredDates).length);
 
 export const dojoLevelSelector: OutputSelector<RootState, number, (current: number) => number> = createSelector(
   quesionsSuccesfullyAnsweredSelector,

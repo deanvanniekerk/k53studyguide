@@ -1,19 +1,19 @@
-import { BackButton } from '@/app/components';
-import { useAnalytics } from '@/app/hooks/useAnalytics';
-import { RootState } from '@/state';
-import { navigateUp, recieveTargetNavigationKey, targetNavigationKeySelector } from '@/state/dojo/navigation';
-import { loadQuestionAnswers } from '@/state/dojo/test';
-import { ROOT_NAVIGATION_KEY } from '@/state/study/navigation';
-import { IonContent, IonPage } from '@ionic/react';
-import { arrowUp } from 'ionicons/icons';
-import React from 'react';
-import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
-import { DojoWatermark } from '../DojoWatermark';
-import { Header, Navigator } from './components';
-import { TestNavigatorPageHeader } from './TestNavigatorPageHeader';
+import { IonContent, IonPage } from "@ionic/react";
+import { arrowUp } from "ionicons/icons";
+import type React from "react";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import { BackButton } from "@/app/components";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
+import type { RootState } from "@/state";
+import { navigateUp, recieveTargetNavigationKey, targetNavigationKeySelector } from "@/state/dojo/navigation";
+import { loadQuestionAnswers } from "@/state/dojo/test";
+import { ROOT_NAVIGATION_KEY } from "@/state/study/navigation";
+import { DojoWatermark } from "../DojoWatermark";
+import { Header, Navigator } from "./components";
+import { TestNavigatorPageHeader } from "./TestNavigatorPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -22,7 +22,7 @@ const TestNavigatorPage: React.FC<Props> = (props) => {
   const { logEvent } = useAnalytics();
 
   const navigateToDojo = () => {
-    history.replace('/dojo');
+    history.replace("/dojo");
   };
 
   const onBackClicked = () => {
@@ -39,7 +39,7 @@ const TestNavigatorPage: React.FC<Props> = (props) => {
   };
 
   const onNavigationItemClicked = (key: string) => {
-    logEvent('NAVIGATE', { key: key, component: 'QuizPage:TestNavigatorPage' });
+    logEvent("NAVIGATE", { key: key, component: "QuizPage:TestNavigatorPage" });
     props.recieveTargetNavigationKey(key);
   };
 

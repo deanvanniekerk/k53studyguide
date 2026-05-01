@@ -1,6 +1,6 @@
-import { TestPenOutlineIcon } from '@/app/components/icons';
-import { watermarkStyle } from '@/app/styles';
-import styled from 'styled-components';
+import styled from "styled-components";
+import { TestPenOutlineIcon } from "@/app/components/icons";
+import { watermarkStyle } from "@/app/styles";
 
 export const ArenaWatermark = styled(TestPenOutlineIcon)`
   ${watermarkStyle}

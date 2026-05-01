@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { translations } = require("./input/translations");
 
-const key = '***REMOVED_GOOGLE_API_KEY***';
+const key = '';
 
 const { Translate } = require('@google-cloud/translate').v2;
 

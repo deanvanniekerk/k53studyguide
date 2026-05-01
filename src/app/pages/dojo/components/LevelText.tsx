@@ -1,7 +1,8 @@
-import { CreateAnimation, useIonViewWillEnter } from '@ionic/react';
-import React, { useRef } from 'react';
-import { Translate } from 'react-translated';
-import styled from 'styled-components';
+import { CreateAnimation, useIonViewWillEnter } from "@ionic/react";
+import type React from "react";
+import { useRef } from "react";
+import { Translate } from "react-translated";
+import styled from "styled-components";
 
 type Props = {
   level: number;
@@ -22,9 +23,9 @@ const LevelText: React.FC<Props> = (props) => {
         duration={500}
         easing="ease"
         fromTo={{
-          property: 'transform',
-          fromValue: 'translateY(-85px)',
-          toValue: 'translateY(0px)',
+          property: "transform",
+          fromValue: "translateY(-85px)",
+          toValue: "translateY(0px)",
         }}
       >
         <div>

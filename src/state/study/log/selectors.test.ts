@@ -1,64 +1,64 @@
-import { NavigationTreeItem } from '@/state/navigation';
-import { LogState, SeenContentKeys } from './';
-import * as selectors from './selectors';
+import type { NavigationTreeItem } from "@/state/navigation";
+import type { LogState, SeenContentKeys } from "./";
+import * as selectors from "./selectors";
 
-describe('state > study > log > selectors', () => {
+describe("state > study > log > selectors", () => {
   //Setup Data --------------------------------------------
 
   const defaultState: LogState = {
     seenContentKeys: {},
-    lastSeenParentContentKey: 'key1',
+    lastSeenParentContentKey: "key1",
   };
   //-----------------------------------------------------------
 
-  it('seenContentKeysSelector', () => {
+  it("seenContentKeysSelector", () => {
     const actual = selectors.seenContentKeysSelector.resultFunc(defaultState);
 
     expect(actual).toEqual(defaultState.seenContentKeys);
   });
 
-  it('seenContentKeysSelector', () => {
+  it("seenContentKeysSelector", () => {
     const actual = selectors.lastSeenParentContentKeySelector.resultFunc(defaultState);
 
     expect(actual).toEqual(defaultState.lastSeenParentContentKey);
   });
 
-  it('seenTotalsSelector', () => {
+  it("seenTotalsSelector", () => {
     const seenContentKeys: SeenContentKeys = {
-      'nav.child1.child1.1': true,
-      'nav.child1.child2.1': true,
-      'nav.child1.child2.2': true,
-      'nav.child2.1': true,
+      "nav.child1.child1.1": true,
+      "nav.child1.child2.1": true,
+      "nav.child1.child2.2": true,
+      "nav.child2.1": true,
     };
 
     const navigationTreeItem: NavigationTreeItem = {
-      key: 'nav',
+      key: "nav",
       children: [
         {
-          key: 'nav.child1',
+          key: "nav.child1",
           children: [
             {
-              key: 'nav.child1.child1',
+              key: "nav.child1.child1",
               children: [
                 {
-                  key: 'nav.child1.child1.1',
+                  key: "nav.child1.child1.1",
                   children: [],
                 },
               ],
             },
             {
-              key: 'nav.child1.child2',
+              key: "nav.child1.child2",
               children: [
                 {
-                  key: 'nav.child1.child2.1',
+                  key: "nav.child1.child2.1",
                   children: [],
                 },
                 {
-                  key: 'nav.child1.child2.2',
+                  key: "nav.child1.child2.2",
                   children: [],
                 },
                 {
-                  key: 'nav.child1.child2.3',
+                  key: "nav.child1.child2.3",
                   children: [],
                 },
               ],
@@ -66,14 +66,14 @@ describe('state > study > log > selectors', () => {
           ],
         },
         {
-          key: 'nav.child2',
+          key: "nav.child2",
           children: [
             {
-              key: 'nav.child2.1',
+              key: "nav.child2.1",
               children: [],
             },
             {
-              key: 'nav.child2.2',
+              key: "nav.child2.2",
               children: [],
             },
           ],
@@ -84,16 +84,16 @@ describe('state > study > log > selectors', () => {
     const actual = selectors.seenTotalsSelector.resultFunc(seenContentKeys, navigationTreeItem);
 
     expect(actual).toEqual({
-      'nav.child1.child1.1': { seen: 1, total: 1 },
-      'nav.child1.child1': { seen: 1, total: 1 },
-      'nav.child1.child2.1': { seen: 1, total: 1 },
-      'nav.child1.child2.2': { seen: 1, total: 1 },
-      'nav.child1.child2.3': { seen: 0, total: 1 },
-      'nav.child1.child2': { seen: 2, total: 3 },
-      'nav.child1': { seen: 3, total: 4 },
-      'nav.child2.1': { seen: 1, total: 1 },
-      'nav.child2.2': { seen: 0, total: 1 },
-      'nav.child2': { seen: 1, total: 2 },
+      "nav.child1.child1.1": { seen: 1, total: 1 },
+      "nav.child1.child1": { seen: 1, total: 1 },
+      "nav.child1.child2.1": { seen: 1, total: 1 },
+      "nav.child1.child2.2": { seen: 1, total: 1 },
+      "nav.child1.child2.3": { seen: 0, total: 1 },
+      "nav.child1.child2": { seen: 2, total: 3 },
+      "nav.child1": { seen: 3, total: 4 },
+      "nav.child2.1": { seen: 1, total: 1 },
+      "nav.child2.2": { seen: 0, total: 1 },
+      "nav.child2": { seen: 1, total: 2 },
       nav: { seen: 4, total: 6 },
     });
   });

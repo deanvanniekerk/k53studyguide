@@ -1,30 +1,30 @@
-import { deepClone } from '@/utils';
-import { QuestionAnswer } from './';
-import { reducer, TestState } from './reducer';
+import { deepClone } from "@/utils";
+import type { QuestionAnswer } from "./";
+import { reducer, type TestState } from "./reducer";
 
-describe('state > arena > test > reducer', () => {
+describe("state > arena > test > reducer", () => {
   const defaultState: TestState = {
     questionAnswers: [],
-    currentSection: 'A',
+    currentSection: "A",
   };
 
-  it('should handle ARENA_TEST_RECIEVE_QUESTION_ANSWERS', () => {
+  it("should handle ARENA_TEST_RECIEVE_QUESTION_ANSWERS", () => {
     const questionAnswers: QuestionAnswer[] = [
       {
-        section: 'A',
+        section: "A",
         answer: null,
         question: {
-          id: '1',
-          answer: 'B',
-          text: 'Question 1:',
+          id: "1",
+          answer: "B",
+          text: "Question 1:",
           option: [
             {
-              id: 'A',
-              value: 'Option 1.',
+              id: "A",
+              value: "Option 1.",
             },
             {
-              id: 'B',
-              value: 'Option 2.',
+              id: "B",
+              value: "Option 2.",
             },
           ],
         },
@@ -32,7 +32,7 @@ describe('state > arena > test > reducer', () => {
     ];
 
     const actualState = reducer(defaultState, {
-      type: 'ARENA_TEST_RECIEVE_QUESTION_ANSWERS',
+      type: "ARENA_TEST_RECIEVE_QUESTION_ANSWERS",
       payload: questionAnswers,
     });
 
@@ -44,110 +44,110 @@ describe('state > arena > test > reducer', () => {
     expect(actualState).toEqual(expectedState);
   });
 
-  it('should handle ARENA_TEST_RECIEVE_CURRENT_SECTION', () => {
+  it("should handle ARENA_TEST_RECIEVE_CURRENT_SECTION", () => {
     const actualState = reducer(defaultState, {
-      type: 'ARENA_TEST_RECIEVE_CURRENT_SECTION',
-      payload: 'C',
+      type: "ARENA_TEST_RECIEVE_CURRENT_SECTION",
+      payload: "C",
     });
 
     const expectedState = {
       ...defaultState,
-      currentSection: 'C',
+      currentSection: "C",
     };
 
     expect(actualState).toEqual(expectedState);
   });
 
-  it('should handle ARENA_TEST_RECIEVE_QUESTION_ANSWERS', () => {
+  it("should handle ARENA_TEST_RECIEVE_QUESTION_ANSWERS", () => {
     const questionAnswers: QuestionAnswer[] = [
       {
-        section: 'A',
-        answer: 'A',
+        section: "A",
+        answer: "A",
         question: {
-          id: '4',
-          answer: 'B',
-          text: 'Question 1:',
+          id: "4",
+          answer: "B",
+          text: "Question 1:",
           option: [
             {
-              id: 'A',
-              value: 'Option 1.',
+              id: "A",
+              value: "Option 1.",
             },
             {
-              id: 'B',
-              value: 'Option 2.',
+              id: "B",
+              value: "Option 2.",
             },
             {
-              id: 'C',
-              value: 'Option 3.',
+              id: "C",
+              value: "Option 3.",
             },
           ],
         },
       },
       {
-        section: 'B',
+        section: "B",
         answer: null,
         question: {
-          id: '3',
-          answer: 'B',
-          text: 'Question 1:',
+          id: "3",
+          answer: "B",
+          text: "Question 1:",
           option: [
             {
-              id: 'A',
-              value: 'Option 1.',
+              id: "A",
+              value: "Option 1.",
             },
             {
-              id: 'B',
-              value: 'Option 2.',
+              id: "B",
+              value: "Option 2.",
             },
             {
-              id: 'C',
-              value: 'Option 3.',
+              id: "C",
+              value: "Option 3.",
             },
           ],
         },
       },
       {
-        section: 'C',
+        section: "C",
         answer: null,
         question: {
-          id: '2',
-          answer: 'B',
-          text: 'Question 1:',
+          id: "2",
+          answer: "B",
+          text: "Question 1:",
           option: [
             {
-              id: 'A',
-              value: 'Option 1.',
+              id: "A",
+              value: "Option 1.",
             },
             {
-              id: 'B',
-              value: 'Option 2.',
+              id: "B",
+              value: "Option 2.",
             },
             {
-              id: 'C',
-              value: 'Option 3.',
+              id: "C",
+              value: "Option 3.",
             },
           ],
         },
       },
       {
-        section: 'C',
-        answer: 'C',
+        section: "C",
+        answer: "C",
         question: {
-          id: '1',
-          answer: 'B',
-          text: 'Question 1:',
+          id: "1",
+          answer: "B",
+          text: "Question 1:",
           option: [
             {
-              id: 'A',
-              value: 'Option 1.',
+              id: "A",
+              value: "Option 1.",
             },
             {
-              id: 'B',
-              value: 'Option 2.',
+              id: "B",
+              value: "Option 2.",
             },
             {
-              id: 'C',
-              value: 'Option 3.',
+              id: "C",
+              value: "Option 3.",
             },
           ],
         },
@@ -157,17 +157,17 @@ describe('state > arena > test > reducer', () => {
     const initalState = { ...defaultState, questionAnswers };
 
     const actualState = reducer(initalState, {
-      type: 'ARENA_TEST_RECIEVE_ANSWER',
+      type: "ARENA_TEST_RECIEVE_ANSWER",
       payload: {
-        questionId: '2',
-        answer: 'B',
+        questionId: "2",
+        answer: "B",
       },
     });
 
     //Deep clone
     const expectedState = deepClone(initalState);
 
-    expectedState.questionAnswers[2].answer = 'B';
+    expectedState.questionAnswers[2].answer = "B";
 
     expect(actualState).toEqual(expectedState);
   });

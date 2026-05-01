@@ -1,7 +1,7 @@
-import { QuestionItem, QuestionText as QuestionList } from '@/data';
-import React from 'react';
-import { Translate } from 'react-translated';
-import styled from 'styled-components';
+import React from "react";
+import { Translate } from "react-translated";
+import styled from "styled-components";
+import type { QuestionItem, QuestionText as QuestionList } from "@/data";
 
 type Props = {
   question: QuestionItem;
@@ -9,7 +9,7 @@ type Props = {
 
 const QuestionText: React.FC<Props> = ({ question }) => {
   const getQuestionTextComponent = (text: string | QuestionList): React.ReactNode => {
-    if (typeof text === 'string') return <Translate text={text} />;
+    if (typeof text === "string") return <Translate text={text} />;
 
     if ((text as QuestionList).list) {
       const list = text.list;

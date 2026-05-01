@@ -1,11 +1,12 @@
-import { HorizontalRule, ProgressBar } from '@/app/components';
-import { BookOutlineIcon } from '@/app/components/icons';
-import { useInterval } from '@/app/hooks';
-import { watermarkStyle } from '@/app/styles';
-import { CreateAnimation, IonContent, IonIcon, IonModal } from '@ionic/react';
-import { closeOutline, eyeOffOutline, eyeOutline, trashBinOutline } from 'ionicons/icons';
-import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
+import { CreateAnimation, IonContent, IonIcon, IonModal } from "@ionic/react";
+import { eyeOffOutline, eyeOutline, trashBinOutline } from "ionicons/icons";
+import type React from "react";
+import { useRef, useState } from "react";
+import styled from "styled-components";
+import { CloseButton, HorizontalRule, ProgressBar } from "@/app/components";
+import { BookOutlineIcon } from "@/app/components/icons";
+import { useInterval } from "@/app/hooks";
+import { watermarkStyle } from "@/app/styles";
 
 type Props = {
   isOpen: boolean;
@@ -16,7 +17,7 @@ const StudyInfoModal: React.FC<Props> = (props) => {
   return (
     <Modal mode="ios" isOpen={props.isOpen} onDidDismiss={props.onDidDismiss}>
       <Watermark />
-      <CloseIcon icon={closeOutline} onClick={() => props.onDidDismiss()} />
+      <CloseButton onClick={() => props.onDidDismiss()} />
       <Content>
         <Container>
           <SubHeader>Welcome to the</SubHeader>
@@ -55,11 +56,11 @@ const StudyInfoModal: React.FC<Props> = (props) => {
 };
 
 const SeenIcon: React.FC = () => {
-  const [icon, setIcon] = useState('eyeOff');
+  const [icon, setIcon] = useState("eyeOff");
   const animation1 = useRef<CreateAnimation>(null);
 
   useInterval(() => {
-    setIcon(icon === 'eye' ? 'eyeOff' : 'eye');
+    setIcon(icon === "eye" ? "eyeOff" : "eye");
     if (animation1.current) animation1.current.animation.play();
   }, 6000);
 
@@ -70,16 +71,16 @@ const SeenIcon: React.FC = () => {
       duration={700}
       easing="ease"
       keyframes={[
-        { offset: 0, transform: 'scale(1)' },
-        { offset: 0.5, transform: 'scale(1.05)' },
-        { offset: 1, transform: 'scale(1)' },
+        { offset: 0, transform: "scale(1)" },
+        { offset: 0.5, transform: "scale(1.05)" },
+        { offset: 1, transform: "scale(1)" },
       ]}
     >
       <div>
         <LargeIcon
-          icon={icon === 'eye' ? eyeOutline : eyeOffOutline}
+          icon={icon === "eye" ? eyeOutline : eyeOffOutline}
           style={{
-            opacity: icon === 'eye' ? 0.8 : 0.5,
+            opacity: icon === "eye" ? 0.8 : 0.5,
           }}
         />
       </div>
@@ -125,12 +126,12 @@ const TrashIcon: React.FC = () => {
       duration={300}
       easing="ease"
       keyframes={[
-        { offset: 0, transform: 'rotate(0deg)' },
-        { offset: 0.2, transform: 'rotate(5deg)' },
-        { offset: 0.4, transform: 'rotate(-5deg)' },
-        { offset: 0.6, transform: 'rotate(5deg)' },
-        { offset: 0.8, transform: 'rotate(-5deg)' },
-        { offset: 1, transform: 'rotate(0deg)' },
+        { offset: 0, transform: "rotate(0deg)" },
+        { offset: 0.2, transform: "rotate(5deg)" },
+        { offset: 0.4, transform: "rotate(-5deg)" },
+        { offset: 0.6, transform: "rotate(5deg)" },
+        { offset: 0.8, transform: "rotate(-5deg)" },
+        { offset: 1, transform: "rotate(0deg)" },
       ]}
     >
       <div>
@@ -152,14 +153,6 @@ const Container = styled.div`
 
 const Watermark = styled(BookOutlineIcon)`
   ${watermarkStyle}
-`;
-
-const CloseIcon = styled(IonIcon)`
-  position: absolute;
-  z-index: 102;
-  font-size: var(--ion-font-size-xxxl);
-  padding-left: var(--default-padding);
-  padding-top: var(--default-padding);
 `;
 
 const Header = styled.div`

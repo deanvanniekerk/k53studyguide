@@ -1,14 +1,14 @@
-import { SettingsOutlineIcon } from '@/app/components/icons';
-import { useAnalytics } from '@/app/hooks/useAnalytics';
-import { watermarkStyle } from '@/app/styles';
-import { IonContent, IonPage } from '@ionic/react';
-import React from 'react';
-import styled from 'styled-components';
-import { Checklist, Debug, History, Purchase, RateApp } from './components';
-import { ProfilePageHeader } from './ProfilePageHeader';
+import { IonContent, IonPage } from "@ionic/react";
+import type React from "react";
+import styled from "styled-components";
+import { SettingsOutlineIcon } from "@/app/components/icons";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
+import { watermarkStyle } from "@/app/styles";
+import { Checklist, Debug, History, Purchase, RateApp } from "./components";
+import { ProfilePageHeader } from "./ProfilePageHeader";
 
 const ProfilePage: React.FC = () => {
-  useAnalytics('ProfilePage');
+  useAnalytics("ProfilePage");
   return (
     <Page>
       <ProfilePageHeader />

@@ -1,7 +1,7 @@
-import { QuestionItem, QuestionOption } from '@/data';
-import React from 'react';
-import styled from 'styled-components';
-import { Question } from './';
+import type React from "react";
+import styled from "styled-components";
+import type { QuestionItem, QuestionOption } from "@/data";
+import { Question } from "./";
 
 export type QuestionInfo = {
   question: QuestionItem;

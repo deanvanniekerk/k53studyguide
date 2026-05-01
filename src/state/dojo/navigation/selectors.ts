@@ -1,20 +1,22 @@
-import { NavigationData, QuestionData } from '@/data';
-import { navigationDataSelector, NavigationTreeItem, navigationTreeSelector } from '@/state/navigation';
-import { questionDataSelector } from '@/state/questions';
-import { RootState } from '@/state/rootReducer';
-import { navigationKeyToBreadcrumb } from '@/utils';
-import { createSelector, OutputSelector, Selector } from 'reselect';
-import { QuesionsSuccesfullyAnsweredDates, quesionsSuccesfullyAnsweredDatesSelector } from '../log';
-import { NavigationState } from './reducer';
-import { CorrectlyAnsweredQuestionsTotal, CorrectlyAnsweredQuestionsTotals } from './types';
+import { createSelector, type Selector } from "reselect";
+import type { NavigationData, QuestionData } from "@/data";
+import { type NavigationTreeItem, navigationDataSelector, navigationTreeSelector } from "@/state/navigation";
+import { questionDataSelector } from "@/state/questions";
+import type { RootState } from "@/state/rootReducer";
+
+type OutputSelector<State, Result, Combiner> = Selector<State, Result> & {
+  resultFunc: Combiner;
+};
+
+import { navigationKeyToBreadcrumb } from "@/utils";
+import { type QuesionsSuccesfullyAnsweredDates, quesionsSuccesfullyAnsweredDatesSelector } from "../log";
+import type { NavigationState } from "./reducer";
+import type { CorrectlyAnsweredQuestionsTotal, CorrectlyAnsweredQuestionsTotals } from "./types";
 
 const rootSelector: Selector<RootState, NavigationState> = (state: RootState): NavigationState => state.dojo.navigation;
 
-export const targetNavigationKeySelector: OutputSelector<
-  RootState,
-  string,
-  (state: NavigationState) => string
-> = createSelector(rootSelector, (root) => root.targetNavigationKey);
+export const targetNavigationKeySelector: OutputSelector<RootState, string, (state: NavigationState) => string> =
+  createSelector(rootSelector, (root) => root.targetNavigationKey);
 
 export const targetNavigationChildrenSelector: OutputSelector<
   RootState,
@@ -24,17 +26,14 @@ export const targetNavigationChildrenSelector: OutputSelector<
   key && data[key] ? data[key] : [],
 );
 
-export const targetNavigationParentSelector: OutputSelector<
-  RootState,
-  string,
-  (key: string) => string
-> = createSelector(targetNavigationKeySelector, (key) => {
-  const breadcrumb = navigationKeyToBreadcrumb(key);
+export const targetNavigationParentSelector: OutputSelector<RootState, string, (key: string) => string> =
+  createSelector(targetNavigationKeySelector, (key) => {
+    const breadcrumb = navigationKeyToBreadcrumb(key);
 
-  if (breadcrumb.length <= 1) return breadcrumb[0];
+    if (breadcrumb.length <= 1) return breadcrumb[0];
 
-  return breadcrumb[breadcrumb.length - 2];
-});
+    return breadcrumb[breadcrumb.length - 2];
+  });
 
 export const correctlyAnsweredQuestionsTotalsSelector: OutputSelector<
   RootState,

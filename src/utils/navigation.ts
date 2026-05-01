@@ -1,10 +1,10 @@
 export const navigationKeyToBreadcrumb = (key: string | null): string[] => {
   const breadcrumb: string[] = [];
 
-  const split = (key || '').split('.');
+  const split = (key || "").split(".");
 
   while (split.length > 0) {
-    breadcrumb.push(split.join('.'));
+    breadcrumb.push(split.join("."));
     split.pop();
   }
 
@@ -12,13 +12,13 @@ export const navigationKeyToBreadcrumb = (key: string | null): string[] => {
 };
 
 export const navigateUp = (key: string | null): string => {
-  if (!key) key = '';
+  if (!key) key = "";
 
-  const split = key.split('.');
+  const split = key.split(".");
 
   if (split.length > 1) {
     split.pop(); //remove last
-    key = split.join('.');
+    key = split.join(".");
   }
 
   return key;

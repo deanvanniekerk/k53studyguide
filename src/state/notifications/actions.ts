@@ -1,6 +1,6 @@
-import { NotificationName, NotificationState } from './';
+import type { NotificationName, NotificationState } from "./";
 
-export const NOTIFICATION_RECIEVE_NOTIFICATION_STATE = 'NOTIFICATION_RECIEVE_NOTIFICATION_STATE';
+export const NOTIFICATION_RECIEVE_NOTIFICATION_STATE = "NOTIFICATION_RECIEVE_NOTIFICATION_STATE";
 
 export interface RecieveNotificationStateAction {
   type: typeof NOTIFICATION_RECIEVE_NOTIFICATION_STATE;

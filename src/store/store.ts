@@ -1,4 +1,4 @@
-import { Preferences } from '@capacitor/preferences';
+import { Preferences } from "@capacitor/preferences";
 
 const createStorage = () => {
   return {

@@ -1,7 +1,3 @@
-import { Breadcrumb, HorizontalRule } from '@/app/components';
-import { RootState } from '@/state';
-import { targetNavigationKeySelector } from '@/state/dojo/navigation';
-import { maxQuestionsSelector, recieveMaxQuestions, testInProgressSelector } from '@/state/dojo/test';
 import {
   IonAlert,
   IonButton,
@@ -12,14 +8,19 @@ import {
   IonSelect,
   IonSelectOption,
   IonText,
-} from '@ionic/react';
-import { caretForward } from 'ionicons/icons';
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { Translate, Translator } from 'react-translated';
-import { bindActionCreators, Dispatch } from 'redux';
-import styled from 'styled-components';
+} from "@ionic/react";
+import { caretForward } from "ionicons/icons";
+import type React from "react";
+import { useState } from "react";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { Translate, Translator } from "react-translated";
+import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
+import { Breadcrumb, HorizontalRule } from "@/app/components";
+import type { RootState } from "@/state";
+import { targetNavigationKeySelector } from "@/state/dojo/navigation";
+import { maxQuestionsSelector, recieveMaxQuestions, testInProgressSelector } from "@/state/dojo/test";
 
 type Props = {
   onStartTestClicked: () => void;
@@ -85,8 +86,9 @@ const SettingsComponent: React.FC<Props> = (props) => {
                   value={props.maxQuestions}
                   onIonChange={(event) => props.recieveMaxQuestions(event.detail.value)}
                   interface="action-sheet"
+                  justify="end"
                   disabled={props.testInProgress}
-                  cancelText={translate({ text: 'cancel' })}
+                  cancelText={translate({ text: "cancel" })}
                 >
                   <IonSelectOption value={5}>5</IonSelectOption>
                   <IonSelectOption value={10}>10</IonSelectOption>
@@ -100,7 +102,7 @@ const SettingsComponent: React.FC<Props> = (props) => {
           <IonCol>{LineBreak}</IonCol>
         </Row>
         <IonRow style={{ paddingTop: 15, paddingBottom: 20 }}>
-          <IonCol style={{ textAlign: 'center' }}>
+          <IonCol style={{ textAlign: "center" }}>
             <IonButton
               color="secondary"
               shape="round"
@@ -108,7 +110,7 @@ const SettingsComponent: React.FC<Props> = (props) => {
               className="button-med-large"
               onClick={() => props.onStartTestClicked()}
             >
-              <Translate text={props.testInProgress ? 'continueTest' : 'startTest'} />
+              <Translate text={props.testInProgress ? "continueTest" : "startTest"} />
               <IonIcon slot="end" icon={caretForward} />
             </IonButton>
           </IonCol>
@@ -120,8 +122,8 @@ const SettingsComponent: React.FC<Props> = (props) => {
           <IonAlert
             isOpen={showCompleteTestAlert}
             onDidDismiss={() => setShowCompleteTestAlert(false)}
-            message={translate({ text: 'completeTestToChangeSettings' })}
-            buttons={[translate({ text: 'ok' })]}
+            message={translate({ text: "completeTestToChangeSettings" })}
+            buttons={[translate({ text: "ok" })]}
           />
         )}
       </Translator>
@@ -167,8 +169,8 @@ interface SettingValueColProps {
 }
 
 const SettingValueCol = styled(IonCol)<SettingValueColProps>`
-  color: ${(props) => (props.disabled ? 'var(--ion-color-medium)' : 'var(--ion-color-dark)')};
-  opacity: ${(props) => (props.disabled ? '1' : '0.9')} !important;
+  color: ${(props) => (props.disabled ? "var(--ion-color-medium)" : "var(--ion-color-light)")};
+  opacity: ${(props) => (props.disabled ? "1" : "0.9")} !important;
   font-family: var(--ion-font-family-bold);
   font-size: var(--ion-font-size-md);
   font-weight: bold;
@@ -178,12 +180,29 @@ const SettingValueCol = styled(IonCol)<SettingValueColProps>`
 
 const Select = styled(IonSelect)`
   --padding-bottom: 0;
+  --padding-end: 0;
+  --padding-start: 0;
   --padding-top: 0;
-  color: ${(props) => (props.disabled ? 'var(--ion-color-medium)' : 'var(--ion-color-dark)')};
-  opacity: ${(props) => (props.disabled ? '1' : '0.9')} !important;
+  min-height: 1.2rem;
+  color: ${(props) => (props.disabled ? "var(--ion-color-medium)" : "var(--ion-color-light)")};
+  opacity: ${(props) => (props.disabled ? "1" : "0.9")} !important;
   font-family: var(--ion-font-family-bold);
   font-weight: bold;
   font-size: var(--ion-font-size-md);
+  line-height: 1.2rem;
+
+  &::part(container) {
+    flex: 0 0 auto;
+    color: inherit;
+  }
+
+  &::part(icon) {
+    color: currentColor;
+  }
+
+  &::part(wrapper) {
+    align-items: center;
+  }
 `;
 
 const LineBreak = <HorizontalRule leftMargin={0} rightMargin={0} paddingBottom={0} paddingTop={0} />;

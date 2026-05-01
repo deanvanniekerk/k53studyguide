@@ -1,7 +1,8 @@
-import { CreateAnimation, IonIcon, useIonViewWillEnter } from '@ionic/react';
-import { star, starOutline } from 'ionicons/icons';
-import React, { useRef } from 'react';
-import styled from 'styled-components';
+import { CreateAnimation, IonIcon, useIonViewWillEnter } from "@ionic/react";
+import { star, starOutline } from "ionicons/icons";
+import type React from "react";
+import { useRef } from "react";
+import styled from "styled-components";
 
 type Props = {
   active: boolean;
@@ -23,9 +24,9 @@ const Star: React.FC<Props> = (props) => {
       delay={delay}
       easing="ease"
       keyframes={[
-        { offset: 0, transform: 'scale(0)' },
-        { offset: 0.8, transform: 'scale(1.2)' },
-        { offset: 1, transform: 'scale(1)' },
+        { offset: 0, transform: "scale(0)" },
+        { offset: 0.8, transform: "scale(1.2)" },
+        { offset: 1, transform: "scale(1)" },
       ]}
     >
       <Wrapper>

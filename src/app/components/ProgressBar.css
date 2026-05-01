@@ -1,17 +1,17 @@
 .container {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .progressBar {
-    flex-direction: row;
-    width: 100%;
+  flex-direction: row;
+  width: 100%;
 }
 
 .completeBar {
-    flex-direction: row;
-    /* transition: width 0.2s ease; */
+  flex-direction: row;
+  /* transition: width 0.2s ease; */
 }
