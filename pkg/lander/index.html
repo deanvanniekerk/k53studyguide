@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K53 Ninja — Pass Your Learner's Licence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple:       #501a8e;
+      --purple-dark:  #311343;
+      --teal:         #00b49f;
+      --orange:       #ff7b51;
+      --pink:         #e73b68;
+      --blue:         #1b458b;
+      --white:        #ffffff;
+
+      /* Gradients — one dark base, subtle section accents */
+      --grad-hero:    linear-gradient(160deg, #0d0118 0%, #1e0a33 60%, #2a1050 100%);
+      --grad-card:    linear-gradient(160deg, #1a0d2e 0%, #221040 100%);
+      --grad-premium: linear-gradient(160deg, #0f1e3a 0%, #0d2b3e 50%, #0a2e2a 100%);
+
+      /* Mode accent colours (used sparingly — tags, icons, borders) */
+      --study-accent: #00b49f;
+      --dojo-accent:  #ff7b51;
+      --arena-accent: #7b6ff5;
+
+      --font: 'Montserrat', sans-serif;
+      --radius: 16px;
+      --section-pad: clamp(64px, 8vw, 120px);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: #080012;
+      color: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px clamp(20px, 5vw, 80px);
+      background: rgba(13, 1, 24, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 32px;
+      height: 32px;
+      filter: invert(1);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--teal);
+      color: var(--white) !important;
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-weight: 700 !important;
+      font-size: 0.875rem !important;
+      transition: opacity 0.2s !important;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: var(--grad-hero);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px clamp(20px, 6vw, 100px) 80px;
+      gap: 40px;
+    }
+
+    /* Decorative background shurikens */
+    .hero-bg-deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-bg-deco .deco-shuriken {
+      position: absolute;
+      opacity: 0.04;
+      filter: invert(1);
+    }
+
+    .deco-shuriken.s1 { width: 400px; top: -60px; right: -80px; transform: rotate(15deg); animation: spinSlow 40s linear infinite; }
+    .deco-shuriken.s2 { width: 200px; bottom: 80px; left: -40px; transform: rotate(-20deg); animation: spinSlow 60s linear infinite reverse; }
+    .deco-shuriken.s3 { width: 120px; top: 30%; left: 38%; animation: spinSlow 30s linear infinite; }
+
+    @keyframes spinSlow { to { transform: rotate(360deg); } }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 28px;
+    }
+
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      text-wrap: balance;
+    }
+
+    .hero-title .accent { color: var(--teal); }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      line-height: 1.65;
+      color: rgba(255,255,255,0.65);
+      max-width: 480px;
+      margin-bottom: 44px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--teal);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 32px rgba(0,180,159,0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0,180,159,0.45);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 16px 32px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.15);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-secondary:hover { background: rgba(255,255,255,0.16); }
+
+    .store-badges {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .store-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 12px;
+      padding: 10px 18px;
+      text-decoration: none;
+      color: var(--white);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .store-badge:hover {
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    .store-badge-icon { font-size: 1.5rem; line-height: 1; }
+
+    .store-badge-text { display: flex; flex-direction: column; }
+    .store-badge-text span:first-child { font-size: 0.65rem; opacity: 0.7; letter-spacing: 0.04em; }
+    .store-badge-text span:last-child { font-size: 0.9rem; font-weight: 700; }
+
+    /* Hero phones */
+    .hero-visual {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: -20px;
+      min-height: 600px;
+    }
+
+    .phone-stack {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      height: 600px;
+    }
+
+    .phone-mock {
+      position: absolute;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
+    }
+
+    .phone-mock img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .phone-main {
+      width: 240px;
+      height: 480px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+    }
+
+    .phone-left {
+      width: 200px;
+      height: 400px;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%) rotate(-8deg);
+      z-index: 2;
+      opacity: 0.75;
+    }
+
+    .phone-right {
+      width: 200px;
+      height: 400px;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%) rotate(8deg);
+      z-index: 2;
+      opacity: 0.75;
+    }
+
+    /* hero stats strip */
+    .hero-stats {
+      margin-top: 48px;
+      display: flex;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat { display: flex; flex-direction: column; gap: 2px; }
+    .hero-stat-num {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--white);
+    }
+    .hero-stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── SECTION SHARED ─── */
+    section { padding: var(--section-pad) clamp(20px, 6vw, 100px); }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      text-wrap: balance;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* ─── FEATURES ─── */
+    #features {
+      background: #080012;
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .features-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      min-height: 400px;
+      background: var(--grad-card);
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.13);
+    }
+
+    .feature-card.study { --card-accent: var(--study-accent); }
+    .feature-card.dojo  { --card-accent: var(--dojo-accent);  }
+    .feature-card.arena { --card-accent: var(--arena-accent); }
+
+    .feature-card-bg-icon {
+      position: absolute;
+      right: -30px;
+      bottom: -30px;
+      width: 160px;
+      height: 160px;
+      opacity: 0.06;
+      filter: invert(1);
+      pointer-events: none;
+    }
+
+    .feature-card-tag {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--card-accent);
+      width: fit-content;
+    }
+
+    .feature-card-icon {
+      width: 56px;
+      height: 56px;
+      background: color-mix(in srgb, var(--card-accent) 15%, transparent);
+      border: 1px solid color-mix(in srgb, var(--card-accent) 30%, transparent);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-card-icon img {
+      width: 32px;
+      height: 32px;
+      filter: invert(1);
+    }
+
+    .feature-card-title {
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .feature-card-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .feature-card-screen {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      margin-top: auto;
+    }
+
+    .feature-card-screen img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    #how-it-works {
+      background: #0a0118;
+    }
+
+    .hiw-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hiw-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .hiw-step {
+      display: flex;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .hiw-step:last-child { border-bottom: none; }
+
+    .hiw-step-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.4);
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .hiw-step.active .hiw-step-num {
+      background: var(--teal);
+      color: var(--white);
+      border-color: var(--teal);
+    }
+
+    .hiw-step-content {}
+
+    .hiw-step-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: rgba(255,255,255,0.5);
+      transition: color 0.2s;
+    }
+
+    .hiw-step.active .hiw-step-title { color: var(--white); }
+
+    .hiw-step-desc {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.65;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, color 0.2s;
+    }
+
+    .hiw-step.active .hiw-step-desc {
+      color: rgba(255,255,255,0.55);
+      max-height: 100px;
+    }
+
+    .hiw-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .hiw-phone {
+      width: 280px;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
+      transition: opacity 0.3s;
+    }
+
+    .hiw-phone img { width: 100%; display: block; }
+
+    /* ─── SCREENSHOTS ─── */
+    #screenshots {
+      background: #080012;
+      overflow: hidden;
+    }
+
+    .screenshots-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .screenshots-header .section-subtitle { margin: 0 auto; }
+
+    .screenshots-track-wrap {
+      position: relative;
+    }
+
+    .screenshots-track-wrap::before,
+    .screenshots-track-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 120px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .screenshots-track-wrap::before {
+      left: 0;
+      background: linear-gradient(90deg, #080012 0%, transparent 100%);
+    }
+
+    .screenshots-track-wrap::after {
+      right: 0;
+      background: linear-gradient(-90deg, #080012 0%, transparent 100%);
+    }
+
+    .screenshots-track {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding: 20px 60px 40px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .screenshots-track::-webkit-scrollbar { display: none; }
+
+    .screenshot-item {
+      flex-shrink: 0;
+      width: 220px;
+      scroll-snap-align: center;
+    }
+
+    .screenshot-item img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.07);
+      display: block;
+    }
+
+    .screenshots-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .screenshots-nav-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .screenshots-nav-btn:hover { background: rgba(255,255,255,0.16); }
+
+    /* ─── PREMIUM ─── */
+    #premium {
+      background: #0a0118;
+    }
+
+    .premium-inner {
+      background: var(--grad-card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: clamp(48px, 6vw, 80px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .premium-bg-deco {
+      position: absolute;
+      right: -60px;
+      bottom: -60px;
+      width: 300px;
+      opacity: 0.05;
+      filter: invert(1);
+      pointer-events: none;
+    }
+
+    .premium-features {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 36px;
+    }
+
+    .premium-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .premium-feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(0,180,159,0.12);
+      border: 1px solid rgba(0,180,159,0.2);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .premium-feature-icon img {
+      width: 22px;
+      height: 22px;
+      filter: invert(1);
+    }
+
+    .premium-feature-text {}
+    .premium-feature-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
+    .premium-feature-desc { font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+    .premium-cta-side {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 28px;
+    }
+
+    .premium-price-box {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 28px 32px;
+      width: 100%;
+    }
+
+    .premium-price-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .premium-price {
+      font-size: 3.2rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .premium-price-sub {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .premium-once {
+      display: inline-block;
+      background: rgba(0,180,159,0.2);
+      border: 1px solid rgba(0,180,159,0.4);
+      color: var(--teal);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-top: 10px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #060010;
+      padding: 60px clamp(20px, 6vw, 100px) 40px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand {}
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--white);
+      text-decoration: none;
+      margin-bottom: 14px;
+    }
+
+    .footer-logo img {
+      width: 30px;
+      height: 30px;
+      filter: invert(1);
+    }
+
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+      max-width: 240px;
+    }
+
+    .footer-links-group {}
+    .footer-links-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 14px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-made {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-bottom: 60px;
+      }
+
+      .hero-subtitle { max-width: 100%; margin-left: auto; margin-right: auto; }
+      .hero-ctas { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-visual { min-height: 400px; }
+      .phone-main { width: 180px; height: 360px; }
+      .phone-left, .phone-right { width: 140px; height: 280px; }
+
+      .features-grid { grid-template-columns: 1fr; }
+
+      .hiw-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hiw-visual { order: -1; }
+
+      .premium-inner { grid-template-columns: 1fr; }
+
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title { font-size: 2.2rem; }
+      .store-badges { justify-content: center; }
+      .hero-visual { display: none; }
+      .footer-inner { flex-direction: column; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <img src="assets/shuriken.svg" alt="K53 Ninja logo" />
+    K53 Ninja
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how-it-works">How it works</a></li>
+    <li><a href="#screenshots">Screenshots</a></li>
+    <li><a href="#premium">Premium</a></li>
+    <li><a href="#premium" class="nav-cta">Get the App</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-deco">
+    <img class="deco-shuriken s1" src="assets/shuriken.svg" alt="" />
+    <img class="deco-shuriken s2" src="assets/shuriken.svg" alt="" />
+    <img class="deco-shuriken s3" src="assets/shuriken.svg" alt="" />
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      South African Learner's Licence
+    </div>
+
+    <h1 class="hero-title">
+      Pass your<br/>
+      <span class="accent">K53 test</span><br/>
+      first time.
+    </h1>
+
+    <p class="hero-subtitle">
+      Study, quiz and test yourself — all in one app. Complete study material, adaptive quizzes, and mock tests that mirror the real exam.
+    </p>
+
+    <div class="store-badges">
+      <a href="#" class="store-badge">
+        <span class="store-badge-icon">&#xf8ff;</span>
+        <span class="store-badge-text">
+          <span>Download on the</span>
+          <span>App Store</span>
+        </span>
+      </a>
+      <a href="#" class="store-badge">
+        <span class="store-badge-icon">▶</span>
+        <span class="store-badge-text">
+          <span>Get it on</span>
+          <span>Google Play</span>
+        </span>
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">500+</span>
+        <span class="hero-stat-label">Practice questions</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">6</span>
+        <span class="hero-stat-label">Study sections</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">100%</span>
+        <span class="hero-stat-label">K53 aligned</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="phone-stack">
+      <div class="phone-mock phone-left">
+        <img src="assets/screen-study.png" alt="Study screen" />
+      </div>
+      <div class="phone-mock phone-main">
+        <img src="assets/screen-dojo.png" alt="Dojo screen" />
+      </div>
+      <div class="phone-mock phone-right">
+        <img src="assets/screen5.png" alt="Arena screen" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="features-header">
+    <p class="section-label">Three modes</p>
+    <h2 class="section-title">Everything you need<br/>to pass first time</h2>
+    <p class="section-subtitle">K53 Ninja covers all three sections of the learner's test with dedicated modes that build your knowledge systematically.</p>
+  </div>
+
+  <div class="features-grid">
+    <!-- Study -->
+    <div class="feature-card study">
+      <img class="feature-card-bg-icon" src="assets/ninja.svg" alt="" />
+      <span class="feature-card-tag">Study</span>
+      <div class="feature-card-icon">
+        <img src="assets/target.svg" alt="Study" />
+      </div>
+      <div class="feature-card-title">All K53<br/>Study Material</div>
+      <div class="feature-card-desc">
+        Read through every topic — rules of the road, road signs, road markings, vehicle controls and defensive driving. Progress tracking shows exactly what you've covered.
+      </div>
+      <div class="feature-card-screen">
+        <img src="assets/screen-study.png" alt="Study screen" />
+      </div>
+    </div>
+
+    <!-- Dojo -->
+    <div class="feature-card dojo">
+      <img class="feature-card-bg-icon" src="assets/shuriken.svg" alt="" />
+      <span class="feature-card-tag">Dojo</span>
+      <div class="feature-card-icon">
+        <img src="assets/shuriken.svg" alt="Dojo" />
+      </div>
+      <div class="feature-card-title">Level up<br/>with Quizzes</div>
+      <div class="feature-card-desc">
+        Practice with configurable quizzes. Earn experience points, level up from 1 to 5, and focus on your weakest sections to close the gaps before exam day.
+      </div>
+      <div class="feature-card-screen">
+        <img src="assets/screen-dojo.png" alt="Dojo screen" />
+      </div>
+    </div>
+
+    <!-- Arena -->
+    <div class="feature-card arena">
+      <img class="feature-card-bg-icon" src="assets/katana.svg" alt="" />
+      <span class="feature-card-tag">Arena</span>
+      <div class="feature-card-icon">
+        <img src="assets/katana.svg" alt="Arena" />
+      </div>
+      <div class="feature-card-title">Mock Tests<br/>Like the Real One</div>
+      <div class="feature-card-desc">
+        Challenge yourself with full mock tests structured exactly like the official K53 learner's test — three sections, timed, marked. Know you're ready before you go in.
+      </div>
+      <div class="feature-card-screen">
+        <img src="assets/screen5.png" alt="Arena screen" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="hiw-inner">
+    <div>
+      <p class="section-label">How it works</p>
+      <h2 class="section-title">A proven path<br/>to passing</h2>
+      <p class="section-subtitle">Three focused stages that build on each other — study the material, drill it in the Dojo, then prove it in the Arena.</p>
+
+      <div class="hiw-steps" id="hiwSteps">
+        <div class="hiw-step active" data-screen="assets/screen-track.png">
+          <div class="hiw-step-num">01</div>
+          <div class="hiw-step-content">
+            <div class="hiw-step-title">Study the material</div>
+            <div class="hiw-step-desc">Work through all six topics — Vehicle Controls, Rules of the Road, Defensive Driving, Road Markings, Road Signals, and Road Signs. Track what you've read with progress bars.</div>
+          </div>
+        </div>
+        <div class="hiw-step" data-screen="assets/screen-dojo.png">
+          <div class="hiw-step-num">02</div>
+          <div class="hiw-step-content">
+            <div class="hiw-step-title">Train in the Dojo</div>
+            <div class="hiw-step-desc">Take configurable practice quizzes. Pick sections where your level score is low, choose how many questions, and grind your way up to Level 5.</div>
+          </div>
+        </div>
+        <div class="hiw-step" data-screen="assets/screen6.png">
+          <div class="hiw-step-num">03</div>
+          <div class="hiw-step-content">
+            <div class="hiw-step-title">Prove it in the Arena</div>
+            <div class="hiw-step-desc">Run full mock tests across Section A, B and C — just like the real K53 learner's test. Get marked, see where you failed, and go back and fix it.</div>
+          </div>
+        </div>
+        <div class="hiw-step" data-screen="assets/screen7.png">
+          <div class="hiw-step-num">04</div>
+          <div class="hiw-step-content">
+            <div class="hiw-step-title">Walk in with confidence</div>
+            <div class="hiw-step-desc">Pass 3 Arena tests and you're ready. Book your real test knowing you've prepared thoroughly. Your history tracks every quiz and test you've completed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hiw-visual">
+      <div class="hiw-phone">
+        <img id="hiwPhone" src="assets/screen-track.png" alt="App screen" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section id="screenshots">
+  <div class="screenshots-header">
+    <p class="section-label">See the app</p>
+    <h2 class="section-title">Built for focus,<br/>designed to pass</h2>
+    <p class="section-subtitle">Every screen is built around one goal: getting you through your K53 learner's test.</p>
+  </div>
+
+  <div class="screenshots-track-wrap">
+    <div class="screenshots-track" id="screenshotsTrack">
+      <div class="screenshot-item"><img src="assets/screen8.png" alt="App overview" /></div>
+      <div class="screenshot-item"><img src="assets/screen-study.png" alt="Study" /></div>
+      <div class="screenshot-item"><img src="assets/screen-track.png" alt="Track progress" /></div>
+      <div class="screenshot-item"><img src="assets/screen-dojo.png" alt="Dojo quiz" /></div>
+      <div class="screenshot-item"><img src="assets/screen-test.png" alt="Test mode" /></div>
+      <div class="screenshot-item"><img src="assets/screen5.png" alt="Arena" /></div>
+      <div class="screenshot-item"><img src="assets/screen6.png" alt="Arena test" /></div>
+      <div class="screenshot-item"><img src="assets/screen7.png" alt="Study material" /></div>
+    </div>
+  </div>
+
+  <div class="screenshots-nav">
+    <button class="screenshots-nav-btn" id="scrollLeft">&#8592;</button>
+    <button class="screenshots-nav-btn" id="scrollRight">&#8594;</button>
+  </div>
+</section>
+
+<!-- PREMIUM -->
+<section id="premium">
+  <div class="premium-inner">
+    <img class="premium-bg-deco" src="assets/ninja2.svg" alt="" />
+
+    <div>
+      <p class="section-label">Go Premium</p>
+      <h2 class="section-title">Unlock the full<br/>K53 experience</h2>
+      <p class="section-subtitle" style="color:rgba(255,255,255,0.6); margin-top:0;">The Study section is completely free. Go premium to unlock mock tests and history tracking.</p>
+
+      <div class="premium-features">
+        <div class="premium-feature">
+          <div class="premium-feature-icon"><img src="assets/katana.svg" alt="" /></div>
+          <div class="premium-feature-text">
+            <div class="premium-feature-title">Access the Arena</div>
+            <div class="premium-feature-desc">Write mock tests structured and marked exactly like the real K53 learner's test.</div>
+          </div>
+        </div>
+        <div class="premium-feature">
+          <div class="premium-feature-icon"><img src="assets/yin-yang.svg" alt="" /></div>
+          <div class="premium-feature-text">
+            <div class="premium-feature-title">Reset your History</div>
+            <div class="premium-feature-desc">Clear your seen, quiz and test history to start fresh whenever you want.</div>
+          </div>
+        </div>
+        <div class="premium-feature">
+          <div class="premium-feature-icon"><img src="assets/shuriken.svg" alt="" /></div>
+          <div class="premium-feature-text">
+            <div class="premium-feature-title">Support the Dev</div>
+            <div class="premium-feature-desc">K53 Ninja is a one-person app. Your purchase helps keep it maintained and updated.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="premium-cta-side">
+      <div class="premium-price-box">
+        <div class="premium-price-label">Premium Access</div>
+        <div class="premium-price">Once off</div>
+        <div class="premium-price-sub">No subscription. No recurring charges.</div>
+        <div class="premium-once">Pay once, keep forever</div>
+      </div>
+
+      <a href="#" class="btn-primary" style="width: 100%; justify-content: center;">
+        Get Premium
+        <span>→</span>
+      </a>
+
+      <div style="font-size: 0.8rem; color: rgba(255,255,255,0.4); text-align: center; width: 100%;">
+        Price shown in-app at checkout.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="footer-logo" href="#">
+        <img src="assets/shuriken.svg" alt="" />
+        K53 Ninja
+      </a>
+      <p class="footer-tagline">South Africa's most comprehensive K53 learner's licence study app.</p>
+    </div>
+
+    <div class="footer-links-group">
+      <div class="footer-links-title">App</div>
+      <ul class="footer-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#screenshots">Screenshots</a></li>
+        <li><a href="#premium">Premium</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links-group">
+      <div class="footer-links-title">Download</div>
+      <ul class="footer-links">
+        <li><a href="#">App Store (iOS)</a></li>
+        <li><a href="#">Google Play (Android)</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-links-group">
+      <div class="footer-links-title">Legal</div>
+      <ul class="footer-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 K53 Ninja. All rights reserved.</p>
+    <p class="footer-made">Made with care in South Africa 🇿🇦</p>
+  </div>
+</footer>
+
+<!-- Vanilla JS interactions -->
+<script>
+// How it works step switcher
+const steps = document.querySelectorAll('.hiw-step');
+const hiwPhone = document.getElementById('hiwPhone');
+
+steps.forEach(step => {
+  step.addEventListener('click', () => {
+    steps.forEach(s => s.classList.remove('active'));
+    step.classList.add('active');
+    const screen = step.getAttribute('data-screen');
+    if (screen && hiwPhone) {
+      hiwPhone.style.opacity = '0';
+      setTimeout(() => {
+        hiwPhone.src = screen;
+        hiwPhone.style.opacity = '1';
+      }, 150);
+      hiwPhone.style.transition = 'opacity 0.15s ease';
+    }
+  });
+});
+
+// Screenshots scroll
+const track = document.getElementById('screenshotsTrack');
+const scrollLeft = document.getElementById('scrollLeft');
+const scrollRight = document.getElementById('scrollRight');
+
+scrollLeft.addEventListener('click', () => {
+  track.scrollBy({ left: -480, behavior: 'smooth' });
+});
+scrollRight.addEventListener('click', () => {
+  track.scrollBy({ left: 480, behavior: 'smooth' });
+});
+
+// Nav active link highlighting on scroll
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+const sections = document.querySelectorAll('section[id]');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.style.color = link.getAttribute('href') === '#' + entry.target.id
+          ? '#ffffff'
+          : '';
+      });
+    }
+  });
+}, { threshold: 0.4 });
+
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

@@ -3,5 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "description": "K53 Study Guide landing site placeholder",
-  "scripts": {}
+  "scripts": {
+    "start": "vite --host 0.0.0.0",
+    "dev": "pnpm start",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "devDependencies": {
+    "vite": "8.0.10"
+  }
 }

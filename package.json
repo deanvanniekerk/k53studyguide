@@ -9,6 +9,7 @@
     "lint-fix": "pnpm exec biome check --write .",
     "lint:scripts": "pnpm exec biome check .",
     "lint:tsc": "pnpm --filter app lint:tsc",
+    "start:lander": "pnpm --filter lander start",
     "start": "pnpm --filter app start",
     "test": "pnpm --filter app test",
     "test:coverage": "pnpm --filter app test:coverage",
