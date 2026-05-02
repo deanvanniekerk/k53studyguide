@@ -1,0 +1,18 @@
+diff --git a/src/ios/FirebaseCrashlyticsPlugin.m b/src/ios/FirebaseCrashlyticsPlugin.m
+index 1dee9bd00a3ee0582b1ebe7b190167ebe6ff51d3..16ef62030bb2de9ed4acf615f1b70eebdec98c62 100644
+--- a/src/ios/FirebaseCrashlyticsPlugin.m
++++ b/src/ios/FirebaseCrashlyticsPlugin.m
+@@ -2,7 +2,7 @@
+ 
+ #import <Cordova/CDVAvailability.h>
+ 
+-#import <Firebase/Firebase.h>
++#import <FirebaseCore/FirebaseCore.h>
+ @import FirebaseCrashlytics;
+ 
+ @implementation FirebaseCrashlyticsPlugin
+@@ -107,4 +107,3 @@ - (void)setUserIdentifier:(CDVInvokedUrlCommand *)command {
+ }
+ 
+ @end
+-

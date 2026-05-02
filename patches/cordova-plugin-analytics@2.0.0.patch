@@ -1,0 +1,24 @@
+diff --git a/src/ios/CDVGoogleAnalytics.m b/src/ios/CDVGoogleAnalytics.m
+index b2bb70ab11471f5be09f09e30ea91c71ecb81e65..6ca0a579fbe0653cc8b6b29b4ede05e8cea945cd 100644
+--- a/src/ios/CDVGoogleAnalytics.m
++++ b/src/ios/CDVGoogleAnalytics.m
+@@ -25,6 +25,7 @@ of this software and associated documentation files (the "Software"), to
+  */
+ 
+ #import "CDVGoogleAnalytics.h"
++@import FirebaseCore;
+ @import FirebaseAnalytics;
+ 
+ @implementation CDVGoogleAnalytics
+@@ -75,7 +76,10 @@ - (void) setCurrentScreen: (CDVInvokedUrlCommand*)command {
+         NSString* currentScreen = [command.arguments objectAtIndex:0];
+         if (currentScreen && currentScreen.length > 0) {
+             _currentScreen = currentScreen;
+-            [FIRAnalytics setScreenName:_currentScreen screenClass:nil];
++            [FIRAnalytics logEventWithName:kFIREventScreenView
++                                parameters:@{
++                                    kFIRParameterScreenName: _currentScreen,
++                                }];
+             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+         }
+     }

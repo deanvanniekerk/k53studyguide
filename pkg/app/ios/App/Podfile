@@ -1,29 +1,17 @@
-require_relative '../../node_modules/@capacitor/ios/scripts/pods_helpers'
+require_relative '../../../../node_modules/.pnpm/@capacitor+ios@8.3.1_@capacitor+core@8.3.1/node_modules/@capacitor/ios/scripts/pods_helpers'
 
-platform :ios, '13.0'
-use_frameworks!
+platform :ios, '15.0'
+use_frameworks! :linkage => :static
 
-post_install do |installer|
-  assertDeploymentTarget(installer)
-
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
-      config.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
-      config.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
-    end
-  end
-end
-
-# workaround to avoid Xcode 10 caching of Pods that requires
+# workaround to avoid Xcode caching of Pods that requires
 # Product -> Clean Build Folder after new Cordova plugins installed
 # Requires CocoaPods 1.6 or newer
 install! 'cocoapods', :disable_input_output_paths => true
 
 def capacitor_pods
-  pod 'Capacitor', :path => '../../node_modules/@capacitor/ios'
-  pod 'CapacitorCordova', :path => '../../node_modules/@capacitor/ios'
-  pod 'CapacitorPreferences', :path => '../../node_modules/@capacitor/preferences'
+  pod 'Capacitor', :path => '../../../../node_modules/.pnpm/@capacitor+ios@8.3.1_@capacitor+core@8.3.1/node_modules/@capacitor/ios'
+  pod 'CapacitorCordova', :path => '../../../../node_modules/.pnpm/@capacitor+ios@8.3.1_@capacitor+core@8.3.1/node_modules/@capacitor/ios'
+  pod 'CapacitorPreferences', :path => '../../../../node_modules/.pnpm/@capacitor+preferences@8.0.1_@capacitor+core@8.3.1/node_modules/@capacitor/preferences'
   pod 'CordovaPlugins', :path => '../capacitor-cordova-ios-plugins'
   pod 'CordovaPluginsStatic', :path => '../capacitor-cordova-ios-plugins'
   pod 'CordovaPluginsResources', :path => '../capacitor-cordova-ios-plugins'
@@ -32,4 +20,8 @@ end
 target 'App' do
   capacitor_pods
   # Add your Pods here
+end
+
+post_install do |installer|
+  assertDeploymentTarget(installer)
 end

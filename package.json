@@ -19,8 +19,10 @@
     "cap-copy": "pnpm --filter app cap-copy",
     "cap-sync-android": "pnpm --filter app cap-sync-android",
     "cap-copy-android": "pnpm --filter app cap-copy-android",
+    "cap-open-android": "pnpm --filter app cap-open-android",
     "cap-sync-ios": "pnpm --filter app cap-sync-ios",
-    "cap-copy-ios": "pnpm --filter app cap-copy-ios"
+    "cap-copy-ios": "pnpm --filter app cap-copy-ios",
+    "cap-open-ios": "pnpm --filter app cap-open-ios"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.13"
@@ -32,6 +34,10 @@
     },
     "onlyBuiltDependencies": [
       "esbuild"
-    ]
+    ],
+    "patchedDependencies": {
+      "cordova-plugin-analytics@2.0.0": "patches/cordova-plugin-analytics@2.0.0.patch",
+      "cordova-plugin-firebase-crashlytics@1.2.0": "patches/cordova-plugin-firebase-crashlytics@1.2.0.patch"
+    }
   }
 }

@@ -18,8 +18,10 @@
     "cap-copy": "cap copy",
     "cap-sync-android": "cap sync android",
     "cap-copy-android": "cap copy android",
+    "cap-open-android": "cap open android",
     "cap-sync-ios": "cap sync ios",
     "cap-copy-ios": "cap copy ios",
+    "cap-open-ios": "cap open ios",
     "svg-to-component": "pnpm exec svgr --icon"
   },
   "browserslist": {
