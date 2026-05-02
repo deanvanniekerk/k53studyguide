@@ -40,8 +40,8 @@ steps:
 
     - task: Gradle@4
       inputs:
-          workingDirectory: "android"
-          gradleWrapperFile: "android/gradlew"
+          workingDirectory: "pkg/app/android"
+          gradleWrapperFile: "pkg/app/android/gradlew"
           gradleOptions: "-Xmx3072m"
           tasks: "build"
           javaHomeOption: "Path"
@@ -94,7 +94,7 @@ steps:
     #       scheme: "App"
     #       configuration: "Release"
     #       xcodeVersion: "default"
-    #       xcWorkspacePath: "ios/App/App.xcworkspace"
+    #       xcWorkspacePath: "pkg/app/ios/App/App.xcworkspace"
     #       signingOption: "manual"
     #       signingIdentity: "$(APPLE_CERTIFICATE_SIGNING_IDENTITY)"
     #       provisioningProfileUuid: "$(APPLE_PROV_PROFILE_UUID)"

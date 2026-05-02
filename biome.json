@@ -4,16 +4,18 @@
     "includes": [
       "*.json",
       "*.jsonc",
-      "*.ts",
-      "*.tsx",
-      "*.mts",
-      "*.html",
       "*.md",
-      "src/**/*.ts",
-      "src/**/*.tsx",
-      "src/**/*.js",
-      "src/**/*.jsx",
-      "src/**/*.css"
+      "pkg/*/package.json",
+      "pkg/app/*.json",
+      "pkg/app/*.ts",
+      "pkg/app/*.tsx",
+      "pkg/app/*.mts",
+      "pkg/app/*.html",
+      "pkg/app/src/**/*.ts",
+      "pkg/app/src/**/*.tsx",
+      "pkg/app/src/**/*.js",
+      "pkg/app/src/**/*.jsx",
+      "pkg/app/src/**/*.css"
     ]
   },
   "formatter": {

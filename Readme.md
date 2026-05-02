@@ -47,13 +47,13 @@ K53 Ninja contains a bank of **over 400** tough test questions. Test are **dynam
 
 ### Android
 
--   `android/app/build.gradle`
+-   `pkg/app/android/app/build.gradle`
     -   `versionCode: x`
     -   `versionName: x.x`
 
 ### IOS
 
--   `ios/App/App.xcodeproj/project.pbxproj`
+-   `pkg/app/ios/App/App.xcodeproj/project.pbxproj`
     -   `CURRENT_PROJECT_VERSION = x.x;` >
     -   `MARKETING_VERSION = x.x;`
 

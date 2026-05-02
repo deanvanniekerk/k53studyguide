@@ -16,8 +16,8 @@ dependencies {
     implementation "com.google.firebase:firebase-crashlytics:17.1.0"
     implementation "com.android.billingclient:billing:8.3.0"
 }
-apply from: "../../node_modules/.pnpm/cordova-annotated-plugin-android@1.0.4/node_modules/cordova-annotated-plugin-android/build.gradle"
-apply from: "../../node_modules/.pnpm/cordova-plugin-firebase-crashlytics@1.2.0/node_modules/cordova-plugin-firebase-crashlytics/firebase-crashlytics.gradle"
+apply from: "../../../../node_modules/.pnpm/cordova-annotated-plugin-android@1.0.4/node_modules/cordova-annotated-plugin-android/build.gradle"
+apply from: "../../../../node_modules/.pnpm/cordova-plugin-firebase-crashlytics@1.2.0/node_modules/cordova-plugin-firebase-crashlytics/firebase-crashlytics.gradle"
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()
