@@ -110,7 +110,6 @@
       min-height: 100vh;
       background: var(--grad-hero);
       position: relative;
-      overflow: hidden;
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
@@ -124,6 +123,7 @@
       inset: 0;
       pointer-events: none;
       overflow: hidden;
+      z-index: 0;
     }
 
     .hero-bg-deco .deco-sign {
@@ -275,22 +275,21 @@
     .phone-stack {
       position: relative;
       width: 100%;
-      max-width: 500px;
+      max-width: clamp(500px, 46vw, 720px);
       height: 600px;
     }
 
     .phone-mock {
       position: absolute;
-      border-radius: 32px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 2px rgba(255,255,255,0.25);
     }
 
-    .phone-mock img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .phone-mock img { width: 100%; height: auto; display: block; }
 
     .phone-main {
-      width: 240px;
-      height: 480px;
+      width: clamp(240px, 22vw, 340px);
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
@@ -298,9 +297,8 @@
     }
 
     .phone-left {
-      width: 200px;
-      height: 400px;
-      left: 0;
+      width: clamp(200px, 18vw, 280px);
+      left: 32px;
       top: 50%;
       transform: translateY(-50%) rotate(-8deg);
       z-index: 2;
@@ -308,9 +306,8 @@
     }
 
     .phone-right {
-      width: 200px;
-      height: 400px;
-      right: 0;
+      width: clamp(200px, 18vw, 280px);
+      right: 32px;
       top: 50%;
       transform: translateY(-50%) rotate(8deg);
       z-index: 2;
@@ -419,6 +416,7 @@
       opacity: 0.06;
       filter: invert(1);
       pointer-events: none;
+      z-index: 0;
     }
 
     .feature-card-tag {
@@ -472,6 +470,8 @@
       overflow: hidden;
       box-shadow: 0 20px 50px rgba(0,0,0,0.4);
       margin-top: auto;
+      position: relative;
+      z-index: 1;
     }
 
     .feature-card-screen img {
@@ -565,7 +565,7 @@
 
     .hiw-phone {
       width: 280px;
-      border-radius: 36px;
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
       transition: opacity 0.3s;
@@ -630,7 +630,7 @@
 
     .screenshot-item img {
       width: 100%;
-      border-radius: 24px;
+      border-radius: 14px;
       box-shadow: 0 20px 50px rgba(0,0,0,0.5);
       border: 1px solid rgba(255,255,255,0.07);
       display: block;
@@ -968,13 +968,13 @@
   <div class="hero-visual">
     <div class="phone-stack">
       <div class="phone-mock phone-left">
-        <img src="assets/screen-study.png" alt="Study screen" />
+        <img src="assets/screen-study.webp" alt="Study screen" />
       </div>
       <div class="phone-mock phone-main">
-        <img src="assets/screen-dojo.png" alt="Quiz screen" />
+        <img src="assets/screen-dojo.webp" alt="Quiz screen" />
       </div>
       <div class="phone-mock phone-right">
-        <img src="assets/screen5.png" alt="Test screen" />
+        <img src="assets/screen5.webp" alt="Test screen" />
       </div>
     </div>
   </div>
@@ -1001,7 +1001,7 @@
         Read through every topic — rules of the road, road signs, road markings, vehicle controls and defensive driving. Progress tracking shows exactly what you've covered.
       </div>
       <div class="feature-card-screen">
-        <img src="assets/screen-study.png" alt="Study screen" />
+        <img src="assets/screen-track.webp" alt="Study screen" />
       </div>
     </div>
 
@@ -1017,7 +1017,7 @@
         Practice with configurable quizzes. Earn experience points, level up from 1 to 5, and focus on your weakest sections to close the gaps before exam day.
       </div>
       <div class="feature-card-screen">
-        <img src="assets/screen-dojo.png" alt="Quiz screen" />
+        <img src="assets/screen-test.webp" alt="Quiz screen" />
       </div>
     </div>
 
@@ -1033,7 +1033,7 @@
         Challenge yourself with full mock tests structured exactly like the official K53 learner's test — three sections, timed, marked. Know you're ready before you go in.
       </div>
       <div class="feature-card-screen">
-        <img src="assets/screen5.png" alt="Test screen" />
+        <img src="assets/screen6.webp" alt="Test screen" />
       </div>
     </div>
   </div>
@@ -1048,28 +1048,28 @@
       <p class="section-subtitle">Three focused stages that build on each other — study the material, practice with quizzes, then prove it in full mock tests.</p>
 
       <div class="hiw-steps" id="hiwSteps">
-        <div class="hiw-step active" data-screen="assets/screen-track.png">
+        <div class="hiw-step active" data-screen="assets/screen-track.webp">
           <div class="hiw-step-num">01</div>
           <div class="hiw-step-content">
             <div class="hiw-step-title">Study the material</div>
             <div class="hiw-step-desc">Work through all six topics — Vehicle Controls, Rules of the Road, Defensive Driving, Road Markings, Road Signals, and Road Signs. Track what you've read with progress bars.</div>
           </div>
         </div>
-        <div class="hiw-step" data-screen="assets/screen-dojo.png">
+        <div class="hiw-step" data-screen="assets/screen-dojo.webp">
           <div class="hiw-step-num">02</div>
           <div class="hiw-step-content">
             <div class="hiw-step-title">Practice with quizzes</div>
             <div class="hiw-step-desc">Take configurable practice quizzes. Pick sections where your level score is low, choose how many questions, and grind your way up to Level 5.</div>
           </div>
         </div>
-        <div class="hiw-step" data-screen="assets/screen6.png">
+        <div class="hiw-step" data-screen="assets/screen6.webp">
           <div class="hiw-step-num">03</div>
           <div class="hiw-step-content">
             <div class="hiw-step-title">Prove it in Test mode</div>
             <div class="hiw-step-desc">Run full mock tests across Section A, B and C — just like the real K53 learner's test. Get marked, see where you missed questions, and go back and fix it.</div>
           </div>
         </div>
-        <div class="hiw-step" data-screen="assets/screen7.png">
+        <div class="hiw-step" data-screen="assets/screen7.webp">
           <div class="hiw-step-num">04</div>
           <div class="hiw-step-content">
             <div class="hiw-step-title">Walk in with confidence</div>
@@ -1081,7 +1081,7 @@
 
     <div class="hiw-visual">
       <div class="hiw-phone">
-        <img id="hiwPhone" src="assets/screen-track.png" alt="App screen" />
+        <img id="hiwPhone" src="assets/screen-track.webp" alt="App screen" />
       </div>
     </div>
   </div>
@@ -1097,14 +1097,14 @@
 
   <div class="screenshots-track-wrap">
     <div class="screenshots-track" id="screenshotsTrack">
-      <div class="screenshot-item"><img src="assets/screen8.png" alt="App overview" /></div>
-      <div class="screenshot-item"><img src="assets/screen-study.png" alt="Study" /></div>
-      <div class="screenshot-item"><img src="assets/screen-track.png" alt="Track progress" /></div>
-      <div class="screenshot-item"><img src="assets/screen-dojo.png" alt="Quiz" /></div>
-      <div class="screenshot-item"><img src="assets/screen-test.png" alt="Test mode" /></div>
-      <div class="screenshot-item"><img src="assets/screen5.png" alt="Test" /></div>
-      <div class="screenshot-item"><img src="assets/screen6.png" alt="Mock test" /></div>
-      <div class="screenshot-item"><img src="assets/screen7.png" alt="Study material" /></div>
+      <div class="screenshot-item"><img src="assets/screen-study.webp" alt="Study dashboard" /></div>
+      <div class="screenshot-item"><img src="assets/screen-track.webp" alt="Study signs" /></div>
+      <div class="screenshot-item"><img src="assets/screen8.webp" alt="Study warning signs" /></div>
+      <div class="screenshot-item"><img src="assets/screen-dojo.webp" alt="Quiz" /></div>
+      <div class="screenshot-item"><img src="assets/screen-test.webp" alt="Quiz question" /></div>
+      <div class="screenshot-item"><img src="assets/screen5.webp" alt="Test dashboard" /></div>
+      <div class="screenshot-item"><img src="assets/screen6.webp" alt="Mock test" /></div>
+      <div class="screenshot-item"><img src="assets/screen7.webp" alt="Profile settings" /></div>
     </div>
   </div>
 

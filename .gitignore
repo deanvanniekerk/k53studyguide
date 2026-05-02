@@ -13,6 +13,7 @@
 # production
 /build
 /pkg/app/build
+/pkg/lander/dist
 
 # misc
 .DS_Store
