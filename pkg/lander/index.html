@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>K53 Ninja — Pass Your Learner's Licence</title>
+  <title>K53 Study Guide — Pass Your Learner's Licence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -27,8 +27,8 @@
 
       /* Mode accent colours (used sparingly — tags, icons, borders) */
       --study-accent: #00b49f;
-      --dojo-accent:  #ff7b51;
-      --arena-accent: #7b6ff5;
+      --quiz-accent:  #ff7b51;
+      --test-accent: #7b6ff5;
 
       --font: 'Montserrat', sans-serif;
       --radius: 16px;
@@ -74,7 +74,6 @@
     .nav-logo img {
       width: 32px;
       height: 32px;
-      filter: invert(1);
     }
 
     .nav-links {
@@ -119,7 +118,7 @@
       gap: 40px;
     }
 
-    /* Decorative background shurikens */
+    /* Decorative background signs */
     .hero-bg-deco {
       position: absolute;
       inset: 0;
@@ -127,15 +126,15 @@
       overflow: hidden;
     }
 
-    .hero-bg-deco .deco-shuriken {
+    .hero-bg-deco .deco-sign {
       position: absolute;
       opacity: 0.04;
       filter: invert(1);
     }
 
-    .deco-shuriken.s1 { width: 400px; top: -60px; right: -80px; transform: rotate(15deg); animation: spinSlow 40s linear infinite; }
-    .deco-shuriken.s2 { width: 200px; bottom: 80px; left: -40px; transform: rotate(-20deg); animation: spinSlow 60s linear infinite reverse; }
-    .deco-shuriken.s3 { width: 120px; top: 30%; left: 38%; animation: spinSlow 30s linear infinite; }
+    .deco-sign.s1 { width: 400px; top: -60px; right: -80px; transform: rotate(15deg); animation: spinSlow 40s linear infinite; }
+    .deco-sign.s2 { width: 200px; bottom: 80px; left: -40px; transform: rotate(-20deg); animation: spinSlow 60s linear infinite reverse; }
+    .deco-sign.s3 { width: 120px; top: 30%; left: 38%; animation: spinSlow 30s linear infinite; }
 
     @keyframes spinSlow { to { transform: rotate(360deg); } }
 
@@ -408,8 +407,8 @@
     }
 
     .feature-card.study { --card-accent: var(--study-accent); }
-    .feature-card.dojo  { --card-accent: var(--dojo-accent);  }
-    .feature-card.arena { --card-accent: var(--arena-accent); }
+    .feature-card.quiz { --card-accent: var(--quiz-accent); }
+    .feature-card.test { --card-accent: var(--test-accent); }
 
     .feature-card-bg-icon {
       position: absolute;
@@ -451,7 +450,6 @@
     .feature-card-icon img {
       width: 32px;
       height: 32px;
-      filter: invert(1);
     }
 
     .feature-card-title {
@@ -717,7 +715,6 @@
     .premium-feature-icon img {
       width: 22px;
       height: 22px;
-      filter: invert(1);
     }
 
     .premium-feature-text {}
@@ -806,7 +803,6 @@
     .footer-logo img {
       width: 30px;
       height: 30px;
-      filter: invert(1);
     }
 
     .footer-tagline {
@@ -900,8 +896,8 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
-    <img src="assets/shuriken.svg" alt="K53 Ninja logo" />
-    K53 Ninja
+    <img src="assets/brand-mark.svg" alt="K53 Study Guide logo" />
+    K53 Study Guide
   </a>
   <ul class="nav-links">
     <li><a href="#features">Features</a></li>
@@ -915,9 +911,9 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg-deco">
-    <img class="deco-shuriken s1" src="assets/shuriken.svg" alt="" />
-    <img class="deco-shuriken s2" src="assets/shuriken.svg" alt="" />
-    <img class="deco-shuriken s3" src="assets/shuriken.svg" alt="" />
+    <img class="deco-sign s1" src="assets/icon-signs.svg" alt="" />
+    <img class="deco-sign s2" src="assets/icon-signs.svg" alt="" />
+    <img class="deco-sign s3" src="assets/icon-drive.svg" alt="" />
   </div>
 
   <div class="hero-content">
@@ -975,10 +971,10 @@
         <img src="assets/screen-study.png" alt="Study screen" />
       </div>
       <div class="phone-mock phone-main">
-        <img src="assets/screen-dojo.png" alt="Dojo screen" />
+        <img src="assets/screen-dojo.png" alt="Quiz screen" />
       </div>
       <div class="phone-mock phone-right">
-        <img src="assets/screen5.png" alt="Arena screen" />
+        <img src="assets/screen5.png" alt="Test screen" />
       </div>
     </div>
   </div>
@@ -989,16 +985,16 @@
   <div class="features-header">
     <p class="section-label">Three modes</p>
     <h2 class="section-title">Everything you need<br/>to pass first time</h2>
-    <p class="section-subtitle">K53 Ninja covers all three sections of the learner's test with dedicated modes that build your knowledge systematically.</p>
+    <p class="section-subtitle">K53 Study Guide covers all three sections of the learner's test with dedicated modes that build your knowledge systematically.</p>
   </div>
 
   <div class="features-grid">
     <!-- Study -->
     <div class="feature-card study">
-      <img class="feature-card-bg-icon" src="assets/ninja.svg" alt="" />
+      <img class="feature-card-bg-icon" src="assets/icon-study.svg" alt="" />
       <span class="feature-card-tag">Study</span>
       <div class="feature-card-icon">
-        <img src="assets/target.svg" alt="Study" />
+        <img src="assets/icon-study.svg" alt="Study" />
       </div>
       <div class="feature-card-title">All K53<br/>Study Material</div>
       <div class="feature-card-desc">
@@ -1009,35 +1005,35 @@
       </div>
     </div>
 
-    <!-- Dojo -->
-    <div class="feature-card dojo">
-      <img class="feature-card-bg-icon" src="assets/shuriken.svg" alt="" />
-      <span class="feature-card-tag">Dojo</span>
+    <!-- Quiz -->
+    <div class="feature-card quiz">
+      <img class="feature-card-bg-icon" src="assets/icon-quiz.svg" alt="" />
+      <span class="feature-card-tag">Quiz</span>
       <div class="feature-card-icon">
-        <img src="assets/shuriken.svg" alt="Dojo" />
+        <img src="assets/icon-quiz.svg" alt="Quiz" />
       </div>
       <div class="feature-card-title">Level up<br/>with Quizzes</div>
       <div class="feature-card-desc">
         Practice with configurable quizzes. Earn experience points, level up from 1 to 5, and focus on your weakest sections to close the gaps before exam day.
       </div>
       <div class="feature-card-screen">
-        <img src="assets/screen-dojo.png" alt="Dojo screen" />
+        <img src="assets/screen-dojo.png" alt="Quiz screen" />
       </div>
     </div>
 
-    <!-- Arena -->
-    <div class="feature-card arena">
-      <img class="feature-card-bg-icon" src="assets/katana.svg" alt="" />
-      <span class="feature-card-tag">Arena</span>
+    <!-- Test -->
+    <div class="feature-card test">
+      <img class="feature-card-bg-icon" src="assets/icon-test.svg" alt="" />
+      <span class="feature-card-tag">Test</span>
       <div class="feature-card-icon">
-        <img src="assets/katana.svg" alt="Arena" />
+        <img src="assets/icon-test.svg" alt="Test" />
       </div>
       <div class="feature-card-title">Mock Tests<br/>Like the Real One</div>
       <div class="feature-card-desc">
         Challenge yourself with full mock tests structured exactly like the official K53 learner's test — three sections, timed, marked. Know you're ready before you go in.
       </div>
       <div class="feature-card-screen">
-        <img src="assets/screen5.png" alt="Arena screen" />
+        <img src="assets/screen5.png" alt="Test screen" />
       </div>
     </div>
   </div>
@@ -1049,7 +1045,7 @@
     <div>
       <p class="section-label">How it works</p>
       <h2 class="section-title">A proven path<br/>to passing</h2>
-      <p class="section-subtitle">Three focused stages that build on each other — study the material, drill it in the Dojo, then prove it in the Arena.</p>
+      <p class="section-subtitle">Three focused stages that build on each other — study the material, practice with quizzes, then prove it in full mock tests.</p>
 
       <div class="hiw-steps" id="hiwSteps">
         <div class="hiw-step active" data-screen="assets/screen-track.png">
@@ -1062,22 +1058,22 @@
         <div class="hiw-step" data-screen="assets/screen-dojo.png">
           <div class="hiw-step-num">02</div>
           <div class="hiw-step-content">
-            <div class="hiw-step-title">Train in the Dojo</div>
+            <div class="hiw-step-title">Practice with quizzes</div>
             <div class="hiw-step-desc">Take configurable practice quizzes. Pick sections where your level score is low, choose how many questions, and grind your way up to Level 5.</div>
           </div>
         </div>
         <div class="hiw-step" data-screen="assets/screen6.png">
           <div class="hiw-step-num">03</div>
           <div class="hiw-step-content">
-            <div class="hiw-step-title">Prove it in the Arena</div>
-            <div class="hiw-step-desc">Run full mock tests across Section A, B and C — just like the real K53 learner's test. Get marked, see where you failed, and go back and fix it.</div>
+            <div class="hiw-step-title">Prove it in Test mode</div>
+            <div class="hiw-step-desc">Run full mock tests across Section A, B and C — just like the real K53 learner's test. Get marked, see where you missed questions, and go back and fix it.</div>
           </div>
         </div>
         <div class="hiw-step" data-screen="assets/screen7.png">
           <div class="hiw-step-num">04</div>
           <div class="hiw-step-content">
             <div class="hiw-step-title">Walk in with confidence</div>
-            <div class="hiw-step-desc">Pass 3 Arena tests and you're ready. Book your real test knowing you've prepared thoroughly. Your history tracks every quiz and test you've completed.</div>
+            <div class="hiw-step-desc">Pass 3 mock tests and you're ready. Book your real test knowing you've prepared thoroughly. Your history tracks every quiz and test you've completed.</div>
           </div>
         </div>
       </div>
@@ -1104,10 +1100,10 @@
       <div class="screenshot-item"><img src="assets/screen8.png" alt="App overview" /></div>
       <div class="screenshot-item"><img src="assets/screen-study.png" alt="Study" /></div>
       <div class="screenshot-item"><img src="assets/screen-track.png" alt="Track progress" /></div>
-      <div class="screenshot-item"><img src="assets/screen-dojo.png" alt="Dojo quiz" /></div>
+      <div class="screenshot-item"><img src="assets/screen-dojo.png" alt="Quiz" /></div>
       <div class="screenshot-item"><img src="assets/screen-test.png" alt="Test mode" /></div>
-      <div class="screenshot-item"><img src="assets/screen5.png" alt="Arena" /></div>
-      <div class="screenshot-item"><img src="assets/screen6.png" alt="Arena test" /></div>
+      <div class="screenshot-item"><img src="assets/screen5.png" alt="Test" /></div>
+      <div class="screenshot-item"><img src="assets/screen6.png" alt="Mock test" /></div>
       <div class="screenshot-item"><img src="assets/screen7.png" alt="Study material" /></div>
     </div>
   </div>
@@ -1121,7 +1117,7 @@
 <!-- PREMIUM -->
 <section id="premium">
   <div class="premium-inner">
-    <img class="premium-bg-deco" src="assets/ninja2.svg" alt="" />
+    <img class="premium-bg-deco" src="assets/icon-test.svg" alt="" />
 
     <div>
       <p class="section-label">Go Premium</p>
@@ -1130,24 +1126,24 @@
 
       <div class="premium-features">
         <div class="premium-feature">
-          <div class="premium-feature-icon"><img src="assets/katana.svg" alt="" /></div>
+          <div class="premium-feature-icon"><img src="assets/icon-test.svg" alt="" /></div>
           <div class="premium-feature-text">
-            <div class="premium-feature-title">Access the Arena</div>
+            <div class="premium-feature-title">Access Test mode</div>
             <div class="premium-feature-desc">Write mock tests structured and marked exactly like the real K53 learner's test.</div>
           </div>
         </div>
         <div class="premium-feature">
-          <div class="premium-feature-icon"><img src="assets/yin-yang.svg" alt="" /></div>
+          <div class="premium-feature-icon"><img src="assets/icon-drive.svg" alt="" /></div>
           <div class="premium-feature-text">
             <div class="premium-feature-title">Reset your History</div>
             <div class="premium-feature-desc">Clear your seen, quiz and test history to start fresh whenever you want.</div>
           </div>
         </div>
         <div class="premium-feature">
-          <div class="premium-feature-icon"><img src="assets/shuriken.svg" alt="" /></div>
+          <div class="premium-feature-icon"><img src="assets/brand-mark.svg" alt="" /></div>
           <div class="premium-feature-text">
             <div class="premium-feature-title">Support the Dev</div>
-            <div class="premium-feature-desc">K53 Ninja is a one-person app. Your purchase helps keep it maintained and updated.</div>
+            <div class="premium-feature-desc">K53 Study Guide is a one-person app. Your purchase helps keep it maintained and updated.</div>
           </div>
         </div>
       </div>
@@ -1178,8 +1174,8 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <a class="footer-logo" href="#">
-        <img src="assets/shuriken.svg" alt="" />
-        K53 Ninja
+        <img src="assets/brand-mark.svg" alt="" />
+        K53 Study Guide
       </a>
       <p class="footer-tagline">South Africa's most comprehensive K53 learner's licence study app.</p>
     </div>
@@ -1212,7 +1208,7 @@
   </div>
 
   <div class="footer-bottom">
-    <p class="footer-copy">&copy; 2026 K53 Ninja. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026 K53 Study Guide. All rights reserved.</p>
     <p class="footer-made">Made with care in South Africa 🇿🇦</p>
   </div>
 </footer>
