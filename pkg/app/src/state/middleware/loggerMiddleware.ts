@@ -1,9 +1,6 @@
 import type { AnyAction, Dispatch } from "redux";
-import { AzureStorageLoggerService, createLoggerService, type LogLevel } from "@/services";
+import type { LogLevel } from "@/services";
 import type { RecieveLogMessageAction } from "@/state/log";
-
-const logger = createLoggerService(AzureStorageLoggerService);
-logger.initialize();
 
 const getLevel = (level: LogLevel | "NONE"): number => {
   switch (level) {
@@ -20,6 +17,15 @@ const getLevel = (level: LogLevel | "NONE"): number => {
   }
 };
 
+const log = (level: LogLevel, message: string, data?: unknown) => {
+  if (data) {
+    console.log(`[${level}] ${message}`, data);
+    return;
+  }
+
+  console.log(`[${level}] ${message}`);
+};
+
 export default () => (next: Dispatch) => (action: AnyAction) => {
   //Dont log redux persit actions
   if (action.type.indexOf("persist/") === 0) return next(action);
@@ -30,10 +36,10 @@ export default () => (next: Dispatch) => (action: AnyAction) => {
     const actionLogLevel = getLevel(a.payload.level);
     const logLevel = getLevel(__LOG_LEVEL__);
 
-    if (actionLogLevel <= logLevel) logger.log(a.payload.level, a.payload.message, a.payload.data);
+    if (actionLogLevel <= logLevel) log(a.payload.level, a.payload.message, a.payload.data);
   } else {
     if (__LOG_LEVEL__ === "DEBUG") {
-      logger.log("DEBUG", `Redux Action: ${action.type}`, action);
+      log("DEBUG", `Redux Action: ${action.type}`, action);
     }
   }
 

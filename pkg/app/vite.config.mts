@@ -37,8 +37,6 @@ export default defineConfig(({ mode }) => ({
   },
   define: {
     __ENVIRONMENT__: JSON.stringify(getConfig("environment", mode === "production" ? "production" : "development")),
-    __AZURE_STORAGE_TABLE_URL__: JSON.stringify(getConfig("azureStorageTableUrl", "")),
-    __AZURE_STORAGE_TABLE_SAS_TOKEN__: JSON.stringify(getConfig("azureStorageTableSasToken", "")),
     __LOG_LEVEL__: JSON.stringify(getConfig("logLevel", "INFO")),
   },
   resolve: {

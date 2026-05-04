@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { SettingsOutlineIcon } from "@/app/components/icons";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { watermarkStyle } from "@/app/styles";
-import { Checklist, Debug, History, Purchase, RateApp } from "./components";
+import { Checklist, Debug, History, Legal, Purchase, RateApp } from "./components";
 import { ProfilePageHeader } from "./ProfilePageHeader";
 
 const ProfilePage: React.FC = () => {
@@ -18,6 +18,7 @@ const ProfilePage: React.FC = () => {
         <History />
         <Purchase />
         <RateApp />
+        <Legal />
         <Debug />
       </Content>
     </Page>
