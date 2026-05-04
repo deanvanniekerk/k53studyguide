@@ -8,6 +8,7 @@
     "lint": "pnpm lint:tsc && pnpm lint:scripts",
     "lint-fix": "pnpm exec biome check --write .",
     "lint:scripts": "pnpm exec biome check .",
+    "deploy:lander": "bash scripts/deploy-lander-ftp.sh",
     "lint:tsc": "pnpm --filter app lint:tsc",
     "start:lander": "pnpm --filter lander start",
     "start": "pnpm --filter app start",
