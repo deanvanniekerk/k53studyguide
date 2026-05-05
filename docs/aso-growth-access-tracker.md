@@ -4,6 +4,8 @@ This document tracks the tools, links, and account access needed for a comprehen
 
 ## Current Access State
 
+MCP service account in use: `mcp-servers@k53-ninja.iam.gserviceaccount.com`
+
 | Area | Current state | Access level | Notes |
 | --- | --- | --- | --- |
 | Local repository | Available | Read/write | Codex can inspect and edit this repo. |
@@ -11,14 +13,14 @@ This document tracks the tools, links, and account access needed for a comprehen
 | Landing website source | Available | Read/write | Static Vite lander under `pkg/lander`. |
 | Play Store public listing | Available | Public | https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en |
 | Play Console | Available with limits | Google Play MCP read access | App info, `en-GB` listing, production release info, and basic ratings endpoint are callable. Detailed installs/crashes require Reports/Vitals APIs or exports. Reviews endpoint currently returns `{}`. |
-| Firebase Analytics | Needed | Account/tool access required | Needed for acquisition, retention, funnel, event, audience, country, language, and device analysis. |
-| Firebase Crashlytics / Android vitals | Needed | Account/tool access required | Needed to check crash, ANR, and quality signals that may affect growth. |
+| Firebase Analytics | Available with limits | Firebase MCP project/app access | Project `k53-ninja` is visible, but this MCP does not expose GA4 analytics reports such as acquisition, retention, funnels, or events. |
+| Firebase Crashlytics / Android vitals | Available with limits | Firebase MCP guides/resources only | Crashlytics guides are available, but no crash issue/report endpoint is currently exposed through discovered tools. Android vitals still needs Play Console Vitals API or exports. |
 | Website URL | Available | Public | https://k53studyguide.online/ |
 | Website analytics | Needed | Account/tool access required | Google Analytics, Plausible, Cloudflare Analytics, or equivalent. |
 | Google Search Console | Needed | Account/tool access required | Needed for organic search queries, indexing, pages, and website SEO opportunities. |
-| Competitor listings | Needed | Public links required | Need Play Store links for top competing learner/K53 apps. |
+| Competitor listings | Available | Public links provided | Five primary competitor Play Store listings are recorded below. |
 | ASO keyword tool | Optional | Tool access helpful | AppTweak, Sensor Tower, data.ai, MobileAction, AppFollow, App Radar, or similar. |
-| Google Ads | Optional | Account/tool access helpful | Useful if paid campaigns are used or considered for ranking momentum. |
+| Google Ads | Available | Google Ads MCP read access | Customer `7069841878` is accessible. Account is enabled, non-test, currency `ZAR`, timezone `Africa/Johannesburg`. Campaign history is queryable. |
 | Support/review channels | Optional | Export or screenshots helpful | Useful for learning user vocabulary and pain points. |
 
 ## Links To Collect
@@ -28,14 +30,15 @@ This document tracks the tools, links, and account access needed for a comprehen
 | Play Store listing | Available | https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en |
 | Landing website | Available | https://k53studyguide.online/ |
 | Google Play Console | Available with limits | MCP package access confirmed for `deanvniekerk.k53studyguide.app` |
-| Firebase project | Needed |  |
+| Firebase project | Available with limits | `k53-ninja` / project number `959174953477` |
 | Website analytics | Needed |  |
 | Google Search Console | Needed |  |
-| Competitor 1 | Needed |  |
-| Competitor 2 | Needed |  |
-| Competitor 3 | Needed |  |
-| Competitor 4 | Needed |  |
-| Competitor 5 | Needed |  |
+| Google Ads customer | Available | `7069841878` |
+| Competitor 1 | Available | https://play.google.com/store/apps/details?id=com.pineapplestudio.k53learnerslicensetest |
+| Competitor 2 | Available | https://play.google.com/store/apps/details?id=k53.south.africa.learners.test.app.k53learnersapp |
+| Competitor 3 | Available | https://play.google.com/store/apps/details?id=uk.co.imagitech.topscore |
+| Competitor 4 | Available | https://play.google.com/store/apps/details?id=com.nhlakaniphonkosi.k53southafricam |
+| Competitor 5 | Available | https://play.google.com/store/apps/details?id=com.learnersandlicense |
 
 ## Access Needed By Workstream
 
@@ -71,7 +74,7 @@ Needed:
   - `south africa driving test`
 - Optional ASO tool access for keyword volume, difficulty, competitor ranking, and trend data
 
-Current status: `Blocked until competitor links and target keywords are available`.
+Current status: `Competitor links available; target keywords and keyword volume/ranking data still needed`.
 
 ### 3. Firebase Product Analytics
 
@@ -87,7 +90,17 @@ Needed:
   - geography, language, and device breakdowns
   - uninstall or churn proxies if available
 
-Current status: `Blocked until Firebase data is available`.
+Current status: `Firebase project/app access available. Analytics reports still need GA4, BigQuery export, screenshots, CSV exports, or additional analytics-capable tools`.
+
+Observed Firebase project/app details:
+
+- Project ID: `k53-ninja`
+- Project number: `959174953477`
+- Display name: `K53 Ninja`
+- Android Firebase app ID: `1:959174953477:android:0c0e5a614dd69be0586a6c`
+- Firebase Android package namespace: `deanvniekerk.k53ninja.app`
+- Play Store package namespace: `deanvniekerk.k53studyguide.app`
+- Note: the Firebase package namespace differs from the Play Store package namespace because `k53ninja` is the old app name. Still verify that the current shipped app is sending analytics to the intended Firebase app/project.
 
 ### 4. Website SEO & Conversion
 
@@ -121,6 +134,33 @@ Needed later:
 
 Current status: `Local repo changes possible; deployment/account changes need access`.
 
+### 7. Google Ads
+
+Current status: `Google Ads MCP access available for customer 7069841878`.
+
+Observed account details:
+
+- Customer ID: `7069841878`
+- Currency: `ZAR`
+- Timezone: `Africa/Johannesburg`
+- Status: `ENABLED`
+- Test account: `false`
+- Manager account: `false`
+
+Observed app campaigns:
+
+| Campaign | Status | App ID | Impressions | Clicks | Cost | Conversions |
+| --- | --- | --- | ---: | ---: | ---: | ---: |
+| `Initial - Low Volume` | Removed | `deanvniekerk.k53ninja.app` | 143,615 | 4,117 | ZAR 1,888.17 | 966 |
+| `App Promotion K53 SG` | Paused | `deanvniekerk.k53studyguide.app` | 1,090,030 | 101,493 | ZAR 8,798.84 | 69,824 |
+
+Next useful Ads analysis:
+
+- Break campaign performance down by date, country, device, network, and conversion action.
+- Check whether campaign conversions represent installs, first opens, or another conversion event.
+- Inspect search term insights where available for app campaign keyword/intent clues.
+- Evaluate whether a small controlled app campaign could support ASO experiments without distorting organic measurement.
+
 ## First Data Request
 
 Ask the owner for:
@@ -138,11 +178,17 @@ Ask the owner for:
 | Date | Update | Owner |
 | --- | --- | --- |
 | 2026-05-05 | Created initial access tracker. Local repository access confirmed. External links and account access still needed. | Codex |
+| 2026-05-05 | Recorded MCP service account: `mcp-servers@k53-ninja.iam.gserviceaccount.com`. | Codex |
 | 2026-05-05 | Added public Play Store listing and website links. | Codex |
 | 2026-05-05 | Checked tool discovery for Google Play/Play Console MCP access. No callable Google Play tools were exposed; status set to pending. | Codex |
 | 2026-05-05 | Google Play MCP became callable. Read-only app info call for `deanvniekerk.k53studyguide.app` failed because Android Publisher API is disabled for project `959174953477`. | Codex |
 | 2026-05-05 | Retried after Android Publisher API was enabled. Read-only app info call now fails with `The caller does not have permission`, so Play Console permissions are the remaining blocker. | Codex |
 | 2026-05-05 | Play Console service account permissions confirmed. Retrieved app info, `en-GB` store listing, and production release `26 (1.26)`. Reviews endpoint returned `{}`; install and crash statistics require Reports/Vitals API access or exports. | Codex |
+| 2026-05-05 | Retried reviews and statistics after permission changes. Reviews still returned `{}`; ratings returned app details only; crashes still require Vitals API; installs call was blocked by tool safety before execution. | Codex |
+| 2026-05-05 | Added five primary competitor Play Store listings. Competitor analysis is now partially unblocked. | Codex |
+| 2026-05-05 | Firebase MCP access confirmed. Set active project to `k53-ninja`, listed one Android Firebase app, and retrieved SDK config metadata. Analytics reports are not exposed by the current Firebase tools. | Codex |
+| 2026-05-05 | Confirmed with owner that `k53ninja` is the old app name and was updated to `k53studyguide`; namespace mismatch is historical naming, but analytics wiring should still be verified. | Codex |
+| 2026-05-05 | Google Ads MCP access confirmed for customer `7069841878`. Retrieved account metadata and two app campaigns, including paused current app campaign `App Promotion K53 SG`. | Codex |
 
 ## Decision Log
 
