@@ -4,6 +4,8 @@
   padding: var(--ic-padding);
   margin: 8px;
   height: 75px;
+  background: #FFFFFF;
+  box-shadow: var(--card-shadow);
 }
 
 .root-navigation-item .progress-bar {

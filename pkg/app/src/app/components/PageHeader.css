@@ -17,6 +17,7 @@
   align-items: center;
   box-sizing: border-box;
   pointer-events: none;
+  background: var(--page-header-bg, transparent);
 }
 
 .page-header .col-1 {

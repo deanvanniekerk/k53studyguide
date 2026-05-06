@@ -82,7 +82,8 @@ const Content = styled(IonContent)`
 `;
 
 const Page = styled(IonPage)`
-  background: var(--arena-background);
+  background: #FAFAF7;
+  --page-header-bg: var(--arena-header-gradient);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

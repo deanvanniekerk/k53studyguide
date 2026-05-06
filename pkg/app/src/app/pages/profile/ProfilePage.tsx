@@ -38,7 +38,8 @@ const Content = styled(IonContent)`
 `;
 
 const Page = styled(IonPage)`
-  background: var(--profile-background);
+  background: #FAFAF7;
+  --page-header-bg: var(--profile-header-gradient);
 `;
 
 export default ProfilePage;
