@@ -1,12 +1,13 @@
 ion-tab-bar {
-  --background: var(--ion-color-dark);
-  --color: var(--ion-color-light);
-  --ion-color-primary: var(--ion-color-light);
+  --background: #FFFFFF;
+  --color: #1A1B2E;
+  --ion-color-primary: #1A1B2E;
   height: 70px;
+  border-top: 1px solid #EEECF7;
 }
 
 ion-tab-button {
-  --color: var(--ion-color-dark-tint);
+  --color: #9E9CB8;
   font-family: var(--ion-font-family-bold);
 }
 
@@ -27,7 +28,7 @@ ion-content,
 ion-text,
 ion-item,
 ion-list-header {
-  --color: var(--ion-color-light);
+  --color: #1A1B2E;
 }
 
 ion-item {

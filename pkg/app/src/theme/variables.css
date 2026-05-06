@@ -1,7 +1,7 @@
 :root {
   /* FONTS ------------------------------------ */
-  --ion-font-family: "Montserrat", sans-serif;
-  --ion-font-family-bold: "Montserrat-Bold", sans-serif;
+  --ion-font-family: "Plus Jakarta Sans", sans-serif;
+  --ion-font-family-bold: "Plus Jakarta Sans", sans-serif;
 
   --ion-font-size-xs: 0.7rem;
   --ion-font-size-sm: 0.8rem;
@@ -30,17 +30,30 @@
   /* ------------------------------------------ */
 
   /* ITEM CONTAINER --------------------------- */
-  --ic-corner-radius: 8px;
+  --ic-corner-radius: 18px;
   --ic-padding: 8px;
-  --ic-border: 1px solid #ffffff61;
+  --ic-border: 1px solid #EEECF7;
+  --card-shadow: 0 2px 0 #EEECF7;
   /* ------------------------------------------ */
 
   /* PAGE BACKGROUNDS ------------------------- */
-  --study-background: linear-gradient(to right bottom, #501a8e, #0055ba, #007bc3, #009ab4, #00b49f);
-  --dojo-background: linear-gradient(to right bottom, #501a8e, #9a0684, #cc1e73, #ed4c60, #ff7b51);
-  --arena-background: linear-gradient(to right bottom, #501a8e, #402b91, #313691, #243e8f, #1b458b);
-  --profile-background: linear-gradient(to right bottom, #501a8e, #5a2498, #642ea2, #6f37ad, #7941b7);
-  --purchase-background: linear-gradient(to right bottom, #501a8e, #00419b, #004d85, #005262, #005247);
+  --study-background: #FAFAF7;
+  --dojo-background: #FAFAF7;
+  --arena-background: #FAFAF7;
+  --profile-background: #FAFAF7;
+  --purchase-background: #FAFAF7;
+  /* ------------------------------------------ */
+
+  /* HEADER GRADIENTS (per section) ----------- */
+  --study-header-gradient: linear-gradient(135deg, #4A3FB8 0%, #2E7BD6 50%, #2BB5A8 100%);
+  --dojo-header-gradient: linear-gradient(135deg, #B53A8C 0%, #E8456E 50%, #FF8C42 100%);
+  --arena-header-gradient: linear-gradient(135deg, #2A2470 0%, #4A3FB8 50%, #1F5DBE 100%);
+  --profile-header-gradient: linear-gradient(135deg, #4A3FB8 0%, #7B5CF7 100%);
+  /* ------------------------------------------ */
+
+  /* APP TEXT --------------------------------- */
+  --app-text-primary: #1A1B2E;
+  --app-text-muted: #6B6985;
   /* ------------------------------------------ */
 
   /* COLORS ------------------------------------ */
@@ -86,12 +99,12 @@
   --ion-color-danger-shade: #ac3218;
   --ion-color-danger-tint: #c94d32;
 
-  --ion-color-dark: #311343;
-  --ion-color-dark-rgb: 49, 19, 67;
+  --ion-color-dark: #1A1B2E;
+  --ion-color-dark-rgb: 26, 27, 46;
   --ion-color-dark-contrast: #ffffff;
   --ion-color-dark-contrast-rgb: 255, 255, 255;
-  --ion-color-dark-shade: #2b113b;
-  --ion-color-dark-tint: #7a608a;
+  --ion-color-dark-shade: #161726;
+  --ion-color-dark-tint: #313243;
 
   --ion-color-medium: #c1c5d0;
   --ion-color-medium-rgb: 193, 197, 208;

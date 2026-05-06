@@ -98,7 +98,7 @@ const NavigationItemComponent: React.FC<Props> = (props) => {
 
 const Icon = styled.div`
   position: absolute;
-  color: #ffffff;
+  color: #9E9CB8;
   right: 5px;
   bottom: -2px;
   font-size: 2.5rem;

@@ -16,7 +16,7 @@ type Props = {
 const ProgressBar: React.FC<Props> = ({
   progress: targetProgress,
   backgroundColor = "#000000",
-  backgroundOpacity = 0.2,
+  backgroundOpacity = 0.12,
   foregroundColor = TEXT_COLOR,
   foregroundOpacity = 0.8,
   height = 4,

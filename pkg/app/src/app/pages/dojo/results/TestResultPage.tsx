@@ -52,7 +52,8 @@ const Content = styled(IonContent)`
 `;
 
 const Page = styled(IonPage)`
-  background: var(--dojo-background);
+  background: #FAFAF7;
+  --page-header-bg: var(--dojo-header-gradient);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

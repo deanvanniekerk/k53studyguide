@@ -6,6 +6,6 @@ export const watermarkStyle = css`
   opacity: 0.035;
   right: -80px;
   top: -80px;
-  fill: #ffffff;
+  fill: #1A1B2E;
   transform: rotate(-20deg);
 `;
