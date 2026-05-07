@@ -23,6 +23,7 @@ const NavigationItemComponent: React.FC<Props> = (props) => {
   const delay = props.index * 75;
   const seenTotal = props.seenTotals[props.navigationItemKey];
   const seenProgress = seenTotal ? Math.floor((seenTotal.seen / seenTotal.total) * 100) : 0;
+  const isComplete = seenTotal ? seenTotal.seen === seenTotal.total : false;
   const containerAnimationDuration = 300;
   const sectionTheme = navigationThemes[props.navigationItemKey] ?? navigationThemes["nav.vehicleControls"];
   const itemStyle = {
@@ -65,7 +66,7 @@ const NavigationItemComponent: React.FC<Props> = (props) => {
             />
           </div>
         </IonLabel>
-        <div className="root-navigation-progress">
+        <div className={`root-navigation-progress ${isComplete ? "root-navigation-progress-complete" : ""}`}>
           <IonIcon icon={eye} className="text-l" />
           <span>{seenProgress}%</span>
         </div>

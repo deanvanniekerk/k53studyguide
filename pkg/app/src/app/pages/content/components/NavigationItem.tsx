@@ -20,6 +20,7 @@ const NavigationItemComponent: React.FC<Props> = (props) => {
   const delay = props.index * 55;
   const seenTotal = props.seenTotals[props.navigationItemKey];
   const seenProgress = seenTotal ? Math.floor((seenTotal.seen / seenTotal.total) * 100) : 0;
+  const isComplete = seenTotal ? seenTotal.seen === seenTotal.total : false;
 
   useIonViewWillEnter(() => {
     if (animation.current) animation.current.animation.play();
@@ -51,7 +52,7 @@ const NavigationItemComponent: React.FC<Props> = (props) => {
             foregroundRgb="var(--section-accent-rgb)"
           />
         </LabelBlock>
-        <Meta>
+        <Meta $complete={isComplete}>
           <IonIcon icon={eye} />
           {seenTotal && (
             <IonText>
@@ -88,7 +89,6 @@ const NavigatorCard = styled.button`
   .container {
     align-items: stretch;
     margin-top: 14px;
-    max-width: 260px;
     width: 100%;
   }
 
@@ -119,7 +119,7 @@ const Title = styled(IonText)`
   line-height: 1.15;
 `;
 
-const Meta = styled.div`
+const Meta = styled.div<{ $complete: boolean }>`
   align-items: center;
   color: var(--app-text-muted);
   display: flex;
@@ -130,8 +130,9 @@ const Meta = styled.div`
   white-space: nowrap;
 
   ion-icon {
+    color: ${(props) => (props.$complete ? "rgba(var(--section-accent-rgb), 0.82)" : "var(--app-text-muted)")};
     font-size: var(--app-font-size-xl);
-    opacity: 0.68;
+    opacity: ${(props) => (props.$complete ? 1 : 0.68)};
   }
 `;
 

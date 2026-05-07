@@ -17,6 +17,7 @@ const SeenProgressComponent: React.FC<Props> = (props) => {
   if (!total) return <React.Fragment />;
 
   const seenProgress = Math.floor((total.seen / total.total) * 100);
+  const isComplete = total.seen === total.total;
 
   return (
     <ProgressWrap>
@@ -27,7 +28,7 @@ const SeenProgressComponent: React.FC<Props> = (props) => {
         backgroundOpacity={0.12}
         foregroundRgb="var(--section-accent-rgb)"
       />
-      <SeenCount>
+      <SeenCount $complete={isComplete}>
         <IonIcon icon={eye} />
         <IonText>
           {total.seen}
@@ -51,7 +52,7 @@ const ProgressWrap = styled.div`
   }
 `;
 
-const SeenCount = styled.div`
+const SeenCount = styled.div<{ $complete: boolean }>`
   align-items: center;
   color: var(--app-text-primary);
   display: flex;
@@ -62,7 +63,7 @@ const SeenCount = styled.div`
   white-space: nowrap;
 
   ion-icon {
-    color: var(--section-accent, var(--app-progress-foreground));
+    color: ${(props) => (props.$complete ? "var(--section-accent, var(--app-progress-foreground))" : "var(--app-text-muted)")};
     font-size: var(--app-font-size-xl);
   }
 

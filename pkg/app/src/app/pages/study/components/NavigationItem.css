@@ -41,7 +41,7 @@
 
 .root-navigation-item .progress-bar {
   margin-top: 14px;
-  max-width: 260px;
+  width: 100%;
 }
 
 .root-navigation-item .progress-bar .container {
@@ -63,6 +63,10 @@
 .root-navigation-progress ion-icon {
   color: var(--app-text-muted);
   opacity: 0.65;
+}
+
+.root-navigation-progress-complete ion-icon {
+  color: var(--section-accent);
 }
 
 .root-navigation-chevron {

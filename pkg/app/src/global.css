@@ -20,6 +20,30 @@ ion-tab-button ion-label {
   font-size: var(--app-font-size-sm);
 }
 
+.app-tab-pill {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 78px;
+  padding: 7px 14px 6px;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+ion-tab-button.tab-selected {
+  --color-selected: var(--app-tab-accent);
+}
+
+ion-tab-button.tab-selected .app-tab-pill {
+  background: rgba(var(--app-tab-accent-rgb), 0.14);
+  color: var(--app-tab-accent);
+  transform: translateY(-1px);
+}
+
 ion-list-header {
   padding-right: var(--app-padding);
 }

@@ -16,6 +16,7 @@ const SeenProgressComponent: React.FC<Props> = (props) => {
   if (!total) return <React.Fragment />;
 
   const seenProgress = Math.floor((total.seen / total.total) * 100);
+  const isComplete = total.seen === total.total;
 
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
@@ -33,6 +34,7 @@ const SeenProgressComponent: React.FC<Props> = (props) => {
           className="text-sm"
           icon={eye}
           style={{
+            color: isComplete ? "var(--section-accent, var(--app-progress-foreground))" : "var(--app-text-muted)",
             opacity: 0.6,
           }}
         />

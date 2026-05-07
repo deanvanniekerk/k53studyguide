@@ -25,6 +25,30 @@ const iconStyles: React.CSSProperties = {
   fontSize: "2rem",
 };
 
+type TabAccentStyle = React.CSSProperties & {
+  "--app-tab-accent": string;
+  "--app-tab-accent-rgb": string;
+};
+
+const tabAccentStyles = {
+  study: {
+    "--app-tab-accent": "var(--app-progress-foreground)",
+    "--app-tab-accent-rgb": "var(--app-progress-foreground-rgb)",
+  },
+  dojo: {
+    "--app-tab-accent": "var(--ion-color-tertiary)",
+    "--app-tab-accent-rgb": "var(--ion-color-tertiary-rgb)",
+  },
+  arena: {
+    "--app-tab-accent": "var(--app-arena-accent)",
+    "--app-tab-accent-rgb": "var(--app-arena-accent-rgb)",
+  },
+  profile: {
+    "--app-tab-accent": "var(--ion-color-success)",
+    "--app-tab-accent-rgb": "var(--ion-color-success-rgb)",
+  },
+} satisfies Record<string, TabAccentStyle>;
+
 const Router: React.FC<Props> = (props) => {
   return (
     <TranslationProvider language={props.language} translation={translations}>
@@ -44,21 +68,29 @@ const Router: React.FC<Props> = (props) => {
             <Route exact path="/" render={() => <Redirect to="/study" />} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="study" href="/study">
-              <BookIcon style={iconStyles} />
-              <IonLabel>Study</IonLabel>
+            <IonTabButton tab="study" href="/study" style={tabAccentStyles.study}>
+              <span className="app-tab-pill">
+                <BookIcon style={iconStyles} />
+                <IonLabel>Study</IonLabel>
+              </span>
             </IonTabButton>
-            <IonTabButton tab="dojo" href="/dojo">
-              <QuizIcon style={iconStyles} />
-              <IonLabel>Quiz</IonLabel>
+            <IonTabButton tab="dojo" href="/dojo" style={tabAccentStyles.dojo}>
+              <span className="app-tab-pill">
+                <QuizIcon style={iconStyles} />
+                <IonLabel>Quiz</IonLabel>
+              </span>
             </IonTabButton>
-            <IonTabButton tab="arena" href="/arena">
-              <TestPenIcon style={iconStyles} />
-              <IonLabel>Test</IonLabel>
+            <IonTabButton tab="arena" href="/arena" style={tabAccentStyles.arena}>
+              <span className="app-tab-pill">
+                <TestPenIcon style={iconStyles} />
+                <IonLabel>Test</IonLabel>
+              </span>
             </IonTabButton>
-            <IonTabButton tab="profile" href="/profile">
-              <SettingsIcon style={iconStyles} />
-              <IonLabel>Profile</IonLabel>
+            <IonTabButton tab="profile" href="/profile" style={tabAccentStyles.profile}>
+              <span className="app-tab-pill">
+                <SettingsIcon style={iconStyles} />
+                <IonLabel>Profile</IonLabel>
+              </span>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>
