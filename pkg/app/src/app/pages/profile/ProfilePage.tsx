@@ -34,7 +34,6 @@ const Watermark = styled(SettingsOutlineIcon)`
 
 const Content = styled(IonContent)`
   --background: transparent;
-  --padding-top: 18px;
   --padding-bottom: 32px;
 `;
 

@@ -32,7 +32,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
   });
 
   return (
-    <Wrapper className="app-page-content-offset">
+    <Wrapper>
       <IntroText>
         <Translate text="arenaIntro" />
       </IntroText>
@@ -171,7 +171,7 @@ const Wrapper = styled.div`
   min-height: calc(100vh - var(--app-page-content-top) - 120px);
   flex-direction: column;
   align-items: center;
-  padding: 10px var(--app-padding) 36px;
+  padding: var(--app-page-content-top) var(--app-padding) 36px;
   text-align: center;
 `;
 

@@ -81,7 +81,8 @@ const HeaderComponent: React.FC<Props> = (props) => {
 const HeaderShell = styled.header`
   --breadcrumb-color: var(--app-text-muted);
 
-  padding: calc(var(--content-page-header-height, var(--app-page-header-height)) + 44px) var(--app-padding) 22px;
+  padding: calc(var(--content-page-header-height, var(--app-page-header-height)) + var(--app-page-content-gap))
+    var(--app-padding) 22px;
   transition: padding 180ms ease;
 `;
 

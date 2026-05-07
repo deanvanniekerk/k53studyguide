@@ -53,7 +53,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
 };
 
 const HeaderShell = styled.header`
-  padding: calc(var(--app-page-header-height) + 28px) var(--app-padding) 22px;
+  padding: var(--app-page-content-top) var(--app-padding) 22px;
 `;
 
 const Eyebrow = styled.div`

@@ -45,7 +45,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
 
 const HeroHeader = styled.div`
   display: block;
-  padding: calc(var(--app-page-header-height) + 28px) var(--app-padding) 28px;
+  padding: var(--app-page-content-top) var(--app-padding) 28px;
   background: var(--app-study-background);
 `;
 

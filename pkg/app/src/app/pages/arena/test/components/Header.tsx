@@ -1,14 +1,12 @@
-import { IonGrid, IonListHeader, IonRow } from "@ionic/react";
 import type React from "react";
+import styled from "styled-components";
 
 const Header: React.FC = () => {
-  return (
-    <IonListHeader>
-      <IonGrid>
-        <IonRow className="app-page-content-offset"></IonRow>
-      </IonGrid>
-    </IonListHeader>
-  );
+  return <Spacer />;
 };
+
+const Spacer = styled.div`
+  height: var(--app-page-header-height);
+`;
 
 export { Header };

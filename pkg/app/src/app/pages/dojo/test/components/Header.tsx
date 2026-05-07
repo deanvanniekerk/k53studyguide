@@ -1,4 +1,3 @@
-import { IonCol, IonGrid, IonListHeader, IonRow, IonText } from "@ionic/react";
 import type React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
@@ -15,59 +14,48 @@ type Props = {
 
 const HeaderComponent: React.FC<Props> = (props) => {
   return (
-    <IonListHeader>
-      <IonGrid>
-        <IonRow className="app-page-content-offset">
-          <IonCol>
-            <Title>
-              <Translate
-                text={props.targetNavigationKey === ROOT_NAVIGATION_KEY ? "allContent" : props.targetNavigationKey}
-              />
-            </Title>
-          </IonCol>
-        </IonRow>
-        <IonRow>
-          <IonCol>
-            <SubTitle>
-              <Breadcrumb
-                navigationKey={props.targetNavigationKey}
-                rootText="allContent"
-                showLast={props.targetNavigationKey === ROOT_NAVIGATION_KEY}
-              />
-            </SubTitle>
-          </IonCol>
-        </IonRow>
-        <IonRow>
-          <IonCol>
-            <ProgressCard>
-              <QuestionCount>
-                <Translate text="question" /> {props.currentQuestionIndex + 1} of {props.totalQuestions}
-              </QuestionCount>
-              <Dots>
-                {props.questionAnswers.map((questionAnswer, index) => (
-                  <Dot
-                    key={questionAnswer.question.id}
-                    $active={index === props.currentQuestionIndex}
-                    $answered={Boolean(questionAnswer.answer)}
-                  />
-                ))}
-              </Dots>
-            </ProgressCard>
-          </IonCol>
-        </IonRow>
-      </IonGrid>
-    </IonListHeader>
+    <HeaderShell>
+      <Title>
+        <Translate
+          text={props.targetNavigationKey === ROOT_NAVIGATION_KEY ? "allContent" : props.targetNavigationKey}
+        />
+      </Title>
+      <SubTitle>
+        <Breadcrumb
+          navigationKey={props.targetNavigationKey}
+          rootText="allContent"
+          showLast={props.targetNavigationKey === ROOT_NAVIGATION_KEY}
+        />
+      </SubTitle>
+      <ProgressCard>
+        <QuestionCount>
+          <Translate text="question" /> {props.currentQuestionIndex + 1} of {props.totalQuestions}
+        </QuestionCount>
+        <Dots>
+          {props.questionAnswers.map((questionAnswer, index) => (
+            <Dot
+              key={questionAnswer.question.id}
+              $active={index === props.currentQuestionIndex}
+              $answered={Boolean(questionAnswer.answer)}
+            />
+          ))}
+        </Dots>
+      </ProgressCard>
+    </HeaderShell>
   );
 };
 
-const Title = styled(IonText)`
-  display: block;
+const HeaderShell = styled.header`
+  padding: var(--app-page-content-top) var(--app-padding) 0;
+`;
+
+const Title = styled.h1`
   color: var(--app-text-primary);
   font-family: var(--ion-font-family-bold);
   font-size: var(--app-font-size-xxxl);
   font-weight: 900;
   line-height: 1.1;
-  padding-top: 12px;
+  margin: 0;
 `;
 
 const SubTitle = styled.div`
