@@ -10,6 +10,7 @@ type Props = {
   title: string;
   subTitle?: string;
   page: PageSection;
+  compact?: boolean;
   onBackClick?: () => void;
   rightSection?: React.ReactNode;
 };
@@ -21,10 +22,10 @@ const gradients: Record<PageSection, string> = {
   profile: "var(--app-profile-header-gradient)",
 };
 
-const PageHeader: React.FC<Props> = ({ title, subTitle, page, onBackClick, rightSection }) => {
+const PageHeader: React.FC<Props> = ({ title, subTitle, page, compact = false, onBackClick, rightSection }) => {
   return (
-    <Shell $gradient={gradients[page]}>
-      <Bar $hasSubtitle={Boolean(subTitle)}>
+    <Shell $gradient={gradients[page]} $compact={compact}>
+      <Bar $hasSubtitle={Boolean(subTitle)} $compact={compact}>
         <Col1>
           {onBackClick && (
             <BackBtn type="button" aria-label="Go back" onClick={onBackClick}>
@@ -48,7 +49,7 @@ const PageHeader: React.FC<Props> = ({ title, subTitle, page, onBackClick, right
   );
 };
 
-const Shell = styled.div<{ $gradient: string }>`
+const Shell = styled.div<{ $gradient: string; $compact: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -57,15 +58,17 @@ const Shell = styled.div<{ $gradient: string }>`
   pointer-events: none;
   background: ${(p) => p.$gradient};
   padding-top: var(--app-page-header-padding-top);
-  height: var(--app-page-header-height);
+  height: ${(p) => (p.$compact ? "var(--app-page-header-collapsed-height)" : "var(--app-page-header-height)")};
   box-sizing: border-box;
+  transition: height 180ms ease;
 `;
 
-const Bar = styled.div<{ $hasSubtitle: boolean }>`
+const Bar = styled.div<{ $hasSubtitle: boolean; $compact: boolean }>`
   display: grid;
   grid-template-columns: 44px minmax(0, 1fr) 44px;
   align-items: center;
-  height: var(--app-page-header-visual-height);
+  height: ${(p) =>
+    p.$compact ? "var(--app-page-header-collapsed-visual-height)" : "var(--app-page-header-visual-height)"};
   padding: 0 8px;
   font-family: var(--ion-font-family-bold);
   font-size: var(--app-font-size-l);
@@ -74,6 +77,7 @@ const Bar = styled.div<{ $hasSubtitle: boolean }>`
   text-transform: uppercase;
   letter-spacing: 0;
   text-align: center;
+  transition: height 180ms ease;
 `;
 
 const Col1 = styled.div`

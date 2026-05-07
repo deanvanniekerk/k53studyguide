@@ -18,9 +18,13 @@
   --app-safe-area-top: max(env(safe-area-inset-top, 0px), var(--ion-safe-area-top, 0px));
   --app-page-header-safe-area-top: max(0px, calc(var(--app-safe-area-top) - 18px));
   --app-page-header-visual-height: 85px;
+  --app-page-header-collapsed-visual-height: 56px;
   --app-page-header-bar-height: 44px;
   --app-page-header-padding-top: var(--app-page-header-safe-area-top);
   --app-page-header-height: calc(var(--app-page-header-padding-top) + var(--app-page-header-visual-height));
+  --app-page-header-collapsed-height: calc(
+    var(--app-page-header-padding-top) + var(--app-page-header-collapsed-visual-height)
+  );
   --app-page-content-top: calc(var(--app-page-header-height) + 8px);
   /* ------------------------------------------ */
 

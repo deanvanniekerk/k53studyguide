@@ -1,6 +1,7 @@
 import { IonContent, IonPage } from "@ionic/react";
+import type { ScrollDetail } from "@ionic/core/components";
 import type React from "react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
@@ -19,6 +20,9 @@ import {
 import { navigationKeyToBreadcrumb } from "@/utils";
 import { ContentList, Header, Navigator } from "./components";
 
+const ENABLE_CONTENT_HEADER_COLLAPSE = true;
+const CONTENT_HEADER_COLLAPSE_SCROLL_TOP = 32;
+
 const sectionAccentVars: Record<string, { color: string; rgb: string }> = {
   "nav.vehicleControls": { color: "var(--app-study-section-vehicle)", rgb: "var(--app-study-section-vehicle-rgb)" },
   "nav.rulesOfTheRoad": { color: "var(--app-study-section-rules)", rgb: "var(--app-study-section-rules-rgb)" },
@@ -36,14 +40,36 @@ type Props = PropsFromState & PropsFromDispatch;
 const ContentPage: React.FC<Props> = (props) => {
   const history = useHistory();
   const content = useRef<HTMLIonContentElement>(null);
+  const [headerCompact, setHeaderCompact] = useState(false);
 
   useAnalytics("ContentPage");
 
   const rootSectionKey = navigationKeyToBreadcrumb(props.currentNavigationKey)[1];
   const sectionTheme = sectionAccentVars[rootSectionKey];
   const sectionStyle = sectionTheme
-    ? ({ "--section-accent": sectionTheme.color, "--section-accent-rgb": sectionTheme.rgb } as React.CSSProperties)
-    : undefined;
+    ? ({
+        "--content-page-header-height":
+          ENABLE_CONTENT_HEADER_COLLAPSE && headerCompact
+            ? "var(--app-page-header-collapsed-height)"
+            : "var(--app-page-header-height)",
+        "--section-accent": sectionTheme.color,
+        "--section-accent-rgb": sectionTheme.rgb,
+      } as React.CSSProperties)
+    : ({
+        "--content-page-header-height":
+          ENABLE_CONTENT_HEADER_COLLAPSE && headerCompact
+            ? "var(--app-page-header-collapsed-height)"
+            : "var(--app-page-header-height)",
+      } as React.CSSProperties);
+
+  const onContentScroll = (event: CustomEvent<ScrollDetail>) => {
+    if (!ENABLE_CONTENT_HEADER_COLLAPSE) return;
+
+    const nextHeaderCompact = event.detail.scrollTop > CONTENT_HEADER_COLLAPSE_SCROLL_TOP;
+    setHeaderCompact((currentHeaderCompact) =>
+      currentHeaderCompact === nextHeaderCompact ? currentHeaderCompact : nextHeaderCompact,
+    );
+  };
 
   const onBackClicked = () => {
     // if (content.current) {
@@ -61,9 +87,14 @@ const ContentPage: React.FC<Props> = (props) => {
 
   return (
     <Page style={sectionStyle}>
-      <PageHeader title="study" page="study" onBackClick={onBackClicked} />
+      <PageHeader
+        title="study"
+        page="study"
+        compact={ENABLE_CONTENT_HEADER_COLLAPSE && headerCompact}
+        onBackClick={onBackClicked}
+      />
       <Watermark />
-      <Content ref={content}>
+      <Content ref={content} scrollEvents={ENABLE_CONTENT_HEADER_COLLAPSE} onIonScroll={onContentScroll}>
         <Header />
         <Navigator />
         <ContentList />
