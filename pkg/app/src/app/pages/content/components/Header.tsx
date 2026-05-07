@@ -1,5 +1,4 @@
-import { IonAlert, IonButton, IonIcon, IonText } from "@ionic/react";
-import { help } from "ionicons/icons";
+import { IonAlert, IonButton, IonText } from "@ionic/react";
 import type React from "react";
 import { useState } from "react";
 import { connect, useDispatch } from "react-redux";
@@ -33,14 +32,13 @@ const HeaderComponent: React.FC<Props> = (props) => {
         <ProgressPanel>
           <SeenProgress navigationKey={props.currentNavigationKey} />
           <QuizButton
-            color="secondary"
             shape="round"
             fill="solid"
             size="small"
-            aria-label="Start quiz"
+            aria-label="Start quiz for this section"
             onClick={() => setShowStartQuizAlert(true)}
           >
-            <IonIcon icon={help} />
+            <Translate text="dojo" />
           </QuizButton>
         </ProgressPanel>
       </HeaderShell>
@@ -109,22 +107,38 @@ const ProgressPanel = styled.div`
   box-shadow: 0 2px 0 var(--app-card-border-color);
   display: grid;
   gap: 14px;
-  grid-template-columns: minmax(0, 1fr) 44px;
+  grid-template-columns: minmax(0, 1fr) auto;
   min-height: 78px;
   padding: 14px 16px;
 `;
 
 const QuizButton = styled(IonButton)`
-  --background: var(--app-study-primary-gradient);
-  --background-activated: var(--app-study-primary-gradient);
-  --background-hover: var(--app-study-primary-gradient);
+  --background: var(--app-dojo-action-background);
+  --background-activated: var(--app-dojo-action-background);
+  --background-hover: var(--app-dojo-action-background);
+  --border-radius: 18px;
   --box-shadow: none;
+  --padding-end: 14px;
+  --padding-start: 12px;
+  font-family: var(--ion-font-family-bold);
+  font-size: var(--app-font-size-md);
+  font-weight: 700;
   height: 44px;
+  letter-spacing: 0;
   margin: 0;
-  width: 44px;
+  min-width: 72px;
+  text-transform: none;
+  white-space: nowrap;
 
   ion-icon {
-    font-size: 1.25rem;
+    font-size: var(--app-font-size-l);
+    margin-inline-end: 6px;
+  }
+
+  @media (max-width: 360px) {
+    --padding-end: 12px;
+    --padding-start: 10px;
+    min-width: 84px;
   }
 `;
 

@@ -53,7 +53,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
         </IllustrationPanel>
       </CreateAnimation>
 
-      <PrimaryText>{props.hasFullAccess ? "Tests Passed" : "Test Locked"}</PrimaryText>
+      {props.hasFullAccess && <PrimaryText>Test Locked</PrimaryText>}
       {props.hasFullAccess && (
         <MetricArea>
           <CreateAnimation
@@ -188,7 +188,7 @@ const IllustrationPanel = styled.div`
   place-items: center;
   width: min(42vw, 172px);
   aspect-ratio: 1;
-  margin-top: 44px;
+  margin-top: 16px;
   border: 2px solid var(--app-arena-illustration-border);
   border-radius: 28px;
   background: var(--app-arena-illustration-background);

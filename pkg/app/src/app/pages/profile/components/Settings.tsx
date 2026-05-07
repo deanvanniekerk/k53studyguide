@@ -25,25 +25,6 @@ const SettingsComponent: React.FC<Props> = (props) => {
           {({ translate }) => (
             <React.Fragment>
               <Row
-                name={translate({ text: "language" })}
-                value={
-                  <Select
-                    value={language}
-                    onIonChange={(event) => {
-                      setLanguage(event.detail.value);
-                      props.recieveLanguage(event.detail.value);
-                    }}
-                    interface="action-sheet"
-                    cancelText={translate({ text: "cancel" })}
-                  >
-                    <IonSelectOption value="en">English</IonSelectOption>
-                    <IonSelectOption value="af">Afrikaans</IonSelectOption>
-                    <IonSelectOption value="zu">Zulu</IonSelectOption>
-                    <IonSelectOption value="xh">Xhosa</IonSelectOption>
-                  </Select>
-                }
-              />
-              <Row
                 name="Appearance"
                 value={
                   <Select
@@ -59,6 +40,25 @@ const SettingsComponent: React.FC<Props> = (props) => {
                     <IonSelectOption value="system">System default</IonSelectOption>
                     <IonSelectOption value="light">Light</IonSelectOption>
                     <IonSelectOption value="dark">Dark</IonSelectOption>
+                  </Select>
+                }
+              />
+              <Row
+                name={translate({ text: "language" })}
+                value={
+                  <Select
+                    value={language}
+                    onIonChange={(event) => {
+                      setLanguage(event.detail.value);
+                      props.recieveLanguage(event.detail.value);
+                    }}
+                    interface="action-sheet"
+                    cancelText={translate({ text: "cancel" })}
+                  >
+                    <IonSelectOption value="en">English</IonSelectOption>
+                    {/* <IonSelectOption value="af">Afrikaans</IonSelectOption>
+                    <IonSelectOption value="zu">Zulu</IonSelectOption>
+                    <IonSelectOption value="xh">Xhosa</IonSelectOption> */}
                   </Select>
                 }
               />
