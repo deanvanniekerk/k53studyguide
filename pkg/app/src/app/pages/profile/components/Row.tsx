@@ -27,7 +27,7 @@ const Row: React.FC<Props> = (props) => {
 
 const Section = styled.section`
   padding: 0 var(--app-padding);
-  margin-top: 28px;
+  margin-top: 32px;
 
   &:first-child {
     margin-top: var(--app-page-content-top);
@@ -91,8 +91,8 @@ const NameCol = styled.div`
 const Name = styled.div`
   min-width: 0;
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-xl);
-  font-weight: 900;
+  font-size: var(--app-font-size-l);
+  font-weight: 700;
   line-height: 1.2;
 `;
 
@@ -106,8 +106,8 @@ const StatusIcon = styled(IonIcon)<{ $status?: Props["status"] }>`
 const ValueCol = styled.div<{ $action?: boolean }>`
   color: ${(props) => (props.$action ? "var(--app-profile-action-icon)" : "var(--app-text-muted)")};
   font-family: var(--ion-font-family-bold);
-  font-size: ${(props) => (props.$action ? "var(--app-font-size-xxl)" : "var(--app-font-size-xl)")};
-  font-weight: 900;
+  font-size: ${(props) => (props.$action ? "var(--app-font-size-l)" : "var(--app-font-size-l)")};
+  font-weight: 700;
   line-height: 1;
   text-align: right;
 

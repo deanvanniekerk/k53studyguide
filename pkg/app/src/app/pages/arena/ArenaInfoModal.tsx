@@ -1,9 +1,9 @@
 import { CreateAnimation, IonContent, IonIcon, IonModal } from "@ionic/react";
-import { search, shuffle, trashBin } from "ionicons/icons";
+import { search, shuffle, trashBinOutline } from "ionicons/icons";
 import type React from "react";
 import { useRef } from "react";
 import styled from "styled-components";
-import { CloseButton, HorizontalRule } from "@/app/components";
+import { CloseButton } from "@/app/components";
 import { useInterval } from "@/app/hooks";
 import { ArenaWatermark } from "./ArenaWatermark";
 
@@ -19,40 +19,47 @@ const ArenaInfoModal: React.FC<Props> = (props) => {
       <CloseButton onClick={() => props.onDidDismiss()} />
       <Content>
         <Container>
-          <SubHeader>Welcome to the</SubHeader>
-          <Header>Test</Header>
-          <ParagraphCenter>
-            The Test is a <b>test</b> that is <b>set up</b> and <b> marked</b> in the <b>same way</b> as the{" "}
-            <b>real learners license test</b>
-          </ParagraphCenter>
+          <Hero>
+            <SubHeader>Welcome to the</SubHeader>
+            <Header>Test</Header>
+            <ParagraphCenter>
+              The Test is a <b>test</b> that is <b>set up</b> and <b> marked</b> in the <b>same way</b> as the{" "}
+              <b>real learners license test</b>
+            </ParagraphCenter>
+          </Hero>
 
-          <HorizontalRule leftMargin={10} rightMargin={10} paddingTop={20} paddingBottom={20} />
-          <Center>
-            <ShuffleIcon />
-          </Center>
-          <ParagraphCenter>
-            <b>Test</b> questions are <b>randomly</b> selected from a bank of over <b>400 questions</b>
-          </ParagraphCenter>
+          <Cards>
+            <InfoCard>
+              <IconTile>
+                <ShuffleIcon />
+              </IconTile>
+              <CardText>
+                <b>Test</b> questions are <b>randomly</b> selected from a bank of over <b>400 questions</b>
+              </CardText>
+            </InfoCard>
 
-          <HorizontalRule leftMargin={10} rightMargin={10} paddingTop={20} paddingBottom={20} />
-          <Center>
-            <SearchIcon />
-          </Center>
-          <ParagraphCenter>
-            We apply a <b>weighting</b> when selecting your test questions. This means you more likely to see{" "}
-            <i>
-              <b>new</b>
-            </i>{" "}
-            questions or ones you <b>previously</b> answered <b>incorrectly</b>
-          </ParagraphCenter>
+            <InfoCard>
+              <IconTile>
+                <SearchIcon />
+              </IconTile>
+              <CardText>
+                We apply a <b>weighting</b> when selecting your test questions. This means you more likely to see{" "}
+                <i>
+                  <b>new</b>
+                </i>{" "}
+                questions or ones you <b>previously</b> answered <b>incorrectly</b>
+              </CardText>
+            </InfoCard>
 
-          <HorizontalRule leftMargin={10} rightMargin={10} paddingTop={20} paddingBottom={35} />
-          <Center>
-            <TrashIcon />
-          </Center>
-          <ParagraphCenter>
-            Your <b>Test</b> history can be <b>reset</b> in the <b>Profile</b> tab
-          </ParagraphCenter>
+            <InfoCard>
+              <IconTile>
+                <TrashIcon />
+              </IconTile>
+              <CardText>
+                Your <b>Test</b> history can be <b>reset</b> in the <b>Profile</b> tab
+              </CardText>
+            </InfoCard>
+          </Cards>
         </Container>
       </Content>
     </Modal>
@@ -153,7 +160,7 @@ const TrashIcon: React.FC = () => {
     >
       <div>
         <LargeIcon
-          icon={trashBin}
+          icon={trashBinOutline}
           style={{
             opacity: 0.8,
           }}
@@ -169,33 +176,113 @@ const Container = styled.div`
 `;
 
 const Header = styled.div`
+  color: var(--app-text-primary);
   font-size: var(--app-font-size-xxl);
   font-family: var(--ion-font-family-bold);
   font-weight: bold;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 18px;
 `;
 
 const SubHeader = styled.div`
+  color: var(--app-text-primary);
   text-align: center;
   padding-bottom: 20px;
-  padding-top: 55px;
 `;
 
 const Paragraph = styled.p`
+  color: var(--app-text-primary);
   font-size: var(--app-font-size-md);
+  line-height: 1.45;
 `;
 
 const ParagraphCenter = styled(Paragraph)`
   text-align: center;
 `;
 
-const Center = styled.div`
-  text-align: center;
+const Hero = styled.section`
+  margin-top: calc(var(--app-safe-area-top) + 56px);
+  padding: 24px 18px 26px;
+  border-radius: 22px;
+  background: var(--app-arena-header-gradient);
+  box-shadow: var(--app-arena-action-shadow);
+
+  ${SubHeader},
+  ${Header},
+  ${ParagraphCenter} {
+    color: var(--ion-color-light);
+  }
+
+  ${ParagraphCenter} {
+    margin-bottom: 0;
+  }
+`;
+
+const Cards = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+`;
+
+const InfoCard = styled.article`
+  --info-card-accent: var(--app-arena-accent);
+  --info-card-accent-rgb: var(--app-arena-accent-rgb);
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px;
+  border: var(--app-card-border);
+  border-radius: 18px;
+  background: var(--app-card-background);
+  box-shadow: var(--app-card-shadow);
+
+  &:nth-child(1) {
+    --info-card-accent: var(--app-arena-accent);
+    --info-card-accent-rgb: var(--app-arena-accent-rgb);
+  }
+
+  &:nth-child(2) {
+    --info-card-accent: var(--ion-color-secondary);
+    --info-card-accent-rgb: var(--ion-color-secondary-rgb);
+  }
+
+  &:nth-child(3) {
+    --info-card-accent: var(--ion-color-danger);
+    --info-card-accent-rgb: var(--ion-color-danger-rgb);
+  }
+
+  @media (max-width: 380px) {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+  }
+`;
+
+const IconTile = styled.div`
+  display: grid;
+  flex: 0 0 84px;
+  width: 84px;
+  min-height: 84px;
+  place-items: center;
+  border-radius: 18px;
+  background: rgba(var(--info-card-accent-rgb), 0.12);
+  color: var(--info-card-accent);
+
+  @media (max-width: 380px) {
+    width: 100%;
+  }
+`;
+
+const CardText = styled(Paragraph)`
+  min-width: 0;
+  margin: 0;
 `;
 
 const LargeIcon = styled(IonIcon)`
-  font-size: 4rem;
+  font-size: 3.2rem;
 `;
 
 const Content = styled(IonContent)`
@@ -203,7 +290,7 @@ const Content = styled(IonContent)`
 `;
 
 const Modal = styled(IonModal)`
-  color: var(--ion-color-light);
+  color: var(--app-text-primary);
   --background: var(--app-arena-background);
 `;
 

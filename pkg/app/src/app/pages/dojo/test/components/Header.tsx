@@ -83,6 +83,7 @@ const ProgressCard = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-width: 0;
   gap: 12px;
   margin-top: 16px;
   margin-bottom: 16px;
@@ -91,26 +92,48 @@ const ProgressCard = styled.div`
   border-radius: 18px;
   background: var(--app-card-background);
   box-shadow: var(--app-card-shadow);
+
+  @media (max-width: 380px) {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
 `;
 
 const QuestionCount = styled.div`
   color: var(--app-text-muted);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-md);
   font-weight: 900;
   white-space: nowrap;
 `;
 
 const Dots = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex: 1 1 auto;
+  flex-wrap: nowrap;
   justify-content: flex-end;
-  gap: 8px;
+  min-width: 0;
+  margin-top: -8px;
+  margin-bottom: -8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  overflow: hidden;
+  gap: clamp(3px, 1.5vw, 8px);
+
+  @media (max-width: 380px) {
+    margin-top: -6px;
+    margin-bottom: -6px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    gap: 3px;
+  }
 `;
 
 const Dot = styled.div<{ $active: boolean; $answered: boolean }>`
-  width: 10px;
-  height: 10px;
+  flex: 0 1 clamp(7px, 2.2vw, 10px);
+  width: clamp(7px, 2.2vw, 10px);
+  height: clamp(7px, 2.2vw, 10px);
+  min-width: 0;
   border-radius: 50%;
   background: ${(props) => (props.$active || props.$answered ? "var(--app-progress-foreground)" : "var(--app-card-border-color)")};
   box-shadow: ${(props) => (props.$active ? "0 0 0 4px rgba(var(--app-progress-foreground-rgb), 0.12)" : "none")};
@@ -127,6 +150,26 @@ const Dot = styled.div<{ $active: boolean; $answered: boolean }>`
     50% {
       box-shadow: 0 0 0 7px rgba(var(--app-progress-foreground-rgb), 0.06);
       transform: scale(1.18);
+    }
+  }
+
+  @media (max-width: 380px) {
+    flex-basis: 6px;
+    width: 6px;
+    height: 6px;
+    box-shadow: ${(props) => (props.$active ? "0 0 0 3px rgba(var(--app-progress-foreground-rgb), 0.12)" : "none")};
+
+    @keyframes current-question-pulse {
+      0%,
+      100% {
+        box-shadow: 0 0 0 3px rgba(var(--app-progress-foreground-rgb), 0.12);
+        transform: scale(1.1);
+      }
+
+      50% {
+        box-shadow: 0 0 0 5px rgba(var(--app-progress-foreground-rgb), 0.06);
+        transform: scale(1.16);
+      }
     }
   }
 `;

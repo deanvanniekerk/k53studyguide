@@ -1,9 +1,9 @@
 import { CreateAnimation, IonContent, IonIcon, IonModal } from "@ionic/react";
-import { flashOffOutline, flashOutline, optionsOutline, trashBinOutline } from "ionicons/icons";
+import { flashOffOutline, flashOutline, optionsOutline, star, trashBinOutline } from "ionicons/icons";
 import type React from "react";
 import { useRef, useState } from "react";
 import styled from "styled-components";
-import { CloseButton, HorizontalRule, StarRating } from "@/app/components";
+import { CloseButton } from "@/app/components";
 import { useInterval } from "@/app/hooks";
 import { DojoWatermark } from "./DojoWatermark";
 
@@ -19,45 +19,53 @@ const DojoInfoModal: React.FC<Props> = (props) => {
       <CloseButton onClick={() => props.onDidDismiss()} />
       <Content>
         <Container>
-          <SubHeader>Welcome to the</SubHeader>
-          <Header>Quiz</Header>
-          <ParagraphCenter>
-            In the <b>Quiz</b> you can <b>practise</b> by completing <b>test questions</b>
-          </ParagraphCenter>
+          <Hero>
+            <SubHeader>Welcome to the</SubHeader>
+            <Header>Quiz</Header>
+            <ParagraphCenter>
+              In the <b>Quiz</b> you can <b>practise</b> by completing <b>test questions</b>
+            </ParagraphCenter>
+          </Hero>
 
-          <HorizontalRule leftMargin={10} rightMargin={10} paddingTop={20} paddingBottom={20} />
-          <Center>
-            <StarsIndicator />
-          </Center>
-          <ParagraphCenter>
-            The <b>5 star level</b> indicator shows your <b>proficiency</b> for a particular section
-          </ParagraphCenter>
+          <Cards>
+            <InfoCard>
+              <IconTile>
+                <StarsIndicator />
+              </IconTile>
+              <CardText>
+                The <b>5 star level</b> indicator shows your <b>proficiency</b> for a particular section
+              </CardText>
+            </InfoCard>
 
-          <HorizontalRule leftMargin={10} rightMargin={10} paddingTop={25} paddingBottom={35} />
-          <Center>
-            <ExperienceIcon />
-          </Center>
-          <ParagraphCenter>
-            Your can <b>level up</b> by obtaining <b>quiz</b> points. Obtain <b>Quiz</b> points by answering test
-            questions correctly for the <b>first</b> time.
-          </ParagraphCenter>
+            <InfoCard>
+              <IconTile>
+                <ExperienceIcon />
+              </IconTile>
+              <CardText>
+                Your can <b>level up</b> by obtaining <b>quiz</b> points. Obtain <b>Quiz</b> points by answering test
+                questions correctly for the <b>first</b> time.
+              </CardText>
+            </InfoCard>
 
-          <HorizontalRule leftMargin={10} rightMargin={10} paddingTop={20} paddingBottom={35} />
-          <Center>
-            <OptionsIcon />
-          </Center>
-          <ParagraphCenter>
-            You can <b></b>control the <b>settings</b> of the <b>quiz</b> by changing the <b>Section</b> and{" "}
-            <b>Max Questions</b>
-          </ParagraphCenter>
+            <InfoCard>
+              <IconTile>
+                <OptionsIcon />
+              </IconTile>
+              <CardText>
+                You can <b></b>control the <b>settings</b> of the <b>quiz</b> by changing the <b>Section</b> and{" "}
+                <b>Max Questions</b>
+              </CardText>
+            </InfoCard>
 
-          <HorizontalRule leftMargin={10} rightMargin={10} paddingTop={20} paddingBottom={35} />
-          <Center>
-            <TrashIcon />
-          </Center>
-          <ParagraphCenter>
-            Your <b>Quiz</b> history can be <b>reset</b> in the <b>Profile</b> tab
-          </ParagraphCenter>
+            <InfoCard>
+              <IconTile>
+                <TrashIcon />
+              </IconTile>
+              <CardText>
+                Your <b>Quiz</b> history can be <b>reset</b> in the <b>Profile</b> tab
+              </CardText>
+            </InfoCard>
+          </Cards>
         </Container>
       </Content>
     </Modal>
@@ -65,18 +73,28 @@ const DojoInfoModal: React.FC<Props> = (props) => {
 };
 
 const StarsIndicator: React.FC = () => {
-  const [level, setLevel] = useState(1);
+  const animation1 = useRef<CreateAnimation>(null);
 
   useInterval(() => {
-    let next = level + 2;
-    if (next > 5) next = 1;
-    setLevel(next);
+    if (animation1.current) animation1.current.animation.play();
   }, 6000);
 
   return (
-    <StarWrapper>
-      <StarRating total={5} current={level} size="2rem" padding="6px" />
-    </StarWrapper>
+    <CreateAnimation
+      play={false}
+      ref={animation1}
+      duration={900}
+      easing="ease"
+      keyframes={[
+        { offset: 0, transform: "rotate(0deg) scale(1)" },
+        { offset: 0.5, transform: "rotate(180deg) scale(1.14)" },
+        { offset: 1, transform: "rotate(360deg) scale(1)" },
+      ]}
+    >
+      <div>
+        <StarIcon icon={star} />
+      </div>
+    </CreateAnimation>
   );
 };
 
@@ -172,48 +190,131 @@ const Container = styled.div`
 `;
 
 const Header = styled.div`
+  color: var(--app-text-primary);
   font-size: var(--app-font-size-xxl);
   font-family: var(--ion-font-family-bold);
   font-weight: bold;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 18px;
 `;
 
 const SubHeader = styled.div`
+  color: var(--app-text-primary);
   text-align: center;
   padding-bottom: 20px;
-  padding-top: 55px;
 `;
 
 const Paragraph = styled.p`
+  color: var(--app-text-primary);
   font-size: var(--app-font-size-md);
+  line-height: 1.45;
 `;
 
 const ParagraphCenter = styled(Paragraph)`
   text-align: center;
 `;
 
-const Center = styled.div`
-  text-align: center;
+const Hero = styled.section`
+  margin-top: calc(var(--app-safe-area-top) + 56px);
+  padding: 24px 18px 26px;
+  border-radius: 22px;
+  background: var(--app-dojo-header-gradient);
+  box-shadow: var(--app-dojo-action-shadow);
+
+  ${SubHeader},
+  ${Header},
+  ${ParagraphCenter} {
+    color: var(--ion-color-light);
+  }
+
+  ${ParagraphCenter} {
+    margin-bottom: 0;
+  }
+`;
+
+const Cards = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 18px;
+`;
+
+const InfoCard = styled.article`
+  --info-card-accent: var(--app-progress-foreground);
+  --info-card-accent-rgb: var(--app-progress-foreground-rgb);
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px;
+  border: var(--app-card-border);
+  border-radius: 18px;
+  background: var(--app-card-background);
+  box-shadow: var(--app-card-shadow);
+
+  &:nth-child(1) {
+    --info-card-accent: var(--ion-color-warning);
+    --info-card-accent-rgb: var(--ion-color-warning-rgb);
+  }
+
+  &:nth-child(2) {
+    --info-card-accent: var(--ion-color-tertiary);
+    --info-card-accent-rgb: var(--ion-color-tertiary-rgb);
+  }
+
+  &:nth-child(3) {
+    --info-card-accent: var(--app-progress-foreground);
+    --info-card-accent-rgb: var(--app-progress-foreground-rgb);
+  }
+
+  &:nth-child(4) {
+    --info-card-accent: var(--ion-color-secondary);
+    --info-card-accent-rgb: var(--ion-color-secondary-rgb);
+  }
+
+  @media (max-width: 380px) {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+  }
+`;
+
+const IconTile = styled.div`
+  display: grid;
+  flex: 0 0 84px;
+  width: 84px;
+  min-height: 84px;
+  place-items: center;
+  border-radius: 18px;
+  background: rgba(var(--info-card-accent-rgb), 0.12);
+  color: var(--info-card-accent);
+
+  @media (max-width: 380px) {
+    width: 100%;
+  }
+`;
+
+const CardText = styled(Paragraph)`
+  min-width: 0;
+  margin: 0;
 `;
 
 const LargeIcon = styled(IonIcon)`
-  font-size: 4rem;
+  font-size: 3.2rem;
+`;
+
+const StarIcon = styled(LargeIcon)`
+  color: var(--info-card-accent);
+  filter: drop-shadow(0 2px 0 rgba(var(--app-text-primary-rgb), 0.18));
 `;
 
 const Content = styled(IonContent)`
   --background: transparent;
 `;
 
-const StarWrapper = styled.div`
-  padding-top: 10px;
-  padding-bottom: 5px;
-  display: flex;
-  justify-content: center;
-`;
-
 const Modal = styled(IonModal)`
-  color: var(--ion-color-light);
+  color: var(--app-text-primary);
   --background: var(--app-dojo-background);
 `;
 

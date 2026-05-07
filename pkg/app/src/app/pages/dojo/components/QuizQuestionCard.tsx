@@ -129,7 +129,7 @@ const OptionButton = styled.button<{ state: OptionState }>`
   background: ${(props) => optionBackground(props.state)};
   color: var(--app-text-primary);
   font-family: var(--ion-font-family);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-md);
   font-weight: 500;
   line-height: 1.35;
   text-align: left;

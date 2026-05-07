@@ -1,5 +1,4 @@
-import { IonIcon } from "@ionic/react";
-import { checkmarkCircle, checkmarkCircleOutline, closeCircle } from "ionicons/icons";
+import { checkmarkCircle, closeCircle } from "ionicons/icons";
 import type React from "react";
 import { connect } from "react-redux";
 import { Translate, Translator } from "react-translated";
@@ -22,7 +21,6 @@ const ChecklistComponent: React.FC<Props> = (props) => {
   return (
     <Section>
       <SectionTitle>
-        <IonIcon icon={checkmarkCircleOutline} />
         <Translate text="checklist" />
       </SectionTitle>
       <Translator>

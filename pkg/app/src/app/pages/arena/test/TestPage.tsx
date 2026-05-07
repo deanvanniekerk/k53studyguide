@@ -178,8 +178,8 @@ const QuestionMeta = styled.div`
 const QuestionLabel = styled.div`
   color: var(--app-question-accent);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-xl);
-  font-weight: 900;
+  font-size: var(--app-font-size-l);
+  font-weight: 700;
   letter-spacing: 1.4px;
   text-transform: uppercase;
 `;
@@ -188,7 +188,7 @@ const QuestionPosition = styled.div`
   color: var(--app-text-muted);
   font-family: var(--ion-font-family-bold);
   font-size: var(--app-font-size-l);
-  font-weight: 900;
+  font-weight: 700;
   white-space: nowrap;
 `;
 

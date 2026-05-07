@@ -259,6 +259,12 @@ const translations: Translations = {
   dojoLevelUpAfter: {
     en: "Level up after {number} more quiz points",
   },
+  dojoLevelUpAfterShort: {
+    en: "{number} pts to Level {level}",
+  },
+  maxLevel: {
+    en: "Max Level",
+  },
   numberExperienceGained: {
     en: "{number} quiz points gained",
   },
@@ -290,6 +296,9 @@ const translations: Translations = {
     en: "Use This Section",
   },
   continueTest: {
+    en: "Continue Test",
+  },
+  continueQuiz: {
     en: "Continue Quiz",
   },
   settings: {

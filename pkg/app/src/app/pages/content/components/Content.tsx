@@ -71,14 +71,10 @@ const Heading = styled(IonText)`
   color: var(--app-text-primary);
   display: block;
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-xxl);
+  font-size: var(--app-font-size-xl);
   font-weight: 900;
   letter-spacing: 0;
   line-height: 1.12;
-
-  @media (max-width: 420px) {
-    font-size: 1.65rem;
-  }
 `;
 
 const ImageFrame = styled.div`

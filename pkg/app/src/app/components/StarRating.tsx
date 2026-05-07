@@ -11,6 +11,7 @@ type Props = {
   padding?: string;
   activeOpacity?: number;
   inActiveOpacity?: number;
+  inActiveFill?: string;
 };
 
 const StarRating: React.FC<Props> = ({
@@ -18,6 +19,7 @@ const StarRating: React.FC<Props> = ({
   current,
   activeOpacity = 1,
   inActiveOpacity = 0.2,
+  inActiveFill = "var(--app-card-background)",
   size = "1rem",
   padding = "2px",
 }) => {
@@ -32,6 +34,7 @@ const StarRating: React.FC<Props> = ({
           padding={padding}
           activeOpacity={activeOpacity}
           inActiveOpacity={inActiveOpacity}
+          inActiveFill={inActiveFill}
         />
       ))}
     </StarWrapper>
@@ -49,6 +52,7 @@ type StarProps = {
   padding?: string;
   activeOpacity?: number;
   inActiveOpacity?: number;
+  inActiveFill?: string;
 };
 
 const Star: React.FC<StarProps> = (props) => {
@@ -73,9 +77,7 @@ const Star: React.FC<StarProps> = (props) => {
     >
       <IconWrapper size={props.size} padding={props.padding}>
         {props.active && <StarIcon style={{ opacity: props.activeOpacity }} />}
-        {!props.active && (
-          <StarOutlineIcon style={{ fill: "var(--app-card-background)", opacity: props.inActiveOpacity }} />
-        )}
+        {!props.active && <StarOutlineIcon style={{ fill: props.inActiveFill, opacity: props.inActiveOpacity }} />}
       </IconWrapper>
     </CreateAnimation>
   );

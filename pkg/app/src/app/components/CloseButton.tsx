@@ -26,10 +26,19 @@ const Button = styled.button`
   place-items: center;
   padding: 0;
   border: 0;
-  background: transparent;
-  color: var(--ion-color-light);
+  border-radius: 50%;
+  background: rgba(var(--app-text-primary-rgb), 0.06);
+  color: var(--app-text-primary);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background: rgba(var(--app-text-primary-rgb), 0.1);
+  }
+
+  &:active {
+    background: rgba(var(--app-text-primary-rgb), 0.14);
+  }
 
   ion-icon {
     font-size: var(--app-font-size-xxxl);

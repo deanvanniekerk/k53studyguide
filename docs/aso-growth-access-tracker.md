@@ -13,11 +13,11 @@ MCP service account in use: `mcp-servers@k53-ninja.iam.gserviceaccount.com`
 | Landing website source | Available | Read/write | Static Vite lander under `pkg/lander`. |
 | Play Store public listing | Available | Public | https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en |
 | Play Console | Available with limits | Google Play MCP read access | App info, `en-GB` listing, production release info, and basic ratings endpoint are callable. Detailed installs/crashes require Reports/Vitals APIs or exports. Reviews endpoint currently returns `{}`. |
-| Firebase Analytics | Available with limits | Firebase MCP project/app access | Project `k53-ninja` is visible, but this MCP does not expose GA4 analytics reports such as acquisition, retention, funnels, or events. |
-| Firebase Crashlytics / Android vitals | Available with limits | Firebase MCP guides/resources only | Crashlytics guides are available, but no crash issue/report endpoint is currently exposed through discovered tools. Android vitals still needs Play Console Vitals API or exports. |
+| GA4 / Firebase Analytics | Available after MCP reload | Google Analytics MCP configured and direct API access verified | OAuth ADC credentials can access GA4 accounts including `K53 Study Guide` property `269952161` and `K53 Ninja` property `225099990`. Current Codex session needs MCP reload before tool calls appear. |
+| Firebase Crashlytics / Android vitals | Needed | Crashlytics reports or Play Console Vitals exports required | Use Crashlytics/Play Console exports for crash, ANR, and quality analysis. |
 | Website URL | Available | Public | https://k53studyguide.online/ |
-| Website analytics | Needed | Account/tool access required | Google Analytics, Plausible, Cloudflare Analytics, or equivalent. |
-| Google Search Console | Needed | Account/tool access required | Needed for organic search queries, indexing, pages, and website SEO opportunities. |
+| Website analytics | Available after MCP reload | Google Analytics MCP configured and direct API access verified | Use GA4 property `269952161` first for current K53 Study Guide analysis. |
+| Google Search Console | Available after MCP reload | OAuth configured and authenticated | OAuth token is created and direct API access sees `sc-domain:k53studyguide.online` with `siteOwner` permission. Current Codex session's GSC MCP transport is closed and needs reload/restart before tool calls work again. |
 | Competitor listings | Available | Public links provided | Five primary competitor Play Store listings are recorded below. |
 | ASO keyword tool | Optional | Tool access helpful | AppTweak, Sensor Tower, data.ai, MobileAction, AppFollow, App Radar, or similar. |
 | Google Ads | Available | Google Ads MCP read access | Customer `7069841878` is accessible. Account is enabled, non-test, currency `ZAR`, timezone `Africa/Johannesburg`. Campaign history is queryable. |
@@ -30,9 +30,9 @@ MCP service account in use: `mcp-servers@k53-ninja.iam.gserviceaccount.com`
 | Play Store listing | Available | https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en |
 | Landing website | Available | https://k53studyguide.online/ |
 | Google Play Console | Available with limits | MCP package access confirmed for `deanvniekerk.k53studyguide.app` |
-| Firebase project | Available with limits | `k53-ninja` / project number `959174953477` |
-| Website analytics | Needed |  |
-| Google Search Console | Needed |  |
+| Firebase project | Known | `k53-ninja` / project number `959174953477` |
+| Google Analytics / GA4 | Available after MCP reload | Current property: `properties/269952161` (`k53-study-guide`); old property: `properties/225099990` (`k53-ninja`) |
+| Google Search Console | Available after MCP reload | `sc-domain:k53studyguide.online` with `siteOwner` permission |
 | Google Ads customer | Available | `7069841878` |
 | Competitor 1 | Available | https://play.google.com/store/apps/details?id=com.pineapplestudio.k53learnerslicensetest |
 | Competitor 2 | Available | https://play.google.com/store/apps/details?id=k53.south.africa.learners.test.app.k53learnersapp |
@@ -90,7 +90,7 @@ Needed:
   - geography, language, and device breakdowns
   - uninstall or churn proxies if available
 
-Current status: `Firebase project/app access available. Analytics reports still need GA4, BigQuery export, screenshots, CSV exports, or additional analytics-capable tools`.
+Current status: `Google Analytics MCP is installed and authenticated. Direct API access works; Codex needs MCP reload before the new tool namespace is callable in-session`.
 
 Observed Firebase project/app details:
 
@@ -101,6 +101,21 @@ Observed Firebase project/app details:
 - Firebase Android package namespace: `deanvniekerk.k53ninja.app`
 - Play Store package namespace: `deanvniekerk.k53studyguide.app`
 - Note: the Firebase package namespace differs from the Play Store package namespace because `k53ninja` is the old app name. Still verify that the current shipped app is sending analytics to the intended Firebase app/project.
+
+Observed GA4 access:
+
+| Account | Account ID | Property | Property ID | Notes |
+| --- | --- | --- | --- | --- |
+| `K53 Study Guide` | `195283836` | `k53-study-guide` | `269952161` | Current property to analyze first. |
+| `K53 Ninja` | `160321529` | `k53-ninja` | `225099990` | Old-name property; useful for historical comparison if needed. |
+
+Google Analytics MCP setup:
+
+- Repo: `/Users/dean/_repo/mcp/google-analytics-mcp`
+- Command: `/Users/dean/_repo/mcp/google-analytics-mcp/.venv/bin/analytics-mcp`
+- ADC credentials: `/Users/dean/Cloud/gcp/adc/google-analytics-mcp-adc.json`
+- Project: `k53-ninja`
+- Required APIs enabled: `analyticsadmin.googleapis.com`, `analyticsdata.googleapis.com`
 
 ### 4. Website SEO & Conversion
 
@@ -186,9 +201,12 @@ Ask the owner for:
 | 2026-05-05 | Play Console service account permissions confirmed. Retrieved app info, `en-GB` store listing, and production release `26 (1.26)`. Reviews endpoint returned `{}`; install and crash statistics require Reports/Vitals API access or exports. | Codex |
 | 2026-05-05 | Retried reviews and statistics after permission changes. Reviews still returned `{}`; ratings returned app details only; crashes still require Vitals API; installs call was blocked by tool safety before execution. | Codex |
 | 2026-05-05 | Added five primary competitor Play Store listings. Competitor analysis is now partially unblocked. | Codex |
-| 2026-05-05 | Firebase MCP access confirmed. Set active project to `k53-ninja`, listed one Android Firebase app, and retrieved SDK config metadata. Analytics reports are not exposed by the current Firebase tools. | Codex |
+| 2026-05-05 | Firebase project metadata noted for `k53-ninja`. Product analytics should use GA4/Google Analytics data rather than Firebase tooling. | Codex |
 | 2026-05-05 | Confirmed with owner that `k53ninja` is the old app name and was updated to `k53studyguide`; namespace mismatch is historical naming, but analytics wiring should still be verified. | Codex |
 | 2026-05-05 | Google Ads MCP access confirmed for customer `7069841878`. Retrieved account metadata and two app campaigns, including paused current app campaign `App Promotion K53 SG`. | Codex |
+| 2026-05-07 | Reconfigured GSC MCP to use OAuth client secret at `/Users/dean/Cloud/gcp/keys/client_secret_959174953477-j56krilalsdalbtu2h68fkarpo79n4t0.apps.googleusercontent.com.json` with `GSC_SKIP_OAUTH=false`. OAuth sign-in is blocked by Google because the app is in testing and the Gmail account is not an approved test user. | Codex |
+| 2026-05-07 | Completed GSC OAuth browser authentication. Direct Search Console API access confirmed for `sc-domain:k53studyguide.online` with `siteOwner` permission. Current MCP tool transport remains closed until Codex/MCP reload. | Codex |
+| 2026-05-07 | Cloned and installed Google Analytics MCP at `/Users/dean/_repo/mcp/google-analytics-mcp`, generated OAuth ADC credentials, enabled Analytics Admin/Data APIs, and confirmed direct GA4 API access to current property `269952161` plus old property `225099990`. | Codex |
 
 ## Decision Log
 

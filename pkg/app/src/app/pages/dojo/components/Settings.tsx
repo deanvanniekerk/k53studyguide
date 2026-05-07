@@ -125,7 +125,7 @@ const SettingsComponent: React.FC<Props> = (props) => {
         <StartButtonWrapper>
           <PrimaryButton
             section="dojo"
-            text={props.testInProgress ? "continueTest" : "startTest"}
+            text={props.testInProgress ? "continueQuiz" : "startTest"}
             rightIcon={caretForward}
             onClick={() => props.onStartTestClicked()}
           />
