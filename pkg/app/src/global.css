@@ -92,6 +92,14 @@ ion-tab-button:active .app-tab-pill-active {
   }
 }
 
+.ion-palette-dark ion-tab-button:not(.tab-selected) {
+  --color: #b9b6ca;
+}
+
+.ion-palette-dark ion-tab-button:not(.tab-selected) ion-label {
+  font-weight: 800;
+}
+
 ion-list-header {
   padding-right: var(--app-padding);
 }

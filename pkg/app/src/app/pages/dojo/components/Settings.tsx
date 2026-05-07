@@ -28,7 +28,7 @@ type Props = {
 const SettingsComponent: React.FC<Props> = (props) => {
   const history = useHistory();
   const [showResetTestAlert, setShowResetTestAlert] = useState(false);
-  const answeredQuestions = props.questionAnswers.filter((questionAnswer) => questionAnswer.answer).length;
+  const _answeredQuestions = props.questionAnswers.filter((questionAnswer) => questionAnswer.answer).length;
   const breadcrumbKeys = navigationKeyToBreadcrumb(props.targetNavigationKey);
   const selectedSectionKey = breadcrumbKeys[breadcrumbKeys.length - 1] || ROOT_NAVIGATION_KEY;
   const parentBreadcrumbKeys = breadcrumbKeys.slice(0, -1);
@@ -69,9 +69,6 @@ const SettingsComponent: React.FC<Props> = (props) => {
             <InProgressBreadcrumb>
               <Breadcrumb navigationKey={props.targetNavigationKey} rootText="allContent" showLast={true} />
             </InProgressBreadcrumb>
-            <InProgressMeta>
-              {answeredQuestions} of {props.questionAnswers.length} <Translate text="answered" />
-            </InProgressMeta>
           </InProgressCard>
         ) : (
           <SettingsCard>
@@ -239,7 +236,7 @@ const InProgressBreadcrumb = styled.div`
   line-height: 1.35;
 `;
 
-const InProgressMeta = styled.div`
+const _InProgressMeta = styled.div`
   display: inline-flex;
   align-items: center;
   margin-top: 18px;

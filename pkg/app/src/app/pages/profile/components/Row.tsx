@@ -91,7 +91,7 @@ const NameCol = styled.div`
 const Name = styled.div`
   min-width: 0;
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-md);
   font-weight: 700;
   line-height: 1.2;
 `;
@@ -106,7 +106,7 @@ const StatusIcon = styled(IonIcon)<{ $status?: Props["status"] }>`
 const ValueCol = styled.div<{ $action?: boolean }>`
   color: ${(props) => (props.$action ? "var(--app-profile-action-icon)" : "var(--app-text-muted)")};
   font-family: var(--ion-font-family-bold);
-  font-size: ${(props) => (props.$action ? "var(--app-font-size-l)" : "var(--app-font-size-l)")};
+  font-size: ${(props) => (props.$action ? "var(--app-font-size-xl)" : "var(--app-font-size-md)")};
   font-weight: 700;
   line-height: 1;
   text-align: right;
