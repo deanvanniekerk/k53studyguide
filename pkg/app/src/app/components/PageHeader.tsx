@@ -56,8 +56,8 @@ const Shell = styled.div<{ $gradient: string }>`
   z-index: 10;
   pointer-events: none;
   background: ${(p) => p.$gradient};
-  padding-top: var(--app-safe-area-top);
-  height: calc(var(--app-safe-area-top) + var(--app-page-header-visual-height));
+  padding-top: var(--app-page-header-padding-top);
+  height: var(--app-page-header-height);
   box-sizing: border-box;
 `;
 
