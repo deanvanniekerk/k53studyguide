@@ -8,16 +8,25 @@ ion-tab-bar {
 
 ion-tab-button {
   --color: var(--app-text-muted);
+  flex: 0 1 112px;
   font-family: var(--ion-font-family-bold);
+  min-width: 0;
 }
 
 ion-tab-button ion-icon {
-  font-size: var(--app-font-size-xxl);
+  display: none;
+}
+
+.app-tab-pill svg {
+  display: none;
 }
 
 ion-tab-button ion-label {
-  margin-top: 4px;
-  font-size: var(--app-font-size-sm);
+  margin-top: 0;
+  font-size: var(--app-font-size-l);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .app-tab-pill {
@@ -26,22 +35,61 @@ ion-tab-button ion-label {
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 78px;
-  padding: 7px 14px 6px;
+  min-height: 46px;
+  min-width: 0;
+  width: min(108px, calc(100% - 8px));
+  padding: 13px clamp(12px, 3vw, 24px);
+  box-sizing: border-box;
   transition:
     background-color 160ms ease,
+    box-shadow 160ms ease,
     color 160ms ease,
-    transform 160ms ease;
+    transform 140ms ease;
 }
 
 ion-tab-button.tab-selected {
-  --color-selected: var(--app-tab-accent);
+  --color-selected: var(--app-tab-selected-foreground);
 }
 
-ion-tab-button.tab-selected .app-tab-pill {
-  background: rgba(var(--app-tab-accent-rgb), 0.14);
-  color: var(--app-tab-accent);
+ion-tab-button:active .app-tab-pill {
+  transform: scale(0.94);
+}
+
+ion-tab-button.tab-selected .app-tab-pill,
+.app-tab-pill-active {
+  background: var(--app-tab-selected-background, rgba(var(--app-tab-accent-rgb), 0.88));
+  box-shadow: 0 10px 22px rgba(var(--app-tab-accent-rgb), 0.28);
+  color: var(--app-tab-selected-foreground);
+  font-weight: bold;
   transform: translateY(-1px);
+}
+
+ion-tab-button.tab-selected:active .app-tab-pill,
+ion-tab-button:active .app-tab-pill-active {
+  box-shadow: 0 6px 14px rgba(var(--app-tab-accent-rgb), 0.22);
+  transform: translateY(1px) scale(0.94);
+}
+
+@media (hover: hover) {
+  ion-tab-button:not(.tab-selected):hover .app-tab-pill {
+    transform: translateY(-1px);
+  }
+}
+
+@media (max-width: 430px) {
+  ion-tab-button {
+    flex: 1 1 0;
+  }
+
+  ion-tab-button ion-label {
+    font-size: var(--app-font-size-md);
+  }
+
+  .app-tab-pill {
+    min-height: 42px;
+    width: min(96px, calc(100% - 4px));
+    padding: 11px 12px;
+  }
 }
 
 ion-list-header {

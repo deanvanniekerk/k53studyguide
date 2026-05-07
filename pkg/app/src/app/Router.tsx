@@ -28,24 +28,29 @@ const iconStyles: React.CSSProperties = {
 type TabAccentStyle = React.CSSProperties & {
   "--app-tab-accent": string;
   "--app-tab-accent-rgb": string;
+  "--app-tab-selected-background": string;
 };
 
 const tabAccentStyles = {
   study: {
     "--app-tab-accent": "var(--app-progress-foreground)",
     "--app-tab-accent-rgb": "var(--app-progress-foreground-rgb)",
+    "--app-tab-selected-background": "var(--app-study-primary-gradient)",
   },
   dojo: {
     "--app-tab-accent": "var(--ion-color-tertiary)",
     "--app-tab-accent-rgb": "var(--ion-color-tertiary-rgb)",
+    "--app-tab-selected-background": "var(--app-dojo-primary-gradient)",
   },
   arena: {
     "--app-tab-accent": "var(--app-arena-accent)",
     "--app-tab-accent-rgb": "var(--app-arena-accent-rgb)",
+    "--app-tab-selected-background": "var(--app-arena-primary-gradient)",
   },
   profile: {
     "--app-tab-accent": "var(--ion-color-success)",
     "--app-tab-accent-rgb": "var(--ion-color-success-rgb)",
+    "--app-tab-selected-background": "var(--app-profile-primary-gradient)",
   },
 } satisfies Record<string, TabAccentStyle>;
 
@@ -58,7 +63,9 @@ const tabPathGroups = {
 
 const AppTabs: React.FC = () => {
   const { pathname } = useLocation();
-  const isActiveTab = (tab: keyof typeof tabPathGroups) => tabPathGroups[tab].includes(pathname);
+  const activeTab = Object.entries(tabPathGroups).find(([, paths]) => paths.includes(pathname))?.[0];
+  const tabPillClassName = (tab: keyof typeof tabPathGroups) =>
+    activeTab === tab ? "app-tab-pill app-tab-pill-active" : "app-tab-pill";
 
   return (
     <IonTabs>
@@ -75,47 +82,27 @@ const AppTabs: React.FC = () => {
         <Route exact path="/profile" component={ProfilePage} />
         <Route exact path="/" render={() => <Redirect to="/study" />} />
       </IonRouterOutlet>
-      <IonTabBar slot="bottom">
-        <IonTabButton
-          className={isActiveTab("study") ? "tab-selected" : undefined}
-          tab="study"
-          href="/study"
-          style={tabAccentStyles.study}
-        >
-          <span className="app-tab-pill">
+      <IonTabBar selectedTab={activeTab} slot="bottom">
+        <IonTabButton tab="study" href="/study" style={tabAccentStyles.study}>
+          <span className={tabPillClassName("study")}>
             <BookIcon style={iconStyles} />
             <IonLabel>Study</IonLabel>
           </span>
         </IonTabButton>
-        <IonTabButton
-          className={isActiveTab("dojo") ? "tab-selected" : undefined}
-          tab="dojo"
-          href="/dojo"
-          style={tabAccentStyles.dojo}
-        >
-          <span className="app-tab-pill">
+        <IonTabButton tab="dojo" href="/dojo" style={tabAccentStyles.dojo}>
+          <span className={tabPillClassName("dojo")}>
             <QuizIcon style={iconStyles} />
             <IonLabel>Quiz</IonLabel>
           </span>
         </IonTabButton>
-        <IonTabButton
-          className={isActiveTab("arena") ? "tab-selected" : undefined}
-          tab="arena"
-          href="/arena"
-          style={tabAccentStyles.arena}
-        >
-          <span className="app-tab-pill">
+        <IonTabButton tab="arena" href="/arena" style={tabAccentStyles.arena}>
+          <span className={tabPillClassName("arena")}>
             <TestPenIcon style={iconStyles} />
             <IonLabel>Test</IonLabel>
           </span>
         </IonTabButton>
-        <IonTabButton
-          className={isActiveTab("profile") ? "tab-selected" : undefined}
-          tab="profile"
-          href="/profile"
-          style={tabAccentStyles.profile}
-        >
-          <span className="app-tab-pill">
+        <IonTabButton tab="profile" href="/profile" style={tabAccentStyles.profile}>
+          <span className={tabPillClassName("profile")}>
             <SettingsIcon style={iconStyles} />
             <IonLabel>Profile</IonLabel>
           </span>

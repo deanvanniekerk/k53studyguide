@@ -79,6 +79,7 @@ const Heading = styled(IonText)`
 
 const ImageFrame = styled.div`
   align-items: center;
+  background: var(--app-study-background);
   border: 2px dashed rgba(var(--app-progress-track-rgb), 0.25);
   border-radius: 24px;
   display: flex;

@@ -159,6 +159,7 @@ const Content = styled(IonContent)`
 const Page = styled(IonPage)`
   --app-question-accent: var(--app-arena-accent);
   --app-question-accent-rgb: var(--app-arena-accent-rgb);
+  --app-question-image-background: var(--app-arena-background);
 
   background: var(--app-arena-background);
 `;

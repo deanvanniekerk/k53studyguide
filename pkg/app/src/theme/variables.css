@@ -16,8 +16,8 @@
   --app-padding: 16px;
   --app-safe-area-top: max(env(safe-area-inset-top, 0px), var(--ion-safe-area-top, 0px));
   --app-page-header-safe-area-top: max(0px, calc(var(--app-safe-area-top) - 18px));
-  --app-page-header-visual-height: 85px;
-  --app-page-header-collapsed-visual-height: 56px;
+  --app-page-header-visual-height: 65px;
+  --app-page-header-collapsed-visual-height: 48px;
   --app-page-header-bar-height: 44px;
   --app-page-header-padding-top: var(--app-page-header-safe-area-top);
   --app-page-header-height: calc(var(--app-page-header-padding-top) + var(--app-page-header-visual-height));
@@ -48,6 +48,7 @@
   --app-card-background: #ffffff;
   --app-divider-color: rgba(26, 27, 46, 0.1);
   --app-tab-selected-border: rgba(26, 27, 46, 0.3);
+  --app-tab-selected-foreground: #ffffff;
   --app-decorative-icon-color: #9e9cb8;
   --app-watermark-fill: #000000;
 
@@ -72,13 +73,17 @@
   --app-dojo-header-gradient: linear-gradient(135deg, #b53a8c 0%, #e8456e 50%, #ff8c42 100%);
   --app-arena-header-gradient: linear-gradient(135deg, #2a2470 0%, #4a3fb8 50%, #1f5dbe 100%);
   --app-profile-header-gradient: linear-gradient(135deg, #007e6c 0%, #2bbf8a 55%, #ffca3a 100%);
+  --app-study-action-gradient: linear-gradient(315deg, #4a3fb8 0%, #2e7bd6 50%, #2bb5a8 100%);
+  --app-dojo-action-gradient: linear-gradient(315deg, #b53a8c 0%, #e8456e 50%, #ff8c42 100%);
+  --app-arena-action-gradient: linear-gradient(315deg, #2a2470 0%, #4a3fb8 50%, #1f5dbe 100%);
+  --app-profile-action-gradient: linear-gradient(315deg, #007e6c 0%, #2bbf8a 55%, #ffca3a 100%);
   --app-study-primary-gradient: var(--app-study-header-gradient);
   --app-dojo-primary-gradient: var(--app-dojo-header-gradient);
   --app-arena-primary-gradient: var(--app-arena-header-gradient);
   --app-profile-primary-gradient: var(--app-profile-header-gradient);
 
   /* Study */
-  --app-study-action-background: var(--app-study-primary-gradient);
+  --app-study-action-background: var(--app-study-action-gradient);
   --app-study-action-shadow: 0 12px 20px rgba(var(--app-progress-foreground-rgb), 0.16);
 
   --app-study-section-vehicle: #ff828a;
@@ -95,7 +100,7 @@
   --app-study-section-signs-rgb: 255, 219, 112;
 
   /* Dojo */
-  --app-dojo-action-background: var(--app-dojo-primary-gradient);
+  --app-dojo-action-background: var(--app-dojo-action-gradient);
   --app-dojo-action-shadow: 0 12px 20px rgba(var(--app-progress-foreground-rgb), 0.18);
   --app-dojo-level-card-background: var(--app-card-background);
   --app-dojo-level-card-border-color: #eeecf8;
@@ -112,7 +117,7 @@
   --app-arena-accent-rgb: 74, 63, 184;
   --app-arena-illustration-background: #fff1cf;
   --app-arena-illustration-border: #f4e3b1;
-  --app-arena-action-background: var(--app-arena-header-gradient);
+  --app-arena-action-background: var(--app-arena-action-gradient);
   --app-arena-action-shadow: 0 18px 28px rgba(var(--app-arena-accent-rgb), 0.24);
   --app-arena-muted-surface: rgba(var(--app-arena-accent-rgb), 0.08);
   --app-premium-panel-background: #ffffff;
@@ -121,7 +126,7 @@
   --app-premium-hero-background: var(--app-arena-header-gradient);
 
   /* Profile */
-  --app-profile-action-background: var(--app-profile-primary-gradient);
+  --app-profile-action-background: var(--app-profile-action-gradient);
   --app-profile-action-shadow: 0 12px 20px rgba(var(--ion-color-primary-rgb), 0.18);
   --app-profile-section-title: var(--app-text-muted);
   --app-profile-card-background: var(--app-card-background);
@@ -223,6 +228,7 @@
   --app-card-background: #1e1d2d;
   --app-divider-color: rgba(240, 239, 247, 0.1);
   --app-tab-selected-border: rgba(255, 255, 255, 0.79);
+  --app-tab-selected-foreground: #ffffff;
   --app-decorative-icon-color: #9896aa;
   --app-watermark-fill: #f0eff7;
 

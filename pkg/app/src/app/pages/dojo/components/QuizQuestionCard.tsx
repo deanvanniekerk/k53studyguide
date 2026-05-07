@@ -102,7 +102,7 @@ const ImageFrame = styled.div`
   padding: 12px;
   border: 2px dashed var(--app-card-border-color);
   border-radius: 20px;
-  background: var(--app-card-background);
+  background: var(--app-question-image-background, var(--app-dojo-background));
 `;
 
 const QuestionImage = styled.img`
