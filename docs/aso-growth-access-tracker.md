@@ -51,13 +51,24 @@ MCP service account used for service-account based tools:
 
 | Field | Value |
 | --- | --- |
-| Title | `K53 Study Guide` |
-| Short description | `K53 Study Guide - Learners License Study Material and Tests` |
+| Title | `K53 Learners Licence Test SA` |
+| Short description | `Study K53 rules, road signs and mock tests for South Africa's learner's licence.` |
 | Default language | `en-GB` |
 | Contact website | `https://k53studyguide.online` |
 | Contact email | `info@k53studyguide.online` |
 | Latest production release | `26 (1.26)` |
 | Latest release note | `Handle notched phones correctly` |
+
+## Changes Applied On 2026-05-07
+
+| Area | Change |
+| --- | --- |
+| Play Store listing | Updated `en-GB` title, short description, and full description to target South African K53 learner's licence search terms, including road signs, rules of the road, vehicle controls, quizzes, and mock tests. |
+| Website SEO | Added homepage title, meta description, canonical URL, robots meta, Open Graph/Twitter metadata, and `MobileApplication` JSON-LD structured data. |
+| Website canonicalization | Set canonical URLs to `https://www.k53studyguide.online/` because GSC reported Google-selected canonical as the `www` host. |
+| Website discovery | Added `pkg/lander/public/robots.txt` and `pkg/lander/public/sitemap.xml`; Vite build now emits them at the site root. |
+| Attribution | Added Google Play install referrer parameters to website CTAs for nav, hero, premium, footer, and iOS coming soon modal links. |
+| Legal pages | Added meta descriptions, canonical URLs, robots meta, and Open Graph metadata to `privacy.html` and `terms.html`. |
 
 ## Competitors
 
@@ -156,4 +167,3 @@ Initial checks:
 3. Publicly audit the five competitor listings.
 4. Draft an ASO hypothesis list for title, short description, full description, screenshots, and review prompts.
 5. Decide whether to get a Play Console export for acquisition/search terms, reviews, and Android vitals.
-
