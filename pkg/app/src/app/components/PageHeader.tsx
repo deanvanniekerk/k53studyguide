@@ -1,22 +1,127 @@
+import { IonIcon } from "@ionic/react";
+import { arrowBackOutline } from "ionicons/icons";
 import type React from "react";
 import { Translate } from "react-translated";
-import "./PageHeader.css";
+import styled from "styled-components";
+
+export type PageSection = "study" | "dojo" | "arena" | "profile";
 
 type Props = {
-  text: string;
-  rightComponent?: React.ReactNode;
+  title: string;
+  subTitle?: string;
+  page: PageSection;
+  onBackClick?: () => void;
+  rightSection?: React.ReactNode;
 };
 
-const PageHeader: React.FC<Props> = (props) => {
+const gradients: Record<PageSection, string> = {
+  study: "var(--app-study-header-gradient)",
+  dojo: "var(--app-dojo-header-gradient)",
+  arena: "var(--app-arena-header-gradient)",
+  profile: "var(--app-profile-header-gradient)",
+};
+
+const PageHeader: React.FC<Props> = ({ title, subTitle, page, onBackClick, rightSection }) => {
   return (
-    <div className="page-header">
-      <div className="col-1"></div>
-      <div className="col-2">
-        <Translate text={props.text} />
-      </div>
-      <div className="col-3">{props.rightComponent}</div>
-    </div>
+    <Shell $gradient={gradients[page]}>
+      <Bar $hasSubtitle={Boolean(subTitle)}>
+        <Col1>
+          {onBackClick && (
+            <BackBtn type="button" aria-label="Go back" onClick={onBackClick}>
+              <IonIcon icon={arrowBackOutline} />
+            </BackBtn>
+          )}
+        </Col1>
+        <Col2>
+          <Title>
+            <Translate text={title} />
+          </Title>
+          {subTitle && (
+            <SubTitle>
+              <Translate text={subTitle} />
+            </SubTitle>
+          )}
+        </Col2>
+        <Col3>{rightSection}</Col3>
+      </Bar>
+    </Shell>
   );
 };
+
+const Shell = styled.div<{ $gradient: string }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  pointer-events: none;
+  background: ${(p) => p.$gradient};
+  padding-top: var(--app-safe-area-top);
+  height: calc(var(--app-safe-area-top) + var(--app-page-header-visual-height));
+  box-sizing: border-box;
+`;
+
+const Bar = styled.div<{ $hasSubtitle: boolean }>`
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  align-items: center;
+  height: var(--app-page-header-visual-height);
+  padding: 0 8px;
+  font-family: var(--ion-font-family-bold);
+  font-size: var(--app-font-size-l);
+  font-weight: bolder;
+  color: var(--ion-color-light);
+  text-transform: uppercase;
+  letter-spacing: 0;
+  text-align: center;
+`;
+
+const Col1 = styled.div`
+  pointer-events: auto;
+  text-align: left;
+`;
+
+const Col2 = styled.div`
+  min-width: 0;
+  line-height: 1;
+`;
+
+const Title = styled.div`
+  line-height: 1;
+`;
+
+const SubTitle = styled.div`
+  margin: 10px -44px 0;
+  font-family: var(--ion-font-family);
+  font-size: var(--app-font-size-xs);
+  font-weight: 600;
+  line-height: 1.25;
+  text-transform: none;
+  white-space: normal;
+`;
+
+const Col3 = styled.div`
+  pointer-events: auto;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const BackBtn = styled.button`
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ion-color-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  ion-icon {
+    font-size: var(--app-font-size-xxl);
+    opacity: 0.8;
+  }
+`;
 
 export { PageHeader };

@@ -1,18 +1,35 @@
 import { IonContent, IonPage } from "@ionic/react";
-import { arrowUp } from "ionicons/icons";
 import type React from "react";
 import { useRef } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
-import { BackButton } from "@/app/components";
+import { PageHeader } from "@/app/components";
 import { BookOutlineIcon } from "@/app/components/icons";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { watermarkStyle } from "@/app/styles";
 import type { RootState } from "@/state";
-import { currentNavigationParentSelector, navigateUp, ROOT_NAVIGATION_KEY } from "@/state/study/navigation";
+import {
+  currentNavigationKeySelector,
+  currentNavigationParentSelector,
+  navigateUp,
+  ROOT_NAVIGATION_KEY,
+} from "@/state/study/navigation";
+import { navigationKeyToBreadcrumb } from "@/utils";
 import { ContentList, Header, Navigator } from "./components";
+
+const sectionAccentVars: Record<string, { color: string; rgb: string }> = {
+  "nav.vehicleControls": { color: "var(--app-study-section-vehicle)", rgb: "var(--app-study-section-vehicle-rgb)" },
+  "nav.rulesOfTheRoad": { color: "var(--app-study-section-rules)", rgb: "var(--app-study-section-rules-rgb)" },
+  "nav.defensiveDriving": {
+    color: "var(--app-study-section-defensive)",
+    rgb: "var(--app-study-section-defensive-rgb)",
+  },
+  "nav.roadMarkings": { color: "var(--app-study-section-markings)", rgb: "var(--app-study-section-markings-rgb)" },
+  "nav.roadSignals": { color: "var(--app-study-section-signals)", rgb: "var(--app-study-section-signals-rgb)" },
+  "nav.signs": { color: "var(--app-study-section-signs)", rgb: "var(--app-study-section-signs-rgb)" },
+};
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -21,6 +38,12 @@ const ContentPage: React.FC<Props> = (props) => {
   const content = useRef<HTMLIonContentElement>(null);
 
   useAnalytics("ContentPage");
+
+  const rootSectionKey = navigationKeyToBreadcrumb(props.currentNavigationKey)[1];
+  const sectionTheme = sectionAccentVars[rootSectionKey];
+  const sectionStyle = sectionTheme
+    ? ({ "--section-accent": sectionTheme.color, "--section-accent-rgb": sectionTheme.rgb } as React.CSSProperties)
+    : undefined;
 
   const onBackClicked = () => {
     // if (content.current) {
@@ -37,10 +60,10 @@ const ContentPage: React.FC<Props> = (props) => {
   };
 
   return (
-    <Page>
+    <Page style={sectionStyle}>
+      <PageHeader title="study" page="study" onBackClick={onBackClicked} />
       <Watermark />
       <Content ref={content}>
-        <BackButton onClick={onBackClicked} icon={arrowUp} />
         <Header />
         <Navigator />
         <ContentList />
@@ -58,14 +81,14 @@ const Content = styled(IonContent)`
 `;
 
 const Page = styled(IonPage)`
-  background: #FAFAF7;
-  --page-header-bg: var(--study-header-gradient);
+  background: var(--app-study-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
   return {
     currentNavigationParent: currentNavigationParentSelector(state),
+    currentNavigationKey: currentNavigationKeySelector(state),
   };
 };
 

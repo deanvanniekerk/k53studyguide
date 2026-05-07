@@ -5,7 +5,7 @@ const translations: Translations = {
     en: "K53 Study Guide",
   },
   purchaseSuccessful: {
-    en: "Purchase Successful! <br/> Thank you for your support",
+    en: "Purchase Successful! Thank you for your support",
   },
   purchaseFailed: {
     en: "Purchase Failed!",
@@ -31,8 +31,14 @@ const translations: Translations = {
   cancel: {
     en: "Cancel",
   },
+  back: {
+    en: "Back",
+  },
   premium: {
     en: "Premium",
+  },
+  yesTakeMeThere: {
+    en: "Yes, take me there",
   },
   checklist: {
     en: "Checklist",
@@ -42,6 +48,30 @@ const translations: Translations = {
   },
   completeTestToChangeSettings: {
     en: "You must complete the current quiz before you can change the quiz settings",
+  },
+  currentQuiz: {
+    en: "Current Quiz",
+  },
+  answered: {
+    en: "answered",
+  },
+  resetCurrentQuiz: {
+    en: "Reset Quiz",
+  },
+  resetCurrentQuizConfirm: {
+    en: "End the current quiz and reset the section to All Content?",
+  },
+  resetCurrentTest: {
+    en: "Reset Test",
+  },
+  resetCurrentTestConfirm: {
+    en: "End the current test and start again from Section A?",
+  },
+  endCurrentTest: {
+    en: "End Test",
+  },
+  endCurrentTestConfirm: {
+    en: "End the current test and view your results now?",
   },
   rateApp: {
     en: "Rate App",
@@ -54,6 +84,21 @@ const translations: Translations = {
   },
   accessTheArenaInfo: {
     en: "Write tests that are structured and marked like the real one",
+  },
+  arenaLockedTitle: {
+    en: "Unlock the real test experience",
+  },
+  arenaLockedInfo: {
+    en: "Practise with a full K53-style test, build confidence, and know when you are ready for the real thing.",
+  },
+  arenaLockedBenefitStructure: {
+    en: "Real K53-style test structure",
+  },
+  arenaLockedBenefitScoring: {
+    en: "Section scoring shows where you are ready",
+  },
+  arenaLockedBenefitMastery: {
+    en: "Track progress toward passing 3 tests",
   },
   resetYourHistory: {
     en: "Reset your History",
@@ -78,6 +123,9 @@ const translations: Translations = {
   },
   premiumPurchased: {
     en: "Premium Purchased",
+  },
+  premiumPurchasedInfo: {
+    en: "Thanks for supporting us!",
   },
   purchaseDate: {
     en: "Purchase Date",
@@ -166,6 +214,15 @@ const translations: Translations = {
   continue: {
     en: "Continue",
   },
+  startStudying: {
+    en: "Start studying",
+  },
+  continueWhereYouLeftOff: {
+    en: "Continue where you left off",
+  },
+  allTopics: {
+    en: "All Topics",
+  },
   question: {
     en: "Question",
   },
@@ -215,13 +272,22 @@ const translations: Translations = {
     en: "Max Questions",
   },
   testSettings: {
-    en: "Quiz Settings",
+    en: "Configure",
   },
   section: {
     en: "Section",
   },
+  quizSection: {
+    en: "Quiz Section",
+  },
   selectSection: {
     en: "Select Section",
+  },
+  chooseQuizSection: {
+    en: "Choose Quiz Section",
+  },
+  useThisSection: {
+    en: "Use This Section",
   },
   continueTest: {
     en: "Continue Quiz",
@@ -234,6 +300,12 @@ const translations: Translations = {
   },
   selectSectionWithLowLevel: {
     en: "Select sections with low level scores to gain more quiz points",
+  },
+  quizSectionIncludes: {
+    en: "Quiz questions will come from this section and everything below it.",
+  },
+  quizQuestionPool: {
+    en: "Question Pool",
   },
   "nav.vehicleControls.0.heading": {
     en: "Vehicle Controls",

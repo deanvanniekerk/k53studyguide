@@ -5,13 +5,13 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
+import { PageHeader, PageHeaderInfoIcon } from "@/app/components";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { RootState } from "@/state";
 import { loadQuestionAnswers, testInProgressSelector } from "@/state/dojo/test";
 import { notificationsSelector, recieveRecieveNotificationState } from "@/state/notifications";
 import { Header, Settings } from "./components";
 import { DojoInfoModal } from "./DojoInfoModal";
-import { DojoPageHeader } from "./DojoPageHeader";
 import { DojoWatermark } from "./DojoWatermark";
 
 type Props = PropsFromState & PropsFromDispatch;
@@ -51,7 +51,12 @@ const DojoPage: React.FC<Props> = (props) => {
           setInfoModalVisible(false);
         }}
       />
-      <DojoPageHeader onInfoClicked={() => showInfoModal()} />
+      <PageHeader
+        title="dojo"
+        subTitle="dojoIntro"
+        page="dojo"
+        rightSection={<PageHeaderInfoIcon onClick={() => showInfoModal()} />}
+      />
       <DojoWatermark />
       <Content>
         <Header />
@@ -66,8 +71,7 @@ const Content = styled(IonContent)`
 `;
 
 const Page = styled(IonPage)`
-  background: #FAFAF7;
-  --page-header-bg: var(--dojo-header-gradient);
+  background: var(--app-dojo-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

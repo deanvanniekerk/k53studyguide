@@ -1,14 +1,18 @@
-import { IonButton, IonIcon, IonToast } from "@ionic/react";
-import { checkmarkCircleOutline } from "ionicons/icons";
+import { IonToast } from "@ionic/react";
+import { caretForward, checkmarkCircleOutline } from "ionicons/icons";
 import type React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
-import { Translate, Translator } from "react-translated";
+import { Translator } from "react-translated";
 import styled from "styled-components";
+import { PrimaryButton } from "@/app/components";
 import type { RootState } from "@/state";
 import { allQuestionsAnsweredSelector } from "@/state/dojo/test";
 
 type Props = {
+  hasAnswer: boolean;
+  isLastQuestion: boolean;
+  onNextClicked: () => void;
   onSubmitClicked: () => void;
 } & PropsFromState;
 
@@ -16,6 +20,16 @@ const FooterComponent: React.FC<Props> = (props) => {
   const [showNotComplete, setShowNotComplete] = useState(false);
 
   const onSubmitClicked = () => {
+    if (!props.hasAnswer) {
+      setShowNotComplete(true);
+      return;
+    }
+
+    if (!props.isLastQuestion) {
+      props.onNextClicked();
+      return;
+    }
+
     if (!props.allQuestionsAnswered) {
       setShowNotComplete(true);
       return;
@@ -26,10 +40,12 @@ const FooterComponent: React.FC<Props> = (props) => {
 
   return (
     <Wrapper>
-      <IonButton color="secondary" shape="round" fill="solid" className="button-med-large" onClick={onSubmitClicked}>
-        <Translate text="submit" />
-        <IonIcon slot="end" icon={checkmarkCircleOutline} />
-      </IonButton>
+      <PrimaryButton
+        section="dojo"
+        text={props.isLastQuestion ? "submit" : "continue"}
+        rightIcon={props.isLastQuestion ? checkmarkCircleOutline : caretForward}
+        onClick={onSubmitClicked}
+      />
 
       <Translator>
         {({ translate }) => (
@@ -49,7 +65,7 @@ const FooterComponent: React.FC<Props> = (props) => {
 
 const Wrapper = styled.div`
   text-align: center;
-  padding-bottom: 35px;
+  padding: 0 var(--app-padding) 35px;
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

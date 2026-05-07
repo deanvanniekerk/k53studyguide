@@ -1,23 +1,21 @@
 import type React from "react";
 import { useEffect, useState } from "react";
-import { TEXT_COLOR } from "@/data";
-import { hexToRgb } from "@/utils/color";
 import "./ProgressBar.css";
 
 type Props = {
   progress: number;
-  backgroundColor?: string;
+  backgroundRgb?: string;
   backgroundOpacity?: number;
-  foregroundColor?: string;
+  foregroundRgb?: string;
   foregroundOpacity?: number;
   height?: number;
 };
 
 const ProgressBar: React.FC<Props> = ({
   progress: targetProgress,
-  backgroundColor = "#000000",
+  backgroundRgb = "var(--app-progress-track-rgb)",
   backgroundOpacity = 0.12,
-  foregroundColor = TEXT_COLOR,
+  foregroundRgb = "var(--app-progress-foreground-rgb)",
   foregroundOpacity = 0.8,
   height = 4,
 }) => {
@@ -34,7 +32,7 @@ const ProgressBar: React.FC<Props> = ({
       <div
         className="progressBar"
         style={{
-          backgroundColor: `rgba(${hexToRgb(backgroundColor || TEXT_COLOR).join(",")}, ${backgroundOpacity})`,
+          backgroundColor: `rgba(${backgroundRgb}, ${backgroundOpacity})`,
           height,
           borderRadius: height,
         }}
@@ -42,7 +40,7 @@ const ProgressBar: React.FC<Props> = ({
         <div
           className="completeBar"
           style={{
-            backgroundColor: `rgba(${hexToRgb(foregroundColor || TEXT_COLOR).join(",")}, ${foregroundOpacity})`,
+            backgroundColor: `rgba(${foregroundRgb}, ${foregroundOpacity})`,
             width: `${progress}%`,
             height,
             borderRadius: height,

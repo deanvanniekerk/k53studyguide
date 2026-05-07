@@ -1,7 +1,7 @@
-import { IonItem, IonList } from "@ionic/react";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, type Dispatch } from "redux";
+import styled from "styled-components";
 import type { RootState } from "@/state";
 import { recieveLastSeenParentContentKey } from "@/state/study/log";
 import { currentContentItemsSelector, currentNavigationKeySelector } from "@/state/study/navigation";
@@ -25,18 +25,20 @@ const ContentListComponent: React.FC<Props> = ({
   };
 
   return (
-    <IonList style={{ paddingTop: 25, paddingBottom: 25 }}>
+    <ListShell>
       {contentItems.map((item, index) => {
         const key = buildItemKey(index);
-        return (
-          <IonItem key={key}>
-            <Content item={item} navigationKey={key} />
-          </IonItem>
-        );
+        return <Content key={key} item={item} navigationKey={key} />;
       })}
-    </IonList>
+    </ListShell>
   );
 };
+
+const ListShell = styled.section`
+  display: grid;
+  gap: 28px;
+  padding: 18px var(--app-padding) 32px;
+`;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {

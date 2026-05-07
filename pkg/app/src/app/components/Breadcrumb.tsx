@@ -28,7 +28,7 @@ const BreadcrumbComponent: React.FC<Props> = (props) => {
 
         if (!props.showLast && isLast) return <React.Fragment key={key} />;
 
-        let opacity = props.opacity === undefined ? 0.6 : props.opacity;
+        let opacity = props.opacity === undefined ? 0.8 : props.opacity;
 
         if (isLast && props.lastOpacity) opacity = props.lastOpacity;
 
@@ -38,7 +38,7 @@ const BreadcrumbComponent: React.FC<Props> = (props) => {
             style={{
               opacity: opacity,
             }}
-            className="text-sm"
+            className="text-md"
             onClick={() => props.recieveCurrentNavigationKey(key)}
           >
             {key !== ROOT_NAVIGATION_KEY ? (
@@ -55,7 +55,7 @@ const BreadcrumbComponent: React.FC<Props> = (props) => {
 };
 
 const BreadcrumbText = styled(IonText)`
-  color: var(--ion-color-light);
+  color: var(--breadcrumb-color, var(--ion-color-light));
 `;
 
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;

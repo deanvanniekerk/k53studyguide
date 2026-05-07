@@ -1,5 +1,5 @@
 import { IonIcon } from "@ionic/react";
-import { flashOutline } from "ionicons/icons";
+import { sparkles } from "ionicons/icons";
 import type React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
@@ -18,10 +18,14 @@ type Props = PropsFromState;
 const LevelComponent: React.FC<Props> = (props) => {
   return (
     <Wrapper>
-      <LevelText level={props.level} />
+      <Glow />
+      <LevelHeader>
+        <SparkIcon icon={sparkles} />
+        <LevelText level={props.level} />
+      </LevelHeader>
 
       <StarWrapper>
-        <StarRating total={5} current={props.level} size="2.6rem" padding="6px" />
+        <StarRating total={5} current={props.level} size="2.6rem" padding="5px" inActiveOpacity={0.75} />
       </StarWrapper>
       <LevelUpText>
         <Translate text="dojoLevelUpAfter" data={{ number: props.requiredLevelUpExperiencePoints }} />
@@ -30,53 +34,79 @@ const LevelComponent: React.FC<Props> = (props) => {
         <ProgressBarColumn>
           <ProgressBar
             progress={props.dojoCurrentExperiencePercent}
-            backgroundOpacity={0.1}
-            foregroundOpacity={0.4}
-            height={5}
+            backgroundRgb="255, 255, 255"
+            backgroundOpacity={0.3}
+            foregroundRgb="255, 212, 59"
+            foregroundOpacity={1}
+            height={10}
           ></ProgressBar>
         </ProgressBarColumn>
-        <div>
-          <ExperienceIcon icon={flashOutline} />
-        </div>
       </ProgressBarWrapper>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  margin: 0 15px;
-  border-radius: var(--ic-corner-radius);
-  border: var(--ic-border);
-  padding: var(--ic-padding);
+  position: relative;
+  overflow: hidden;
+  margin: 0 var(--app-padding);
+  border-radius: 28px;
+  padding: 27px 28px 31px;
+  color: var(--ion-color-light);
+  background: var(--app-dojo-header-gradient);
+  box-shadow: 0 18px 35px rgba(var(--app-progress-foreground-rgb), 0.2);
+`;
+
+const Glow = styled.div`
+  position: absolute;
+  right: -28px;
+  top: -8px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+`;
+
+const LevelHeader = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--ion-font-family-bold);
+  font-size: var(--app-font-size-l);
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+`;
+
+const SparkIcon = styled(IonIcon)`
+  color: #ffd43b;
+  font-size: var(--app-font-size-md);
 `;
 
 const StarWrapper = styled.div`
-  padding-top: 5px;
+  position: relative;
+  padding-top: 16px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
 const LevelUpText = styled.div`
-  text-align: center;
-  font-size: var(--ion-font-size-sm);
-  font-weight: 100;
-  padding: 10px 0 8px 0;
+  position: relative;
+  font-size: var(--app-font-size-l);
+  font-weight: 800;
+  padding: 17px 0 12px 0;
 `;
 
 const ProgressBarWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 15px;
 `;
 
 const ProgressBarColumn = styled.div`
   flex: 1;
-`;
-
-const ExperienceIcon = styled(IonIcon)`
-  font-size: var(--ion-font-size-xs);
-  margin-left: 5px;
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

@@ -1,63 +1,90 @@
-import { IonButton, IonCol, IonGrid, IonIcon, IonListHeader, IonRow, IonText } from "@ionic/react";
 import { caretForward } from "ionicons/icons";
 import type React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
-import { Breadcrumb } from "@/app/components/Breadcrumb";
+import styled from "styled-components";
+import { PrimaryButton } from "@/app/components";
 import type { RootState } from "@/state";
-import { lastSeenParentContentKeySelector } from "@/state/study/log";
-import { SeenProgress } from "./";
+import { rootNavigationChildrenSelector } from "@/state/navigation";
+import { lastSeenParentContentKeySelector, seenContentKeysSelector, seenTotalsSelector } from "@/state/study/log";
 
 type Props = {
   onNavigationItemClicked: (navigationItemKey: string) => void;
 } & PropsFromState;
 
 const HeaderComponent: React.FC<Props> = (props) => {
+  const completedSections = props.rootNavigationChildren.filter((key) => {
+    const sectionTotal = props.seenTotals[key];
+    return sectionTotal && sectionTotal.total > 0 && sectionTotal.seen === sectionTotal.total;
+  }).length;
+  const totalSections = props.rootNavigationChildren.length;
+  const isFirstStudyOpen = Object.keys(props.seenContentKeys).length === 0;
+
   return (
-    <IonListHeader>
-      <IonGrid>
-        <IonRow className="app-page-content-offset">
-          <IonCol>
-            <IonText>
-              <h2 style={{ fontWeight: "bold", marginBottom: 0 }}>
-                <Translate text={props.lastSeenParentContentKey} />
-              </h2>
-            </IonText>
-          </IonCol>
-        </IonRow>
-        <IonRow style={{ paddingBottom: 5, paddingTop: 8 }}>
-          <IonCol>
-            <Breadcrumb navigationKey={props.lastSeenParentContentKey} />
-          </IonCol>
-        </IonRow>
-        <IonRow style={{ paddingBottom: 10, paddingTop: 10 }}>
-          <IonCol>
-            <SeenProgress navigationKey={props.lastSeenParentContentKey} />
-          </IonCol>
-        </IonRow>
-        <IonRow style={{ paddingTop: 20, paddingBottom: 20 }}>
-          <IonCol>
-            <IonButton
-              color="primary"
-              shape="round"
-              fill="solid"
-              className="button-med-large"
-              onClick={() => props.onNavigationItemClicked(props.lastSeenParentContentKey)}
-            >
-              <Translate text="continue" />
-              <IonIcon slot="end" icon={caretForward} />
-            </IonButton>
-          </IonCol>
-        </IonRow>
-      </IonGrid>
-    </IonListHeader>
+    <HeroHeader>
+      <Eyebrow>
+        <Translate text={isFirstStudyOpen ? "startStudying" : "continueWhereYouLeftOff"} />
+      </Eyebrow>
+      <Title>
+        <Translate text={props.lastSeenParentContentKey} />
+      </Title>
+      <SubTitle>
+        <Translate text="study" /> &middot; {completedSections} of {totalSections} sections complete
+      </SubTitle>
+      <ButtonWrap>
+        <PrimaryButton
+          section="study"
+          text="continue"
+          rightIcon={caretForward}
+          onClick={() => props.onNavigationItemClicked(props.lastSeenParentContentKey)}
+        />
+      </ButtonWrap>
+    </HeroHeader>
   );
 };
+
+const HeroHeader = styled.div`
+  display: block;
+  padding: calc(var(--app-page-header-height) + 28px) var(--app-padding) 28px;
+  background: var(--app-study-background);
+`;
+
+const Eyebrow = styled.div`
+  color: var(--app-study-section-defensive);
+  font-family: var(--ion-font-family-bold);
+  font-size: var(--app-font-size-md);
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+`;
+
+const Title = styled.h1`
+  color: var(--app-text-primary);
+  font-family: var(--ion-font-family-bold);
+  font-size: var(--app-font-size-xxxl);
+  line-height: 1.05;
+  margin: 18px 0 12px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+`;
+
+const SubTitle = styled.div`
+  color: var(--app-text-muted);
+  font-size: var(--app-font-size-l);
+  line-height: 1.3;
+`;
+
+const ButtonWrap = styled.div`
+  margin: 14px 0 0;
+`;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
   return {
     lastSeenParentContentKey: lastSeenParentContentKeySelector(state),
+    rootNavigationChildren: rootNavigationChildrenSelector(state),
+    seenContentKeys: seenContentKeysSelector(state),
+    seenTotals: seenTotalsSelector(state),
   };
 };
 

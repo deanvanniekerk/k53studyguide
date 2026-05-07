@@ -28,13 +28,13 @@ const Question: React.FC<Props> = ({ question, answer, questionNumber, showResul
 };
 
 const Container = styled.div`
-  border-radius: var(--ic-corner-radius);
-  border: var(--ic-border);
-  padding: var(--ic-padding);
+  border-radius: var(--app-card-radius);
+  border: var(--app-card-border);
+  padding: var(--app-card-padding);
   width: 100%;
   height: 100%;
-  line-height: var(--line-height);
-  font-size: var(--ion-font-size-md);
+  line-height: var(--app-line-height);
+  font-size: var(--app-font-size-md);
 `;
 
 const Header = styled.div`

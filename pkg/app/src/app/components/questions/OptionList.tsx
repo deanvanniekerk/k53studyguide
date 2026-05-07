@@ -67,7 +67,7 @@ const IconColum = styled.div`
 `;
 
 const Icon = styled(IonIcon)`
-  font-size: var(--ion-font-size-xl);
+  font-size: var(--app-font-size-xl);
 `;
 
 export { OptionList };

@@ -1,7 +1,7 @@
-import { IonButton, IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
+import { IonButton } from "@ionic/react";
 import type React from "react";
 import styled from "styled-components";
-import { HorizontalRule } from "@/app/components";
+import { GroupCard, Section, SectionTitle } from "./";
 
 const PRIVACY_POLICY_URL = "https://k53studyguide.online/privacy.html";
 const TERMS_OF_USE_URL = "https://k53studyguide.online/terms.html";
@@ -12,77 +12,49 @@ const openLegalUrl = (url: string) => {
 
 const Legal: React.FC = () => {
   return (
-    <Grid>
-      <FullRow>
-        <TitleCol>
-          <Title>Legal</Title>
-        </TitleCol>
-      </FullRow>
-      <FullRow>
-        <Col>
+    <Section>
+      <SectionTitle>Legal</SectionTitle>
+      <GroupCard>
+        <PanelContent>
           <Info>Review the policies that apply to K53 Study Guide.</Info>
-        </Col>
-      </FullRow>
-      <ButtonRow>
-        <ButtonCol>
-          <IonButton color="dark" shape="round" fill="solid" onClick={() => openLegalUrl(PRIVACY_POLICY_URL)}>
-            Privacy Policy
-          </IonButton>
-        </ButtonCol>
-        <ButtonCol>
-          <IonButton color="dark" shape="round" fill="outline" onClick={() => openLegalUrl(TERMS_OF_USE_URL)}>
-            Terms of Use
-          </IonButton>
-        </ButtonCol>
-      </ButtonRow>
-      <FullRow>
-        <IonCol>{LineBreak}</IonCol>
-      </FullRow>
-    </Grid>
+          <ButtonRow>
+            <SecondaryButton shape="round" fill="outline" onClick={() => openLegalUrl(PRIVACY_POLICY_URL)}>
+              Privacy Policy
+            </SecondaryButton>
+            <SecondaryButton shape="round" fill="outline" onClick={() => openLegalUrl(TERMS_OF_USE_URL)}>
+              Terms of Use
+            </SecondaryButton>
+          </ButtonRow>
+        </PanelContent>
+      </GroupCard>
+    </Section>
   );
 };
 
-const Grid = styled(IonGrid)`
-  padding: 0 16px;
-  margin-top: 15px;
+const PanelContent = styled.div`
+  padding: 20px 22px;
 `;
 
-const Title = styled(IonText)`
-  opacity: 0.5;
-  font-family: var(--ion-font-family-bold);
-  font-weight: bold;
-  text-transform: uppercase;
+const Info = styled.div`
+  color: var(--app-text-muted);
+  font-size: var(--app-font-size-md);
+  font-weight: 700;
+  line-height: 1.45;
 `;
 
-const TitleCol = styled(IonCol)`
-  padding-bottom: 5px;
-`;
-
-const Info = styled(IonText)`
-  opacity: 0.8;
-  font-size: var(--ion-font-size-md);
-`;
-
-const FullRow = styled(IonRow)`
-  padding: 7px 0;
-  align-items: center;
-`;
-
-const ButtonRow = styled(IonRow)`
-  padding: 7px 0;
-  align-items: center;
+const ButtonRow = styled.div`
+  display: grid;
   gap: 8px;
+  margin-top: 16px;
 `;
 
-const Col = styled(IonCol)`
-  padding-bottom: 5px;
+const SecondaryButton = styled(IonButton)`
+  height: 48px;
+  margin: 0;
+  font-weight: 900;
+  --border-color: var(--app-profile-card-border-color);
+  --border-radius: 16px;
+  --color: var(--app-text-primary);
 `;
-
-const ButtonCol = styled(IonCol)`
-  flex: 0;
-  white-space: nowrap;
-`;
-
-const LineBreak = <HorizontalRule leftMargin={0} rightMargin={0} paddingBottom={0} paddingTop={0} />;
 
 export { Legal };

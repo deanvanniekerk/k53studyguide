@@ -1,11 +1,9 @@
-import { IonAlert, IonCol, IonGrid, IonIcon, IonRow, IonText } from "@ionic/react";
+import { IonAlert, IonIcon } from "@ionic/react";
 import { lockClosed, trashBinOutline } from "ionicons/icons";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Translate, Translator } from "react-translated";
 import { bindActionCreators, type Dispatch } from "redux";
-import styled from "styled-components";
-import { HorizontalRule } from "@/app/components";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { RootState } from "@/state";
 import {
@@ -15,6 +13,7 @@ import {
 import { clearQuesionSuccesfullyAnsweredDates as clearDojoQuesionSuccesfullyAnsweredDates } from "@/state/dojo/log";
 import { ownedSelector } from "@/state/purchase";
 import { clearSeenContent } from "@/state/study/log";
+import { GroupCard, Row, Section, SectionTitle } from "./";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -36,49 +35,38 @@ const HistoryComponent: React.FC<Props> = (props) => {
 
   return (
     <React.Fragment>
-      <Grid>
-        <Row>
-          <TitleCol>
-            <Title>
-              {!props.hasFullAccess && <IonIcon icon={lockClosed} style={{ marginRight: 5 }} />}
-              <Translate text="history" />
-            </Title>
-          </TitleCol>
-        </Row>
-        <Row onClick={() => (checkFullAccess() ? setShowClearSeenHistory(true) : null)}>
-          <NameCol>
-            <Name>
-              <Translate text="clearSeenHistory" />
-            </Name>
-          </NameCol>
-          <ValueCol>
-            <IonIcon icon={trashBinOutline} />
-          </ValueCol>
-        </Row>
-        <Row onClick={() => (checkFullAccess() ? setShowClearDojoHistory(true) : null)}>
-          <NameCol>
-            <Name>
-              <Translate text="clearDojoHistory" />
-            </Name>
-          </NameCol>
-          <ValueCol>
-            <IonIcon icon={trashBinOutline} />
-          </ValueCol>
-        </Row>
-        <Row onClick={() => (checkFullAccess() ? setShowClearArenaHistory(true) : null)}>
-          <NameCol>
-            <Name>
-              <Translate text="clearArenaHistory" />
-            </Name>
-          </NameCol>
-          <ValueCol>
-            <IonIcon icon={trashBinOutline} />
-          </ValueCol>
-        </Row>
-        <Row>
-          <IonCol>{LineBreak}</IonCol>
-        </Row>
-      </Grid>
+      <Section>
+        <SectionTitle>
+          {!props.hasFullAccess && <IonIcon icon={lockClosed} />}
+          <Translate text="history" />
+        </SectionTitle>
+        <GroupCard>
+          <Translator>
+            {({ translate }) => (
+              <React.Fragment>
+                <Row
+                  name={translate({ text: "clearSeenHistory" })}
+                  value={<IonIcon icon={trashBinOutline} />}
+                  action
+                  onClick={() => (checkFullAccess() ? setShowClearSeenHistory(true) : undefined)}
+                />
+                <Row
+                  name={translate({ text: "clearDojoHistory" })}
+                  value={<IonIcon icon={trashBinOutline} />}
+                  action
+                  onClick={() => (checkFullAccess() ? setShowClearDojoHistory(true) : undefined)}
+                />
+                <Row
+                  name={translate({ text: "clearArenaHistory" })}
+                  value={<IonIcon icon={trashBinOutline} />}
+                  action
+                  onClick={() => (checkFullAccess() ? setShowClearArenaHistory(true) : undefined)}
+                />
+              </React.Fragment>
+            )}
+          </Translator>
+        </GroupCard>
+      </Section>
       <Translator>
         {({ translate }) => (
           <React.Fragment>
@@ -147,45 +135,6 @@ const HistoryComponent: React.FC<Props> = (props) => {
     </React.Fragment>
   );
 };
-
-const Grid = styled(IonGrid)`
-  padding: 0 16px;
-  margin-top: 15px;
-`;
-
-const Row = styled(IonRow)`
-  padding: 7px 0;
-  align-items: center;
-`;
-
-const Title = styled(IonText)`
-  opacity: 0.5;
-  font-family: var(--ion-font-family-bold);
-  font-weight: bold;
-  text-transform: uppercase;
-`;
-
-const TitleCol = styled(IonCol)`
-  padding-bottom: 5px;
-`;
-
-const Name = styled(IonText)`
-  font-size: var(--ion-font-size-md);
-  font-family: var(--ion-font-family-bold);
-  font-weight: bold;
-`;
-
-const NameCol = styled(IonCol)`
-  flex: 0;
-  white-space: nowrap;
-  padding-right: 15px;
-`;
-
-const ValueCol = styled(IonCol)`
-  text-align: right;
-`;
-
-const LineBreak = <HorizontalRule leftMargin={0} rightMargin={0} paddingBottom={0} paddingTop={0} />;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {

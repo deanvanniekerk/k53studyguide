@@ -1,10 +1,12 @@
-import { IonCol, IonContent, IonGrid, IonPage, IonRow } from "@ionic/react";
+import { IonContent, IonPage } from "@ionic/react";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { Translate } from "react-translated";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
+import { PageHeader, PageHeaderInfoIcon } from "@/app/components";
 import { BookOutlineIcon } from "@/app/components/icons";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { watermarkStyle } from "@/app/styles";
@@ -14,7 +16,6 @@ import { notificationsSelector, recieveRecieveNotificationState } from "@/state/
 import { recieveCurrentNavigationKey } from "@/state/study/navigation";
 import { Header, NavigationItem } from "./components";
 import { StudyInfoModal } from "./StudyInfoModal";
-import { StudyPageHeader } from "./StudyPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -49,21 +50,18 @@ const StudyPage: React.FC<Props> = (props) => {
           setInfoModalVisible(false);
         }}
       />
-      <StudyPageHeader onInfoClicked={() => showInfoModal()} />
+      <PageHeader title="study" page="study" rightSection={<PageHeaderInfoIcon onClick={() => showInfoModal()} />} />
       <Watermark />
       <Content>
         <Header onNavigationItemClicked={onNavigationItemClicked} />
-        <IonGrid style={{ padding: 10 }}>
-          <IonRow>
-            {props.navigationChildren.map((key, index) => {
-              return (
-                <IonCol key={key} sizeXs="12" sizeSm="4" sizeMd="4" sizeLg="3" style={{ overflow: "hidden" }}>
-                  <NavigationItem navigationItemKey={key} onClick={onNavigationItemClicked} index={index} />
-                </IonCol>
-              );
-            })}
-          </IonRow>
-        </IonGrid>
+        <TopicList>
+          <TopicHeading>
+            <Translate text="allTopics" />
+          </TopicHeading>
+          {props.navigationChildren.map((key, index) => {
+            return <NavigationItem key={key} navigationItemKey={key} onClick={onNavigationItemClicked} index={index} />;
+          })}
+        </TopicList>
       </Content>
     </Page>
   );
@@ -77,9 +75,21 @@ const Content = styled(IonContent)`
   --background: transparent;
 `;
 
+const TopicList = styled.div`
+  padding: 0 var(--app-padding) 28px;
+`;
+
+const TopicHeading = styled.h2`
+  color: var(--app-text-muted);
+  font-family: var(--ion-font-family-bold);
+  font-size: var(--app-font-size-l);
+  letter-spacing: 0;
+  margin: 0 0 14px;
+  text-transform: uppercase;
+`;
+
 const Page = styled(IonPage)`
-  background: #FAFAF7;
-  --page-header-bg: var(--study-header-gradient);
+  background: var(--app-study-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

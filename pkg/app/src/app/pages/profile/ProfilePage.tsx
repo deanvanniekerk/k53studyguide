@@ -1,22 +1,23 @@
 import { IonContent, IonPage } from "@ionic/react";
 import type React from "react";
 import styled from "styled-components";
+import { PageHeader } from "@/app/components";
 import { SettingsOutlineIcon } from "@/app/components/icons";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { watermarkStyle } from "@/app/styles";
-import { Checklist, Debug, History, Legal, Purchase, RateApp } from "./components";
-import { ProfilePageHeader } from "./ProfilePageHeader";
+import { Checklist, Debug, History, Legal, Purchase, RateApp, Settings } from "./components";
 
 const ProfilePage: React.FC = () => {
   useAnalytics("ProfilePage");
   return (
     <Page>
-      <ProfilePageHeader />
+      <PageHeader title="profile" page="profile" />
       <Watermark />
       <Content>
         <Checklist />
         <History />
         <Purchase />
+        <Settings />
         <RateApp />
         <Legal />
         <Debug />
@@ -27,19 +28,17 @@ const ProfilePage: React.FC = () => {
 
 const Watermark = styled(SettingsOutlineIcon)`
   ${watermarkStyle}
-  fill: #000000;
+  fill: var(--app-text-primary);
   opacity: 0.06;
 `;
 
 const Content = styled(IonContent)`
   --background: transparent;
-  padding-top: 55;
-  padding-left: 16;
+  --padding-bottom: 32px;
 `;
 
 const Page = styled(IonPage)`
-  background: #FAFAF7;
-  --page-header-bg: var(--profile-header-gradient);
+  background: var(--app-profile-background);
 `;
 
 export default ProfilePage;

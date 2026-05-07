@@ -1,41 +1,38 @@
-import { IonCol, IonGrid, IonIcon, IonRow, IonText } from "@ionic/react";
+import { IonIcon } from "@ionic/react";
 import { checkmarkCircle, checkmarkCircleOutline, closeCircle } from "ionicons/icons";
-import React from "react";
+import type React from "react";
 import { connect } from "react-redux";
 import { Translate, Translator } from "react-translated";
-import styled from "styled-components";
-import { HorizontalRule } from "@/app/components";
 import type { RootState } from "@/state";
 import { testsPassedSelector } from "@/state/arena/log";
 import { dojoLevelSelector } from "@/state/dojo/log";
 import { ROOT_NAVIGATION_KEY } from "@/state/navigation";
 import { seenTotalsSelector } from "@/state/study/log";
-import { Row } from "./";
+import { GroupCard, Row, Section, SectionTitle } from "./";
 
 type Props = PropsFromState;
 
 const ChecklistComponent: React.FC<Props> = (props) => {
-  const total = props.seenTotals[ROOT_NAVIGATION_KEY] || 0;
-  const seenProgress = Math.floor((total.seen / total.total) * 100);
+  const total = props.seenTotals[ROOT_NAVIGATION_KEY] || { seen: 0, total: 0 };
+  const seenProgress = total.total ? Math.floor((total.seen / total.total) * 100) : 0;
+  const studyComplete = seenProgress === 100;
+  const levelComplete = props.dojoLevel >= 5;
+  const arenaComplete = props.areaTestsPassed >= 3;
 
   return (
-    <Grid>
-      <FullRow>
-        <TitleCol>
-          <Title>
-            <IonIcon icon={checkmarkCircleOutline} style={{ marginRight: 5 }} />
-            <Translate text="checklist" />
-          </Title>
-        </TitleCol>
-      </FullRow>
+    <Section>
+      <SectionTitle>
+        <IonIcon icon={checkmarkCircleOutline} />
+        <Translate text="checklist" />
+      </SectionTitle>
       <Translator>
         {({ translate }) => (
-          <React.Fragment>
+          <GroupCard>
             <Row
               name={translate({ text: "checklistReadAll" })}
               value={`${seenProgress}%`}
-              icon={seenProgress === 100 ? checkmarkCircle : closeCircle}
-              iconColor={seenProgress === 100 ? "success" : "danger"}
+              icon={studyComplete ? checkmarkCircle : closeCircle}
+              status={studyComplete ? "complete" : "incomplete"}
             />
             <Row
               name={translate({ text: "checklistReachLevel" })}
@@ -43,47 +40,21 @@ const ChecklistComponent: React.FC<Props> = (props) => {
                 text: "levelNumber",
                 data: { number: props.dojoLevel },
               })}
-              icon={props.dojoLevel === 5 ? checkmarkCircle : closeCircle}
-              iconColor={props.dojoLevel === 5 ? "success" : "danger"}
+              icon={levelComplete ? checkmarkCircle : closeCircle}
+              status={levelComplete ? "complete" : "incomplete"}
             />
             <Row
               name={translate({ text: "checklistCompleteArena" })}
-              value={props.areaTestsPassed}
-              icon={props.areaTestsPassed >= 3 ? checkmarkCircle : closeCircle}
-              iconColor={props.areaTestsPassed >= 3 ? "success" : "danger"}
+              value={`${props.areaTestsPassed} / 3`}
+              icon={arenaComplete ? checkmarkCircle : closeCircle}
+              status={arenaComplete ? "complete" : "incomplete"}
             />
-            <FullRow>
-              <IonCol>{LineBreak}</IonCol>
-            </FullRow>
-          </React.Fragment>
+          </GroupCard>
         )}
       </Translator>
-    </Grid>
+    </Section>
   );
 };
-
-const Grid = styled(IonGrid)`
-  padding: 0 16px;
-  margin-top: var(--app-page-content-top);
-`;
-
-const FullRow = styled(IonRow)`
-  padding: 7px 0;
-  align-items: center;
-`;
-
-const Title = styled(IonText)`
-  opacity: 0.5;
-  font-family: var(--ion-font-family-bold);
-  font-weight: bold;
-  text-transform: uppercase;
-`;
-
-const TitleCol = styled(IonCol)`
-  padding-bottom: 5px;
-`;
-
-const LineBreak = <HorizontalRule leftMargin={0} rightMargin={0} paddingBottom={0} paddingTop={0} />;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {

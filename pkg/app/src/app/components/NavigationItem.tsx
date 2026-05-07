@@ -1,9 +1,8 @@
 import { CreateAnimation, IonIcon, IonItem, IonLabel, IonText, useIonViewWillEnter } from "@ionic/react";
-import { chevronForwardOutline } from "ionicons/icons";
+import { chevronBackOutline } from "ionicons/icons";
 import type React from "react";
 import { useRef } from "react";
 import { Translate } from "react-translated";
-import { TEXT_COLOR } from "@/data";
 
 type Props = {
   navigationItemKey: string;
@@ -23,7 +22,11 @@ const NavigationItem: React.FC<Props> = (props) => {
   });
   return (
     <IonItem onClick={() => props.onClick(props.navigationItemKey)}>
-      <IonIcon icon={chevronForwardOutline} className="text-l" style={{ marginRight: 15, color: TEXT_COLOR }} />
+      <IonIcon
+        icon={chevronBackOutline}
+        className="text-l"
+        style={{ marginRight: 15, color: "var(--app-progress-foreground)" }}
+      />
       <IonLabel>
         <CreateAnimation
           play={false}

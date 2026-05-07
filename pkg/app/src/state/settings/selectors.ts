@@ -13,3 +13,9 @@ export const languageSelector: OutputSelector<RootState, string, (state: Setting
   rootSelector,
   (root) => root.language,
 );
+
+export const themeSelector: OutputSelector<
+  RootState,
+  SettingsState["theme"],
+  (state: SettingsState) => SettingsState["theme"]
+> = createSelector(rootSelector, (root) => root.theme);

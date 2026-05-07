@@ -1,19 +1,16 @@
 import { IonContent, IonPage } from "@ionic/react";
-import { arrowUp } from "ionicons/icons";
 import type React from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
-import { BackButton } from "@/app/components";
+import { PageHeader } from "@/app/components";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { RootState } from "@/state";
 import { navigateUp, recieveTargetNavigationKey, targetNavigationKeySelector } from "@/state/dojo/navigation";
-import { loadQuestionAnswers } from "@/state/dojo/test";
 import { ROOT_NAVIGATION_KEY } from "@/state/study/navigation";
 import { DojoWatermark } from "../DojoWatermark";
 import { Header, Navigator } from "./components";
-import { TestNavigatorPageHeader } from "./TestNavigatorPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -34,8 +31,7 @@ const TestNavigatorPage: React.FC<Props> = (props) => {
   };
 
   const selectTargetNavigationItem = () => {
-    props.loadQuestionAnswers();
-    history.push(`/test-dojo`);
+    history.replace("/dojo");
   };
 
   const onNavigationItemClicked = (key: string) => {
@@ -45,10 +41,9 @@ const TestNavigatorPage: React.FC<Props> = (props) => {
 
   return (
     <Page>
-      <TestNavigatorPageHeader />
+      <PageHeader title="selectSection" page="dojo" onBackClick={onBackClicked} />
       <DojoWatermark />
       <Content>
-        <BackButton onClick={onBackClicked} icon={arrowUp} />
         <Header selectTargetNavigationItem={selectTargetNavigationItem} />
         <Navigator onNavigationItemClicked={onNavigationItemClicked} />
       </Content>
@@ -61,8 +56,7 @@ const Content = styled(IonContent)`
 `;
 
 const Page = styled(IonPage)`
-  background: #FAFAF7;
-  --page-header-bg: var(--dojo-header-gradient);
+  background: var(--app-dojo-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
@@ -75,7 +69,7 @@ const mapStateToProps = (state: RootState) => {
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...bindActionCreators({ loadQuestionAnswers, navigateUp, recieveTargetNavigationKey }, dispatch),
+    ...bindActionCreators({ navigateUp, recieveTargetNavigationKey }, dispatch),
   };
 };
 

@@ -37,8 +37,7 @@ const LevelText: React.FC<Props> = (props) => {
 };
 
 const Wrapper = styled.div`
-  text-align: center;
-  padding: 10px 0;
+  padding: 0;
   font-weight: bold;
   overflow: hidden;
 `;

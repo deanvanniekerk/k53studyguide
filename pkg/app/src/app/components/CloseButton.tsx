@@ -32,7 +32,7 @@ const Button = styled.button`
   -webkit-tap-highlight-color: transparent;
 
   ion-icon {
-    font-size: var(--ion-font-size-xxxl);
+    font-size: var(--app-font-size-xxxl);
   }
 `;
 

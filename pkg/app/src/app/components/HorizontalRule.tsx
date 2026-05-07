@@ -20,7 +20,7 @@ const HorizontalRule: React.FC<Props> = ({ leftMargin = 0, rightMargin = 0, padd
     >
       <div
         style={{
-          backgroundColor: `rgba(255,255,255, 0.1)`,
+          backgroundColor: `var(--app-divider-color)`,
           height: 1,
           width: "100%",
         }}

@@ -1,82 +1,53 @@
-import { IonButton, IonCol, IonGrid, IonRow, IonText } from "@ionic/react";
 import type React from "react";
 import { Translate } from "react-translated";
 import styled from "styled-components";
-import { HorizontalRule } from "@/app/components";
+import { PrimaryButton } from "@/app/components";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { useAppRate } from "@/app/hooks/useAppRate";
+import { GroupCard, Section, SectionTitle } from "./";
 
 const RateApp: React.FC = () => {
   const appRate = useAppRate();
   const { logEvent } = useAnalytics();
   return (
-    <Grid>
-      <FullRow>
-        <TitleCol>
-          <Title>
-            <Translate text="app" />
-          </Title>
-        </TitleCol>
-      </FullRow>
-      <FullRow>
-        <Col>
+    <Section>
+      <SectionTitle>
+        <Translate text="app" />
+      </SectionTitle>
+      <GroupCard>
+        <PanelContent>
           <Info>
             <Translate text="rateAppRequest" />
           </Info>
-        </Col>
-      </FullRow>
-      <FullRow>
-        <Col>
-          <IonButton
-            color="dark"
-            shape="round"
-            fill="solid"
-            onClick={() => {
-              logEvent("RATE_APP");
-              appRate.navigateToAppStore();
-            }}
-          >
-            <Translate text="rateApp" />
-          </IonButton>
-        </Col>
-      </FullRow>
-      <FullRow>
-        <IonCol>{LineBreak}</IonCol>
-      </FullRow>
-    </Grid>
+          <ButtonWrap>
+            <PrimaryButton
+              section="profile"
+              text="rateApp"
+              onClick={() => {
+                logEvent("RATE_APP");
+                appRate.navigateToAppStore();
+              }}
+            />
+          </ButtonWrap>
+        </PanelContent>
+      </GroupCard>
+    </Section>
   );
 };
 
-const Grid = styled(IonGrid)`
-  padding: 0 16px;
-  margin-top: 15px;
+const PanelContent = styled.div`
+  padding: 20px 22px;
 `;
 
-const Title = styled(IonText)`
-  opacity: 0.5;
-  font-family: var(--ion-font-family-bold);
-  font-weight: bold;
-  text-transform: uppercase;
+const Info = styled.div`
+  color: var(--app-text-muted);
+  font-size: var(--app-font-size-md);
+  font-weight: 700;
+  line-height: 1.45;
 `;
 
-const TitleCol = styled(IonCol)`
-  padding-bottom: 5px;
+const ButtonWrap = styled.div`
+  margin: 16px 0 0;
 `;
-
-const Info = styled(IonText)`
-  opacity: 0.8;
-  font-size: var(--ion-font-size-md);
-`;
-
-const FullRow = styled(IonRow)`
-  padding: 7px 0;
-  align-items: center;
-`;
-
-const Col = styled(IonCol)`
-  padding-bottom: 5px;
-`;
-
-const LineBreak = <HorizontalRule leftMargin={0} rightMargin={0} paddingBottom={0} paddingTop={0} />;
 
 export { RateApp };

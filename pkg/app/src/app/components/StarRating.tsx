@@ -73,7 +73,9 @@ const Star: React.FC<StarProps> = (props) => {
     >
       <IconWrapper size={props.size} padding={props.padding}>
         {props.active && <StarIcon style={{ opacity: props.activeOpacity }} />}
-        {!props.active && <StarOutlineIcon style={{ fill: "#FFFFFF", opacity: props.inActiveOpacity }} />}
+        {!props.active && (
+          <StarOutlineIcon style={{ fill: "var(--app-card-background)", opacity: props.inActiveOpacity }} />
+        )}
       </IconWrapper>
     </CreateAnimation>
   );

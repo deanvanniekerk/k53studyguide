@@ -1,10 +1,10 @@
-import { CreateAnimation, IonCol, IonGrid, IonRow } from "@ionic/react";
+import { CreateAnimation, IonIcon } from "@ionic/react";
+import { checkmarkCircle, closeCircle } from "ionicons/icons";
 import type React from "react";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import styled from "styled-components";
-import { HorizontalRule } from "@/app/components";
 import { TestFailedIcon, TestPassedIcon } from "@/app/components/icons";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { RootState } from "@/state";
@@ -32,8 +32,9 @@ const HeaderComponent: React.FC<Props> = ({ testResults, sectionAPassed, section
   }, []);
 
   return (
-    <Container>
-      <PrimaryResult>
+    <>
+      <ResultCard>
+        <Glow />
         <NinjaIcon passed={passed} />
         <div style={{ overflow: "hidden" }}>
           <ResultText passed={passed} />
@@ -41,46 +42,34 @@ const HeaderComponent: React.FC<Props> = ({ testResults, sectionAPassed, section
         <PrimaryResultSubText>
           {passed ? <Translate text="arenaSuccessInfo" /> : <Translate text="arenaFailedInfo" />}
         </PrimaryResultSubText>
-      </PrimaryResult>
-      <HorizontalRule leftMargin={16} rightMargin={16} paddingBottom={20} paddingTop={20} />
-      <IonGrid>
-        <SectionResultRow>
-          <IonCol>
-            <Bold>Section A:</Bold>
-          </IonCol>
-          <IonCol>
-            {testResults.A.correct} / {testResults.A.total}
-          </IonCol>
-          <IonCol>
-            <SuccessIcon success={sectionAPassed} size="1.2rem" />
-          </IonCol>
-        </SectionResultRow>
-        <SectionResultRow>
-          <IonCol>
-            <Bold>Section B:</Bold>
-          </IonCol>
-          <IonCol>
-            {testResults.B.correct} / {testResults.B.total}
-          </IonCol>
-          <IonCol>
-            <SuccessIcon success={sectionBPassed} size="1.2rem" />
-          </IonCol>
-        </SectionResultRow>
-        <SectionResultRow>
-          <IonCol>
-            <Bold>Section C:</Bold>
-          </IonCol>
-          <IonCol>
-            {testResults.C.correct} / {testResults.C.total}
-          </IonCol>
-          <IonCol>
-            <SuccessIcon success={sectionCPassed} size="1.2rem" />
-          </IonCol>
-        </SectionResultRow>
-      </IonGrid>
+      </ResultCard>
 
-      <HorizontalRule leftMargin={16} rightMargin={16} paddingBottom={0} paddingTop={15} />
-    </Container>
+      <SectionCard>
+        <SectionResultRow>
+          <SectionName>Section A</SectionName>
+          <SectionScore>
+            {testResults.A.correct} / {testResults.A.total}
+          </SectionScore>
+          <ResultStatusIcon success={sectionAPassed} />
+        </SectionResultRow>
+        <Divider />
+        <SectionResultRow>
+          <SectionName>Section B</SectionName>
+          <SectionScore>
+            {testResults.B.correct} / {testResults.B.total}
+          </SectionScore>
+          <ResultStatusIcon success={sectionBPassed} />
+        </SectionResultRow>
+        <Divider />
+        <SectionResultRow>
+          <SectionName>Section C</SectionName>
+          <SectionScore>
+            {testResults.C.correct} / {testResults.C.total}
+          </SectionScore>
+          <ResultStatusIcon success={sectionCPassed} />
+        </SectionResultRow>
+      </SectionCard>
+    </>
   );
 };
 
@@ -132,37 +121,83 @@ const ResultText: React.FC<ResultTextProps> = (props) => {
   );
 };
 
-const Container = styled.div`
-  padding-top: var(--app-page-content-top);
-  padding-left: 16px;
-  padding-right: 16px;
-`;
-
-const PrimaryResult = styled.div`
+const ResultCard = styled.div`
+  position: relative;
+  overflow: hidden;
+  margin: var(--app-page-content-top) var(--app-padding) 18px;
+  padding: 28px 22px 26px;
+  border-radius: 28px;
+  color: var(--ion-color-light);
+  background: var(--app-arena-header-gradient);
+  box-shadow: var(--app-arena-action-shadow);
   text-align: center;
 `;
 
+const Glow = styled.div`
+  position: absolute;
+  right: -34px;
+  top: -34px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: var(--app-premium-badge-background);
+`;
+
 const PrimaryResultText = styled.div`
-  font-size: var(--ion-font-size-xl);
-  font-family: var(--ion-font-family-bold);
-  font-weight: bold;
-  text-transform: uppercase;
+  position: relative;
   padding: 12px 0;
+  font-family: var(--ion-font-family-bold);
+  font-size: var(--app-font-size-xxl);
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
 `;
 
 const PrimaryResultSubText = styled.div`
-  font-size: var(--ion-font-size-md);
+  position: relative;
+  max-width: 360px;
+  margin: 0 auto;
+  font-size: var(--app-font-size-l);
+  font-weight: 800;
+  line-height: 1.35;
+  opacity: 0.86;
 `;
 
-const SectionResultRow = styled(IonRow)`
-  font-size: var(--ion-font-size-md);
-  padding: 5px 0;
-  text-align: left;
+const SectionCard = styled.div`
+  margin: 0 var(--app-padding) 28px;
+  padding: 8px 18px;
+  border: var(--app-card-border);
+  border-radius: 24px;
+  background: var(--app-card-background);
+  box-shadow: var(--app-card-shadow);
 `;
 
-const Bold = styled.span`
+const SectionResultRow = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 34px;
+  align-items: center;
+  gap: 16px;
+  min-height: 58px;
+`;
+
+const SectionName = styled.div`
+  color: var(--app-text-primary);
   font-family: var(--ion-font-family-bold);
-  font-weight: bold;
+  font-size: var(--app-font-size-l);
+  font-weight: 900;
+`;
+
+const SectionScore = styled.div`
+  color: var(--app-text-muted);
+  font-family: var(--ion-font-family-bold);
+  font-size: var(--app-font-size-l);
+  font-weight: 900;
+  white-space: nowrap;
+`;
+
+const Divider = styled.div`
+  height: 1px;
+  background: var(--app-divider-color);
 `;
 
 type SuccessIconProps = {
@@ -174,6 +209,19 @@ const SuccessIcon: React.FC<SuccessIconProps> = (props) => {
 
   return <TestFailedIcon style={{ fontSize: props.size }} />;
 };
+
+type ResultStatusIconProps = {
+  success: boolean;
+};
+
+const ResultStatusIcon: React.FC<ResultStatusIconProps> = ({ success }) => {
+  return <StatusIcon icon={success ? checkmarkCircle : closeCircle} success={success} />;
+};
+
+const StatusIcon = styled(IonIcon)<{ success: boolean }>`
+  color: ${(props) => (props.success ? "var(--ion-color-primary)" : "var(--ion-color-danger)")};
+  font-size: 1.9rem;
+`;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {

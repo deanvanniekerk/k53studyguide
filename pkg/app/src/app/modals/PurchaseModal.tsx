@@ -93,78 +93,77 @@ const PurchaseModal: React.FC<Props> = (props) => {
             />
           )}
         </Translator>
-        <div>
+        <Shell>
           <CloseButton onClick={() => props.onDidDismiss()} />
-          <Header>
-            <Translate text="k53Ninja" />
-          </Header>
-          <SubHeader>
-            <IonButton mode="md" color="tertiary" fill="solid" className="button-x-small">
+          <Hero>
+            <PremiumBadge mode="md" fill="solid" className="button-x-small">
               <Translate text="premium" />
-            </IonButton>
-          </SubHeader>
-          <SlidesContainer>
-            <Slides>
-              <Slide>
-                <div>
-                  <div>
-                    <TestPenIcon style={{ fontSize: "4rem" }} />
-                    <SlideText>
-                      <Translate text="accessTheArena" />
-                    </SlideText>
-                    <SlideSubText>
-                      <Translate text="accessTheArenaInfo" />
-                    </SlideSubText>
-                  </div>
-                </div>
-              </Slide>
-              <Slide>
-                <div>
-                  <div>
-                    <ResetIcon style={{ fontSize: "4rem" }} />
-                    <SlideText>
-                      <Translate text="resetYourHistory" />
-                    </SlideText>
-                    <SlideSubText>
-                      <Translate text="resetYourHistoryInfo" />
-                    </SlideSubText>
-                  </div>
-                </div>
-              </Slide>
-              <Slide>
-                <div>
-                  <div>
-                    <YinYangIcon style={{ fontSize: "4rem" }} />
-                    <SlideText>
-                      <Translate text="supportTheDev" />
-                    </SlideText>
-                    <SlideSubText>
-                      <Translate text="supportTheDevInfo" />
-                    </SlideSubText>
-                  </div>
-                </div>
-              </Slide>
-            </Slides>
-          </SlidesContainer>
-          <PurchaseDescriptionText>
-            <Translate text="purchasePremiumFor" />
-          </PurchaseDescriptionText>
-          <PurchasePriceText>{props.purchase.price}</PurchasePriceText>
-          <PurchasePriceButton>
-            <IonButton
-              mode="md"
-              color="tertiary"
-              shape="round"
-              fill="solid"
-              disabled={!props.purchase.canPurchase}
-              onClick={() => {
-                if (purchaseService) purchaseService.purchase();
-              }}
-            >
-              <Translate text="getPremium" />
-            </IonButton>
-          </PurchasePriceButton>
-        </div>
+            </PremiumBadge>
+            <Header>
+              <Translate text="k53Ninja" />
+            </Header>
+            <HeroText>
+              <Translate text="purchasePremiumFor" />
+            </HeroText>
+          </Hero>
+          <ContentPanel>
+            <Benefits>
+              <Benefit>
+                <BenefitIcon>
+                  <TestPenIcon />
+                </BenefitIcon>
+                <BenefitCopy>
+                  <BenefitTitle>
+                    <Translate text="accessTheArena" />
+                  </BenefitTitle>
+                  <BenefitText>
+                    <Translate text="accessTheArenaInfo" />
+                  </BenefitText>
+                </BenefitCopy>
+              </Benefit>
+              <Benefit>
+                <BenefitIcon>
+                  <ResetIcon />
+                </BenefitIcon>
+                <BenefitCopy>
+                  <BenefitTitle>
+                    <Translate text="resetYourHistory" />
+                  </BenefitTitle>
+                  <BenefitText>
+                    <Translate text="resetYourHistoryInfo" />
+                  </BenefitText>
+                </BenefitCopy>
+              </Benefit>
+              <Benefit>
+                <BenefitIcon>
+                  <YinYangIcon />
+                </BenefitIcon>
+                <BenefitCopy>
+                  <BenefitTitle>
+                    <Translate text="supportTheDev" />
+                  </BenefitTitle>
+                  <BenefitText>
+                    <Translate text="supportTheDevInfo" />
+                  </BenefitText>
+                </BenefitCopy>
+              </Benefit>
+            </Benefits>
+            <PriceCard>
+              <PurchasePriceText>{props.purchase.price}</PurchasePriceText>
+              <PurchaseButton
+                mode="md"
+                shape="round"
+                fill="solid"
+                disabled={!props.purchase.canPurchase}
+                onClick={() => {
+                  if (purchaseService) purchaseService.purchase();
+                }}
+              >
+                <Translate text="getPremium" />
+              </PurchaseButton>
+            </PriceCard>
+          </ContentPanel>
+        </Shell>
       </Modal>
     </React.Fragment>
   );
@@ -172,80 +171,142 @@ const PurchaseModal: React.FC<Props> = (props) => {
 
 const Watermark = styled(BookOutlineIcon)`
   ${watermarkStyle}
-  fill: #000000;
+  fill: var(--app-watermark-fill);
   opacity: 0.06;
+`;
+
+const Shell = styled.div`
+  min-height: 100%;
+  background: var(--app-purchase-background);
+`;
+
+const Hero = styled.div`
+  padding: calc(var(--app-safe-area-top) + 58px) var(--app-padding) 34px;
+  background: var(--app-premium-hero-background);
+  text-align: center;
 `;
 
 const Header = styled.div`
   color: var(--ion-color-light);
-  font-size: var(--ion-font-size-xxl);
+  font-size: var(--app-font-size-xxl);
   font-family: var(--ion-font-family-bold);
-  font-weight: bold;
-  text-align: center;
+  font-weight: 900;
+  line-height: 1.15;
 `;
 
-const SubHeader = styled.div`
-  text-align: center;
-  padding: 5px 0;
+const PremiumBadge = styled(IonButton)`
+  height: 30px;
+  margin: 0 0 16px;
+  font-size: var(--app-font-size-xs);
+  font-weight: 900;
+  letter-spacing: 1px;
+  --background: var(--app-premium-badge-background);
+  --background-hover: var(--app-premium-badge-background);
+  --background-activated: var(--app-premium-badge-background);
+  --box-shadow: none;
 `;
 
-const SlidesContainer = styled.div`
-  padding: 0;
+const HeroText = styled.div`
+  margin-top: 10px;
+  color: var(--ion-color-light);
+  font-size: var(--app-font-size-l);
+  font-weight: 800;
+  opacity: 0.82;
 `;
 
-const Slides = styled.div`
+const ContentPanel = styled.div`
+  position: relative;
+  z-index: 1;
+  margin-top: -18px;
+  padding: 0 var(--app-padding) 32px;
+`;
+
+const Benefits = styled.div`
   display: flex;
-  overflow: hidden;
+  flex-direction: column;
+  gap: 14px;
 `;
 
-const Slide = styled.div`
-  flex: 0 0 100%;
-  height: 235px;
-  text-align: center;
+const Benefit = styled.div`
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 18px;
+  border: var(--app-card-border);
+  border-radius: 22px;
+  background: var(--app-premium-panel-background);
+  box-shadow: var(--app-card-shadow);
 `;
 
-const SlideText = styled.div`
-  color: var(--ion-color-light);
+const BenefitIcon = styled.div`
+  display: grid;
+  flex: 0 0 54px;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  border-radius: 18px;
+  background: var(--app-premium-benefit-background);
+  color: var(--app-arena-accent);
+
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+`;
+
+const BenefitCopy = styled.div`
+  min-width: 0;
+`;
+
+const BenefitTitle = styled.div`
+  color: var(--app-text-primary);
   font-family: var(--ion-font-family-bold);
-  font-weight: bold;
-  padding-top: 12px;
+  font-size: var(--app-font-size-l);
+  font-weight: 900;
+  line-height: 1.2;
 `;
 
-const SlideSubText = styled.div`
-  color: var(--ion-color-light);
-  font-size: var(--ion-font-size-sm);
-  font-weight: bold;
-  padding-top: 12px;
-  padding-right: 25px;
-  padding-left: 25px;
-  opacity: 0.6;
+const BenefitText = styled.div`
+  margin-top: 6px;
+  color: var(--app-text-muted);
+  font-size: var(--app-font-size-sm);
+  font-weight: 700;
+  line-height: 1.45;
 `;
 
-const PurchaseDescriptionText = styled.div`
-  color: var(--ion-color-light);
-  font-size: var(--ion-font-size-sm);
-  font-family: var(--ion-font-family-bold);
-  font-weight: bold;
+const PriceCard = styled.div`
+  margin-top: 18px;
+  padding: 22px;
+  border: var(--app-card-border);
+  border-radius: 24px;
+  background: var(--app-premium-panel-background);
+  box-shadow: var(--app-card-shadow), var(--app-arena-action-shadow);
   text-align: center;
-  padding-top: 30px;
 `;
 
 const PurchasePriceText = styled.div`
-  color: var(--ion-color-light);
-  font-size: var(--ion-font-size-xxl);
+  color: var(--app-text-primary);
+  font-size: var(--app-font-size-xxxl);
   font-family: var(--ion-font-family-bold);
-  font-weight: bold;
-  text-align: center;
-  padding-top: 20px;
+  font-weight: 900;
+  line-height: 1;
 `;
 
-const PurchasePriceButton = styled.div`
-  padding-top: 15px;
-  text-align: center;
+const PurchaseButton = styled(IonButton)`
+  width: 100%;
+  height: 58px;
+  margin: 20px 0 0;
+  font-size: var(--app-font-size-l);
+  font-weight: 900;
+  --background: var(--app-arena-action-background);
+  --background-hover: var(--app-arena-action-background);
+  --background-activated: var(--app-arena-action-background);
+  --border-radius: 20px;
+  --box-shadow: var(--app-arena-action-shadow);
 `;
 
 const Modal = styled(IonModal)`
-  --background: var(--purchase-background);
+  --background: var(--app-purchase-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

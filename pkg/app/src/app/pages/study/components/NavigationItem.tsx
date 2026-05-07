@@ -1,5 +1,5 @@
 import { CreateAnimation, IonIcon, IonLabel, IonText, useIonViewWillEnter } from "@ionic/react";
-import { eye } from "ionicons/icons";
+import { chevronBackOutline, eye } from "ionicons/icons";
 import type React from "react";
 import { useRef } from "react";
 import { connect } from "react-redux";
@@ -19,17 +19,19 @@ type Props = {
 
 const NavigationItemComponent: React.FC<Props> = (props) => {
   const animation1 = useRef<CreateAnimation>(null);
-  const animation2 = useRef<CreateAnimation>(null);
 
   const delay = props.index * 75;
   const seenTotal = props.seenTotals[props.navigationItemKey];
   const seenProgress = seenTotal ? Math.floor((seenTotal.seen / seenTotal.total) * 100) : 0;
   const containerAnimationDuration = 300;
+  const sectionTheme = navigationThemes[props.navigationItemKey] ?? navigationThemes["nav.vehicleControls"];
+  const itemStyle = {
+    "--section-accent": sectionTheme.color,
+    "--section-accent-rgb": sectionTheme.rgb,
+  } as React.CSSProperties;
 
   useIonViewWillEnter(() => {
     if (animation1.current) animation1.current.animation.play();
-
-    if (animation2.current) animation2.current.animation.play();
   });
 
   return (
@@ -45,64 +47,37 @@ const NavigationItemComponent: React.FC<Props> = (props) => {
         toValue: "translateY(0px)",
       }}
     >
-      <div className="root-navigation-item" onClick={() => props.onClick(props.navigationItemKey)}>
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
-          <CreateAnimation
-            play={false}
-            ref={animation2}
-            duration={600}
-            delay={delay + containerAnimationDuration - 100}
-            easing="ease"
-            keyframes={[
-              { offset: 0, transform: "scale(0)" },
-              { offset: 0.8, transform: "scale(1.2)" },
-              { offset: 1, transform: "scale(1)" },
-            ]}
-          >
-            <Icon>{navigationIcons[props.navigationItemKey]}</Icon>
-          </CreateAnimation>
-          <IonLabel>
-            <div>
-              <IonText className="text-md" style={{ fontWeight: "bold" }}>
-                <Translate text={props.navigationItemKey} />
-              </IonText>
-            </div>
-          </IonLabel>
-          <div className="progress-bar">
-            <div style={{ width: 100 }}>
-              <ProgressBar progress={seenProgress} height={7} backgroundOpacity={0.2}></ProgressBar>
-            </div>
-            <div>
-              <IonIcon
-                icon={eye}
-                className="text-sm"
-                style={{
-                  marginLeft: 6,
-                  opacity: seenProgress === 100 ? 0.7 : 0.4,
-                }}
-              />
-            </div>
-          </div>
+      <div className="root-navigation-item" style={itemStyle} onClick={() => props.onClick(props.navigationItemKey)}>
+        <div className="root-navigation-icon-tile">
+          <Icon>{navigationIcons[props.navigationItemKey]}</Icon>
         </div>
+        <IonLabel className="root-navigation-label">
+          <IonText>
+            <Translate text={props.navigationItemKey} />
+          </IonText>
+          <div className="progress-bar">
+            <ProgressBar
+              progress={seenProgress}
+              height={8}
+              backgroundOpacity={0.12}
+              foregroundOpacity={1}
+              foregroundRgb="var(--section-accent-rgb)"
+            />
+          </div>
+        </IonLabel>
+        <div className="root-navigation-progress">
+          <IonIcon icon={eye} className="text-l" />
+          <span>{seenProgress}%</span>
+        </div>
+        <IonIcon icon={chevronBackOutline} className="root-navigation-chevron" />
       </div>
     </CreateAnimation>
   );
 };
 
 const Icon = styled.div`
-  position: absolute;
-  color: #9E9CB8;
-  right: 5px;
-  bottom: -2px;
-  font-size: 2.5rem;
-  opacity: 0.7;
+  font-size: 2.6rem;
+  line-height: 1;
 `;
 
 const navigationIcons: { [key: string]: React.ReactNode } = {
@@ -112,6 +87,33 @@ const navigationIcons: { [key: string]: React.ReactNode } = {
   "nav.roadMarkings": <RoadIcon />,
   "nav.roadSignals": <TrafficLightIcon />,
   "nav.signs": <StopIcon />,
+};
+
+const navigationThemes: { [key: string]: { color: string; rgb: string } } = {
+  "nav.vehicleControls": {
+    color: "var(--app-study-section-vehicle)",
+    rgb: "var(--app-study-section-vehicle-rgb)",
+  },
+  "nav.rulesOfTheRoad": {
+    color: "var(--app-study-section-rules)",
+    rgb: "var(--app-study-section-rules-rgb)",
+  },
+  "nav.defensiveDriving": {
+    color: "var(--app-study-section-defensive)",
+    rgb: "var(--app-study-section-defensive-rgb)",
+  },
+  "nav.roadMarkings": {
+    color: "var(--app-study-section-markings)",
+    rgb: "var(--app-study-section-markings-rgb)",
+  },
+  "nav.roadSignals": {
+    color: "var(--app-study-section-signals)",
+    rgb: "var(--app-study-section-signals-rgb)",
+  },
+  "nav.signs": {
+    color: "var(--app-study-section-signs)",
+    rgb: "var(--app-study-section-signs-rgb)",
+  },
 };
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

@@ -167,12 +167,12 @@ const OptionsIcon: React.FC = () => {
 };
 
 const Container = styled.div`
-  padding: 0 var(--default-padding);
+  padding: 0 var(--app-padding);
   padding-bottom: 50px;
 `;
 
 const Header = styled.div`
-  font-size: var(--ion-font-size-xxl);
+  font-size: var(--app-font-size-xxl);
   font-family: var(--ion-font-family-bold);
   font-weight: bold;
   text-align: center;
@@ -186,7 +186,7 @@ const SubHeader = styled.div`
 `;
 
 const Paragraph = styled.p`
-  font-size: var(--ion-font-size-md);
+  font-size: var(--app-font-size-md);
 `;
 
 const ParagraphCenter = styled(Paragraph)`
@@ -214,7 +214,7 @@ const StarWrapper = styled.div`
 
 const Modal = styled(IonModal)`
   color: var(--ion-color-light);
-  --background: var(--dojo-background);
+  --background: var(--app-dojo-background);
 `;
 
 export { DojoInfoModal };

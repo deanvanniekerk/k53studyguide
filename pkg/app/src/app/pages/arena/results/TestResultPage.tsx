@@ -1,24 +1,29 @@
 import { IonContent, IonPage, useIonViewWillLeave } from "@ionic/react";
 import type React from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
-import { BackButton, type QuestionInfo, QuestionList } from "@/app/components";
+import { PageHeader } from "@/app/components";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
+import { QuizQuestionCard } from "@/app/pages/dojo/components";
 import type { RootState } from "@/state";
-import { currentSectionQuestionsSelector, recieveQuestionAnswers } from "@/state/arena/test";
+import { currentSectionQuestionsSelector, recieveCurrentSection, recieveQuestionAnswers } from "@/state/arena/test";
 import { ArenaWatermark } from "../ArenaWatermark";
 import { Tabs } from "../components";
 import { Header } from "./components";
-import { TestResultPageHeader } from "./TestResultPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
 
-const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveQuestionAnswers }) => {
+const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveCurrentSection, recieveQuestionAnswers }) => {
   const history = useHistory();
 
   useAnalytics("TestPage:TestResultPage");
+
+  useEffect(() => {
+    recieveCurrentSection("A");
+  }, [recieveCurrentSection]);
 
   useIonViewWillLeave(() => {
     recieveQuestionAnswers([]); //Clear test
@@ -28,20 +33,21 @@ const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveQuestionAnswe
     history.replace("/arena");
   };
 
-  const questions = questionAnswers.map<QuestionInfo>((q) => ({
-    question: q.question,
-    answer: q.answer,
-  }));
-
   return (
     <Page>
-      <TestResultPageHeader />
+      <PageHeader title="results" page="arena" onBackClick={onBackClicked} />
       <ArenaWatermark />
       <Content>
-        <BackButton onClick={onBackClicked} />
         <Header />
         <Tabs hideInfo={true} />
-        <QuestionList questions={questions} showResult={true} />
+        <ResultList>
+          {questionAnswers.map((questionAnswer, index) => (
+            <ResultItem key={questionAnswer.question.id}>
+              <QuestionNumber>Question {index + 1}</QuestionNumber>
+              <QuizQuestionCard question={questionAnswer.question} answer={questionAnswer.answer} showResult={true} />
+            </ResultItem>
+          ))}
+        </ResultList>
       </Content>
     </Page>
   );
@@ -52,8 +58,26 @@ const Content = styled(IonContent)`
 `;
 
 const Page = styled(IonPage)`
-  background: #FAFAF7;
-  --page-header-bg: var(--arena-header-gradient);
+  --app-question-accent: var(--app-arena-accent);
+  --app-question-accent-rgb: var(--app-arena-accent-rgb);
+
+  background: var(--app-arena-background);
+`;
+
+const ResultList = styled.div`
+  padding-top: 0;
+`;
+
+const ResultItem = styled.div`
+  overflow: hidden;
+`;
+
+const QuestionNumber = styled.div`
+  margin: 0 var(--app-padding) 12px;
+  color: var(--app-text-muted);
+  font-family: var(--ion-font-family-bold);
+  font-size: var(--app-font-size-l);
+  font-weight: 900;
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
@@ -66,7 +90,7 @@ const mapStateToProps = (state: RootState) => {
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...bindActionCreators({ recieveQuestionAnswers }, dispatch),
+    ...bindActionCreators({ recieveCurrentSection, recieveQuestionAnswers }, dispatch),
   };
 };
 

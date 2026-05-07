@@ -3,22 +3,23 @@
   --ion-font-family: "Plus Jakarta Sans", sans-serif;
   --ion-font-family-bold: "Plus Jakarta Sans", sans-serif;
 
-  --ion-font-size-xs: 0.7rem;
-  --ion-font-size-sm: 0.8rem;
-  --ion-font-size-md: 0.9rem;
-  --ion-font-size-l: 1.1rem;
-  --ion-font-size-xl: 1.3rem;
-  --ion-font-size-xxl: 1.5rem;
-  --ion-font-size-xxxl: 2rem;
+  --app-font-size-xs: 0.7rem;
+  --app-font-size-sm: 0.8rem;
+  --app-font-size-md: 0.9rem;
+  --app-font-size-l: 1.1rem;
+  --app-font-size-xl: 1.3rem;
+  --app-font-size-xxl: 1.5rem;
+  --app-font-size-xxxl: 2rem;
 
-  --line-height: 1.7;
+  --app-line-height: 1.7;
 
-  --default-padding: 16px;
+  --app-padding: 16px;
 
   --app-safe-area-top: max(env(safe-area-inset-top, 0px), var(--ion-safe-area-top, 0px));
+  --app-page-header-visual-height: 85px;
   --app-page-header-bar-height: 44px;
-  --app-page-header-padding-top: calc(var(--app-safe-area-top) + 8px);
-  --app-page-header-height: calc(var(--app-page-header-padding-top) + var(--app-page-header-bar-height));
+  --app-page-header-padding-top: var(--app-safe-area-top);
+  --app-page-header-height: calc(var(--app-safe-area-top) + var(--app-page-header-visual-height));
   --app-page-content-top: calc(var(--app-page-header-height) + 8px);
   /* ------------------------------------------ */
 
@@ -30,30 +31,111 @@
   /* ------------------------------------------ */
 
   /* ITEM CONTAINER --------------------------- */
-  --ic-corner-radius: 18px;
-  --ic-padding: 8px;
-  --ic-border: 1px solid #EEECF7;
-  --card-shadow: 0 2px 0 #EEECF7;
+  --app-card-radius: 18px;
+  --app-card-padding: 8px;
+  --app-card-border-color: #eeecf7;
+  --app-card-border: 1px solid var(--app-card-border-color);
+  --app-card-shadow: 0 2px 0 var(--app-card-border-color);
+  --app-card-background: #ffffff;
+  --app-divider-color: rgba(26, 27, 46, 0.1);
+  --app-tab-selected-border: rgba(26, 27, 46, 0.3);
+  --app-decorative-icon-color: #9e9cb8;
+  --app-watermark-fill: #000000;
+  --app-progress-foreground: #4a3fb8;
+  --app-progress-foreground-rgb: 74, 63, 184;
+  --app-progress-track-rgb: 128, 128, 128;
+  --app-question-accent: var(--app-progress-foreground);
+  --app-question-accent-rgb: var(--app-progress-foreground-rgb);
+  --app-question-selected-background: rgba(var(--app-question-accent-rgb), 0.06);
+  --app-error-background: linear-gradient(to right top, #c34a36, #c24541, #bf414c, #ba3f56, #b43e5f);
   /* ------------------------------------------ */
 
   /* PAGE BACKGROUNDS ------------------------- */
-  --study-background: #FAFAF7;
-  --dojo-background: #FAFAF7;
-  --arena-background: #FAFAF7;
-  --profile-background: #FAFAF7;
-  --purchase-background: #FAFAF7;
+  --app-study-background: #fafaf7;
+  --app-dojo-background: #fafaf7;
+  --app-arena-background: #fafaf7;
+  --app-profile-background: #fafaf7;
+  --app-purchase-background: #fafaf7;
   /* ------------------------------------------ */
 
   /* HEADER GRADIENTS (per section) ----------- */
-  --study-header-gradient: linear-gradient(135deg, #4A3FB8 0%, #2E7BD6 50%, #2BB5A8 100%);
-  --dojo-header-gradient: linear-gradient(135deg, #B53A8C 0%, #E8456E 50%, #FF8C42 100%);
-  --arena-header-gradient: linear-gradient(135deg, #2A2470 0%, #4A3FB8 50%, #1F5DBE 100%);
-  --profile-header-gradient: linear-gradient(135deg, #4A3FB8 0%, #7B5CF7 100%);
+  --app-study-header-gradient: linear-gradient(135deg, #4a3fb8 0%, #2e7bd6 50%, #2bb5a8 100%);
+  --app-dojo-header-gradient: linear-gradient(135deg, #b53a8c 0%, #e8456e 50%, #ff8c42 100%);
+  --app-arena-header-gradient: linear-gradient(135deg, #2a2470 0%, #4a3fb8 50%, #1f5dbe 100%);
+  --app-profile-header-gradient: linear-gradient(135deg, #007e6c 0%, #2bbf8a 55%, #ffca3a 100%);
+  --app-study-primary-gradient: var(--app-study-header-gradient);
+  --app-dojo-primary-gradient: var(--app-dojo-header-gradient);
+  --app-arena-primary-gradient: var(--app-arena-header-gradient);
+  --app-profile-primary-gradient: var(--app-profile-header-gradient);
+  --app-study-action-background: var(--app-study-primary-gradient);
+  --app-study-action-shadow: 0 12px 20px rgba(var(--app-progress-foreground-rgb), 0.16);
+  --app-dojo-action-background: var(--app-dojo-primary-gradient);
+  --app-dojo-action-shadow: 0 12px 20px rgba(var(--app-progress-foreground-rgb), 0.18);
+  --app-profile-action-background: var(--app-profile-primary-gradient);
+  --app-profile-action-shadow: 0 12px 20px rgba(var(--ion-color-primary-rgb), 0.18);
+  --app-profile-section-title: var(--app-text-muted);
+  --app-profile-card-background: var(--app-card-background);
+  --app-profile-card-border-color: #eeecf7;
+  --app-profile-card-border: 2px solid var(--app-profile-card-border-color);
+  --app-profile-card-shadow: 0 2px 0 var(--app-profile-card-border-color);
+  --app-profile-card-divider: var(--app-divider-color);
+  --app-profile-action-icon: var(--app-decorative-icon-color);
+  --app-profile-status-complete: #2cbf75;
+  --app-profile-status-complete-rgb: 44, 191, 117;
+  --app-profile-status-incomplete: #ff8845;
+  --app-profile-status-incomplete-rgb: 255, 136, 69;
+  --app-profile-premium-background: #fff1cf;
+  --app-profile-premium-border: #f4e3b1;
+  --app-profile-premium-icon-background: #ffca3a;
+  --app-profile-premium-text: var(--app-text-primary);
+  --app-profile-premium-subtext: var(--app-text-muted);
+  --app-arena-accent: #4a3fb8;
+  --app-arena-accent-rgb: 74, 63, 184;
+  --app-arena-illustration-background: #fff1cf;
+  --app-arena-illustration-border: #f4e3b1;
+  --app-arena-action-background: var(--app-arena-header-gradient);
+  --app-arena-action-shadow: 0 18px 28px rgba(var(--app-arena-accent-rgb), 0.24);
+  --app-arena-muted-surface: rgba(var(--app-arena-accent-rgb), 0.08);
+  --app-premium-panel-background: #ffffff;
+  --app-premium-benefit-background: rgba(var(--app-arena-accent-rgb), 0.08);
+  --app-premium-badge-background: rgba(var(--app-arena-accent-rgb), 0.12);
+  --app-premium-hero-background: var(--app-arena-header-gradient);
+  /* Coral/Soft Red - Shifted slightly from the orange */
+  --app-study-section-vehicle: #ff828a;
+  --app-study-section-vehicle-rgb: 255, 130, 138;
+
+  /* Mint/Teal - Keeping the fresh green-blue */
+  --app-study-section-rules: #63d6ce;
+  --app-study-section-rules-rgb: 99, 214, 206;
+
+  /* Lavender/Purple - Softened to distinguish from the deep blue */
+  --app-study-section-defensive: #a38cf4;
+  --app-study-section-defensive-rgb: 163, 140, 244;
+
+  /* Sky Blue - Brightened to avoid looking too "heavy" */
+  --app-study-section-markings: #ffad66;
+  --app-study-section-markings-rgb: 255, 173, 102;
+
+  /* Soft Peach/Orange - Moved away from the yellow for clarity */
+  --app-study-section-signals: #6eb0f9;
+  --app-study-section-signals-rgb: 110, 176, 249;
+
+  /* Butter Yellow - Lightened for a true pastel feel */
+  --app-study-section-signs: #ffdb70;
+  --app-study-section-signs-rgb: 255, 219, 112;
   /* ------------------------------------------ */
 
   /* APP TEXT --------------------------------- */
-  --app-text-primary: #1A1B2E;
-  --app-text-muted: #6B6985;
+  --app-text-primary: #1a1b2e;
+  --app-text-primary-rgb: 26, 27, 46;
+  --app-text-muted: #6b6985;
+  --app-text-muted-rgb: 107, 105, 133;
+
+  --ion-background-color: var(--app-study-background);
+  --ion-background-color-rgb: 250, 250, 247;
+  --ion-text-color: var(--app-text-primary);
+  --ion-text-color-rgb: var(--app-text-primary-rgb);
+  --ion-border-color: var(--app-card-border-color);
   /* ------------------------------------------ */
 
   /* COLORS ------------------------------------ */
@@ -67,7 +149,7 @@
   --ion-color-secondary: #ff7b51;
   --ion-color-secondary-rgb: 255, 123, 81;
   --ion-color-secondary-contrast: #ffffff;
-  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
   --ion-color-secondary-shade: #e06c47;
   --ion-color-secondary-tint: #ff8862;
 
@@ -99,7 +181,7 @@
   --ion-color-danger-shade: #ac3218;
   --ion-color-danger-tint: #c94d32;
 
-  --ion-color-dark: #1A1B2E;
+  --ion-color-dark: #1a1b2e;
   --ion-color-dark-rgb: 26, 27, 46;
   --ion-color-dark-contrast: #ffffff;
   --ion-color-dark-contrast-rgb: 255, 255, 255;
@@ -114,10 +196,104 @@
   --ion-color-medium-tint: #c7cbd5;
 
   --ion-color-light: #ffffff;
-  --ion-color-light-rgb: 244, 244, 244;
+  --ion-color-light-rgb: 255, 255, 255;
   --ion-color-light-contrast: #000000;
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
   /* ------------------------------------------ */
+}
+
+.ion-palette-dark {
+  /* ITEM CONTAINER --------------------------- */
+  --app-card-border-color: #2a2940;
+  --app-card-background: #1e1d2d;
+  --app-divider-color: rgba(240, 239, 247, 0.1);
+  --app-tab-selected-border: rgba(255, 255, 255, 0.79);
+  --app-decorative-icon-color: #9896aa;
+  --app-watermark-fill: #f0eff7;
+  --app-progress-foreground: #7b5cf7;
+  --app-progress-foreground-rgb: 123, 92, 247;
+  --app-progress-track-rgb: 240, 239, 247;
+  --app-question-accent: var(--app-progress-foreground);
+  --app-question-accent-rgb: var(--app-progress-foreground-rgb);
+  --app-question-selected-background: rgba(var(--app-question-accent-rgb), 0.12);
+  --app-arena-accent: #7b5cf7;
+  --app-arena-accent-rgb: 123, 92, 247;
+  --app-study-action-shadow: 0 12px 20px rgba(var(--app-progress-foreground-rgb), 0.22);
+  --app-dojo-action-shadow: 0 12px 20px rgba(var(--app-progress-foreground-rgb), 0.22);
+  --app-profile-action-shadow: 0 12px 20px rgba(var(--ion-color-primary-rgb), 0.2);
+  --app-arena-illustration-background: rgba(var(--app-arena-accent-rgb), 0.16);
+  --app-arena-illustration-border: rgba(var(--app-arena-accent-rgb), 0.28);
+  --app-arena-action-shadow: 0 18px 28px rgba(var(--app-arena-accent-rgb), 0.3);
+  --app-arena-muted-surface: rgba(var(--app-arena-accent-rgb), 0.14);
+  --app-premium-panel-background: #1e1d2d;
+  --app-premium-benefit-background: rgba(var(--app-arena-accent-rgb), 0.14);
+  --app-premium-badge-background: rgba(var(--app-arena-accent-rgb), 0.18);
+  --app-profile-section-title: var(--app-text-muted);
+  --app-profile-card-background: var(--app-card-background);
+  --app-profile-card-border-color: #2a2940;
+  --app-profile-card-border: 2px solid var(--app-profile-card-border-color);
+  --app-profile-card-shadow: 0 2px 0 var(--app-profile-card-border-color);
+  --app-profile-card-divider: var(--app-divider-color);
+  --app-profile-action-icon: var(--app-decorative-icon-color);
+  --app-profile-status-complete: #4ed393;
+  --app-profile-status-complete-rgb: 78, 211, 147;
+  --app-profile-status-incomplete: #ff9a5c;
+  --app-profile-status-incomplete-rgb: 255, 154, 92;
+  --app-profile-premium-background: rgba(var(--app-arena-accent-rgb), 0.16);
+  --app-profile-premium-border: rgba(var(--app-arena-accent-rgb), 0.3);
+  --app-profile-premium-icon-background: rgba(var(--app-profile-status-incomplete-rgb), 0.24);
+  --app-profile-premium-text: var(--app-text-primary);
+  --app-profile-premium-subtext: var(--app-text-muted);
+
+  /* We can override these colors if we want to, but we should keep the original colors for now. */
+  /* --app-study-section-vehicle: #ff7a82;
+  --app-study-section-vehicle-rgb: 255, 122, 130;
+  --app-study-section-rules: #5fd7cf;
+  --app-study-section-rules-rgb: 95, 215, 207;
+  --app-study-section-defensive: #8b6cff;
+  --app-study-section-defensive-rgb: 139, 108, 255;
+  --app-study-section-markings: #ffad66;
+  --app-study-section-markings-rgb: 255, 173, 102;
+  --app-study-section-signals: #6eb0f9;
+  --app-study-section-signals-rgb: 110, 176, 249;
+  --app-study-section-signs: #ffd15c;
+  --app-study-section-signs-rgb: 255, 209, 92; */
+  /* ------------------------------------------ */
+
+  /* PAGE BACKGROUNDS ------------------------- */
+  --app-study-background: #13121f;
+  --app-dojo-background: #13121f;
+  --app-arena-background: #13121f;
+  --app-profile-background: #13121f;
+  --app-purchase-background: #13121f;
+  /* ------------------------------------------ */
+
+  /* APP TEXT --------------------------------- */
+  --app-text-primary: #f0eff7;
+  --app-text-primary-rgb: 240, 239, 247;
+  --app-text-muted: #9896aa;
+  --app-text-muted-rgb: 152, 150, 170;
+  --ion-background-color: var(--app-study-background);
+  --ion-background-color-rgb: 19, 18, 31;
+  --ion-text-color: var(--app-text-primary);
+  --ion-text-color-rgb: var(--app-text-primary-rgb);
+  --ion-border-color: var(--app-card-border-color);
+
+  --ion-color-dark: #f0eff7;
+  --ion-color-dark-rgb: 240, 239, 247;
+  --ion-color-dark-contrast: #13121f;
+  --ion-color-dark-contrast-rgb: 19, 18, 31;
+  --ion-color-dark-shade: #d3d2d9;
+  --ion-color-dark-tint: #f2f1f8;
+  /* ------------------------------------------ */
+}
+
+/* Match Ionic's .ion-palette-dark.md specificity to override its background/item colors */
+.ion-palette-dark.md,
+.ion-palette-dark.ios {
+  --ion-background-color: var(--app-study-background);
+  --ion-background-color-rgb: 19, 18, 31;
+  --ion-item-background: transparent;
 }

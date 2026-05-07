@@ -1,4 +1,4 @@
-import { IonAlert, IonButton, IonCol, IonGrid, IonIcon, IonListHeader, IonRow, IonText } from "@ionic/react";
+import { IonAlert, IonButton, IonIcon, IonText } from "@ionic/react";
 import { help } from "ionicons/icons";
 import type React from "react";
 import { useState } from "react";
@@ -7,7 +7,7 @@ import { useHistory } from "react-router";
 import { Translate, Translator } from "react-translated";
 import type { AnyAction, Dispatch } from "redux";
 import type { ThunkDispatch } from "redux-thunk";
-import { HorizontalRule } from "@/app/components";
+import styled from "styled-components";
 import { Breadcrumb } from "@/app/components/Breadcrumb";
 import type { RootState } from "@/state";
 import { recieveTargetNavigationKey } from "@/state/dojo/navigation";
@@ -25,45 +25,25 @@ const HeaderComponent: React.FC<Props> = (props) => {
 
   return (
     <>
-      <IonListHeader>
-        <IonGrid>
-          <IonRow className="app-page-content-offset">
-            <IonCol>
-              <IonText>
-                <h2>
-                  <Translate text={props.currentNavigationKey} />
-                </h2>
-              </IonText>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <Breadcrumb navigationKey={props.currentNavigationKey} />
-            </IonCol>
-          </IonRow>
-          <IonRow style={{ paddingTop: 20 }}>
-            <IonCol size="10">
-              <SeenProgress navigationKey={props.currentNavigationKey} />
-            </IonCol>
-            <IonCol>
-              <IonButton
-                color="secondary"
-                shape="round"
-                fill="solid"
-                size="small"
-                onClick={() => setShowStartQuizAlert(true)}
-              >
-                <IonIcon icon={help} />
-              </IonButton>
-            </IonCol>
-          </IonRow>
-          <IonRow>
-            <IonCol>
-              <HorizontalRule leftMargin={20} rightMargin={36} paddingBottom={0} paddingTop={20} />
-            </IonCol>
-          </IonRow>
-        </IonGrid>
-      </IonListHeader>
+      <HeaderShell>
+        <Breadcrumb navigationKey={props.currentNavigationKey} />
+        <Title>
+          <Translate text={props.currentNavigationKey} />
+        </Title>
+        <ProgressPanel>
+          <SeenProgress navigationKey={props.currentNavigationKey} />
+          <QuizButton
+            color="secondary"
+            shape="round"
+            fill="solid"
+            size="small"
+            aria-label="Start quiz"
+            onClick={() => setShowStartQuizAlert(true)}
+          >
+            <IonIcon icon={help} />
+          </QuizButton>
+        </ProgressPanel>
+      </HeaderShell>
 
       <Translator>
         {({ translate }) => (
@@ -97,6 +77,54 @@ const HeaderComponent: React.FC<Props> = (props) => {
     </>
   );
 };
+
+const HeaderShell = styled.header`
+  --breadcrumb-color: var(--app-text-muted);
+
+  padding: calc(var(--app-page-header-height) + 44px) var(--app-padding) 22px;
+`;
+
+const Title = styled(IonText)`
+  color: var(--app-text-primary);
+  display: block;
+  font-family: var(--ion-font-family-bold);
+  font-size: var(--app-font-size-xxxl);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.05;
+  margin: 12px 0 24px;
+
+  @media (max-width: 420px) {
+    font-size: var(--app-font-size-xxl);
+  }
+`;
+
+const ProgressPanel = styled.div`
+  align-items: center;
+  background: var(--app-card-background);
+  border: 2px solid var(--app-card-border-color);
+  border-radius: 28px;
+  box-shadow: 0 2px 0 var(--app-card-border-color);
+  display: grid;
+  gap: 14px;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  min-height: 78px;
+  padding: 14px 16px;
+`;
+
+const QuizButton = styled(IonButton)`
+  --background: var(--app-study-primary-gradient);
+  --background-activated: var(--app-study-primary-gradient);
+  --background-hover: var(--app-study-primary-gradient);
+  --box-shadow: none;
+  height: 44px;
+  margin: 0;
+  width: 44px;
+
+  ion-icon {
+    font-size: 1.25rem;
+  }
+`;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {

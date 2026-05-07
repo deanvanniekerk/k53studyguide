@@ -1,4 +1,4 @@
-import { IonCol, IonIcon, IonRow } from "@ionic/react";
+import { IonIcon } from "@ionic/react";
 import type React from "react";
 import styled from "styled-components";
 
@@ -6,48 +6,114 @@ type Props = {
   name: string;
   value: React.ReactNode;
   icon?: string;
-  iconColor?: "danger" | "success";
+  status?: "complete" | "incomplete";
+  onClick?: () => void;
+  action?: boolean;
 };
 
 const Row: React.FC<Props> = (props) => {
+  const containerProps = props.onClick ? { type: "button" as const, onClick: props.onClick } : {};
+
   return (
-    <Container>
+    <Container as={props.onClick ? "button" : "div"} {...containerProps} $clickable={Boolean(props.onClick)}>
       <NameCol>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <div>
-            {props.icon && (
-              <IonIcon
-                icon={props.icon}
-                style={{ marginRight: 5, fontSize: "1.3rem" }}
-                color={props.iconColor ? props.iconColor : undefined}
-              />
-            )}
-          </div>
-          <div>{props.name}</div>
-        </div>
+        {props.icon && <StatusIcon icon={props.icon} $status={props.status} aria-hidden="true" />}
+        <Name>{props.name}</Name>
       </NameCol>
-      <ValueCol>{props.value}</ValueCol>
+      <ValueCol $action={props.action}>{props.value}</ValueCol>
     </Container>
   );
 };
 
-const Container = styled(IonRow)`
-  padding: 7px 0;
+const Section = styled.section`
+  padding: 0 var(--app-padding);
+  margin-top: 28px;
+
+  &:first-child {
+    margin-top: var(--app-page-content-top);
+  }
+`;
+
+const SectionTitle = styled.h2`
+  display: flex;
   align-items: center;
-`;
-
-const NameCol = styled(IonCol)`
-  font-size: var(--ion-font-size-md);
+  gap: 8px;
+  margin: 0 0 12px;
+  color: var(--app-profile-section-title);
   font-family: var(--ion-font-family-bold);
-  font-weight: bold;
-  flex: 0;
-  white-space: nowrap;
-  padding-right: 15px;
+  font-size: var(--app-font-size-l);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.1;
+  text-transform: uppercase;
+
+  ion-icon {
+    font-size: var(--app-font-size-l);
+  }
 `;
 
-const ValueCol = styled(IonCol)`
+const GroupCard = styled.div`
+  overflow: hidden;
+  border: var(--app-profile-card-border);
+  border-radius: 24px;
+  background: var(--app-profile-card-background);
+  box-shadow: var(--app-profile-card-shadow);
+`;
+
+const Container = styled.button<{ $clickable: boolean }>`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 76px;
+  padding: 16px 22px;
+  border: 0;
+  border-bottom: 1px solid var(--app-profile-card-divider);
+  background: transparent;
+  color: var(--app-text-primary);
+  text-align: left;
+  cursor: ${(props) => (props.$clickable ? "pointer" : "default")};
+  -webkit-tap-highlight-color: transparent;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+`;
+
+const NameCol = styled.div`
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 14px;
+`;
+
+const Name = styled.div`
+  min-width: 0;
+  font-family: var(--ion-font-family-bold);
+  font-size: var(--app-font-size-xl);
+  font-weight: 900;
+  line-height: 1.2;
+`;
+
+const StatusIcon = styled(IonIcon)<{ $status?: Props["status"] }>`
+  flex: 0 0 auto;
+  color: ${(props) =>
+    props.$status === "complete" ? "var(--app-profile-status-complete)" : "var(--app-profile-status-incomplete)"};
+  font-size: var(--app-font-size-xxl);
+`;
+
+const ValueCol = styled.div<{ $action?: boolean }>`
+  color: ${(props) => (props.$action ? "var(--app-profile-action-icon)" : "var(--app-text-muted)")};
+  font-family: var(--ion-font-family-bold);
+  font-size: ${(props) => (props.$action ? "var(--app-font-size-xxl)" : "var(--app-font-size-xl)")};
+  font-weight: 900;
+  line-height: 1;
   text-align: right;
-  font-size: var(--ion-font-size-md);
+
+  ion-icon {
+    display: block;
+  }
 `;
 
-export { Row };
+export { GroupCard, Row, Section, SectionTitle };

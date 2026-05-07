@@ -5,6 +5,7 @@ describe("state > settings > selectors", () => {
   //Setup Data --------------------------------------------
   const defaultState: SettingsState = {
     language: "af",
+    theme: "system",
   };
   //-----------------------------------------------------------
 
@@ -12,5 +13,11 @@ describe("state > settings > selectors", () => {
     const actual = selectors.languageSelector.resultFunc(defaultState);
 
     expect(actual).toEqual("af");
+  });
+
+  it("themeSelector", () => {
+    const actual = selectors.themeSelector.resultFunc(defaultState);
+
+    expect(actual).toEqual("system");
   });
 });

@@ -3,6 +3,7 @@ import { reducer, type SettingsState } from "./reducer";
 describe("state > settings > reducer", () => {
   const defaultState: SettingsState = {
     language: "en",
+    theme: "system",
   };
 
   it("should handle SETTINGS_RECIEVE_LANGUAGE", () => {

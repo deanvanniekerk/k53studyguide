@@ -147,7 +147,7 @@ const TrashIcon: React.FC = () => {
 };
 
 const Container = styled.div`
-  padding: 0 var(--default-padding);
+  padding: 0 var(--app-padding);
   padding-bottom: 50px;
 `;
 
@@ -156,7 +156,7 @@ const Watermark = styled(BookOutlineIcon)`
 `;
 
 const Header = styled.div`
-  font-size: var(--ion-font-size-xxl);
+  font-size: var(--app-font-size-xxl);
   font-family: var(--ion-font-family-bold);
   font-weight: bold;
   text-align: center;
@@ -170,7 +170,7 @@ const SubHeader = styled.div`
 `;
 
 const Paragraph = styled.p`
-  font-size: var(--ion-font-size-md);
+  font-size: var(--app-font-size-md);
 `;
 
 const ParagraphCenter = styled(Paragraph)`
@@ -195,7 +195,7 @@ const Content = styled(IonContent)`
 
 const Modal = styled(IonModal)`
   color: var(--ion-color-light);
-  --background: var(--study-background);
+  --background: var(--app-study-background);
 `;
 
 export { StudyInfoModal };

@@ -1,4 +1,3 @@
-export * from "./BackButton";
 export * from "./Breadcrumb";
 export * from "./CloseButton";
 export * from "./ErrorBoundary";
@@ -6,6 +5,7 @@ export * from "./HorizontalRule";
 export * from "./NavigationItem";
 export * from "./PageHeader";
 export * from "./PageHeaderInfoIcon";
+export * from "./PrimaryButton";
 export * from "./ProgressBar";
 export * from "./questions";
 export * from "./StarRating";

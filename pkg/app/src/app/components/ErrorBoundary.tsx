@@ -78,7 +78,7 @@ const Icon = styled.div`
 
 const Header = styled.div`
   padding-top: 15px;
-  font-size: var(--ion-font-size-xxl);
+  font-size: var(--app-font-size-xxl);
   text-align: center;
 `;
 
@@ -92,7 +92,7 @@ const Content = styled(IonContent)`
 `;
 
 const Page = styled(IonPage)`
-  background: linear-gradient(to right top, #c34a36, #c24541, #bf414c, #ba3f56, #b43e5f);
+  background: var(--app-error-background);
 `;
 
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;

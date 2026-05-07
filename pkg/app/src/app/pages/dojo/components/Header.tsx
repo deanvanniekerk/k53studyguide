@@ -1,7 +1,5 @@
 import { IonCol, IonGrid, IonRow } from "@ionic/react";
 import type React from "react";
-import { Translate } from "react-translated";
-import styled from "styled-components";
 import { Level } from "./";
 
 const Header: React.FC = () => {
@@ -9,24 +7,11 @@ const Header: React.FC = () => {
     <IonGrid>
       <IonRow className="app-page-content-offset">
         <IonCol>
-          <IntroText>
-            <Translate text="dojoIntro" />
-          </IntroText>
-        </IonCol>
-      </IonRow>
-      <IonRow style={{ paddingTop: 25 }}>
-        <IonCol>
           <Level />
         </IonCol>
       </IonRow>
     </IonGrid>
   );
 };
-
-const IntroText = styled.div`
-  text-align: center;
-  font-size: var(--ion-font-size-sm);
-  font-weight: 100;
-`;
 
 export { Header };

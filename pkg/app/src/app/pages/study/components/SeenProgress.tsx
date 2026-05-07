@@ -23,7 +23,7 @@ const SeenProgressComponent: React.FC<Props> = (props) => {
         <ProgressBar
           height={8}
           progress={seenProgress}
-          backgroundColor="#FFFFFF"
+          backgroundRgb="var(--ion-color-light-rgb)"
           backgroundOpacity={0.2}
           foregroundOpacity={0.6}
         />

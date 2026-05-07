@@ -4,14 +4,14 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
-import { BackButton, type QuestionInfo, QuestionList } from "@/app/components";
+import { PageHeader } from "@/app/components";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { RootState } from "@/state";
 import { questionAnswersSelector, recieveQuestionAnswers } from "@/state/dojo/test";
+import { QuizQuestionCard } from "../components";
 import { DojoWatermark } from "../DojoWatermark";
 import { Header } from "./components";
 import { Footer } from "./components/Footer";
-import { TestResultPageHeader } from "./TestResultPageHeader";
 
 type Props = PropsFromState & PropsFromDispatch;
 
@@ -28,19 +28,20 @@ const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveQuestionAnswe
     history.replace("/dojo");
   };
 
-  const questions = questionAnswers.map<QuestionInfo>((q) => ({
-    question: q.question,
-    answer: q.answer,
-  }));
-
   return (
     <Page>
-      <TestResultPageHeader />
+      <PageHeader title="dojo" page="dojo" onBackClick={onBackClicked} />
       <DojoWatermark />
       <Content>
-        <BackButton onClick={onBackClicked} />
         <Header />
-        <QuestionList questions={questions} showResult={true} />
+        <ResultList>
+          {questionAnswers.map((questionAnswer, index) => (
+            <ResultItem key={questionAnswer.question.id}>
+              <QuestionNumber>Question {index + 1}</QuestionNumber>
+              <QuizQuestionCard question={questionAnswer.question} answer={questionAnswer.answer} showResult={true} />
+            </ResultItem>
+          ))}
+        </ResultList>
         <Footer />
       </Content>
     </Page>
@@ -52,8 +53,23 @@ const Content = styled(IonContent)`
 `;
 
 const Page = styled(IonPage)`
-  background: #FAFAF7;
-  --page-header-bg: var(--dojo-header-gradient);
+  background: var(--app-dojo-background);
+`;
+
+const ResultList = styled.div`
+  padding-top: 0;
+`;
+
+const ResultItem = styled.div`
+  overflow: hidden;
+`;
+
+const QuestionNumber = styled.div`
+  margin: 0 var(--app-padding) 12px;
+  color: var(--app-text-muted);
+  font-family: var(--ion-font-family-bold);
+  font-size: var(--app-font-size-l);
+  font-weight: 900;
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

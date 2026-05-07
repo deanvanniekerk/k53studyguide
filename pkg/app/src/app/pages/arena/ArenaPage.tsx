@@ -5,12 +5,12 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
+import { PageHeader, PageHeaderInfoIcon } from "@/app/components";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { RootState } from "@/state";
 import { loadQuestionAnswers, testInProgressSelector } from "@/state/arena/test";
 import { notificationsSelector, recieveRecieveNotificationState } from "@/state/notifications";
 import { ArenaInfoModal } from "./ArenaInfoModal";
-import { ArenaPageHeader } from "./ArenaPageHeader";
 import { ArenaWatermark } from "./ArenaWatermark";
 import { Header } from "./components";
 
@@ -51,7 +51,7 @@ const ArenaPage: React.FC<Props> = (props) => {
           setInfoModalVisible(false);
         }}
       />
-      <ArenaPageHeader onInfoClicked={() => showInfoModal()} />
+      <PageHeader title="arena" page="arena" rightSection={<PageHeaderInfoIcon onClick={() => showInfoModal()} />} />
       <ArenaWatermark />
       <Content>
         <Header onStartTestClicked={onStartTestClicked} />
@@ -65,8 +65,7 @@ const Content = styled(IonContent)`
 `;
 
 const Page = styled(IonPage)`
-  background: #FAFAF7;
-  --page-header-bg: var(--arena-header-gradient);
+  background: var(--app-arena-background);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

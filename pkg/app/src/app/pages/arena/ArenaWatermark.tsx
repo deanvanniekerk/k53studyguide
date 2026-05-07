@@ -4,6 +4,6 @@ import { watermarkStyle } from "@/app/styles";
 
 export const ArenaWatermark = styled(TestPenOutlineIcon)`
   ${watermarkStyle}
-  fill: #000000;
+  fill: var(--app-watermark-fill);
   opacity: 0.06;
 `;
