@@ -1,5 +1,4 @@
-import type { ScrollDetail } from "@ionic/core/components";
-import { IonContent, IonPage } from "@ionic/react";
+import { IonContent, IonPage, type ScrollDetail } from "@ionic/react";
 import type React from "react";
 import { useRef, useState } from "react";
 import { connect } from "react-redux";
