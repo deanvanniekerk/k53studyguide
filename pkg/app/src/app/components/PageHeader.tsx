@@ -4,7 +4,7 @@ import type React from "react";
 import { Translate } from "react-translated";
 import styled from "styled-components";
 
-export type PageSection = "study" | "dojo" | "arena" | "profile";
+export type PageSection = "study" | "quiz" | "test" | "profile";
 
 type Props = {
   title: string;
@@ -17,8 +17,8 @@ type Props = {
 
 const gradients: Record<PageSection, string> = {
   study: "var(--app-study-header-gradient)",
-  dojo: "var(--app-dojo-header-gradient)",
-  arena: "var(--app-arena-header-gradient)",
+  quiz: "var(--app-quiz-header-gradient)",
+  test: "var(--app-test-header-gradient)",
   profile: "var(--app-profile-header-gradient)",
 };
 

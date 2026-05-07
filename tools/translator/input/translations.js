@@ -6,29 +6,29 @@ const translations = {
         zu: "history",
         xh: "history",
     },
-    arenaSuccess: {
+    testSuccess: {
         en: "Congratulations",
-        af: "arenaSuccess",
-        zu: "arenaSuccess",
-        xh: "arenaSuccess",
+        af: "testSuccess",
+        zu: "testSuccess",
+        xh: "testSuccess",
     },
-    arenaFailed: {
+    testFailed: {
         en: "You Died",
-        af: "arenaFailed",
-        zu: "arenaFailed",
-        xh: "arenaFailed",
+        af: "testFailed",
+        zu: "testFailed",
+        xh: "testFailed",
     },
-    arenaSuccessInfo: {
-        en: "You have successfully completed the arena",
-        af: "arenaSuccessInfo",
-        zu: "arenaSuccessInfo",
-        xh: "arenaSuccessInfo",
+    testSuccessInfo: {
+        en: "You have successfully completed the test",
+        af: "testSuccessInfo",
+        zu: "testSuccessInfo",
+        xh: "testSuccessInfo",
     },
-    arenaFailedInfo: {
-        en: "You failed in your attempt to complete the arena, better luck next time...",
-        af: "arenaFailedInfo",
-        zu: "arenaFailedInfo",
-        xh: "arenaFailedInfo",
+    testFailedInfo: {
+        en: "You failed in your attempt to complete the test, better luck next time...",
+        af: "testFailedInfo",
+        zu: "testFailedInfo",
+        xh: "testFailedInfo",
     },
     clearSeenHistory: {
         en: "Clear Seen History",
@@ -36,23 +36,23 @@ const translations = {
         zu: "clearSeenHistory",
         xh: "clearSeenHistory",
     },
-    enterArena: {
-        en: "Enter Arena",
-        af: "enterArena",
-        zu: "enterArena",
-        xh: "enterArena",
+    enterTest: {
+        en: "Enter Test",
+        af: "enterTest",
+        zu: "enterTest",
+        xh: "enterTest",
     },
-    clearDojoHistory: {
-        en: "Clear Dojo History",
-        af: "clearDojoHistory",
-        zu: "clearDojoHistory",
-        xh: "clearDojoHistory",
+    clearQuizHistory: {
+        en: "Clear Quiz History",
+        af: "clearQuizHistory",
+        zu: "clearQuizHistory",
+        xh: "clearQuizHistory",
     },
-    clearArenaHistory: {
-        en: "Clear Arena History",
-        af: "clearArenaHistory",
-        zu: "clearArenaHistory",
-        xh: "clearArenaHistory",
+    clearTestHistory: {
+        en: "Clear Test History",
+        af: "clearTestHistory",
+        zu: "clearTestHistory",
+        xh: "clearTestHistory",
     },
     sectionA: {
         en: "Section A",
@@ -90,15 +90,15 @@ const translations = {
         zu: "Isifundo",
         xh: "Isifundo",
     },
-    dojo: {
-        en: "Dojo",
-        af: "Dojo",
-        zu: "Dojo",
-        xh: "Dojo",
+    quiz: {
+        en: "Quiz",
+        af: "Quiz",
+        zu: "Quiz",
+        xh: "Quiz",
     },
-    arena: {
-        en: "Arena",
-        af: "Arena",
+    test: {
+        en: "Test",
+        af: "Test",
         zu: "Inkundla",
         xh: "Ibala",
     },
@@ -162,25 +162,25 @@ const translations = {
         zu: "Umphumela",
         xh: "Isiphumo",
     },
-    arenaIntro: {
-        en: "Challange yourself in the Arena",
-        af: "arenaIntro",
-        zu: "arenaIntro",
-        xh: "arenaIntro",
+    testIntro: {
+        en: "Challange yourself in the Test",
+        af: "testIntro",
+        zu: "testIntro",
+        xh: "testIntro",
     },
-    arenasCompleted: {
-        en: "Arenas Completed",
-        af: "arenasCompleted",
-        zu: "arenasCompleted",
-        xh: "arenasCompleted",
+    testsCompleted: {
+        en: "Tests Completed",
+        af: "testsCompleted",
+        zu: "testsCompleted",
+        xh: "testsCompleted",
     },
-    dojoIntro: {
-        en: "Train in the Dojo, gain experince and level up",
-        af: "Trein in die Dojo, kry ervaring en vlak",
-        zu: "Qeqesha kuDojo, uthole ukuqonda bese ukhuphuka",
-        xh: "Qeqesha kwiDojo, ufumane uvavanyo kunye nenqanaba eliphezulu",
+    quizIntro: {
+        en: "Train in the Quiz, gain experince and level up",
+        af: "Trein in die Quiz, kry ervaring en vlak",
+        zu: "Qeqesha kuQuiz, uthole ukuqonda bese ukhuphuka",
+        xh: "Qeqesha kwiQuiz, ufumane uvavanyo kunye nenqanaba eliphezulu",
     },
-    dojoLevelUpAfter: {
+    quizLevelUpAfter: {
         en: "Level up after {number} experience points",
         af: "Styg na {number} ondervindingspunte",
         zu: "Izinga up emva {number} amaphuzu amaphuzu",

@@ -9,8 +9,8 @@ import type { ThunkDispatch } from "redux-thunk";
 import styled from "styled-components";
 import { Breadcrumb } from "@/app/components/Breadcrumb";
 import type { RootState } from "@/state";
-import { recieveTargetNavigationKey } from "@/state/dojo/navigation";
-import { loadQuestionAnswers } from "@/state/dojo/test";
+import { recieveTargetNavigationKey } from "@/state/quiz/navigation";
+import { loadQuestionAnswers } from "@/state/quiz/session";
 import { recieveLastSeenParentContentKey } from "@/state/study/log";
 import { currentNavigationKeySelector } from "@/state/study/navigation";
 import { SeenProgress } from "./SeenProgress";
@@ -38,7 +38,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
             aria-label="Start quiz for this section"
             onClick={() => setShowStartQuizAlert(true)}
           >
-            <Translate text="dojo" />
+            <Translate text="quiz" />
           </QuizButton>
         </ProgressPanel>
       </HeaderShell>
@@ -65,7 +65,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
                   dispatch(recieveLastSeenParentContentKey(props.currentNavigationKey));
                   dispatch(recieveTargetNavigationKey(props.currentNavigationKey));
                   dispatch(loadQuestionAnswers());
-                  history.push(`/test-dojo`);
+                  history.push(`/quiz/session`);
                 },
               },
             ]}
@@ -113,9 +113,9 @@ const ProgressPanel = styled.div`
 `;
 
 const QuizButton = styled(IonButton)`
-  --background: var(--app-dojo-action-background);
-  --background-activated: var(--app-dojo-action-background);
-  --background-hover: var(--app-dojo-action-background);
+  --background: var(--app-quiz-action-background);
+  --background-activated: var(--app-quiz-action-background);
+  --background-hover: var(--app-quiz-action-background);
   --border-radius: 18px;
   --box-shadow: none;
   --padding-end: 14px;

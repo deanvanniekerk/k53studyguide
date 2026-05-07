@@ -1,15 +1,16 @@
 import { combineReducers } from "redux";
 import { type PersistConfig, persistReducer } from "redux-persist";
 import { createStorage } from "@/store/store";
-import { reducer as arena } from "./arena";
 import { reducer as content } from "./content";
-import { reducer as dojo } from "./dojo";
+import { migrateLegacyNotifications } from "./legacyCompatibility";
 import { reducer as navigation } from "./navigation";
 import { type NotificationsState, reducer as notifications } from "./notifications";
 import { type PurchaseState, reducer as purchase } from "./purchase";
 import { reducer as questions } from "./questions";
+import { reducer as quiz } from "./quiz";
 import { type SettingsState, reducer as settings } from "./settings";
 import { reducer as study } from "./study";
+import { reducer as test } from "./test";
 import { reducer as translations } from "./translations";
 
 const settingsConfig: PersistConfig<SettingsState> = {
@@ -25,6 +26,7 @@ const purchaseConfig: PersistConfig<PurchaseState> = {
 const notificationConfig: PersistConfig<NotificationsState> = {
   key: "notifications",
   storage: createStorage(),
+  migrate: migrateLegacyNotifications,
 };
 
 const rootReducer = combineReducers({
@@ -33,8 +35,8 @@ const rootReducer = combineReducers({
   navigation: navigation,
   content: content,
   questions: questions,
-  dojo: dojo,
-  arena: arena,
+  quiz: quiz,
+  test: test,
   settings: persistReducer(settingsConfig, settings),
   purchase: persistReducer(purchaseConfig, purchase),
   notifications: persistReducer(notificationConfig, notifications),

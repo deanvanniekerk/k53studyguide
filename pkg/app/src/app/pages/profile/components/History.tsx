@@ -6,13 +6,13 @@ import { Translate, Translator } from "react-translated";
 import { bindActionCreators, type Dispatch } from "redux";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { RootState } from "@/state";
-import {
-  clearQuesionSuccesfullyAnsweredDates as clearArenaQuesionSuccesfullyAnsweredDates,
-  clearPassedTests,
-} from "@/state/arena/log";
-import { clearQuesionSuccesfullyAnsweredDates as clearDojoQuesionSuccesfullyAnsweredDates } from "@/state/dojo/log";
 import { ownedSelector } from "@/state/purchase";
+import { clearQuesionSuccesfullyAnsweredDates as clearQuizQuesionSuccesfullyAnsweredDates } from "@/state/quiz/log";
 import { clearSeenContent } from "@/state/study/log";
+import {
+  clearPassedTests,
+  clearQuesionSuccesfullyAnsweredDates as clearTestQuesionSuccesfullyAnsweredDates,
+} from "@/state/test/log";
 import { GroupCard, Row, Section, SectionTitle } from "./";
 
 type Props = PropsFromState & PropsFromDispatch;
@@ -21,8 +21,8 @@ const HistoryComponent: React.FC<Props> = (props) => {
   const { logEvent } = useAnalytics();
 
   const [showClearSeenHistory, setShowClearSeenHistory] = useState(false);
-  const [showClearDojoHistory, setShowClearDojoHistory] = useState(false);
-  const [showClearArenaHistory, setShowClearArenaHistory] = useState(false);
+  const [showClearQuizHistory, setShowClearQuizHistory] = useState(false);
+  const [showClearTestHistory, setShowClearTestHistory] = useState(false);
 
   const [showFullAccessAlert, setShowFullAccessAlert] = useState(false);
 
@@ -51,16 +51,16 @@ const HistoryComponent: React.FC<Props> = (props) => {
                   onClick={() => (checkFullAccess() ? setShowClearSeenHistory(true) : undefined)}
                 />
                 <Row
-                  name={translate({ text: "clearDojoHistory" })}
+                  name={translate({ text: "clearQuizHistory" })}
                   value={<IonIcon icon={trashBinOutline} />}
                   action
-                  onClick={() => (checkFullAccess() ? setShowClearDojoHistory(true) : undefined)}
+                  onClick={() => (checkFullAccess() ? setShowClearQuizHistory(true) : undefined)}
                 />
                 <Row
-                  name={translate({ text: "clearArenaHistory" })}
+                  name={translate({ text: "clearTestHistory" })}
                   value={<IonIcon icon={trashBinOutline} />}
                   action
-                  onClick={() => (checkFullAccess() ? setShowClearArenaHistory(true) : undefined)}
+                  onClick={() => (checkFullAccess() ? setShowClearTestHistory(true) : undefined)}
                 />
               </React.Fragment>
             )}
@@ -88,9 +88,9 @@ const HistoryComponent: React.FC<Props> = (props) => {
               ]}
             />
             <IonAlert
-              isOpen={showClearDojoHistory}
-              onDidDismiss={() => setShowClearDojoHistory(false)}
-              message={translate({ text: "historyCleanDojoConfirm" })}
+              isOpen={showClearQuizHistory}
+              onDidDismiss={() => setShowClearQuizHistory(false)}
+              message={translate({ text: "historyCleanQuizConfirm" })}
               buttons={[
                 {
                   text: translate({ text: "no" }),
@@ -98,16 +98,16 @@ const HistoryComponent: React.FC<Props> = (props) => {
                 {
                   text: translate({ text: "yes" }),
                   handler: () => {
-                    logEvent("CLEAR_HISTORY", { type: "dojo" });
-                    props.clearDojoQuesionSuccesfullyAnsweredDates();
+                    logEvent("CLEAR_HISTORY", { type: "quiz" });
+                    props.clearQuizQuesionSuccesfullyAnsweredDates();
                   },
                 },
               ]}
             />
             <IonAlert
-              isOpen={showClearArenaHistory}
-              onDidDismiss={() => setShowClearArenaHistory(false)}
-              message={translate({ text: "historyCleanArenaConfirm" })}
+              isOpen={showClearTestHistory}
+              onDidDismiss={() => setShowClearTestHistory(false)}
+              message={translate({ text: "historyCleanTestConfirm" })}
               buttons={[
                 {
                   text: translate({ text: "no" }),
@@ -115,8 +115,8 @@ const HistoryComponent: React.FC<Props> = (props) => {
                 {
                   text: translate({ text: "yes" }),
                   handler: () => {
-                    logEvent("CLEAR_HISTORY", { type: "arena" });
-                    props.clearArenaQuesionSuccesfullyAnsweredDates();
+                    logEvent("CLEAR_HISTORY", { type: "test" });
+                    props.clearTestQuesionSuccesfullyAnsweredDates();
                     props.clearPassedTests();
                   },
                 },
@@ -149,8 +149,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     ...bindActionCreators(
       {
         clearPassedTests,
-        clearArenaQuesionSuccesfullyAnsweredDates,
-        clearDojoQuesionSuccesfullyAnsweredDates,
+        clearTestQuesionSuccesfullyAnsweredDates,
+        clearQuizQuesionSuccesfullyAnsweredDates,
         clearSeenContent,
       },
       dispatch,

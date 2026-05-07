@@ -1,4 +1,4 @@
-export type NotificationName = "studyInfo" | "dojoInfo" | "arenaInfo";
+export type NotificationName = "studyInfo" | "quizInfo" | "testInfo";
 
 export type NotificationState = {
   seen: boolean;

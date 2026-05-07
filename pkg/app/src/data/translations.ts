@@ -22,7 +22,7 @@ const translations: Translations = {
   checklistReachLevel: {
     en: "Reach Level 5 in the Quiz",
   },
-  checklistCompleteArena: {
+  checklistCompleteTest: {
     en: "Pass 3 Tests",
   },
   levelNumber: {
@@ -79,25 +79,25 @@ const translations: Translations = {
   rateAppRequest: {
     en: "Please show your support by rating our app, any feedback would be much appreciated",
   },
-  accessTheArena: {
+  accessTheTest: {
     en: "Access the Test",
   },
-  accessTheArenaInfo: {
+  accessTheTestInfo: {
     en: "Write tests that are structured and marked like the real one",
   },
-  arenaLockedTitle: {
+  testLockedTitle: {
     en: "Unlock the real test experience",
   },
-  arenaLockedInfo: {
+  testLockedInfo: {
     en: "Practise with a full K53-style test, build confidence, and know when you are ready for the real thing.",
   },
-  arenaLockedBenefitStructure: {
+  testLockedBenefitStructure: {
     en: "Real K53-style test structure",
   },
-  arenaLockedBenefitScoring: {
+  testLockedBenefitScoring: {
     en: "Section scoring shows where you are ready",
   },
-  arenaLockedBenefitMastery: {
+  testLockedBenefitMastery: {
     en: "Track progress toward passing 3 tests",
   },
   resetYourHistory: {
@@ -139,10 +139,10 @@ const translations: Translations = {
   historyCleanSeenConfirm: {
     en: "Are you sure you want to clear all seen Study material history?",
   },
-  historyCleanDojoConfirm: {
+  historyCleanQuizConfirm: {
     en: "Are you sure you want to clear all Quiz history?",
   },
-  historyCleanArenaConfirm: {
+  historyCleanTestConfirm: {
     en: "Are you sure you want to clear all Test history?",
   },
   historyPurchaseFullAccess: {
@@ -160,28 +160,28 @@ const translations: Translations = {
   no: {
     en: "No",
   },
-  arenaSuccess: {
+  testSuccess: {
     en: "Congratulations",
   },
-  arenaFailed: {
+  testFailed: {
     en: "You Failed",
   },
-  arenaSuccessInfo: {
+  testSuccessInfo: {
     en: "You have successfully passed the Test",
   },
-  arenaFailedInfo: {
+  testFailedInfo: {
     en: "You failed in your attempt to pass the test, better luck next time...",
   },
   clearSeenHistory: {
     en: "Clear Seen History",
   },
-  enterArena: {
+  enterTest: {
     en: "Start Test",
   },
-  clearDojoHistory: {
+  clearQuizHistory: {
     en: "Clear Quiz History",
   },
-  clearArenaHistory: {
+  clearTestHistory: {
     en: "Clear Test History",
   },
   sectionA: {
@@ -202,10 +202,10 @@ const translations: Translations = {
   study: {
     en: "Study",
   },
-  dojo: {
+  quiz: {
     en: "Quiz",
   },
-  arena: {
+  test: {
     en: "Test",
   },
   profile: {
@@ -226,9 +226,6 @@ const translations: Translations = {
   question: {
     en: "Question",
   },
-  test: {
-    en: "Test",
-  },
   allContent: {
     en: "All Content",
   },
@@ -247,19 +244,19 @@ const translations: Translations = {
   result: {
     en: "Result",
   },
-  arenaIntro: {
+  testIntro: {
     en: "Challange yourself in the mock Test",
   },
-  arenasCompleted: {
+  testsCompleted: {
     en: "Tests Passed",
   },
-  dojoIntro: {
+  quizIntro: {
     en: "Practise by completing quizzes, gain experince and level up",
   },
-  dojoLevelUpAfter: {
+  quizLevelUpAfter: {
     en: "Level up after {number} more quiz points",
   },
-  dojoLevelUpAfterShort: {
+  quizLevelUpAfterShort: {
     en: "{number} pts to Level {level}",
   },
   maxLevel: {

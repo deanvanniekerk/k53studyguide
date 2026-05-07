@@ -114,10 +114,10 @@ const PurchaseModal: React.FC<Props> = (props) => {
                 </BenefitIcon>
                 <BenefitCopy>
                   <BenefitTitle>
-                    <Translate text="accessTheArena" />
+                    <Translate text="accessTheTest" />
                   </BenefitTitle>
                   <BenefitText>
-                    <Translate text="accessTheArenaInfo" />
+                    <Translate text="accessTheTestInfo" />
                   </BenefitText>
                 </BenefitCopy>
               </Benefit>
@@ -246,7 +246,7 @@ const BenefitIcon = styled.div`
   place-items: center;
   border-radius: 18px;
   background: var(--app-premium-benefit-background);
-  color: var(--app-arena-accent);
+  color: var(--app-test-accent);
 
   svg {
     width: 30px;
@@ -280,7 +280,7 @@ const PriceCard = styled.div`
   border: var(--app-card-border);
   border-radius: 24px;
   background: var(--app-premium-panel-background);
-  box-shadow: var(--app-card-shadow), var(--app-arena-action-shadow);
+  box-shadow: var(--app-card-shadow), var(--app-test-action-shadow);
   text-align: center;
 `;
 
@@ -298,11 +298,11 @@ const PurchaseButton = styled(IonButton)`
   margin: 20px 0 0;
   font-size: var(--app-font-size-l);
   font-weight: 900;
-  --background: var(--app-arena-action-background);
-  --background-hover: var(--app-arena-action-background);
-  --background-activated: var(--app-arena-action-background);
+  --background: var(--app-test-action-background);
+  --background-hover: var(--app-test-action-background);
+  --background-activated: var(--app-test-action-background);
   --border-radius: 20px;
-  --box-shadow: var(--app-arena-action-shadow);
+  --box-shadow: var(--app-test-action-shadow);
 `;
 
 const Modal = styled(IonModal)`

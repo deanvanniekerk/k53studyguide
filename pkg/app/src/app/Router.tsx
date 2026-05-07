@@ -8,16 +8,17 @@ import { BookIcon, QuizIcon, SettingsIcon, TestPenIcon } from "@/app/components/
 import { translations } from "@/data";
 import type { RootState } from "@/state";
 import { languageSelector } from "@/state/settings";
-import ArenaPage from "./pages/arena/ArenaPage";
-import ArenaTestResultPage from "./pages/arena/results/TestResultPage";
-import ArenaTestPage from "./pages/arena/test/TestPage";
+import { legacyRouteRedirects } from "./legacyCompatibility";
 import ContentPage from "./pages/content/ContentPage";
-import DojoPage from "./pages/dojo/DojoPage";
-import TestNavigatorPage from "./pages/dojo/navigator/TestNavigatorPage";
-import DojoTestResultPage from "./pages/dojo/results/TestResultPage";
-import DojoTestPage from "./pages/dojo/test/TestPage";
 import ProfilePage from "./pages/profile/ProfilePage";
+import QuizNavigatorPage from "./pages/quiz/navigator/TestNavigatorPage";
+import QuizPage from "./pages/quiz/QuizPage";
+import QuizResultPage from "./pages/quiz/results/TestResultPage";
+import QuizSessionPage from "./pages/quiz/session/TestPage";
 import StudyPage from "./pages/study/StudyPage";
+import TestResultPage from "./pages/test/results/TestResultPage";
+import TestSessionPage from "./pages/test/session/TestPage";
+import TestPage from "./pages/test/TestPage";
 
 type Props = PropsFromState;
 
@@ -37,15 +38,15 @@ const tabAccentStyles = {
     "--app-tab-accent-rgb": "var(--app-progress-foreground-rgb)",
     "--app-tab-selected-background": "var(--app-study-primary-gradient)",
   },
-  dojo: {
+  quiz: {
     "--app-tab-accent": "var(--ion-color-tertiary)",
     "--app-tab-accent-rgb": "var(--ion-color-tertiary-rgb)",
-    "--app-tab-selected-background": "var(--app-dojo-primary-gradient)",
+    "--app-tab-selected-background": "var(--app-quiz-primary-gradient)",
   },
-  arena: {
-    "--app-tab-accent": "var(--app-arena-accent)",
-    "--app-tab-accent-rgb": "var(--app-arena-accent-rgb)",
-    "--app-tab-selected-background": "var(--app-arena-primary-gradient)",
+  test: {
+    "--app-tab-accent": "var(--app-test-accent)",
+    "--app-tab-accent-rgb": "var(--app-test-accent-rgb)",
+    "--app-tab-selected-background": "var(--app-test-primary-gradient)",
   },
   profile: {
     "--app-tab-accent": "var(--ion-color-success)",
@@ -56,8 +57,8 @@ const tabAccentStyles = {
 
 const tabPathGroups = {
   study: ["/study", "/content"],
-  dojo: ["/dojo", "/test-dojo", "/test-result-dojo", "/navigator-dojo"],
-  arena: ["/arena", "/test-arena", "/test-result-arena"],
+  quiz: ["/quiz", "/quiz/session", "/quiz/results", "/quiz/navigator"],
+  test: ["/test", "/test/session", "/test/results"],
   profile: ["/profile"],
 } satisfies Record<string, string[]>;
 
@@ -72,14 +73,17 @@ const AppTabs: React.FC = () => {
       <IonRouterOutlet>
         <Route exact path="/study" component={StudyPage} />
         <Route exact path="/content" component={ContentPage} />
-        <Route exact path="/dojo" component={DojoPage} />
-        <Route exact path="/test-dojo" component={DojoTestPage} />
-        <Route exact path="/test-result-dojo" component={DojoTestResultPage} />
-        <Route exact path="/navigator-dojo" component={TestNavigatorPage} />
-        <Route exact path="/test-arena" component={ArenaTestPage} />
-        <Route exact path="/test-result-arena" component={ArenaTestResultPage} />
-        <Route exact path="/arena" component={ArenaPage} />
+        <Route exact path="/quiz" component={QuizPage} />
+        <Route exact path="/quiz/session" component={QuizSessionPage} />
+        <Route exact path="/quiz/results" component={QuizResultPage} />
+        <Route exact path="/quiz/navigator" component={QuizNavigatorPage} />
+        <Route exact path="/test/session" component={TestSessionPage} />
+        <Route exact path="/test/results" component={TestResultPage} />
+        <Route exact path="/test" component={TestPage} />
         <Route exact path="/profile" component={ProfilePage} />
+        {legacyRouteRedirects.map((route) => (
+          <Route exact key={route.from} path={route.from} render={() => <Redirect to={route.to} />} />
+        ))}
         <Route exact path="/" render={() => <Redirect to="/study" />} />
       </IonRouterOutlet>
       <IonTabBar selectedTab={activeTab} slot="bottom">
@@ -89,14 +93,14 @@ const AppTabs: React.FC = () => {
             <IonLabel>Study</IonLabel>
           </span>
         </IonTabButton>
-        <IonTabButton tab="dojo" href="/dojo" style={tabAccentStyles.dojo}>
-          <span className={tabPillClassName("dojo")}>
+        <IonTabButton tab="quiz" href="/quiz" style={tabAccentStyles.quiz}>
+          <span className={tabPillClassName("quiz")}>
             <QuizIcon style={iconStyles} />
             <IonLabel>Quiz</IonLabel>
           </span>
         </IonTabButton>
-        <IonTabButton tab="arena" href="/arena" style={tabAccentStyles.arena}>
-          <span className={tabPillClassName("arena")}>
+        <IonTabButton tab="test" href="/test" style={tabAccentStyles.test}>
+          <span className={tabPillClassName("test")}>
             <TestPenIcon style={iconStyles} />
             <IonLabel>Test</IonLabel>
           </span>

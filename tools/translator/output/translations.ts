@@ -5,29 +5,29 @@ const translations: Translations = {
     "history": {
         "en": "History"
     },
-    "arenaSuccess": {
+    "testSuccess": {
         "en": "Congratulations"
     },
-    "arenaFailed": {
+    "testFailed": {
         "en": "You Died"
     },
-    "arenaSuccessInfo": {
-        "en": "You have successfully completed the arena"
+    "testSuccessInfo": {
+        "en": "You have successfully completed the test"
     },
-    "arenaFailedInfo": {
-        "en": "You failed in your attempt to complete the arena, better luck next time..."
+    "testFailedInfo": {
+        "en": "You failed in your attempt to complete the test, better luck next time..."
     },
     "clearSeenHistory": {
         "en": "Clear Seen History"
     },
-    "enterArena": {
-        "en": "Enter Arena"
+    "enterTest": {
+        "en": "Enter Test"
     },
-    "clearDojoHistory": {
-        "en": "Clear Dojo History"
+    "clearQuizHistory": {
+        "en": "Clear Quiz History"
     },
-    "clearArenaHistory": {
-        "en": "Clear Arena History"
+    "clearTestHistory": {
+        "en": "Clear Test History"
     },
     "sectionA": {
         "en": "Section A"
@@ -47,11 +47,11 @@ const translations: Translations = {
     "study": {
         "en": "Study"
     },
-    "dojo": {
-        "en": "Dojo"
+    "quiz": {
+        "en": "Quiz"
     },
-    "arena": {
-        "en": "Arena"
+    "test": {
+        "en": "Test"
     },
     "profile": {
         "en": "Profile"
@@ -83,16 +83,16 @@ const translations: Translations = {
     "result": {
         "en": "Result"
     },
-    "arenaIntro": {
-        "en": "Challange yourself in the Arena"
+    "testIntro": {
+        "en": "Challange yourself in the Test"
     },
-    "arenasCompleted": {
-        "en": "Arenas Completed"
+    "testsCompleted": {
+        "en": "Tests Completed"
     },
-    "dojoIntro": {
-        "en": "Train in the Dojo, gain experince and level up"
+    "quizIntro": {
+        "en": "Train in the Quiz, gain experince and level up"
     },
-    "dojoLevelUpAfter": {
+    "quizLevelUpAfter": {
         "en": "Level up after {number} experience points"
     },
     "numberExperienceGained": {

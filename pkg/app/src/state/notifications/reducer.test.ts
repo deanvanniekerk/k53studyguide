@@ -6,10 +6,10 @@ describe("state > notifications > reducer", () => {
       studyInfo: {
         seen: false,
       },
-      dojoInfo: {
+      quizInfo: {
         seen: false,
       },
-      arenaInfo: {
+      testInfo: {
         seen: false,
       },
     },

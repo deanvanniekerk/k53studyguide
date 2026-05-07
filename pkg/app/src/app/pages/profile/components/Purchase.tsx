@@ -31,7 +31,7 @@ const PurchaseComponent: React.FC<Props> = (props) => {
               <Translate text="premiumPackageRequired" />
             </PremiumTitle>
             <PremiumText>
-              <Translate text="accessTheArenaInfo" />
+              <Translate text="accessTheTestInfo" />
             </PremiumText>
           </PremiumCopy>
           <PremiumButtonWrap>

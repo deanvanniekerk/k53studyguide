@@ -1,12 +1,22 @@
 import { Preferences } from "@capacitor/preferences";
 
-const createStorage = () => {
+type StorageOptions = {
+  legacyKey?: string;
+};
+
+const createStorage = (options: StorageOptions = {}) => {
   return {
     getItem: (key: string): Promise<string | null> => {
       return new Promise((resolve) => {
         (async () => {
           const { value } = await Preferences.get({ key: key });
-          resolve(value);
+          if (value || !options.legacyKey) {
+            resolve(value);
+            return;
+          }
+
+          const legacy = await Preferences.get({ key: options.legacyKey });
+          resolve(legacy.value);
         })();
       });
     },

@@ -1,0 +1,110 @@
+import { createSelector, type Selector } from "reselect";
+import type { RootState } from "@/state/rootReducer";
+
+type OutputSelector<State, Result, Combiner> = Selector<State, Result> & {
+  resultFunc: Combiner;
+};
+
+import type { QuestionAnswer, TestResults } from "./";
+import type { TestState } from "./reducer";
+import type { TestResult, TestSection } from "./types";
+
+const rootSelector: Selector<RootState, TestState> = (state: RootState): TestState => state.test.session;
+
+export const questionAnswersSelector: OutputSelector<
+  RootState,
+  QuestionAnswer[],
+  (state: TestState) => QuestionAnswer[]
+> = createSelector(rootSelector, (root) => root.questionAnswers);
+
+export const totalQuestionsSelector: OutputSelector<RootState, number, (questionAnswers: QuestionAnswer[]) => number> =
+  createSelector(questionAnswersSelector, (questionAnswers) => questionAnswers.length);
+
+export const allQuestionsAnsweredSelector: OutputSelector<
+  RootState,
+  boolean,
+  (questionAnswers: QuestionAnswer[]) => boolean
+> = createSelector(questionAnswersSelector, (questionAnswers) => {
+  return !questionAnswers.some((q) => !q.answer);
+});
+
+export const totalCorrectAnswersSelector: OutputSelector<
+  RootState,
+  number,
+  (questionAnswers: QuestionAnswer[]) => number
+> = createSelector(
+  questionAnswersSelector,
+  (questionAnswers) => questionAnswers.filter((qa) => qa.answer === qa.question.answer).length,
+);
+
+export const testInProgressSelector: OutputSelector<RootState, boolean, (totalQuestions: number) => boolean> =
+  createSelector(totalQuestionsSelector, (totalQuestions) => totalQuestions > 0);
+
+export const testResultsSelector: OutputSelector<
+  RootState,
+  TestResults,
+  (questionAnswers: QuestionAnswer[]) => TestResults
+> = createSelector(questionAnswersSelector, (questionAnswers) => {
+  let qas = questionAnswers.filter((q) => q.section === "A");
+  const sectionAResult: TestResult = {
+    minimumPass: 7,
+    total: qas.length,
+    answered: qas.filter((q) => q.answer !== null).length,
+    correct: qas.filter((q) => q.answer === q.question.answer).length,
+  };
+
+  qas = questionAnswers.filter((q) => q.section === "B");
+  const sectionBResult: TestResult = {
+    minimumPass: 23,
+    total: qas.length,
+    answered: qas.filter((q) => q.answer !== null).length,
+    correct: qas.filter((q) => q.answer === q.question.answer).length,
+  };
+
+  qas = questionAnswers.filter((q) => q.section === "C");
+  const sectionCResult: TestResult = {
+    minimumPass: 24,
+    total: qas.length,
+    answered: qas.filter((q) => q.answer !== null).length,
+    correct: qas.filter((q) => q.answer === q.question.answer).length,
+  };
+
+  const results: TestResults = {
+    A: sectionAResult,
+    B: sectionBResult,
+    C: sectionCResult,
+  };
+
+  return results;
+});
+
+export const currentSectionSelector: OutputSelector<RootState, TestSection, (state: TestState) => TestSection> =
+  createSelector(rootSelector, (root) => root.currentSection);
+
+export const currentSectionQuestionsSelector: OutputSelector<
+  RootState,
+  QuestionAnswer[],
+  (questionAnswers: QuestionAnswer[], currentSection: TestSection) => QuestionAnswer[]
+> = createSelector(questionAnswersSelector, currentSectionSelector, (questionAnswers, currentSection) => {
+  return questionAnswers.filter((q) => q.section === currentSection);
+});
+
+export const sectionAPassedSelector: OutputSelector<RootState, boolean, (testResults: TestResults) => boolean> =
+  createSelector(testResultsSelector, (testResults) => testResults.A.correct >= testResults.A.minimumPass);
+
+export const sectionBPassedSelector: OutputSelector<RootState, boolean, (testResults: TestResults) => boolean> =
+  createSelector(testResultsSelector, (testResults) => testResults.B.correct >= testResults.B.minimumPass);
+
+export const sectionCPassedSelector: OutputSelector<RootState, boolean, (testResults: TestResults) => boolean> =
+  createSelector(testResultsSelector, (testResults) => testResults.C.correct >= testResults.C.minimumPass);
+
+export const passedSelector: OutputSelector<
+  RootState,
+  boolean,
+  (sectionAPassed: boolean, sectionBPassed: boolean, sectionCPassed: boolean) => boolean
+> = createSelector(
+  sectionAPassedSelector,
+  sectionBPassedSelector,
+  sectionCPassedSelector,
+  (sectionAPassed, sectionBPassed, sectionCPassed) => sectionAPassed && sectionBPassed && sectionCPassed,
+);

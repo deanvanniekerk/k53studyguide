@@ -5,11 +5,11 @@ const translations = {
     study: {
         en: "Study",
     },
-    dojo: {
-        en: "Dojo",
+    quiz: {
+        en: "Quiz",
     },
-    arena: {
-        en: "Arena",
+    test: {
+        en: "Test",
     },
     profile: {
         en: "Profile",

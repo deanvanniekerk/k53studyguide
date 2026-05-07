@@ -63,23 +63,23 @@
 
   /* Page backgrounds */
   --app-study-background: #fafaf7;
-  --app-dojo-background: #fafaf7;
-  --app-arena-background: #fafaf7;
+  --app-quiz-background: #fafaf7;
+  --app-test-background: #fafaf7;
   --app-profile-background: #fafaf7;
   --app-purchase-background: #fafaf7;
 
   /* Section gradients */
   --app-study-header-gradient: linear-gradient(135deg, #4a3fb8 0%, #2e7bd6 50%, #2bb5a8 100%);
-  --app-dojo-header-gradient: linear-gradient(135deg, #b53a8c 0%, #e8456e 50%, #ff8c42 100%);
-  --app-arena-header-gradient: linear-gradient(135deg, #2a2470 0%, #4a3fb8 50%, #1f5dbe 100%);
+  --app-quiz-header-gradient: linear-gradient(135deg, #b53a8c 0%, #e8456e 50%, #ff8c42 100%);
+  --app-test-header-gradient: linear-gradient(135deg, #2a2470 0%, #4a3fb8 50%, #1f5dbe 100%);
   --app-profile-header-gradient: linear-gradient(135deg, #007e6c 0%, #2bbf8a 55%, #ffca3a 100%);
   --app-study-action-gradient: linear-gradient(315deg, #4a3fb8 0%, #2e7bd6 50%, #2bb5a8 100%);
-  --app-dojo-action-gradient: linear-gradient(315deg, #b53a8c 0%, #e8456e 50%, #ff8c42 100%);
-  --app-arena-action-gradient: linear-gradient(315deg, #2a2470 0%, #4a3fb8 50%, #1f5dbe 100%);
+  --app-quiz-action-gradient: linear-gradient(315deg, #b53a8c 0%, #e8456e 50%, #ff8c42 100%);
+  --app-test-action-gradient: linear-gradient(315deg, #2a2470 0%, #4a3fb8 50%, #1f5dbe 100%);
   --app-profile-action-gradient: linear-gradient(315deg, #007e6c 0%, #2bbf8a 55%, #ffca3a 100%);
   --app-study-primary-gradient: var(--app-study-header-gradient);
-  --app-dojo-primary-gradient: var(--app-dojo-header-gradient);
-  --app-arena-primary-gradient: var(--app-arena-header-gradient);
+  --app-quiz-primary-gradient: var(--app-quiz-header-gradient);
+  --app-test-primary-gradient: var(--app-test-header-gradient);
   --app-profile-primary-gradient: var(--app-profile-header-gradient);
 
   /* Study */
@@ -99,31 +99,31 @@
   --app-study-section-signs: #ffdb70;
   --app-study-section-signs-rgb: 255, 219, 112;
 
-  /* Dojo */
-  --app-dojo-action-background: var(--app-dojo-action-gradient);
-  --app-dojo-action-shadow: 0 12px 20px rgba(var(--app-progress-foreground-rgb), 0.18);
-  --app-dojo-level-card-background: var(--app-card-background);
-  --app-dojo-level-card-border-color: #eeecf8;
-  --app-dojo-level-card-border: 2px solid var(--app-dojo-level-card-border-color);
-  --app-dojo-level-card-shadow: 0 2px 0 var(--app-dojo-level-card-border-color);
-  --app-dojo-level-card-text: var(--app-text-primary);
-  --app-dojo-level-badge-text: var(--ion-color-light);
-  --app-dojo-level-badge-icon: #ffd43b;
-  --app-dojo-level-star-inactive: #d9d7eb;
-  --app-dojo-level-progress-track: #ebe9f7;
+  /* Quiz */
+  --app-quiz-action-background: var(--app-quiz-action-gradient);
+  --app-quiz-action-shadow: 0 12px 20px rgba(var(--app-progress-foreground-rgb), 0.18);
+  --app-quiz-level-card-background: var(--app-card-background);
+  --app-quiz-level-card-border-color: #eeecf8;
+  --app-quiz-level-card-border: 2px solid var(--app-quiz-level-card-border-color);
+  --app-quiz-level-card-shadow: 0 2px 0 var(--app-quiz-level-card-border-color);
+  --app-quiz-level-card-text: var(--app-text-primary);
+  --app-quiz-level-badge-text: var(--ion-color-light);
+  --app-quiz-level-badge-icon: #ffd43b;
+  --app-quiz-level-star-inactive: #d9d7eb;
+  --app-quiz-level-progress-track: #ebe9f7;
 
-  /* Arena and premium */
-  --app-arena-accent: #4a3fb8;
-  --app-arena-accent-rgb: 74, 63, 184;
-  --app-arena-illustration-background: #fff1cf;
-  --app-arena-illustration-border: #f4e3b1;
-  --app-arena-action-background: var(--app-arena-action-gradient);
-  --app-arena-action-shadow: 0 18px 28px rgba(var(--app-arena-accent-rgb), 0.24);
-  --app-arena-muted-surface: rgba(var(--app-arena-accent-rgb), 0.08);
+  /* Test and premium */
+  --app-test-accent: #4a3fb8;
+  --app-test-accent-rgb: 74, 63, 184;
+  --app-test-illustration-background: #fff1cf;
+  --app-test-illustration-border: #f4e3b1;
+  --app-test-action-background: var(--app-test-action-gradient);
+  --app-test-action-shadow: 0 18px 28px rgba(var(--app-test-accent-rgb), 0.24);
+  --app-test-muted-surface: rgba(var(--app-test-accent-rgb), 0.08);
   --app-premium-panel-background: #ffffff;
-  --app-premium-benefit-background: rgba(var(--app-arena-accent-rgb), 0.08);
-  --app-premium-badge-background: rgba(var(--app-arena-accent-rgb), 0.12);
-  --app-premium-hero-background: var(--app-arena-header-gradient);
+  --app-premium-benefit-background: rgba(var(--app-test-accent-rgb), 0.08);
+  --app-premium-badge-background: rgba(var(--app-test-accent-rgb), 0.12);
+  --app-premium-hero-background: var(--app-test-header-gradient);
 
   /* Profile */
   --app-profile-action-background: var(--app-profile-action-gradient);
@@ -242,8 +242,8 @@
 
   /* Page backgrounds */
   --app-study-background: #13121f;
-  --app-dojo-background: #13121f;
-  --app-arena-background: #13121f;
+  --app-quiz-background: #13121f;
+  --app-test-background: #13121f;
   --app-profile-background: #13121f;
   --app-purchase-background: #13121f;
 
@@ -264,28 +264,28 @@
   --app-study-section-signs: #ffd15c;
   --app-study-section-signs-rgb: 255, 209, 92; */
 
-  /* Dojo */
-  --app-dojo-action-shadow: 0 12px 20px rgba(var(--app-progress-foreground-rgb), 0.22);
-  --app-dojo-level-card-background: var(--app-card-background);
-  --app-dojo-level-card-border-color: #34324d;
-  --app-dojo-level-card-border: 2px solid var(--app-dojo-level-card-border-color);
-  --app-dojo-level-card-shadow: 0 2px 0 var(--app-dojo-level-card-border-color);
-  --app-dojo-level-card-text: var(--app-text-primary);
-  --app-dojo-level-badge-text: var(--ion-color-light);
-  --app-dojo-level-badge-icon: #ffdb70;
-  --app-dojo-level-star-inactive: #5a5676;
-  --app-dojo-level-progress-track: #2d2a43;
+  /* Quiz */
+  --app-quiz-action-shadow: 0 12px 20px rgba(var(--app-progress-foreground-rgb), 0.22);
+  --app-quiz-level-card-background: var(--app-card-background);
+  --app-quiz-level-card-border-color: #34324d;
+  --app-quiz-level-card-border: 2px solid var(--app-quiz-level-card-border-color);
+  --app-quiz-level-card-shadow: 0 2px 0 var(--app-quiz-level-card-border-color);
+  --app-quiz-level-card-text: var(--app-text-primary);
+  --app-quiz-level-badge-text: var(--ion-color-light);
+  --app-quiz-level-badge-icon: #ffdb70;
+  --app-quiz-level-star-inactive: #5a5676;
+  --app-quiz-level-progress-track: #2d2a43;
 
-  /* Arena and premium */
-  --app-arena-accent: #7b5cf7;
-  --app-arena-accent-rgb: 123, 92, 247;
-  --app-arena-illustration-background: rgba(var(--app-arena-accent-rgb), 0.16);
-  --app-arena-illustration-border: rgba(var(--app-arena-accent-rgb), 0.28);
-  --app-arena-action-shadow: 0 18px 28px rgba(var(--app-arena-accent-rgb), 0.3);
-  --app-arena-muted-surface: rgba(var(--app-arena-accent-rgb), 0.14);
+  /* Test and premium */
+  --app-test-accent: #7b5cf7;
+  --app-test-accent-rgb: 123, 92, 247;
+  --app-test-illustration-background: rgba(var(--app-test-accent-rgb), 0.16);
+  --app-test-illustration-border: rgba(var(--app-test-accent-rgb), 0.28);
+  --app-test-action-shadow: 0 18px 28px rgba(var(--app-test-accent-rgb), 0.3);
+  --app-test-muted-surface: rgba(var(--app-test-accent-rgb), 0.14);
   --app-premium-panel-background: #1e1d2d;
-  --app-premium-benefit-background: rgba(var(--app-arena-accent-rgb), 0.14);
-  --app-premium-badge-background: rgba(var(--app-arena-accent-rgb), 0.18);
+  --app-premium-benefit-background: rgba(var(--app-test-accent-rgb), 0.14);
+  --app-premium-badge-background: rgba(var(--app-test-accent-rgb), 0.18);
 
   /* Profile */
   --app-profile-action-shadow: 0 12px 20px rgba(var(--ion-color-primary-rgb), 0.2);
@@ -300,8 +300,8 @@
   --app-profile-status-complete-rgb: 78, 211, 147;
   --app-profile-status-incomplete: #ff9a5c;
   --app-profile-status-incomplete-rgb: 255, 154, 92;
-  --app-profile-premium-background: rgba(var(--app-arena-accent-rgb), 0.16);
-  --app-profile-premium-border: rgba(var(--app-arena-accent-rgb), 0.3);
+  --app-profile-premium-background: rgba(var(--app-test-accent-rgb), 0.16);
+  --app-profile-premium-border: rgba(var(--app-test-accent-rgb), 0.3);
   --app-profile-premium-icon-background: rgba(var(--app-profile-status-incomplete-rgb), 0.24);
   --app-profile-premium-text: var(--app-text-primary);
   --app-profile-premium-subtext: var(--app-text-muted);

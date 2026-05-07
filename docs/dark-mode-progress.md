@@ -11,7 +11,7 @@ Last reviewed: 2026-05-06
 - Replaced non-icon runtime hardcoded colors with semantic variables:
   - Progress foreground/track colors.
   - Study navigation decorative icon color.
-  - Arena watermark fill.
+  - Test watermark fill.
   - Error boundary gradient.
 - Browser-checked Study, Quiz, Test, and Profile in the local app.
 - Fixed Profile light/dark contrast issues found during browser QA:
@@ -40,7 +40,7 @@ Last reviewed: 2026-05-06
   - Cards use `--app-card-background`.
   - Main text uses `--app-text-primary`.
   - Muted text uses `--app-text-muted`.
-  - Section backgrounds use `--app-study-background`, `--app-dojo-background`, `--app-arena-background`, `--app-profile-background`, and `--app-purchase-background`.
+  - Section backgrounds use `--app-study-background`, `--app-quiz-background`, `--app-test-background`, `--app-profile-background`, and `--app-purchase-background`.
   - Page headers use `--app-*-header-gradient` variables.
 - Ionic dark palette specificity is partially handled by `.ion-palette-dark.md` and `.ion-palette-dark.ios` overrides for `--ion-background-color` and `--ion-item-background`.
 
@@ -59,7 +59,7 @@ Last reviewed: 2026-05-06
 ## CSS variable naming review
 
 - Done: `--app-text-primary`, `--app-text-muted`, `--app-card-background`, `--app-divider-color`, and `--app-tab-selected-border` are app-scoped.
-- Done: section backgrounds now use `--app-study-background`, `--app-dojo-background`, `--app-arena-background`, `--app-profile-background`, and `--app-purchase-background`.
+- Done: section backgrounds now use `--app-study-background`, `--app-quiz-background`, `--app-test-background`, `--app-profile-background`, and `--app-purchase-background`.
 - Done: header gradients now use `--app-study-header-gradient`, etc.
 - Done: `--ic-*` card variables were renamed to `--app-card-*`.
 - Done: `--card-shadow` was renamed to `--app-card-shadow`.
@@ -74,7 +74,7 @@ These are outside `pkg/app/src/theme/variables.css` and are likely worth naming 
 - Done: `pkg/app/src/app/components/ProgressBar.tsx` now consumes RGB CSS variables instead of converting hex in JS.
 - Done: `pkg/app/src/app/pages/study/components/SeenProgress.tsx` now passes an RGB token.
 - Done: `pkg/app/src/app/pages/study/components/NavigationItem.tsx` now uses `--app-decorative-icon-color`.
-- Done: `pkg/app/src/app/pages/arena/ArenaWatermark.tsx` now uses `--app-watermark-fill`.
+- Done: `pkg/app/src/app/pages/test/TestWatermark.tsx` now uses `--app-watermark-fill`.
 - Done: `pkg/app/src/app/components/ErrorBoundary.tsx` now uses `--app-error-background`.
 
 ## Icon color note

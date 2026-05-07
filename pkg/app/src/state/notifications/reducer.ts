@@ -9,10 +9,10 @@ export const defaultState: NotificationsState = {
     studyInfo: {
       seen: false,
     },
-    dojoInfo: {
+    quizInfo: {
       seen: false,
     },
-    arenaInfo: {
+    testInfo: {
       seen: false,
     },
   },
