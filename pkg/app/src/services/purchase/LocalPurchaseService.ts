@@ -1,3 +1,4 @@
+import { analytics } from "@/services/analytics";
 import {
   recievePurchaseOrderState,
   recievePurchaseProduct,
@@ -8,6 +9,7 @@ import type { PurchaseService, PurchaseStore } from "./types";
 
 export class LocalPurchaseService implements PurchaseService {
   private readonly _reduxStore: PurchaseStore;
+  private readonly _productId = "premium_access";
 
   constructor(reduxStore: PurchaseStore) {
     this._reduxStore = reduxStore;
@@ -39,8 +41,11 @@ export class LocalPurchaseService implements PurchaseService {
   purchase() {
     console.log("LocalPurchaseService > purchase");
 
+    analytics.trackBeginCheckout(this.getAnalyticsPurchaseParams());
+
     let statusAction = recievePurchaseOrderState("pending");
     this._reduxStore.dispatch(statusAction);
+    analytics.trackPurchaseState("pending", this.getAnalyticsPurchaseParams());
 
     //Add delay to simulate comms with server
     setTimeout(() => {
@@ -49,6 +54,7 @@ export class LocalPurchaseService implements PurchaseService {
 
       statusAction = recievePurchaseOrderState("finished");
       this._reduxStore.dispatch(statusAction);
+      analytics.trackPurchaseState("finished", this.getAnalyticsPurchaseParams());
 
       const canPurchaseAction = recievePurchaseProductCanPurchase(false);
       this._reduxStore.dispatch(canPurchaseAction);
@@ -56,5 +62,14 @@ export class LocalPurchaseService implements PurchaseService {
       const ownedAction = recievePurchaseProductOwned(true);
       this._reduxStore.dispatch(ownedAction);
     }, 1000);
+  }
+
+  private getAnalyticsPurchaseParams() {
+    return {
+      product_id: this._productId,
+      price: "R25",
+      currency: "ZAR",
+      value: 25,
+    };
   }
 }

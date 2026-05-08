@@ -1,12 +1,15 @@
 import { IonText } from "@ionic/react";
 import type React from "react";
+import { useRef } from "react";
 import { connect } from "react-redux";
 import { Translate, Translator } from "react-translated";
 import VisibilitySensor from "react-visibility-sensor";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
+import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { ContentItem } from "@/data";
 import { recieveSeenContentKey } from "@/state/study/log";
+import { navigationKeyToBreadcrumb } from "@/utils";
 import "./Content.css";
 import { ContentSeenIndicator } from "./ContentSeenIndicator";
 
@@ -16,8 +19,24 @@ type Props = {
 } & PropsFromDispatch;
 
 const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenContentKey }) => {
+  const { analytics } = useAnalytics();
+  const trackedVisible = useRef(false);
+
   const visibilityChange = (visible: boolean) => {
-    if (visible) recieveSeenContentKey(navigationKey);
+    if (!visible) return;
+
+    recieveSeenContentKey(navigationKey);
+    if (trackedVisible.current) return;
+
+    trackedVisible.current = true;
+    analytics.trackStudyContentView({
+      content_key: navigationKey,
+      content_category: navigationKeyToBreadcrumb(navigationKey)[1] ?? navigationKey,
+    });
+    analytics.trackStudySectionComplete({
+      content_key: navigationKey,
+      content_category: navigationKeyToBreadcrumb(navigationKey)[1] ?? navigationKey,
+    });
   };
 
   return (

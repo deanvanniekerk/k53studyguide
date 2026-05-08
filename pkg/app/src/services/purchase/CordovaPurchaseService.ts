@@ -1,4 +1,5 @@
 //import { v4 as uuidv4 } from "uuid";
+import { analytics } from "@/services/analytics";
 import { recieveLogMessage } from "@/state/log";
 import {
   recievePurchaseOrderState,
@@ -31,7 +32,7 @@ export class CordovaPurchaseService implements PurchaseService {
           type: ProductType.NON_CONSUMABLE,
         });
 
-        store.verbosity = LogLevel.DEBUG;
+        store.verbosity = LogLevel.WARNING;
 
         store.register([
           {
@@ -45,7 +46,10 @@ export class CordovaPurchaseService implements PurchaseService {
           .when()
           .productUpdated((product) => {
             this.log("INFO", "CordovaPurchaseService > product changed", {
-              product: JSON.stringify(product),
+              productId: product.id,
+              canPurchase: product.canPurchase ? "true" : "false",
+              owned: product.owned ? "true" : "false",
+              price: product.pricing?.price ?? "",
             });
 
             //Dispatch Status
@@ -64,6 +68,7 @@ export class CordovaPurchaseService implements PurchaseService {
           })
           .pending(() => {
             this.log("INFO", "CordovaPurchaseService > product pending");
+            analytics.trackPurchaseState("pending", this.getAnalyticsPurchaseParams());
             const stateAction = recievePurchaseOrderState("pending");
             this._reduxStore.dispatch(stateAction);
           })
@@ -75,6 +80,7 @@ export class CordovaPurchaseService implements PurchaseService {
           })
           .finished(() => {
             this.log("INFO", "CordovaPurchaseService > product finished");
+            analytics.trackPurchaseState("finished", this.getAnalyticsPurchaseParams());
             const stateAction = recievePurchaseOrderState("finished");
             this._reduxStore.dispatch(stateAction);
 
@@ -109,6 +115,7 @@ export class CordovaPurchaseService implements PurchaseService {
     }
 
     this.log("INFO", "CordovaPurchaseService > ordering product");
+    analytics.trackBeginCheckout(this.getAnalyticsPurchaseParams());
 
     let stateAction = recievePurchaseOrderState("pending");
     this._reduxStore.dispatch(stateAction);
@@ -121,7 +128,9 @@ export class CordovaPurchaseService implements PurchaseService {
         code: error.code.toString(),
         message: error.message,
       });
-      stateAction = recievePurchaseOrderState(error.code === ErrorCode.PAYMENT_CANCELLED ? "cancelled" : "error");
+      const orderState = error.code === ErrorCode.PAYMENT_CANCELLED ? "cancelled" : "error";
+      analytics.trackPurchaseState(orderState, this.getAnalyticsPurchaseParams());
+      stateAction = recievePurchaseOrderState(orderState);
       this._reduxStore.dispatch(stateAction);
     }
   }
@@ -130,5 +139,18 @@ export class CordovaPurchaseService implements PurchaseService {
     const action = recieveLogMessage(level, message, data);
 
     this._reduxStore.dispatch(action);
+  }
+
+  private getAnalyticsPurchaseParams() {
+    const product = window.CdvPurchase?.store?.get(this._productId);
+    const price = product?.pricing?.price;
+    const value = Number.parseFloat(price?.replace(/[^0-9.]/g, "") ?? "");
+
+    return {
+      product_id: this._productId,
+      price,
+      currency: product?.pricing?.currency ?? "ZAR",
+      value: Number.isNaN(value) ? undefined : value,
+    };
   }
 }

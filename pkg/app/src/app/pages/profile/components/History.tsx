@@ -18,7 +18,7 @@ import { GroupCard, Row, Section, SectionTitle } from "./";
 type Props = PropsFromState & PropsFromDispatch;
 
 const HistoryComponent: React.FC<Props> = (props) => {
-  const { logEvent } = useAnalytics();
+  const { analytics, logEvent } = useAnalytics();
 
   const [showClearSeenHistory, setShowClearSeenHistory] = useState(false);
   const [showClearQuizHistory, setShowClearQuizHistory] = useState(false);
@@ -81,6 +81,7 @@ const HistoryComponent: React.FC<Props> = (props) => {
                 {
                   text: translate({ text: "yes" }),
                   handler: () => {
+                    analytics.trackHistoryClear("seen");
                     logEvent("CLEAR_HISTORY", { type: "seen" });
                     props.clearSeenContent();
                   },
@@ -98,6 +99,7 @@ const HistoryComponent: React.FC<Props> = (props) => {
                 {
                   text: translate({ text: "yes" }),
                   handler: () => {
+                    analytics.trackHistoryClear("quiz");
                     logEvent("CLEAR_HISTORY", { type: "quiz" });
                     props.clearQuizQuesionSuccesfullyAnsweredDates();
                   },
@@ -115,6 +117,7 @@ const HistoryComponent: React.FC<Props> = (props) => {
                 {
                   text: translate({ text: "yes" }),
                   handler: () => {
+                    analytics.trackHistoryClear("test");
                     logEvent("CLEAR_HISTORY", { type: "test" });
                     props.clearTestQuesionSuccesfullyAnsweredDates();
                     props.clearPassedTests();

@@ -23,7 +23,7 @@ const StudyPage: React.FC<Props> = (props) => {
   const history = useHistory();
   const [infoModalVisible, setInfoModalVisible] = useState(false);
 
-  const { logEvent } = useAnalytics("StudyPage");
+  const { analytics, logEvent } = useAnalytics("StudyPage");
 
   useEffect(() => {
     if (!props.infoSeen) {
@@ -32,6 +32,7 @@ const StudyPage: React.FC<Props> = (props) => {
   }, [props.infoSeen]);
 
   const showInfoModal = () => {
+    analytics.trackOnboardingInfoView({ screen_name: "StudyPage" });
     setInfoModalVisible(true);
     props.recieveRecieveNotificationState("studyInfo", { seen: true });
   };

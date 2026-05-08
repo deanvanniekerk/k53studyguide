@@ -19,7 +19,7 @@ type Props = PropsFromState & PropsFromDispatch;
 const TestPage: React.FC<Props> = (props) => {
   const history = useHistory();
 
-  const { logEvent } = useAnalytics("TestPage");
+  const { analytics, logEvent } = useAnalytics("TestPage");
 
   const [infoModalVisible, setInfoModalVisible] = useState(false);
 
@@ -30,11 +30,15 @@ const TestPage: React.FC<Props> = (props) => {
   }, [props.infoSeen]);
 
   const showInfoModal = () => {
+    analytics.trackOnboardingInfoView({ screen_name: "TestPage" });
     setInfoModalVisible(true);
     props.recieveRecieveNotificationState("testInfo", { seen: true });
   };
 
   const onStartTestClicked = () => {
+    analytics.trackMockTestStart({
+      quiz_mode: props.testInProgress ? "continue" : "new",
+    });
     logEvent(props.testInProgress ? "CONTINUE_TEST" : "START_TEST");
 
     //If no test exists, load one, else continue with previous

@@ -1,13 +1,17 @@
 import { IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import type React from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Redirect, Route, useLocation } from "react-router-dom";
 import { Provider as TranslationProvider } from "react-translated";
 import { BookIcon, QuizIcon, SettingsIcon, TestPenIcon } from "@/app/components/icons";
 import { translations } from "@/data";
+import { analytics } from "@/services/analytics";
 import type { RootState } from "@/state";
+import { ownedSelector } from "@/state/purchase";
 import { languageSelector } from "@/state/settings";
+import { themeSelector } from "@/state/settings/selectors";
 import { legacyRouteRedirects } from "./legacyCompatibility";
 import ContentPage from "./pages/content/ContentPage";
 import ProfilePage from "./pages/profile/ProfilePage";
@@ -62,7 +66,44 @@ const tabPathGroups = {
   profile: ["/profile"],
 } satisfies Record<string, string[]>;
 
-const AppTabs: React.FC = () => {
+const screenNameByPath: Record<string, string> = {
+  "/study": "StudyPage",
+  "/content": "ContentPage",
+  "/quiz": "QuizPage",
+  "/quiz/session": "QuizPage:TestPage",
+  "/quiz/results": "QuizPage:TestResultPage",
+  "/quiz/navigator": "QuizPage:TestNavigatorPage",
+  "/test": "TestPage",
+  "/test/session": "TestPage:TestPage",
+  "/test/results": "TestPage:TestResultPage",
+  "/profile": "ProfilePage",
+} satisfies Record<string, string>;
+
+type AnalyticsRouteTrackerProps = {
+  language: string;
+  theme: string;
+  hasFullAccess: boolean;
+};
+
+const AnalyticsRouteTracker: React.FC<AnalyticsRouteTrackerProps> = ({ language, theme, hasFullAccess }) => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    analytics.setUserProperties({
+      language,
+      theme,
+      premium_status: hasFullAccess ? "premium" : "free",
+    });
+  }, [language, theme, hasFullAccess]);
+
+  useEffect(() => {
+    analytics.setCurrentScreen(screenNameByPath[pathname] ?? pathname);
+  }, [pathname]);
+
+  return null;
+};
+
+const AppTabs: React.FC<AnalyticsRouteTrackerProps> = (props) => {
   const { pathname } = useLocation();
   const activeTab = Object.entries(tabPathGroups).find(([, paths]) => paths.includes(pathname))?.[0];
   const tabPillClassName = (tab: keyof typeof tabPathGroups) =>
@@ -70,6 +111,7 @@ const AppTabs: React.FC = () => {
 
   return (
     <IonTabs>
+      <AnalyticsRouteTracker {...props} />
       <IonRouterOutlet>
         <Route exact path="/study" component={StudyPage} />
         <Route exact path="/content" component={ContentPage} />
@@ -120,7 +162,7 @@ const Router: React.FC<Props> = (props) => {
   return (
     <TranslationProvider language={props.language} translation={translations}>
       <IonReactRouter>
-        <AppTabs />
+        <AppTabs language={props.language} theme={props.theme} hasFullAccess={props.hasFullAccess} />
       </IonReactRouter>
     </TranslationProvider>
   );
@@ -130,6 +172,8 @@ type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
   return {
     language: languageSelector(state),
+    theme: themeSelector(state),
+    hasFullAccess: ownedSelector(state),
   };
 };
 

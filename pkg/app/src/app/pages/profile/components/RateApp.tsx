@@ -8,7 +8,7 @@ import { GroupCard, Section, SectionTitle } from "./";
 
 const RateApp: React.FC = () => {
   const appRate = useAppRate();
-  const { logEvent } = useAnalytics();
+  const { analytics, logEvent } = useAnalytics();
   return (
     <Section>
       <SectionTitle>
@@ -24,6 +24,7 @@ const RateApp: React.FC = () => {
               section="profile"
               text="rateApp"
               onClick={() => {
+                analytics.trackRateAppTap({ cta_location: "profile" });
                 logEvent("RATE_APP");
                 appRate.navigateToAppStore();
               }}

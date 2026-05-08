@@ -32,7 +32,7 @@ const TestPage: React.FC<Props> = (props) => {
   const content = useRef<HTMLIonContentElement>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  useAnalytics("TestPage:TestPage");
+  const { analytics } = useAnalytics("TestPage:TestPage");
 
   useIonViewWillEnter(() => {
     onScrollTop(0);
@@ -68,6 +68,11 @@ const TestPage: React.FC<Props> = (props) => {
   };
 
   const onOptionClicked = (questionId: string, option: QuestionOption) => {
+    analytics.trackQuizAnswer({
+      question_id: questionId,
+      answer_id: option.id,
+      question_index: currentQuestionIndex + 1,
+    });
     props.recieveAnswer(questionId, option.id);
   };
 

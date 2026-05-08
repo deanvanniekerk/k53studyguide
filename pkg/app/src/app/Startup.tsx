@@ -2,7 +2,9 @@ import type React from "react";
 import { useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { PurchaseContext } from "@/context";
-import { themeSelector } from "@/state/settings";
+import { analytics } from "@/services/analytics";
+import { ownedSelector } from "@/state/purchase";
+import { languageSelector, themeSelector } from "@/state/settings";
 import { useAppRate } from "./hooks/useAppRate";
 import Router from "./Router";
 
@@ -10,6 +12,8 @@ const Startup: React.FC = () => {
   const purchaseService = useContext(PurchaseContext);
   const appRate = useAppRate();
   const theme = useSelector(themeSelector);
+  const language = useSelector(languageSelector);
+  const hasFullAccess = useSelector(ownedSelector);
 
   useEffect(() => {
     const html = document.documentElement;
@@ -38,6 +42,12 @@ const Startup: React.FC = () => {
     if (purchaseService) {
       purchaseService.initialize();
     }
+
+    analytics.trackAppOpen({
+      language,
+      theme,
+      premium_status: hasFullAccess ? "premium" : "free",
+    });
 
     const preferences = appRate.getPreferences();
     preferences.simpleMode = true;

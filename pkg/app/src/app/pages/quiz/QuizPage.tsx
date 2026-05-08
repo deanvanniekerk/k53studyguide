@@ -19,7 +19,7 @@ type Props = PropsFromState & PropsFromDispatch;
 const QuizPage: React.FC<Props> = (props) => {
   const history = useHistory();
 
-  const { logEvent } = useAnalytics("QuizPage");
+  const { analytics, logEvent } = useAnalytics("QuizPage");
 
   const [infoModalVisible, setInfoModalVisible] = useState(false);
 
@@ -30,11 +30,15 @@ const QuizPage: React.FC<Props> = (props) => {
   }, [props.infoSeen]);
 
   const showInfoModal = () => {
+    analytics.trackOnboardingInfoView({ screen_name: "QuizPage" });
     setInfoModalVisible(true);
     props.recieveRecieveNotificationState("quizInfo", { seen: true });
   };
 
   const onStartTestClicked = () => {
+    analytics.trackQuizStart({
+      quiz_mode: props.testInProgress ? "continue" : "new",
+    });
     logEvent(props.testInProgress ? "CONTINUE_QUIZ" : "START_QUIZ");
 
     //If no test exists, load one, else continue with previous

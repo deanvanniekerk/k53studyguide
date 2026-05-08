@@ -19,17 +19,50 @@ import {
 type Props = PropsFromState;
 
 const HeaderComponent: React.FC<Props> = ({ testResults, sectionAPassed, sectionBPassed, sectionCPassed, passed }) => {
-  const { logEvent } = useAnalytics();
+  const { analytics, logEvent } = useAnalytics();
+  const questionCount = testResults.A.total + testResults.B.total + testResults.C.total;
+  const correctCount = testResults.A.correct + testResults.B.correct + testResults.C.correct;
 
   useEffect(() => {
-    logEvent("TEST_RESULT", {
-      testResults: testResults,
-      sectionAPassed: sectionAPassed,
-      sectionBPassed: sectionBPassed,
-      sectionCPassed: sectionCPassed,
-      passed: passed,
+    analytics.trackMockTestComplete({
+      question_count: questionCount,
+      correct_count: correctCount,
+      passed,
+      section_a_correct: testResults.A.correct,
+      section_a_total: testResults.A.total,
+      section_a_passed: sectionAPassed,
+      section_b_correct: testResults.B.correct,
+      section_b_total: testResults.B.total,
+      section_b_passed: sectionBPassed,
+      section_c_correct: testResults.C.correct,
+      section_c_total: testResults.C.total,
+      section_c_passed: sectionCPassed,
     });
-  }, []);
+    logEvent("TEST_RESULT", {
+      question_count: questionCount,
+      correct_count: correctCount,
+      passed: passed ? "true" : "false",
+      section_a_correct: testResults.A.correct,
+      section_a_total: testResults.A.total,
+      section_a_passed: sectionAPassed ? "true" : "false",
+      section_b_correct: testResults.B.correct,
+      section_b_total: testResults.B.total,
+      section_b_passed: sectionBPassed ? "true" : "false",
+      section_c_correct: testResults.C.correct,
+      section_c_total: testResults.C.total,
+      section_c_passed: sectionCPassed ? "true" : "false",
+    });
+  }, [
+    analytics,
+    correctCount,
+    logEvent,
+    passed,
+    questionCount,
+    sectionAPassed,
+    sectionBPassed,
+    sectionCPassed,
+    testResults,
+  ]);
 
   return (
     <>

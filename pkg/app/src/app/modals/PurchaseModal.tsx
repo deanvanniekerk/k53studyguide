@@ -20,7 +20,7 @@ type Props = {
   PropsFromDispatch;
 
 const PurchaseModal: React.FC<Props> = (props) => {
-  const { logEvent } = useAnalytics();
+  const { analytics, logEvent } = useAnalytics();
 
   const purchaseService = useContext(PurchaseContext);
 
@@ -29,8 +29,15 @@ const PurchaseModal: React.FC<Props> = (props) => {
   const [showCancelledToast, setShowCancelledToast] = useState(false);
 
   useEffect(() => {
-    if (props.isOpen) logEvent("PRESENT_OFFER");
-  }, [props.isOpen]);
+    if (!props.isOpen) return;
+
+    analytics.trackPromotionView({
+      product_id: "premium_access",
+      price: props.purchase.price,
+      offer_surface: "purchase_modal",
+    });
+    logEvent("PRESENT_OFFER");
+  }, [analytics, logEvent, props.isOpen, props.purchase.price]);
 
   //Close the modal if its owned
   useEffect(() => {
@@ -156,6 +163,12 @@ const PurchaseModal: React.FC<Props> = (props) => {
                 fill="solid"
                 disabled={!props.purchase.canPurchase}
                 onClick={() => {
+                  analytics.trackPromotionSelect({
+                    product_id: "premium_access",
+                    price: props.purchase.price,
+                    offer_surface: "purchase_modal",
+                    cta_location: "purchase_modal_get_premium",
+                  });
                   if (purchaseService) purchaseService.purchase();
                 }}
               >

@@ -12,15 +12,20 @@ import { experienceGainedSelector, totalCorrectAnswersSelector, totalQuestionsSe
 type Props = PropsFromState;
 
 const HeaderComponent: React.FC<Props> = (props) => {
-  const { logEvent } = useAnalytics();
+  const { analytics, logEvent } = useAnalytics();
 
   useEffect(() => {
-    logEvent("QUIZ_RESULT", {
-      totalQuestions: props.totalQuestions,
-      totalCorrectAnswers: props.totalCorrectAnswers,
-      experienceGained: props.experienceGained,
+    analytics.trackQuizComplete({
+      question_count: props.totalQuestions,
+      correct_count: props.totalCorrectAnswers,
+      experience_gained: props.experienceGained,
     });
-  }, []);
+    logEvent("QUIZ_RESULT", {
+      question_count: props.totalQuestions,
+      correct_count: props.totalCorrectAnswers,
+      experience_gained: props.experienceGained,
+    });
+  }, [analytics, logEvent, props.experienceGained, props.totalCorrectAnswers, props.totalQuestions]);
 
   const allCorrect = props.totalCorrectAnswers === props.totalQuestions;
 
