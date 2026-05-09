@@ -822,9 +822,15 @@
       justify-content: center;
     }
 
+    .theme-phone-pair {
+      position: relative;
+      width: min(100%, 620px);
+      height: 620px;
+    }
+
     .theme-phone {
       position: absolute;
-      width: clamp(190px, 22vw, 270px);
+      width: min(46%, 270px);
       overflow: hidden;
       border-radius: 24px;
       border: 1px solid rgba(255,255,255,0.1);
@@ -838,13 +844,13 @@
     }
 
     .theme-phone.light {
-      left: 7%;
+      left: 8%;
       transform: rotate(-6deg);
       z-index: 1;
     }
 
     .theme-phone.dark {
-      right: 7%;
+      right: 8%;
       transform: translateY(34px) rotate(6deg);
       z-index: 2;
       box-shadow: 0 36px 90px rgba(0,0,0,0.68), 0 0 0 1px rgba(0,180,159,0.14);
@@ -852,7 +858,7 @@
 
     .theme-badge {
       position: absolute;
-      right: 0;
+      right: 6%;
       top: 34px;
       z-index: 3;
       display: inline-flex;
@@ -1192,9 +1198,10 @@
       .dark-mode-copy { max-width: 100%; text-align: center; margin: 0 auto; }
       .dark-mode-points { max-width: 520px; margin-left: auto; margin-right: auto; }
       .dark-mode-visual { min-height: 560px; order: -1; }
-      .theme-phone { width: min(40vw, 220px); }
-      .theme-phone.light { left: 16%; }
-      .theme-phone.dark { right: 16%; }
+      .theme-phone-pair { width: min(100%, 520px); height: 560px; }
+      .theme-phone { width: min(44%, 220px); }
+      .theme-phone.light { left: 11%; }
+      .theme-phone.dark { right: 11%; }
       .theme-badge { right: 50%; transform: translateX(50%); }
 
       .premium-inner { grid-template-columns: 1fr; }
@@ -1207,9 +1214,10 @@
       .store-badges { justify-content: center; }
       .hero-visual { display: none; }
       .dark-mode-visual { min-height: 450px; }
-      .theme-phone { width: min(48vw, 190px); }
-      .theme-phone.light { left: 2%; }
-      .theme-phone.dark { right: 2%; }
+      .theme-phone-pair { width: min(100%, 390px); height: 450px; }
+      .theme-phone { width: min(48%, 190px); }
+      .theme-phone.light { left: 0; }
+      .theme-phone.dark { right: 0; }
       .theme-badge { top: 0; }
       .footer-inner { flex-direction: column; gap: 32px; }
     }
@@ -1431,12 +1439,14 @@
     </div>
 
     <div class="dark-mode-visual" aria-label="Light and dark mode app screenshots">
-      <div class="theme-badge">Dark mode ready</div>
-      <div class="theme-phone light">
-        <img src="assets/screen-study-dashboard-light.webp" alt="Study dashboard in light mode" />
-      </div>
-      <div class="theme-phone dark">
-        <img src="assets/screen-study-dashboard-dark.webp" alt="Study dashboard in dark mode" />
+      <div class="theme-phone-pair">
+        <div class="theme-badge">Dark mode ready</div>
+        <div class="theme-phone light">
+          <img src="assets/screen-study-dashboard-light.webp" alt="Study dashboard in light mode" />
+        </div>
+        <div class="theme-phone dark">
+          <img src="assets/screen-study-dashboard-dark.webp" alt="Study dashboard in dark mode" />
+        </div>
       </div>
     </div>
   </div>
