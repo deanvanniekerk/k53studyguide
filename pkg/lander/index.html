@@ -12,12 +12,13 @@
   <meta property="og:title" content="K53 Learner's Licence Test South Africa" />
   <meta property="og:description" content="Prepare for your K53 learner's licence with study material, road signs, quizzes and mock tests for South Africa." />
   <meta property="og:url" content="https://www.k53studyguide.online/" />
-  <meta property="og:image" content="https://www.k53studyguide.online/assets/screen-study.webp" />
+  <meta property="og:image" content="https://www.k53studyguide.online/assets/screen-study-dashboard-light.webp" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="K53 Learner's Licence Test South Africa" />
   <meta name="twitter:description" content="Study K53 rules, road signs and mock tests for South Africa's learner's licence." />
-  <meta name="twitter:image" content="https://www.k53studyguide.online/assets/screen-study.webp" />
-  <link rel="icon" type="image/svg+xml" href="assets/034-steering-wheel.svg" />
+  <meta name="twitter:image" content="https://www.k53studyguide.online/assets/screen-study-dashboard-light.webp" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -86,6 +87,8 @@
       --font: 'Montserrat', sans-serif;
       --radius: 16px;
       --section-pad: clamp(64px, 8vw, 120px);
+      --content-max: 1440px;
+      --content-pad: clamp(20px, 6vw, 100px);
     }
 
     html { scroll-behavior: smooth; }
@@ -103,14 +106,21 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px clamp(20px, 5vw, 80px);
+      padding: 0;
       background: rgba(13, 1, 24, 0.8);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-inner {
+      width: 100%;
+      max-width: var(--content-max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px var(--content-pad);
     }
 
     .nav-logo {
@@ -163,11 +173,18 @@
       min-height: 100vh;
       background: var(--grad-hero);
       position: relative;
+      padding: 120px var(--content-pad) 80px;
+    }
+
+    .hero-inner {
+      width: 100%;
+      max-width: var(--content-max);
+      margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      padding: 120px clamp(20px, 6vw, 100px) 80px;
       gap: 40px;
+      min-height: calc(100vh - 200px);
     }
 
     /* Decorative background signs */
@@ -438,14 +455,14 @@
       justify-content: center;
       align-items: flex-end;
       gap: -20px;
-      min-height: 600px;
+      min-height: 640px;
     }
 
     .phone-stack {
       position: relative;
       width: 100%;
-      max-width: clamp(500px, 46vw, 720px);
-      height: 600px;
+      max-width: clamp(460px, 42vw, 640px);
+      height: 640px;
     }
 
     .phone-mock {
@@ -458,29 +475,29 @@
     .phone-mock img { width: 100%; height: auto; display: block; }
 
     .phone-main {
-      width: clamp(240px, 22vw, 340px);
+      width: clamp(220px, 18vw, 285px);
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      z-index: 3;
+      z-index: 5;
     }
 
     .phone-left {
-      width: clamp(200px, 18vw, 280px);
-      left: 32px;
+      width: clamp(205px, 17vw, 260px);
+      left: clamp(-6px, 1vw, 14px);
       top: 50%;
-      transform: translateY(-50%) rotate(-8deg);
-      z-index: 2;
-      opacity: 0.75;
+      transform: translateY(-50%) rotate(-5deg);
+      z-index: 4;
+      opacity: 1;
     }
 
     .phone-right {
-      width: clamp(200px, 18vw, 280px);
+      width: clamp(180px, 15vw, 235px);
       right: 32px;
       top: 50%;
       transform: translateY(-50%) rotate(8deg);
       z-index: 2;
-      opacity: 0.75;
+      opacity: 0.72;
     }
 
     /* hero stats strip */
@@ -506,7 +523,10 @@
     }
 
     /* ─── SECTION SHARED ─── */
-    section { padding: var(--section-pad) clamp(20px, 6vw, 100px); }
+    section {
+      padding: var(--section-pad) var(--content-pad);
+      scroll-margin-top: 86px;
+    }
 
     .section-label {
       font-size: 0.75rem;
@@ -541,6 +561,9 @@
     .features-header {
       text-align: center;
       margin-bottom: 72px;
+      max-width: var(--content-max);
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .features-header .section-subtitle {
@@ -551,6 +574,8 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
+      max-width: var(--content-max);
+      margin: 0 auto;
     }
 
     .feature-card {
@@ -658,6 +683,8 @@
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: center;
+      max-width: var(--content-max);
+      margin: 0 auto;
     }
 
     .hiw-steps {
@@ -742,6 +769,108 @@
 
     .hiw-phone img { width: 100%; display: block; }
 
+    /* ─── DARK MODE ─── */
+    #dark-mode {
+      background: #0a0118;
+      padding-top: clamp(56px, 7vw, 96px);
+      padding-bottom: clamp(56px, 7vw, 96px);
+    }
+
+    .dark-mode-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+      gap: clamp(36px, 6vw, 84px);
+      align-items: center;
+      max-width: var(--content-max);
+      margin: 0 auto;
+    }
+
+    .dark-mode-copy {
+      max-width: 520px;
+    }
+
+    .dark-mode-points {
+      display: grid;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .dark-mode-point {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .dark-mode-point::before {
+      content: '';
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 18px rgba(0,180,159,0.5);
+      flex: 0 0 auto;
+    }
+
+    .dark-mode-visual {
+      position: relative;
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-phone {
+      position: absolute;
+      width: clamp(190px, 22vw, 270px);
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 32px 80px rgba(0,0,0,0.55);
+      background: #11091f;
+    }
+
+    .theme-phone img {
+      display: block;
+      width: 100%;
+    }
+
+    .theme-phone.light {
+      left: 7%;
+      transform: rotate(-6deg);
+      z-index: 1;
+    }
+
+    .theme-phone.dark {
+      right: 7%;
+      transform: translateY(34px) rotate(6deg);
+      z-index: 2;
+      box-shadow: 0 36px 90px rgba(0,0,0,0.68), 0 0 0 1px rgba(0,180,159,0.14);
+    }
+
+    .theme-badge {
+      position: absolute;
+      right: 0;
+      top: 34px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(8,0,18,0.72);
+      color: rgba(255,255,255,0.82);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
     /* ─── SCREENSHOTS ─── */
     #screenshots {
       background: #080012;
@@ -751,12 +880,17 @@
     .screenshots-header {
       text-align: center;
       margin-bottom: 60px;
+      max-width: var(--content-max);
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .screenshots-header .section-subtitle { margin: 0 auto; }
 
     .screenshots-track-wrap {
       position: relative;
+      max-width: var(--content-max);
+      margin: 0 auto;
     }
 
     .screenshots-track-wrap::before,
@@ -834,6 +968,8 @@
     }
 
     .premium-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
       background: var(--grad-card);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 28px;
@@ -943,7 +1079,7 @@
     /* ─── FOOTER ─── */
     footer {
       background: #060010;
-      padding: 60px clamp(20px, 6vw, 100px) 40px;
+      padding: 60px var(--content-pad) 40px;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
 
@@ -953,6 +1089,9 @@
       align-items: flex-start;
       gap: 40px;
       flex-wrap: wrap;
+      max-width: var(--content-max);
+      margin-left: auto;
+      margin-right: auto;
       margin-bottom: 48px;
     }
 
@@ -1015,6 +1154,9 @@
       border-top: 1px solid rgba(255,255,255,0.06);
       flex-wrap: wrap;
       gap: 16px;
+      max-width: var(--content-max);
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .footer-copy {
@@ -1029,23 +1171,31 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
-      .hero {
+      .hero-inner {
         grid-template-columns: 1fr;
         text-align: center;
-        padding-bottom: 60px;
       }
 
       .hero-subtitle { max-width: 100%; margin-left: auto; margin-right: auto; }
       .hero-ctas { justify-content: center; }
       .hero-stats { justify-content: center; }
       .hero-visual { min-height: 400px; }
-      .phone-main { width: 180px; height: 360px; }
-      .phone-left, .phone-right { width: 140px; height: 280px; }
+      .phone-main { width: 180px; height: auto; }
+      .phone-left, .phone-right { width: 140px; height: auto; }
 
       .features-grid { grid-template-columns: 1fr; }
 
       .hiw-inner { grid-template-columns: 1fr; gap: 48px; }
       .hiw-visual { order: -1; }
+
+      .dark-mode-inner { grid-template-columns: 1fr; }
+      .dark-mode-copy { max-width: 100%; text-align: center; margin: 0 auto; }
+      .dark-mode-points { max-width: 520px; margin-left: auto; margin-right: auto; }
+      .dark-mode-visual { min-height: 560px; order: -1; }
+      .theme-phone { width: min(40vw, 220px); }
+      .theme-phone.light { left: 16%; }
+      .theme-phone.dark { right: 16%; }
+      .theme-badge { right: 50%; transform: translateX(50%); }
 
       .premium-inner { grid-template-columns: 1fr; }
 
@@ -1056,6 +1206,11 @@
       .hero-title { font-size: 2.2rem; }
       .store-badges { justify-content: center; }
       .hero-visual { display: none; }
+      .dark-mode-visual { min-height: 450px; }
+      .theme-phone { width: min(48vw, 190px); }
+      .theme-phone.light { left: 2%; }
+      .theme-phone.dark { right: 2%; }
+      .theme-badge { top: 0; }
       .footer-inner { flex-direction: column; gap: 32px; }
     }
   </style>
@@ -1064,17 +1219,19 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">
-    <img src="assets/034-steering-wheel.svg" alt="K53 Study Guide logo" />
-    K53 Study Guide
-  </a>
-  <ul class="nav-links">
-    <li><a href="#features">Features</a></li>
-    <li><a href="#how-it-works">How it works</a></li>
-    <li><a href="#screenshots">Screenshots</a></li>
-    <li><a href="#premium">Premium</a></li>
-    <li><a href="https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=utm_source%3Dwebsite%26utm_medium%3Dnav_cta%26utm_campaign%3Dorganic_web" target="_blank" rel="noopener noreferrer" class="nav-cta">Get the App</a></li>
-  </ul>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <img src="assets/logo.png" alt="K53 Study Guide logo" />
+      K53 Study Guide
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How it works</a></li>
+      <li><a href="#screenshots">Screenshots</a></li>
+      <li><a href="#premium">Premium</a></li>
+      <li><a href="https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=utm_source%3Dwebsite%26utm_medium%3Dnav_cta%26utm_campaign%3Dorganic_web" target="_blank" rel="noopener noreferrer" class="nav-cta">Get the App</a></li>
+    </ul>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -1085,65 +1242,67 @@
     <img class="deco-sign s3" src="assets/icon-drive.svg" alt="" />
   </div>
 
-  <div class="hero-content">
-    <div class="hero-badge">
-      <span class="hero-badge-dot"></span>
-      South African Learner's Licence
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        South African Learner's Licence
+      </div>
+
+      <h1 class="hero-title">
+        Pass your<br/>
+        <span class="accent">K53 test</span><br/>
+        first time.
+      </h1>
+
+      <p class="hero-subtitle">
+        Study South African K53 road signs, rules of the road and vehicle controls. Practice with quizzes and mock tests that mirror the real learner's licence exam.
+      </p>
+
+      <div class="store-badges">
+        <a href="https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=utm_source%3Dwebsite%26utm_medium%3Dhero_cta%26utm_campaign%3Dorganic_web" target="_blank" rel="noopener noreferrer" class="store-badge">
+          <span class="store-badge-icon">▶</span>
+          <span class="store-badge-text">
+            <span>Get it on</span>
+            <span>Google Play</span>
+          </span>
+        </a>
+        <a href="#ios-coming-soon" class="store-badge coming-soon" data-coming-soon data-analytics-location="hero_ios_cta">
+          <span class="store-badge-icon">&#xf8ff;</span>
+          <span class="store-badge-text">
+            <span>Download on the</span>
+            <span>App Store</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">500+</span>
+          <span class="hero-stat-label">Practice questions</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">6</span>
+          <span class="hero-stat-label">Study sections</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">100%</span>
+          <span class="hero-stat-label">K53 aligned</span>
+        </div>
+      </div>
     </div>
 
-    <h1 class="hero-title">
-      Pass your<br/>
-      <span class="accent">K53 test</span><br/>
-      first time.
-    </h1>
-
-    <p class="hero-subtitle">
-      Study South African K53 road signs, rules of the road and vehicle controls. Practice with quizzes and mock tests that mirror the real learner's licence exam.
-    </p>
-
-    <div class="store-badges">
-      <a href="https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=utm_source%3Dwebsite%26utm_medium%3Dhero_cta%26utm_campaign%3Dorganic_web" target="_blank" rel="noopener noreferrer" class="store-badge">
-        <span class="store-badge-icon">▶</span>
-        <span class="store-badge-text">
-          <span>Get it on</span>
-          <span>Google Play</span>
-        </span>
-      </a>
-      <a href="#ios-coming-soon" class="store-badge coming-soon" data-coming-soon data-analytics-location="hero_ios_cta">
-        <span class="store-badge-icon">&#xf8ff;</span>
-        <span class="store-badge-text">
-          <span>Download on the</span>
-          <span>App Store</span>
-        </span>
-      </a>
-    </div>
-
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <span class="hero-stat-num">500+</span>
-        <span class="hero-stat-label">Practice questions</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">6</span>
-        <span class="hero-stat-label">Study sections</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">100%</span>
-        <span class="hero-stat-label">K53 aligned</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-visual">
-    <div class="phone-stack">
-      <div class="phone-mock phone-left">
-        <img src="assets/screen-study.webp" alt="Study screen" />
-      </div>
-      <div class="phone-mock phone-main">
-        <img src="assets/screen-quiz.webp" alt="Quiz screen" />
-      </div>
-      <div class="phone-mock phone-right">
-        <img src="assets/screen5.webp" alt="Test screen" />
+    <div class="hero-visual">
+      <div class="phone-stack">
+        <div class="phone-mock phone-left">
+          <img src="assets/screen-study-dashboard-light.webp" alt="Study dashboard in light mode" />
+        </div>
+        <div class="phone-mock phone-main">
+          <img src="assets/screen-quiz-question-light.webp" alt="Quiz question in light mode" />
+        </div>
+        <div class="phone-mock phone-right">
+          <img src="assets/screen-test-question-light.webp" alt="Mock test question" />
+        </div>
       </div>
     </div>
   </div>
@@ -1170,7 +1329,7 @@
         Read through every topic — rules of the road, road signs, road markings, vehicle controls and defensive driving. Progress tracking shows exactly what you've covered.
       </div>
       <div class="feature-card-screen">
-        <img src="assets/screen-track.webp" alt="Study screen" />
+        <img src="assets/screen-study-dashboard-light.webp" alt="Study dashboard in light mode" />
       </div>
     </div>
 
@@ -1186,7 +1345,7 @@
         Practice with configurable quizzes. Earn experience points, level up from 1 to 5, and focus on your weakest sections to close the gaps before exam day.
       </div>
       <div class="feature-card-screen">
-        <img src="assets/screen-test.webp" alt="Quiz screen" />
+        <img src="assets/screen-quiz-home-light.webp" alt="Quiz setup screen" />
       </div>
     </div>
 
@@ -1202,7 +1361,7 @@
         Challenge yourself with full mock tests structured exactly like the official K53 learner's test — three sections, timed, marked. Know you're ready before you go in.
       </div>
       <div class="feature-card-screen">
-        <img src="assets/screen6.webp" alt="Test screen" />
+        <img src="assets/screen-test-question-light.webp" alt="Mock test question screen" />
       </div>
     </div>
   </div>
@@ -1217,28 +1376,28 @@
       <p class="section-subtitle">Three focused stages that build on each other — study the material, practice with quizzes, then prove it in full mock tests.</p>
 
       <div class="hiw-steps" id="hiwSteps">
-        <div class="hiw-step active" data-screen="assets/screen-track.webp">
+        <div class="hiw-step active" data-screen="assets/screen-study-dashboard-light.webp">
           <div class="hiw-step-num">01</div>
           <div class="hiw-step-content">
             <div class="hiw-step-title">Study the material</div>
             <div class="hiw-step-desc">Work through all six topics — Vehicle Controls, Rules of the Road, Defensive Driving, Road Markings, Road Signals, and Road Signs. Track what you've read with progress bars.</div>
           </div>
         </div>
-        <div class="hiw-step" data-screen="assets/screen-quiz.webp">
+        <div class="hiw-step" data-screen="assets/screen-quiz-home-light.webp">
           <div class="hiw-step-num">02</div>
           <div class="hiw-step-content">
             <div class="hiw-step-title">Practice with quizzes</div>
             <div class="hiw-step-desc">Take configurable practice quizzes. Pick sections where your level score is low, choose how many questions, and grind your way up to Level 5.</div>
           </div>
         </div>
-        <div class="hiw-step" data-screen="assets/screen6.webp">
+        <div class="hiw-step" data-screen="assets/screen-test-question-light.webp">
           <div class="hiw-step-num">03</div>
           <div class="hiw-step-content">
             <div class="hiw-step-title">Prove it in Test mode</div>
             <div class="hiw-step-desc">Run full mock tests across Section A, B and C — just like the real K53 learner's test. Get marked, see where you missed questions, and go back and fix it.</div>
           </div>
         </div>
-        <div class="hiw-step" data-screen="assets/screen7.webp">
+        <div class="hiw-step" data-screen="assets/screen-profile-light.webp">
           <div class="hiw-step-num">04</div>
           <div class="hiw-step-content">
             <div class="hiw-step-title">Walk in with confidence</div>
@@ -1250,7 +1409,34 @@
 
     <div class="hiw-visual">
       <div class="hiw-phone">
-        <img id="hiwPhone" src="assets/screen-track.webp" alt="App screen" />
+        <img id="hiwPhone" src="assets/screen-study-dashboard-light.webp" alt="App screen" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK MODE -->
+<section id="dark-mode">
+  <div class="dark-mode-inner">
+    <div class="dark-mode-copy">
+      <p class="section-label">Light and dark</p>
+      <h2 class="section-title">Study comfortably<br/>in any mode</h2>
+      <p class="section-subtitle">Switch between bright, clean study sessions and a darker interface that is easier on your eyes when you are revising at night.</p>
+
+      <div class="dark-mode-points">
+        <div class="dark-mode-point">Dark mode covers Study, Quiz and Test screens.</div>
+        <div class="dark-mode-point">High-contrast cards keep signs and answers easy to scan.</div>
+        <div class="dark-mode-point">Your progress and history stay exactly where you left them.</div>
+      </div>
+    </div>
+
+    <div class="dark-mode-visual" aria-label="Light and dark mode app screenshots">
+      <div class="theme-badge">Dark mode ready</div>
+      <div class="theme-phone light">
+        <img src="assets/screen-study-dashboard-light.webp" alt="Study dashboard in light mode" />
+      </div>
+      <div class="theme-phone dark">
+        <img src="assets/screen-study-dashboard-dark.webp" alt="Study dashboard in dark mode" />
       </div>
     </div>
   </div>
@@ -1266,14 +1452,17 @@
 
   <div class="screenshots-track-wrap">
     <div class="screenshots-track" id="screenshotsTrack">
-      <div class="screenshot-item"><img src="assets/screen-study.webp" alt="Study dashboard" /></div>
-      <div class="screenshot-item"><img src="assets/screen-track.webp" alt="Study signs" /></div>
-      <div class="screenshot-item"><img src="assets/screen8.webp" alt="Study warning signs" /></div>
-      <div class="screenshot-item"><img src="assets/screen-quiz.webp" alt="Quiz" /></div>
-      <div class="screenshot-item"><img src="assets/screen-test.webp" alt="Quiz question" /></div>
-      <div class="screenshot-item"><img src="assets/screen5.webp" alt="Test dashboard" /></div>
-      <div class="screenshot-item"><img src="assets/screen6.webp" alt="Mock test" /></div>
-      <div class="screenshot-item"><img src="assets/screen7.webp" alt="Profile settings" /></div>
+      <div class="screenshot-item"><img src="assets/screen-study-dashboard-light.webp" alt="Study dashboard in light mode" /></div>
+      <div class="screenshot-item"><img src="assets/screen-study-signs-light.webp" alt="Study signs in light mode" /></div>
+      <div class="screenshot-item"><img src="assets/screen-quiz-home-light.webp" alt="Quiz setup in light mode" /></div>
+      <div class="screenshot-item"><img src="assets/screen-quiz-question-light.webp" alt="Quiz question in light mode" /></div>
+      <div class="screenshot-item"><img src="assets/screen-test-question-light.webp" alt="Mock test question in light mode" /></div>
+      <div class="screenshot-item"><img src="assets/screen-profile-light.webp" alt="Profile and premium screen" /></div>
+      <div class="screenshot-item"><img src="assets/screen-study-dashboard-dark.webp" alt="Study dashboard in dark mode" /></div>
+      <div class="screenshot-item"><img src="assets/screen-study-control-dark.webp" alt="Study control topic in dark mode" /></div>
+      <div class="screenshot-item"><img src="assets/screen-quiz-home-dark.webp" alt="Quiz setup in dark mode" /></div>
+      <div class="screenshot-item"><img src="assets/screen-quiz-question-dark.webp" alt="Quiz question in dark mode" /></div>
+      <div class="screenshot-item"><img src="assets/screen-test-question-dark.webp" alt="Mock test question in dark mode" /></div>
     </div>
   </div>
 
@@ -1309,7 +1498,7 @@
           </div>
         </div>
         <div class="premium-feature">
-          <div class="premium-feature-icon"><img src="assets/brand-mark.svg" alt="" /></div>
+          <div class="premium-feature-icon"><img src="assets/logo.png" alt="" /></div>
           <div class="premium-feature-text">
             <div class="premium-feature-title">Support the Dev</div>
             <div class="premium-feature-desc">K53 Study Guide is a one-person app. Your purchase helps keep it maintained and updated.</div>
@@ -1343,7 +1532,7 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <a class="footer-logo" href="#">
-        <img src="assets/brand-mark.svg" alt="" />
+        <img src="assets/logo.png" alt="" />
         K53 Study Guide
       </a>
       <p class="footer-tagline">South Africa's most comprehensive K53 learner's licence study app.</p>

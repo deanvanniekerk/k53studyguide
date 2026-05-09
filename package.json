@@ -9,9 +9,7 @@
     "lint-fix": "pnpm exec biome check --write .",
     "lint:scripts": "pnpm exec biome check .",
     "bump:native": "node scripts/bump-native-version.mjs",
-    "deploy:lander": "bash scripts/deploy-lander-ftp.sh",
     "lint:tsc": "pnpm --filter app lint:tsc",
-    "start:lander": "pnpm --filter lander start",
     "start": "pnpm --filter app start",
     "test": "pnpm --filter app test",
     "test:coverage": "pnpm --filter app test:coverage",
@@ -24,7 +22,10 @@
     "cap-open-android": "pnpm --filter app cap-open-android",
     "cap-sync-ios": "pnpm --filter app cap-sync-ios",
     "cap-copy-ios": "pnpm --filter app cap-copy-ios",
-    "cap-open-ios": "pnpm --filter app cap-open-ios"
+    "cap-open-ios": "pnpm --filter app cap-open-ios",
+    "lander:start": "pnpm --filter lander start",
+    "lander:build": "pnpm --filter lander build",
+    "lander:deploy": "bash scripts/deploy-lander-ftp.sh"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.13"

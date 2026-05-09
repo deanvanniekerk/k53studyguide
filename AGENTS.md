@@ -27,10 +27,19 @@ Common commands:
 ```bash
 pnpm start
 pnpm test
+pnpm test:watch
+pnpm test:coverage
 pnpm lint
+pnpm lint-fix
 pnpm build
+pnpm tsc
+pnpm bump:native
 pnpm cap-sync-android
+pnpm cap-copy-android
+pnpm cap-open-android
 pnpm cap-sync-ios
+pnpm cap-copy-ios
+pnpm cap-open-ios
 ```
 
 ## `pkg/lander`
@@ -42,11 +51,12 @@ Static landing website for the app.
 - Uses Vite directly; no framework app structure.
 - Store CTAs currently send Google Play links to the Play Store in a new tab.
 - iOS/App Store links open a styled "Coming Soon" modal.
+- Root scripts use the `lander:*` namespace. `pnpm lander:build` currently expects a `build` script in `pkg/lander`, so use the direct Vite build command below unless that package script is added.
 
 Common commands:
 
 ```bash
-pnpm start:lander
+pnpm lander:start
 pnpm --dir pkg/lander exec vite build
-pnpm deploy:lander
+pnpm lander:deploy
 ```
