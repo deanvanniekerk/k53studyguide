@@ -1,9 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  ANDROID_PREMIUM_PRODUCT_ID,
-  getPremiumProductId,
-  IOS_PREMIUM_PRODUCT_ID,
-} from "./productIds";
+import { ANDROID_PREMIUM_PRODUCT_ID, getPremiumProductId, IOS_PREMIUM_PRODUCT_ID } from "./productIds";
 
 describe("purchase product ids", () => {
   it("keeps Android on the existing Google Play product id", () => {
