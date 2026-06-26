@@ -111,15 +111,12 @@ steps:
           configuration: "Release"
           xcodeVersion: "default"
           xcWorkspacePath: "pkg/app/ios/App/App.xcworkspace"
-          signingOption: "manual"
-          signingIdentity: "$(APPLE_CERTIFICATE_SIGNING_IDENTITY)"
-          provisioningProfileUuid: "$(APPLE_PROV_PROFILE_UUID)"
+          signingOption: "default"
           packageApp: true
           archivePath: "$(Build.ArtifactStagingDirectory)/ios/App.xcarchive"
           exportPath: "$(Build.ArtifactStagingDirectory)/ios"
-          exportOptions: "specify"
-          exportMethod: "app-store-connect"
-          exportTeamId: "$(appleTeamId)"
+          exportOptions: "plist"
+          exportOptionsPlist: "pkg/app/ios/App/ExportOptions.plist"
           useXcpretty: "false"
       displayName: "iOS > Build IPA"
       condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
