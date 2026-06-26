@@ -6,10 +6,21 @@
 pool:
     vmImage: "macOS-15"
 
+parameters:
+    - name: buildAndroid
+      displayName: Build Android
+      type: boolean
+      default: true
+    - name: buildIOS
+      displayName: Build iOS
+      type: boolean
+      default: false
+    - name: uploadIOS
+      displayName: Upload iOS to App Store Connect
+      type: boolean
+      default: false
+
 variables:
-    buildAndroid: "true"
-    buildIOS: "false"
-    uploadIOS: "false"
     appleTeamId: "2Y26AXFP33"
     iosBundleId: "deanvniekerk.k53studyguide.app"
 
@@ -35,11 +46,11 @@ steps:
     - script: |
           pnpm cap-sync-android
       displayName: "React App > Sync to Android Project"
-      condition: and(succeeded(), eq(variables['buildAndroid'], 'true'))
+      condition: and(succeeded(), eq('${{ parameters.buildAndroid }}', 'true'))
     - script: |
           pnpm cap-copy-android
       displayName: "React App > Copy to Android Project"
-      condition: and(succeeded(), eq(variables['buildAndroid'], 'true'))
+      condition: and(succeeded(), eq('${{ parameters.buildAndroid }}', 'true'))
 
     - task: Gradle@4
       inputs:
@@ -50,7 +61,7 @@ steps:
           javaHomeOption: "Path"
           jdkDirectory: "$(JAVA_HOME_21_X64)"
       displayName: "Android > Build"
-      condition: and(succeeded(), eq(variables['buildAndroid'], 'true'))
+      condition: and(succeeded(), eq('${{ parameters.buildAndroid }}', 'true'))
     - task: AndroidSigning@3
       inputs:
           apkFiles: "**/app-release-unsigned.apk"
@@ -60,23 +71,23 @@ steps:
           apksignerKeyPassword: "$(ANDROID_KEY_PASSWORD)"
           zipalign: true
       displayName: "Android APK > Sign"
-      condition: and(succeeded(), eq(variables['buildAndroid'], 'true'))
+      condition: and(succeeded(), eq('${{ parameters.buildAndroid }}', 'true'))
     - task: CopyFiles@2
       inputs:
           Contents: "**/app-release-unsigned.apk"
           flattenFolders: true
           TargetFolder: "$(Build.ArtifactStagingDirectory)"
       displayName: "Android APK > Copy to Artifacts"
-      condition: and(succeeded(), eq(variables['buildAndroid'], 'true'))
+      condition: and(succeeded(), eq('${{ parameters.buildAndroid }}', 'true'))
 
     - script: |
           pnpm cap-sync-ios
       displayName: "React App > Sync to iOS Project"
-      condition: and(succeeded(), eq(variables['buildIOS'], 'true'))
+      condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
     - script: |
           pnpm cap-copy-ios
       displayName: "React App > Copy to iOS Project"
-      condition: and(succeeded(), eq(variables['buildIOS'], 'true'))
+      condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
 
     - task: InstallAppleCertificate@2
       inputs:
@@ -84,13 +95,13 @@ steps:
           certPwd: "$(APPLE_CERTIFICATE_PASSWORD)"
           keychain: "temp"
       displayName: "iOS > Install Apple Certificate"
-      condition: and(succeeded(), eq(variables['buildIOS'], 'true'))
+      condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
     - task: InstallAppleProvisioningProfile@1
       inputs:
           provisioningProfileLocation: "secureFiles"
           provProfileSecureFile: "K53StudyGuide_AppStore.mobileprovision"
       displayName: "iOS > Install Apple Provisioning Profile"
-      condition: and(succeeded(), eq(variables['buildIOS'], 'true'))
+      condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
 
     - task: Xcode@5
       inputs:
@@ -111,7 +122,7 @@ steps:
           exportTeamId: "$(appleTeamId)"
           useXcpretty: "false"
       displayName: "iOS > Build IPA"
-      condition: and(succeeded(), eq(variables['buildIOS'], 'true'))
+      condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
     - task: CopyFiles@2
       inputs:
           SourceFolder: "$(Build.ArtifactStagingDirectory)/ios"
@@ -119,7 +130,7 @@ steps:
           flattenFolders: true
           TargetFolder: "$(Build.ArtifactStagingDirectory)"
       displayName: "iOS IPA > Copy to Artifacts"
-      condition: and(succeeded(), eq(variables['buildIOS'], 'true'))
+      condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
     - task: AppStoreRelease@1
       inputs:
           authType: "ApiKey"
@@ -134,7 +145,7 @@ steps:
           shouldSkipSubmission: true
           teamId: "$(appleTeamId)"
       displayName: "iOS IPA > Upload to App Store Connect"
-      condition: and(succeeded(), eq(variables['buildIOS'], 'true'), eq(variables['uploadIOS'], 'true'))
+      condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'), eq('${{ parameters.uploadIOS }}', 'true'))
 
     - task: PublishPipelineArtifact@1
       inputs:
