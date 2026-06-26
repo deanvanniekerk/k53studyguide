@@ -1,2 +1,15 @@
 packages:
   - "pkg/*"
+
+overrides:
+  "@types/react": "18.3.28"
+
+onlyBuiltDependencies:
+  - esbuild
+
+patchedDependencies:
+  "cordova-plugin-analytics@2.0.0": "patches/cordova-plugin-analytics@2.0.0.patch"
+  "cordova-plugin-firebase-crashlytics@1.2.0": "patches/cordova-plugin-firebase-crashlytics@1.2.0.patch"
+
+allowBuilds:
+  esbuild: true

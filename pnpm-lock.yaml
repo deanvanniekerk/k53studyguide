@@ -8,12 +8,8 @@ overrides:
   '@types/react': 18.3.28
 
 patchedDependencies:
-  cordova-plugin-analytics@2.0.0:
-    hash: 40988959fefe16f3984cd457cd319e738d4efda153fc265048777b0526f3a7c9
-    path: patches/cordova-plugin-analytics@2.0.0.patch
-  cordova-plugin-firebase-crashlytics@1.2.0:
-    hash: 8c72ee93aafa064ec35905c491415f0346e955373567010f27a571ec34bef5ca
-    path: patches/cordova-plugin-firebase-crashlytics@1.2.0.patch
+  cordova-plugin-analytics@2.0.0: 40988959fefe16f3984cd457cd319e738d4efda153fc265048777b0526f3a7c9
+  cordova-plugin-firebase-crashlytics@1.2.0: 8c72ee93aafa064ec35905c491415f0346e955373567010f27a571ec34bef5ca
 
 importers:
 
