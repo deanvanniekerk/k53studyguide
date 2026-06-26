@@ -5,11 +5,12 @@ import {
   recievePurchaseProductCanPurchase,
   recievePurchaseProductOwned,
 } from "@/state/purchase";
+import { DEFAULT_PREMIUM_PRODUCT_ID } from "./productIds";
 import type { PurchaseService, PurchaseStore } from "./types";
 
 export class LocalPurchaseService implements PurchaseService {
   private readonly _reduxStore: PurchaseStore;
-  private readonly _productId = "premium_access";
+  private readonly _productId = DEFAULT_PREMIUM_PRODUCT_ID;
 
   constructor(reduxStore: PurchaseStore) {
     this._reduxStore = reduxStore;

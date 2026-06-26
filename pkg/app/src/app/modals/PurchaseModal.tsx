@@ -8,6 +8,7 @@ import styled from "styled-components";
 import { CloseButton } from "@/app/components";
 import { BookOutlineIcon, ResetIcon, TestPenIcon, YinYangIcon } from "@/app/components/icons";
 import { PurchaseContext } from "@/context";
+import { getPremiumProductIdForDevicePlatform } from "@/services";
 import type { RootState } from "@/state";
 import { purchaseSelector, recievePurchaseOrderState } from "@/state/purchase";
 import { useAnalytics } from "../hooks/useAnalytics";
@@ -32,17 +33,18 @@ const PurchaseModal: React.FC<Props> = (props) => {
   const [restoreAttempted, setRestoreAttempted] = useState(false);
 
   const isPending = props.purchase.orderState === "pending";
+  const premiumProductId = getPremiumProductIdForDevicePlatform(Device.platform);
 
   useEffect(() => {
     if (!props.isOpen) return;
 
     analytics.trackPromotionView({
-      product_id: "premium_access",
+      product_id: premiumProductId,
       price: props.purchase.price,
       offer_surface: "purchase_modal",
     });
     logEvent("PRESENT_OFFER");
-  }, [analytics, logEvent, props.isOpen, props.purchase.price]);
+  }, [analytics, logEvent, premiumProductId, props.isOpen, props.purchase.price]);
 
   useEffect(() => {
     if (props.purchase.orderState === "finished") {
@@ -199,7 +201,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
                 onClick={() => {
                   setRestoreAttempted(false);
                   analytics.trackPromotionSelect({
-                    product_id: "premium_access",
+                    product_id: premiumProductId,
                     price: props.purchase.price,
                     offer_surface: "purchase_modal",
                     cta_location: "purchase_modal_get_premium",

@@ -9,14 +9,15 @@ import {
 } from "@/state/purchase";
 import "cordova-plugin-purchase/www/store";
 import type { LogData, LogLevel } from "..";
+import { DEFAULT_PREMIUM_PRODUCT_ID, getPremiumProductIdForStorePlatform } from "./productIds";
 import type { PurchaseService, PurchaseStore } from "./types";
 
 // try: https://github.com/danielsogl/awesome-cordova-plugins/issues/4457#issuecomment-1825177796
 
 export class CordovaPurchaseService implements PurchaseService {
   private readonly _reduxStore: PurchaseStore;
-  private readonly _productId = "premium_access";
-  // private readonly _productId = 'premium_access_test';
+  private _productId = DEFAULT_PREMIUM_PRODUCT_ID;
+
   constructor(reduxStore: PurchaseStore) {
     this._reduxStore = reduxStore;
   }
@@ -27,6 +28,7 @@ export class CordovaPurchaseService implements PurchaseService {
       async () => {
         const { store, ProductType, LogLevel } = window.CdvPurchase; // window is important
         const platform = store.defaultPlatform();
+        this._productId = getPremiumProductIdForStorePlatform(platform);
 
         this.log("INFO", "CordovaPurchaseService > initialize", {
           productId: this._productId,
