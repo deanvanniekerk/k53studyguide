@@ -8,7 +8,7 @@ import styled from "styled-components";
 import { CloseButton } from "@/app/components";
 import { BookOutlineIcon, ResetIcon, TestPenIcon, YinYangIcon } from "@/app/components/icons";
 import { PurchaseContext } from "@/context";
-import { getPremiumProductIdForDevicePlatform } from "@/services";
+import { DEFAULT_PREMIUM_PRODUCT_ID } from "@/services";
 import type { RootState } from "@/state";
 import { purchaseSelector, recievePurchaseOrderState } from "@/state/purchase";
 import { useAnalytics } from "../hooks/useAnalytics";
@@ -33,7 +33,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
   const [restoreAttempted, setRestoreAttempted] = useState(false);
 
   const isPending = props.purchase.orderState === "pending";
-  const premiumProductId = getPremiumProductIdForDevicePlatform(Device.platform);
+  const premiumProductId = purchaseService?.productId ?? DEFAULT_PREMIUM_PRODUCT_ID;
 
   useEffect(() => {
     if (!props.isOpen) return;

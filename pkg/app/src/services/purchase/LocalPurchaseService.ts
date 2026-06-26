@@ -16,6 +16,10 @@ export class LocalPurchaseService implements PurchaseService {
     this._reduxStore = reduxStore;
   }
 
+  get productId() {
+    return this._productId;
+  }
+
   initialize() {
     console.log("LocalPurchaseService > initialize product");
 

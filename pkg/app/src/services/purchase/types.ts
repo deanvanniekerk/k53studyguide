@@ -7,6 +7,7 @@ export interface PurchaseServiceConstructor {
 }
 
 export interface PurchaseService {
+  readonly productId: string;
   initialize: () => void;
   purchase: () => void;
   restore: () => void | Promise<void>;

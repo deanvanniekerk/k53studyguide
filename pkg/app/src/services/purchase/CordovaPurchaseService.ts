@@ -9,7 +9,7 @@ import {
 } from "@/state/purchase";
 import "cordova-plugin-purchase/www/store";
 import type { LogData, LogLevel } from "..";
-import { DEFAULT_PREMIUM_PRODUCT_ID, getPremiumProductIdForStorePlatform } from "./productIds";
+import { DEFAULT_PREMIUM_PRODUCT_ID, getPremiumProductId } from "./productIds";
 import type { PurchaseService, PurchaseStore } from "./types";
 
 // try: https://github.com/danielsogl/awesome-cordova-plugins/issues/4457#issuecomment-1825177796
@@ -22,13 +22,17 @@ export class CordovaPurchaseService implements PurchaseService {
     this._reduxStore = reduxStore;
   }
 
+  get productId() {
+    return this._productId;
+  }
+
   async initialize() {
     document.addEventListener(
       "deviceready",
       async () => {
-        const { store, ProductType, LogLevel } = window.CdvPurchase; // window is important
+        const { store, ProductType, LogLevel, Platform } = window.CdvPurchase; // window is important
         const platform = store.defaultPlatform();
-        this._productId = getPremiumProductIdForStorePlatform(platform);
+        this._productId = getPremiumProductId(platform === Platform.APPLE_APPSTORE);
 
         this.log("INFO", "CordovaPurchaseService > initialize", {
           productId: this._productId,
