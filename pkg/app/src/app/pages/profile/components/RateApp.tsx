@@ -26,7 +26,7 @@ const RateApp: React.FC = () => {
               onClick={() => {
                 analytics.trackRateAppTap({ cta_location: "profile" });
                 logEvent("RATE_APP");
-                appRate.navigateToAppStore();
+                void appRate.requestReview();
               }}
             />
           </ButtonWrap>

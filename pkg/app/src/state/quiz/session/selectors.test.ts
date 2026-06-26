@@ -33,6 +33,7 @@ describe("state > quiz > session > selectors", () => {
     questionAnswers: questionAnswers,
     maxQuestions: 10,
     experienceGained: 8,
+    completedAt: new Date(1000).toISOString(),
   };
   //-----------------------------------------------------------
 
@@ -99,5 +100,11 @@ describe("state > quiz > session > selectors", () => {
     const actual = selectors.experienceGainedSelector.resultFunc(defaultState);
 
     expect(actual).toEqual(defaultState.experienceGained);
+  });
+
+  it("completedAtSelector", () => {
+    const actual = selectors.completedAtSelector.resultFunc(defaultState);
+
+    expect(actual).toEqual(defaultState.completedAt);
   });
 });

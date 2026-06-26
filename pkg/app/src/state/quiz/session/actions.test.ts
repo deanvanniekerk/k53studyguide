@@ -62,4 +62,14 @@ describe("state > quiz > session > actions", () => {
 
     expect(actions.recieveExperienceGained(7)).toEqual(expectedAction);
   });
+
+  it("recieveCompletedAt", () => {
+    const completedAt = new Date(1000).toISOString();
+    const expectedAction = {
+      type: "QUIZ_SESSION_RECIEVE_COMPLETED_AT",
+      payload: completedAt,
+    };
+
+    expect(actions.recieveCompletedAt(completedAt)).toEqual(expectedAction);
+  });
 });

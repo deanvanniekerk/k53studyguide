@@ -2,7 +2,7 @@ import createMockStore from "redux-mock-store";
 import { thunk } from "redux-thunk";
 import { vi } from "vitest";
 import type { QuestionData, QuestionItem } from "@/data";
-import { loadQuestionAnswers, recieveExperienceGained, recieveQuestionAnswers, submitTest } from "./";
+import { loadQuestionAnswers, recieveCompletedAt, recieveExperienceGained, recieveQuestionAnswers, submitTest } from "./";
 import type { QuestionAnswer } from "./types";
 
 type DispatchExts = ReturnType<typeof loadQuestionAnswers> | ReturnType<typeof submitTest>;
@@ -188,13 +188,14 @@ describe("state > quiz > session > operations", () => {
 
     const actions = store.getActions();
 
-    expect(actions.length).toEqual(2);
+    expect(actions.length).toEqual(3);
 
     expect(actions[0]).toEqual(recieveExperienceGained(1));
+    expect(actions[1]).toEqual(recieveCompletedAt(now.toISOString()));
 
-    expect(actions[1].payload.questionId).toEqual(questions[0].id);
+    expect(actions[2].payload.questionId).toEqual(questions[0].id);
 
-    expect(actions[1].payload.date).toEqual(now.toISOString());
+    expect(actions[2].payload.date).toEqual(now.toISOString());
 
     vi.useRealTimers();
   });
@@ -236,13 +237,14 @@ describe("state > quiz > session > operations", () => {
 
     const actions = store.getActions();
 
-    expect(actions.length).toEqual(2);
+    expect(actions.length).toEqual(3);
 
     expect(actions[0]).toEqual(recieveExperienceGained(0));
+    expect(actions[1]).toEqual(recieveCompletedAt(now.toISOString()));
 
-    expect(actions[1].payload.questionId).toEqual(questions[0].id);
+    expect(actions[2].payload.questionId).toEqual(questions[0].id);
 
-    expect(actions[1].payload.date).toEqual(now.toISOString());
+    expect(actions[2].payload.date).toEqual(now.toISOString());
 
     vi.useRealTimers();
   });

@@ -5,12 +5,14 @@ export type TestState = {
   readonly questionAnswers: QuestionAnswer[];
   readonly maxQuestions: number;
   readonly experienceGained: number;
+  readonly completedAt: string | null;
 };
 
 export const defaultState: TestState = {
   questionAnswers: [],
   maxQuestions: 10,
   experienceGained: 0,
+  completedAt: null,
 };
 
 export const reducer = (state: TestState = defaultState, action: TestActions): TestState => {
@@ -19,6 +21,7 @@ export const reducer = (state: TestState = defaultState, action: TestActions): T
       return {
         ...state,
         questionAnswers: action.payload,
+        completedAt: null,
       };
     case "QUIZ_SESSION_RECIEVE_MAX_QUESTIONS":
       return {
@@ -29,6 +32,11 @@ export const reducer = (state: TestState = defaultState, action: TestActions): T
       return {
         ...state,
         experienceGained: action.payload,
+      };
+    case "QUIZ_SESSION_RECIEVE_COMPLETED_AT":
+      return {
+        ...state,
+        completedAt: action.payload,
       };
     case "QUIZ_SESSION_RECIEVE_ANSWER": {
       const index = state.questionAnswers.findIndex((q) => q.question.id === action.payload.questionId);

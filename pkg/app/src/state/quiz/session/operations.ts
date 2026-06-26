@@ -15,7 +15,12 @@ import {
   type RecieveQuestionAnswersAction,
   recieveQuestionAnswers,
 } from "./";
-import { type RecieveExperienceGainedAction, recieveExperienceGained } from "./actions";
+import {
+  type RecieveCompletedAtAction,
+  type RecieveExperienceGainedAction,
+  recieveCompletedAt,
+  recieveExperienceGained,
+} from "./actions";
 import type { QuestionAnswer } from "./types";
 
 export const loadQuestionAnswers = (): ThunkAction<void, RootState, null, RecieveQuestionAnswersAction> => {
@@ -70,19 +75,19 @@ export const submitTest = (): ThunkAction<
   void,
   RootState,
   null,
-  RecieveQuesionSuccesfullyAnsweredDateAction | RecieveExperienceGainedAction
+  RecieveQuesionSuccesfullyAnsweredDateAction | RecieveExperienceGainedAction | RecieveCompletedAtAction
 > => {
   return (dispatch, getState) => {
     const questionAnswers = questionAnswersSelector(getState());
     const quesionsSuccesfullyAnsweredDates = quesionsSuccesfullyAnsweredDatesSelector(getState());
+    const dateAnswered = new Date();
 
     let experienceGained = 0;
     questionAnswers.forEach((qa) => {
       if (qa.answer === qa.question.answer && !quesionsSuccesfullyAnsweredDates[qa.question.id]) experienceGained++;
     });
     dispatch(recieveExperienceGained(experienceGained));
-
-    const dateAnswered = new Date();
+    dispatch(recieveCompletedAt(dateAnswered.toISOString()));
 
     questionAnswers.forEach((qa) => {
       if (qa.answer === qa.question.answer)

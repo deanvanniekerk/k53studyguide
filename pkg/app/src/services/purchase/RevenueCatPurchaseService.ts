@@ -20,6 +20,12 @@ import type { LogData, LogLevel } from "..";
 import { DEFAULT_PREMIUM_PRODUCT_ID, getPremiumProductId, REVENUECAT_PREMIUM_ENTITLEMENT_ID } from "./productIds";
 import type { PurchaseService, PurchaseStore } from "./types";
 
+type PurchaseStateSnapshot = {
+  purchase?: {
+    owned?: boolean;
+  };
+};
+
 const getRevenueCatApiKey = (platform: string) => {
   if (platform === "ios") return __REVENUECAT_IOS_API_KEY__;
   if (platform === "android") return __REVENUECAT_ANDROID_API_KEY__;
@@ -119,6 +125,7 @@ export class RevenueCatPurchaseService implements PurchaseService {
     const platform = Capacitor.getPlatform();
     this._productId = getPremiumProductId(platform === "ios");
     const apiKey = getRevenueCatApiKey(platform);
+    const hasLegacyFullAccess = this.hasPersistedFullAccess();
 
     this.log("INFO", "RevenueCatPurchaseService > initialize", {
       productId: this._productId,
@@ -158,7 +165,7 @@ export class RevenueCatPurchaseService implements PurchaseService {
 
       this._product = product;
       this._reduxStore.dispatch(recievePurchaseProduct(product.priceString, product.title, product.description));
-      this.applyCustomerInfo(customerInfo);
+      await this.applyCustomerInfoWithLegacySync(customerInfo, hasLegacyFullAccess);
     } catch (error) {
       const purchaseError = toPurchasesError(error);
       this.log("ERROR", "RevenueCatPurchaseService > initialize > error", {
@@ -170,12 +177,44 @@ export class RevenueCatPurchaseService implements PurchaseService {
   }
 
   private applyCustomerInfo(customerInfo: CustomerInfo) {
-    const hasFullAccess = Boolean(customerInfo.entitlements.active[REVENUECAT_PREMIUM_ENTITLEMENT_ID]?.isActive);
+    const hasFullAccess = this.hasFullAccess(customerInfo);
 
     this._reduxStore.dispatch(recievePurchaseProductOwned(hasFullAccess));
     this._reduxStore.dispatch(recievePurchaseProductCanPurchase(Boolean(this._product) && !hasFullAccess));
 
     return hasFullAccess;
+  }
+
+  private async applyCustomerInfoWithLegacySync(customerInfo: CustomerInfo, hasLegacyFullAccess: boolean) {
+    const hasRevenueCatFullAccess = this.hasFullAccess(customerInfo);
+    if (hasRevenueCatFullAccess || !hasLegacyFullAccess) return this.applyCustomerInfo(customerInfo);
+
+    try {
+      this.log("INFO", "RevenueCatPurchaseService > initialize > syncing legacy purchase");
+      await Purchases.syncPurchases();
+      const { customerInfo: syncedCustomerInfo } = await Purchases.getCustomerInfo();
+      return this.applyCustomerInfo(syncedCustomerInfo);
+    } catch (error) {
+      const purchaseError = toPurchasesError(error);
+      this.log("ERROR", "RevenueCatPurchaseService > initialize > legacy purchase sync failed", {
+        code: purchaseError?.code ?? "unknown",
+        message: purchaseError?.message ?? String(error),
+      });
+
+      // Preserve existing paid users if store sync cannot run during the RevenueCat migration.
+      this._reduxStore.dispatch(recievePurchaseProductOwned(true));
+      this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
+      return true;
+    }
+  }
+
+  private hasFullAccess(customerInfo: CustomerInfo) {
+    return Boolean(customerInfo.entitlements.active[REVENUECAT_PREMIUM_ENTITLEMENT_ID]?.isActive);
+  }
+
+  private hasPersistedFullAccess() {
+    const state = this._reduxStore.getState() as PurchaseStateSnapshot;
+    return Boolean(state.purchase?.owned);
   }
 
   private getAnalyticsPurchaseParams() {

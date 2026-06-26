@@ -44,6 +44,9 @@ importers:
       '@capacitor/preferences':
         specifier: 8.0.1
         version: 8.0.1(@capacitor/core@8.4.1)
+      '@capawesome/capacitor-app-review':
+        specifier: 8.0.1
+        version: 8.0.1(@capacitor/core@8.4.1)
       '@ionic/react':
         specifier: 8.8.12
         version: 8.8.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -386,6 +389,11 @@ packages:
 
   '@capacitor/preferences@8.0.1':
     resolution: {integrity: sha512-T6no3ebi79XJCk91U3Jp/liJUwgBdvHR+s6vhvPkPxSuch7z3zx5Rv1bdWM6sWruNx+pViuEGqZvbfCdyBvcHQ==}
+    peerDependencies:
+      '@capacitor/core': '>=8.0.0'
+
+  '@capawesome/capacitor-app-review@8.0.1':
+    resolution: {integrity: sha512-l81Wrke2G+3uW1RqD58B2fsHcqMGiZ3FGqFTiK5r8mPMYAiR/qsExGOG1/6KYFanKZCMq+nOpnwicXeDlaYt+A==}
     peerDependencies:
       '@capacitor/core': '>=8.0.0'
 
@@ -3005,6 +3013,10 @@ snapshots:
       '@capacitor/core': 8.4.1
 
   '@capacitor/preferences@8.0.1(@capacitor/core@8.4.1)':
+    dependencies:
+      '@capacitor/core': 8.4.1
+
+  '@capawesome/capacitor-app-review@8.0.1(@capacitor/core@8.4.1)':
     dependencies:
       '@capacitor/core': 8.4.1
 

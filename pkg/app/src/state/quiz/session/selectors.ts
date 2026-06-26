@@ -48,3 +48,6 @@ export const experienceGainedSelector: OutputSelector<RootState, number, (state:
   rootSelector,
   (root) => root.experienceGained,
 );
+
+export const completedAtSelector: OutputSelector<RootState, string | null, (state: TestState) => string | null> =
+  createSelector(rootSelector, (root) => root.completedAt ?? null);

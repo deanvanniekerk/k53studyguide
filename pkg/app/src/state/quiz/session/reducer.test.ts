@@ -6,6 +6,7 @@ describe("state > quiz > session > reducer", () => {
     questionAnswers: [],
     maxQuestions: 10,
     experienceGained: 0,
+    completedAt: null,
   };
 
   it("should handle QUIZ_SESSION_RECIEVE_QUESTION_ANSWERS", () => {
@@ -41,6 +42,42 @@ describe("state > quiz > session > reducer", () => {
     };
 
     expect(actualState).toEqual(expectedState);
+  });
+
+  it("should clear completedAt when question answers change", () => {
+    const questionAnswers = [
+      {
+        answer: null,
+        question: {
+          id: "1",
+          answer: "B",
+          text: "Question 1:",
+          option: [
+            {
+              id: "A",
+              value: "Option 1.",
+            },
+            {
+              id: "B",
+              value: "Option 2.",
+            },
+          ],
+        },
+      },
+    ];
+
+    const actualState = reducer(
+      {
+        ...defaultState,
+        completedAt: new Date(1000).toISOString(),
+      },
+      {
+        type: "QUIZ_SESSION_RECIEVE_QUESTION_ANSWERS",
+        payload: questionAnswers,
+      },
+    );
+
+    expect(actualState.completedAt).toEqual(null);
   });
 
   it("should handle QUIZ_SESSION_RECIEVE_QUESTION_ANSWERS", () => {
@@ -187,5 +224,19 @@ describe("state > quiz > session > reducer", () => {
     };
 
     expect(actualState).toEqual(expectedState);
+  });
+
+  it("should handle QUIZ_SESSION_RECIEVE_COMPLETED_AT", () => {
+    const completedAt = new Date(1000).toISOString();
+
+    const actualState = reducer(defaultState, {
+      type: "QUIZ_SESSION_RECIEVE_COMPLETED_AT",
+      payload: completedAt,
+    });
+
+    expect(actualState).toEqual({
+      ...defaultState,
+      completedAt,
+    });
   });
 });

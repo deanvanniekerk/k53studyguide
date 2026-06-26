@@ -6,13 +6,21 @@ import { Translate } from "react-translated";
 import styled from "styled-components";
 import { TestFailedIcon, TestPassedIcon } from "@/app/components/icons";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
+import { useSuccessfulQuizReviewPrompt } from "@/app/hooks/useSuccessfulQuizReviewPrompt";
 import type { RootState } from "@/state";
-import { experienceGainedSelector, totalCorrectAnswersSelector, totalQuestionsSelector } from "@/state/quiz/session";
+import {
+  completedAtSelector,
+  experienceGainedSelector,
+  totalCorrectAnswersSelector,
+  totalQuestionsSelector,
+} from "@/state/quiz/session";
 
 type Props = PropsFromState;
 
 const HeaderComponent: React.FC<Props> = (props) => {
   const { analytics, logEvent } = useAnalytics();
+  const requestSuccessfulQuizReview = useSuccessfulQuizReviewPrompt();
+  const allCorrect = props.totalQuestions > 0 && props.totalCorrectAnswers === props.totalQuestions;
 
   useEffect(() => {
     analytics.trackQuizComplete({
@@ -27,7 +35,9 @@ const HeaderComponent: React.FC<Props> = (props) => {
     });
   }, [analytics, logEvent, props.experienceGained, props.totalCorrectAnswers, props.totalQuestions]);
 
-  const allCorrect = props.totalCorrectAnswers === props.totalQuestions;
+  useEffect(() => {
+    if (allCorrect && props.completedAt) requestSuccessfulQuizReview(props.completedAt);
+  }, [allCorrect, props.completedAt, requestSuccessfulQuizReview]);
 
   if (props.totalQuestions === 0) return <React.Fragment />;
 
@@ -160,6 +170,7 @@ const mapStateToProps = (state: RootState) => {
     totalQuestions: totalQuestionsSelector(state),
     totalCorrectAnswers: totalCorrectAnswersSelector(state),
     experienceGained: experienceGainedSelector(state),
+    completedAt: completedAtSelector(state),
   };
 };
 

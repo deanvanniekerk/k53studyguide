@@ -17,6 +17,8 @@ PODS:
     - FirebaseCrashlytics (~> 12.7.0)
   - CapacitorPreferences (8.0.1):
     - Capacitor
+  - CapawesomeCapacitorAppReview (8.0.1):
+    - Capacitor
   - FirebaseAnalytics/Core (12.7.0):
     - FirebaseCore (~> 12.7.0)
     - FirebaseInstallations (~> 12.7.0)
@@ -134,6 +136,7 @@ DEPENDENCIES:
   - "CapacitorFirebaseAnalytics/Analytics (from `../../../../node_modules/.pnpm/@capacitor-firebase+analytics@8.3.0_@capacitor+core@8.4.1_firebase@12.15.0/node_modules/@capacitor-firebase/analytics`)"
   - "CapacitorFirebaseCrashlytics (from `../../../../node_modules/.pnpm/@capacitor-firebase+crashlytics@8.3.0_@capacitor+core@8.4.1_firebase@12.15.0/node_modules/@capacitor-firebase/crashlytics`)"
   - "CapacitorPreferences (from `../../../../node_modules/.pnpm/@capacitor+preferences@8.0.1_@capacitor+core@8.4.1/node_modules/@capacitor/preferences`)"
+  - "CapawesomeCapacitorAppReview (from `../../../../node_modules/.pnpm/@capawesome+capacitor-app-review@8.0.1_@capacitor+core@8.4.1/node_modules/@capawesome/capacitor-app-review`)"
   - "RevenuecatPurchasesCapacitor (from `../../../../node_modules/.pnpm/@revenuecat+purchases-capacitor@13.2.0_@capacitor+core@8.4.1/node_modules/@revenuecat/purchases-capacitor`)"
 
 SPEC REPOS:
@@ -172,6 +175,8 @@ EXTERNAL SOURCES:
     :path: "../../../../node_modules/.pnpm/@capacitor-firebase+crashlytics@8.3.0_@capacitor+core@8.4.1_firebase@12.15.0/node_modules/@capacitor-firebase/crashlytics"
   CapacitorPreferences:
     :path: "../../../../node_modules/.pnpm/@capacitor+preferences@8.0.1_@capacitor+core@8.4.1/node_modules/@capacitor/preferences"
+  CapawesomeCapacitorAppReview:
+    :path: "../../../../node_modules/.pnpm/@capawesome+capacitor-app-review@8.0.1_@capacitor+core@8.4.1/node_modules/@capawesome/capacitor-app-review"
   RevenuecatPurchasesCapacitor:
     :path: "../../../../node_modules/.pnpm/@revenuecat+purchases-capacitor@13.2.0_@capacitor+core@8.4.1/node_modules/@revenuecat/purchases-capacitor"
 
@@ -184,6 +189,7 @@ SPEC CHECKSUMS:
   CapacitorFirebaseAnalytics: 0cdb216fd543a6a1e0ef1c83f9b5c8ed744c634d
   CapacitorFirebaseCrashlytics: a1402adcf140e3a7df4ae8cd145decf32883ef6a
   CapacitorPreferences: cca2021f386efb75947c850334447d9ff22b14f1
+  CapawesomeCapacitorAppReview: 73b307a15e5052ecbaa3126ddae25e8bfa82fad1
   FirebaseAnalytics: e423129866107aeacf6010a280b9c9829f9ea50d
   FirebaseCore: c7b57863ce0859281a66d16ca36d665c45d332b5
   FirebaseCoreExtension: 731a5744970bcd73ad95ab2a2b8a1f46353e86dd
@@ -202,6 +208,6 @@ SPEC CHECKSUMS:
   RevenueCat: f3641992451c1426da8d8d1466cec3bbdb765962
   RevenuecatPurchasesCapacitor: 180e7d224124f97c23eaae9d590a90a510115f70
 
-PODFILE CHECKSUM: 57883e2c2a65f509bab89ad9d58a364c1f0e1a08
+PODFILE CHECKSUM: 777a3972b0dfb9a910ab82968ade5eb0727bcbbe
 
 COCOAPODS: 1.16.2
