@@ -10,7 +10,7 @@ parameters:
     - name: buildAndroid
       displayName: Build Android
       type: boolean
-      default: true
+      default: false
     - name: buildIOS
       displayName: Build iOS
       type: boolean
