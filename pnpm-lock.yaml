@@ -10,6 +10,7 @@ overrides:
 patchedDependencies:
   cordova-plugin-analytics@2.0.0: 40988959fefe16f3984cd457cd319e738d4efda153fc265048777b0526f3a7c9
   cordova-plugin-firebase-crashlytics@1.2.0: 8c72ee93aafa064ec35905c491415f0346e955373567010f27a571ec34bef5ca
+  cordova-plugin-purchase@13.15.4: 4bd4123fa03c4443c1b127e4ea2168037beff6d2c413c7a10c069bd0fd5cd097
 
 importers:
 
@@ -95,7 +96,7 @@ importers:
         version: 2.3.2
       cordova-plugin-purchase:
         specifier: 13.15.4
-        version: 13.15.4
+        version: 13.15.4(patch_hash=4bd4123fa03c4443c1b127e4ea2168037beff6d2c413c7a10c069bd0fd5cd097)
       immutability-helper:
         specifier: 3.1.1
         version: 3.1.1
@@ -3701,7 +3702,7 @@ snapshots:
 
   cordova-plugin-nativestorage@2.3.2: {}
 
-  cordova-plugin-purchase@13.15.4: {}
+  cordova-plugin-purchase@13.15.4(patch_hash=4bd4123fa03c4443c1b127e4ea2168037beff6d2c413c7a10c069bd0fd5cd097): {}
 
   cosmiconfig@8.3.6(typescript@5.9.3):
     dependencies:

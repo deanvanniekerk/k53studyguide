@@ -10,6 +10,7 @@ onlyBuiltDependencies:
 patchedDependencies:
   "cordova-plugin-analytics@2.0.0": "patches/cordova-plugin-analytics@2.0.0.patch"
   "cordova-plugin-firebase-crashlytics@1.2.0": "patches/cordova-plugin-firebase-crashlytics@1.2.0.patch"
+  cordova-plugin-purchase@13.15.4: patches/cordova-plugin-purchase@13.15.4.patch
 
 allowBuilds:
   esbuild: true
