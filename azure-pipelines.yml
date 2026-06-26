@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 pool:
-    vmImage: "macOS-15"
+    vmImage: "macOS-26"
 
 parameters:
     - name: buildAndroid
@@ -101,6 +101,23 @@ steps:
           provisioningProfileLocation: "secureFiles"
           provProfileSecureFile: "K53StudyGuide_AppStore.mobileprovision"
       displayName: "iOS > Install Apple Provisioning Profile"
+      condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
+
+    - script: |
+          set -euo pipefail
+
+          xcodebuild -version
+          sdkVersion="$(xcrun --sdk iphoneos --show-sdk-version)"
+          echo "iphoneos SDK: ${sdkVersion}"
+
+          case "${sdkVersion}" in
+            26.*|[3-9][0-9].*) ;;
+            *)
+              echo "##vso[task.logissue type=error]App Store uploads require the iOS 26 SDK or later."
+              exit 1
+              ;;
+          esac
+      displayName: "iOS > Verify Xcode SDK"
       condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
 
     - task: Xcode@5
