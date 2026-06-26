@@ -94,6 +94,7 @@ steps:
           certSecureFile: "K53StudyGuide_AppleDistribution.p12"
           certPwd: "$(APPLE_CERTIFICATE_PASSWORD)"
           keychain: "temp"
+          opensslPkcsArgs: "-legacy"
       displayName: "iOS > Install Apple Certificate"
       condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
     - task: InstallAppleProvisioningProfile@1
