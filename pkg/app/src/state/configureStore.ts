@@ -2,7 +2,7 @@ import type { Middleware, StoreEnhancer } from "redux";
 import { applyMiddleware, compose, createStore } from "redux";
 import { persistStore } from "redux-persist";
 import { thunk } from "redux-thunk";
-import { CordovaPurchaseService, createPurchaseService, LocalPurchaseService } from "@/services";
+import { createPurchaseService, LocalPurchaseService, RevenueCatPurchaseService } from "@/services";
 import type { PurchaseStore } from "@/services/purchase/types";
 import loggerMiddleware from "./middleware/loggerMiddleware";
 import createRootReducer from "./rootReducer";
@@ -29,7 +29,8 @@ export const configureStore = () => {
   const purchaseStore = store as unknown as PurchaseStore;
   let purchaseService = createPurchaseService(LocalPurchaseService, purchaseStore);
 
-  if (__ENVIRONMENT__ === "production") purchaseService = createPurchaseService(CordovaPurchaseService, purchaseStore);
+  if (__ENVIRONMENT__ === "production")
+    purchaseService = createPurchaseService(RevenueCatPurchaseService, purchaseStore);
 
   return { store, persistor, purchaseService };
 };

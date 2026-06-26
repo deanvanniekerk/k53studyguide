@@ -1,3 +1,4 @@
+import { Browser } from "@capacitor/browser";
 import { IonButton } from "@ionic/react";
 import type React from "react";
 import styled from "styled-components";
@@ -7,7 +8,7 @@ const PRIVACY_POLICY_URL = "https://k53studyguide.online/privacy.html";
 const TERMS_OF_USE_URL = "https://k53studyguide.online/terms.html";
 
 const openLegalUrl = (url: string) => {
-  window.open(url, "_system", "noopener,noreferrer");
+  void Browser.open({ url });
 };
 
 const Legal: React.FC = () => {

@@ -1,8 +1,11 @@
-// import { getAppRate } from "@/services/appRate";
-import { AppRate } from "@awesome-cordova-plugins/app-rate";
+import { Browser } from "@capacitor/browser";
 
-// needed because: https://github.com/pushandplay/cordova-plugin-apprate/issues/291
+const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app";
+
 export const useAppRate = () => {
-  // const appRate = getAppRate();
-  return AppRate;
+  return {
+    navigateToAppStore() {
+      void Browser.open({ url: PLAY_STORE_URL });
+    },
+  };
 };

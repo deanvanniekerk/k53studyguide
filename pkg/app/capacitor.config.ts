@@ -6,7 +6,6 @@ const config: CapacitorConfig = {
   webDir: "build",
   bundledWebRuntime: false,
   npmClient: "pnpm",
-  cordova: {},
 };
 
 export default config;

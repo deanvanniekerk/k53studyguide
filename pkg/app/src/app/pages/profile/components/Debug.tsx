@@ -1,5 +1,5 @@
-import { AppVersion } from "@awesome-cordova-plugins/app-version";
-import { Device } from "@awesome-cordova-plugins/device";
+import { App } from "@capacitor/app";
+import { Device } from "@capacitor/device";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { GroupCard, Row, Section, SectionTitle } from "./";
@@ -7,16 +7,20 @@ import { GroupCard, Row, Section, SectionTitle } from "./";
 const Debug: React.FC = () => {
   const [appVersionNumber, setAppVersionNumber] = useState("");
   const [appVersionCode, setAppVersionCode] = useState("");
+  const [deviceModel, setDeviceModel] = useState("");
+  const [deviceId, setDeviceId] = useState("");
+  const [deviceVersion, setDeviceVersion] = useState("");
 
   useEffect(() => {
     const load = async () => {
-      const avn = await AppVersion.getVersionNumber();
-      setAppVersionNumber(avn);
-
-      const avc = await AppVersion.getVersionCode();
-      setAppVersionCode(avc.toString());
+      const [appInfo, deviceInfo, deviceId] = await Promise.all([App.getInfo(), Device.getInfo(), Device.getId()]);
+      setAppVersionNumber(appInfo.version);
+      setAppVersionCode(appInfo.build);
+      setDeviceModel(deviceInfo.model);
+      setDeviceId(deviceId.identifier);
+      setDeviceVersion(deviceInfo.osVersion);
     };
-    load();
+    void load();
   }, []);
 
   return (
@@ -25,9 +29,9 @@ const Debug: React.FC = () => {
       <GroupCard>
         <Row name="App Version Number" value={appVersionNumber} />
         <Row name="App Version Code" value={appVersionCode} />
-        <Row name="Device Model" value={Device.model} />
-        <Row name="Device Id" value={Device.uuid} />
-        <Row name="Device Version" value={Device.version} />
+        <Row name="Device Model" value={deviceModel} />
+        <Row name="Device Id" value={deviceId} />
+        <Row name="Device Version" value={deviceVersion} />
       </GroupCard>
     </Section>
   );

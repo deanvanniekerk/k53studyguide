@@ -42,7 +42,6 @@ export class LocalPurchaseService implements PurchaseService {
     this._reduxStore.dispatch(productAction);
   }
 
-  //in app purchase flow: https://github.com/j3k0/cordova-plugin-purchase/blob/master/doc/api.md
   purchase() {
     console.log("LocalPurchaseService > purchase");
 

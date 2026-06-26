@@ -3,6 +3,5 @@
 	"appName": "K53 Study Guide",
 	"webDir": "build",
 	"bundledWebRuntime": false,
-	"npmClient": "pnpm",
-	"cordova": {}
+	"npmClient": "pnpm"
 }

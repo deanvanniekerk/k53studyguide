@@ -20,6 +20,10 @@ const getConfig = (key: string, fallback: string): string => {
   return config?.has(key) ? config.get<string>(key) : fallback;
 };
 
+const getSecretConfig = (key: string, environmentVariable: string): string => {
+  return getConfig(key, process.env[environmentVariable] ?? "");
+};
+
 export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
@@ -38,6 +42,10 @@ export default defineConfig(({ mode }) => ({
   define: {
     __ENVIRONMENT__: JSON.stringify(getConfig("environment", mode === "production" ? "production" : "development")),
     __LOG_LEVEL__: JSON.stringify(getConfig("logLevel", "INFO")),
+    __REVENUECAT_ANDROID_API_KEY__: JSON.stringify(
+      getSecretConfig("revenueCat.androidApiKey", "REVENUECAT_ANDROID_API_KEY"),
+    ),
+    __REVENUECAT_IOS_API_KEY__: JSON.stringify(getSecretConfig("revenueCat.iosApiKey", "REVENUECAT_IOS_API_KEY")),
   },
   resolve: {
     alias: {

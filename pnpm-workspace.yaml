@@ -5,12 +5,11 @@ overrides:
   "@types/react": "18.3.28"
 
 onlyBuiltDependencies:
+  - "@firebase/util"
   - esbuild
-
-patchedDependencies:
-  "cordova-plugin-analytics@2.0.0": "patches/cordova-plugin-analytics@2.0.0.patch"
-  "cordova-plugin-firebase-crashlytics@1.2.0": "patches/cordova-plugin-firebase-crashlytics@1.2.0.patch"
-  cordova-plugin-purchase@13.15.4: patches/cordova-plugin-purchase@13.15.4.patch
+  - protobufjs
 
 allowBuilds:
+  "@firebase/util": true
   esbuild: true
+  protobufjs: true

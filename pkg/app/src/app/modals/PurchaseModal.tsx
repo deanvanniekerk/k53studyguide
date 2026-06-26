@@ -1,4 +1,4 @@
-import { Device } from "@awesome-cordova-plugins/device";
+import { Capacitor } from "@capacitor/core";
 import { IonButton, IonLoading, IonModal, IonToast } from "@ionic/react";
 import React, { useContext, useEffect, useState } from "react";
 import { connect } from "react-redux";
@@ -132,7 +132,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
             <IonLoading
               isOpen={isPending}
               message={translate({ text: "processingPayment" })}
-              mode={Device.platform === "Android" ? "md" : "ios"}
+              mode={Capacitor.getPlatform() === "android" ? "md" : "ios"}
             />
           )}
         </Translator>

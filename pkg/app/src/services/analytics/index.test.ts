@@ -7,8 +7,8 @@ const analyticsFirebaseMock = vi.hoisted(() => ({
   setUserProperty: vi.fn(),
 }));
 
-vi.mock("@awesome-cordova-plugins/analytics-firebase", () => ({
-  AnalyticsFirebase: {
+vi.mock("@capacitor-firebase/analytics", () => ({
+  FirebaseAnalytics: {
     logEvent: analyticsFirebaseMock.logEvent,
     setCurrentScreen: analyticsFirebaseMock.setCurrentScreen,
     setUserProperty: analyticsFirebaseMock.setUserProperty,
@@ -27,11 +27,14 @@ describe("services > analytics", () => {
       experience_gained: 12,
     });
 
-    expect(analyticsFirebaseMock.logEvent).toHaveBeenCalledWith("quiz_complete", {
-      question_count: 10,
-      correct_count: 7,
-      score_percent: 70,
-      experience_gained: 12,
+    expect(analyticsFirebaseMock.logEvent).toHaveBeenCalledWith({
+      name: "quiz_complete",
+      params: {
+        question_count: 10,
+        correct_count: 7,
+        score_percent: 70,
+        experience_gained: 12,
+      },
     });
   });
 
@@ -43,14 +46,17 @@ describe("services > analytics", () => {
       value: 25,
     });
 
-    expect(analyticsFirebaseMock.logEvent).toHaveBeenCalledWith("purchase", {
-      currency: "ZAR",
-      value: 25,
-      price: "R25",
-      product_id: "premium_access",
-      item_id: "premium_access",
-      item_name: "premium_access",
-      purchase_state: "finished",
+    expect(analyticsFirebaseMock.logEvent).toHaveBeenCalledWith({
+      name: "purchase",
+      params: {
+        currency: "ZAR",
+        value: 25,
+        price: "R25",
+        product_id: "premium_access",
+        item_id: "premium_access",
+        item_name: "premium_access",
+        purchase_state: "finished",
+      },
     });
   });
 
@@ -61,9 +67,9 @@ describe("services > analytics", () => {
       premium_status: "premium",
     });
 
-    expect(analyticsFirebaseMock.setUserProperty).toHaveBeenCalledWith("language", "en");
-    expect(analyticsFirebaseMock.setUserProperty).toHaveBeenCalledWith("theme", "dark");
-    expect(analyticsFirebaseMock.setUserProperty).toHaveBeenCalledWith("premium_status", "premium");
+    expect(analyticsFirebaseMock.setUserProperty).toHaveBeenCalledWith({ key: "language", value: "en" });
+    expect(analyticsFirebaseMock.setUserProperty).toHaveBeenCalledWith({ key: "theme", value: "dark" });
+    expect(analyticsFirebaseMock.setUserProperty).toHaveBeenCalledWith({ key: "premium_status", value: "premium" });
   });
 
   it("calculates score percentages safely", () => {

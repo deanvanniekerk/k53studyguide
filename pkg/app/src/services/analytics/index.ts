@@ -1,4 +1,4 @@
-import { AnalyticsFirebase } from "@awesome-cordova-plugins/analytics-firebase";
+import { FirebaseAnalytics } from "@capacitor-firebase/analytics";
 import type { OrderState } from "@/state/purchase";
 
 export type PremiumStatus = "free" | "premium";
@@ -81,23 +81,31 @@ const purchaseParams = (params: PurchaseParams): AnalyticsParams => ({
   cta_location: params.cta_location,
 });
 
+const runNativeAnalytics = (operation: Promise<void> | void) => {
+  void Promise.resolve(operation).catch((error) => {
+    console.warn("Firebase analytics call failed", error);
+  });
+};
+
 export const analytics = {
   setCurrentScreen(screenName: string) {
-    AnalyticsFirebase.setCurrentScreen(screenName);
+    runNativeAnalytics(FirebaseAnalytics.setCurrentScreen({ screenName }));
   },
 
   setUserProperties(properties: UserProperties) {
-    const firebaseWithUserProperties = AnalyticsFirebase as unknown as {
-      setUserProperty?: (name: string, value: string) => void;
-    };
-
     Object.entries(properties).forEach(([name, value]) => {
-      if (value) firebaseWithUserProperties.setUserProperty?.(name, value);
+      if (value) runNativeAnalytics(FirebaseAnalytics.setUserProperty({ key: name, value }));
     });
   },
 
   logEvent(eventName: AnalyticsEventName | LegacyAnalyticsEventName, params?: AnalyticsParams) {
-    AnalyticsFirebase.logEvent(eventName, normalizeParams(params));
+    const normalizedParams = normalizeParams(params);
+    runNativeAnalytics(
+      FirebaseAnalytics.logEvent({
+        name: eventName,
+        ...(normalizedParams ? { params: normalizedParams } : {}),
+      }),
+    );
   },
 
   trackAppOpen(params: { language: string; theme: string; premium_status: PremiumStatus }) {

@@ -4,9 +4,13 @@
 	"webDir": "build",
 	"bundledWebRuntime": false,
 	"npmClient": "pnpm",
-	"cordova": {},
 	"packageClassList": [
+		"FirebaseAnalyticsPlugin",
+		"FirebaseCrashlyticsPlugin",
+		"AppPlugin",
+		"CAPBrowserPlugin",
+		"DevicePlugin",
 		"PreferencesPlugin",
-		"CDVPlugin"
+		"PurchasesPlugin"
 	]
 }

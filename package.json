@@ -28,7 +28,7 @@
     "lander:deploy": "bash scripts/deploy-lander-ftp.sh"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.13"
+    "@biomejs/biome": "2.5.1"
   },
   "packageManager": "pnpm@11.7.0"
 }
