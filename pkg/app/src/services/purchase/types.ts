@@ -9,4 +9,5 @@ export interface PurchaseServiceConstructor {
 export interface PurchaseService {
   initialize: () => void;
   purchase: () => void;
+  restore: () => void | Promise<void>;
 }

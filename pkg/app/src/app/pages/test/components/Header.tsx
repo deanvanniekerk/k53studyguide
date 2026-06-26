@@ -53,7 +53,11 @@ const HeaderComponent: React.FC<Props> = (props) => {
         </IllustrationPanel>
       </CreateAnimation>
 
-      {props.hasFullAccess && <PrimaryText>Test Locked</PrimaryText>}
+      {props.hasFullAccess && (
+        <PrimaryText>
+          <Translate text="testsCompleted" />
+        </PrimaryText>
+      )}
       {props.hasFullAccess && (
         <MetricArea>
           <CreateAnimation

@@ -25,10 +25,12 @@ export class CordovaPurchaseService implements PurchaseService {
     document.addEventListener(
       "deviceready",
       async () => {
-        const { store, ProductType, Platform, LogLevel } = window.CdvPurchase; // window is important
+        const { store, ProductType, LogLevel } = window.CdvPurchase; // window is important
+        const platform = store.defaultPlatform();
 
         this.log("INFO", "CordovaPurchaseService > initialize", {
           productId: this._productId,
+          platform,
           type: ProductType.NON_CONSUMABLE,
         });
 
@@ -38,7 +40,7 @@ export class CordovaPurchaseService implements PurchaseService {
           {
             id: this._productId,
             type: ProductType.NON_CONSUMABLE,
-            platform: Platform.GOOGLE_PLAY,
+            platform,
           },
         ]);
 
@@ -91,7 +93,7 @@ export class CordovaPurchaseService implements PurchaseService {
             this._reduxStore.dispatch(ownedAction);
           });
 
-        store.initialize([Platform.GOOGLE_PLAY]);
+        store.initialize([platform]);
       },
       false,
     );
@@ -133,6 +135,39 @@ export class CordovaPurchaseService implements PurchaseService {
       stateAction = recievePurchaseOrderState(orderState);
       this._reduxStore.dispatch(stateAction);
     }
+  }
+
+  async restore() {
+    const { store } = window.CdvPurchase; // window is important
+
+    this.log("INFO", "CordovaPurchaseService > restoring purchases");
+    this._reduxStore.dispatch(recievePurchaseOrderState("pending"));
+
+    const error = await store.restorePurchases();
+
+    if (error) {
+      this.log("ERROR", "CordovaPurchaseService > restore > error", {
+        isError: error.isError ? "true" : "false",
+        code: error.code.toString(),
+        message: error.message,
+      });
+      this._reduxStore.dispatch(recievePurchaseOrderState("error"));
+      return;
+    }
+
+    const product = store.get(this._productId);
+
+    if (store.owned(this._productId) || product?.owned) {
+      this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
+      this._reduxStore.dispatch(recievePurchaseProductOwned(true));
+      this._reduxStore.dispatch(recievePurchaseOrderState("ready"));
+      return;
+    }
+
+    this.log("INFO", "CordovaPurchaseService > restore > no purchase restored", {
+      productId: this._productId,
+    });
+    this._reduxStore.dispatch(recievePurchaseOrderState("error"));
   }
 
   log(level: LogLevel, message: string, data?: LogData) {

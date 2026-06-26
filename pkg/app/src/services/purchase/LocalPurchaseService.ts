@@ -64,6 +64,24 @@ export class LocalPurchaseService implements PurchaseService {
     }, 1000);
   }
 
+  restore() {
+    console.log("LocalPurchaseService > restore");
+
+    let statusAction = recievePurchaseOrderState("pending");
+    this._reduxStore.dispatch(statusAction);
+
+    setTimeout(() => {
+      const canPurchaseAction = recievePurchaseProductCanPurchase(false);
+      this._reduxStore.dispatch(canPurchaseAction);
+
+      const ownedAction = recievePurchaseProductOwned(true);
+      this._reduxStore.dispatch(ownedAction);
+
+      statusAction = recievePurchaseOrderState("ready");
+      this._reduxStore.dispatch(statusAction);
+    }, 1000);
+  }
+
   private getAnalyticsPurchaseParams() {
     return {
       product_id: this._productId,

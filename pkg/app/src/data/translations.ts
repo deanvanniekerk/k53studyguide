@@ -7,6 +7,12 @@ const translations: Translations = {
   purchaseSuccessful: {
     en: "Purchase Successful! Thank you for your support",
   },
+  purchaseRestored: {
+    en: "Premium purchase restored",
+  },
+  purchaseRestoreFailed: {
+    en: "No Premium purchase was restored",
+  },
   purchaseFailed: {
     en: "Purchase Failed!",
   },
@@ -114,6 +120,9 @@ const translations: Translations = {
   },
   getPremium: {
     en: "Get Premium",
+  },
+  restorePurchase: {
+    en: "Restore Purchase",
   },
   goPremium: {
     en: "Go Premium",

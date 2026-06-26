@@ -25,8 +25,13 @@ const PurchaseModal: React.FC<Props> = (props) => {
   const purchaseService = useContext(PurchaseContext);
 
   const [showOwnedToast, setShowOwnedToast] = useState(false);
+  const [showRestoreToast, setShowRestoreToast] = useState(false);
   const [showFailedToast, setShowFailedToast] = useState(false);
+  const [showRestoreFailedToast, setShowRestoreFailedToast] = useState(false);
   const [showCancelledToast, setShowCancelledToast] = useState(false);
+  const [restoreAttempted, setRestoreAttempted] = useState(false);
+
+  const isPending = props.purchase.orderState === "pending";
 
   useEffect(() => {
     if (!props.isOpen) return;
@@ -39,16 +44,29 @@ const PurchaseModal: React.FC<Props> = (props) => {
     logEvent("PRESENT_OFFER");
   }, [analytics, logEvent, props.isOpen, props.purchase.price]);
 
-  //Close the modal if its owned
   useEffect(() => {
     if (props.purchase.orderState === "finished") {
-      setShowOwnedToast(true);
+      if (restoreAttempted) {
+        setShowRestoreToast(true);
+        setRestoreAttempted(false);
+      } else {
+        setShowOwnedToast(true);
+      }
     }
     if (props.purchase.owned) {
+      if (restoreAttempted) {
+        setShowRestoreToast(true);
+        setRestoreAttempted(false);
+      }
       setTimeout(props.onDidDismiss, 500);
     }
     if (props.purchase.orderState === "error") {
-      setShowFailedToast(true);
+      if (restoreAttempted) {
+        setShowRestoreFailedToast(true);
+        setRestoreAttempted(false);
+      } else {
+        setShowFailedToast(true);
+      }
       props.recievePurchaseOrderState("ready"); //reset
     }
     if (props.purchase.orderState === "cancelled") {
@@ -71,6 +89,14 @@ const PurchaseModal: React.FC<Props> = (props) => {
               position="top"
             />
             <IonToast
+              isOpen={showRestoreToast}
+              onDidDismiss={() => setShowRestoreToast(false)}
+              message={translate({ text: "purchaseRestored" })}
+              duration={5000}
+              color="success"
+              position="top"
+            />
+            <IonToast
               isOpen={showCancelledToast}
               onDidDismiss={() => setShowCancelledToast(false)}
               message={translate({ text: "purchaseCancelled" })}
@@ -86,6 +112,14 @@ const PurchaseModal: React.FC<Props> = (props) => {
               color="danger"
               position="top"
             />
+            <IonToast
+              isOpen={showRestoreFailedToast}
+              onDidDismiss={() => setShowRestoreFailedToast(false)}
+              message={translate({ text: "purchaseRestoreFailed" })}
+              duration={5000}
+              color="danger"
+              position="top"
+            />
           </React.Fragment>
         )}
       </Translator>
@@ -94,7 +128,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
         <Translator>
           {({ translate }) => (
             <IonLoading
-              isOpen={props.purchase.orderState === "pending"}
+              isOpen={isPending}
               message={translate({ text: "processingPayment" })}
               mode={Device.platform === "Android" ? "md" : "ios"}
             />
@@ -161,8 +195,9 @@ const PurchaseModal: React.FC<Props> = (props) => {
                 mode="md"
                 shape="round"
                 fill="solid"
-                disabled={!props.purchase.canPurchase}
+                disabled={!props.purchase.canPurchase || isPending || !purchaseService}
                 onClick={() => {
+                  setRestoreAttempted(false);
                   analytics.trackPromotionSelect({
                     product_id: "premium_access",
                     price: props.purchase.price,
@@ -174,6 +209,17 @@ const PurchaseModal: React.FC<Props> = (props) => {
               >
                 <Translate text="getPremium" />
               </PurchaseButton>
+              <RestoreButton
+                mode="md"
+                fill="clear"
+                disabled={isPending || !purchaseService}
+                onClick={() => {
+                  setRestoreAttempted(true);
+                  void purchaseService?.restore();
+                }}
+              >
+                <Translate text="restorePurchase" />
+              </RestoreButton>
             </PriceCard>
           </ContentPanel>
         </Shell>
@@ -316,6 +362,15 @@ const PurchaseButton = styled(IonButton)`
   --background-activated: var(--app-test-action-background);
   --border-radius: 20px;
   --box-shadow: var(--app-test-action-shadow);
+`;
+
+const RestoreButton = styled(IonButton)`
+  width: 100%;
+  min-height: 44px;
+  margin: 10px 0 0;
+  color: var(--app-text-muted);
+  font-size: var(--app-font-size-md);
+  font-weight: 900;
 `;
 
 const Modal = styled(IonModal)`
