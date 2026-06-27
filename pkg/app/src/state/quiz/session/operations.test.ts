@@ -2,7 +2,13 @@ import createMockStore from "redux-mock-store";
 import { thunk } from "redux-thunk";
 import { vi } from "vitest";
 import type { QuestionData, QuestionItem } from "@/data";
-import { loadQuestionAnswers, recieveCompletedAt, recieveExperienceGained, recieveQuestionAnswers, submitTest } from "./";
+import {
+  loadQuestionAnswers,
+  recieveCompletedAt,
+  recieveExperienceGained,
+  recieveQuestionAnswers,
+  submitTest,
+} from "./";
 import type { QuestionAnswer } from "./types";
 
 type DispatchExts = ReturnType<typeof loadQuestionAnswers> | ReturnType<typeof submitTest>;

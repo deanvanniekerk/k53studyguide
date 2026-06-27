@@ -1,6 +1,6 @@
-import { AppReview } from "@capawesome/capacitor-app-review";
 import { Browser } from "@capacitor/browser";
 import { Capacitor } from "@capacitor/core";
+import { AppReview } from "@capawesome/capacitor-app-review";
 
 const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app";
 
