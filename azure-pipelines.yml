@@ -199,6 +199,8 @@ steps:
           rm -rf "${outputDir}"
           mkdir -p "${outputDir}"
 
+          # Do not pass signing settings here: xcodebuild applies command-line
+          # build settings to Pods too, and Pods cannot use provisioning profiles.
           xcodebuild \
             -workspace "pkg/app/ios/App/App.xcworkspace" \
             -scheme "App" \
@@ -207,10 +209,7 @@ steps:
             -destination "generic/platform=iOS" \
             -archivePath "${archivePath}" \
             -derivedDataPath "$(Agent.TempDirectory)/k53-ios-derived-data" \
-            clean archive \
-            "DEVELOPMENT_TEAM=$(appleTeamId)" \
-            "CODE_SIGN_IDENTITY=${APPLE_CERTIFICATE_SIGNING_IDENTITY}" \
-            "PROVISIONING_PROFILE_SPECIFIER=$(iosProvisioningProfileName)"
+            clean archive
       displayName: "iOS > Archive"
       condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
 
