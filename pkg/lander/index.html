@@ -61,6 +61,7 @@
     }
   }
   </script>
+  <script type="module" src="/src/main.tsx"></script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -253,9 +254,9 @@
 
     .hero-ctas {
       display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
+      flex-direction: column;
+      gap: 28px;
+      align-items: flex-start;
     }
 
     .btn-primary {
@@ -971,6 +972,7 @@
     /* ─── PREMIUM ─── */
     #premium {
       background: #0a0118;
+      padding-bottom: clamp(28px, 4vw, 48px);
     }
 
     .premium-inner {
@@ -1087,7 +1089,7 @@
       background:
         linear-gradient(180deg, rgba(8,0,18,0) 0%, rgba(6,0,16,0.92) 100%),
         #080012;
-      padding-top: clamp(52px, 7vw, 96px);
+      padding-top: clamp(28px, 4vw, 48px);
       padding-bottom: clamp(52px, 7vw, 96px);
     }
 
@@ -1219,7 +1221,7 @@
       }
 
       .hero-subtitle { max-width: 100%; margin-left: auto; margin-right: auto; }
-      .hero-ctas { justify-content: center; }
+      .hero-ctas { align-items: center; }
       .hero-stats { justify-content: center; }
       .hero-visual { min-height: 400px; }
       .phone-main { width: 180px; height: auto; }
@@ -1305,21 +1307,27 @@
         Study South African K53 road signs, rules of the road and vehicle controls. Practice with quizzes and mock tests that mirror the real learner's licence exam.
       </p>
 
-      <div class="store-badges">
-        <a href="https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=utm_source%3Dwebsite%26utm_medium%3Dhero_cta%26utm_campaign%3Dorganic_web" target="_blank" rel="noopener noreferrer" class="store-badge">
-          <span class="store-badge-icon">▶</span>
-          <span class="store-badge-text">
-            <span>Get it on</span>
-            <span>Google Play</span>
-          </span>
-        </a>
-        <a href="#ios-coming-soon" class="store-badge coming-soon" data-coming-soon data-analytics-location="hero_ios_cta">
-          <span class="store-badge-icon">&#xf8ff;</span>
-          <span class="store-badge-text">
-            <span>Download on the</span>
-            <span>App Store</span>
-          </span>
-        </a>
+      <div class="hero-ctas">
+        <div class="store-badges">
+          <a href="https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=utm_source%3Dwebsite%26utm_medium%3Dhero_cta%26utm_campaign%3Dorganic_web" target="_blank" rel="noopener noreferrer" class="store-badge">
+            <span class="store-badge-icon">▶</span>
+            <span class="store-badge-text">
+              <span>Get it on</span>
+              <span>Google Play</span>
+            </span>
+          </a>
+          <a href="#ios-coming-soon" class="store-badge coming-soon" data-coming-soon data-analytics-location="hero_ios_cta">
+            <span class="store-badge-icon">&#xf8ff;</span>
+            <span class="store-badge-text">
+              <span>Download on the</span>
+              <span>App Store</span>
+            </span>
+          </a>
+        </div>
+        <button class="btn-primary" type="button" data-quiz-demo-open data-analytics-location="hero_try_it_now">
+          Test drive it now
+          <span>&rarr;</span>
+        </button>
       </div>
 
       <div class="hero-stats">
@@ -1563,10 +1571,10 @@
         <div class="premium-once">Pay once, keep forever</div>
       </div>
 
-      <a href="https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=utm_source%3Dwebsite%26utm_medium%3Dpremium_cta%26utm_campaign%3Dorganic_web" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width: 100%; justify-content: center;">
-        Get Premium
-        <span>→</span>
-      </a>
+      <button class="btn-primary" type="button" data-quiz-demo-open data-analytics-location="premium_try_it_now" style="width: 100%; justify-content: center;">
+        Test drive it now
+        <span>&rarr;</span>
+      </button>
 
       <div style="font-size: 0.8rem; color: rgba(255,255,255,0.4); text-align: center; width: 100%;">
         Price shown in-app at checkout.
@@ -1650,6 +1658,8 @@
     </a>
   </div>
 </div>
+
+<div id="quiz-demo-root"></div>
 
 <!-- Vanilla JS interactions -->
 <script>

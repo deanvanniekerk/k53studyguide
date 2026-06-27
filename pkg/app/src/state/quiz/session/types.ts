@@ -1,6 +1,1 @@
-import type { QuestionItem } from "@/data";
-
-export type QuestionAnswer = {
-  question: QuestionItem;
-  answer: string | null;
-};
+export type { QuestionAnswer } from "@k53studyguide/shared/quiz";

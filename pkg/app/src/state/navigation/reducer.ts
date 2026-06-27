@@ -1,6 +1,7 @@
+import { ROOT_NAVIGATION_KEY } from "@k53studyguide/shared/quiz";
 import { type NavigationData, navigationData } from "@/data";
 
-export const ROOT_NAVIGATION_KEY = "nav";
+export { ROOT_NAVIGATION_KEY };
 
 export type NavigationState = {
   readonly navigationData: NavigationData;
