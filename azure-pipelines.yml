@@ -66,19 +66,62 @@ steps:
           jdkDirectory: "$(JAVA_HOME_21_X64)"
       displayName: "Android > Build"
       condition: and(succeeded(), eq('${{ parameters.buildAndroid }}', 'true'))
-    - task: AndroidSigning@3
+    - task: DownloadSecureFile@1
+      name: androidKeystore
       inputs:
-          apkFiles: "**/app-release-unsigned.apk"
-          apksignerKeystoreFile: "upload-keystore.jks"
-          apksignerKeystorePassword: "$(ANDROID_KEYSTORE_PASSWORD)"
-          apksignerKeystoreAlias: "upload"
-          apksignerKeyPassword: "$(ANDROID_KEY_PASSWORD)"
-          zipalign: true
-      displayName: "Android APK > Sign"
+          secureFile: "upload-keystore.jks"
+      displayName: "Android APK > Download Keystore"
+      condition: and(succeeded(), eq('${{ parameters.buildAndroid }}', 'true'))
+    - script: |
+          set -euo pipefail
+
+          sdkRoot="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
+          if [ -z "${sdkRoot}" ] || [ ! -d "${sdkRoot}/build-tools" ]; then
+            echo "##vso[task.logissue type=error]Android SDK build-tools directory was not found."
+            exit 1
+          fi
+
+          buildToolsVersion="$(ls -1 "${sdkRoot}/build-tools" | sort -t. -k1,1n -k2,2n -k3,3n | tail -n 1)"
+          buildToolsDir="${sdkRoot}/build-tools/${buildToolsVersion}"
+          zipalign="${buildToolsDir}/zipalign"
+          apksigner="${buildToolsDir}/apksigner"
+
+          unsignedApk="pkg/app/android/app/build/outputs/apk/release/app-release-unsigned.apk"
+          outputDir="$(Build.ArtifactStagingDirectory)/android"
+          alignedApk="${outputDir}/app-release-aligned.apk"
+          signedApk="${outputDir}/app-release.apk"
+
+          test -x "${zipalign}"
+          test -x "${apksigner}"
+          test -f "${unsignedApk}"
+          test -f "${ANDROID_KEYSTORE_PATH}"
+
+          rm -rf "${outputDir}"
+          mkdir -p "${outputDir}"
+
+          # Android 15+ can run on 16 KB page-size devices. Use -P 16 so
+          # uncompressed native libraries are page-aligned before signing.
+          "${zipalign}" -P 16 -f -v 4 "${unsignedApk}" "${alignedApk}"
+          "${apksigner}" sign \
+            --ks "${ANDROID_KEYSTORE_PATH}" \
+            --ks-key-alias "upload" \
+            --ks-pass "pass:${ANDROID_KEYSTORE_PASSWORD}" \
+            --key-pass "pass:${ANDROID_KEY_PASSWORD}" \
+            --out "${signedApk}" \
+            "${alignedApk}"
+
+          "${apksigner}" verify --verbose --print-certs "${signedApk}"
+          "${zipalign}" -c -P 16 -v 4 "${signedApk}"
+      displayName: "Android APK > Align and Sign"
+      env:
+          ANDROID_KEYSTORE_PATH: $(androidKeystore.secureFilePath)
+          ANDROID_KEYSTORE_PASSWORD: $(ANDROID_KEYSTORE_PASSWORD)
+          ANDROID_KEY_PASSWORD: $(ANDROID_KEY_PASSWORD)
       condition: and(succeeded(), eq('${{ parameters.buildAndroid }}', 'true'))
     - task: CopyFiles@2
       inputs:
-          Contents: "**/app-release-unsigned.apk"
+          SourceFolder: "$(Build.ArtifactStagingDirectory)/android"
+          Contents: "app-release.apk"
           flattenFolders: true
           TargetFolder: "$(Build.ArtifactStagingDirectory)"
       displayName: "Android APK > Copy to Artifacts"
