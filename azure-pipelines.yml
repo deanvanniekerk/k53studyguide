@@ -23,6 +23,7 @@ parameters:
 variables:
     appleTeamId: "2Y26AXFP33"
     iosBundleId: "deanvniekerk.k53studyguide.app"
+    iosProvisioningProfileName: "K53StudyGuide_AppStore"
 
 steps:
     - task: UseNode@1
@@ -124,23 +125,97 @@ steps:
       displayName: "iOS > Verify Xcode SDK"
       condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
 
-    - task: Xcode@5
-      inputs:
-          actions: "clean archive"
-          sdk: "iphoneos"
-          scheme: "App"
-          configuration: "Release"
-          xcodeVersion: "default"
-          xcWorkspacePath: "pkg/app/ios/App/App.xcworkspace"
-          signingOption: "default"
-          packageApp: true
-          archivePath: "$(Build.ArtifactStagingDirectory)/ios/App.xcarchive"
-          exportPath: "$(Build.ArtifactStagingDirectory)/ios"
-          exportOptions: "plist"
-          exportOptionsPlist: "pkg/app/ios/App/ExportOptions.plist"
-          args: '-destination "generic/platform=iOS"'
-          useXcpretty: "false"
-      displayName: "iOS > Build IPA"
+    # Keep the iOS build as explicit xcodebuild steps instead of Xcode@5. In the
+    # Azure logs, the wrapper archived without the generic iOS destination and
+    # hid the failing Firebase pod boundary behind the final archive failure.
+    - script: |
+          set -euo pipefail
+
+          podLock="pkg/app/ios/App/Podfile.lock"
+          grep -q "CapacitorFirebaseAnalytics/Analytics" "${podLock}"
+          grep -q "FirebaseAnalytics/Core" "${podLock}"
+
+          xcodebuild \
+            -project "pkg/app/ios/App/Pods/Pods.xcodeproj" \
+            -target "CapacitorFirebaseAnalytics" \
+            -configuration "Release" \
+            -sdk "iphoneos" \
+            clean build \
+            CODE_SIGNING_ALLOWED=NO
+      displayName: "iOS > Verify Firebase Analytics Pod"
+      condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
+
+    - script: |
+          set -euo pipefail
+
+          : "${APPLE_CERTIFICATE_SIGNING_IDENTITY:?Apple signing identity was not installed}"
+          : "${APPLE_PROV_PROFILE_UUID:?Apple provisioning profile UUID was not installed}"
+
+          profile="${HOME}/Library/MobileDevice/Provisioning Profiles/${APPLE_PROV_PROFILE_UUID}.mobileprovision"
+          test -f "${profile}"
+
+          security cms -D -i "${profile}" > "$(Agent.TempDirectory)/k53-profile.plist"
+          profileName="$(/usr/libexec/PlistBuddy -c "Print :Name" "$(Agent.TempDirectory)/k53-profile.plist")"
+          teamId="$(/usr/libexec/PlistBuddy -c "Print :TeamIdentifier:0" "$(Agent.TempDirectory)/k53-profile.plist")"
+          appIdentifier="$(/usr/libexec/PlistBuddy -c "Print :Entitlements:application-identifier" "$(Agent.TempDirectory)/k53-profile.plist")"
+
+          echo "Signing identity: ${APPLE_CERTIFICATE_SIGNING_IDENTITY}"
+          echo "Provisioning profile: ${profileName}"
+          echo "Provisioning team: ${teamId}"
+          echo "Provisioning app id: ${appIdentifier}"
+
+          if [ "${teamId}" != "$(appleTeamId)" ]; then
+            echo "##vso[task.logissue type=error]Provisioning profile team '${teamId}' does not match expected team '$(appleTeamId)'."
+            exit 1
+          fi
+
+          if [ "${profileName}" != "$(iosProvisioningProfileName)" ]; then
+            echo "##vso[task.logissue type=error]Provisioning profile '${profileName}' does not match expected profile '$(iosProvisioningProfileName)'."
+            exit 1
+          fi
+
+          case "${appIdentifier}" in
+            *."$(iosBundleId)") ;;
+            *)
+              echo "##vso[task.logissue type=error]Provisioning profile app id '${appIdentifier}' does not match bundle id '$(iosBundleId)'."
+              exit 1
+              ;;
+          esac
+      displayName: "iOS > Verify Signing Assets"
+      condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
+
+    - script: |
+          set -euo pipefail
+
+          outputDir="$(Build.ArtifactStagingDirectory)/ios"
+          archivePath="${outputDir}/App.xcarchive"
+          rm -rf "${outputDir}"
+          mkdir -p "${outputDir}"
+
+          xcodebuild \
+            -workspace "pkg/app/ios/App/App.xcworkspace" \
+            -scheme "App" \
+            -configuration "Release" \
+            -sdk "iphoneos" \
+            -destination "generic/platform=iOS" \
+            -archivePath "${archivePath}" \
+            -derivedDataPath "$(Agent.TempDirectory)/k53-ios-derived-data" \
+            clean archive \
+            "DEVELOPMENT_TEAM=$(appleTeamId)" \
+            "CODE_SIGN_IDENTITY=${APPLE_CERTIFICATE_SIGNING_IDENTITY}" \
+            "PROVISIONING_PROFILE_SPECIFIER=$(iosProvisioningProfileName)"
+      displayName: "iOS > Archive"
+      condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
+
+    - script: |
+          set -euo pipefail
+
+          xcodebuild \
+            -exportArchive \
+            -archivePath "$(Build.ArtifactStagingDirectory)/ios/App.xcarchive" \
+            -exportPath "$(Build.ArtifactStagingDirectory)/ios" \
+            -exportOptionsPlist "pkg/app/ios/App/ExportOptions.plist"
+      displayName: "iOS > Export IPA"
       condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
     - task: CopyFiles@2
       inputs:
