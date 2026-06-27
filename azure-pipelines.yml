@@ -131,9 +131,16 @@ steps:
     - script: |
           set -euo pipefail
 
+          podFile="pkg/app/ios/App/Podfile"
           podLock="pkg/app/ios/App/Podfile.lock"
-          grep -q "CapacitorFirebaseAnalytics/Analytics" "${podLock}"
-          grep -q "FirebaseAnalytics/Core" "${podLock}"
+          if ! grep -q "CapacitorFirebaseAnalytics/Analytics" "${podLock}" || ! grep -q "FirebaseAnalytics/Core" "${podLock}"; then
+            echo "##vso[task.logissue type=error]Firebase Analytics pods were not resolved after Capacitor sync."
+            echo "Podfile Firebase lines:"
+            grep -n "CapacitorFirebaseAnalytics\\|FirebaseAnalytics" "${podFile}" || true
+            echo "Podfile.lock Firebase lines:"
+            grep -n "CapacitorFirebaseAnalytics\\|FirebaseAnalytics" "${podLock}" || true
+            exit 1
+          fi
 
           xcodebuild \
             -project "pkg/app/ios/App/Pods/Pods.xcodeproj" \

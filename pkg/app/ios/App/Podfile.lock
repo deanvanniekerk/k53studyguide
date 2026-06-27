@@ -8,10 +8,15 @@ PODS:
   - CapacitorCordova (8.4.1)
   - CapacitorDevice (8.0.2):
     - Capacitor
+  - CapacitorFirebaseAnalytics (8.3.0):
+    - Capacitor
+    - CapacitorFirebaseAnalytics/Lite (= 8.3.0)
   - CapacitorFirebaseAnalytics/Analytics (8.3.0):
     - Capacitor
     - FirebaseAnalytics/Core (~> 12.7.0)
     - FirebaseAnalytics/IdentitySupport (~> 12.7.0)
+  - CapacitorFirebaseAnalytics/Lite (8.3.0):
+    - Capacitor
   - CapacitorFirebaseCrashlytics (8.3.0):
     - Capacitor
     - FirebaseCrashlytics (~> 12.7.0)
@@ -133,6 +138,7 @@ DEPENDENCIES:
   - "CapacitorBrowser (from `../../../../node_modules/.pnpm/@capacitor+browser@8.0.3_@capacitor+core@8.4.1/node_modules/@capacitor/browser`)"
   - "CapacitorCordova (from `../../../../node_modules/.pnpm/@capacitor+ios@8.4.1_@capacitor+core@8.4.1/node_modules/@capacitor/ios`)"
   - "CapacitorDevice (from `../../../../node_modules/.pnpm/@capacitor+device@8.0.2_@capacitor+core@8.4.1/node_modules/@capacitor/device`)"
+  - "CapacitorFirebaseAnalytics (from `../../../../node_modules/.pnpm/@capacitor-firebase+analytics@8.3.0_@capacitor+core@8.4.1_firebase@12.15.0/node_modules/@capacitor-firebase/analytics`)"
   - "CapacitorFirebaseAnalytics/Analytics (from `../../../../node_modules/.pnpm/@capacitor-firebase+analytics@8.3.0_@capacitor+core@8.4.1_firebase@12.15.0/node_modules/@capacitor-firebase/analytics`)"
   - "CapacitorFirebaseCrashlytics (from `../../../../node_modules/.pnpm/@capacitor-firebase+crashlytics@8.3.0_@capacitor+core@8.4.1_firebase@12.15.0/node_modules/@capacitor-firebase/crashlytics`)"
   - "CapacitorPreferences (from `../../../../node_modules/.pnpm/@capacitor+preferences@8.0.1_@capacitor+core@8.4.1/node_modules/@capacitor/preferences`)"
@@ -208,6 +214,6 @@ SPEC CHECKSUMS:
   RevenueCat: f3641992451c1426da8d8d1466cec3bbdb765962
   RevenuecatPurchasesCapacitor: 180e7d224124f97c23eaae9d590a90a510115f70
 
-PODFILE CHECKSUM: 777a3972b0dfb9a910ab82968ade5eb0727bcbbe
+PODFILE CHECKSUM: e59c8bb399518620aa967ac3f86d5796a1d873a4
 
 COCOAPODS: 1.16.2

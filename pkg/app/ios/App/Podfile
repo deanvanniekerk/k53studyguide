@@ -11,8 +11,7 @@ install! 'cocoapods', :disable_input_output_paths => true
 def capacitor_pods
   pod 'Capacitor', :path => '../../../../node_modules/.pnpm/@capacitor+ios@8.4.1_@capacitor+core@8.4.1/node_modules/@capacitor/ios'
   pod 'CapacitorCordova', :path => '../../../../node_modules/.pnpm/@capacitor+ios@8.4.1_@capacitor+core@8.4.1/node_modules/@capacitor/ios'
-  # Capacitor sync rewrites this to the Lite subspec; the full Analytics pod keeps Firebase analytics linked.
-  pod 'CapacitorFirebaseAnalytics/Analytics', :path => '../../../../node_modules/.pnpm/@capacitor-firebase+analytics@8.3.0_@capacitor+core@8.4.1_firebase@12.15.0/node_modules/@capacitor-firebase/analytics'
+  pod 'CapacitorFirebaseAnalytics', :path => '../../../../node_modules/.pnpm/@capacitor-firebase+analytics@8.3.0_@capacitor+core@8.4.1_firebase@12.15.0/node_modules/@capacitor-firebase/analytics'
   pod 'CapacitorFirebaseCrashlytics', :path => '../../../../node_modules/.pnpm/@capacitor-firebase+crashlytics@8.3.0_@capacitor+core@8.4.1_firebase@12.15.0/node_modules/@capacitor-firebase/crashlytics'
   pod 'CapacitorApp', :path => '../../../../node_modules/.pnpm/@capacitor+app@8.1.0_@capacitor+core@8.4.1/node_modules/@capacitor/app'
   pod 'CapacitorBrowser', :path => '../../../../node_modules/.pnpm/@capacitor+browser@8.0.3_@capacitor+core@8.4.1/node_modules/@capacitor/browser'
@@ -25,6 +24,8 @@ end
 target 'App' do
   capacitor_pods
   # Add your Pods here
+  # Keep this outside capacitor_pods so Capacitor sync preserves the Firebase Analytics subspec.
+  pod 'CapacitorFirebaseAnalytics/Analytics', :path => '../../../../node_modules/.pnpm/@capacitor-firebase+analytics@8.3.0_@capacitor+core@8.4.1_firebase@12.15.0/node_modules/@capacitor-firebase/analytics'
 end
 
 post_install do |installer|
