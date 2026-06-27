@@ -69,6 +69,9 @@ const Bar = styled.div<{ $hasSubtitle: boolean; $compact: boolean }>`
   align-items: center;
   height: ${(p) =>
     p.$compact ? "var(--app-page-header-collapsed-visual-height)" : "var(--app-page-header-visual-height)"};
+  width: 100%;
+  max-width: var(--app-readable-content-max-width);
+  margin: 0 auto;
   padding: 0 8px;
   font-family: var(--ion-font-family-bold);
   font-size: var(--app-font-size-l);
@@ -77,6 +80,7 @@ const Bar = styled.div<{ $hasSubtitle: boolean; $compact: boolean }>`
   text-transform: uppercase;
   letter-spacing: 0;
   text-align: center;
+  box-sizing: border-box;
   transition: height 180ms ease;
 `;
 

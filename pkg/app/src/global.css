@@ -148,6 +148,15 @@ ion-toast {
   background-color: rgba(var(--app-text-muted-rgb), 0.45);
 }
 
+@media (min-width: 768px) {
+  .ion-page > ion-content > * {
+    box-sizing: border-box;
+    margin-inline: auto;
+    max-width: var(--app-readable-content-max-width);
+    width: 100%;
+  }
+}
+
 ion-button {
   text-transform: uppercase;
 }

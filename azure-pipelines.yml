@@ -138,6 +138,7 @@ steps:
           exportPath: "$(Build.ArtifactStagingDirectory)/ios"
           exportOptions: "plist"
           exportOptionsPlist: "pkg/app/ios/App/ExportOptions.plist"
+          args: '-destination "generic/platform=iOS"'
           useXcpretty: "false"
       displayName: "iOS > Build IPA"
       condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))

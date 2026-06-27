@@ -10,9 +10,9 @@ type Props = Omit<React.ComponentPropsWithoutRef<typeof IonButton>, "children" |
   rightIcon?: string;
 };
 
-const PrimaryButton: React.FC<Props> = ({ section, text, rightIcon, ...buttonProps }) => {
+const PrimaryButton: React.FC<Props> = ({ section, text, rightIcon, disabled, ...buttonProps }) => {
   return (
-    <Button {...buttonProps} $section={section} shape="round" fill="solid">
+    <Button {...buttonProps} {...(disabled ? { disabled: true } : {})} $section={section} shape="round" fill="solid">
       <Translate text={text} />
       {rightIcon && <IonIcon slot="end" icon={rightIcon} />}
     </Button>

@@ -51,21 +51,18 @@ export class LocalPurchaseService implements PurchaseService {
     this._reduxStore.dispatch(statusAction);
     analytics.trackPurchaseState("pending", this.getAnalyticsPurchaseParams());
 
-    //Add delay to simulate comms with server
-    setTimeout(() => {
-      statusAction = recievePurchaseOrderState("approved");
-      this._reduxStore.dispatch(statusAction);
+    statusAction = recievePurchaseOrderState("approved");
+    this._reduxStore.dispatch(statusAction);
 
-      statusAction = recievePurchaseOrderState("finished");
-      this._reduxStore.dispatch(statusAction);
-      analytics.trackPurchaseState("finished", this.getAnalyticsPurchaseParams());
+    statusAction = recievePurchaseOrderState("finished");
+    this._reduxStore.dispatch(statusAction);
+    analytics.trackPurchaseState("finished", this.getAnalyticsPurchaseParams());
 
-      const canPurchaseAction = recievePurchaseProductCanPurchase(false);
-      this._reduxStore.dispatch(canPurchaseAction);
+    const canPurchaseAction = recievePurchaseProductCanPurchase(false);
+    this._reduxStore.dispatch(canPurchaseAction);
 
-      const ownedAction = recievePurchaseProductOwned(true);
-      this._reduxStore.dispatch(ownedAction);
-    }, 1000);
+    const ownedAction = recievePurchaseProductOwned(true);
+    this._reduxStore.dispatch(ownedAction);
   }
 
   restore() {
@@ -74,16 +71,14 @@ export class LocalPurchaseService implements PurchaseService {
     let statusAction = recievePurchaseOrderState("pending");
     this._reduxStore.dispatch(statusAction);
 
-    setTimeout(() => {
-      const canPurchaseAction = recievePurchaseProductCanPurchase(false);
-      this._reduxStore.dispatch(canPurchaseAction);
+    const canPurchaseAction = recievePurchaseProductCanPurchase(false);
+    this._reduxStore.dispatch(canPurchaseAction);
 
-      const ownedAction = recievePurchaseProductOwned(true);
-      this._reduxStore.dispatch(ownedAction);
+    const ownedAction = recievePurchaseProductOwned(true);
+    this._reduxStore.dispatch(ownedAction);
 
-      statusAction = recievePurchaseOrderState("ready");
-      this._reduxStore.dispatch(statusAction);
-    }, 1000);
+    statusAction = recievePurchaseOrderState("ready");
+    this._reduxStore.dispatch(statusAction);
   }
 
   private getAnalyticsPurchaseParams() {

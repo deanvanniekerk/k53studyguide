@@ -197,7 +197,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
                 mode="md"
                 shape="round"
                 fill="solid"
-                disabled={!props.purchase.canPurchase || isPending || !purchaseService}
+                disabled={!props.purchase.canPurchase || isPending || !purchaseService || undefined}
                 onClick={() => {
                   setRestoreAttempted(false);
                   analytics.trackPromotionSelect({
@@ -214,7 +214,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
               <RestoreButton
                 mode="md"
                 fill="clear"
-                disabled={isPending || !purchaseService}
+                disabled={isPending || !purchaseService || undefined}
                 onClick={() => {
                   setRestoreAttempted(true);
                   void purchaseService?.restore();
@@ -237,14 +237,24 @@ const Watermark = styled(BookOutlineIcon)`
 `;
 
 const Shell = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   min-height: 100%;
+  overflow: hidden;
   background: var(--app-purchase-background);
 `;
 
 const Hero = styled.div`
+  flex: 0 0 auto;
   padding: calc(var(--app-safe-area-top) + 58px) var(--app-padding) 34px;
   background: var(--app-premium-hero-background);
   text-align: center;
+
+  @media (max-height: 520px) {
+    padding: calc(var(--app-safe-area-top) + 42px) var(--app-padding) 18px;
+  }
 `;
 
 const Header = styled.div`
@@ -253,6 +263,10 @@ const Header = styled.div`
   font-family: var(--ion-font-family-bold);
   font-weight: 900;
   line-height: 1.15;
+
+  @media (max-height: 520px) {
+    font-size: var(--app-font-size-xl);
+  }
 `;
 
 const PremiumBadge = styled(IonButton)`
@@ -265,6 +279,11 @@ const PremiumBadge = styled(IonButton)`
   --background-hover: var(--app-premium-badge-background);
   --background-activated: var(--app-premium-badge-background);
   --box-shadow: none;
+
+  @media (max-height: 520px) {
+    height: 26px;
+    margin-bottom: 10px;
+  }
 `;
 
 const HeroText = styled.div`
@@ -273,19 +292,43 @@ const HeroText = styled.div`
   font-size: var(--app-font-size-l);
   font-weight: 800;
   opacity: 0.82;
+
+  @media (max-height: 520px) {
+    margin-top: 6px;
+    font-size: var(--app-font-size-md);
+  }
 `;
 
 const ContentPanel = styled.div`
   position: relative;
   z-index: 1;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
   margin-top: -18px;
-  padding: 0 var(--app-padding) 32px;
+  overflow: hidden;
+  padding: 0 var(--app-padding) calc(32px + env(safe-area-inset-bottom, 0px));
+
+  @media (max-height: 520px) {
+    margin-top: -4px;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  }
 `;
 
 const Benefits = styled.div`
   display: flex;
+  flex: 0 1 auto;
   flex-direction: column;
   gap: 14px;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-bottom: 2px;
+
+  @media (max-height: 520px) {
+    gap: 8px;
+  }
 `;
 
 const Benefit = styled.div`
@@ -297,6 +340,13 @@ const Benefit = styled.div`
   border-radius: 22px;
   background: var(--app-premium-panel-background);
   box-shadow: var(--app-card-shadow);
+
+  @media (max-height: 520px) {
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 18px;
+  }
 `;
 
 const BenefitIcon = styled.div`
@@ -313,6 +363,18 @@ const BenefitIcon = styled.div`
     width: 30px;
     height: 30px;
   }
+
+  @media (max-height: 520px) {
+    flex-basis: 44px;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
 `;
 
 const BenefitCopy = styled.div`
@@ -325,6 +387,10 @@ const BenefitTitle = styled.div`
   font-size: var(--app-font-size-l);
   font-weight: 900;
   line-height: 1.2;
+
+  @media (max-height: 520px) {
+    font-size: var(--app-font-size-md);
+  }
 `;
 
 const BenefitText = styled.div`
@@ -333,9 +399,14 @@ const BenefitText = styled.div`
   font-size: var(--app-font-size-sm);
   font-weight: 700;
   line-height: 1.45;
+
+  @media (max-height: 520px) {
+    display: none;
+  }
 `;
 
 const PriceCard = styled.div`
+  flex: 0 0 auto;
   margin-top: 18px;
   padding: 22px;
   border: var(--app-card-border);
@@ -343,6 +414,12 @@ const PriceCard = styled.div`
   background: var(--app-premium-panel-background);
   box-shadow: var(--app-card-shadow), var(--app-test-action-shadow);
   text-align: center;
+
+  @media (max-height: 520px) {
+    margin-top: 10px;
+    padding: 14px;
+    border-radius: 20px;
+  }
 `;
 
 const PurchasePriceText = styled.div`
@@ -351,6 +428,10 @@ const PurchasePriceText = styled.div`
   font-family: var(--ion-font-family-bold);
   font-weight: 900;
   line-height: 1;
+
+  @media (max-height: 520px) {
+    font-size: var(--app-font-size-xxl);
+  }
 `;
 
 const PurchaseButton = styled(IonButton)`
@@ -364,6 +445,12 @@ const PurchaseButton = styled(IonButton)`
   --background-activated: var(--app-test-action-background);
   --border-radius: 20px;
   --box-shadow: var(--app-test-action-shadow);
+
+  @media (max-height: 520px) {
+    height: 50px;
+    margin-top: 12px;
+    font-size: var(--app-font-size-md);
+  }
 `;
 
 const RestoreButton = styled(IonButton)`
@@ -373,10 +460,22 @@ const RestoreButton = styled(IonButton)`
   color: var(--app-text-muted);
   font-size: var(--app-font-size-md);
   font-weight: 900;
+
+  @media (max-height: 520px) {
+    min-height: 36px;
+    margin-top: 6px;
+    font-size: var(--app-font-size-sm);
+  }
 `;
 
 const Modal = styled(IonModal)`
   --background: var(--app-purchase-background);
+
+  @media (min-width: 768px) {
+    --width: min(var(--app-readable-content-max-width), calc(100vw - 48px));
+    --height: min(860px, calc(100vh - 48px));
+    --border-radius: 24px;
+  }
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
