@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>document.documentElement.classList.add('has-js');</script>
   <title>K53 Learner's Licence Test South Africa | K53 Study Guide</title>
   <meta name="description" content="Study for your South African K53 learner's licence test with road signs, rules of the road, quizzes, progress tracking and realistic mock tests." />
   <meta name="robots" content="index,follow" />
@@ -1213,6 +1214,164 @@
       color: rgba(255,255,255,0.3);
     }
 
+    /* ─── MOTION: SCROLL REVEAL ─── */
+    .has-js .reveal.is-visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .has-js .reveal {
+        opacity: 0;
+        transform: translateY(32px);
+        transition:
+          opacity 0.75s cubic-bezier(0.16, 0.84, 0.44, 1),
+          transform 0.75s cubic-bezier(0.16, 0.84, 0.44, 1);
+        will-change: opacity, transform;
+      }
+
+      .has-js .reveal.reveal-left  { transform: translateX(-44px); }
+      .has-js .reveal.reveal-right { transform: translateX(44px); }
+      .has-js .reveal.reveal-scale { transform: translateY(32px) scale(0.95); }
+
+      /* Visible state must override the directional variants above (equal
+         specificity, so these need to come later and be more specific). */
+      .has-js .reveal.reveal-left.is-visible,
+      .has-js .reveal.reveal-right.is-visible,
+      .has-js .reveal.reveal-scale.is-visible { transform: none; }
+
+      /* staggered children inside grids / lists */
+      .has-js .reveal[data-delay="1"] { transition-delay: 0.08s; }
+      .has-js .reveal[data-delay="2"] { transition-delay: 0.16s; }
+      .has-js .reveal[data-delay="3"] { transition-delay: 0.24s; }
+
+      /* ─── HERO ENTRANCE (on load) ─── */
+      .has-js .hero-badge,
+      .has-js .hero-title,
+      .has-js .hero-subtitle,
+      .has-js .hero-ctas,
+      .has-js .hero-stats {
+        animation: heroRise 0.85s cubic-bezier(0.16, 0.84, 0.44, 1) backwards;
+      }
+      .has-js .hero-badge    { animation-delay: 0.05s; }
+      .has-js .hero-title    { animation-delay: 0.16s; }
+      .has-js .hero-subtitle { animation-delay: 0.30s; }
+      .has-js .hero-ctas     { animation-delay: 0.42s; }
+      .has-js .hero-stats    { animation-delay: 0.54s; }
+
+      .has-js .hero-visual {
+        animation: heroVisualRise 1.1s cubic-bezier(0.16, 0.84, 0.44, 1) 0.3s backwards;
+      }
+    }
+
+    @keyframes heroRise {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    @keyframes heroVisualRise {
+      from { opacity: 0; transform: translateY(34px) scale(0.97); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* ─── HOVER POLISH ─── */
+    /* Feature cards — lift, accent glow, gradient border, screen zoom */
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(160deg, color-mix(in srgb, var(--card-accent) 60%, transparent), transparent 55%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      border-color: transparent;
+      box-shadow:
+        0 32px 60px -28px rgba(0,0,0,0.75),
+        0 0 60px -16px color-mix(in srgb, var(--card-accent) 38%, transparent);
+    }
+
+    .feature-card:hover::after { opacity: 1; }
+
+    .feature-card-icon { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .feature-card:hover .feature-card-icon {
+      transform: translateY(-2px) scale(1.06);
+      box-shadow: 0 12px 26px -10px color-mix(in srgb, var(--card-accent) 65%, transparent);
+    }
+
+    .feature-card-screen img { transition: transform 0.55s cubic-bezier(0.16, 0.84, 0.44, 1); }
+    .feature-card:hover .feature-card-screen img { transform: scale(1.05); }
+
+    .feature-card-bg-icon { transition: transform 0.55s ease, opacity 0.3s ease; }
+    .feature-card:hover .feature-card-bg-icon { transform: rotate(-8deg) scale(1.1); opacity: 0.1; }
+
+    /* Hero phone stack — fan out on hover */
+    .phone-mock { transition: transform 0.55s cubic-bezier(0.16, 0.84, 0.44, 1), box-shadow 0.55s ease; }
+    .phone-stack:hover .phone-left  { transform: translateY(-50%) rotate(-8deg) translateX(-18px); }
+    .phone-stack:hover .phone-right { transform: translateY(-50%) rotate(11deg) translateX(18px); opacity: 0.9; }
+    .phone-stack:hover .phone-main  { transform: translate(-50%, -54%); }
+
+    /* How-it-works steps */
+    .hiw-step:hover .hiw-step-title { color: rgba(255,255,255,0.85); }
+    .hiw-step:hover .hiw-step-num {
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* Theme phones — lift on hover */
+    .theme-phone { transition: transform 0.45s ease, box-shadow 0.45s ease; }
+    .theme-phone.light:hover { transform: rotate(-6deg) translateY(-12px); z-index: 5; }
+    .theme-phone.dark:hover  { transform: translateY(22px) rotate(6deg); z-index: 5; }
+
+    /* Screenshots — lift, zoom, accent border */
+    .screenshot-item img {
+      transition:
+        transform 0.4s cubic-bezier(0.16, 0.84, 0.44, 1),
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+    }
+    .screenshot-item img:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+      border-color: rgba(0,180,159,0.4);
+    }
+
+    /* Premium feature rows */
+    .premium-feature { transition: transform 0.3s ease; }
+    .premium-feature:hover { transform: translateX(6px); }
+    .premium-feature-icon { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .premium-feature:hover .premium-feature-icon {
+      transform: scale(1.1);
+      box-shadow: 0 10px 22px -8px rgba(0,180,159,0.5);
+    }
+
+    /* Buttons & badges — add lift */
+    .btn-secondary { transition: background 0.2s ease, transform 0.2s ease; }
+    .btn-secondary:hover { transform: translateY(-2px); }
+
+    .store-badge { transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease; }
+    .store-badge:hover { transform: translateY(-2px); }
+
+    .nav-cta { transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important; }
+    .nav-cta:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 22px rgba(0,180,159,0.4);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
       .hero-inner {
@@ -1332,7 +1491,7 @@
 
       <div class="hero-stats">
         <div class="hero-stat">
-          <span class="hero-stat-num">500+</span>
+          <span class="hero-stat-num">400+</span>
           <span class="hero-stat-label">Practice questions</span>
         </div>
         <div class="hero-stat">
@@ -1364,7 +1523,7 @@
 
 <!-- FEATURES -->
 <section id="features">
-  <div class="features-header">
+  <div class="features-header reveal">
     <p class="section-label">Three modes</p>
     <h2 class="section-title">Everything you need<br/>to pass first time</h2>
     <p class="section-subtitle">K53 Study Guide covers the learner's licence test with study material, road signs, rules of the road, quizzes and realistic mock tests.</p>
@@ -1372,7 +1531,7 @@
 
   <div class="features-grid">
     <!-- Study -->
-    <div class="feature-card study">
+    <div class="feature-card study reveal reveal-scale">
       <img class="feature-card-bg-icon" src="assets/icon-study.svg" alt="" />
       <span class="feature-card-tag">Study</span>
       <div class="feature-card-icon">
@@ -1388,7 +1547,7 @@
     </div>
 
     <!-- Quiz -->
-    <div class="feature-card quiz">
+    <div class="feature-card quiz reveal reveal-scale" data-delay="1">
       <img class="feature-card-bg-icon" src="assets/icon-quiz.svg" alt="" />
       <span class="feature-card-tag">Quiz</span>
       <div class="feature-card-icon">
@@ -1404,7 +1563,7 @@
     </div>
 
     <!-- Test -->
-    <div class="feature-card test">
+    <div class="feature-card test reveal reveal-scale" data-delay="2">
       <img class="feature-card-bg-icon" src="assets/icon-test.svg" alt="" />
       <span class="feature-card-tag">Test</span>
       <div class="feature-card-icon">
@@ -1424,7 +1583,7 @@
 <!-- HOW IT WORKS -->
 <section id="how-it-works">
   <div class="hiw-inner">
-    <div>
+    <div class="reveal reveal-left">
       <p class="section-label">How it works</p>
       <h2 class="section-title">A proven path<br/>to passing</h2>
       <p class="section-subtitle">Three focused stages that build on each other — study the material, practice with quizzes, then prove it in full mock tests.</p>
@@ -1461,7 +1620,7 @@
       </div>
     </div>
 
-    <div class="hiw-visual">
+    <div class="hiw-visual reveal reveal-right">
       <div class="hiw-phone">
         <img id="hiwPhone" src="assets/screen-study-dashboard-light.webp" alt="App screen" />
       </div>
@@ -1472,7 +1631,7 @@
 <!-- DARK MODE -->
 <section id="dark-mode">
   <div class="dark-mode-inner">
-    <div class="dark-mode-copy">
+    <div class="dark-mode-copy reveal reveal-left">
       <p class="section-label">Light and dark</p>
       <h2 class="section-title">Study comfortably<br/>in any mode</h2>
       <p class="section-subtitle">Switch between bright, clean study sessions and a darker interface that is easier on your eyes when you are revising at night.</p>
@@ -1484,7 +1643,7 @@
       </div>
     </div>
 
-    <div class="dark-mode-visual" aria-label="Light and dark mode app screenshots">
+    <div class="dark-mode-visual reveal reveal-right" aria-label="Light and dark mode app screenshots">
       <div class="theme-phone-pair">
         <div class="theme-badge">Dark mode ready</div>
         <div class="theme-phone light">
@@ -1500,13 +1659,13 @@
 
 <!-- SCREENSHOTS -->
 <section id="screenshots">
-  <div class="screenshots-header">
+  <div class="screenshots-header reveal">
     <p class="section-label">See the app</p>
     <h2 class="section-title">Built for focus,<br/>designed to pass</h2>
     <p class="section-subtitle">Every screen is built around one goal: getting you through your South African K53 learner's licence test.</p>
   </div>
 
-  <div class="screenshots-track-wrap">
+  <div class="screenshots-track-wrap reveal">
     <div class="screenshots-track" id="screenshotsTrack">
       <div class="screenshot-item"><img src="assets/screen-study-dashboard-light.webp" alt="Study dashboard in light mode" /></div>
       <div class="screenshot-item"><img src="assets/screen-study-signs-light.webp" alt="Study signs in light mode" /></div>
@@ -1522,7 +1681,7 @@
     </div>
   </div>
 
-  <div class="screenshots-nav">
+  <div class="screenshots-nav reveal">
     <button class="screenshots-nav-btn" id="scrollLeft">&#8592;</button>
     <button class="screenshots-nav-btn" id="scrollRight">&#8594;</button>
   </div>
@@ -1533,7 +1692,7 @@
   <div class="premium-inner">
     <img class="premium-bg-deco" src="assets/icon-test.svg" alt="" />
 
-    <div>
+    <div class="reveal reveal-left">
       <p class="section-label">Go Premium</p>
       <h2 class="section-title">Unlock the full<br/>K53 experience</h2>
       <p class="section-subtitle" style="color:rgba(255,255,255,0.6); margin-top:0;">The Study section is completely free. Go premium to unlock mock tests and history tracking.</p>
@@ -1563,7 +1722,7 @@
       </div>
     </div>
 
-    <div class="premium-cta-side">
+    <div class="premium-cta-side reveal reveal-right">
       <div class="premium-price-box">
         <div class="premium-price-label">Premium Access</div>
         <div class="premium-price">Once off</div>
@@ -1586,13 +1745,13 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
-    <div>
+    <div class="reveal reveal-left">
       <p class="section-label">Get in touch</p>
       <h2 class="section-title">Questions, feedback<br/>or support?</h2>
       <p class="section-subtitle">If you need help with K53 Study Guide or want to share feedback, email us and we will get back to you.</p>
     </div>
 
-    <a class="btn-primary contact-action" href="mailto:info@k53studyguide.online">
+    <a class="btn-primary contact-action reveal reveal-right" href="mailto:info@k53studyguide.online">
       info@k53studyguide.online
       <span>&rarr;</span>
     </a>
@@ -1795,6 +1954,25 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 
 sections.forEach(s => observer.observe(s));
+
+// Scroll-reveal animations
+const revealEls = document.querySelectorAll('.reveal');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+  revealEls.forEach(el => el.classList.add('is-visible'));
+} else {
+  const revealObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+  revealEls.forEach(el => revealObserver.observe(el));
+}
 </script>
 </body>
 </html>
