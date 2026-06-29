@@ -1589,28 +1589,32 @@
       <p class="section-subtitle">Three focused stages that build on each other — study the material, practice with quizzes, then prove it in full mock tests.</p>
 
       <div class="hiw-steps" id="hiwSteps">
-        <div class="hiw-step active" data-screen="assets/screen-study-dashboard-light.webp">
+        <div class="hiw-step active">
+          <img class="hiw-step-screen-source" src="assets/screen-study-dashboard-light.webp" alt="" hidden />
           <div class="hiw-step-num">01</div>
           <div class="hiw-step-content">
             <div class="hiw-step-title">Study the material</div>
             <div class="hiw-step-desc">Work through all six topics — Vehicle Controls, Rules of the Road, Defensive Driving, Road Markings, Road Signals, and Road Signs. Track what you've read with progress bars.</div>
           </div>
         </div>
-        <div class="hiw-step" data-screen="assets/screen-quiz-home-light.webp">
+        <div class="hiw-step">
+          <img class="hiw-step-screen-source" src="assets/screen-quiz-home-light.webp" alt="" hidden />
           <div class="hiw-step-num">02</div>
           <div class="hiw-step-content">
             <div class="hiw-step-title">Practice with quizzes</div>
             <div class="hiw-step-desc">Take configurable practice quizzes. Pick sections where your level score is low, choose how many questions, and grind your way up to Level 5.</div>
           </div>
         </div>
-        <div class="hiw-step" data-screen="assets/screen-test-question-light.webp">
+        <div class="hiw-step">
+          <img class="hiw-step-screen-source" src="assets/screen-test-question-light.webp" alt="" hidden />
           <div class="hiw-step-num">03</div>
           <div class="hiw-step-content">
             <div class="hiw-step-title">Prove it in Test mode</div>
             <div class="hiw-step-desc">Run full mock tests across Section A, B and C — just like the real K53 learner's test. Get marked, see where you missed questions, and go back and fix it.</div>
           </div>
         </div>
-        <div class="hiw-step" data-screen="assets/screen-profile-light.webp">
+        <div class="hiw-step">
+          <img class="hiw-step-screen-source" src="assets/screen-profile-light.webp" alt="" hidden />
           <div class="hiw-step-num">04</div>
           <div class="hiw-step-content">
             <div class="hiw-step-title">Walk in with confidence</div>
@@ -1913,7 +1917,9 @@ steps.forEach(step => {
   step.addEventListener('click', () => {
     steps.forEach(s => s.classList.remove('active'));
     step.classList.add('active');
-    const screen = step.getAttribute('data-screen');
+    // Vite fingerprints real image src values but leaves data attributes untouched.
+    const screenSource = step.querySelector('.hiw-step-screen-source');
+    const screen = screenSource?.currentSrc || screenSource?.src;
     if (screen && hiwPhone) {
       hiwPhone.style.opacity = '0';
       setTimeout(() => {

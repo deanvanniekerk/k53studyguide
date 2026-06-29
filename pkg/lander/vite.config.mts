@@ -5,6 +5,7 @@ import react from "@vitejs/plugin-react";
 
 const appQuestionImagesRoot = resolve(__dirname, "../app/public/assets/images");
 const quizQuestionImagesPath = "/quiz-assets/images";
+const includeQuizQuestionImages = process.env.LANDER_INCLUDE_QUIZ_IMAGES !== "0";
 
 const contentTypes: Record<string, string> = {
   ".gif": "image/gif",
@@ -57,6 +58,8 @@ const quizQuestionImagesPlugin = (): Plugin => ({
     });
   },
   closeBundle() {
+    if (!includeQuizQuestionImages) return;
+
     copyDirectory(appQuestionImagesRoot, resolve(__dirname, "dist/quiz-assets/images"));
   },
 });
