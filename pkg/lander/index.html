@@ -327,127 +327,11 @@
       border-color: rgba(255,255,255,0.25);
     }
 
-    .store-badge.coming-soon {
-      position: relative;
-    }
-
-    .store-badge.coming-soon::after {
-      content: 'Soon';
-      position: absolute;
-      top: -9px;
-      right: -9px;
-      background: var(--orange);
-      color: var(--white);
-      border-radius: 100px;
-      padding: 3px 8px;
-      font-size: 0.58rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      box-shadow: 0 8px 18px rgba(255,123,81,0.35);
-    }
-
     .store-badge-icon { font-size: 1.5rem; line-height: 1; }
 
     .store-badge-text { display: flex; flex-direction: column; }
     .store-badge-text span:first-child { font-size: 0.65rem; opacity: 0.7; letter-spacing: 0.04em; }
     .store-badge-text span:last-child { font-size: 0.9rem; font-weight: 700; }
-
-    .coming-soon-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      background: rgba(8,0,18,0.72);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s ease;
-    }
-
-    .coming-soon-modal.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .coming-soon-card {
-      width: min(100%, 420px);
-      position: relative;
-      overflow: hidden;
-      border-radius: 24px;
-      padding: 34px 30px 28px;
-      background:
-        radial-gradient(circle at top left, rgba(0,180,159,0.32), transparent 38%),
-        radial-gradient(circle at bottom right, rgba(255,123,81,0.22), transparent 38%),
-        linear-gradient(160deg, #1a0d2e 0%, #221040 100%);
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow: 0 32px 90px rgba(0,0,0,0.58);
-      text-align: center;
-      transform: translateY(12px) scale(0.98);
-      transition: transform 0.2s ease;
-    }
-
-    .coming-soon-modal.open .coming-soon-card {
-      transform: translateY(0) scale(1);
-    }
-
-    .coming-soon-close {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 36px;
-      height: 36px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.08);
-      color: var(--white);
-      font-size: 1.3rem;
-      line-height: 1;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .coming-soon-close:hover {
-      background: rgba(255,255,255,0.14);
-      transform: rotate(90deg);
-    }
-
-    .coming-soon-icon {
-      width: 68px;
-      height: 68px;
-      display: grid;
-      place-items: center;
-      margin: 0 auto 18px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
-      font-size: 2.2rem;
-    }
-
-    .coming-soon-title {
-      font-size: clamp(1.9rem, 8vw, 2.7rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-
-    .coming-soon-copy {
-      color: rgba(255,255,255,0.68);
-      line-height: 1.7;
-      font-size: 0.95rem;
-      margin-bottom: 24px;
-    }
-
-    .coming-soon-action {
-      justify-content: center;
-      width: 100%;
-    }
 
     /* Hero phones */
     .hero-visual {
@@ -1475,7 +1359,7 @@
               <span>Google Play</span>
             </span>
           </a>
-          <a href="#ios-coming-soon" class="store-badge coming-soon" data-coming-soon data-analytics-location="hero_ios_cta">
+          <a href="https://apps.apple.com/us/app/k53-study-guide/id6784718443?ct=organic_web_hero" target="_blank" rel="noopener noreferrer" class="store-badge" data-analytics-location="hero_ios_cta">
             <span class="store-badge-icon">&#xf8ff;</span>
             <span class="store-badge-text">
               <span>Download on the</span>
@@ -1787,7 +1671,7 @@
     <div class="footer-links-group">
       <div class="footer-links-title">Download</div>
       <ul class="footer-links">
-        <li><a href="#ios-coming-soon" data-coming-soon data-analytics-location="footer_ios_cta">App Store (iOS)</a></li>
+        <li><a href="https://apps.apple.com/us/app/k53-study-guide/id6784718443?ct=organic_web_footer" target="_blank" rel="noopener noreferrer" data-analytics-location="footer_ios_cta">App Store (iOS)</a></li>
         <li><a href="https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=utm_source%3Dwebsite%26utm_medium%3Dfooter_cta%26utm_campaign%3Dorganic_web" target="_blank" rel="noopener noreferrer">Google Play (Android)</a></li>
       </ul>
     </div>
@@ -1806,21 +1690,6 @@
     <p class="footer-made">Made with care in South Africa 🇿🇦</p>
   </div>
 </footer>
-
-<div class="coming-soon-modal" id="ios-coming-soon" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="coming-soon-title">
-  <div class="coming-soon-card" role="document">
-    <button class="coming-soon-close" type="button" aria-label="Close coming soon message" data-coming-soon-close>&times;</button>
-    <div class="coming-soon-icon" aria-hidden="true">&#xf8ff;</div>
-    <h2 class="coming-soon-title" id="coming-soon-title">Coming Soon</h2>
-    <p class="coming-soon-copy">
-      K53 Study Guide for iPhone is on the way. Android users can install it now from Google Play.
-    </p>
-    <a href="https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=utm_source%3Dwebsite%26utm_medium%3Dios_modal_cta%26utm_campaign%3Dorganic_web" target="_blank" rel="noopener noreferrer" class="btn-primary coming-soon-action">
-      Get it on Google Play
-      <span>→</span>
-    </a>
-  </div>
-</div>
 
 <div id="quiz-demo-root"></div>
 
@@ -1861,52 +1730,16 @@ document.querySelectorAll('a[href*="play.google.com/store/apps/details"]').forEa
   });
 });
 
-// iOS coming soon popup
-const comingSoonModal = document.getElementById('ios-coming-soon');
-const comingSoonTriggers = document.querySelectorAll('[data-coming-soon]');
-const comingSoonCloseButtons = document.querySelectorAll('[data-coming-soon-close]');
-
-const openComingSoonModal = () => {
-  if (!comingSoonModal) return;
-  comingSoonModal.classList.add('open');
-  comingSoonModal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-};
-
-const closeComingSoonModal = () => {
-  if (!comingSoonModal) return;
-  comingSoonModal.classList.remove('open');
-  comingSoonModal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-};
-
-comingSoonTriggers.forEach(trigger => {
-  trigger.addEventListener('click', event => {
-    event.preventDefault();
-    trackAnalyticsEvent('ios_interest', {
-      cta_location: getStoreCtaLocation(trigger),
+document.querySelectorAll('a[href*="apps.apple.com"]').forEach(link => {
+  link.addEventListener('click', () => {
+    const params = {
+      cta_location: getStoreCtaLocation(link),
       store_platform: 'ios',
-    });
-    openComingSoonModal();
+    };
+
+    trackAnalyticsEvent('select_store_cta', params);
+    trackAnalyticsEvent('app_store_referral_click', params);
   });
-});
-
-comingSoonCloseButtons.forEach(button => {
-  button.addEventListener('click', closeComingSoonModal);
-});
-
-if (comingSoonModal) {
-  comingSoonModal.addEventListener('click', event => {
-    if (event.target === comingSoonModal) {
-      closeComingSoonModal();
-    }
-  });
-}
-
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') {
-    closeComingSoonModal();
-  }
 });
 
 // How it works step switcher
