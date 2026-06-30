@@ -26,7 +26,9 @@ const getSecretConfig = (key: string, environmentVariable: string): string => {
 
 const getBoolConfig = (key: string, environmentVariable: string, fallback: boolean): boolean => {
   const raw = getConfig(key, process.env[environmentVariable] ?? (fallback ? "true" : "false"));
-  return raw === "true" || raw === "1";
+  // Azure renders boolean parameters as "True"/"False", so normalise before comparing.
+  const normalized = String(raw).trim().toLowerCase();
+  return normalized === "true" || normalized === "1";
 };
 
 export default defineConfig(({ mode }) => ({
