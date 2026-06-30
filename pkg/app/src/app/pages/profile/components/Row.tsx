@@ -62,7 +62,7 @@ const GroupCard = styled.div`
 
 const Container = styled.button<{ $clickable: boolean }>`
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
   gap: 12px;
   width: 100%;
@@ -104,12 +104,14 @@ const StatusIcon = styled(IonIcon)<{ $status?: Props["status"] }>`
 `;
 
 const ValueCol = styled.div<{ $action?: boolean }>`
+  min-width: 0;
   color: ${(props) => (props.$action ? "var(--app-profile-action-icon)" : "var(--app-text-muted)")};
   font-family: var(--ion-font-family-bold);
   font-size: ${(props) => (props.$action ? "var(--app-font-size-xl)" : "var(--app-font-size-md)")};
   font-weight: 700;
   line-height: 1;
   text-align: right;
+  overflow-wrap: anywhere;
 
   ion-icon {
     display: block;
