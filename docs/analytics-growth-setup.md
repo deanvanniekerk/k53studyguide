@@ -152,7 +152,9 @@ Existing Play Store `referrer=utm_source...` URLs are preserved.
 
 PostHog is initialised in `pkg/lander/index.html`. The `phc_` project token is a
 public client-side key defaulted in the HTML; override it per environment with
-`VITE_POSTHOG_KEY` / `VITE_POSTHOG_HOST` (defaults to `https://us.i.posthog.com`).
+`VITE_POSTHOG_KEY` / `VITE_POSTHOG_HOST`. `api_host` defaults to the managed
+reverse proxy `https://v.vanniekerk.online` (ingestion + `/static` assets), and
+`ui_host` is set to `https://us.posthog.com` so dashboard links resolve correctly.
 
 The shared `trackAnalyticsEvent` helpers in `index.html` and
 `src/quiz-demo/QuizDemoDialog.tsx` forward **every** event above to both GA4
