@@ -73,9 +73,17 @@ const defaultQuizPreviewState: QuizPreviewState = {
 };
 
 const trackAnalyticsEvent = (eventName: string, params: Record<string, string | number | boolean> = {}) => {
-  const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
-  if (typeof gtag !== "function") return;
-  gtag("event", eventName, params);
+  const analyticsWindow = window as Window & {
+    gtag?: (...args: unknown[]) => void;
+    posthog?: { capture?: (event: string, properties?: Record<string, unknown>) => void };
+  };
+
+  if (typeof analyticsWindow.gtag === "function") {
+    analyticsWindow.gtag("event", eventName, params);
+  }
+  if (typeof analyticsWindow.posthog?.capture === "function") {
+    analyticsWindow.posthog.capture(eventName, params);
+  }
 };
 
 const getTranslation = (key: string): string => translations[key]?.en ?? key;

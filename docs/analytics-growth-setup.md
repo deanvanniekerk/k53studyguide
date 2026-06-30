@@ -1,6 +1,6 @@
 # Analytics Growth Tracking
 
-This repo now tracks the K53 Study Guide funnel from landing-page interest through app engagement and premium purchase. The app reports to Firebase/GA4 through `AnalyticsFirebase`; the landing site reports to GA4 through `gtag` when `VITE_GA_MEASUREMENT_ID` is configured.
+This repo now tracks the K53 Study Guide funnel from landing-page interest through app engagement and premium purchase. The app reports to Firebase/GA4 through `AnalyticsFirebase`; the landing site reports to GA4 through `gtag` when `VITE_GA_MEASUREMENT_ID` is configured, and to PostHog through `posthog` (see [Landing page acquisition](#landing-page-acquisition)).
 
 The active app GA4 property is `properties/269952161` (`k53-study-guide`). The landing page uses the web stream Measurement ID from `.dev.env`.
 
@@ -147,6 +147,29 @@ Tracked in `pkg/lander/index.html`.
   - Params: `cta_location`, `store_platform`.
 
 Existing Play Store `referrer=utm_source...` URLs are preserved.
+
+### PostHog (landing page)
+
+PostHog is initialised in `pkg/lander/index.html`. The `phc_` project token is a
+public client-side key defaulted in the HTML; override it per environment with
+`VITE_POSTHOG_KEY` / `VITE_POSTHOG_HOST` (defaults to `https://us.i.posthog.com`).
+
+The shared `trackAnalyticsEvent` helpers in `index.html` and
+`src/quiz-demo/QuizDemoDialog.tsx` forward **every** event above to both GA4
+(`window.gtag`) and PostHog (`window.posthog.capture`) with identical names and
+params, so no separate event wiring is needed. PostHog additionally captures
+`$pageview`, `$pageleave`, and autocaptured clicks out of the box.
+
+Key lander interactions that reach PostHog this way:
+
+- "Test drive it now" CTA → `quiz_demo_open` (param `cta_location`:
+  `hero_try_it_now`, `premium_try_it_now`).
+- Quiz engagement inside the demo → `quiz_demo_start`, `quiz_demo_answer`,
+  `quiz_demo_complete` (with `question_count`, `correct_count`,
+  `experience_gained`), plus `quiz_demo_continue`, `quiz_demo_section_select`,
+  `quiz_demo_tab_select`, `quiz_demo_locked_tab`, and `quiz_demo_theme_toggle`.
+- Store conversion → `select_store_cta`, `play_store_referral_click`,
+  `ios_interest`.
 
 ## GA Measurement ID Reference
 
