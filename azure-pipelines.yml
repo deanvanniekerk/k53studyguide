@@ -19,6 +19,10 @@ parameters:
       displayName: Upload iOS to App Store Connect
       type: boolean
       default: false
+    - name: showDebug
+      displayName: Show Debug Panel
+      type: boolean
+      default: false
 
 variables:
     appleTeamId: "2Y26AXFP33"
@@ -46,6 +50,7 @@ steps:
       env:
           REVENUECAT_ANDROID_API_KEY: $(REVENUECAT_ANDROID_API_KEY)
           REVENUECAT_IOS_API_KEY: $(REVENUECAT_IOS_API_KEY)
+          SHOW_DEBUG: ${{ parameters.showDebug }}
 
     - script: |
           pnpm cap-sync-android

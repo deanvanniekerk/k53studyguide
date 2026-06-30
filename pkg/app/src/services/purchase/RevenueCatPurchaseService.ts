@@ -131,6 +131,8 @@ export class RevenueCatPurchaseService implements PurchaseService {
       productId: this._productId,
       platform,
       entitlement: REVENUECAT_PREMIUM_ENTITLEMENT_ID,
+      apiKeyPrefix: apiKey ? `${apiKey.split("_")[0]}_` : "(empty)",
+      apiKeyLength: String(apiKey.length),
     });
 
     if (!apiKey) {
@@ -154,14 +156,31 @@ export class RevenueCatPurchaseService implements PurchaseService {
         Purchases.getCustomerInfo(),
       ]);
 
+      this.log("INFO", "RevenueCatPurchaseService > initialize > products fetched", {
+        requested: this._productId,
+        returnedCount: String(products.length),
+        returnedIds: products.map((candidate) => candidate.identifier).join(", ") || "(none)",
+      });
+      this.logCustomerInfoDiagnostics(customerInfo, "initialize");
+      await this.logOfferingsDiagnostics();
+
       const product = products.find((candidate) => candidate.identifier === this._productId);
       if (!product) {
         this.log("ERROR", "RevenueCatPurchaseService > initialize > product unavailable", {
           productId: this._productId,
+          returnedCount: String(products.length),
+          returnedIds: products.map((candidate) => candidate.identifier).join(", ") || "(none)",
         });
         this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
         return;
       }
+
+      this.log("INFO", "RevenueCatPurchaseService > initialize > product available", {
+        identifier: product.identifier,
+        price: product.priceString,
+        currency: product.currencyCode ?? "(none)",
+        title: product.title,
+      });
 
       this._product = product;
       this._reduxStore.dispatch(recievePurchaseProduct(product.priceString, product.title, product.description));
@@ -205,6 +224,44 @@ export class RevenueCatPurchaseService implements PurchaseService {
       this._reduxStore.dispatch(recievePurchaseProductOwned(true));
       this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
       return true;
+    }
+  }
+
+  private logCustomerInfoDiagnostics(customerInfo: CustomerInfo, context: string) {
+    // Diagnostics must never break the purchase flow, so guard against partial customer info.
+    try {
+      this.log("INFO", "RevenueCatPurchaseService > customer info", {
+        context,
+        appUserId: customerInfo.originalAppUserId ?? "(none)",
+        activeEntitlements: Object.keys(customerInfo.entitlements?.active ?? {}).join(", ") || "(none)",
+        allEntitlements: Object.keys(customerInfo.entitlements?.all ?? {}).join(", ") || "(none)",
+        activeSubscriptions: (customerInfo.activeSubscriptions ?? []).join(", ") || "(none)",
+        nonSubscriptionTransactions: String((customerInfo.nonSubscriptionTransactions ?? []).length),
+        hasPremiumEntitlement: String(this.hasFullAccess(customerInfo)),
+      });
+    } catch (error) {
+      this.log("ERROR", "RevenueCatPurchaseService > customer info > diagnostics failed", {
+        message: String(error),
+      });
+    }
+  }
+
+  private async logOfferingsDiagnostics() {
+    try {
+      const offerings = await Purchases.getOfferings();
+      const currentPackages = offerings.current?.availablePackages ?? [];
+
+      this.log("INFO", "RevenueCatPurchaseService > offerings", {
+        currentOffering: offerings.current?.identifier ?? "(none)",
+        allOfferings: Object.keys(offerings.all).join(", ") || "(none)",
+        currentPackageProducts: currentPackages.map((pkg) => pkg.product.identifier).join(", ") || "(none)",
+      });
+    } catch (error) {
+      const purchaseError = toPurchasesError(error);
+      this.log("ERROR", "RevenueCatPurchaseService > offerings > error", {
+        code: purchaseError?.code ?? "unknown",
+        message: purchaseError?.message ?? String(error),
+      });
     }
   }
 

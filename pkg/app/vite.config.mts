@@ -24,6 +24,11 @@ const getSecretConfig = (key: string, environmentVariable: string): string => {
   return getConfig(key, process.env[environmentVariable] ?? "");
 };
 
+const getBoolConfig = (key: string, environmentVariable: string, fallback: boolean): boolean => {
+  const raw = getConfig(key, process.env[environmentVariable] ?? (fallback ? "true" : "false"));
+  return raw === "true" || raw === "1";
+};
+
 export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
@@ -46,6 +51,7 @@ export default defineConfig(({ mode }) => ({
       getSecretConfig("revenueCat.androidApiKey", "REVENUECAT_ANDROID_API_KEY"),
     ),
     __REVENUECAT_IOS_API_KEY__: JSON.stringify(getSecretConfig("revenueCat.iosApiKey", "REVENUECAT_IOS_API_KEY")),
+    __SHOW_DEBUG__: JSON.stringify(getBoolConfig("showDebug", "SHOW_DEBUG", mode !== "production")),
   },
   resolve: {
     alias: {

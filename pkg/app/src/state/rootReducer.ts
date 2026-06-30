@@ -3,6 +3,7 @@ import { type PersistConfig, persistReducer } from "redux-persist";
 import { createStorage } from "@/store/store";
 import { reducer as content } from "./content";
 import { migrateLegacyNotifications } from "./legacyCompatibility";
+import { reducer as log } from "./log";
 import { reducer as navigation } from "./navigation";
 import { type NotificationsState, reducer as notifications } from "./notifications";
 import { type PurchaseState, reducer as purchase } from "./purchase";
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   translations: translations,
   navigation: navigation,
   content: content,
+  log: log,
   questions: questions,
   quiz: quiz,
   test: test,

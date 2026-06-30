@@ -20,7 +20,7 @@ const ProfilePage: React.FC = () => {
         <Settings />
         <RateApp />
         <Legal />
-        <Debug />
+        {__SHOW_DEBUG__ && <Debug />}
       </Content>
     </Page>
   );
