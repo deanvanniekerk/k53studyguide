@@ -12,6 +12,10 @@ Core app features:
 
 The app includes 500+ practice questions and dynamically generated mock tests.
 
+## License / Use
+
+No license is granted for this repository. The source is public for portfolio/reference review only. All rights are reserved; do not copy, use, modify, redistribute, or reuse any part without written permission.
+
 ## Packages
 
 This is a pnpm monorepo with packages under `pkg/*`.
