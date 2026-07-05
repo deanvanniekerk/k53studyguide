@@ -116,6 +116,15 @@ FTP_REMOTE_DIR="public_html"
 
 ## Capacitor
 
+Firebase native config files are not committed. For local native builds, copy
+your own Firebase config into:
+
+- `pkg/app/android/app/google-services.json`
+- `pkg/app/ios/App/App/GoogleService-Info.plist`
+
+Azure Pipelines restores these from secure files during Android/iOS release
+builds.
+
 Sync Android:
 
 ```bash

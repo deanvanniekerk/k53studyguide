@@ -52,6 +52,17 @@ steps:
           REVENUECAT_IOS_API_KEY: $(REVENUECAT_IOS_API_KEY)
           SHOW_DEBUG: ${{ parameters.showDebug }}
 
+    - task: DownloadSecureFile@1
+      name: androidGoogleServices
+      inputs:
+          secureFile: "google-services.json"
+      displayName: "Android > Download Firebase Config"
+      condition: and(succeeded(), eq('${{ parameters.buildAndroid }}', 'true'))
+    - script: |
+          set -euo pipefail
+          install -m 600 "$(androidGoogleServices.secureFilePath)" "pkg/app/android/app/google-services.json"
+      displayName: "Android > Install Firebase Config"
+      condition: and(succeeded(), eq('${{ parameters.buildAndroid }}', 'true'))
     - script: |
           pnpm cap-sync-android
       displayName: "React App > Sync to Android Project"
@@ -132,6 +143,17 @@ steps:
       displayName: "Android APK > Copy to Artifacts"
       condition: and(succeeded(), eq('${{ parameters.buildAndroid }}', 'true'))
 
+    - task: DownloadSecureFile@1
+      name: iosGoogleServiceInfo
+      inputs:
+          secureFile: "GoogleService-Info.plist"
+      displayName: "iOS > Download Firebase Config"
+      condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
+    - script: |
+          set -euo pipefail
+          install -m 600 "$(iosGoogleServiceInfo.secureFilePath)" "pkg/app/ios/App/App/GoogleService-Info.plist"
+      displayName: "iOS > Install Firebase Config"
+      condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
     - script: |
           pnpm cap-sync-ios
       displayName: "React App > Sync to iOS Project"
