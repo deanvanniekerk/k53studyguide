@@ -794,21 +794,6 @@
   white-space: nowrap;
 }
 
-.quiz-demo-store-badge-coming-soon::after {
-  content: "SOON";
-  position: absolute;
-  top: -12px;
-  right: 14px;
-  padding: 5px 11px;
-  border-radius: 999px;
-  background: var(--orange, #ff7b51);
-  color: var(--ion-color-light);
-  box-shadow: 0 10px 24px rgba(255, 123, 81, 0.3);
-  font-size: 0.64rem;
-  font-weight: 900;
-  letter-spacing: 0.06em;
-}
-
 .quiz-demo-tab-bar {
   position: relative;
   z-index: 3;

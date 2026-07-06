@@ -51,6 +51,8 @@ type LevelRange = {
 const QUESTION_IMAGE_BASE_URL = "/quiz-assets/images";
 const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=utm_source%3Dwebsite%26utm_medium%3Dquiz_demo_locked_cta%26utm_campaign%3Dorganic_web";
+const APP_STORE_URL = "https://apps.apple.com/us/app/k53-study-guide/id6784718443?ct=organic_web_quiz_demo_locked_cta";
+type StorePlatform = "android" | "ios";
 const levelRanges: LevelRange[] = [
   { level: 0, lower: 0, upper: 0 },
   { level: 1, lower: 1, upper: 39 },
@@ -126,13 +128,13 @@ const getLevelProgress = (masteredQuestionCount: number) => {
   };
 };
 
-const trackStoreCta = (ctaLocation: string) => {
+const trackStoreCta = (ctaLocation: string, storePlatform: StorePlatform = "android") => {
   const params = {
     cta_location: ctaLocation,
-    store_platform: "android",
+    store_platform: storePlatform,
   };
   trackAnalyticsEvent("select_store_cta", params);
-  trackAnalyticsEvent("play_store_referral_click", params);
+  trackAnalyticsEvent(storePlatform === "ios" ? "app_store_referral_click" : "play_store_referral_click", params);
 };
 
 export const QuizDemoDialog: React.FC = () => {
@@ -452,14 +454,6 @@ export const QuizDemoDialog: React.FC = () => {
     scrollPreviewTop();
   };
 
-  const openIosInterest = () => {
-    trackAnalyticsEvent("ios_interest", {
-      cta_location: "quiz_demo_locked_ios",
-      store_platform: "ios",
-    });
-    showNotice("K53 Study Guide for iPhone is coming soon.");
-  };
-
   return (
     <div
       className={isOpen ? "quiz-demo-modal open" : "quiz-demo-modal"}
@@ -523,7 +517,7 @@ export const QuizDemoDialog: React.FC = () => {
                 subtitle={screenSubtitle}
               />
               <div className="quiz-demo-screen-scroll" ref={screenScrollRef}>
-                {activeTab !== "quiz" && <LockedTabContent tab={activeTab} onIosInterest={openIosInterest} />}
+                {activeTab !== "quiz" && <LockedTabContent tab={activeTab} />}
 
                 {activeTab === "quiz" && state.mode === "home" && (
                   <section className="quiz-demo-page quiz-demo-home" aria-label="Quiz settings">
@@ -738,10 +732,9 @@ const QuizDemoAppHeader: React.FC<QuizDemoAppHeaderProps> = ({ canGoBack, onBack
 
 type LockedTabContentProps = {
   tab: PreviewTab;
-  onIosInterest: () => void;
 };
 
-const LockedTabContent: React.FC<LockedTabContentProps> = ({ tab, onIosInterest }) => {
+const LockedTabContent: React.FC<LockedTabContentProps> = ({ tab }) => {
   const tabLabel = previewTabs.find((item) => item.key === tab)?.label ?? "App";
 
   return (
@@ -764,17 +757,19 @@ const LockedTabContent: React.FC<LockedTabContentProps> = ({ tab, onIosInterest 
               <strong>Google Play</strong>
             </span>
           </a>
-          <button
-            className="quiz-demo-store-badge quiz-demo-store-badge-coming-soon"
-            type="button"
-            onClick={onIosInterest}
+          <a
+            className="quiz-demo-store-badge"
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackStoreCta(`quiz_demo_locked_${tab}_ios`, "ios")}
           >
             <span className="quiz-demo-store-badge-icon quiz-demo-store-badge-apple">{"\uf8ff"}</span>
             <span className="quiz-demo-store-badge-text">
               <span>Download on the</span>
               <strong>App Store</strong>
             </span>
-          </button>
+          </a>
         </div>
       </div>
     </section>
