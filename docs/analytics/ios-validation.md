@@ -14,9 +14,23 @@ A local build from integration base `6605edd` succeeded with Xcode 27.0 after `p
 
 This is **not evidence of the configuration in the shipped App Store release**. No release archive or Azure secure-file contents were available for comparison. Runtime logs also show Firebase Installations failing with `SecItemCopyMatching (-34018)` in the unsigned simulator environment. Resolve signing/keychain setup before using this simulator as a collection acceptance test; do not attribute this local failure to the production app.
 
-The available computer-control surface could not select Simulator, so no in-app interaction or screenshot-based checkout verification was completed. No Firebase association was changed.
+That earlier unsigned run is superseded by the signed validation below. In Xcode 27, the simulator UI is **Device Hub**, at `/Applications/Xcode.app/Contents/Applications/DeviceHub.app`; the old `Simulator.app` path is absent.
 
-## Association repair
+### Association repaired and signed validation
+
+With explicit owner approval, the existing-property association operation completed on 6 October at 17:21 SAST. Re-reading Firebase and GA4 confirmed a new iOS stream mapped to the registered bundle and Firebase app. Existing Android and web stream identifiers were preserved; no streams were unlinked or deleted. The temporary administrative credential was deleted after verification. Reporting continues with the separate read-only credential.
+
+The fresh configuration still has `IS_ANALYTICS_ENABLED=false`. The signed simulator logs explicitly confirm runtime collection enabled, so the generated flag was not hand-edited. Release-archive comparison remains outstanding.
+
+Integration base `c87f17d` built and ran on iPhone 17 Pro / iOS 26.5 as version **1.38 (38)**, with normal simulator code signing enabled. Place DerivedData outside synced Documents: the first signed build there failed with a resource-fork metadata error; a `/tmp` DerivedData build succeeded. The embedded Firebase configuration is semantically identical to the post-repair download. No additional keychain permissions were granted. The signed run did not reproduce the unsigned run's Firebase Installations keychain error.
+
+Actual UI taps opened Study, Quiz, a practice question, Test and Profile. In the debug run, starting a quiz and selecting an answer produced `app_open`, `quiz_start`, `quiz_answer` and `screen_view` in the native Analytics logs, followed by successful HTTP 204 uploads. Parameters included quiz mode and question/answer identifiers. These are UI-originated SDK observations, not proof of receipt in GA4 DebugView or processed reporting. The live log capture used both `-FIRDebugEnabled` and `-FIRAnalyticsDebugEnabled`. No `firebase_error` was observed in that captured journey.
+
+A read-only processed report for 6 October, grouped by platform, app version, stream and event, confirmed the existing Android stream still has version 1.38 `app_open`, `screen_view`, `quiz_start`, `quiz_answer` and `view_promotion` activity. This is live Android collection evidence, not a controlled Android regression run. The corresponding iOS processed and Realtime observations were still empty when checked; the newly repaired stream must not yet be treated as accepted. Raw requests, timestamps and responses remain in private audit evidence.
+
+## Association repair procedure
+
+The completed repair followed this procedure. Retain it for diagnosis; do not rerun it merely because reporting has not processed yet.
 
 1. With an existing authorized administrative session, read Firebase Analytics details and GA4 streams; record the current Android stream, any web streams and all registered Firebase apps. Confirm the intended property before modifying it.
 2. Use the existing-property association operation only after confirming its impact. Firebase's [Management API](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects/addGoogleAnalytics) supports `projects.addGoogleAnalytics` with the **same** `analyticsPropertyId`: it associates matching native streams by package/bundle ID and provisions missing ones. It rejects a different property when one is already linked. The operation requires Firebase project Owner and Analytics Edit permissions; a reporting-only credential cannot perform it.
@@ -34,20 +48,20 @@ Use a correctly signed simulator build or development device and record build nu
 - Query processed reporting after processing completes, grouped by platform, app version, stream and event. Record the observation window and the first verified version. Distinguish unavailable/pending data from zero activity.
 - Compare a released archive's embedded plist, bundle identity and Analytics dependencies with the validated build. State explicitly whether existing installations or only a new release are covered.
 
-Issue #5 remains open until the association is repaired, both platform journeys are observed, processed iOS reporting is verified and release coverage is established.
+Issue #5 remains open: the association is repaired, but GA4 receipt of the complete iOS journey, a controlled Android regression journey, processed iOS reporting and release coverage still need verification.
 
 ## Checkout baseline (#9)
 
-The source maps iOS product `deanvniekerk.k53studyguide.premium_access` to RevenueCat entitlement `premium_access` using purchases-capacitor 13.2.0. The configured local build used the existing ignored environment file; key values and configuration files were not committed. No repository StoreKit configuration was found. Source mapping is not proof that App Store Connect and RevenueCat are configured identically.
+The source maps iOS product `deanvniekerk.k53studyguide.premium_access` to RevenueCat entitlement `premium_access` using purchases-capacitor 13.2.0. The configured local build sourced the existing ignored `.dev.env` into the build process; simply copying this file does not populate the Vite configuration. Key values and configuration files were not committed. The current local iOS key is a RevenueCat **Test Store** key, as explicitly reported by its SDK. Test Store simulation does not exercise StoreKit or establish App Store sandbox coverage; this local build must not be used as a release artifact. No repository StoreKit configuration was found. Source mapping is not proof that App Store Connect and RevenueCat are configured identically.
 
 | Case | Result |
 | --- | --- |
-| Native build, install and launch | Passed for unsigned simulator 1.38 (38) |
+| Native build, install and launch | Passed for signed simulator 1.38 (38), iOS 26.5 |
 | Store product / entitlement configuration | Source mapping recorded; remote mapping unverified |
-| Free offer discovery and localized price | Not exercised; Simulator UI unavailable |
+| Free offer discovery and localized price | Test tab benefit panel observed; purchase modal and localized price not yet verified |
 | Cancellation and retry | Not exercised |
 | Successful premium unlock and restore | Not exercised; sandbox transaction environment unconfirmed |
 | Restart persistence and mock-test access | Not exercised |
 | App Store sandbox / device / TestFlight validation | Not performed |
 
-Continue #9 with an accessible simulator and explicit StoreKit test setup, or a supported sandbox device/TestFlight path. Label local StoreKit results separately from store-backed results. Do not infer payment success, restore correctness or production purchase availability from this build.
+Continue #9 with an explicit StoreKit test setup or a supported sandbox device/TestFlight path. Device Hub UI taps work, but automated scroll/drag did not move content during this run; below-fold controls require a verified input path. The current local Test Store configuration is insufficient for a store-backed checkout baseline. Label local StoreKit results separately from store-backed results. Do not infer payment success, restore correctness or production purchase availability from this build.
