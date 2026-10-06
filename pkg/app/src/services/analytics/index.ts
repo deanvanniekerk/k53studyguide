@@ -22,6 +22,7 @@ export type AnalyticsEventName =
   | "purchase_error"
   | "checkout_outcome"
   | "purchase_unavailable"
+  | "purchase_initialization_error"
   | "restore_start"
   | "restore_outcome";
 

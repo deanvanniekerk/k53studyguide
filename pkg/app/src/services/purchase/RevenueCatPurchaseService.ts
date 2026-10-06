@@ -183,6 +183,10 @@ export class RevenueCatPurchaseService implements PurchaseService {
 
     if (!apiKey) {
       this.log("ERROR", "RevenueCatPurchaseService > initialize > missing RevenueCat API key", { platform });
+      analytics.logEvent("purchase_initialization_error", {
+        ...this.getAnalyticsPurchaseParams(),
+        failure_reason: "missing_api_key",
+      });
       this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
       return;
     }
@@ -212,6 +216,10 @@ export class RevenueCatPurchaseService implements PurchaseService {
 
       const product = products.find((candidate) => candidate.identifier === this._productId);
       if (!product) {
+        analytics.logEvent("purchase_initialization_error", {
+          ...this.getAnalyticsPurchaseParams(),
+          failure_reason: "product_unavailable",
+        });
         this.log("ERROR", "RevenueCatPurchaseService > initialize > product unavailable", {
           productId: this._productId,
           returnedCount: String(products.length),
@@ -236,6 +244,11 @@ export class RevenueCatPurchaseService implements PurchaseService {
       this.log("ERROR", "RevenueCatPurchaseService > initialize > error", {
         code: purchaseError?.code ?? "unknown",
         message: purchaseError?.message ?? String(error),
+      });
+      analytics.logEvent("purchase_initialization_error", {
+        ...this.getAnalyticsPurchaseParams(),
+        failure_reason: "sdk_error",
+        error_code: purchaseError?.code ?? "unknown",
       });
       this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
     }
