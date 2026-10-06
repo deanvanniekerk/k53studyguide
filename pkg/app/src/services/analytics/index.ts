@@ -142,7 +142,7 @@ export const analytics = {
 
   trackQuizComplete(params: { question_count: number; correct_count: number; experience_gained: number }) {
     this.logEvent("quiz_complete", {
-      analytics_schema_version: 2,
+      analytics_schema_version: "v2",
       question_count: params.question_count,
       correct_count: params.correct_count,
       score_percent: scorePercent(params.correct_count, params.question_count),
@@ -169,7 +169,7 @@ export const analytics = {
     section_c_passed: boolean;
   }) {
     this.logEvent("mock_test_complete", {
-      analytics_schema_version: 2,
+      analytics_schema_version: "v2",
       ...params,
       passed: params.passed ? "true" : "false",
       section_a_passed: params.section_a_passed ? "true" : "false",

@@ -30,7 +30,7 @@ describe("services > analytics", () => {
     expect(analyticsFirebaseMock.logEvent).toHaveBeenCalledWith({
       name: "quiz_complete",
       params: {
-        analytics_schema_version: 2,
+        analytics_schema_version: "v2",
         question_count: 10,
         correct_count: 7,
         score_percent: 70,
