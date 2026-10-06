@@ -48,7 +48,7 @@ it("counts a submitted practice quiz once, including after saved state is reopen
         correct_count: 1,
         score_percent: 50,
         experience_gained: 1,
-        analytics_schema_version: 2,
+        analytics_schema_version: "v2",
       },
     },
   ]);
@@ -78,7 +78,7 @@ it("does not complete an empty or partially answered practice quiz, and counts a
         correct_count: 2,
         score_percent: 100,
         experience_gained: 2,
-        analytics_schema_version: 2,
+        analytics_schema_version: "v2",
       },
     },
   ]);
@@ -109,7 +109,7 @@ it("counts a completed mock test once with accurate section results after reopen
     {
       name: "mock_test_complete",
       params: {
-        analytics_schema_version: 2,
+        analytics_schema_version: "v2",
         question_count: 64,
         correct_count: 57,
         score_percent: 89,
@@ -150,7 +150,7 @@ it("leaves an incomplete mock test resumable without recording completion", asyn
     {
       name: "mock_test_complete",
       params: {
-        analytics_schema_version: 2,
+        analytics_schema_version: "v2",
         question_count: 2,
         correct_count: 1,
         score_percent: 50,
