@@ -77,3 +77,10 @@ The source maps iOS product `deanvniekerk.k53studyguide.premium_access` to Reven
 | App Store sandbox / device / TestFlight validation | Simulator sandbox attempt blocked by the documented environment limitation; physical-device/TestFlight validation not performed |
 
 Continue store-backed #9 acceptance on a physical iPhone using a supported development/sandbox or TestFlight path. Keep an explicit local StoreKit simulation as separate supplemental coverage. Device Hub taps and scrolling work when the app binding is refreshed before input (`getApp`); stale focus initially prevented drags. Successful purchase and restore require a supported physical-device setup as well as a verified sandbox account/session; simulator sign-in alone does not satisfy this gate. Label local StoreKit results separately from store-backed results. Do not infer payment success, restore correctness or production purchase availability from this build.
+
+
+### Physical-device preparation and pause
+
+A Debug build from integration `23eb553` was prepared for the connected iPhone 15 Pro / iOS 26.6.2 with the existing development signing identity. Its JavaScript analytics context was explicitly set to `development`, and its Firebase configuration matched the post-repair download. Before installation, the existing 1.38 (38) app data container was copied successfully to private local backup. The validation build installed in place without uninstalling or resetting the app and launched with Firebase debug logging; console capture began. Initial entitlement and purchase outcomes were not verified.
+
+The owner then began updating the phone to iOS 27. Device validation stopped at that point, and the local console capture was detached without sending a termination request to the phone. Preserve the build and backup and resume only after the owner confirms the OS update is complete. Device Hub screen sharing was unavailable on the phone's earlier OS version; this UI limitation is separate from purchase support on a physical device. No physical-device purchase or restore acceptance has been completed.
