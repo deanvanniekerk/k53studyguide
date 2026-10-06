@@ -68,3 +68,17 @@ pnpm lander:build
 pnpm lander:deploy
 pnpm lander:deploy:full
 ```
+
+## Agent skills
+
+### Issue tracker
+
+Track issues and specs in GitHub Issues for `deanvanniekerk/k53studyguide`. See `docs/agents/issue-tracker.md` before ticket operations.
+
+### Triage labels
+
+Use the five canonical triage labels. See `docs/agents/triage-labels.md` when classifying work.
+
+### Domain docs
+
+Use the single-context glossary and ADR layout. See `docs/agents/domain.md` before domain exploration or terminology changes.
