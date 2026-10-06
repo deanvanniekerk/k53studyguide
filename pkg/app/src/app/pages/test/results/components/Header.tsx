@@ -1,12 +1,10 @@
 import { CreateAnimation, IonIcon } from "@ionic/react";
 import { checkmarkCircle, closeCircle } from "ionicons/icons";
 import type React from "react";
-import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import styled from "styled-components";
 import { TestFailedIcon, TestPassedIcon } from "@/app/components/icons";
-import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { RootState } from "@/state";
 import {
   passedSelector,
@@ -19,51 +17,6 @@ import {
 type Props = PropsFromState;
 
 const HeaderComponent: React.FC<Props> = ({ testResults, sectionAPassed, sectionBPassed, sectionCPassed, passed }) => {
-  const { analytics, logEvent } = useAnalytics();
-  const questionCount = testResults.A.total + testResults.B.total + testResults.C.total;
-  const correctCount = testResults.A.correct + testResults.B.correct + testResults.C.correct;
-
-  useEffect(() => {
-    analytics.trackMockTestComplete({
-      question_count: questionCount,
-      correct_count: correctCount,
-      passed,
-      section_a_correct: testResults.A.correct,
-      section_a_total: testResults.A.total,
-      section_a_passed: sectionAPassed,
-      section_b_correct: testResults.B.correct,
-      section_b_total: testResults.B.total,
-      section_b_passed: sectionBPassed,
-      section_c_correct: testResults.C.correct,
-      section_c_total: testResults.C.total,
-      section_c_passed: sectionCPassed,
-    });
-    logEvent("TEST_RESULT", {
-      question_count: questionCount,
-      correct_count: correctCount,
-      passed: passed ? "true" : "false",
-      section_a_correct: testResults.A.correct,
-      section_a_total: testResults.A.total,
-      section_a_passed: sectionAPassed ? "true" : "false",
-      section_b_correct: testResults.B.correct,
-      section_b_total: testResults.B.total,
-      section_b_passed: sectionBPassed ? "true" : "false",
-      section_c_correct: testResults.C.correct,
-      section_c_total: testResults.C.total,
-      section_c_passed: sectionCPassed ? "true" : "false",
-    });
-  }, [
-    analytics,
-    correctCount,
-    logEvent,
-    passed,
-    questionCount,
-    sectionAPassed,
-    sectionBPassed,
-    sectionCPassed,
-    testResults,
-  ]);
-
   return (
     <>
       <ResultCard>

@@ -1,5 +1,6 @@
 import type { ThunkAction } from "redux-thunk";
 import type { QuestionItem } from "@/data";
+import { analytics } from "@/services/analytics";
 import type { RootState } from "@/state";
 import { questionDataSelector } from "@/state/questions";
 import { shuffleArray } from "@/utils";
@@ -11,6 +12,14 @@ import {
   recieveQuesionSuccesfullyAnsweredDate,
 } from "../log";
 import { passedSelector, questionAnswersSelector, type RecieveQuestionAnswersAction, recieveQuestionAnswers } from "./";
+import { type RecieveCompletedAtAction, recieveCompletedAt } from "./actions";
+import {
+  sectionAPassedSelector,
+  sectionBPassedSelector,
+  sectionCPassedSelector,
+  testResultsSelector,
+  totalCorrectAnswersSelector,
+} from "./selectors";
 import type { QuestionAnswer, TestSection } from "./types";
 
 export const loadQuestionAnswers = (): ThunkAction<void, RootState, null, RecieveQuestionAnswersAction> => {
@@ -89,12 +98,31 @@ export const submitTest = (): ThunkAction<
   void,
   RootState,
   null,
-  RecieveQuesionSuccesfullyAnsweredDateAction | IncrementPassedTestsAction
+  RecieveQuesionSuccesfullyAnsweredDateAction | IncrementPassedTestsAction | RecieveCompletedAtAction
 > => {
   return (dispatch, getState) => {
+    if (getState().test.session.completedAt) return;
     const questionAnswers = questionAnswersSelector(getState());
+    if (questionAnswers.length === 0 || questionAnswers.some((qa) => !qa.answer)) return;
     const passed = passedSelector(getState());
 
+    dispatch(recieveCompletedAt(new Date().toISOString()));
+    const results = testResultsSelector(getState());
+    if (getState().test.session.completionAnalyticsVersion === 2)
+      analytics.trackMockTestComplete({
+        question_count: questionAnswers.length,
+        correct_count: totalCorrectAnswersSelector(getState()),
+        passed,
+        section_a_correct: results.A.correct,
+        section_a_total: results.A.total,
+        section_a_passed: sectionAPassedSelector(getState()),
+        section_b_correct: results.B.correct,
+        section_b_total: results.B.total,
+        section_b_passed: sectionBPassedSelector(getState()),
+        section_c_correct: results.C.correct,
+        section_c_total: results.C.total,
+        section_c_passed: sectionCPassedSelector(getState()),
+      });
     if (passed) dispatch(incrementPassedTests());
 
     const dateAnswered = new Date();
