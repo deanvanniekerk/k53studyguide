@@ -15,7 +15,7 @@ from google.oauth2.credentials import Credentials
 
 PROPERTY = "269952161"
 EVENTS = ["first_open", "app_open", "view_promotion", "select_promotion",
-          "begin_checkout", "purchase_unavailable", "purchase_cancel",
+          "begin_checkout", "purchase_initialization_error", "purchase_unavailable", "purchase_cancel",
           "purchase_pending", "purchase_error", "checkout_outcome",
           "restore_start", "restore_outcome", "purchase", "in_app_purchase",
           "quiz_complete", "mock_test_complete", "select_store_cta"]
