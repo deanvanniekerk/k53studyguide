@@ -1,5 +1,7 @@
 import type { AnyAction, Store } from "redux";
 
+export type OfferOrigin = "profile" | "mock_test";
+
 export type PurchaseStore = Store<unknown, AnyAction>;
 
 export interface PurchaseServiceConstructor {
@@ -9,6 +11,7 @@ export interface PurchaseServiceConstructor {
 export interface PurchaseService {
   readonly productId: string;
   initialize: () => void;
-  purchase: () => void;
-  restore: () => void | Promise<void>;
+  offerOpened: (origin: OfferOrigin) => () => void;
+  purchase: (origin?: OfferOrigin) => void;
+  restore: (origin?: OfferOrigin) => void | Promise<void>;
 }

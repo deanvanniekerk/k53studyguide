@@ -9,6 +9,7 @@ import { CloseButton } from "@/app/components";
 import { BookOutlineIcon, ResetIcon, TestPenIcon, YinYangIcon } from "@/app/components/icons";
 import { PurchaseContext } from "@/context";
 import { DEFAULT_PREMIUM_PRODUCT_ID } from "@/services";
+import type { OfferOrigin } from "@/services/purchase/types";
 import type { RootState } from "@/state";
 import { purchaseSelector, recievePurchaseOrderState } from "@/state/purchase";
 import { useAnalytics } from "../hooks/useAnalytics";
@@ -16,12 +17,13 @@ import { watermarkStyle } from "../styles";
 
 type Props = {
   isOpen: boolean;
+  origin: OfferOrigin;
   onDidDismiss: () => void;
 } & PropsFromState &
   PropsFromDispatch;
 
 const PurchaseModal: React.FC<Props> = (props) => {
-  const { analytics, logEvent } = useAnalytics();
+  const { analytics } = useAnalytics();
 
   const purchaseService = useContext(PurchaseContext);
 
@@ -38,13 +40,8 @@ const PurchaseModal: React.FC<Props> = (props) => {
   useEffect(() => {
     if (!props.isOpen) return;
 
-    analytics.trackPromotionView({
-      product_id: premiumProductId,
-      price: props.purchase.price,
-      offer_surface: "purchase_modal",
-    });
-    logEvent("PRESENT_OFFER");
-  }, [analytics, logEvent, premiumProductId, props.isOpen, props.purchase.price]);
+    return purchaseService?.offerOpened(props.origin);
+  }, [props.isOpen, props.origin, purchaseService]);
 
   useEffect(() => {
     if (props.purchase.orderState === "finished") {
@@ -204,9 +201,10 @@ const PurchaseModal: React.FC<Props> = (props) => {
                     product_id: premiumProductId,
                     price: props.purchase.price,
                     offer_surface: "purchase_modal",
+                    offer_origin: props.origin,
                     cta_location: "purchase_modal_get_premium",
                   });
-                  if (purchaseService) purchaseService.purchase();
+                  if (purchaseService) purchaseService.purchase(props.origin);
                 }}
               >
                 <Translate text="getPremium" />
@@ -217,7 +215,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
                 disabled={isPending || !purchaseService || undefined}
                 onClick={() => {
                   setRestoreAttempted(true);
-                  void purchaseService?.restore();
+                  void purchaseService?.restore(props.origin);
                 }}
               >
                 <Translate text="restorePurchase" />
