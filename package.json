@@ -11,7 +11,7 @@
     "bump:native": "node scripts/bump-native-version.mjs",
     "lint:tsc": "pnpm --filter app lint:tsc",
     "start": "pnpm --filter app start",
-    "test": "pnpm --filter app test",
+    "test": "pnpm --filter app test && pnpm --filter lander test",
     "test:coverage": "pnpm --filter app test:coverage",
     "test:watch": "pnpm --filter app test:watch",
     "tsc": "pnpm --filter app tsc",
