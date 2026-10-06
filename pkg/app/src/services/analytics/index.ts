@@ -7,7 +7,6 @@ export type AnalyticsEventName =
   | "app_open"
   | "onboarding_info_view"
   | "study_content_view"
-  | "study_section_complete"
   | "quiz_start"
   | "quiz_answer"
   | "quiz_complete"
@@ -30,10 +29,8 @@ export type LegacyAnalyticsEventName =
   | "CLEAR_HISTORY"
   | "START_QUIZ"
   | "CONTINUE_QUIZ"
-  | "QUIZ_RESULT"
   | "START_TEST"
-  | "CONTINUE_TEST"
-  | "TEST_RESULT";
+  | "CONTINUE_TEST";
 
 export type AnalyticsParamValue = string | number | null | undefined;
 export type AnalyticsParams = Record<string, AnalyticsParamValue>;
@@ -120,10 +117,6 @@ export const analytics = {
     this.logEvent("study_content_view", params);
   },
 
-  trackStudySectionComplete(params: { content_key: string; content_category: string }) {
-    this.logEvent("study_section_complete", params);
-  },
-
   trackQuizStart(params: { quiz_mode: "new" | "continue"; question_count?: number }) {
     this.logEvent("quiz_start", params);
   },
@@ -134,6 +127,7 @@ export const analytics = {
 
   trackQuizComplete(params: { question_count: number; correct_count: number; experience_gained: number }) {
     this.logEvent("quiz_complete", {
+      analytics_schema_version: 2,
       question_count: params.question_count,
       correct_count: params.correct_count,
       score_percent: scorePercent(params.correct_count, params.question_count),
@@ -160,6 +154,7 @@ export const analytics = {
     section_c_passed: boolean;
   }) {
     this.logEvent("mock_test_complete", {
+      analytics_schema_version: 2,
       ...params,
       passed: params.passed ? "true" : "false",
       section_a_passed: params.section_a_passed ? "true" : "false",

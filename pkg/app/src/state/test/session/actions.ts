@@ -22,7 +22,21 @@ export interface RecieveCurrentSectionAction {
   payload: TestSection;
 }
 
-export type TestActions = RecieveQuestionAnswersAction | RecieveAnswerAction | RecieveCurrentSectionAction;
+export interface RecieveCompletedAtAction {
+  type: "TEST_SESSION_RECIEVE_COMPLETED_AT";
+  payload: string;
+}
+
+export const recieveCompletedAt = (completedAt: string): RecieveCompletedAtAction => ({
+  type: "TEST_SESSION_RECIEVE_COMPLETED_AT",
+  payload: completedAt,
+});
+
+export type TestActions =
+  | RecieveCompletedAtAction
+  | RecieveQuestionAnswersAction
+  | RecieveAnswerAction
+  | RecieveCurrentSectionAction;
 
 export const recieveQuestionAnswers = (questionAnswers: QuestionAnswer[]): RecieveQuestionAnswersAction => ({
   type: TEST_SESSION_RECIEVE_QUESTION_ANSWERS,

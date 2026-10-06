@@ -43,9 +43,7 @@ Tracked in study/content pages.
 - `study_content_view`
   - Fires once per content card when it becomes visible.
   - Params: `content_key`, `content_category`.
-- `study_section_complete`
-  - Fires at the same meaningful visibility milestone as `study_content_view`.
-  - Params: `content_key`, `content_category`.
+- `study_section_complete` is retired; visibility is not demonstrated learning completion.
 
 Legacy continuity:
 
@@ -53,7 +51,7 @@ Legacy continuity:
 
 ### Quiz engagement
 
-Tracked in quiz start, quiz session, and quiz result components.
+Tracked in quiz start/session components and the guarded submission operation.
 
 - `quiz_start`
   - Fires when the user starts or continues a quiz.
@@ -61,28 +59,28 @@ Tracked in quiz start, quiz session, and quiz result components.
 - `quiz_answer`
   - Fires when the user selects an answer in a quiz or mock test session.
   - Params: `question_id`, `answer_id`, `question_index`.
-- `quiz_complete`
-  - Fires on the quiz result screen.
+- `quiz_complete` (submission only, `analytics_schema_version = 2`)
+  - Fires once when a non-empty, fully answered practice quiz is submitted.
   - Params: `question_count`, `correct_count`, `score_percent`, `experience_gained`.
 
 Legacy continuity:
 
-- `START_QUIZ`, `CONTINUE_QUIZ`, and `QUIZ_RESULT` still fire with normalized scalar params.
+- `START_QUIZ` and `CONTINUE_QUIZ` still fire. `QUIZ_RESULT` is retired; do not add historical result views to canonical completion counts.
 
 ### Mock test engagement
 
-Tracked in test start, test session, and test result components.
+Tracked in test start/session components and the guarded submission operation.
 
 - `mock_test_start`
   - Fires when the user starts or continues a mock test.
   - Params: `quiz_mode`: `new` or `continue`.
-- `mock_test_complete`
-  - Fires on the mock test result screen.
+- `mock_test_complete` (submission only, `analytics_schema_version = 2`)
+  - Fires once when a non-empty, fully answered mock test is submitted.
   - Params: `question_count`, `correct_count`, `score_percent`, `passed`, section-level correct/total/pass values.
 
 Legacy continuity:
 
-- `START_TEST`, `CONTINUE_TEST`, and `TEST_RESULT` still fire with normalized scalar params.
+- `START_TEST` and `CONTINUE_TEST` still fire. `TEST_RESULT` is retired; do not add historical result views to canonical completion counts.
 
 ### Premium and purchase funnel
 
@@ -242,3 +240,5 @@ Mark these events as key events:
 - Free vs premium engagement and retention.
 
 Add a GA annotation for each release that changes analytics, purchase UX, pricing, or landing-page CTA placement.
+
+Assessment measurement and release cutover: [study visibility and assessment completion](analytics/assessment-completion.md).

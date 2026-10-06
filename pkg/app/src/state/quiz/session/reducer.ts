@@ -2,6 +2,7 @@ import update from "immutability-helper";
 import type { QuestionAnswer, TestActions } from "./";
 
 export type TestState = {
+  readonly completionAnalyticsVersion?: 2;
   readonly questionAnswers: QuestionAnswer[];
   readonly maxQuestions: number;
   readonly experienceGained: number;
@@ -22,6 +23,7 @@ export const reducer = (state: TestState = defaultState, action: TestActions): T
         ...state,
         questionAnswers: action.payload,
         completedAt: null,
+        completionAnalyticsVersion: 2,
       };
     case "QUIZ_SESSION_RECIEVE_MAX_QUESTIONS":
       return {
@@ -42,6 +44,9 @@ export const reducer = (state: TestState = defaultState, action: TestActions): T
       const index = state.questionAnswers.findIndex((q) => q.question.id === action.payload.questionId);
       return {
         ...state,
+        // An unanswered legacy attempt can join the new measurement when the learner resumes.
+        completionAnalyticsVersion:
+          !state.completedAt && state.questionAnswers.some((qa) => !qa.answer) ? 2 : state.completionAnalyticsVersion,
         questionAnswers: update(state.questionAnswers, {
           [index]: {
             answer: {
