@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import styled from "styled-components";
 import { TestFailedIcon, TestPassedIcon } from "@/app/components/icons";
-import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { useSuccessfulQuizReviewPrompt } from "@/app/hooks/useSuccessfulQuizReviewPrompt";
 import type { RootState } from "@/state";
 import {
@@ -18,22 +17,8 @@ import {
 type Props = PropsFromState;
 
 const HeaderComponent: React.FC<Props> = (props) => {
-  const { analytics, logEvent } = useAnalytics();
   const requestSuccessfulQuizReview = useSuccessfulQuizReviewPrompt();
   const allCorrect = props.totalQuestions > 0 && props.totalCorrectAnswers === props.totalQuestions;
-
-  useEffect(() => {
-    analytics.trackQuizComplete({
-      question_count: props.totalQuestions,
-      correct_count: props.totalCorrectAnswers,
-      experience_gained: props.experienceGained,
-    });
-    logEvent("QUIZ_RESULT", {
-      question_count: props.totalQuestions,
-      correct_count: props.totalCorrectAnswers,
-      experience_gained: props.experienceGained,
-    });
-  }, [analytics, logEvent, props.experienceGained, props.totalCorrectAnswers, props.totalQuestions]);
 
   useEffect(() => {
     if (allCorrect && props.completedAt) requestSuccessfulQuizReview(props.completedAt);

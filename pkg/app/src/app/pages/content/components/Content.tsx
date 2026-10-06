@@ -33,10 +33,6 @@ const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenCon
       content_key: navigationKey,
       content_category: navigationKeyToBreadcrumb(navigationKey)[1] ?? navigationKey,
     });
-    analytics.trackStudySectionComplete({
-      content_key: navigationKey,
-      content_category: navigationKeyToBreadcrumb(navigationKey)[1] ?? navigationKey,
-    });
   };
 
   return (

@@ -39,6 +39,7 @@ describe("state > quiz > session > reducer", () => {
     const expectedState = {
       ...defaultState,
       questionAnswers: questionAnswers,
+      completionAnalyticsVersion: 2,
     };
 
     expect(actualState).toEqual(expectedState);
@@ -186,6 +187,7 @@ describe("state > quiz > session > reducer", () => {
     const expectedState = deepClone(initalState);
 
     expectedState.questionAnswers[2].answer = "B";
+    expectedState.completionAnalyticsVersion = 2;
 
     expect(actualState).toEqual(expectedState);
   });
