@@ -40,7 +40,7 @@ For each of the 11 placement/platform combinations above, open a new QA visit wi
 
 Capture only event name, test marker, hostname, placement, platform, timestamp and build revision as evidence. Keep raw exports, client identifiers and session recordings outside the public repository. Do not install or purchase to validate this boundary.
 
-Baseline production audit on 2026-10-06 confirmed delivery of all 11 canonical events to PostHog, one per interaction, with the expected placement/platform. All destination anchors were inspected; the navigation CTA's loaded Play listing was observed. GA4 ingestion was not confirmed because the analytics connector required reauthentication. The baseline source sends no explicit environment/test properties and enables PostHog on development hosts. Repeat the complete gate after any measurement changes are deployed; local tests alone do not establish production delivery.
+Baseline production audit on 2026-10-06 confirmed delivery of all 11 canonical events to PostHog, one per interaction, with the expected placement/platform. All destination anchors were inspected; the navigation CTA's loaded Play listing was observed. After read-only access was renewed, a separate QA navigation click was confirmed in GA4 Realtime on the same date: one `select_store_cta` event on web. This proves baseline GA4 delivery for that interaction, not all 11 combinations or the new branch deployment. The processed daily report had not yet included the event. The baseline source sends no explicit environment/test properties and enables PostHog on development hosts. Repeat the complete gate after any measurement changes are deployed; local tests alone do not establish production delivery.
 
 
 ## Collection guard and local checks

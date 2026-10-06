@@ -6,7 +6,7 @@ Issue: https://github.com/deanvanniekerk/k53studyguide/issues/6
 
 `study_content_view` means a study card became at least partly visible. It fires once per mounted card; revisiting the page may create another view. The existing seen-content indicator remains a visibility record. Neither the event nor the indicator demonstrates that the learner read, understood or completed the material. `study_section_complete` is retired.
 
-`quiz_complete` and `mock_test_complete` now originate from submission, with `analytics_schema_version = 2`. A completed attempt has at least one question and an answer for every question. Both passing and failing completed attempts count. Empty or incomplete submissions do not count and do not award completion progress. Their existing results remain viewable; the learner can continue answering and then submit.
+`quiz_complete` and `mock_test_complete` now originate from submission, with `analytics_schema_version = "v2"`. A completed attempt has at least one question and an answer for every question. Both passing and failing completed attempts count. Empty or incomplete submissions do not count and do not award completion progress. Their existing results remain viewable; the learner can continue answering and then submit.
 
 The event includes the actual question count, correct count and rounded score percentage. Practice quizzes include experience gained. Mock tests include each section's correct count, total and pass status, plus the overall pass status. Section thresholds remain unchanged.
 
@@ -20,7 +20,7 @@ Fully answered attempts saved before this change are not backfilled into schema 
 
 `QUIZ_RESULT` and `TEST_RESULT` are retired. Before this change both those names and their canonical counterparts described result-screen renders, including revisits, and can overcount attempts. Never add legacy and canonical event counts together. Schema-1/unversioned completion events cannot reliably be deduplicated into completed attempts retrospectively.
 
-For corrected reports, filter canonical completion events to `analytics_schema_version = 2`. Segment by platform and released app version; record the actual rollout date/build separately for Android and iOS. Old app versions continue sending old semantics after rollout. Register the schema-version parameter for GA reporting before relying on it in standard reports, or use its raw event parameter in the export. Treat any discontinuity as a measurement change, not proof of a change in engagement.
+For corrected reports, filter canonical completion events to `analytics_schema_version = "v2"`. Segment by platform and released app version; record the actual rollout date/build separately for Android and iOS. Old app versions continue sending old semantics after rollout. Register the schema-version parameter for GA reporting before relying on it in standard reports, or use its raw event parameter in the export. Treat any discontinuity as a measurement change, not proof of a change in engagement.
 
 ## Verification
 
