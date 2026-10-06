@@ -54,6 +54,14 @@ Use a correctly signed simulator build or development device and record build nu
 
 Issue #5 remains open: the association is repaired, but GA4 receipt of the complete iOS journey, a controlled Android regression journey, processed iOS reporting and release coverage still need verification.
 
+## Simulator sandbox limitation observed
+
+During 18:03:56–18:05:09 SAST on 6 October, the owner entered sandbox credentials in the simulator's purchase sign-in flow. The native trace identifies sandbox authentication: AuthKit completed its authentication step, followed by StoreKit/Apple Media Services failure `AMSErrorDomain 100`, with underlying code `2` (password reuse unavailable for the account) and code `0` (authentication failure). RevenueCat classified the result as cancelled and the app showed **Purchase Cancelled**. This later result does **not** demonstrate that the learner intentionally cancelled, that the password was wrong, or that a production checkout has the same failure. Raw authentication logs remain private.
+
+For this simulator failure, follow [Apple DTS guidance](https://developer.apple.com/forums/thread/768966): simulator product retrieval does not establish sandbox purchase support; perform the store-backed purchase test on a physical device. A [matching error report](https://developer.apple.com/forums/thread/772773) describes the same password-reuse failure. This evidence changes the test setup required; it does not by itself justify an application code fix.
+
+Store-backed success, entitlement, restore and persistence acceptance now requires a connected physical iPhone running a development build with a verified sandbox account, or the supported TestFlight route on a physical device. Signing into the simulator again is insufficient. Local StoreKit configuration can exercise simulated transactions separately, but cannot substitute for App Store sandbox validation. No successful transaction was observed in this window.
+
 ## Checkout baseline (#9)
 
 The source maps iOS product `deanvniekerk.k53studyguide.premium_access` to RevenueCat entitlement `premium_access` using purchases-capacitor 13.2.0. The configured local build sourced the existing ignored `.dev.env` into the build process; simply copying this file does not populate the Vite configuration. Key values and configuration files were not committed. The initial local iOS key was a RevenueCat **Test Store** key, as explicitly reported by its SDK. That configuration was replaced for the later validation with a private override containing the existing App Store app's public SDK key. No RevenueCat production settings were changed. Neither local validation build is a release artifact. No repository StoreKit configuration was found. Source mapping is not proof that App Store Connect and RevenueCat are configured identically.
@@ -63,9 +71,9 @@ The source maps iOS product `deanvniekerk.k53studyguide.premium_access` to Reven
 | Native build, install and launch | Passed for signed simulator 1.38 (38), iOS 26.5 |
 | Store product / entitlement configuration | StoreKit returned the configured premium product; entitlement after a transaction remains unverified |
 | Free offer discovery and localized price | Test tab → premium modal passed; $1.99 for the simulator storefront |
-| Cancellation and retry | Native account prompt cancelled; cancellation toast and re-enabled CTA observed; full transaction retry unverified |
-| Successful premium unlock and restore | Not exercised; sandbox transaction environment unconfirmed |
+| Cancellation and retry | Intentional prompt cancellation passed earlier. Later simulator authentication failure also surfaced as cancelled; do not equate that SDK classification with learner intent. Physical-device retry remains unverified |
+| Successful premium unlock and restore | No successful transaction; simulator sandbox attempt failed. Physical-device sandbox validation required |
 | Restart persistence and mock-test access | Not exercised |
-| App Store sandbox / device / TestFlight validation | Not performed |
+| App Store sandbox / device / TestFlight validation | Simulator sandbox attempt blocked by the documented environment limitation; physical-device/TestFlight validation not performed |
 
-Continue #9 with an explicit StoreKit test setup or a supported sandbox device/TestFlight path. Device Hub taps and scrolling work when the app binding is refreshed before input (`getApp`); stale focus initially prevented drags. Successful purchase and restore still require a verified sandbox account/session. The generic Apple Account sign-in prompt alone does not establish a sandbox transaction environment. Label local StoreKit results separately from store-backed results. Do not infer payment success, restore correctness or production purchase availability from this build.
+Continue store-backed #9 acceptance on a physical iPhone using a supported development/sandbox or TestFlight path. Keep an explicit local StoreKit simulation as separate supplemental coverage. Device Hub taps and scrolling work when the app binding is refreshed before input (`getApp`); stale focus initially prevented drags. Successful purchase and restore require a supported physical-device setup as well as a verified sandbox account/session; simulator sign-in alone does not satisfy this gate. Label local StoreKit results separately from store-backed results. Do not infer payment success, restore correctness or production purchase availability from this build.
