@@ -41,6 +41,25 @@ beforeEach(() => {
 });
 afterEach(() => vi.unstubAllGlobals());
 
+it("reports a missing purchase key once during initialization without an offer or checkout", async () => {
+  vi.stubGlobal("__REVENUECAT_ANDROID_API_KEY__", "");
+  const store = createStore(combineReducers({ purchase: reducer }));
+  const service = new RevenueCatPurchaseService(store);
+  await Promise.all([service.initialize(), service.initialize()]);
+  await service.initialize();
+  expect(store.getState().purchase.canPurchase).toBe(false);
+  expect(events()).toEqual([
+    {
+      name: "purchase_initialization_error",
+      params: expect.objectContaining({
+        product_id: "premium_access",
+        failure_reason: "missing_api_key",
+        transaction_environment: "unknown",
+      }),
+    },
+  ]);
+});
+
 it("correlates checkout and cancellation without labelling an open store sheet as a pending payment", async () => {
   let cancel!: (error: unknown) => void;
   vi.mocked(Purchases.purchaseStoreProduct).mockImplementation(
@@ -111,10 +130,29 @@ it.each([
   expect(JSON.stringify(events())).not.toContain("private diagnostic");
 });
 
+it("reports a missing product before disabled premium controls can be used, once per initialization", async () => {
+  vi.mocked(Purchases.getProducts).mockResolvedValue({ products: [] });
+  const store = createStore(combineReducers({ purchase: reducer }));
+  const service = new RevenueCatPurchaseService(store);
+  await Promise.all([service.initialize(), service.initialize()]);
+  await service.initialize();
+  expect(store.getState().purchase.canPurchase).toBe(false);
+  expect(events()).toEqual([
+    {
+      name: "purchase_initialization_error",
+      params: expect.objectContaining({ product_id: "premium_access", failure_reason: "product_unavailable" }),
+    },
+  ]);
+});
+
 it("records an unavailable checkout attempt without claiming the store sheet opened", async () => {
   vi.mocked(Purchases.getProducts).mockResolvedValue({ products: [] });
   await new RevenueCatPurchaseService(createStore(combineReducers({ purchase: reducer }))).purchase();
   expect(events()).toEqual([
+    {
+      name: "purchase_initialization_error",
+      params: expect.objectContaining({ failure_reason: "product_unavailable" }),
+    },
     {
       name: "purchase_unavailable",
       params: expect.objectContaining({
@@ -124,6 +162,26 @@ it("records an unavailable checkout attempt without claiming the store sheet ope
       }),
     },
   ]);
+});
+
+it("reports an SDK initialization failure once with a code but no private diagnostic or false funnel events", async () => {
+  vi.mocked(Purchases.getProducts).mockRejectedValue({ code: "10", message: "private diagnostic" });
+  const store = createStore(combineReducers({ purchase: reducer }));
+  const service = new RevenueCatPurchaseService(store);
+  await Promise.all([service.initialize(), service.initialize()]);
+  await service.initialize();
+  expect(store.getState().purchase.canPurchase).toBe(false);
+  expect(events()).toEqual([
+    {
+      name: "purchase_initialization_error",
+      params: expect.objectContaining({
+        product_id: "premium_access",
+        failure_reason: "sdk_error",
+        error_code: "10",
+      }),
+    },
+  ]);
+  expect(JSON.stringify(events())).not.toContain("private diagnostic");
 });
 
 it.each([true, false])("reports restored access=%s as a restore outcome and never as a sale", async (owned) => {
@@ -177,10 +235,13 @@ it("records unavailable offer context without inventing a local price or currenc
   vi.mocked(Purchases.getProducts).mockResolvedValue({ products: [] });
   const service = new RevenueCatPurchaseService(createStore(combineReducers({ purchase: reducer })));
   service.offerOpened("profile");
-  await vi.waitFor(() => expect(events()).toHaveLength(1));
-  expect(events()[0]).toMatchObject({ params: { availability: "unavailable", eligibility: "unavailable" } });
-  expect(events()[0].params).not.toHaveProperty("currency");
-  expect(events()[0].params).not.toHaveProperty("price");
+  await vi.waitFor(() => expect(events()).toHaveLength(2));
+  expect(events()[1]).toMatchObject({
+    name: "view_promotion",
+    params: { availability: "unavailable", eligibility: "unavailable" },
+  });
+  expect(events()[1].params).not.toHaveProperty("currency");
+  expect(events()[1].params).not.toHaveProperty("price");
 });
 
 it("keeps local simulated checkout correlated and clearly separate from store activity", () => {

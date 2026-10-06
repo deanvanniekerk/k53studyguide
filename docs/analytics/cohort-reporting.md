@@ -23,7 +23,7 @@ These snapshots deliberately include all received traffic, with **no QA, sandbox
 
 ## Required dimensions and availability ledger
 
-Register these parameters only once, in property `269952161`. Record the actual creation timestamp and first usable processed date in private release evidence. At the initial audit on 2026-10-06 none was registered; this document does not assert subsequent registration succeeded.
+All 12 dimensions below were registered in property `269952161` on **2026-10-06, approximately 17:46–17:50 SAST**. A subsequent live Admin API read verified every parameter and scope: `premium_status` is user-scoped and the other 11 are event-scoped. The private `dimensions-after.json` snapshot records verification. First usable processed values remain pending; registration is not evidence of populated reports and does not backfill earlier events. Retention and export settings remain unchanged.
 
 | Scope | Parameter | Purpose and values |
 | --- | --- | --- |
@@ -55,6 +55,7 @@ The source of truth for exact payloads and boundaries is [assessment completion]
 | `first_open` | First observed app opening per installation identity | Store install, unique person or paid acquisition |
 | `study_content_view` | Study content became visible | Learning completion |
 | `quiz_complete`, `mock_test_complete` with `v2` | Completed non-empty submitted assessment | Legacy result-screen views |
+| `purchase_initialization_error` | Purchase setup/load failure before controls become available | Offer view, learner checkout action or sale |
 | `view_promotion` | One opening with resolved product state | Unique person, checkout or guaranteed available product |
 | `begin_checkout` | App invoked checkout | Sheet visible or payment pending |
 | `purchase_cancel`, `purchase_pending`, `purchase_error`, `purchase_unavailable` | Distinct SDK/action outcomes under the new contract | Historical pending semantics or mutually exclusive user populations |
@@ -103,4 +104,4 @@ If exact attempt joins or long-term acquired-cohort revenue analysis justify raw
 
 ## Remaining acceptance gates
 
-Record actual registration and processed dimensions; approve/apply the retention choice; verify both native release streams and QA exclusions; reconcile sandbox purchase/restore against store evidence; then produce a production-filtered, sequential example with confirmed purchase. Until those pass, #11 remains open. The dated diagnostic example and repeatable requests expose what is known without manufacturing a sale count or conversion rate.
+Record first usable processed dimension values following the verified registration; approve/apply the retention choice; verify both native release streams and QA exclusions; reconcile sandbox purchase/restore against store evidence; then produce a production-filtered, sequential example with confirmed purchase. Until those pass, #11 remains open. The dated diagnostic example and repeatable requests expose what is known without manufacturing a sale count or conversion rate.

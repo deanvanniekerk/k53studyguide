@@ -6,6 +6,7 @@ Implements the client measurement portion of [#10](https://github.com/deanvannie
 
 | Event | Meaning |
 | --- | --- |
+| `purchase_initialization_error` | Purchase service initialization failed before premium controls can become available. `failure_reason` is `missing_api_key`, `product_unavailable`, or `sdk_error`; SDK failures include a bounded `error_code`, never diagnostic text. Emitted once per service initialization lifecycle, including repeated/concurrent initialization callers. Not an offer impression or checkout attempt. |
 | `view_promotion` | One offer opening, after initialization settles and while still open. Includes `offer_origin` (`profile` or `mock_test`), product, available local price/currency/value, `availability`, and `eligibility` (`eligible`, `owned`, `unavailable`). Eligibility describes app access/product availability, not a guarantee the store will accept payment. |
 | `select_promotion` | Learner taps Get Premium, with the same offer origin. |
 | `begin_checkout` | Product is available and the app invokes checkout; not evidence the native sheet appeared. |
@@ -15,6 +16,8 @@ Implements the client measurement portion of [#10](https://github.com/deanvannie
 | `purchase_error` | SDK failed, or returned without active premium access. Not proof that no charge occurred. |
 | `checkout_outcome` | SDK response provides active premium access (`outcome=access_granted`). Existing access can satisfy this condition, so this is not a sale counter. |
 | `restore_start`, `restore_outcome` | Separate restore action and result (`access_restored`, `no_entitlement`, `error`). Never a new sale. |
+
+Initialization failures have product/build context and unknown transaction environment, but no offer origin or attempt ID: the learner has not taken either action. A new app/service lifecycle can report another failure.
 
 Each native checkout/restore action gets an independent random `attempt_id` shared with its outcome. Native events include `execution_context` from the build environment. `transaction_environment` is `unknown` before an entitlement is returned, then `sandbox` or `production` only when RevenueCat's entitlement `isSandbox` explicitly supplies that value. Build environment is not evidence of store environment. Unknown outcomes must not be silently classified as production. Local simulated purchases are marked `execution_context=local` and sandbox.
 

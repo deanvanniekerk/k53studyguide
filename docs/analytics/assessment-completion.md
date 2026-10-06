@@ -6,7 +6,7 @@ Issue: https://github.com/deanvanniekerk/k53studyguide/issues/6
 
 `study_content_view` means a study card became at least partly visible. It fires once per mounted card; revisiting the page may create another view. The existing seen-content indicator remains a visibility record. Neither the event nor the indicator demonstrates that the learner read, understood or completed the material. `study_section_complete` is retired.
 
-`quiz_complete` and `mock_test_complete` now originate from submission, with `analytics_schema_version = "v2"`. A completed attempt has at least one question and an answer for every question. Both passing and failing completed attempts count. Empty or incomplete submissions do not count and do not award completion progress. Their existing results remain viewable; the learner can continue answering and then submit.
+`quiz_complete` and `mock_test_complete` now originate from submission, with `analytics_schema_version = "v2"`. A completed attempt has at least one question and an answer for every question. Both passing and failing completed attempts count. Empty or incomplete submissions do not count and do not award completion progress. Continuing an active, unended session allows the learner to finish answering and submit. Ending an incomplete mock test opens its results but does not emit completion; leaving those results clears the session, so that ended attempt cannot then be resumed. This change adds no new resumability.
 
 The event includes the actual question count, correct count and rounded score percentage. Practice quizzes include experience gained. Mock tests include each section's correct count, total and pass status, plus the overall pass status. Section thresholds remain unchanged.
 
