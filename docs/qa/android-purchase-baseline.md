@@ -4,11 +4,11 @@ Partial baseline for [#8](https://github.com/deanvanniekerk/k53studyguide/issues
 
 ## Verified environment
 
-- Source baseline: `6605eddb1e46aacabb170da862eef58af85d71dc`.
+- Runtime source: `1333eaf6595f7df832933c1891349a158843bd9c`; dependency baseline originally captured at `6605eddb1e46aacabb170da862eef58af85d71dc`.
 - App: `deanvniekerk.k53studyguide.app`, version `1.38` (`38`), debug APK, minimum API 24, target/compile API 36.
 - Device: Pixel 9 AVD, Android 17/API 37, ARM64 Google Play image with 16 KB pages. Play Store is installed.
 - Install source: local `adb install -r`, preserving existing app data. The existing app was `1.28` (`28`), with no recorded package installer. This was not a clean free-state install or a Play-distributed release.
-- The correct ignored native Firebase configuration was supplied for `k53-study-guide`; the Android RevenueCat build variable was present. Neither configuration is included in version control.
+- The correct ignored native Firebase configuration was supplied for `k53-study-guide`; the existing Google Play RevenueCat SDK key (`goog_` prefix) was explicitly supplied to the Vite build process. The initially available `test_` key was unsuitable for this store baseline and was replaced locally before the recorded app run. Neither configuration is included in version control.
 - Frozen dependency installation, web production build, Capacitor Android sync and Gradle debug APK assembly all succeeded. The web build reports its existing large-chunk warning; Gradle reports deprecated features ahead of Gradle 9.
 
 | Component | Resolved version |
@@ -24,27 +24,42 @@ Partial baseline for [#8](https://github.com/deanvanniekerk/k53studyguide/issues
 
 These are the baseline resolutions, not a claim that all dependencies are current. Upgrade work is tracked separately in #12 and #20.
 
+## Observed runtime results
+
+Recorded 6 October 2026, 15:45–15:51 UTC (17:45–17:51 SAST):
+
+| Check | Result |
+| --- | --- |
+| Play account | Signed-in emulator account matched an existing Play Console license-tester list member by private comparison. List enablement/test-track access was not independently established in this run. |
+| Product lookup | Native `getProducts` returned `premium_access`, price `39.99`, currency `ZAR`, localized price `R 39,99`; RevenueCat returned the default lifetime offering. This confirms SDK availability, not the unvisited purchase sheet's price. |
+| Initial entitlement | Existing active `premium_access`, store `PLAY_STORE`, `isSandbox=true`, verification `VERIFIED`, no expiration. Its purchase predates this audit. |
+| Profile | Displayed **Premium Purchased**. Existing learner progress remained intact. |
+| Premium access | Test → Start Test opened the mock-test questions without a paywall. |
+| Relaunch | Removed the app from Android Overview, reopened it, and observed **Premium Purchased** again. Native CustomerInfo again returned the same active sandbox entitlement. |
+| Native analytics calls | Two `app_open` events with `premium_status=premium`; one `mock_test_start` and legacy `START_TEST`. No purchase or restore events were produced by this session. This is native bridge evidence, not GA4 report ingestion proof. |
+| Restore action | Not exercised: the entitled Profile card is static and Test opens directly; the restore action lives inside the purchase modal, which these entitled entry points do not open. |
+
+The SDK metadata reports `productCategory=NON_SUBSCRIPTION` and `productType=CONSUMABLE`, alongside a lifetime offering. Confirm the intended consumption behavior and store/RevenueCat mapping in #12/#14 before drawing a defect conclusion from that metadata.
+
+The web production build used `execution_context=production` despite native debug signing. Firebase debug mode was enabled for the session and cleared afterward. Exclude this QA window from organic analysis; do not infer a new sale from an entitlement already present. For future QA builds explicitly supply `NODE_CONFIG='{"environment":"development"}'` while preserving the store SDK key.
+
 ## Remaining store checks
 
-The source requests the Android `premium_access` product as a non-subscription product and checks the RevenueCat `premium_access` entitlement. The live product's availability, non-consumable configuration and entitlement mapping have not yet been verified against Play Console and RevenueCat.
+**#8 remains partial.** No fresh purchase, native-sheet cancellation, pending payment, error/retry or user-initiated restore was exercised. No fake purchase was used. The pre-existing sandbox entitlement is not a completed checkout test, and existing learner data was not cleared to manufacture a free state.
 
-Before continuing, identify an existing Play license tester, confirm that account is signed in on the emulator, confirm suitable test-track access where used, and verify the product mapping. A Play-enabled image or a side-loaded debug build alone does not demonstrate sandbox access.
-
-1. Record the actual starting premium state without deleting existing learner data. Use a confirmed free test account/environment for the free-state scenario.
-2. In Test and Profile, find the premium offer; record availability, displayed price and currency.
-3. Open the Google Play purchase sheet and verify its test-payment indication before proceeding. Cancel, retry, and complete only a confirmed sandbox purchase.
-4. Verify premium mock-test access, restart the app, and verify the entitlement persists.
-5. Match the result to a RevenueCat sandbox transaction and entitlement. Keep identifiers, receipts and transaction exports outside this public repository; attach sanitized evidence only.
-
-No purchase sheet, cancellation, completed purchase, restored entitlement or post-purchase restart was exercised in this baseline. No fake purchase was used. Initial premium/free state and tester eligibility remain unverified.
+1. Use a separate confirmed free sandbox account/environment; confirm license-test enablement and any required test-track access.
+2. Find the offer in both Test and Profile, and record the actual displayed price.
+3. Verify explicit Google Play test-payment wording before any confirmation. Exercise cancellation, error/retry, pending handling where available, and a confirmed sandbox purchase.
+4. Verify premium access after purchase and restart; separately exercise restore from a free local state with an owned sandbox purchase.
+5. Reconcile those outcomes with RevenueCat sandbox records and GA4 DebugView. Keep receipts, account/customer identifiers and raw exports outside this public repository.
 
 ## Local automation note
 
-The standalone Android emulator was not addressable through the computer-use app API. Launching it through Android Studio's Running Devices panel made its launcher visible, but the embedded screen had no accessible child controls and coordinate interaction did not reliably target the detached device window. Continue through a reliably targetable emulator UI or have a human perform the store steps. Both emulator sessions launched for this baseline were stopped after inspection.
+Android Studio's **docked** Running Devices panel was targetable through computer-use screenshot coordinates; the detached panel was unreliable and exposed no accessible app child controls. Screenshots must use their original pixel coordinates when the displayed preview is resized. The emulator launched for this run was stopped afterward. A screenshot of the premium state after relaunch and private native logs accompany the local audit evidence.
 
 ## Reproduce the build
 
-Supply the ignored native Firebase config and export the existing Android RevenueCat public SDK key securely in the shell, without printing or committing configuration values. From the repository root:
+Supply the ignored native Firebase config and export the existing Google Play Android RevenueCat public SDK key securely in the shell, without printing or committing configuration values. Merely copying `.dev.env` does not load it into Vite; explicitly load/export the required variable. Verify the platform prefix without displaying the key. From the repository root:
 
 ```bash
 pnpm install --frozen-lockfile
