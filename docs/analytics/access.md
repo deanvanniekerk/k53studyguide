@@ -6,7 +6,7 @@ Use the identities below for the K53 measurement workstream ([#1](https://github
 
 | Source | Intended identity | Reporting boundary |
 | --- | --- | --- |
-| GA4 | Account `195283836`, property `269952161`, `k53-study-guide` | Property timezone; previously observed GMT+02:00, currency USD. Re-read property metadata before comparing reports. |
+| GA4 | Account `195283836`, property `269952161`, `k53-study-guide` | Verified `Etc/GMT-2` (UTC+02:00), currency USD on 6 October 2026. Re-read property metadata before comparing reports. |
 | Search Console | `sc-domain:k53studyguide.online` | Pacific time (`America/Los_Angeles`); dates include both endpoints. |
 | PostHog | K53 project `491784`; filter to `k53studyguide.online` and `www.k53studyguide.online` | Project timezone UTC at the October 2026 audit. |
 | Google Play | Package `deanvniekerk.k53studyguide.app` | Preserve the timezone and metric definition from the selected report. |
@@ -15,16 +15,18 @@ Search Console uses [Pacific-time dates and supports a read-only scope](https://
 
 ## Connection verification
 
-Audit date: 6 October 2026. Re-run the small reports below before relying on a connection in a later session.
+Verified at 15:16 UTC on 6 October 2026 using the closed reporting window **8 September–3 October 2026**. Re-run the small reports below before relying on a connection in a later session.
 
 | Connection | Verified capability / limitation |
 | --- | --- |
-| GA4 MCP | Existing authorized-user credential refresh returns `invalid_grant`; requires renewal before a successful automated report can be claimed. |
-| Search Console MCP | Configured service account returns HTTP 200 with no visible sites; the MCP request timed out after 300 seconds. The local server tries OAuth first and requests `webmasters` (write-capable), so its reauthentication is not the least-privilege route for this task. |
+| GA4 MCP | Renewed read-only OAuth credential verified through the existing MCP server: `get_property_details` and `run_report` both succeed. The dated report returns 30 date/platform rows for Android and web. Local configuration points to the verified credential; an already-running connector must reconnect to load it. |
+| Search Console API / MCP | Renewed read-only OAuth identity can see `sc-domain:k53studyguide.online`; the direct API returns 26 daily rows with `dataState: final` for the dated window. The installed MCP server remains unsuitable: its configured service account sees no sites and its OAuth flow requests `webmasters` (write-capable). Use the direct read-only recipe below. |
 | Google Play MCP | Local `get_statistics` source returns placeholder text for installs and crashes. It is not an acquisition report source. |
 | PostHog | The earlier audit retrieved dated website traffic queries. This does not establish mobile-app or store acquisition coverage. |
 | Google Ads | Earlier audit obtained campaign data through the signed-in console; automated reporting must be verified independently before being labelled usable. |
 | RevenueCat / App Store Connect | Earlier audit used signed-in reports. No automated report was verified by this access check. |
+
+The fresh GA4 stream inventory contains Android and web streams only; no iOS stream is present. See [#5](https://github.com/deanvanniekerk/k53studyguide/issues/5) for that separate repair. The report metadata returns the property timezone and currency without sampling or thresholding flags. Keep those metadata checks in subsequent reports.
 
 An empty Search Console site list means the authenticated identity cannot see the expected property; it does not mean there was no search traffic. Do not add duplicate properties or grant broad project roles to work around it.
 
@@ -39,7 +41,7 @@ Save the authorized-user credential outside the checkout with owner-only file pe
 
 For GA4, point the existing MCP server's `GOOGLE_APPLICATION_CREDENTIALS` at the verified credential and reconnect the server. For Search Console, use the read-only API recipe below while the installed MCP server requires the broader `webmasters` scope. Its OAuth reauthenticate action should not be used to silently expand permissions.
 
-If sign-in is required, the owner must complete Google account selection and consent. The attempted read-only renewal reached an unverified-app warning for the existing OAuth client; owner action is still required before access can be called restored. If the expected property is still absent afterward, an existing property administrator must grant that identity appropriate read access; local code cannot repair a property permission.
+If sign-in is required, the owner must complete Google account selection and consent. The owner completed the existing OAuth client’s sign-in and consent on 6 October 2026. The returned scopes were checked to match exactly the two read-only scopes above, and both services returned dated reports before the GA4 MCP configuration was changed. The previous credential and configuration were preserved privately. If the expected property is still absent afterward, an existing property administrator must grant that identity appropriate read access; local code cannot repair a property permission.
 
 ## Repeatable smoke queries
 
