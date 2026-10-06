@@ -20,7 +20,10 @@ export type AnalyticsEventName =
   | "purchase_pending"
   | "purchase_cancel"
   | "purchase_error"
-  | "purchase";
+  | "checkout_outcome"
+  | "purchase_unavailable"
+  | "restore_start"
+  | "restore_outcome";
 
 export type LegacyAnalyticsEventName =
   | "PRESENT_OFFER"
@@ -42,6 +45,13 @@ type PurchaseParams = {
   value?: number;
   offer_surface?: string;
   cta_location?: string;
+  offer_origin?: string;
+  availability?: "available" | "unavailable";
+  eligibility?: "eligible" | "owned" | "unavailable";
+  attempt_id?: string;
+  error_code?: string;
+  transaction_environment?: "sandbox" | "production" | "unknown";
+  execution_context?: string;
 };
 
 type UserProperties = {
@@ -49,8 +59,6 @@ type UserProperties = {
   theme?: string;
   premium_status?: PremiumStatus;
 };
-
-const DEFAULT_CURRENCY = "ZAR";
 
 const normalizeParams = (params?: AnalyticsParams): Record<string, string | number> | undefined => {
   if (!params) return undefined;
@@ -68,7 +76,7 @@ const scorePercent = (correctCount: number, questionCount: number) => {
 };
 
 const purchaseParams = (params: PurchaseParams): AnalyticsParams => ({
-  currency: params.currency ?? DEFAULT_CURRENCY,
+  currency: params.currency,
   value: params.value,
   price: params.price,
   product_id: params.product_id,
@@ -76,6 +84,13 @@ const purchaseParams = (params: PurchaseParams): AnalyticsParams => ({
   item_name: params.product_id,
   offer_surface: params.offer_surface,
   cta_location: params.cta_location,
+  offer_origin: params.offer_origin,
+  availability: params.availability,
+  eligibility: params.eligibility,
+  attempt_id: params.attempt_id,
+  error_code: params.error_code,
+  transaction_environment: params.transaction_environment,
+  execution_context: params.execution_context,
 });
 
 const runNativeAnalytics = (operation: Promise<void> | void) => {
@@ -189,7 +204,7 @@ export const analytics = {
       pending: "purchase_pending",
       cancelled: "purchase_cancel",
       error: "purchase_error",
-      finished: "purchase",
+      finished: "checkout_outcome",
     };
     const eventName = eventByOrderState[orderState];
     if (!eventName) return;
@@ -197,6 +212,7 @@ export const analytics = {
     this.logEvent(eventName, {
       ...purchaseParams(params),
       purchase_state: orderState,
+      ...(orderState === "finished" ? { outcome: "access_granted" } : {}),
     });
   },
 };
