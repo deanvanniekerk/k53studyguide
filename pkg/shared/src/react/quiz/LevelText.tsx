@@ -1,5 +1,5 @@
 import type React from "react";
-import { Translate } from "react-translated";
+import { Translate } from "../../translation";
 import styled, { keyframes } from "styled-components";
 
 type Props = {

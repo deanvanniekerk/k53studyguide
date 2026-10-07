@@ -24,7 +24,7 @@ vi.mock("@ionic/react", () => ({
   IonLabel: ({ children }) => <span>{children}</span>,
   CreateAnimation: ({ children }) => <>{children}</>,
 }));
-vi.mock("react-translated", () => ({
+vi.mock("@k53studyguide/shared/translation", () => ({
   Translate: ({ text }) => <>{text}</>,
   Translator: ({ children }) => children({ translate: ({ text }) => text }),
 }));

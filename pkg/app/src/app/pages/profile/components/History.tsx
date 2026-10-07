@@ -1,8 +1,8 @@
 import { IonAlert, IonIcon } from "@ionic/react";
+import { Translate, Translator } from "@k53studyguide/shared/translation";
 import { lockClosed, trashBinOutline } from "ionicons/icons";
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Translate, Translator } from "react-translated";
 import { bindActionCreators, type Dispatch } from "redux";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { RootState } from "@/state";

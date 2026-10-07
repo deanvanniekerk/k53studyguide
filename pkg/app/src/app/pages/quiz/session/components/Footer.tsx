@@ -1,9 +1,9 @@
 import { IonToast } from "@ionic/react";
+import { Translator } from "@k53studyguide/shared/translation";
 import { caretForward, checkmarkCircleOutline } from "ionicons/icons";
 import type React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
-import { Translator } from "react-translated";
 import styled from "styled-components";
 import { PrimaryButton } from "@/app/components";
 import type { RootState } from "@/state";

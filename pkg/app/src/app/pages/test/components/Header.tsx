@@ -1,9 +1,9 @@
 import { IonAlert, IonButton, IonIcon } from "@ionic/react";
+import { Translate, Translator } from "@k53studyguide/shared/translation";
 import { checkmarkCircle } from "ionicons/icons";
 import type React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
-import { Translate, Translator } from "react-translated";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import type { RootState } from "@/state";

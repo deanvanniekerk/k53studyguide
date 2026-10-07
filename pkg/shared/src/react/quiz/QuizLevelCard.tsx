@@ -1,7 +1,7 @@
 import { IonIcon } from "@ionic/react";
 import { sparkles } from "ionicons/icons";
 import type React from "react";
-import { Translate } from "react-translated";
+import { Translate } from "../../translation";
 import styled from "styled-components";
 import { LevelText } from "./LevelText";
 import { StarRating } from "./StarRating";

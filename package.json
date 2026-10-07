@@ -9,7 +9,7 @@
     "lint-fix": "pnpm exec biome check --write .",
     "lint:scripts": "pnpm exec biome check .",
     "bump:native": "node scripts/bump-native-version.mjs",
-    "lint:tsc": "pnpm --filter app lint:tsc",
+    "lint:tsc": "pnpm --filter app tsc && pnpm --filter lander tsc",
     "start": "pnpm --filter app start",
     "test": "pnpm --filter app test && pnpm --filter lander test",
     "test:coverage": "pnpm --filter app test:coverage",
@@ -26,10 +26,14 @@
     "lander:start": "pnpm --filter lander start",
     "lander:build": "pnpm --filter lander build",
     "lander:deploy": "bash scripts/deploy-lander-ftp.sh",
-    "lander:deploy:full": "LANDER_INCLUDE_QUIZ_IMAGES=1 bash scripts/deploy-lander-ftp.sh"
+    "lander:deploy:full": "LANDER_INCLUDE_QUIZ_IMAGES=1 bash scripts/deploy-lander-ftp.sh",
+    "translator:check": "pnpm --dir tools/translator check"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.15"
   },
-  "packageManager": "pnpm@11.7.0"
+  "packageManager": "pnpm@12.9.1",
+  "engines": {
+    "node": ">=26.10.0 <27"
+  }
 }

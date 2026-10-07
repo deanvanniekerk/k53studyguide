@@ -1,6 +1,6 @@
+import { Translate } from "@k53studyguide/shared/translation";
 import type React from "react";
 import { connect } from "react-redux";
-import { Translate } from "react-translated";
 import styled from "styled-components";
 import { Breadcrumb } from "@/app/components";
 import type { RootState } from "@/state";

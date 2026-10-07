@@ -1,7 +1,8 @@
+// @vitest-environment jsdom
 import { FirebaseAnalytics } from "@capacitor-firebase/analytics";
+import { cleanup, render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { act, create } from "react-test-renderer";
-import VisibilitySensor from "react-visibility-sensor";
 import { applyMiddleware, createStore } from "redux";
 import { thunk } from "redux-thunk";
 import { vi } from "vitest";
@@ -19,11 +20,14 @@ vi.mock("@ionic/react", () => ({
   IonText: ({ children }) => <span>{children}</span>,
   CreateAnimation: ({ children }) => <>{children}</>,
 }));
-vi.mock("react-translated", () => ({
+vi.mock("@k53studyguide/shared/translation", () => ({
   Translate: () => null,
   Translator: ({ children }) => children({ translate: ({ text }) => text }),
 }));
-vi.mock("react-visibility-sensor", () => ({ default: ({ children }) => <>{children}</> }));
+afterEach(() => {
+  cleanup();
+  vi.unstubAllGlobals();
+});
 beforeEach(() => vi.clearAllMocks());
 
 it("viewing and revisiting empty or historical assessment results never records a completion", () => {
@@ -62,8 +66,19 @@ it("viewing and revisiting empty or historical assessment results never records 
 it("reports study content visibility once per visit without claiming learning completion", () => {
   const store = createStore(createRootReducer(), applyMiddleware(thunk));
   let page;
+  let visibility;
+  vi.stubGlobal(
+    "IntersectionObserver",
+    class {
+      constructor(callback) {
+        visibility = (visible) => callback([{ isIntersecting: visible }]);
+      }
+      observe() {}
+      disconnect() {}
+    },
+  );
   act(() => {
-    page = create(
+    page = render(
       <Provider store={store}>
         <Content
           item={{ heading: "Road signs", description: "Read about signs" }}
@@ -72,7 +87,6 @@ it("reports study content visibility once per visit without claiming learning co
       </Provider>,
     );
   });
-  const visibility = page.root.findByType(VisibilitySensor).props.onChange;
   act(() => {
     visibility(false);
     visibility(true);

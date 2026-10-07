@@ -1,6 +1,6 @@
+import { Provider as TranslationProvider } from "@k53studyguide/shared/translation";
 import { Provider } from "react-redux";
 import { act, create } from "react-test-renderer";
-import { Provider as TranslationProvider } from "react-translated";
 import { createStore } from "redux";
 import { translations } from "@/data";
 import createRootReducer from "@/state/rootReducer";

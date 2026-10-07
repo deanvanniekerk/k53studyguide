@@ -1,7 +1,7 @@
 import { IonIcon } from "@ionic/react";
 import { chevronForwardOutline } from "ionicons/icons";
 import type React from "react";
-import { Translate } from "react-translated";
+import { Translate } from "../../translation";
 import styled, { keyframes } from "styled-components";
 import { CarIcon, RoadIcon, SpeedometerIcon, StarIcon, StopIcon, TestIcon, TrafficLightIcon } from "../icons";
 

@@ -1,10 +1,10 @@
 import { IonContent, IonFooter, IonPage } from "@ionic/react";
+import { Translate } from "@k53studyguide/shared/translation";
 import { caretForward } from "ionicons/icons";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router";
-import { Translate } from "react-translated";
+import { useNavigate } from "react-router";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import { PageHeader, PageHeaderInfoIcon } from "@/app/components";
@@ -22,7 +22,7 @@ import { TestWatermark } from "./TestWatermark";
 type Props = PropsFromState & PropsFromDispatch;
 
 const TestPage: React.FC<Props> = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { analytics, logEvent } = useAnalytics("TestPage");
 
@@ -50,7 +50,7 @@ const TestPage: React.FC<Props> = (props) => {
     //If no test exists, load one, else continue with previous
     if (!props.testInProgress) props.loadQuestionAnswers();
 
-    history.push(`/test/session`);
+    navigate(`/test/session`);
   };
 
   return (

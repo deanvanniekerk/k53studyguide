@@ -1,6 +1,6 @@
 import { Capacitor } from "@capacitor/core";
 import { Provider } from "react-redux";
-import { MemoryRouter, useHistory } from "react-router-dom";
+import { MemoryRouter, useNavigate } from "react-router-dom";
 import { act, create } from "react-test-renderer";
 import { combineReducers, createStore } from "redux";
 import { PurchaseContext } from "@/context";
@@ -14,7 +14,7 @@ vi.mock("@capacitor/core", () => ({ Capacitor: { getPlatform: vi.fn(() => "andro
 const observers = [];
 let page;
 let offer;
-let history;
+let navigate;
 let store;
 beforeEach(() => {
   vi.clearAllMocks();
@@ -44,7 +44,7 @@ afterEach(() => {
 });
 function Invitation() {
   offer = usePremiumOffer("quiz_results");
-  history = useHistory();
+  navigate = useNavigate();
   return <div ref={offer.invitationRef} />;
 }
 function mount(path = "/quiz/results", service = undefined) {
@@ -73,8 +73,8 @@ it("counts only a visible free invitation once per visit, and counts a later ret
     "premium_invitation_view",
     expect.objectContaining({ offer_origin: "quiz_results" }),
   );
-  act(() => history.push("/study"));
-  act(() => history.push("/quiz/results"));
+  act(() => navigate("/study"));
+  act(() => navigate("/quiz/results"));
   act(() => observers.at(-1).visible());
   expect(analytics.logEvent).toHaveBeenCalledTimes(2);
 });
@@ -82,7 +82,7 @@ it("keeps cached pages and premium learners out of the invitation denominator", 
   mount("/study");
   expect(observers).toHaveLength(0);
   act(() => store.dispatch(recievePurchaseProductOwned(true)));
-  act(() => history.push("/quiz/results"));
+  act(() => navigate("/quiz/results"));
   expect(observers).toHaveLength(0);
   expect(analytics.logEvent).not.toHaveBeenCalled();
 });
@@ -94,7 +94,7 @@ it("attributes offer entry and closes the sheet when its cached page is left", (
     "premium_invitation_tap",
     expect.objectContaining({ offer_origin: "quiz_results" }),
   );
-  act(() => history.push("/quiz"));
+  act(() => navigate("/quiz"));
   expect(offer.isOpen).toBe(false);
 });
 

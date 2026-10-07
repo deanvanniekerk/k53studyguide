@@ -1,7 +1,7 @@
 import { IonIcon } from "@ionic/react";
 import { checkmarkCircle, checkmarkCircleOutline, closeCircle, radioButtonOff, radioButtonOn } from "ionicons/icons";
 import type React from "react";
-import { Translate } from "react-translated";
+import { Translate } from "../../translation";
 import styled from "styled-components";
 import type { QuestionItem, QuestionOption } from "../../data";
 import { QuestionText } from "../questions";

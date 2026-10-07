@@ -1,8 +1,8 @@
 import { IonCol, IonGrid, IonRow } from "@ionic/react";
+import { Translate } from "@k53studyguide/shared/translation";
 import type React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { Translate } from "react-translated";
+import { useNavigate } from "react-router-dom";
 import type { AnyAction, Dispatch } from "redux";
 import styled from "styled-components";
 import { PrimaryButton } from "@/app/components";
@@ -10,7 +10,7 @@ import { targetNavigationKeySelector } from "@/state/quiz/navigation";
 import { recieveCurrentNavigationKey } from "@/state/study/navigation";
 
 export const Footer: React.FC = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch<Dispatch<AnyAction>>();
   const navigationKey = useSelector(targetNavigationKeySelector);
 
@@ -32,7 +32,7 @@ export const Footer: React.FC = () => {
             text="yesTakeMeThere"
             onClick={() => {
               dispatch(recieveCurrentNavigationKey(navigationKey));
-              history.push(`/content`);
+              navigate(`/content`);
             }}
           />
         </IonCol>

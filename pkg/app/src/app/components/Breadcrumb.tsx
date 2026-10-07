@@ -1,7 +1,7 @@
 import { IonText } from "@ionic/react";
+import { Translate } from "@k53studyguide/shared/translation";
 import React from "react";
 import { connect } from "react-redux";
-import { Translate } from "react-translated";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import { ROOT_NAVIGATION_KEY, recieveCurrentNavigationKey } from "@/state/study/navigation";

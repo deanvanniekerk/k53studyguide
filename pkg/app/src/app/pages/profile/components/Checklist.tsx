@@ -1,7 +1,7 @@
+import { Translate, Translator } from "@k53studyguide/shared/translation";
 import { checkmarkCircle, closeCircle } from "ionicons/icons";
 import type React from "react";
 import { connect } from "react-redux";
-import { Translate, Translator } from "react-translated";
 import type { RootState } from "@/state";
 import { ROOT_NAVIGATION_KEY } from "@/state/navigation";
 import { quizLevelSelector } from "@/state/quiz/log";

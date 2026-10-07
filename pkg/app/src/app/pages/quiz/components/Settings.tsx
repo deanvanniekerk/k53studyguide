@@ -1,10 +1,10 @@
 import { IonAlert, IonButton, IonGrid, IonIcon, IonSelect, IonSelectOption, IonText } from "@ionic/react";
+import { Translate, Translator } from "@k53studyguide/shared/translation";
 import { caretForward, chevronForwardOutline } from "ionicons/icons";
 import type React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { Translate, Translator } from "react-translated";
+import { useNavigate } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import { Breadcrumb, PrimaryButton } from "@/app/components";
@@ -26,7 +26,7 @@ type Props = {
   PropsFromDispatch;
 
 const SettingsComponent: React.FC<Props> = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [showResetTestAlert, setShowResetTestAlert] = useState(false);
   const _answeredQuestions = props.questionAnswers.filter((questionAnswer) => questionAnswer.answer).length;
   const breadcrumbKeys = navigationKeyToBreadcrumb(props.targetNavigationKey);
@@ -34,7 +34,7 @@ const SettingsComponent: React.FC<Props> = (props) => {
   const parentBreadcrumbKeys = breadcrumbKeys.slice(0, -1);
 
   const onChangeTargetNavigationItem = () => {
-    history.push(`/quiz/navigator`);
+    navigate(`/quiz/navigator`);
   };
 
   const resetTest = () => {

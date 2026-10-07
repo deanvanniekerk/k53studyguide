@@ -1,8 +1,8 @@
 import { Capacitor } from "@capacitor/core";
 import { IonButton, IonLoading, IonModal, IonToast } from "@ionic/react";
+import { Translate, Translator } from "@k53studyguide/shared/translation";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
-import { Translate, Translator } from "react-translated";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import { CloseButton } from "@/app/components/CloseButton";

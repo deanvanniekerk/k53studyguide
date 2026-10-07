@@ -1,9 +1,8 @@
 import { IonText } from "@ionic/react";
+import { Translate, Translator } from "@k53studyguide/shared/translation";
 import type React from "react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { connect } from "react-redux";
-import { Translate, Translator } from "react-translated";
-import VisibilitySensor from "react-visibility-sensor";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
@@ -20,48 +19,50 @@ type Props = {
 
 const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenContentKey }) => {
   const { analytics } = useAnalytics();
-  const trackedVisible = useRef(false);
+  const cardRef = useRef<HTMLElement>(null);
 
-  const visibilityChange = (visible: boolean) => {
-    if (!visible) return;
-
-    recieveSeenContentKey(navigationKey);
-    if (trackedVisible.current) return;
-
-    trackedVisible.current = true;
-    analytics.trackStudyContentView({
-      content_key: navigationKey,
-      content_category: navigationKeyToBreadcrumb(navigationKey)[1] ?? navigationKey,
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+    let trackedVisible = false;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting || trackedVisible) return;
+      trackedVisible = true;
+      recieveSeenContentKey(navigationKey);
+      analytics.trackStudyContentView({
+        content_key: navigationKey,
+        content_category: navigationKeyToBreadcrumb(navigationKey)[1] ?? navigationKey,
+      });
     });
-  };
+    observer.observe(card);
+    return () => observer.disconnect();
+  }, [analytics, navigationKey, recieveSeenContentKey]);
 
   return (
-    <VisibilitySensor partialVisibility={true} onChange={visibilityChange} delayedCall={true}>
-      <Card className="study-content">
-        <CardHeader>
-          <Heading>
-            <Translate text={item.heading} />
-          </Heading>
-          <ContentSeenIndicator navigationKey={navigationKey} />
-        </CardHeader>
-        {item.imageName && (
-          <ImageFrame>
-            <img src={`assets/images/${item.imageName}`} alt="" />
-          </ImageFrame>
-        )}
-        <Description className="content-html">
-          <Translator>
-            {({ translate }) => (
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: translate({ text: item.description }),
-                }}
-              ></div>
-            )}
-          </Translator>
-        </Description>
-      </Card>
-    </VisibilitySensor>
+    <Card ref={cardRef} className="study-content">
+      <CardHeader>
+        <Heading>
+          <Translate text={item.heading} />
+        </Heading>
+        <ContentSeenIndicator navigationKey={navigationKey} />
+      </CardHeader>
+      {item.imageName && (
+        <ImageFrame>
+          <img src={`assets/images/${item.imageName}`} alt="" />
+        </ImageFrame>
+      )}
+      <Description className="content-html">
+        <Translator>
+          {({ translate }) => (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: translate({ text: item.description }),
+              }}
+            ></div>
+          )}
+        </Translator>
+      </Description>
+    </Card>
   );
 };
 

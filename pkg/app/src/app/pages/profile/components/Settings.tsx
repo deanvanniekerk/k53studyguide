@@ -1,7 +1,7 @@
 import { IonSelect, IonSelectOption } from "@ionic/react";
+import { Translate, Translator } from "@k53studyguide/shared/translation";
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Translate, Translator } from "react-translated";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import type { RootState } from "@/state";

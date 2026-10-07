@@ -1,6 +1,6 @@
 import { setupIonicReact } from "@ionic/react";
 import { createRoot } from "react-dom/client";
-import { Provider as TranslationProvider } from "react-translated";
+import { Provider as TranslationProvider } from "@k53studyguide/shared/translation";
 import { translations } from "@k53studyguide/shared/data";
 import "../../app/src/theme/variables.css";
 import "./quiz-demo.css";
