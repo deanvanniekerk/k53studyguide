@@ -37,19 +37,19 @@
     ]
   },
   "dependencies": {
-    "@k53studyguide/shared": "workspace:*",
     "@capacitor-firebase/analytics": "8.3.0",
     "@capacitor-firebase/crashlytics": "8.3.0",
-    "@capacitor/android": "8.4.1",
-    "@capacitor/app": "8.1.0",
+    "@capacitor/android": "8.5.2",
+    "@capacitor/app": "8.1.2",
     "@capacitor/browser": "8.0.3",
-    "@capacitor/core": "8.4.1",
+    "@capacitor/core": "8.5.2",
     "@capacitor/device": "8.0.2",
-    "@capacitor/ios": "8.4.1",
+    "@capacitor/ios": "8.5.2",
     "@capacitor/preferences": "8.0.1",
     "@capawesome/capacitor-app-review": "8.0.1",
     "@ionic/react": "8.8.12",
     "@ionic/react-router": "8.8.12",
+    "@k53studyguide/shared": "workspace:*",
     "@revenuecat/purchases-capacitor": "13.2.0",
     "firebase": "12.15.0",
     "immutability-helper": "3.1.1",
@@ -70,7 +70,7 @@
     "uuid": "14.0.1"
   },
   "devDependencies": {
-    "@capacitor/cli": "8.4.1",
+    "@capacitor/cli": "8.5.2",
     "@svgr/cli": "8.1.0",
     "@testing-library/dom": "10.4.1",
     "@testing-library/react": "16.3.2",
