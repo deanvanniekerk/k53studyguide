@@ -28,7 +28,7 @@ Run `pnpm start` for a browser preview. Purchases/restores are simulated by the 
 
 ## Remaining acceptance
 
-Browser design feedback has been applied. Next verify iOS/Android safe areas and navigation, enlarged text, long translated labels, screen-reader/focus behavior, and native offer/checkout events in DebugView. Browser layout evidence is not native store purchase or accessibility compliance evidence. #30 remains open.
+Browser design feedback has been applied. The native simulator pass below covers the primary actions, Test Store checkout, and selected size/theme combinations. Screen-reader/focus behavior, the remaining device/text-size combinations, and native event receipt in DebugView remain unverified. Browser layout evidence is not native store purchase or accessibility compliance evidence. #30 remains open.
 
 See `docs/analytics/purchase-measurement.md` for event definitions and the conversion evaluation plan. Confirmed revenue remains a store/RevenueCat measure, separate from client access-granted events.
 
@@ -39,3 +39,25 @@ The product owner selected the Open Road ImageGen artwork (driver in a blue car)
 ## Cohesive artwork update
 
 The 14 generated icons are mapped in `docs/design/icon-inventory.md`. Browser checks covered Study at 320px/390px, light/dark purchase sheets, the Profile premium trophy and a completed Quiz result. Narrow Study tiles now place their percentage beneath the topic label. All decorative assets retain alpha and use empty alt text beside visible labels. Test success/review variants are integrated; completing native Quiz/Test flows remains part of the wider acceptance pass. See root `design-qa.md` for evidence and limits.
+
+## Native simulator pass — 2026-10-07
+
+App code tested: `e33e24f` (PR #33). Debug native builds used RevenueCat **Test Store** keys, with the production service selection and debug diagnostics enabled. An earlier development build selected LocalPurchaseService; its R25 fixture screenshots only establish layout. The later Test Store sheets displayed USD 0.99. Neither price is a verified live store price.
+
+| Configuration | Observed result |
+| --- | --- |
+| iPhone SE (3rd generation), iOS 26.4.1, 375×667 logical screen | Free Unlock remains visible before and during scrolling. |
+| Same iOS simulator, DeviceHub Text Size increased from 3 to 6 | Unlock wraps without clipping. Price, Get Premium and Restore remain visible. Premium Start/Continue stay above navigation while the progress and Reset content scroll. |
+| Same iOS simulator, dark appearance | Premium Start action and progress remain readable. Reset confirmation returns Continue to Start. Premium access remains after process termination/relaunch. |
+| Pixel 9 emulator, Android 17 / API 37, 1080×2424 at 420dpi (about 411×923dp), light | Free/premium actions, offer price and Restore visible. Start opens a mock test; back returns to Continue. |
+| Same Android emulator, 720×1280 at 360dpi (320×569dp), light | Fresh free Unlock and premium Continue visible without scrolling. Continue opens the existing test. Offer price, Get Premium and Restore fit above system navigation. |
+
+Both platforms reached the native RevenueCat Test Store dialog. Each exercised cancel, failed purchase, retry and successful purchase; successful purchase dismissed the offer and unlocked Start Test. Navigating away and back did not reproduce the repeated purchase-success notification. This is Test Store integration evidence, not Apple/Google billing certification.
+
+Android Restore with a fresh anonymous Test Store identity displayed “No Premium purchase was restored” and stayed free, with retry controls available. Restoring an existing Apple/Google purchase after reinstall is **not verified** by this test.
+
+Android native bridge logs for the Test Store run contain one invitation view/tap and offer view, three checkout starts, and one cancellation, error and sandbox access-granted outcome respectively, followed by a mock-test start. The clean-identity restore produced `restore_start` and `restore_outcome: no_entitlement`. These are client dispatch observations; server receipt/deduplication in DebugView still needs checking. iOS logs show native analytics calls, but their complete event payload sequence was not captured. The cold-iOS product attribution regression is covered by the four passing `usePremiumOffer` tests.
+
+QA builds selected `execution_context: production` to exercise RevenueCat; successful test outcomes identify `transaction_environment: sandbox`. Exclude this simulator QA window from organic conversion interpretation, including pre-checkout events with unknown transaction environment. Raw logs, screenshots and the pre-reset Android backup remain private, outside Git, under the local 2026-10-07 issue30 evidence directory.
+
+English is the only selectable language in the current Settings UI; longer translated-label coverage is therefore not claimed. A separate Profile checklist wrapping defect at enlarged iOS text size is tracked in #34 under parent #2. It does not obscure the Test CTA.
