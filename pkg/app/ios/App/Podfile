@@ -1,4 +1,4 @@
-require_relative '../../../../node_modules/.pnpm/@capacitor+ios@8.4.1_@capacitor+core@8.4.1/node_modules/@capacitor/ios/scripts/pods_helpers'
+require_relative '../../../../node_modules/.pnpm/@capacitor+ios@8.5.2_@capacitor+core@8.5.2/node_modules/@capacitor/ios/scripts/pods_helpers'
 
 platform :ios, '15.0'
 use_frameworks! :linkage => :static
@@ -9,23 +9,23 @@ use_frameworks! :linkage => :static
 install! 'cocoapods', :disable_input_output_paths => true
 
 def capacitor_pods
-  pod 'Capacitor', :path => '../../../../node_modules/.pnpm/@capacitor+ios@8.4.1_@capacitor+core@8.4.1/node_modules/@capacitor/ios'
-  pod 'CapacitorCordova', :path => '../../../../node_modules/.pnpm/@capacitor+ios@8.4.1_@capacitor+core@8.4.1/node_modules/@capacitor/ios'
-  pod 'CapacitorFirebaseAnalytics', :path => '../../../../node_modules/.pnpm/@capacitor-firebase+analytics@8.3.0_@capacitor+core@8.4.1_firebase@12.15.0/node_modules/@capacitor-firebase/analytics'
-  pod 'CapacitorFirebaseCrashlytics', :path => '../../../../node_modules/.pnpm/@capacitor-firebase+crashlytics@8.3.0_@capacitor+core@8.4.1_firebase@12.15.0/node_modules/@capacitor-firebase/crashlytics'
-  pod 'CapacitorApp', :path => '../../../../node_modules/.pnpm/@capacitor+app@8.1.0_@capacitor+core@8.4.1/node_modules/@capacitor/app'
-  pod 'CapacitorBrowser', :path => '../../../../node_modules/.pnpm/@capacitor+browser@8.0.3_@capacitor+core@8.4.1/node_modules/@capacitor/browser'
-  pod 'CapacitorDevice', :path => '../../../../node_modules/.pnpm/@capacitor+device@8.0.2_@capacitor+core@8.4.1/node_modules/@capacitor/device'
-  pod 'CapacitorPreferences', :path => '../../../../node_modules/.pnpm/@capacitor+preferences@8.0.1_@capacitor+core@8.4.1/node_modules/@capacitor/preferences'
-  pod 'CapawesomeCapacitorAppReview', :path => '../../../../node_modules/.pnpm/@capawesome+capacitor-app-review@8.0.1_@capacitor+core@8.4.1/node_modules/@capawesome/capacitor-app-review'
-  pod 'RevenuecatPurchasesCapacitor', :path => '../../../../node_modules/.pnpm/@revenuecat+purchases-capacitor@13.2.0_@capacitor+core@8.4.1/node_modules/@revenuecat/purchases-capacitor'
+  pod 'Capacitor', :path => '../../../../node_modules/.pnpm/@capacitor+ios@8.5.2_@capacitor+core@8.5.2/node_modules/@capacitor/ios'
+  pod 'CapacitorCordova', :path => '../../../../node_modules/.pnpm/@capacitor+ios@8.5.2_@capacitor+core@8.5.2/node_modules/@capacitor/ios'
+  pod 'CapacitorFirebaseAnalytics', :path => '../../../../node_modules/.pnpm/@capacitor-firebase+analytics@8.3.0_@capacitor+core@8.5.2_firebase@12.15.0/node_modules/@capacitor-firebase/analytics'
+  pod 'CapacitorFirebaseCrashlytics', :path => '../../../../node_modules/.pnpm/@capacitor-firebase+crashlytics@8.3.0_@capacitor+core@8.5.2_firebase@12.15.0/node_modules/@capacitor-firebase/crashlytics'
+  pod 'CapacitorApp', :path => '../../../../node_modules/.pnpm/@capacitor+app@8.1.2_@capacitor+core@8.5.2/node_modules/@capacitor/app'
+  pod 'CapacitorBrowser', :path => '../../../../node_modules/.pnpm/@capacitor+browser@8.0.3_@capacitor+core@8.5.2/node_modules/@capacitor/browser'
+  pod 'CapacitorDevice', :path => '../../../../node_modules/.pnpm/@capacitor+device@8.0.2_@capacitor+core@8.5.2/node_modules/@capacitor/device'
+  pod 'CapacitorPreferences', :path => '../../../../node_modules/.pnpm/@capacitor+preferences@8.0.1_@capacitor+core@8.5.2/node_modules/@capacitor/preferences'
+  pod 'CapawesomeCapacitorAppReview', :path => '../../../../node_modules/.pnpm/@capawesome+capacitor-app-review@8.0.1_@capacitor+core@8.5.2/node_modules/@capawesome/capacitor-app-review'
+  pod 'RevenuecatPurchasesCapacitor', :path => '../../../../node_modules/.pnpm/@revenuecat+purchases-capacitor@13.2.0_@capacitor+core@8.5.2/node_modules/@revenuecat/purchases-capacitor'
 end
 
 target 'App' do
   capacitor_pods
   # Add your Pods here
   # Keep this outside capacitor_pods so Capacitor sync preserves the Firebase Analytics subspec.
-  pod 'CapacitorFirebaseAnalytics/Analytics', :path => '../../../../node_modules/.pnpm/@capacitor-firebase+analytics@8.3.0_@capacitor+core@8.4.1_firebase@12.15.0/node_modules/@capacitor-firebase/analytics'
+  pod 'CapacitorFirebaseAnalytics/Analytics', :path => '../../../../node_modules/.pnpm/@capacitor-firebase+analytics@8.3.0_@capacitor+core@8.5.2_firebase@12.15.0/node_modules/@capacitor-firebase/analytics'
 end
 
 post_install do |installer|
