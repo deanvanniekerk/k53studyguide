@@ -47,7 +47,8 @@ export class RevenueCatPurchaseService implements PurchaseService {
   private _operationInFlight = false;
   private _customerInfoRevision = 0;
   private _latestCustomerInfo?: CustomerInfo;
-  private _deferredPurchase?: Parameters<typeof analytics.trackBeginCheckout>[0];
+  private _deferredPurchases: Parameters<typeof analytics.trackBeginCheckout>[0][] = [];
+  private _purchaseRetryBlocked = false;
 
   constructor(reduxStore: PurchaseStore) {
     this._reduxStore = reduxStore;
@@ -70,12 +71,13 @@ export class RevenueCatPurchaseService implements PurchaseService {
     let open = true;
     void this.initialize(true).then(() => {
       if (!open) return;
+      const available = this._initialized && Boolean(this._product);
       analytics.trackPromotionView({
         ...this.getAnalyticsPurchaseParams(),
         offer_origin: origin,
         offer_surface: "purchase_modal",
-        availability: this._product ? "available" : "unavailable",
-        eligibility: this.hasPersistedFullAccess() ? "owned" : this._product ? "eligible" : "unavailable",
+        availability: available ? "available" : "unavailable",
+        eligibility: this.hasPersistedFullAccess() ? "owned" : available ? "eligible" : "unavailable",
       });
     });
     return () => {
@@ -84,7 +86,7 @@ export class RevenueCatPurchaseService implements PurchaseService {
   }
 
   purchase(origin?: OfferOrigin) {
-    if (this._deferredPurchase || this.hasPersistedFullAccess()) return Promise.resolve();
+    if (this._purchaseRetryBlocked || this.hasPersistedFullAccess()) return Promise.resolve();
     return this.runOperation(() => this.purchaseProduct(origin));
   }
 
@@ -182,10 +184,10 @@ export class RevenueCatPurchaseService implements PurchaseService {
       const result = await Purchases.restorePurchases();
       const customerInfo = this.currentCustomerInfo(result.customerInfo, revision);
       const hasFullAccess = this.applyCustomerInfo(customerInfo);
-      if (!hasFullAccess && this._deferredPurchase) {
+      if (!hasFullAccess && this._purchaseRetryBlocked) {
         // An explicit, successful restore check lets a learner retry a declined/expired payment.
-        // Inactive customer info alone is not a cancellation signal; passive refreshes keep waiting.
-        this._deferredPurchase = undefined;
+        // Keep outstanding correlation: an empty restore is not a terminal payment result.
+        this._purchaseRetryBlocked = false;
         this._reduxStore.dispatch(recievePaymentPending(false));
         this._reduxStore.dispatch(recievePurchaseProductCanPurchase(Boolean(this._product) && this._initialized));
       }
@@ -319,7 +321,7 @@ export class RevenueCatPurchaseService implements PurchaseService {
       this._initialized = !this._legacyAccessPending;
       this._reduxStore.dispatch(recievePurchaseAvailability("ready"));
       this._reduxStore.dispatch(
-        recievePurchaseProductCanPurchase(!this.hasPersistedFullAccess() && !this._deferredPurchase),
+        recievePurchaseProductCanPurchase(!this.hasPersistedFullAccess() && !this._purchaseRetryBlocked),
       );
     } catch (error) {
       const purchaseError = toPurchasesError(error);
@@ -351,17 +353,22 @@ export class RevenueCatPurchaseService implements PurchaseService {
 
     this._reduxStore.dispatch(recievePurchaseProductOwned(hasFullAccess));
     this._reduxStore.dispatch(
-      recievePurchaseProductCanPurchase(Boolean(this._product) && !hasFullAccess && !this._deferredPurchase),
+      recievePurchaseProductCanPurchase(
+        this._initialized && Boolean(this._product) && !hasFullAccess && !this._purchaseRetryBlocked,
+      ),
     );
-    if (hasRevenueCatFullAccess && this._deferredPurchase) {
-      const params = this._deferredPurchase;
-      this._deferredPurchase = undefined;
+    if (hasRevenueCatFullAccess && this._deferredPurchases.length > 0) {
+      const attempts = this._deferredPurchases;
+      this._deferredPurchases = [];
+      this._purchaseRetryBlocked = false;
       this._reduxStore.dispatch(recievePaymentPending(false));
       this._reduxStore.dispatch(recievePurchaseOrderState("finished"));
-      analytics.trackPurchaseState("finished", {
-        ...params,
-        transaction_environment: this.transactionEnvironment(customerInfo),
-      });
+      for (const params of attempts) {
+        analytics.trackPurchaseState("finished", {
+          ...params,
+          transaction_environment: this.transactionEnvironment(customerInfo),
+        });
+      }
     }
     return hasFullAccess;
   }
@@ -373,7 +380,8 @@ export class RevenueCatPurchaseService implements PurchaseService {
       analytics.trackPurchaseState("finished", params);
       return;
     }
-    this._deferredPurchase = params;
+    this._deferredPurchases.push(params);
+    this._purchaseRetryBlocked = true;
     this._reduxStore.dispatch(recievePaymentPending(true));
     this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
     this._reduxStore.dispatch(recievePurchaseOrderState("deferred"));
