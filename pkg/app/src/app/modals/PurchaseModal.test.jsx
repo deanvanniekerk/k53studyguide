@@ -15,7 +15,7 @@ vi.mock("@ionic/react", () => ({
   IonButton: ({ children, ...props }) => <button {...props}>{children}</button>,
   IonModal: ({ children, isOpen }) => (isOpen ? <section>{children}</section> : null),
   IonToast: ({ isOpen, message, onDidDismiss }) => (isOpen ? <output onClick={onDidDismiss}>{message}</output> : null),
-  IonLoading: () => null,
+  IonLoading: ({ isOpen }) => (isOpen ? <aside>processingPayment</aside> : null),
   IonIcon: () => null,
   IonText: ({ children }) => <span>{children}</span>,
   IonContent: ({ children }) => <div>{children}</div>,
@@ -112,7 +112,7 @@ const setupCheckout = async () => {
     return page;
   };
   const refresh = () => Purchases.addCustomerInfoUpdateListener.mock.calls[0][0](premiumCustomer);
-  return { mount, refresh, store };
+  return { mount, refresh, store, service };
 };
 
 it("does not thank an existing premium learner when Test or Profile mounts with a saved finished order", () => {
@@ -220,4 +220,67 @@ it("does not close the offer with the close button while a payment is pending", 
   act(() => page.root.findByProps({ "aria-label": "Close" }).props.onClick());
   expect(dismiss).not.toHaveBeenCalled();
   expect(FirebaseAnalytics.logEvent).not.toHaveBeenCalledWith(expect.objectContaining({ name: "premium_offer_close" }));
+});
+
+it("lets an offline learner retry loading the store without hiding Restore", async () => {
+  Purchases.getProducts.mockRejectedValue(new Error("Offline"));
+  const { mount } = await setupCheckout();
+  const page = await mount("mock_test");
+  expect(page.root.findAll((node) => node.props.text === "premiumUnavailable").length).toBeGreaterThan(0);
+  Purchases.getProducts.mockResolvedValue({
+    products: [{ identifier: IOS_PREMIUM_PRODUCT_ID, priceString: "R39.99" }],
+  });
+  await click(page, "premiumRetry");
+  await click(page, "getPremium");
+  expect(notifications(page)).toEqual(["purchaseSuccessful"]);
+  expect(Purchases.configure).toHaveBeenCalledOnce();
+  expect(Purchases.addCustomerInfoUpdateListener).toHaveBeenCalledOnce();
+});
+
+it("shows deferred payment without a blocking spinner or failure, then consumes late access once", async () => {
+  const { mount, refresh } = await setupCheckout();
+  const dismiss = vi.fn();
+  const page = await mount("mock_test", true, dismiss);
+  Purchases.purchaseStoreProduct.mockRejectedValueOnce({ code: "pending" });
+  await click(page, "getPremium");
+  expect(notifications(page)).toEqual([]);
+  expect(page.root.findAllByType("aside")).toHaveLength(0);
+  expect(page.root.findAll((node) => node.props.text === "premiumPaymentPending").length).toBeGreaterThan(0);
+  act(() => refresh());
+  expect(notifications(page)).toEqual(["purchaseSuccessful"]);
+  act(() => page.root.findByType("output").props.onClick());
+  act(() => refresh());
+  expect(notifications(page)).toEqual([]);
+});
+
+it("allows closing and restoring a deferred payment without replaying a purchase thank-you", async () => {
+  const { mount } = await setupCheckout();
+  const dismiss = vi.fn();
+  const page = await mount("mock_test", true, dismiss);
+  Purchases.purchaseStoreProduct.mockRejectedValueOnce({ code: "pending" });
+  await click(page, "getPremium");
+  act(() => page.root.findByProps({ "aria-label": "Close" }).props.onClick());
+  expect(dismiss).toHaveBeenCalledOnce();
+  await click(page, "restorePurchase");
+  expect(notifications(page)).toEqual(["purchaseRestored"]);
+});
+
+it("silently grants deferred access after its initiating modal has closed", async () => {
+  const { mount, refresh, store, service } = await setupCheckout();
+  const page = await mount("mock_test");
+  Purchases.purchaseStoreProduct.mockRejectedValueOnce({ code: "pending" });
+  await click(page, "getPremium");
+  act(() =>
+    page.update(
+      <Provider store={store}>
+        <PurchaseContext.Provider value={service}>
+          <PurchaseModal origin="mock_test" isOpen={false} onDidDismiss={() => {}} />
+        </PurchaseContext.Provider>
+      </Provider>,
+    ),
+  );
+  act(() => refresh());
+  expect(store.getState().purchase.owned).toBe(true);
+  expect(notifications(page)).toEqual([]);
+  expect(notifications(await mount("profile", false))).toEqual([]);
 });

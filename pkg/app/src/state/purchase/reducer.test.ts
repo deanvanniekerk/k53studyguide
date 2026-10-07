@@ -2,6 +2,8 @@ import { type PurchaseState, reducer } from "./reducer";
 
 describe("state > purchase > reducer", () => {
   const defaultState: PurchaseState = {
+    availability: "idle",
+    paymentPending: false,
     canPurchase: false,
     owned: false,
     orderState: "ready",

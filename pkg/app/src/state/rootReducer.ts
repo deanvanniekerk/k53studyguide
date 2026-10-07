@@ -21,6 +21,7 @@ const settingsConfig: PersistConfig<SettingsState> = {
 
 const purchaseConfig: PersistConfig<PurchaseState> = {
   key: "purchase",
+  blacklist: ["availability", "paymentPending"],
   storage: createStorage(),
 };
 

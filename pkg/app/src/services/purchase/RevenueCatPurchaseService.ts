@@ -12,6 +12,8 @@ import { v4 as uuid } from "uuid";
 import { analytics } from "@/services/analytics";
 import { recieveLogMessage } from "@/state/log";
 import {
+  recievePaymentPending,
+  recievePurchaseAvailability,
   recievePurchaseOrderState,
   recievePurchaseProduct,
   recievePurchaseProductCanPurchase,
@@ -38,6 +40,12 @@ export class RevenueCatPurchaseService implements PurchaseService {
   private _productId = DEFAULT_PREMIUM_PRODUCT_ID;
   private _product?: PurchasesStoreProduct;
   private _initializePromise?: Promise<void>;
+  private _initialized = false;
+  private _configured = false;
+  private _listening = false;
+  private _legacyAccessPending = false;
+  private _operationInFlight = false;
+  private _deferredPurchase?: Parameters<typeof analytics.trackBeginCheckout>[0];
 
   constructor(reduxStore: PurchaseStore) {
     this._reduxStore = reduxStore;
@@ -47,14 +55,18 @@ export class RevenueCatPurchaseService implements PurchaseService {
     return this._productId;
   }
 
-  async initialize() {
-    if (!this._initializePromise) this._initializePromise = this.initializeRevenueCat();
-    await this._initializePromise;
+  async initialize(refresh = false) {
+    if (this._initializePromise) return this._initializePromise;
+    if (this._initialized && !refresh) return;
+    this._initializePromise = this.initializeRevenueCat().finally(() => {
+      this._initializePromise = undefined;
+    });
+    return this._initializePromise;
   }
 
   offerOpened(origin: OfferOrigin) {
     let open = true;
-    void this.initialize().then(() => {
+    void this.initialize(true).then(() => {
       if (!open) return;
       analytics.trackPromotionView({
         ...this.getAnalyticsPurchaseParams(),
@@ -69,11 +81,31 @@ export class RevenueCatPurchaseService implements PurchaseService {
     };
   }
 
-  async purchase(origin?: OfferOrigin) {
+  purchase(origin?: OfferOrigin) {
+    if (this._deferredPurchase || this.hasPersistedFullAccess()) return Promise.resolve();
+    return this.runOperation(() => this.purchaseProduct(origin));
+  }
+
+  restore(origin?: OfferOrigin) {
+    return this.runOperation(() => this.restoreProducts(origin));
+  }
+
+  private async runOperation(operation: () => Promise<void>) {
+    if (this._operationInFlight) return;
+    this._operationInFlight = true;
+    try {
+      await operation();
+    } finally {
+      this._operationInFlight = false;
+    }
+  }
+
+  private async purchaseProduct(origin?: OfferOrigin) {
     await this.initialize();
+    if (this.hasPersistedFullAccess()) return;
     const params = { ...this.getAnalyticsPurchaseParams(), offer_origin: origin ?? "unknown", attempt_id: uuid() };
 
-    if (!this._product) {
+    if (!this._product || !this._initialized) {
       analytics.logEvent("purchase_unavailable", { ...params, availability: "unavailable" });
       this.log("ERROR", "RevenueCatPurchaseService > purchase > product unavailable", {
         productId: this._productId,
@@ -89,7 +121,11 @@ export class RevenueCatPurchaseService implements PurchaseService {
     try {
       const { customerInfo } = await Purchases.purchaseStoreProduct({ product: this._product });
       const hasFullAccess = this.applyCustomerInfo(customerInfo);
-      const orderState = hasFullAccess ? "finished" : "error";
+      if (!hasFullAccess) {
+        this.deferPurchase(params);
+        return;
+      }
+      const orderState = "finished";
       this._reduxStore.dispatch(recievePurchaseOrderState(orderState));
       analytics.trackPurchaseState(orderState, {
         ...params,
@@ -108,10 +144,16 @@ export class RevenueCatPurchaseService implements PurchaseService {
         code: purchaseError?.code ?? "unknown",
         message: purchaseError?.message ?? String(error),
       });
-      // Keep the existing error presentation until the pending-payment UX in #14 is implemented.
-      // Redux pending means an in-flight spinner, not a deferred store transaction.
-      this._reduxStore.dispatch(recievePurchaseOrderState(orderState === "pending" ? "error" : orderState));
+      if (orderState === "pending") {
+        this.deferPurchase({ ...params, error_code: purchaseError?.code });
+        return;
+      }
+      this._reduxStore.dispatch(recievePurchaseOrderState(orderState));
       if (purchaseError?.code === PURCHASES_ERROR_CODE.PRODUCT_NOT_AVAILABLE_FOR_PURCHASE_ERROR) {
+        this._product = undefined;
+        this._initialized = false;
+        this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
+        this._reduxStore.dispatch(recievePurchaseAvailability("unavailable"));
         analytics.logEvent("purchase_unavailable", {
           ...params,
           availability: "unavailable",
@@ -123,7 +165,7 @@ export class RevenueCatPurchaseService implements PurchaseService {
     }
   }
 
-  async restore(origin?: OfferOrigin) {
+  private async restoreProducts(origin?: OfferOrigin) {
     await this.initialize();
     const params = { ...this.getAnalyticsPurchaseParams(), offer_origin: origin ?? "unknown", attempt_id: uuid() };
     analytics.logEvent("restore_start", params);
@@ -168,10 +210,13 @@ export class RevenueCatPurchaseService implements PurchaseService {
   }
 
   private async initializeRevenueCat() {
+    this._initialized = false;
+    this._reduxStore.dispatch(recievePurchaseAvailability("loading"));
+    this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
     const platform = Capacitor.getPlatform();
     this._productId = getPremiumProductId(platform === "ios");
     const apiKey = getRevenueCatApiKey(platform);
-    const hasLegacyFullAccess = this.hasPersistedFullAccess();
+    if (!this._configured) this._legacyAccessPending = this.hasPersistedFullAccess();
 
     this.log("INFO", "RevenueCatPurchaseService > initialize", {
       productId: this._productId,
@@ -188,17 +233,24 @@ export class RevenueCatPurchaseService implements PurchaseService {
         failure_reason: "missing_api_key",
       });
       this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
+      this._reduxStore.dispatch(recievePurchaseAvailability("unavailable"));
       return;
     }
 
     try {
-      await Purchases.configure({ apiKey });
-      await Purchases.setLogLevel({ level: LOG_LEVEL.WARN });
-      await Purchases.addCustomerInfoUpdateListener((customerInfo) => {
-        this.applyCustomerInfo(customerInfo);
-      });
+      if (!this._configured) {
+        await Purchases.configure({ apiKey });
+        this._configured = true;
+      }
+      if (!this._listening) {
+        await Purchases.setLogLevel({ level: LOG_LEVEL.WARN });
+        await Purchases.addCustomerInfoUpdateListener((customerInfo) => {
+          this.applyCustomerInfo(customerInfo);
+        });
+        this._listening = true;
+      }
 
-      const [{ products }, { customerInfo }] = await Promise.all([
+      const [productResult, customerResult] = await Promise.allSettled([
         Purchases.getProducts({
           productIdentifiers: [this._productId],
           type: PRODUCT_CATEGORY.NON_SUBSCRIPTION,
@@ -206,12 +258,19 @@ export class RevenueCatPurchaseService implements PurchaseService {
         Purchases.getCustomerInfo(),
       ]);
 
-      this.log("INFO", "RevenueCatPurchaseService > initialize > products fetched", {
-        requested: this._productId,
-        returnedCount: String(products.length),
-        returnedIds: products.map((candidate) => candidate.identifier).join(", ") || "(none)",
-      });
-      this.logCustomerInfoDiagnostics(customerInfo, "initialize");
+      if (productResult.status === "fulfilled") {
+        this._product = productResult.value.products.find((candidate) => candidate.identifier === this._productId);
+      } else {
+        this._product = undefined;
+      }
+      // A billing/product error must not suppress an independently fetched entitlement.
+      if (customerResult.status === "fulfilled") {
+        this.logCustomerInfoDiagnostics(customerResult.value.customerInfo, "initialize");
+        await this.applyCustomerInfoWithLegacySync(customerResult.value.customerInfo);
+      }
+      if (productResult.status === "rejected") throw productResult.reason;
+      if (customerResult.status === "rejected") throw customerResult.reason;
+      const { products } = productResult.value;
       await this.logOfferingsDiagnostics();
 
       const product = products.find((candidate) => candidate.identifier === this._productId);
@@ -226,6 +285,7 @@ export class RevenueCatPurchaseService implements PurchaseService {
           returnedIds: products.map((candidate) => candidate.identifier).join(", ") || "(none)",
         });
         this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
+        this._reduxStore.dispatch(recievePurchaseAvailability("unavailable"));
         return;
       }
 
@@ -238,7 +298,11 @@ export class RevenueCatPurchaseService implements PurchaseService {
 
       this._product = product;
       this._reduxStore.dispatch(recievePurchaseProduct(product.priceString, product.title, product.description));
-      await this.applyCustomerInfoWithLegacySync(customerInfo, hasLegacyFullAccess);
+      this._initialized = !this._legacyAccessPending;
+      this._reduxStore.dispatch(recievePurchaseAvailability("ready"));
+      this._reduxStore.dispatch(
+        recievePurchaseProductCanPurchase(!this.hasPersistedFullAccess() && !this._deferredPurchase),
+      );
     } catch (error) {
       const purchaseError = toPurchasesError(error);
       this.log("ERROR", "RevenueCatPurchaseService > initialize > error", {
@@ -251,26 +315,55 @@ export class RevenueCatPurchaseService implements PurchaseService {
         error_code: purchaseError?.code ?? "unknown",
       });
       this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
+      this._reduxStore.dispatch(recievePurchaseAvailability("unavailable"));
     }
   }
 
   private applyCustomerInfo(customerInfo: CustomerInfo) {
-    const hasFullAccess = this.hasFullAccess(customerInfo);
+    const hasRevenueCatFullAccess = this.hasFullAccess(customerInfo);
+    if (hasRevenueCatFullAccess) this._legacyAccessPending = false;
+    const hasFullAccess = hasRevenueCatFullAccess || this._legacyAccessPending;
 
     this._reduxStore.dispatch(recievePurchaseProductOwned(hasFullAccess));
-    this._reduxStore.dispatch(recievePurchaseProductCanPurchase(Boolean(this._product) && !hasFullAccess));
-
+    this._reduxStore.dispatch(
+      recievePurchaseProductCanPurchase(Boolean(this._product) && !hasFullAccess && !this._deferredPurchase),
+    );
+    if (hasRevenueCatFullAccess && this._deferredPurchase) {
+      const params = this._deferredPurchase;
+      this._deferredPurchase = undefined;
+      this._reduxStore.dispatch(recievePaymentPending(false));
+      this._reduxStore.dispatch(recievePurchaseOrderState("finished"));
+      analytics.trackPurchaseState("finished", {
+        ...params,
+        transaction_environment: this.transactionEnvironment(customerInfo),
+      });
+    }
     return hasFullAccess;
   }
 
-  private async applyCustomerInfoWithLegacySync(customerInfo: CustomerInfo, hasLegacyFullAccess: boolean) {
+  private deferPurchase(params: Parameters<typeof analytics.trackBeginCheckout>[0]) {
+    // The native listener may deliver access before the purchase promise settles.
+    if (this.hasPersistedFullAccess()) {
+      this._reduxStore.dispatch(recievePurchaseOrderState("finished"));
+      analytics.trackPurchaseState("finished", params);
+      return;
+    }
+    this._deferredPurchase = params;
+    this._reduxStore.dispatch(recievePaymentPending(true));
+    this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
+    this._reduxStore.dispatch(recievePurchaseOrderState("deferred"));
+    analytics.trackPurchaseState("pending", params);
+  }
+
+  private async applyCustomerInfoWithLegacySync(customerInfo: CustomerInfo) {
     const hasRevenueCatFullAccess = this.hasFullAccess(customerInfo);
-    if (hasRevenueCatFullAccess || !hasLegacyFullAccess) return this.applyCustomerInfo(customerInfo);
+    if (hasRevenueCatFullAccess || !this._legacyAccessPending) return this.applyCustomerInfo(customerInfo);
 
     try {
       this.log("INFO", "RevenueCatPurchaseService > initialize > syncing legacy purchase");
       await Purchases.syncPurchases();
       const { customerInfo: syncedCustomerInfo } = await Purchases.getCustomerInfo();
+      this._legacyAccessPending = false;
       return this.applyCustomerInfo(syncedCustomerInfo);
     } catch (error) {
       const purchaseError = toPurchasesError(error);

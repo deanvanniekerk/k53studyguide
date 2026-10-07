@@ -1,7 +1,9 @@
 import type { PuchaseActions } from "./";
-import type { OrderState } from "./types";
+import type { OrderState, StoreAvailability } from "./types";
 
 export type PurchaseState = {
+  readonly availability: StoreAvailability;
+  readonly paymentPending: boolean;
   readonly canPurchase: boolean;
   readonly owned: boolean;
   readonly orderState: OrderState;
@@ -11,6 +13,8 @@ export type PurchaseState = {
 };
 
 export const defaultState: PurchaseState = {
+  availability: "idle",
+  paymentPending: false,
   canPurchase: false,
   owned: false,
   orderState: "ready",
@@ -21,6 +25,10 @@ export const defaultState: PurchaseState = {
 
 export const reducer = (state: PurchaseState = defaultState, action: PuchaseActions): PurchaseState => {
   switch (action.type) {
+    case "PURCHASE_RECIEVE_AVAILABILITY":
+      return { ...state, availability: action.payload };
+    case "PURCHASE_RECIEVE_PAYMENT_PENDING":
+      return { ...state, paymentPending: action.payload };
     case "PURCHASE_RECIEVE_PRODUCT_CAN_PURCHASE":
       return {
         ...state,

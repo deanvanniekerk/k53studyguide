@@ -7,7 +7,7 @@ import { ROOT_NAVIGATION_KEY } from "@/state/navigation";
 import { quizLevelSelector } from "@/state/quiz/log";
 import { seenTotalsSelector } from "@/state/study/log";
 import { testsPassedSelector } from "@/state/test/log";
-import { GroupCard, Row, Section, SectionTitle } from "./";
+import { GroupCard, Row, Section, SectionTitle } from "./Row";
 
 type Props = PropsFromState;
 
@@ -36,7 +36,7 @@ const ChecklistComponent: React.FC<Props> = (props) => {
               name={translate({ text: "checklistReachLevel" })}
               value={translate({
                 text: "levelNumber",
-                data: { number: props.quizLevel },
+                data: { number: String(props.quizLevel) },
               })}
               icon={levelComplete ? checkmarkCircle : closeCircle}
               status={levelComplete ? "complete" : "incomplete"}

@@ -33,11 +33,16 @@ const PurchaseModal: React.FC<Props> = (props) => {
   const [showCancelledToast, setShowCancelledToast] = useState(false);
   const activeOperation = useRef<"purchase" | "restore" | null>(null);
 
+  const isLoadingStore = props.purchase.availability === "loading";
+  const isUnavailable = props.purchase.availability === "unavailable";
   const isPending = props.purchase.orderState === "pending";
   const premiumProductId = purchaseService?.productId ?? DEFAULT_PREMIUM_PRODUCT_ID;
 
   useEffect(() => {
-    if (!props.isOpen) return;
+    if (!props.isOpen) {
+      activeOperation.current = null;
+      return;
+    }
 
     return purchaseService?.offerOpened(props.origin);
   }, [props.isOpen, props.origin, purchaseService]);
@@ -187,14 +192,29 @@ const PurchaseModal: React.FC<Props> = (props) => {
             </Benefits>
           </OfferContent>
           <PriceCard>
-            <PurchasePriceText>{props.purchase.price || <Translate text="premiumPriceLoading" />}</PurchasePriceText>
+            <PurchasePriceText>
+              {isLoadingStore ? <Translate text="premiumPriceLoading" /> : props.purchase.price}
+            </PurchasePriceText>
             <PaymentNote>
               <Translate text="premiumOneTime" />
             </PaymentNote>
-            {!props.purchase.canPurchase && !props.purchase.owned && (
+            {props.purchase.paymentPending && (
               <Availability role="status">
-                <Translate text="premiumUnavailable" />
+                <Translate text="premiumPaymentPending" />
               </Availability>
+            )}
+            {!props.purchase.canPurchase && !props.purchase.owned && !props.purchase.paymentPending && (
+              <Availability role="status">
+                <Translate text={isLoadingStore ? "premiumPriceLoading" : "premiumUnavailable"} />
+              </Availability>
+            )}
+            {isUnavailable && (
+              <RestoreButton
+                disabled={isPending || !purchaseService || undefined}
+                onClick={() => void purchaseService?.initialize(true)}
+              >
+                <Translate text="premiumRetry" />
+              </RestoreButton>
             )}
             {import.meta.env.DEV && Capacitor.getPlatform() === "web" && (
               <PaymentNote>Browser preview · simulated price and purchase</PaymentNote>
@@ -203,8 +223,17 @@ const PurchaseModal: React.FC<Props> = (props) => {
               mode="md"
               shape="round"
               fill="solid"
-              disabled={!props.purchase.canPurchase || isPending || !purchaseService || undefined}
+              disabled={
+                !props.purchase.canPurchase ||
+                props.purchase.paymentPending ||
+                isUnavailable ||
+                isLoadingStore ||
+                isPending ||
+                !purchaseService ||
+                undefined
+              }
               onClick={() => {
+                if (isPending || props.purchase.paymentPending || !props.purchase.canPurchase || isLoadingStore) return;
                 activeOperation.current = "purchase";
                 analytics.trackPromotionSelect({
                   product_id: premiumProductId,
@@ -223,6 +252,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
               fill="clear"
               disabled={isPending || !purchaseService || undefined}
               onClick={() => {
+                if (isPending) return;
                 activeOperation.current = "restore";
                 void purchaseService?.restore(props.origin);
               }}
