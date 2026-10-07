@@ -99,3 +99,11 @@ Fresh purchase, cancellation/retry and explicit Restore Purchase still require a
 ### GA4 receipt now confirmed
 
 A read-only query on 7 October confirms processed iOS 1.38 events in the repaired stream for 6–7 October: app opens, screen views, study content, quiz start/answer/completion, offer view/selection, checkout start and purchase cancellation. Realtime also contains iOS app opens and a mock-test start during the physical-device validation window. This supersedes the earlier empty-report observation; it does not prove that every event came from this build or from organic learners. Legacy event names coexist with the new events, and the QA windows must be excluded before revenue-funnel analysis. DebugView parameter validation, controlled Android parity, complete purchase/restore journeys and release-archive coverage remain open for #5.
+
+## Issue #9 resumption — 2026-10-07
+
+The initial stacked merge left #27 on the already-merged purchase branch rather than on `main`. Validation source `2652fef` combines the reviewed scene migration with `main` at `e03a6fa`; the follow-up integration must reach `main` before an Xcode 27 release build is attempted.
+
+A fresh private app-container backup completed before an in-place installation. The signed Debug build of 1.38 (38), with production JavaScript configuration and the real App Store RevenueCat SDK key, built and launched on the connected iPhone 15 Pro / iOS 27.0.1. Runtime logs confirm `RevenueCatPurchaseService`, the configured non-consumable product, and a $1.99 USD storefront price. Profile displays Premium Purchased without replaying a checkout-success toast. The pre-install RevenueCat cache contains an App Store sandbox purchase; that historical cache does not prove the current Sandbox Apple Account sign-in or a new transaction.
+
+Free-offer discovery, fresh cancellation/retry, new purchase and explicit restore are **BLOCKED in this run** by the existing premium state. Purchase and restore controls are inside the free-user offer. Physical-device sandbox-account confirmation and an agreed clean test-buyer setup are required next. No purchase history, RevenueCat customer record or app study history was reset, and no new transaction or restore was performed. Private logs, backup and screenshot remain outside Git.
