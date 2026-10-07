@@ -36,11 +36,13 @@ variables:
 steps:
     - task: UseNode@1
       inputs:
-          version: "22.x"
+          version: "26.10.0"
       displayName: "Install Node.js"
     - script: |
-          corepack enable
+          npm install --global pnpm@12.9.1
           pnpm install --frozen-lockfile
+          pnpm --dir tools/translator install --frozen-lockfile
+          pnpm translator:check
       displayName: "React App > Install"
     - script: |
           pnpm lint
@@ -50,6 +52,7 @@ steps:
       displayName: "React App > Test"
     - script: |
           pnpm build
+          pnpm lander:build
       displayName: "React App > Build"
       env:
           REVENUECAT_ANDROID_API_KEY: $(REVENUECAT_ANDROID_API_KEY)
@@ -205,25 +208,13 @@ steps:
     - script: |
           set -euo pipefail
 
-          podFile="pkg/app/ios/App/Podfile"
-          podLock="pkg/app/ios/App/Podfile.lock"
-          if ! grep -q "CapacitorFirebaseAnalytics/Analytics" "${podLock}" || ! grep -q "FirebaseAnalytics/Core" "${podLock}"; then
-            echo "##vso[task.logissue type=error]Firebase Analytics pods were not resolved after Capacitor sync."
-            echo "Podfile Firebase lines:"
-            grep -n "CapacitorFirebaseAnalytics\\|FirebaseAnalytics" "${podFile}" || true
-            echo "Podfile.lock Firebase lines:"
-            grep -n "CapacitorFirebaseAnalytics\\|FirebaseAnalytics" "${podLock}" || true
-            exit 1
-          fi
-
           xcodebuild \
-            -project "pkg/app/ios/App/Pods/Pods.xcodeproj" \
-            -target "CapacitorFirebaseAnalytics" \
-            -configuration "Release" \
-            -sdk "iphoneos" \
-            clean build \
-            CODE_SIGNING_ALLOWED=NO
-      displayName: "iOS > Verify Firebase Analytics Pod"
+            -resolvePackageDependencies \
+            -project "pkg/app/ios/App/App.xcodeproj" \
+            -scheme "App" \
+            -onlyUsePackageVersionsFromResolvedFile \
+            -derivedDataPath "$(Agent.TempDirectory)/k53-ios-derived-data"
+      displayName: "iOS > Verify Locked Swift Packages"
       condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
 
     - script: |
@@ -274,10 +265,11 @@ steps:
           mkdir -p "${outputDir}"
 
           # Do not pass signing settings here: xcodebuild applies command-line
-          # build settings to Pods too, and Pods cannot use provisioning profiles.
+          # build settings to Swift package targets too. Signing stays on the App target.
           xcodebuild \
-            -workspace "pkg/app/ios/App/App.xcworkspace" \
+            -project "pkg/app/ios/App/App.xcodeproj" \
             -scheme "App" \
+            -onlyUsePackageVersionsFromResolvedFile \
             -configuration "Release" \
             -sdk "iphoneos" \
             -destination "generic/platform=iOS" \
