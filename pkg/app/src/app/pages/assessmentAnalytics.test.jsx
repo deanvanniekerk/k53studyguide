@@ -12,6 +12,7 @@ import { Content } from "./content/components/Content";
 import { Header as QuizResults } from "./quiz/results/components/Header";
 import { Header as MockResults } from "./test/results/components/Header";
 
+vi.mock("@/app/components/PremiumInvitation", () => ({ PremiumInvitation: () => null }));
 vi.mock("@capacitor-firebase/analytics", () => ({ FirebaseAnalytics: { logEvent: vi.fn() } }));
 vi.mock("@ionic/react", () => ({
   IonIcon: () => null,

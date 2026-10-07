@@ -7,7 +7,10 @@ Implements the client measurement portion of [#10](https://github.com/deanvannie
 | Event | Meaning |
 | --- | --- |
 | `purchase_initialization_error` | Purchase service initialization failed before premium controls can become available. `failure_reason` is `missing_api_key`, `product_unavailable`, or `sdk_error`; SDK failures include a bounded `error_code`, never diagnostic text. Emitted once per service initialization lifecycle, including repeated/concurrent initialization callers. Not an offer impression or checkout attempt. |
-| `view_promotion` | One offer opening, after initialization settles and while still open. Includes `offer_origin` (`profile` or `mock_test`), product, available local price/currency/value, `availability`, and `eligibility` (`eligible`, `owned`, `unavailable`). Eligibility describes app access/product availability, not a guarantee the store will accept payment. |
+| `premium_invitation_view` | A free learner sees an invitation on the active page, once per page visit. Includes `offer_origin` and `product_id`. Cached inactive Ionic pages and premium learners do not count. This is invitation reach, not an offer opening. |
+| `premium_invitation_tap` | Learner opens the offer from a measured invitation. Includes the originating surface. |
+| `premium_offer_close` | Learner uses the offer close button without a pending operation (`close_reason=close_button`). Not a checkout cancellation, and not emitted for successful automatic dismissal. OS interruption/process death is not counted here. |
+| `view_promotion` | One offer opening, after initialization settles and while still open. Includes `offer_origin` (`profile`, `mock_test`, `quiz_home`, or `quiz_results`), product, available local price/currency/value, `availability`, and `eligibility` (`eligible`, `owned`, `unavailable`). Eligibility describes app access/product availability, not a guarantee the store will accept payment. |
 | `select_promotion` | Learner taps Get Premium, with the same offer origin. |
 | `begin_checkout` | Product is available and the app invokes checkout; not evidence the native sheet appeared. |
 | `purchase_unavailable` | A checkout action had no loaded product (no start), or the store rejected it as unavailable after a start. Never a sale. |
@@ -46,3 +49,11 @@ Android baseline [#8](https://github.com/deanvanniekerk/k53studyguide/issues/8),
 - [RevenueCat error handling](https://www.revenuecat.com/docs/test-and-launch/errors): payment pending requires additional action; some store errors do not establish whether a charge occurred.
 - [RevenueCat event fields](https://www.revenuecat.com/docs/integrations/webhooks/event-types-and-fields): transaction ID, store, environment, event ID, currency and one-time purchase events.
 - [RevenueCat Firebase integration](https://www.revenuecat.com/docs/integrations/third-party-integrations/firebase-integration): forwarding is separately configured and can emit purchase events.
+
+## Conversion-flow evaluation (#30)
+
+Compare the same app-version, platform and observation window by `offer_origin`. Use unique measured users for invitation reach and offer reach; event counts describe repeated interactions. Keep `view_promotion` as the existing resolved purchase-sheet impression, and `select_promotion` as the actual Get Premium button, so historical definitions remain intact.
+
+Follow invitation view → invitation tap → eligible offer view → begin checkout → checkout outcome. Reconcile confirmed new sales and revenue separately in the stores/RevenueCat; restored or existing access is not a sale. Track free quiz completion and subsequent quiz/study use as guardrails alongside conversion. Low monthly sales need a longer observation window before making uplift claims; this release is a conversion hypothesis, not proof of improvement.
+
+Browser development previews log `[Analytics preview]` to the console instead of calling Firebase. Their price, purchase, restore and reset controls are simulations. Native DebugView and real store sandbox validation remain required after browser design acceptance. Existing `offer_origin` registration supports the new low-cardinality values; no new dimension is needed for the invitation events.

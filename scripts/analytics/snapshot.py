@@ -14,7 +14,7 @@ from google.auth.transport.requests import AuthorizedSession
 from google.oauth2.credentials import Credentials
 
 PROPERTY = "269952161"
-EVENTS = ["first_open", "app_open", "view_promotion", "select_promotion",
+EVENTS = ["first_open", "app_open", "premium_invitation_view", "premium_invitation_tap", "premium_offer_close", "view_promotion", "select_promotion",
           "begin_checkout", "purchase_initialization_error", "purchase_unavailable", "purchase_cancel",
           "purchase_pending", "purchase_error", "checkout_outcome",
           "restore_start", "restore_outcome", "purchase", "in_app_purchase",

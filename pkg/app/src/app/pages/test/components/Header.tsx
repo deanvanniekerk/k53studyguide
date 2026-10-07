@@ -1,152 +1,90 @@
-import { CreateAnimation, IonAlert, IonButton, IonIcon, useIonViewWillEnter } from "@ionic/react";
-import { caretForward, checkmarkCircle, lockClosedOutline } from "ionicons/icons";
+import { IonAlert, IonButton, IonIcon } from "@ionic/react";
+import { checkmarkCircle } from "ionicons/icons";
 import type React from "react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { connect } from "react-redux";
 import { Translate, Translator } from "react-translated";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
-import { PrimaryButton } from "@/app/components";
-import { TestPenIcon } from "@/app/components/icons";
-import PurchaseModal from "@/app/modals/PurchaseModal";
 import type { RootState } from "@/state";
-import { canPurchaseSelector, ownedSelector } from "@/state/purchase";
+import { ownedSelector } from "@/state/purchase";
 import { testsPassedSelector } from "@/state/test/log";
 import { recieveCurrentSection, recieveQuestionAnswers, testInProgressSelector } from "@/state/test/session";
 
-type Props = {
-  onStartTestClicked: () => void;
-} & PropsFromState &
-  PropsFromDispatch;
+type Props = PropsFromState & PropsFromDispatch;
 
 const HeaderComponent: React.FC<Props> = (props) => {
-  const animationIcon = useRef<CreateAnimation>(null);
-  const animationCounter = useRef<CreateAnimation>(null);
-
-  const [purchaseModalVisible, setPurchaseModalVisible] = useState(false);
   const [showResetTestAlert, setShowResetTestAlert] = useState(false);
-
-  useIonViewWillEnter(() => {
-    if (animationIcon.current) animationIcon.current.animation.play();
-    if (animationCounter.current) animationCounter.current.animation.play();
-  });
 
   return (
     <Wrapper>
-      <IntroText>
-        <Translate text="testIntro" />
-      </IntroText>
-      <CreateAnimation
-        play={false}
-        ref={animationIcon}
-        duration={600}
-        delay={100}
-        easing="ease"
-        keyframes={[
-          { offset: 0, transform: "scale(0)" },
-          { offset: 0.8, transform: "scale(1.08)" },
-          { offset: 1, transform: "scale(1)" },
-        ]}
-      >
-        <IllustrationPanel>
-          <TestPenIcon />
-        </IllustrationPanel>
-      </CreateAnimation>
-
       {props.hasFullAccess && (
-        <PrimaryText>
-          <Translate text="testsCompleted" />
-        </PrimaryText>
-      )}
-      {props.hasFullAccess && (
-        <MetricArea>
-          <CreateAnimation
-            play={false}
-            ref={animationCounter}
-            delay={100}
-            duration={500}
-            easing="ease"
-            fromTo={{
-              property: "transform",
-              fromValue: "translateY(85px)",
-              toValue: "translateY(0px)",
-            }}
-          >
-            <Counter>{props.testsPassed}</Counter>
-          </CreateAnimation>
-        </MetricArea>
-      )}
-
-      {props.hasFullAccess && (
-        <>
-          <MasteryText>
-            Pass 3 in a row to <strong>master the test</strong>
-          </MasteryText>
-          <ActionButtonWrap>
-            <PrimaryButton
-              section="test"
-              text={props.testInProgress ? "continueTest" : "enterTest"}
-              rightIcon={caretForward}
-              onClick={() => props.onStartTestClicked()}
-            />
-          </ActionButtonWrap>
+        <PracticeCard>
+          <OpenRoadIllustration
+            src="/assets/images/premium/open-road.webp"
+            alt=""
+            width={1536}
+            height={1024}
+            decoding="async"
+          />
+          <PracticeTitle>
+            <Translate text={props.testInProgress ? "testPracticeContinueTitle" : "testPracticeTitle"} />
+          </PracticeTitle>
+          <PracticeSummary>
+            <MetricArea>
+              <Counter>{props.testsPassed}</Counter>
+              <MetricLabel>
+                <Translate text="testsCompleted" />
+              </MetricLabel>
+            </MetricArea>
+            <MasteryText>
+              <Translate text={props.testsPassed >= 3 ? "testPracticeKeepGoing" : "testMasteryGoal"} />
+            </MasteryText>
+          </PracticeSummary>
           {props.testInProgress && (
             <ResetButton fill="clear" onClick={() => setShowResetTestAlert(true)}>
               <Translate text="resetCurrentTest" />
             </ResetButton>
           )}
-        </>
+        </PracticeCard>
       )}
       {!props.hasFullAccess && (
-        <>
-          <UnlockCard>
-            <UnlockIcon>
-              <IonIcon icon={lockClosedOutline} />
-            </UnlockIcon>
-            <UnlockTitle>
-              <Translate text="testLockedTitle" />
-            </UnlockTitle>
-            <UnlockText>
-              <Translate text="testLockedInfo" />
-            </UnlockText>
-            <BenefitList>
-              <BenefitRow>
-                <BenefitIcon icon={checkmarkCircle} />
-                <BenefitText>
-                  <Translate text="testLockedBenefitStructure" />
-                </BenefitText>
-              </BenefitRow>
-              <BenefitRow>
-                <BenefitIcon icon={checkmarkCircle} />
-                <BenefitText>
-                  <Translate text="testLockedBenefitScoring" />
-                </BenefitText>
-              </BenefitRow>
-              <BenefitRow>
-                <BenefitIcon icon={checkmarkCircle} />
-                <BenefitText>
-                  <Translate text="testLockedBenefitMastery" />
-                </BenefitText>
-              </BenefitRow>
-            </BenefitList>
-          </UnlockCard>
-          <ActionButtonWrap $locked>
-            <PrimaryButton
-              section="test"
-              text="goPremium"
-              disabled={!props.canPurchase}
-              onClick={() => setPurchaseModalVisible(true)}
-            />
-          </ActionButtonWrap>
-        </>
+        <UnlockCard>
+          <OpenRoadIllustration
+            src="/assets/images/premium/open-road.webp"
+            alt=""
+            width={1536}
+            height={1024}
+            decoding="async"
+          />
+          <UnlockTitle>
+            <Translate text="testLockedTitle" />
+          </UnlockTitle>
+          <UnlockText>
+            <Translate text="testLockedInfo" />
+          </UnlockText>
+          <BenefitList>
+            <BenefitRow>
+              <BenefitIcon icon={checkmarkCircle} />
+              <BenefitText>
+                <Translate text="testLockedBenefitStructure" />
+              </BenefitText>
+            </BenefitRow>
+            <BenefitRow>
+              <BenefitIcon icon={checkmarkCircle} />
+              <BenefitText>
+                <Translate text="testLockedBenefitScoring" />
+              </BenefitText>
+            </BenefitRow>
+            <BenefitRow>
+              <BenefitIcon icon={checkmarkCircle} />
+              <BenefitText>
+                <Translate text="testLockedBenefitMastery" />
+              </BenefitText>
+            </BenefitRow>
+          </BenefitList>
+        </UnlockCard>
       )}
-      <PurchaseModal
-        origin="mock_test"
-        isOpen={purchaseModalVisible}
-        onDidDismiss={() => {
-          setPurchaseModalVisible(false);
-        }}
-      />
       <Translator>
         {({ translate }) => (
           <IonAlert
@@ -173,79 +111,44 @@ const HeaderComponent: React.FC<Props> = (props) => {
 
 const Wrapper = styled.div`
   display: flex;
-  min-height: calc(100vh - var(--app-page-content-top) - 120px);
   flex-direction: column;
   align-items: center;
-  padding: var(--app-page-content-top) var(--app-padding) 36px;
+  padding: var(--app-page-content-top) var(--app-padding) 24px;
   text-align: center;
 `;
 
-const IntroText = styled.div`
-  max-width: 320px;
-  color: var(--app-text-primary);
-  font-size: var(--app-font-size-xl);
-  font-weight: 700;
-  line-height: 1.35;
-`;
-
-const IllustrationPanel = styled.div`
-  display: grid;
-  place-items: center;
-  width: min(42vw, 172px);
-  aspect-ratio: 1;
-  margin-top: 16px;
-  border: 2px solid var(--app-test-illustration-border);
-  border-radius: 28px;
-  background: var(--app-test-illustration-background);
-
-  svg {
-    width: 54%;
-    height: 54%;
-  }
-`;
-
-const PrimaryText = styled.div`
-  margin-top: 34px;
-  color: var(--app-question-accent);
-  font-size: var(--app-font-size-xxl);
-  font-family: var(--ion-font-family-bold);
-  font-weight: 900;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-`;
-
 const MetricArea = styled.div`
-  display: grid;
-  min-height: 94px;
-  place-items: center;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 14px;
 `;
 
 const Counter = styled.div`
   color: var(--app-test-accent);
-  font-size: 4.8rem;
+  font-size: 3rem;
   font-family: var(--ion-font-family-bold);
   font-weight: 900;
   line-height: 1;
 `;
 
+const MetricLabel = styled.div`
+  color: var(--app-text-primary);
+  font-size: var(--app-font-size-xl);
+  font-weight: 800;
+`;
+
 const MasteryText = styled.div`
   color: var(--app-text-muted);
-  font-size: var(--app-font-size-xl);
+  font-size: var(--app-font-size-l);
   font-weight: 700;
-  line-height: 1.35;
-
-  strong {
-    color: var(--app-text-primary);
-    font-family: var(--ion-font-family-bold);
-    font-weight: 900;
-  }
+  line-height: 1.45;
 `;
 
 const UnlockCard = styled.div`
   width: 100%;
-  max-width: 380px;
-  margin-top: 22px;
+  max-width: 520px;
+  margin-top: 0;
   padding: 22px 20px;
   border: var(--app-card-border);
   border-radius: 24px;
@@ -253,27 +156,44 @@ const UnlockCard = styled.div`
   box-shadow: var(--app-card-shadow);
 `;
 
-const UnlockIcon = styled.div`
-  display: grid;
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 14px;
-  place-items: center;
-  border-radius: 18px;
-  background: var(--app-premium-benefit-background);
-  color: var(--app-test-accent);
+const PracticeCard = styled(UnlockCard)`
+  padding: 22px 20px 20px;
+`;
 
-  ion-icon {
-    font-size: var(--app-font-size-xxl);
+const PracticeSummary = styled.div`
+  margin-top: 22px;
+  padding: 16px;
+  border: var(--app-card-border);
+  border-radius: 18px;
+  background: var(--app-premium-badge-background);
+  text-align: left;
+`;
+
+const OpenRoadIllustration = styled.img`
+  display: block;
+  width: 100%;
+  height: clamp(112px, 22vh, 184px);
+  object-fit: contain;
+  margin: -4px auto 16px;
+
+  @media (max-height: 650px) {
+    height: 96px;
+    margin-bottom: 12px;
   }
 `;
 
-const UnlockTitle = styled.div`
+const UnlockTitle = styled.h1`
+  margin: 0;
   color: var(--app-text-primary);
   font-family: var(--ion-font-family-bold);
   font-size: var(--app-font-size-xl);
   font-weight: 900;
   line-height: 1.2;
+`;
+
+const PracticeTitle = styled(UnlockTitle)`
+  font-size: clamp(1.75rem, 7.5vw, 2rem);
+  text-wrap: balance;
 `;
 
 const UnlockText = styled.div`
@@ -312,11 +232,6 @@ const BenefitText = styled.div`
   line-height: 1.35;
 `;
 
-const ActionButtonWrap = styled.div<{ $locked?: boolean }>`
-  width: 100%;
-  margin: ${(props) => (props.$locked ? "18px" : "44px")} 0 0;
-`;
-
 const ResetButton = styled(IonButton)`
   width: 100%;
   min-height: 42px;
@@ -333,7 +248,6 @@ const mapStateToProps = (state: RootState) => {
     hasFullAccess: ownedSelector(state),
     testsPassed: testsPassedSelector(state),
     testInProgress: testInProgressSelector(state),
-    canPurchase: canPurchaseSelector(state),
   };
 };
 

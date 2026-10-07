@@ -4,7 +4,8 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import styled from "styled-components";
-import { TestFailedIcon, TestPassedIcon } from "@/app/components/icons";
+import { Illustration } from "@/app/components/Illustration";
+import { PremiumInvitation } from "@/app/components/PremiumInvitation";
 import { useSuccessfulQuizReviewPrompt } from "@/app/hooks/useSuccessfulQuizReviewPrompt";
 import type { RootState } from "@/state";
 import {
@@ -31,14 +32,19 @@ const HeaderComponent: React.FC<Props> = (props) => {
       <Result>
         <Glow />
         <ResultIcon allCorrect={allCorrect} />
-        <div style={{ overflow: "hidden" }}>
-          <ResultText totalCorrectAnswers={props.totalCorrectAnswers} totalQuestions={props.totalQuestions} />
-        </div>
-        <ExperienceGained>
-          <ExperienceIcon icon={props.experienceGained === 0 ? flashOffOutline : flash} />
-          <Translate text="numberExperienceGained" data={{ number: props.experienceGained.toString() }} />
-        </ExperienceGained>
+        <ResultCopy>
+          <div style={{ overflow: "hidden" }}>
+            <ResultText totalCorrectAnswers={props.totalCorrectAnswers} totalQuestions={props.totalQuestions} />
+          </div>
+          <ExperienceGained>
+            <ExperienceIcon icon={props.experienceGained === 0 ? flashOffOutline : flash} />
+            <span>
+              <Translate text="numberExperienceGained" data={{ number: props.experienceGained.toString() }} />
+            </span>
+          </ExperienceGained>
+        </ResultCopy>
       </Result>
+      <PremiumInvitation origin="quiz_results" needsPractice={!allCorrect} />
       <ReviewTitle>
         <IonIcon icon={trophy} />
         <Translate text="results" />
@@ -65,8 +71,7 @@ const ResultIcon: React.FC<ResultIconProps> = (props) => {
       ]}
     >
       <div>
-        {props.allCorrect && <TestPassedIcon style={{ fontSize: "3.7rem" }} />}
-        {!props.allCorrect && <TestFailedIcon style={{ fontSize: "3.7rem" }} />}
+        <Illustration name={props.allCorrect ? "quiz-success" : "quiz-practice"} size={52} />
       </div>
     </CreateAnimation>
   );
@@ -100,16 +105,28 @@ const ResultText: React.FC<ResultTextProps> = (props) => {
 const Result = styled.div`
   position: relative;
   overflow: hidden;
-  margin: var(--app-page-content-top) var(--app-padding) 28px;
-  padding: 28px 22px 26px;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  margin: var(--app-page-content-top) var(--app-padding) 16px;
+  padding: 18px;
+  h2 { margin: 0; font-size: var(--app-font-size-xl); font-weight: 900; }
   border-radius: 28px;
   color: var(--ion-color-light);
   background: var(--app-quiz-header-gradient);
   box-shadow: 0 18px 35px rgba(var(--app-progress-foreground-rgb), 0.2);
   font-size: var(--app-font-size-l);
-  text-align: center;
+  text-align: left;
   font-family: var(--ion-font-family-bold);
   font-weight: bold;
+`;
+
+const ResultCopy = styled.div`
+  position: relative;
+  min-width: 0;
+  display: grid;
+  gap: 6px;
 `;
 
 const Glow = styled.div`
@@ -123,16 +140,18 @@ const Glow = styled.div`
 `;
 
 const ExperienceGained = styled.div`
-  position: relative;
-  padding-top: 12px;
-  text-align: center;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
   font-family: var(--ion-font-family);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-md);
   font-weight: 800;
+  line-height: 1.4;
 `;
 
 const ExperienceIcon = styled(IonIcon)`
-  margin-right: 7px;
+  flex: 0 0 1em;
+  margin-top: 0.2em;
   color: #ffd43b;
 `;
 

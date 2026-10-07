@@ -21,7 +21,11 @@ const PrimaryButton: React.FC<Props> = ({ section, text, rightIcon, disabled, ..
 
 const Button = styled(IonButton)<{ $section: PageSection }>`
   width: 100%;
-  height: 56px;
+  min-height: 56px;
+  height: auto;
+  white-space: normal;
+  --padding-top: 14px;
+  --padding-bottom: 14px;
   margin: 0;
   font-family: var(--ion-font-family-bold);
   font-size: var(--app-font-size-l);

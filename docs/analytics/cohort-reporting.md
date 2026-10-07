@@ -28,7 +28,7 @@ All 12 dimensions below were registered in property `269952161` on **2026-10-06,
 | Scope | Parameter | Purpose and values |
 | --- | --- | --- |
 | User | `premium_status` | Observed access state: `free`, `premium`. Not purchase confirmation or status at acquisition. |
-| Event | `offer_origin` | Offer entry point: `profile`, `mock_test`. |
+| Event | `offer_origin` | Offer entry point: `profile`, `mock_test`, `quiz_home`, `quiz_results`. |
 | Event | `availability` | Product available/unavailable when the offer is measured. |
 | Event | `eligibility` | `eligible`, `owned`, `unavailable`; app state, not store eligibility. |
 | Event | `outcome` | Restore result or `access_granted`; not sale confirmation. |
