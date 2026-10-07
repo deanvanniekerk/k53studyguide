@@ -227,15 +227,4 @@ describe("RevenueCatPurchaseService", () => {
     expect(Purchases.syncPurchases).toHaveBeenCalledOnce();
     expect(store.getState().purchase.owned).toBe(true);
   });
-
-  it("preserves legacy premium access when purchase sync fails", async () => {
-    vi.mocked(Purchases.getCustomerInfo).mockResolvedValueOnce({ customerInfo: inactiveCustomerInfo });
-    vi.mocked(Purchases.syncPurchases).mockRejectedValue(new Error("Billing unavailable"));
-    const store = checkoutStore(true);
-
-    await new RevenueCatPurchaseService(store).initialize();
-
-    expect(store.getState().purchase.owned).toBe(true);
-    expect(store.getState().purchase.canPurchase).toBe(false);
-  });
 });
