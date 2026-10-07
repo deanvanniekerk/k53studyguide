@@ -63,7 +63,8 @@ This is a compatibility refresh, not a complete vulnerability audit or a promise
 - TypeScript and Biome pass; 163 app and 10 website tests pass.
 - App and website production web builds pass.
 - Android `assembleDebug` passes with Firebase processing enabled using the installed Android SDK and Android Studio JDK.
-- Xcode 27 Debug simulator build passes. Runtime and checkout results are recorded in the scene validation document after the simulator run.
+- Xcode 27 Debug simulator and generic iOS device builds pass with signing disabled. The generic device build is compilation coverage, not an installation or physical runtime test. Runtime and checkout results are recorded in the scene validation document.
+- Uninstrumented iOS simulator Test Store cancellation, simulated failure, retry, purchase, premium test entry and restart persistence pass after adding the missing iOS test-catalog identifier. No new explicit restore test is claimed.
 - Physical iOS 27 purchase/restore evidence predates this refresh. Fresh Apple sandbox and Google Play baseline acceptance for these new SDK versions remains a release gate under #12/#17. RevenueCat Test Store coverage cannot replace either real-store gate.
 
 ## Rollback

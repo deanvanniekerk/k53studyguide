@@ -61,11 +61,12 @@ To reproduce, add temporary listeners in a local debug entry point before render
 
 The existing AppDelegate forwarding remains intact. SceneDelegate forwards cold connection options, URL contexts and browsing user activities through Capacitor's SceneDelegateProxy. In installed 8.5.2, cold options are deferred until the bridge view appears; warm handlers update the legacy launch URL and notify the App plugin. This is a source/configuration audit, not a claimed end-to-end deep-link test. If an incoming route is added later, add cold/warm route-delivery tests then.
 
-### Build and checkout limits
+### Build and checkout results
 
 - Xcode 27 simulator build and launch pass; Android `assembleDebug` passes with the real local Firebase file and Firebase processing enabled, superseding the earlier compile-only Android check.
 - Frozen dependency install, TypeScript, Biome, 163 app tests, 10 website tests, and both production web builds pass.
-- The iOS Test Store lookup initially returns no product for `deanvniekerk.k53studyguide.premium_access`, so Go Premium is unavailable. This is a test-catalog/configuration gap; a fresh checkout is not claimed from that run. Android's earlier Test Store purchase used `premium_access` and the previous SDK set.
+- The iOS Test Store initially lacked `deanvniekerk.k53studyguide.premium_access`, returning no product and disabling Go Premium. In Safari, a non-consumable Test Store product was created at USD 0.99 and attached to `premium_access`; actual App Store/Google Play products were unchanged. A full app restart then fetched it without a product-selection code change.
+- On the uninstrumented simulator build, Test Store cancellation (code 1), simulated failure (code 42), retry, valid purchase, premium unlock, mock-test entry and entitlement persistence after a full restart all passed. Test/Profile navigation showed no repeated purchase thank-you. The initial success toast was not captured, so an exact toast count is not claimed. Explicit restore was not exercised in this follow-up. Android's earlier Test Store purchase used `premium_access` and the previous SDK set.
 - Physical Apple sandbox and Google Play purchase/restore checks on the refreshed SDKs remain under #12/#17. The iOS 27 scene fix itself already has earlier physical launch, checkout and restoration evidence, while the new callback check is simulator-only.
 - Purchase CTA visibility remains a separate issue (#30).
 
