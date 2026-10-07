@@ -3,6 +3,10 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
+# Run explicitly from Azure DevOps; pushes and pull requests do not queue builds.
+trigger: none
+pr: none
+
 pool:
     vmImage: "macOS-26"
 
