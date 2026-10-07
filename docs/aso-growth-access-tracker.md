@@ -4,6 +4,8 @@ This document tracks the access, source data, and current analysis state for imp
 
 Last verified: `2026-05-08`
 
+This is a historical setup snapshot. For the dated October acquisition comparison, verified campaign definitions and current priorities, use [Acquisition diagnosis](analytics/acquisition-diagnosis.md). Current event semantics and access limitations are in [cohort reporting](analytics/cohort-reporting.md) and [analytics access](analytics/access.md); the historical instructions below are not a current rollout checklist.
+
 ## Current Goal
 
 Improve Play Store search visibility for K53 Study Guide by combining:
