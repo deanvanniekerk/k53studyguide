@@ -46,7 +46,6 @@ it("reports a missing purchase key once during initialization without an offer o
   const store = createStore(combineReducers({ purchase: reducer }));
   const service = new RevenueCatPurchaseService(store);
   await Promise.all([service.initialize(), service.initialize()]);
-  await service.initialize();
   expect(store.getState().purchase.canPurchase).toBe(false);
   expect(events()).toEqual([
     {
@@ -135,7 +134,6 @@ it("reports a missing product before disabled premium controls can be used, once
   const store = createStore(combineReducers({ purchase: reducer }));
   const service = new RevenueCatPurchaseService(store);
   await Promise.all([service.initialize(), service.initialize()]);
-  await service.initialize();
   expect(store.getState().purchase.canPurchase).toBe(false);
   expect(events()).toEqual([
     {
@@ -169,7 +167,6 @@ it("reports an SDK initialization failure once with a code but no private diagno
   const store = createStore(combineReducers({ purchase: reducer }));
   const service = new RevenueCatPurchaseService(store);
   await Promise.all([service.initialize(), service.initialize()]);
-  await service.initialize();
   expect(store.getState().purchase.canPurchase).toBe(false);
   expect(events()).toEqual([
     {

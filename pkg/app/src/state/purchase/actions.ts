@@ -1,4 +1,4 @@
-import type { OrderState } from "./";
+import type { OrderState, StoreAvailability } from "./";
 
 export const PURCHASE_RECIEVE_PRODUCT_CAN_PURCHASE = "PURCHASE_RECIEVE_PRODUCT_CAN_PURCHASE";
 export const PURCHASE_RECIEVE_PRODUCT_OWNED = "PURCHASE_RECIEVE_PRODUCT_OWNED";
@@ -33,7 +33,19 @@ export interface RecievePurchaseProductAction {
   };
 }
 
+export const recievePurchaseAvailability = (availability: StoreAvailability) => ({
+  type: "PURCHASE_RECIEVE_AVAILABILITY" as const,
+  payload: availability,
+});
+
+export const recievePaymentPending = (pending: boolean) => ({
+  type: "PURCHASE_RECIEVE_PAYMENT_PENDING" as const,
+  payload: pending,
+});
+
 export type PuchaseActions =
+  | ReturnType<typeof recievePurchaseAvailability>
+  | ReturnType<typeof recievePaymentPending>
   | RecievePurchaseProductCanPurchaseAction
   | RecievePurchaseProductOwnedAction
   | RecievePurchaseProductAction

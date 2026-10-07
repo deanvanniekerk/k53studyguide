@@ -10,7 +10,7 @@ export interface PurchaseServiceConstructor {
 
 export interface PurchaseService {
   readonly productId: string;
-  initialize: () => void;
+  initialize: (refresh?: boolean) => void | Promise<void>;
   offerOpened: (origin: OfferOrigin) => () => void;
   purchase: (origin?: OfferOrigin) => void;
   restore: (origin?: OfferOrigin) => void | Promise<void>;

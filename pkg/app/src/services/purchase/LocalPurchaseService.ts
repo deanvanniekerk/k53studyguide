@@ -1,6 +1,7 @@
 import { v4 as uuid } from "uuid";
 import { analytics } from "@/services/analytics";
 import {
+  recievePurchaseAvailability,
   recievePurchaseOrderState,
   recievePurchaseProduct,
   recievePurchaseProductCanPurchase,
@@ -23,6 +24,8 @@ export class LocalPurchaseService implements PurchaseService {
 
   initialize() {
     console.log("LocalPurchaseService > initialize product");
+
+    this._reduxStore.dispatch(recievePurchaseAvailability("ready"));
 
     //Dispatch Status
     const canPurchaseAction = recievePurchaseProductCanPurchase(true); //Test purchase
