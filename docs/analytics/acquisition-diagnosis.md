@@ -59,7 +59,7 @@ Property `269952161`, Android stream `2438737068`. Read-only Data API reports us
 
 The joint country/version/source query confirms that Nigerian new-user rows are version 1.29 and direct/none, while most South African new users are version 1.38 from google-play/organic. All these Android rows report the same stream. Play's completed acquisitions are overwhelmingly South African. **The origin of the older-version international traffic is unverified**: sideloading, redistribution, identity changes or collection problems remain hypotheses, not findings. Segment it before forecasting qualified South African demand.
 
-The production Play track currently lists **38 (1.38), completed**; its dashboard says released **6 July 2026**, before both comparison windows. The October checkout/analytics changes are merged code, not evidence that a new store release reached learners. App-version reports describe observed versions; they do not demonstrate a release caused the decline.
+The production Play track currently lists **38 (1.38), completed**. This current-track snapshot does not reconstruct rollout timing across the comparison windows. The October checkout/analytics changes are merged code, not evidence that a new store release reached learners. App-version reports describe observed versions; they do not demonstrate a release caused the decline.
 
 The website recorded three canonical store-referral clicks from two users in the prior period and no received row with activity in the recent period. The older platform-specific Android click overlaps the canonical event and is not another acquisition. Website host/test coverage is not fully verified for these historical dates; these counts are not a production conversion rate.
 
