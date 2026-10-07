@@ -7,7 +7,6 @@ export type AnalyticsEventName =
   | "app_open"
   | "onboarding_info_view"
   | "study_content_view"
-  | "study_section_complete"
   | "quiz_start"
   | "quiz_answer"
   | "quiz_complete"
@@ -21,7 +20,11 @@ export type AnalyticsEventName =
   | "purchase_pending"
   | "purchase_cancel"
   | "purchase_error"
-  | "purchase";
+  | "checkout_outcome"
+  | "purchase_unavailable"
+  | "purchase_initialization_error"
+  | "restore_start"
+  | "restore_outcome";
 
 export type LegacyAnalyticsEventName =
   | "PRESENT_OFFER"
@@ -30,10 +33,8 @@ export type LegacyAnalyticsEventName =
   | "CLEAR_HISTORY"
   | "START_QUIZ"
   | "CONTINUE_QUIZ"
-  | "QUIZ_RESULT"
   | "START_TEST"
-  | "CONTINUE_TEST"
-  | "TEST_RESULT";
+  | "CONTINUE_TEST";
 
 export type AnalyticsParamValue = string | number | null | undefined;
 export type AnalyticsParams = Record<string, AnalyticsParamValue>;
@@ -45,6 +46,13 @@ type PurchaseParams = {
   value?: number;
   offer_surface?: string;
   cta_location?: string;
+  offer_origin?: string;
+  availability?: "available" | "unavailable";
+  eligibility?: "eligible" | "owned" | "unavailable";
+  attempt_id?: string;
+  error_code?: string;
+  transaction_environment?: "sandbox" | "production" | "unknown";
+  execution_context?: string;
 };
 
 type UserProperties = {
@@ -52,8 +60,6 @@ type UserProperties = {
   theme?: string;
   premium_status?: PremiumStatus;
 };
-
-const DEFAULT_CURRENCY = "ZAR";
 
 const normalizeParams = (params?: AnalyticsParams): Record<string, string | number> | undefined => {
   if (!params) return undefined;
@@ -71,7 +77,7 @@ const scorePercent = (correctCount: number, questionCount: number) => {
 };
 
 const purchaseParams = (params: PurchaseParams): AnalyticsParams => ({
-  currency: params.currency ?? DEFAULT_CURRENCY,
+  currency: params.currency,
   value: params.value,
   price: params.price,
   product_id: params.product_id,
@@ -79,6 +85,13 @@ const purchaseParams = (params: PurchaseParams): AnalyticsParams => ({
   item_name: params.product_id,
   offer_surface: params.offer_surface,
   cta_location: params.cta_location,
+  offer_origin: params.offer_origin,
+  availability: params.availability,
+  eligibility: params.eligibility,
+  attempt_id: params.attempt_id,
+  error_code: params.error_code,
+  transaction_environment: params.transaction_environment,
+  execution_context: params.execution_context,
 });
 
 const runNativeAnalytics = (operation: Promise<void> | void) => {
@@ -120,10 +133,6 @@ export const analytics = {
     this.logEvent("study_content_view", params);
   },
 
-  trackStudySectionComplete(params: { content_key: string; content_category: string }) {
-    this.logEvent("study_section_complete", params);
-  },
-
   trackQuizStart(params: { quiz_mode: "new" | "continue"; question_count?: number }) {
     this.logEvent("quiz_start", params);
   },
@@ -134,6 +143,7 @@ export const analytics = {
 
   trackQuizComplete(params: { question_count: number; correct_count: number; experience_gained: number }) {
     this.logEvent("quiz_complete", {
+      analytics_schema_version: "v2",
       question_count: params.question_count,
       correct_count: params.correct_count,
       score_percent: scorePercent(params.correct_count, params.question_count),
@@ -160,6 +170,7 @@ export const analytics = {
     section_c_passed: boolean;
   }) {
     this.logEvent("mock_test_complete", {
+      analytics_schema_version: "v2",
       ...params,
       passed: params.passed ? "true" : "false",
       section_a_passed: params.section_a_passed ? "true" : "false",
@@ -194,7 +205,7 @@ export const analytics = {
       pending: "purchase_pending",
       cancelled: "purchase_cancel",
       error: "purchase_error",
-      finished: "purchase",
+      finished: "checkout_outcome",
     };
     const eventName = eventByOrderState[orderState];
     if (!eventName) return;
@@ -202,6 +213,7 @@ export const analytics = {
     this.logEvent(eventName, {
       ...purchaseParams(params),
       purchase_state: orderState,
+      ...(orderState === "finished" ? { outcome: "access_granted" } : {}),
     });
   },
 };

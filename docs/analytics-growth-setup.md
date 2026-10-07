@@ -43,9 +43,7 @@ Tracked in study/content pages.
 - `study_content_view`
   - Fires once per content card when it becomes visible.
   - Params: `content_key`, `content_category`.
-- `study_section_complete`
-  - Fires at the same meaningful visibility milestone as `study_content_view`.
-  - Params: `content_key`, `content_category`.
+- `study_section_complete` is retired; visibility is not demonstrated learning completion.
 
 Legacy continuity:
 
@@ -53,7 +51,7 @@ Legacy continuity:
 
 ### Quiz engagement
 
-Tracked in quiz start, quiz session, and quiz result components.
+Tracked in quiz start/session components and the guarded submission operation.
 
 - `quiz_start`
   - Fires when the user starts or continues a quiz.
@@ -61,58 +59,41 @@ Tracked in quiz start, quiz session, and quiz result components.
 - `quiz_answer`
   - Fires when the user selects an answer in a quiz or mock test session.
   - Params: `question_id`, `answer_id`, `question_index`.
-- `quiz_complete`
-  - Fires on the quiz result screen.
+- `quiz_complete` (submission only, `analytics_schema_version = "v2"`)
+  - Fires once when a non-empty, fully answered practice quiz is submitted.
   - Params: `question_count`, `correct_count`, `score_percent`, `experience_gained`.
 
 Legacy continuity:
 
-- `START_QUIZ`, `CONTINUE_QUIZ`, and `QUIZ_RESULT` still fire with normalized scalar params.
+- `START_QUIZ` and `CONTINUE_QUIZ` still fire. `QUIZ_RESULT` is retired; do not add historical result views to canonical completion counts.
 
 ### Mock test engagement
 
-Tracked in test start, test session, and test result components.
+Tracked in test start/session components and the guarded submission operation.
 
 - `mock_test_start`
   - Fires when the user starts or continues a mock test.
   - Params: `quiz_mode`: `new` or `continue`.
-- `mock_test_complete`
-  - Fires on the mock test result screen.
+- `mock_test_complete` (submission only, `analytics_schema_version = "v2"`)
+  - Fires once when a non-empty, fully answered mock test is submitted.
   - Params: `question_count`, `correct_count`, `score_percent`, `passed`, section-level correct/total/pass values.
 
 Legacy continuity:
 
-- `START_TEST`, `CONTINUE_TEST`, and `TEST_RESULT` still fire with normalized scalar params.
+- `START_TEST` and `CONTINUE_TEST` still fire. `TEST_RESULT` is retired; do not add historical result views to canonical completion counts.
 
 ### Premium and purchase funnel
 
-Tracked in `PurchaseModal`, `CordovaPurchaseService`, and `LocalPurchaseService`.
+Tracked in `PurchaseModal`, `RevenueCatPurchaseService`, and `LocalPurchaseService`. The authoritative [premium journey contract](analytics/purchase-measurement.md) defines exact payloads, lifecycle boundaries, environment labels and reconciliation requirements.
 
-- `view_promotion`
-  - Fires when the premium modal opens.
-  - Params: `product_id`, `price`, `currency`, `item_id`, `item_name`, `offer_surface`.
-- `select_promotion`
-  - Fires when the user taps the premium CTA.
-  - Params: `product_id`, `price`, `currency`, `item_id`, `item_name`, `offer_surface`, `cta_location`.
-- `begin_checkout`
-  - Fires before `store.order(...)` starts.
-  - Params: `product_id`, `price`, `currency`, `value`, `item_id`, `item_name`.
-- `purchase_pending`
-  - Fires when the purchase plugin reports pending.
-  - Params include `purchase_state`.
-- `purchase_cancel`
-  - Fires when the purchase plugin returns `PAYMENT_CANCELLED`.
-  - Params include `purchase_state`.
-- `purchase_error`
-  - Fires for non-cancel purchase errors.
-  - Params include `purchase_state`.
-- `purchase`
-  - Fires when the purchase plugin reports `finished`.
-  - Params include `purchase_state`.
+- `purchase_initialization_error` records setup/load failures even when premium controls are disabled; it is not an offer or checkout.
+- `view_promotion` records one still-open offer after initialization settles, with origin, availability, eligibility and available local price/currency.
+- `select_promotion` records Get Premium; `begin_checkout` records the app invoking checkout with a loaded product.
+- `purchase_cancel`, `purchase_pending`, `purchase_error`, and `purchase_unavailable` distinguish action/SDK outcomes. Pending means a deferred store payment, not an open sheet.
+- `checkout_outcome` records active premium access returned by the SDK. Existing access can satisfy it, so it is not a sale counter.
+- `restore_start` and `restore_outcome` describe recovery of existing access and never add a sale.
 
-Legacy continuity:
-
-- `PRESENT_OFFER` still fires when the premium modal opens.
+`PRESENT_OFFER` and client `purchase` emission are retired. Checkout/restore actions and their outcomes share a random attempt ID; initialization failures have no attempt ID. Use reconciled RevenueCat/store transactions for confirmed revenue and keep historical client events separate. Local simulations and sandbox activity must be excluded from production reporting according to the contract.
 
 ### Profile actions
 
@@ -131,22 +112,11 @@ Legacy continuity:
 
 ### Landing page acquisition
 
-Tracked in `pkg/lander/index.html`.
+Tracked in `pkg/lander/index.html` and the interactive demo. The authoritative [website referral contract](analytics/website-referrals.md) lists all 11 placement/platform pairs, collection guards, exclusions and delivery checks.
 
-- `landing_page_view`
-  - Fires once on page load when `VITE_GA_MEASUREMENT_ID` is present.
-  - Params: `page_location`, `page_title`.
-- `select_store_cta`
-  - Fires when any Google Play CTA is clicked.
-  - Params: `cta_location`, `store_platform`.
-- `play_store_referral_click`
-  - Fires with the same click as `select_store_cta`.
-  - Params: `cta_location`, `store_platform`.
-- `ios_interest`
-  - Fires when an App Store coming-soon CTA is clicked.
-  - Params: `cta_location`, `store_platform`.
+`select_store_cta` is the canonical click event for both Google Play and App Store, with `cta_location` and `store_platform`. Platform-specific referral events overlap with that event and must not be added to it. A click is not an install. Existing store destinations and new-tab behavior are preserved.
 
-Existing Play Store `referrer=utm_source...` URLs are preserved.
+GA4 and PostHog initialize only on the exact production apex/www hosts. Custom events include `analytics_environment` and `analytics_test`; QA visits must be excluded from production analysis. `landing_page_view` overlaps automatic page views: choose one documented page-view denominator.
 
 ### PostHog (landing page)
 
@@ -170,8 +140,7 @@ Key lander interactions that reach PostHog this way:
   `quiz_demo_complete` (with `question_count`, `correct_count`,
   `experience_gained`), plus `quiz_demo_continue`, `quiz_demo_section_select`,
   `quiz_demo_tab_select`, `quiz_demo_locked_tab`, and `quiz_demo_theme_toggle`.
-- Store conversion → `select_store_cta`, `play_store_referral_click`,
-  `ios_interest`.
+- Store referral → canonical `select_store_cta`; platform-specific referral events are overlapping observations, not additional conversions.
 
 ## GA Measurement ID Reference
 
@@ -193,52 +162,12 @@ VITE_GA_MEASUREMENT_ID="G-XXXXXXXXXX"
 
 `.dev.env` is ignored by git. Keep `.dev.env.example` committed with an empty placeholder only.
 
-The lander deploy script sources `.dev.env`, then runs the Vite build, so `pnpm deploy:lander` injects the Measurement ID into the production HTML.
+The lander deploy script sources `.dev.env`, then runs the Vite build, so `pnpm lander:deploy` injects the Measurement ID into the production HTML.
 
-## GA4 Admin Configuration
+## GA4 reporting configuration
 
-Create these event-scoped custom dimensions:
+Use the verified [dimension ledger and reporting recipes](analytics/cohort-reporting.md) as the authority for scopes, registration dates, processing availability, retention and exclusions. Do not independently register the older broad dimension list from historical versions of this document. In particular, `premium_status` is user-scoped and assessment schema uses the string `v2`.
 
-- `screen_name`
-- `cta_location`
-- `offer_surface`
-- `product_id`
-- `premium_status`
-- `quiz_mode`
-- `passed`
-- `language`
-- `theme`
-- `content_key`
-- `content_category`
-- `history_type`
-- `purchase_state`
-- `store_platform`
+The reporting contract separates offer reach, sequential conversion, attempt outcomes, confirmed transactions and acquired-cohort retention. Aggregate event counts cannot prove a sequential funnel, and website clicks cannot be joined to app installs without verified attribution. The live configuration and processing/reconciliation gates are recorded there; this overview does not assert that all production measurement gates have passed.
 
-Create these custom metrics if numeric aggregation is needed:
-
-- `score_percent`
-- `question_count`
-- `correct_count`
-- `experience_gained`
-- `value`
-
-Mark these events as key events:
-
-- `purchase`
-- `begin_checkout`
-- `select_promotion`
-- `mock_test_start`
-- `mock_test_complete`
-- `quiz_complete`
-- `select_store_cta`
-
-## Useful GA Explorations
-
-- Website CTA click to first app open.
-- First app open to quiz completion.
-- Quiz completion to premium offer view.
-- Offer view to checkout start.
-- Checkout start to purchase, cancel, or error.
-- Free vs premium engagement and retention.
-
-Add a GA annotation for each release that changes analytics, purchase UX, pricing, or landing-page CTA placement.
+Assessment semantics and per-platform release cutover: [study visibility and assessment completion](analytics/assessment-completion.md).

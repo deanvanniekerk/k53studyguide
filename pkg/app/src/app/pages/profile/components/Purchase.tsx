@@ -61,6 +61,7 @@ const PurchaseComponent: React.FC<Props> = (props) => {
         </PremiumCard>
       )}
       <PurchaseModal
+        origin="profile"
         isOpen={purchaseModalVisible}
         onDidDismiss={() => {
           setPurchaseModalVisible(false);

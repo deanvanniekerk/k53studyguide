@@ -1,3 +1,4 @@
+import { v4 as uuid } from "uuid";
 import { analytics } from "@/services/analytics";
 import {
   recievePurchaseOrderState,
@@ -6,7 +7,7 @@ import {
   recievePurchaseProductOwned,
 } from "@/state/purchase";
 import { DEFAULT_PREMIUM_PRODUCT_ID } from "./productIds";
-import type { PurchaseService, PurchaseStore } from "./types";
+import type { OfferOrigin, PurchaseService, PurchaseStore } from "./types";
 
 export class LocalPurchaseService implements PurchaseService {
   private readonly _reduxStore: PurchaseStore;
@@ -42,21 +43,32 @@ export class LocalPurchaseService implements PurchaseService {
     this._reduxStore.dispatch(productAction);
   }
 
-  purchase() {
+  offerOpened(origin: OfferOrigin) {
+    analytics.trackPromotionView({
+      ...this.getAnalyticsPurchaseParams(),
+      offer_origin: origin,
+      offer_surface: "purchase_modal",
+      availability: "available",
+      eligibility: "eligible",
+    });
+    return () => {};
+  }
+
+  purchase(origin?: OfferOrigin) {
+    const params = { ...this.getAnalyticsPurchaseParams(), attempt_id: uuid(), offer_origin: origin ?? "unknown" };
     console.log("LocalPurchaseService > purchase");
 
-    analytics.trackBeginCheckout(this.getAnalyticsPurchaseParams());
+    analytics.trackBeginCheckout(params);
 
     let statusAction = recievePurchaseOrderState("pending");
     this._reduxStore.dispatch(statusAction);
-    analytics.trackPurchaseState("pending", this.getAnalyticsPurchaseParams());
 
     statusAction = recievePurchaseOrderState("approved");
     this._reduxStore.dispatch(statusAction);
 
     statusAction = recievePurchaseOrderState("finished");
     this._reduxStore.dispatch(statusAction);
-    analytics.trackPurchaseState("finished", this.getAnalyticsPurchaseParams());
+    analytics.trackPurchaseState("finished", params);
 
     const canPurchaseAction = recievePurchaseProductCanPurchase(false);
     this._reduxStore.dispatch(canPurchaseAction);
@@ -83,6 +95,8 @@ export class LocalPurchaseService implements PurchaseService {
 
   private getAnalyticsPurchaseParams() {
     return {
+      execution_context: "local",
+      transaction_environment: "sandbox" as const,
       product_id: this._productId,
       price: "R25",
       currency: "ZAR",

@@ -76,9 +76,14 @@ const defaultQuizPreviewState: QuizPreviewState = {
 
 const trackAnalyticsEvent = (eventName: string, params: Record<string, string | number | boolean> = {}) => {
   const analyticsWindow = window as Window & {
+    K53_ANALYTICS_ENABLED?: boolean;
+    K53_ANALYTICS_PROPERTIES?: Record<string, string | boolean>;
     gtag?: (...args: unknown[]) => void;
     posthog?: { capture?: (event: string, properties?: Record<string, unknown>) => void };
   };
+
+  if (!analyticsWindow.K53_ANALYTICS_ENABLED) return;
+  params = { ...params, ...analyticsWindow.K53_ANALYTICS_PROPERTIES };
 
   if (typeof analyticsWindow.gtag === "function") {
     analyticsWindow.gtag("event", eventName, params);

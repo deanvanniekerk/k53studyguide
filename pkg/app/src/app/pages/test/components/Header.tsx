@@ -141,6 +141,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
         </>
       )}
       <PurchaseModal
+        origin="mock_test"
         isOpen={purchaseModalVisible}
         onDidDismiss={() => {
           setPurchaseModalVisible(false);

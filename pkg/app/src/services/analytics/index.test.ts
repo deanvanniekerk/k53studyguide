@@ -30,6 +30,7 @@ describe("services > analytics", () => {
     expect(analyticsFirebaseMock.logEvent).toHaveBeenCalledWith({
       name: "quiz_complete",
       params: {
+        analytics_schema_version: "v2",
         question_count: 10,
         correct_count: 7,
         score_percent: 70,
@@ -38,7 +39,7 @@ describe("services > analytics", () => {
     });
   });
 
-  it("maps purchase order states to funnel events", () => {
+  it("reports entitlement access without claiming a confirmed sale", () => {
     analytics.trackPurchaseState("finished", {
       product_id: "premium_access",
       price: "R25",
@@ -47,7 +48,7 @@ describe("services > analytics", () => {
     });
 
     expect(analyticsFirebaseMock.logEvent).toHaveBeenCalledWith({
-      name: "purchase",
+      name: "checkout_outcome",
       params: {
         currency: "ZAR",
         value: 25,
@@ -56,6 +57,7 @@ describe("services > analytics", () => {
         item_id: "premium_access",
         item_name: "premium_access",
         purchase_state: "finished",
+        outcome: "access_granted",
       },
     });
   });

@@ -150,11 +150,11 @@ describe("state > test > session > operations", () => {
 
     const actions = store.getActions();
 
-    expect(actions.length).toEqual(1);
+    expect(actions.length).toEqual(2);
 
-    expect(actions[0].payload.questionId).toEqual(questions[0].id);
+    expect(actions[1].payload.questionId).toEqual(questions[0].id);
 
-    expect(actions[0].payload.date).toEqual(now.toISOString());
+    expect(actions[1].payload.date).toEqual(now.toISOString());
 
     vi.useRealTimers();
   });
@@ -202,8 +202,8 @@ describe("state > test > session > operations", () => {
 
     const actions = store.getActions();
 
-    expect(actions.length).toEqual(1 + 8 + 28 + 28);
+    expect(actions.length).toEqual(2 + 8 + 28 + 28);
 
-    expect(actions[0]).toEqual(incrementPassedTests());
+    expect(actions[1]).toEqual(incrementPassedTests());
   });
 });

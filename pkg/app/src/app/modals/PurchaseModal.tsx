@@ -1,6 +1,6 @@
 import { Capacitor } from "@capacitor/core";
 import { IonButton, IonLoading, IonModal, IonToast } from "@ionic/react";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { Translate, Translator } from "react-translated";
 import { bindActionCreators, type Dispatch } from "redux";
@@ -9,6 +9,7 @@ import { CloseButton } from "@/app/components";
 import { BookOutlineIcon, ResetIcon, TestPenIcon, YinYangIcon } from "@/app/components/icons";
 import { PurchaseContext } from "@/context";
 import { DEFAULT_PREMIUM_PRODUCT_ID } from "@/services";
+import type { OfferOrigin } from "@/services/purchase/types";
 import type { RootState } from "@/state";
 import { purchaseSelector, recievePurchaseOrderState } from "@/state/purchase";
 import { useAnalytics } from "../hooks/useAnalytics";
@@ -16,12 +17,13 @@ import { watermarkStyle } from "../styles";
 
 type Props = {
   isOpen: boolean;
+  origin: OfferOrigin;
   onDidDismiss: () => void;
 } & PropsFromState &
   PropsFromDispatch;
 
 const PurchaseModal: React.FC<Props> = (props) => {
-  const { analytics, logEvent } = useAnalytics();
+  const { analytics } = useAnalytics();
 
   const purchaseService = useContext(PurchaseContext);
 
@@ -30,7 +32,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
   const [showFailedToast, setShowFailedToast] = useState(false);
   const [showRestoreFailedToast, setShowRestoreFailedToast] = useState(false);
   const [showCancelledToast, setShowCancelledToast] = useState(false);
-  const [restoreAttempted, setRestoreAttempted] = useState(false);
+  const activeOperation = useRef<"purchase" | "restore" | null>(null);
 
   const isPending = props.purchase.orderState === "pending";
   const premiumProductId = purchaseService?.productId ?? DEFAULT_PREMIUM_PRODUCT_ID;
@@ -38,44 +40,36 @@ const PurchaseModal: React.FC<Props> = (props) => {
   useEffect(() => {
     if (!props.isOpen) return;
 
-    analytics.trackPromotionView({
-      product_id: premiumProductId,
-      price: props.purchase.price,
-      offer_surface: "purchase_modal",
-    });
-    logEvent("PRESENT_OFFER");
-  }, [analytics, logEvent, premiumProductId, props.isOpen, props.purchase.price]);
+    return purchaseService?.offerOpened(props.origin);
+  }, [props.isOpen, props.origin, purchaseService]);
 
   useEffect(() => {
-    if (props.purchase.orderState === "finished") {
-      if (restoreAttempted) {
-        setShowRestoreToast(true);
-        setRestoreAttempted(false);
-      } else {
-        setShowOwnedToast(true);
-      }
+    const operation = activeOperation.current;
+    if (!operation) return;
+
+    const { orderState, owned } = props.purchase;
+    const purchased = operation === "purchase" && orderState === "finished";
+    const restored = operation === "restore" && orderState === "ready" && owned;
+    if (!purchased && !restored && orderState !== "error" && orderState !== "cancelled") return;
+
+    // A saved terminal state is not a new checkout. Only its initiating modal
+    // consumes the result, once, even when other pages are mounted.
+    activeOperation.current = null;
+    if (purchased) setShowOwnedToast(true);
+    if (restored) setShowRestoreToast(true);
+    if (orderState === "error") {
+      if (operation === "restore") setShowRestoreFailedToast(true);
+      else setShowFailedToast(true);
     }
-    if (props.purchase.owned) {
-      if (restoreAttempted) {
-        setShowRestoreToast(true);
-        setRestoreAttempted(false);
-      }
-      setTimeout(props.onDidDismiss, 500);
-    }
-    if (props.purchase.orderState === "error") {
-      if (restoreAttempted) {
-        setShowRestoreFailedToast(true);
-        setRestoreAttempted(false);
-      } else {
-        setShowFailedToast(true);
-      }
-      props.recievePurchaseOrderState("ready"); //reset
-    }
-    if (props.purchase.orderState === "cancelled") {
-      setShowCancelledToast(true);
-      props.recievePurchaseOrderState("ready"); //reset
-    }
-  }, [props.purchase]);
+    if (orderState === "cancelled") setShowCancelledToast(true);
+    if (orderState !== "ready") props.recievePurchaseOrderState("ready");
+  }, [props.purchase, props.recievePurchaseOrderState]);
+
+  useEffect(() => {
+    if (!props.isOpen || !props.purchase.owned) return;
+    const timeout = setTimeout(props.onDidDismiss, 500);
+    return () => clearTimeout(timeout);
+  }, [props.isOpen, props.purchase.owned, props.onDidDismiss]);
 
   return (
     <React.Fragment>
@@ -199,14 +193,15 @@ const PurchaseModal: React.FC<Props> = (props) => {
                 fill="solid"
                 disabled={!props.purchase.canPurchase || isPending || !purchaseService || undefined}
                 onClick={() => {
-                  setRestoreAttempted(false);
+                  activeOperation.current = "purchase";
                   analytics.trackPromotionSelect({
                     product_id: premiumProductId,
                     price: props.purchase.price,
                     offer_surface: "purchase_modal",
+                    offer_origin: props.origin,
                     cta_location: "purchase_modal_get_premium",
                   });
-                  if (purchaseService) purchaseService.purchase();
+                  if (purchaseService) purchaseService.purchase(props.origin);
                 }}
               >
                 <Translate text="getPremium" />
@@ -216,8 +211,8 @@ const PurchaseModal: React.FC<Props> = (props) => {
                 fill="clear"
                 disabled={isPending || !purchaseService || undefined}
                 onClick={() => {
-                  setRestoreAttempted(true);
-                  void purchaseService?.restore();
+                  activeOperation.current = "restore";
+                  void purchaseService?.restore(props.origin);
                 }}
               >
                 <Translate text="restorePurchase" />
