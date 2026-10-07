@@ -186,6 +186,35 @@ describe("RevenueCatPurchaseService", () => {
     },
   );
 
+  it.each(["initialize", "purchase", "restore"] as const)(
+    "keeps a newer entitlement listener update when a slower %s response settles",
+    async (operation) => {
+      const store = checkoutStore();
+      const service = new RevenueCatPurchaseService(store);
+      if (operation !== "initialize") await service.initialize();
+      let finish!: (value: { customerInfo: CustomerInfo }) => void;
+      const response = new Promise<{ customerInfo: CustomerInfo }>((resolve) => {
+        finish = resolve;
+      });
+      const method =
+        operation === "initialize"
+          ? Purchases.getCustomerInfo
+          : operation === "purchase"
+            ? Purchases.purchaseStoreProduct
+            : Purchases.restorePurchases;
+      vi.mocked(method).mockReturnValue(response as ReturnType<typeof Purchases.purchaseStoreProduct>);
+      const attempt = service[operation]();
+      await vi.waitFor(() => expect(method).toHaveBeenCalled());
+      vi.mocked(Purchases.addCustomerInfoUpdateListener).mock.calls[0][0](activeCustomerInfo);
+      expect(store.getState().purchase.owned).toBe(true);
+      finish({ customerInfo: inactiveCustomerInfo });
+      await attempt;
+      expect(store.getState().purchase.owned).toBe(true);
+      expect(store.getState().purchase.paymentPending).toBe(false);
+      expect(store.getState().purchase.orderState).not.toBe("deferred");
+    },
+  );
+
   it("syncs purchases before clearing a legacy premium user without RevenueCat entitlement", async () => {
     vi.mocked(Purchases.getCustomerInfo)
       .mockResolvedValueOnce({ customerInfo: inactiveCustomerInfo })

@@ -45,6 +45,8 @@ export class RevenueCatPurchaseService implements PurchaseService {
   private _listening = false;
   private _legacyAccessPending = false;
   private _operationInFlight = false;
+  private _customerInfoRevision = 0;
+  private _latestCustomerInfo?: CustomerInfo;
   private _deferredPurchase?: Parameters<typeof analytics.trackBeginCheckout>[0];
 
   constructor(reduxStore: PurchaseStore) {
@@ -119,7 +121,9 @@ export class RevenueCatPurchaseService implements PurchaseService {
     this._reduxStore.dispatch(recievePurchaseOrderState("pending"));
 
     try {
-      const { customerInfo } = await Purchases.purchaseStoreProduct({ product: this._product });
+      const revision = this._customerInfoRevision;
+      const result = await Purchases.purchaseStoreProduct({ product: this._product });
+      const customerInfo = this.currentCustomerInfo(result.customerInfo, revision);
       const hasFullAccess = this.applyCustomerInfo(customerInfo);
       if (!hasFullAccess) {
         this.deferPurchase(params);
@@ -174,7 +178,9 @@ export class RevenueCatPurchaseService implements PurchaseService {
     this._reduxStore.dispatch(recievePurchaseOrderState("pending"));
 
     try {
-      const { customerInfo } = await Purchases.restorePurchases();
+      const revision = this._customerInfoRevision;
+      const result = await Purchases.restorePurchases();
+      const customerInfo = this.currentCustomerInfo(result.customerInfo, revision);
       const hasFullAccess = this.applyCustomerInfo(customerInfo);
       this._reduxStore.dispatch(recievePurchaseOrderState(hasFullAccess ? "ready" : "error"));
       analytics.logEvent("restore_outcome", {
@@ -210,6 +216,7 @@ export class RevenueCatPurchaseService implements PurchaseService {
   }
 
   private async initializeRevenueCat() {
+    const revision = this._customerInfoRevision;
     this._initialized = false;
     this._reduxStore.dispatch(recievePurchaseAvailability("loading"));
     this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
@@ -245,6 +252,8 @@ export class RevenueCatPurchaseService implements PurchaseService {
       if (!this._listening) {
         await Purchases.setLogLevel({ level: LOG_LEVEL.WARN });
         await Purchases.addCustomerInfoUpdateListener((customerInfo) => {
+          this._customerInfoRevision += 1;
+          this._latestCustomerInfo = customerInfo;
           this.applyCustomerInfo(customerInfo);
         });
         this._listening = true;
@@ -266,7 +275,9 @@ export class RevenueCatPurchaseService implements PurchaseService {
       // A billing/product error must not suppress an independently fetched entitlement.
       if (customerResult.status === "fulfilled") {
         this.logCustomerInfoDiagnostics(customerResult.value.customerInfo, "initialize");
-        await this.applyCustomerInfoWithLegacySync(customerResult.value.customerInfo);
+        await this.applyCustomerInfoWithLegacySync(
+          this.currentCustomerInfo(customerResult.value.customerInfo, revision),
+        );
       }
       if (productResult.status === "rejected") throw productResult.reason;
       if (customerResult.status === "rejected") throw customerResult.reason;
@@ -319,6 +330,13 @@ export class RevenueCatPurchaseService implements PurchaseService {
     }
   }
 
+  private currentCustomerInfo(response: CustomerInfo, startedAtRevision: number) {
+    // A listener update delivered during the request supersedes its older response.
+    return this._customerInfoRevision !== startedAtRevision && this._latestCustomerInfo
+      ? this._latestCustomerInfo
+      : response;
+  }
+
   private applyCustomerInfo(customerInfo: CustomerInfo) {
     const hasRevenueCatFullAccess = this.hasFullAccess(customerInfo);
     if (hasRevenueCatFullAccess) this._legacyAccessPending = false;
@@ -361,8 +379,10 @@ export class RevenueCatPurchaseService implements PurchaseService {
 
     try {
       this.log("INFO", "RevenueCatPurchaseService > initialize > syncing legacy purchase");
+      const revision = this._customerInfoRevision;
       await Purchases.syncPurchases();
-      const { customerInfo: syncedCustomerInfo } = await Purchases.getCustomerInfo();
+      const result = await Purchases.getCustomerInfo();
+      const syncedCustomerInfo = this.currentCustomerInfo(result.customerInfo, revision);
       this._legacyAccessPending = false;
       return this.applyCustomerInfo(syncedCustomerInfo);
     } catch (error) {
