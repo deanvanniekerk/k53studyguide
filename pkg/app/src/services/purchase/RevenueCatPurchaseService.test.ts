@@ -175,7 +175,9 @@ describe("RevenueCatPurchaseService", () => {
       expect(store.getState().purchase.paymentPending).toBe(false);
       const events = vi.mocked(FirebaseAnalytics.logEvent).mock.calls.map(([event]) => event);
       const begin = events.find((event) => event.name === "begin_checkout");
-      expect(events.filter((event) => event.name === "purchase_pending")).toHaveLength(1);
+      expect(events.filter((event) => event.name === "purchase_pending")).toHaveLength(
+        scenario === "store_pending" ? 1 : 0,
+      );
       const outcomes = events.filter((event) => event.name === "checkout_outcome");
       expect(outcomes).toHaveLength(1);
       expect(outcomes[0].params).toMatchObject({
@@ -183,6 +185,36 @@ describe("RevenueCatPurchaseService", () => {
         offer_origin: "mock_test",
         outcome: "access_granted",
       });
+    },
+  );
+
+  it.each(["no_entitlement", "restore_failure"])(
+    "only releases a deferred retry after a successful explicit restore (%s)",
+    async (outcome) => {
+      const store = checkoutStore();
+      const service = new RevenueCatPurchaseService(store);
+      vi.mocked(Purchases.purchaseStoreProduct).mockRejectedValueOnce({ code: "pending" });
+      await service.purchase("mock_test");
+      // Passive refresh cannot establish whether a store-pending payment was declined.
+      await service.initialize(true);
+      expect(store.getState().purchase.paymentPending).toBe(true);
+      if (outcome === "restore_failure") {
+        vi.mocked(Purchases.restorePurchases).mockRejectedValueOnce(new Error("Offline"));
+        await service.restore("mock_test");
+        expect(store.getState().purchase.paymentPending).toBe(true);
+        await service.purchase("mock_test");
+        expect(Purchases.purchaseStoreProduct).toHaveBeenCalledOnce();
+      }
+      vi.mocked(Purchases.restorePurchases).mockResolvedValueOnce({ customerInfo: inactiveCustomerInfo });
+      await service.restore("mock_test");
+      expect(store.getState().purchase.paymentPending).toBe(false);
+      expect(store.getState().purchase.canPurchase).toBe(true);
+      vi.mocked(Purchases.purchaseStoreProduct).mockResolvedValueOnce({ customerInfo: activeCustomerInfo } as Awaited<
+        ReturnType<typeof Purchases.purchaseStoreProduct>
+      >);
+      await service.purchase("mock_test");
+      expect(Purchases.purchaseStoreProduct).toHaveBeenCalledTimes(2);
+      expect(store.getState().purchase.owned).toBe(true);
     },
   );
 

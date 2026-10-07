@@ -6,7 +6,7 @@ Implements the client measurement portion of [#10](https://github.com/deanvannie
 
 | Event | Meaning |
 | --- | --- |
-| `purchase_initialization_error` | Purchase service initialization failed before premium controls can become available. `failure_reason` is `missing_api_key`, `product_unavailable`, or `sdk_error`; SDK failures include a bounded `error_code`, never diagnostic text. Emitted once per service initialization lifecycle, including repeated/concurrent initialization callers. Not an offer impression or checkout attempt. |
+| `purchase_initialization_error` | Purchase service initialization failed before premium controls can become available. `failure_reason` is `missing_api_key`, `product_unavailable`, or `sdk_error`; SDK failures include a bounded `error_code`, never diagnostic text. Emitted once per load attempt; concurrent initialization callers share the attempt. Failed loads can be retried within the same service lifecycle. Not an offer impression or checkout attempt. |
 | `premium_invitation_view` | A free learner sees an invitation on the active page, once per page visit. Includes `offer_origin` and `product_id`. Cached inactive Ionic pages and premium learners do not count. This is invitation reach, not an offer opening. |
 | `premium_invitation_tap` | Learner opens the offer from a measured invitation. Includes the originating surface. |
 | `premium_offer_close` | Learner uses the offer close button without a pending operation (`close_reason=close_button`). Not a checkout cancellation, and not emitted for successful automatic dismissal. OS interruption/process death is not counted here. |
@@ -16,15 +16,17 @@ Implements the client measurement portion of [#10](https://github.com/deanvannie
 | `purchase_unavailable` | A checkout action had no loaded product (no start), or the store rejected it as unavailable after a start. Never a sale. |
 | `purchase_cancel` | SDK reports cancellation. |
 | `purchase_pending` | SDK reports `PAYMENT_PENDING_ERROR`; never emitted merely because the sheet is in flight. |
-| `purchase_error` | SDK failed, or returned without active premium access. Not proof that no charge occurred. |
+| `purchase_error` | SDK failed. A completed SDK response without active premium access waits for entitlement confirmation instead of emitting an error. Not proof that no charge occurred. |
 | `checkout_outcome` | SDK response provides active premium access (`outcome=access_granted`). Existing access can satisfy this condition, so this is not a sale counter. |
 | `restore_start`, `restore_outcome` | Separate restore action and result (`access_restored`, `no_entitlement`, `error`). Never a new sale. |
 
-Initialization failures have product/build context and unknown transaction environment, but no offer origin or attempt ID: the learner has not taken either action. A new app/service lifecycle can report another failure.
+Initialization failures have product/build context and unknown transaction environment, but no offer origin or attempt ID: the learner has not taken either action. An explicit retry or new app/service lifecycle can report another failure.
 
 Each native checkout/restore action gets an independent random `attempt_id` shared with its outcome. Native events include `execution_context` from the build environment. `transaction_environment` is `unknown` before an entitlement is returned, then `sandbox` or `production` only when RevenueCat's entitlement `isSandbox` explicitly supplies that value. Build environment is not evidence of store environment. Unknown outcomes must not be silently classified as production. Local simulated purchases are marked `execution_context=local` and sandbox.
 
-The old `PRESENT_OFFER` duplicate is retired. An offer closed before product initialization completes produces no impression. An in-flight operation interrupted by process death may have a start without an outcome; do not impute a cancellation, pending payment or sale. The existing UI still presents a generic error for a deferred SDK response; this measurement change does not leave the processing spinner running indefinitely. Pending-specific messaging, deferred resolution after restart and its UX remain in [#14](https://github.com/deanvanniekerk/k53studyguide/issues/14).
+The old `PRESENT_OFFER` duplicate is retired. An offer closed before product initialization completes produces no impression. An in-flight operation interrupted by process death may have a start without an outcome; do not impute a cancellation, pending payment or sale. Checkout now distinguishes an in-flight SDK operation (blocking spinner) from a deferred payment or delayed entitlement (inline confirmation message, no spinner). Only `PAYMENT_PENDING_ERROR` emits `purchase_pending`; a completed SDK response without access waits silently for authoritative entitlement confirmation. A later active entitlement emits one correlated `checkout_outcome`, not a revenue event. Pending and access-granted events are different stages of the same attempt, never two sales.
+
+Passive inactive customer updates do not establish that a pending payment was declined. An explicit successful Restore check with no entitlement releases the app's retry block, allowing a learner to retry a declined or expired payment; an offline/failed Restore does not. This check does not declare the original payment cancelled. The store remains responsible for an outstanding transaction. After restart, access is reconciled normally without replaying a purchase thank-you or fabricating a completion for a lost attempt. Final store acceptance remains in [#17](https://github.com/deanvanniekerk/k53studyguide/issues/17).
 
 ## Revenue authority and deduplication
 

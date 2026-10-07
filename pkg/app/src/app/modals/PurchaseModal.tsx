@@ -192,7 +192,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
             </Benefits>
           </OfferContent>
           <PriceCard>
-            <PurchasePriceText>
+            <PurchasePriceText role={isLoadingStore ? "status" : undefined}>
               {isLoadingStore ? <Translate text="premiumPriceLoading" /> : props.purchase.price}
             </PurchasePriceText>
             <PaymentNote>
@@ -203,11 +203,14 @@ const PurchaseModal: React.FC<Props> = (props) => {
                 <Translate text="premiumPaymentPending" />
               </Availability>
             )}
-            {!props.purchase.canPurchase && !props.purchase.owned && !props.purchase.paymentPending && (
-              <Availability role="status">
-                <Translate text={isLoadingStore ? "premiumPriceLoading" : "premiumUnavailable"} />
-              </Availability>
-            )}
+            {!isLoadingStore &&
+              !props.purchase.canPurchase &&
+              !props.purchase.owned &&
+              !props.purchase.paymentPending && (
+                <Availability role="status">
+                  <Translate text="premiumUnavailable" />
+                </Availability>
+              )}
             {isUnavailable && (
               <RestoreButton
                 disabled={isPending || !purchaseService || undefined}

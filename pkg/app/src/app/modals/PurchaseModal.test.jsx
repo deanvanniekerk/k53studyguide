@@ -284,3 +284,18 @@ it("silently grants deferred access after its initiating modal has closed", asyn
   expect(notifications(page)).toEqual([]);
   expect(notifications(await mount("profile", false))).toEqual([]);
 });
+
+it("allows retrying a declined deferred payment after Restore checks for access", async () => {
+  const { mount, store } = await setupCheckout();
+  const page = await mount("mock_test");
+  Purchases.purchaseStoreProduct.mockRejectedValueOnce({ code: "pending" });
+  await click(page, "getPremium");
+  Purchases.restorePurchases.mockResolvedValueOnce({ customerInfo: { entitlements: { active: {} } } });
+  await click(page, "restorePurchase");
+  expect(store.getState().purchase.paymentPending).toBe(false);
+  expect(page.root.findAll((node) => node.props.text === "premiumPaymentPending")).toHaveLength(0);
+  act(() => page.root.findByType("output").props.onClick());
+  await click(page, "getPremium");
+  expect(notifications(page)).toEqual(["purchaseSuccessful"]);
+  expect(Purchases.purchaseStoreProduct).toHaveBeenCalledTimes(2);
+});

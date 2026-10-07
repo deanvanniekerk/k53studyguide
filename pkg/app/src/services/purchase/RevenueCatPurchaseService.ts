@@ -182,6 +182,13 @@ export class RevenueCatPurchaseService implements PurchaseService {
       const result = await Purchases.restorePurchases();
       const customerInfo = this.currentCustomerInfo(result.customerInfo, revision);
       const hasFullAccess = this.applyCustomerInfo(customerInfo);
+      if (!hasFullAccess && this._deferredPurchase) {
+        // An explicit, successful restore check lets a learner retry a declined/expired payment.
+        // Inactive customer info alone is not a cancellation signal; passive refreshes keep waiting.
+        this._deferredPurchase = undefined;
+        this._reduxStore.dispatch(recievePaymentPending(false));
+        this._reduxStore.dispatch(recievePurchaseProductCanPurchase(Boolean(this._product) && this._initialized));
+      }
       this._reduxStore.dispatch(recievePurchaseOrderState(hasFullAccess ? "ready" : "error"));
       analytics.logEvent("restore_outcome", {
         ...params,
@@ -370,7 +377,9 @@ export class RevenueCatPurchaseService implements PurchaseService {
     this._reduxStore.dispatch(recievePaymentPending(true));
     this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
     this._reduxStore.dispatch(recievePurchaseOrderState("deferred"));
-    analytics.trackPurchaseState("pending", params);
+    if (params.error_code === PURCHASES_ERROR_CODE.PAYMENT_PENDING_ERROR) {
+      analytics.trackPurchaseState("pending", params);
+    }
   }
 
   private async applyCustomerInfoWithLegacySync(customerInfo: CustomerInfo) {

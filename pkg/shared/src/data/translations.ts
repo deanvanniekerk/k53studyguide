@@ -64,7 +64,7 @@ const translations: Translations = {
   purchaseRestoreFailed: {
     en: "No Premium purchase was restored",
   },
-  premiumPaymentPending: { en: "Your payment is awaiting confirmation. Premium unlocks when the store confirms it. You can close this screen and use Restore purchase to check again." },
+  premiumPaymentPending: { en: "Premium is awaiting confirmation. You can close this screen and use Restore purchase to check again. If no access is found, you can retry a declined or expired payment." },
   premiumRetry: { en: "Retry loading store" },
   purchaseFailed: {
     en: "Purchase Failed!",
