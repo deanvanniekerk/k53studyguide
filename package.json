@@ -29,7 +29,7 @@
     "lander:deploy:full": "LANDER_INCLUDE_QUIZ_IMAGES=1 bash scripts/deploy-lander-ftp.sh"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.1"
+    "@biomejs/biome": "2.5.15"
   },
   "packageManager": "pnpm@11.7.0"
 }
