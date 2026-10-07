@@ -114,6 +114,42 @@ describe("RevenueCatPurchaseService", () => {
     expect(store.getState().purchase.canPurchase).toBe(false);
   });
 
+  it.each([false, true])(
+    "reports unavailable offer loading while preserving owned=%s, then recovers",
+    async (owned) => {
+      vi.mocked(Purchases.getCustomerInfo)
+        .mockRejectedValueOnce(new Error("Offline"))
+        .mockResolvedValueOnce({ customerInfo: owned ? activeCustomerInfo : inactiveCustomerInfo });
+      const store = checkoutStore(owned);
+      const service = new RevenueCatPurchaseService(store);
+      const close = service.offerOpened("mock_test");
+      const impressions = () =>
+        vi
+          .mocked(FirebaseAnalytics.logEvent)
+          .mock.calls.map(([event]) => event)
+          .filter((event) => event.name === "view_promotion");
+      await vi.waitFor(() => expect(impressions()).toHaveLength(1));
+      expect(store.getState().purchase.owned).toBe(owned);
+      expect(store.getState().purchase.canPurchase).toBe(false);
+      expect(impressions()[0].params).toMatchObject({
+        availability: "unavailable",
+        eligibility: owned ? "owned" : "unavailable",
+      });
+      vi.mocked(Purchases.addCustomerInfoUpdateListener).mock.calls[0][0](inactiveCustomerInfo);
+      expect(store.getState().purchase.owned).toBe(owned);
+      expect(store.getState().purchase.canPurchase).toBe(false);
+      close();
+      service.offerOpened("profile");
+      await vi.waitFor(() => expect(impressions()).toHaveLength(2));
+      expect(store.getState().purchase.owned).toBe(owned);
+      expect(store.getState().purchase.canPurchase).toBe(!owned);
+      expect(impressions()[1].params).toMatchObject({
+        availability: "available",
+        eligibility: owned ? "owned" : "eligible",
+      });
+    },
+  );
+
   it("preserves legacy access through failed sync and passive updates, then reconciles on retry", async () => {
     vi.mocked(Purchases.syncPurchases).mockRejectedValueOnce(new Error("Offline")).mockResolvedValueOnce();
     const store = checkoutStore(true);
@@ -217,6 +253,64 @@ describe("RevenueCatPurchaseService", () => {
       expect(store.getState().purchase.owned).toBe(true);
     },
   );
+
+  it("keeps a pending attempt correlated when access arrives after an empty restore", async () => {
+    const store = checkoutStore();
+    const service = new RevenueCatPurchaseService(store);
+    vi.mocked(Purchases.purchaseStoreProduct).mockRejectedValueOnce({ code: "pending" });
+    await service.purchase("mock_test");
+    vi.mocked(Purchases.restorePurchases).mockResolvedValueOnce({ customerInfo: inactiveCustomerInfo });
+    await service.restore("profile");
+    expect(store.getState().purchase.owned).toBe(false);
+    expect(store.getState().purchase.canPurchase).toBe(true);
+    const listener = vi.mocked(Purchases.addCustomerInfoUpdateListener).mock.calls[0][0];
+    listener(activeCustomerInfo);
+    listener(activeCustomerInfo);
+    expect(store.getState().purchase.owned).toBe(true);
+    expect(store.getState().purchase.paymentPending).toBe(false);
+    const events = vi.mocked(FirebaseAnalytics.logEvent).mock.calls.map(([event]) => event);
+    const begin = events.find((event) => event.name === "begin_checkout");
+    const outcomes = events.filter((event) => event.name === "checkout_outcome");
+    expect(outcomes).toHaveLength(1);
+    expect(outcomes[0].params).toMatchObject({
+      attempt_id: begin?.params?.attempt_id,
+      offer_origin: "mock_test",
+      outcome: "access_granted",
+    });
+    expect(events.find((event) => event.name === "restore_outcome")?.params?.outcome).toBe("no_entitlement");
+  });
+
+  it("retains both unresolved attempts across a deferred retry and completes each only once", async () => {
+    const store = checkoutStore();
+    const service = new RevenueCatPurchaseService(store);
+    vi.mocked(Purchases.purchaseStoreProduct).mockRejectedValue({ code: "pending" });
+    await service.purchase("mock_test");
+    vi.mocked(Purchases.restorePurchases).mockResolvedValueOnce({ customerInfo: inactiveCustomerInfo });
+    await service.restore("profile");
+    await service.purchase("profile");
+    expect(store.getState().purchase.owned).toBe(false);
+    expect(store.getState().purchase.canPurchase).toBe(false);
+    let completions = 0;
+    let previousOrderState = store.getState().purchase.orderState;
+    store.subscribe(() => {
+      const orderState = store.getState().purchase.orderState;
+      if (orderState === "finished" && previousOrderState !== "finished") completions++;
+      previousOrderState = orderState;
+    });
+    const listener = vi.mocked(Purchases.addCustomerInfoUpdateListener).mock.calls[0][0];
+    listener(activeCustomerInfo);
+    listener(activeCustomerInfo);
+    expect(store.getState().purchase.owned).toBe(true);
+    expect(completions).toBe(1);
+    const events = vi.mocked(FirebaseAnalytics.logEvent).mock.calls.map(([event]) => event);
+    const starts = events.filter((event) => event.name === "begin_checkout");
+    const outcomes = events.filter((event) => event.name === "checkout_outcome");
+    expect(starts).toHaveLength(2);
+    expect(outcomes).toHaveLength(2);
+    expect(outcomes.map((event) => [event.params?.attempt_id, event.params?.offer_origin])).toEqual(
+      starts.map((event) => [event.params?.attempt_id, event.params?.offer_origin]),
+    );
+  });
 
   it.each(["initialize", "purchase", "restore"] as const)(
     "keeps a newer entitlement listener update when a slower %s response settles",
