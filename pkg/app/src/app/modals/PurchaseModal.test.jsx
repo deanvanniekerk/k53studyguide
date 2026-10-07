@@ -1,3 +1,4 @@
+import { FirebaseAnalytics } from "@capacitor-firebase/analytics";
 import { Purchases } from "@revenuecat/purchases-capacitor";
 import { Provider } from "react-redux";
 import { act, create } from "react-test-renderer";
@@ -5,6 +6,7 @@ import { combineReducers, createStore } from "redux";
 import { PurchaseContext } from "@/context";
 import { IOS_PREMIUM_PRODUCT_ID } from "@/services/purchase/productIds";
 import { RevenueCatPurchaseService } from "@/services/purchase/RevenueCatPurchaseService";
+import { recievePurchaseOrderState, recievePurchaseProductCanPurchase } from "@/state/purchase";
 import { defaultState, reducer } from "@/state/purchase/reducer";
 import PurchaseModal from "./PurchaseModal";
 
@@ -95,13 +97,13 @@ const setupCheckout = async () => {
   const store = createStore(combineReducers({ purchase: reducer }));
   const service = new RevenueCatPurchaseService(store);
   await service.initialize();
-  const mount = async (origin, isOpen = true) => {
+  const mount = async (origin, isOpen = true, onDidDismiss = () => {}) => {
     let page;
     await act(async () => {
       page = create(
         <Provider store={store}>
           <PurchaseContext.Provider value={service}>
-            <PurchaseModal origin={origin} isOpen={isOpen} onDidDismiss={() => {}} />
+            <PurchaseModal origin={origin} isOpen={isOpen} onDidDismiss={onDidDismiss} />
           </PurchaseContext.Provider>
         </Provider>,
       );
@@ -110,7 +112,7 @@ const setupCheckout = async () => {
     return page;
   };
   const refresh = () => Purchases.addCustomerInfoUpdateListener.mock.calls[0][0](premiumCustomer);
-  return { mount, refresh };
+  return { mount, refresh, store };
 };
 
 it("does not thank an existing premium learner when Test or Profile mounts with a saved finished order", () => {
@@ -182,4 +184,40 @@ it.each([
   await click(page, "getPremium");
   expect(notifications(page)).toEqual(["purchaseSuccessful"]);
   expect(notifications(otherPage)).toEqual([]);
+});
+
+it("preserves the quiz-results origin through checkout", async () => {
+  const { mount } = await setupCheckout();
+  const page = await mount("quiz_results");
+  await click(page, "getPremium");
+  expect(FirebaseAnalytics.logEvent).toHaveBeenCalledWith(
+    expect.objectContaining({
+      name: "begin_checkout",
+      params: expect.objectContaining({ offer_origin: "quiz_results" }),
+    }),
+  );
+});
+
+it("keeps restore available when purchasing is unavailable", async () => {
+  const { mount, store } = await setupCheckout();
+  const page = await mount("mock_test");
+  act(() => store.dispatch(recievePurchaseProductCanPurchase(false)));
+  const button = page.root
+    .findAllByType("button")
+    .find((candidate) => candidate.findAll((node) => node.props.text === "getPremium").length);
+  expect(button.props.disabled).toBe(true);
+  expect(page.root.findAll((node) => node.props.text === "premiumUnavailable").length).toBeGreaterThan(0);
+  await click(page, "restorePurchase");
+  expect(Purchases.restorePurchases).toHaveBeenCalledTimes(1);
+});
+
+it("does not close the offer with the close button while a payment is pending", async () => {
+  const { mount, store } = await setupCheckout();
+  const dismiss = vi.fn();
+  const page = await mount("mock_test", true, dismiss);
+  act(() => store.dispatch(recievePurchaseOrderState("pending")));
+  FirebaseAnalytics.logEvent.mockClear();
+  act(() => page.root.findByProps({ "aria-label": "Close" }).props.onClick());
+  expect(dismiss).not.toHaveBeenCalled();
+  expect(FirebaseAnalytics.logEvent).not.toHaveBeenCalledWith(expect.objectContaining({ name: "premium_offer_close" }));
 });

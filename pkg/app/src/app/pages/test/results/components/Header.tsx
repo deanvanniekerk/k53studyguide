@@ -4,7 +4,7 @@ import type React from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import styled from "styled-components";
-import { TestFailedIcon, TestPassedIcon } from "@/app/components/icons";
+import { Illustration } from "@/app/components/Illustration";
 import type { RootState } from "@/state";
 import {
   passedSelector,
@@ -76,8 +76,8 @@ const NinjaIcon: React.FC<NinjaIconProps> = (props) => {
         { offset: 1, transform: "scale(1)" },
       ]}
     >
-      <div>
-        <SuccessIcon success={props.passed} size="3.7rem" />
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Illustration name={props.passed ? "test-success" : "test-practice"} size={64} />
       </div>
     </CreateAnimation>
   );
@@ -185,16 +185,6 @@ const Divider = styled.div`
   height: 1px;
   background: var(--app-divider-color);
 `;
-
-type SuccessIconProps = {
-  success: boolean;
-  size: string;
-};
-const SuccessIcon: React.FC<SuccessIconProps> = (props) => {
-  if (props.success) return <TestPassedIcon style={{ fontSize: props.size }} />;
-
-  return <TestFailedIcon style={{ fontSize: props.size }} />;
-};
 
 type ResultStatusIconProps = {
   success: boolean;

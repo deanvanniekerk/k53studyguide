@@ -1,5 +1,5 @@
 import { IonIcon } from "@ionic/react";
-import { informationCircleOutline } from "ionicons/icons";
+import { helpOutline } from "ionicons/icons";
 import type React from "react";
 import styled from "styled-components";
 
@@ -10,7 +10,9 @@ type Props = {
 const PageHeaderInfoIcon: React.FC<Props> = (props) => {
   return (
     <InfoButton type="button" aria-label="Show information" onClick={props.onClick}>
-      <IonIcon icon={informationCircleOutline} />
+      <HelpBadge>
+        <IonIcon icon={helpOutline} aria-hidden="true" />
+      </HelpBadge>
     </InfoButton>
   );
 };
@@ -23,15 +25,33 @@ const InfoButton = styled.button`
   padding: 0;
   border: 0;
   background: transparent;
-  color: var(--ion-color-light);
+  color: #fff;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 
-  ion-icon {
-    font-size: 28px;
+  &:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+    border-radius: 12px;
   }
 
-  opacity: 0.8;
+  &:active span {
+    background: rgba(255, 255, 255, 0.3);
+  }
+`;
+
+const HelpBadge = styled.span`
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.16);
+
+  ion-icon {
+    font-size: 25px;
+  }
 `;
 
 export { PageHeaderInfoIcon };

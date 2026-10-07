@@ -1,6 +1,6 @@
 import type { AnyAction, Store } from "redux";
 
-export type OfferOrigin = "profile" | "mock_test";
+export type OfferOrigin = "profile" | "mock_test" | "quiz_home" | "quiz_results";
 
 export type PurchaseStore = Store<unknown, AnyAction>;
 

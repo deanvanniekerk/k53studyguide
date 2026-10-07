@@ -98,3 +98,29 @@
     gap: 6px;
   }
 }
+
+@media (max-width: 360px) {
+  .root-navigation-item {
+    grid-template-columns: 58px minmax(0, 1fr) 20px;
+    row-gap: 8px;
+  }
+
+  .root-navigation-icon-tile {
+    grid-row: 1 / 3;
+  }
+
+  .root-navigation-label {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .root-navigation-progress {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .root-navigation-chevron {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+}

@@ -1,11 +1,12 @@
 import { IonIcon } from "@ionic/react";
-import { checkmarkCircle, trophy } from "ionicons/icons";
+import { checkmarkCircle } from "ionicons/icons";
 import type React from "react";
-import { useState } from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
 import styled from "styled-components";
 import { PrimaryButton } from "@/app/components";
+import { Illustration } from "@/app/components/Illustration";
+import { usePremiumOffer } from "@/app/hooks/usePremiumOffer";
 import PurchaseModal from "@/app/modals/PurchaseModal";
 import type { RootState } from "@/state";
 import { canPurchaseSelector, ownedSelector, purchaseSelector } from "@/state/purchase";
@@ -14,7 +15,7 @@ import { Section, SectionTitle } from "./";
 type Props = PropsFromState;
 
 const PurchaseComponent: React.FC<Props> = (props) => {
-  const [purchaseModalVisible, setPurchaseModalVisible] = useState(false);
+  const offer = usePremiumOffer("profile");
 
   return (
     <Section>
@@ -22,32 +23,27 @@ const PurchaseComponent: React.FC<Props> = (props) => {
         <Translate text="account" />
       </SectionTitle>
       {!props.hasFullAccess && (
-        <PremiumCard>
+        <PremiumCard ref={offer.invitationRef}>
           <PremiumIcon>
-            <IonIcon icon={trophy} />
+            <Illustration name="premium-trophy" size={52} />
           </PremiumIcon>
           <PremiumCopy>
             <PremiumTitle>
-              <Translate text="premiumPackageRequired" />
+              <Translate text="premiumOfferTitle" />
             </PremiumTitle>
             <PremiumText>
               <Translate text="accessTheTestInfo" />
             </PremiumText>
           </PremiumCopy>
           <PremiumButtonWrap>
-            <PrimaryButton
-              section="profile"
-              text="goPremium"
-              disabled={!props.canPurchase}
-              onClick={() => setPurchaseModalVisible(true)}
-            />
+            <PrimaryButton section="profile" text="goPremium" onClick={offer.open} />
           </PremiumButtonWrap>
         </PremiumCard>
       )}
       {props.hasFullAccess && (
         <PremiumCard>
           <PremiumIcon>
-            <IonIcon icon={trophy} />
+            <Illustration name="premium-trophy" size={52} />
           </PremiumIcon>
           <PremiumCopy>
             <PremiumTitle>
@@ -60,13 +56,7 @@ const PurchaseComponent: React.FC<Props> = (props) => {
           <PurchasedIcon icon={checkmarkCircle} />
         </PremiumCard>
       )}
-      <PurchaseModal
-        origin="profile"
-        isOpen={purchaseModalVisible}
-        onDidDismiss={() => {
-          setPurchaseModalVisible(false);
-        }}
-      />
+      <PurchaseModal origin="profile" isOpen={offer.isOpen} onDidDismiss={offer.dismiss} />
     </Section>
   );
 };
@@ -90,10 +80,6 @@ const PremiumIcon = styled.div`
   border-radius: 18px;
   background: var(--app-profile-premium-icon-background);
   color: var(--app-profile-premium-text);
-
-  ion-icon {
-    font-size: var(--app-font-size-xxl);
-  }
 `;
 
 const PremiumCopy = styled.div`

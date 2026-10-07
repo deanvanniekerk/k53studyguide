@@ -4,9 +4,8 @@ import type React from "react";
 import { useRef } from "react";
 import { connect } from "react-redux";
 import { Translate } from "react-translated";
-import styled from "styled-components";
 import { ProgressBar } from "@/app/components";
-import { CarIcon, RoadIcon, SpeedometerIcon, StopIcon, TestIcon, TrafficLightIcon } from "@/app/components/icons";
+import { Illustration } from "@/app/components/Illustration";
 import type { RootState } from "@/state";
 import { seenTotalsSelector } from "@/state/study/log";
 import "./NavigationItem.css";
@@ -49,9 +48,7 @@ const NavigationItemComponent: React.FC<Props> = (props) => {
       }}
     >
       <div className="root-navigation-item" style={itemStyle} onClick={() => props.onClick(props.navigationItemKey)}>
-        <div className="root-navigation-icon-tile">
-          <Icon>{navigationIcons[props.navigationItemKey]}</Icon>
-        </div>
+        <div className="root-navigation-icon-tile">{navigationIcons[props.navigationItemKey]}</div>
         <IonLabel className="root-navigation-label">
           <IonText>
             <Translate text={props.navigationItemKey} />
@@ -76,18 +73,13 @@ const NavigationItemComponent: React.FC<Props> = (props) => {
   );
 };
 
-const Icon = styled.div`
-  font-size: 2.6rem;
-  line-height: 1;
-`;
-
 const navigationIcons: { [key: string]: React.ReactNode } = {
-  "nav.vehicleControls": <SpeedometerIcon />,
-  "nav.rulesOfTheRoad": <TestIcon />,
-  "nav.defensiveDriving": <CarIcon />,
-  "nav.roadMarkings": <RoadIcon />,
-  "nav.roadSignals": <TrafficLightIcon />,
-  "nav.signs": <StopIcon />,
+  "nav.vehicleControls": <Illustration name="vehicle-controls" size={52} />,
+  "nav.rulesOfTheRoad": <Illustration name="road-rules" size={52} />,
+  "nav.defensiveDriving": <Illustration name="defensive-driving" size={52} />,
+  "nav.roadMarkings": <Illustration name="road-markings" size={52} />,
+  "nav.roadSignals": <Illustration name="traffic-signals" size={52} />,
+  "nav.signs": <Illustration name="road-signs" size={52} />,
 };
 
 const navigationThemes: { [key: string]: { color: string; rgb: string } } = {

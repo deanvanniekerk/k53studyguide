@@ -5,15 +5,14 @@ import { connect } from "react-redux";
 import { Translate, Translator } from "react-translated";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
-import { CloseButton } from "@/app/components";
-import { BookOutlineIcon, ResetIcon, TestPenIcon, YinYangIcon } from "@/app/components/icons";
+import { CloseButton } from "@/app/components/CloseButton";
+import { Illustration } from "@/app/components/Illustration";
 import { PurchaseContext } from "@/context";
 import { DEFAULT_PREMIUM_PRODUCT_ID } from "@/services";
 import type { OfferOrigin } from "@/services/purchase/types";
 import type { RootState } from "@/state";
 import { purchaseSelector, recievePurchaseOrderState } from "@/state/purchase";
 import { useAnalytics } from "../hooks/useAnalytics";
-import { watermarkStyle } from "../styles";
 
 type Props = {
   isOpen: boolean;
@@ -71,6 +70,16 @@ const PurchaseModal: React.FC<Props> = (props) => {
     return () => clearTimeout(timeout);
   }, [props.isOpen, props.purchase.owned, props.onDidDismiss]);
 
+  const closeOffer = () => {
+    if (isPending) return;
+    analytics.logEvent("premium_offer_close", {
+      offer_origin: props.origin,
+      product_id: premiumProductId,
+      close_reason: "close_button",
+    });
+    props.onDidDismiss();
+  };
+
   return (
     <React.Fragment>
       <Translator>
@@ -119,8 +128,14 @@ const PurchaseModal: React.FC<Props> = (props) => {
           </React.Fragment>
         )}
       </Translator>
-      <Modal mode="ios" isOpen={props.isOpen} onDidDismiss={props.onDidDismiss}>
-        <Watermark />
+      <Modal
+        mode="ios"
+        isOpen={props.isOpen}
+        onDidDismiss={props.onDidDismiss}
+        backdropDismiss={false}
+        canDismiss={!isPending}
+        aria-labelledby="premium-offer-title"
+      >
         <Translator>
           {({ translate }) => (
             <IonLoading
@@ -131,344 +146,225 @@ const PurchaseModal: React.FC<Props> = (props) => {
           )}
         </Translator>
         <Shell>
-          <CloseButton onClick={() => props.onDidDismiss()} />
-          <Hero>
-            <PremiumBadge mode="md" fill="solid" className="button-x-small">
-              <Translate text="premium" />
-            </PremiumBadge>
-            <Header>
-              <Translate text="k53Ninja" />
-            </Header>
-            <HeroText>
-              <Translate text="purchasePremiumFor" />
-            </HeroText>
-          </Hero>
-          <ContentPanel>
+          <CloseButton onClick={closeOffer} />
+          <OfferContent>
+            <Hero>
+              <PremiumBadge>
+                <Translate text="premium" />
+              </PremiumBadge>
+              <Header id="premium-offer-title">
+                <Translate text="premiumOfferTitle" />
+              </Header>
+              <HeroText>
+                <Translate text="premiumOfferInfo" />
+              </HeroText>
+            </Hero>
             <Benefits>
-              <Benefit>
-                <BenefitIcon>
-                  <TestPenIcon />
-                </BenefitIcon>
-                <BenefitCopy>
-                  <BenefitTitle>
-                    <Translate text="accessTheTest" />
-                  </BenefitTitle>
-                  <BenefitText>
-                    <Translate text="accessTheTestInfo" />
-                  </BenefitText>
-                </BenefitCopy>
-              </Benefit>
-              <Benefit>
-                <BenefitIcon>
-                  <ResetIcon />
-                </BenefitIcon>
-                <BenefitCopy>
-                  <BenefitTitle>
-                    <Translate text="resetYourHistory" />
-                  </BenefitTitle>
-                  <BenefitText>
-                    <Translate text="resetYourHistoryInfo" />
-                  </BenefitText>
-                </BenefitCopy>
-              </Benefit>
-              <Benefit>
-                <BenefitIcon>
-                  <YinYangIcon />
-                </BenefitIcon>
-                <BenefitCopy>
-                  <BenefitTitle>
-                    <Translate text="supportTheDev" />
-                  </BenefitTitle>
-                  <BenefitText>
-                    <Translate text="supportTheDevInfo" />
-                  </BenefitText>
-                </BenefitCopy>
-              </Benefit>
+              {(
+                [
+                  ["mock-tests", "premiumTestsBenefit", "premiumTestsDetail"],
+                  ["score-breakdown", "premiumScoresBenefit", "premiumScoresDetail"],
+                  ["repeat-practice", "premiumRepeatBenefit", "premiumRepeatDetail"],
+                ] as const
+              ).map(([icon, title, detail]) => (
+                <Benefit key={title}>
+                  <BenefitIcon aria-hidden="true">
+                    <Illustration name={icon} size={40} />
+                  </BenefitIcon>
+                  <BenefitCopy>
+                    <BenefitTitle>
+                      <Translate text={title} />
+                    </BenefitTitle>
+                    <BenefitText>
+                      <Translate text={detail} />
+                    </BenefitText>
+                  </BenefitCopy>
+                </Benefit>
+              ))}
+              <FreeNote>
+                <Translate text="premiumFreeReminder" />
+              </FreeNote>
             </Benefits>
-            <PriceCard>
-              <PurchasePriceText>{props.purchase.price}</PurchasePriceText>
-              <PurchaseButton
-                mode="md"
-                shape="round"
-                fill="solid"
-                disabled={!props.purchase.canPurchase || isPending || !purchaseService || undefined}
-                onClick={() => {
-                  activeOperation.current = "purchase";
-                  analytics.trackPromotionSelect({
-                    product_id: premiumProductId,
-                    price: props.purchase.price,
-                    offer_surface: "purchase_modal",
-                    offer_origin: props.origin,
-                    cta_location: "purchase_modal_get_premium",
-                  });
-                  if (purchaseService) purchaseService.purchase(props.origin);
-                }}
-              >
-                <Translate text="getPremium" />
-              </PurchaseButton>
-              <RestoreButton
-                mode="md"
-                fill="clear"
-                disabled={isPending || !purchaseService || undefined}
-                onClick={() => {
-                  activeOperation.current = "restore";
-                  void purchaseService?.restore(props.origin);
-                }}
-              >
-                <Translate text="restorePurchase" />
-              </RestoreButton>
-            </PriceCard>
-          </ContentPanel>
+          </OfferContent>
+          <PriceCard>
+            <PurchasePriceText>{props.purchase.price || <Translate text="premiumPriceLoading" />}</PurchasePriceText>
+            <PaymentNote>
+              <Translate text="premiumOneTime" />
+            </PaymentNote>
+            {!props.purchase.canPurchase && !props.purchase.owned && (
+              <Availability role="status">
+                <Translate text="premiumUnavailable" />
+              </Availability>
+            )}
+            {import.meta.env.DEV && Capacitor.getPlatform() === "web" && (
+              <PaymentNote>Browser preview · simulated price and purchase</PaymentNote>
+            )}
+            <PurchaseButton
+              mode="md"
+              shape="round"
+              fill="solid"
+              disabled={!props.purchase.canPurchase || isPending || !purchaseService || undefined}
+              onClick={() => {
+                activeOperation.current = "purchase";
+                analytics.trackPromotionSelect({
+                  product_id: premiumProductId,
+                  price: props.purchase.price,
+                  offer_surface: "purchase_modal",
+                  offer_origin: props.origin,
+                  cta_location: "purchase_modal_get_premium",
+                });
+                if (purchaseService) purchaseService.purchase(props.origin);
+              }}
+            >
+              <Translate text="getPremium" />
+            </PurchaseButton>
+            <RestoreButton
+              mode="md"
+              fill="clear"
+              disabled={isPending || !purchaseService || undefined}
+              onClick={() => {
+                activeOperation.current = "restore";
+                void purchaseService?.restore(props.origin);
+              }}
+            >
+              <Translate text="restorePurchase" />
+            </RestoreButton>
+          </PriceCard>
         </Shell>
       </Modal>
     </React.Fragment>
   );
 };
 
-const Watermark = styled(BookOutlineIcon)`
-  ${watermarkStyle}
-  fill: var(--app-watermark-fill);
-  opacity: 0.06;
-`;
-
 const Shell = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 100%;
+  min-height: 0;
   overflow: hidden;
   background: var(--app-purchase-background);
 `;
-
-const Hero = styled.div`
-  flex: 0 0 auto;
-  padding: calc(var(--app-safe-area-top) + 58px) var(--app-padding) 34px;
-  background: var(--app-premium-hero-background);
-  text-align: center;
-
-  @media (max-height: 520px) {
-    padding: calc(var(--app-safe-area-top) + 42px) var(--app-padding) 18px;
-  }
-`;
-
-const Header = styled.div`
-  color: var(--ion-color-light);
-  font-size: var(--app-font-size-xxl);
-  font-family: var(--ion-font-family-bold);
-  font-weight: 900;
-  line-height: 1.15;
-
-  @media (max-height: 520px) {
-    font-size: var(--app-font-size-xl);
-  }
-`;
-
-const PremiumBadge = styled(IonButton)`
-  height: 30px;
-  margin: 0 0 16px;
-  font-size: var(--app-font-size-xs);
-  font-weight: 900;
-  letter-spacing: 1px;
-  --background: var(--app-premium-badge-background);
-  --background-hover: var(--app-premium-badge-background);
-  --background-activated: var(--app-premium-badge-background);
-  --box-shadow: none;
-
-  @media (max-height: 520px) {
-    height: 26px;
-    margin-bottom: 10px;
-  }
-`;
-
-const HeroText = styled.div`
-  margin-top: 10px;
-  color: var(--ion-color-light);
-  font-size: var(--app-font-size-l);
-  font-weight: 800;
-  opacity: 0.82;
-
-  @media (max-height: 520px) {
-    margin-top: 6px;
-    font-size: var(--app-font-size-md);
-  }
-`;
-
-const ContentPanel = styled.div`
-  position: relative;
-  z-index: 1;
-  display: flex;
+const OfferContent = styled.div`
   flex: 1 1 auto;
-  flex-direction: column;
-  min-height: 0;
-  margin-top: -18px;
-  overflow: hidden;
-  padding: 0 var(--app-padding) calc(32px + env(safe-area-inset-bottom, 0px));
-
-  @media (max-height: 520px) {
-    margin-top: -4px;
-    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-  }
-`;
-
-const Benefits = styled.div`
-  display: flex;
-  flex: 0 1 auto;
-  flex-direction: column;
-  gap: 14px;
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding-bottom: 2px;
-
-  @media (max-height: 520px) {
-    gap: 8px;
-  }
+  padding-top: calc(var(--app-safe-area-top) + 54px);
 `;
-
-const Benefit = styled.div`
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  padding: 18px;
-  border: var(--app-card-border);
-  border-radius: 22px;
-  background: var(--app-premium-panel-background);
-  box-shadow: var(--app-card-shadow);
-
-  @media (max-height: 520px) {
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    border-radius: 18px;
-  }
+const Hero = styled.div`
+  padding: 8px var(--app-padding) 16px;
 `;
-
-const BenefitIcon = styled.div`
-  display: grid;
-  flex: 0 0 54px;
-  width: 54px;
-  height: 54px;
-  place-items: center;
-  border-radius: 18px;
-  background: var(--app-premium-benefit-background);
+const Header = styled.h1`
+  margin: 8px 0 0;
+  color: var(--app-text-primary);
+  font-size: var(--app-font-size-xxl);
+  font-family: var(--ion-font-family-bold);
+  font-weight: 900;
+  line-height: 1.12;
+`;
+const PremiumBadge = styled.span`
   color: var(--app-test-accent);
-
-  svg {
-    width: 30px;
-    height: 30px;
-  }
-
-  @media (max-height: 520px) {
-    flex-basis: 44px;
-    width: 44px;
-    height: 44px;
-    border-radius: 14px;
-
-    svg {
-      width: 24px;
-      height: 24px;
-    }
-  }
-`;
-
-const BenefitCopy = styled.div`
-  min-width: 0;
-`;
-
-const BenefitTitle = styled.div`
-  color: var(--app-text-primary);
-  font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
-  font-weight: 900;
-  line-height: 1.2;
-
-  @media (max-height: 520px) {
-    font-size: var(--app-font-size-md);
-  }
-`;
-
-const BenefitText = styled.div`
-  margin-top: 6px;
-  color: var(--app-text-muted);
   font-size: var(--app-font-size-sm);
-  font-weight: 700;
-  line-height: 1.45;
-
-  @media (max-height: 520px) {
-    display: none;
-  }
-`;
-
-const PriceCard = styled.div`
-  flex: 0 0 auto;
-  margin-top: 18px;
-  padding: 22px;
-  border: var(--app-card-border);
-  border-radius: 24px;
-  background: var(--app-premium-panel-background);
-  box-shadow: var(--app-card-shadow), var(--app-test-action-shadow);
-  text-align: center;
-
-  @media (max-height: 520px) {
-    margin-top: 10px;
-    padding: 14px;
-    border-radius: 20px;
-  }
-`;
-
-const PurchasePriceText = styled.div`
-  color: var(--app-text-primary);
-  font-size: var(--app-font-size-xxxl);
-  font-family: var(--ion-font-family-bold);
   font-weight: 900;
-  line-height: 1;
-
-  @media (max-height: 520px) {
-    font-size: var(--app-font-size-xxl);
-  }
+  letter-spacing: 1px;
+  text-transform: uppercase;
 `;
-
-const PurchaseButton = styled(IonButton)`
-  width: 100%;
-  height: 58px;
-  margin: 20px 0 0;
-  font-size: var(--app-font-size-l);
-  font-weight: 900;
-  --background: var(--app-test-action-background);
-  --background-hover: var(--app-test-action-background);
-  --background-activated: var(--app-test-action-background);
-  --border-radius: 20px;
-  --box-shadow: var(--app-test-action-shadow);
-
-  @media (max-height: 520px) {
-    height: 50px;
-    margin-top: 12px;
-    font-size: var(--app-font-size-md);
-  }
-`;
-
-const RestoreButton = styled(IonButton)`
-  width: 100%;
-  min-height: 44px;
+const HeroText = styled.p`
   margin: 10px 0 0;
   color: var(--app-text-muted);
   font-size: var(--app-font-size-md);
-  font-weight: 900;
-
-  @media (max-height: 520px) {
-    min-height: 36px;
-    margin-top: 6px;
-    font-size: var(--app-font-size-sm);
-  }
+  line-height: 1.45;
 `;
-
+const Benefits = styled.div`
+  padding: 0 var(--app-padding) 16px;
+`;
+const Benefit = styled.div`
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-top: var(--app-card-border);
+`;
+const BenefitIcon = styled.div`
+  flex: 0 0 40px;
+`;
+const BenefitCopy = styled.div`min-width: 0;`;
+const BenefitTitle = styled.h2`
+  margin: 0;
+  color: var(--app-text-primary);
+  font-family: var(--ion-font-family-bold);
+  font-size: var(--app-font-size-md);
+  font-weight: 900;
+  line-height: 1.3;
+`;
+const BenefitText = styled.p`
+  margin: 5px 0 0;
+  color: var(--app-text-muted);
+  font-size: var(--app-font-size-sm);
+  line-height: 1.45;
+`;
+const FreeNote = styled.p`
+  color: var(--app-text-muted);
+  font-size: var(--app-font-size-sm);
+  line-height: 1.45;
+`;
+const PriceCard = styled.div`
+  flex: 0 0 auto;
+  padding: 14px var(--app-padding) calc(12px + env(safe-area-inset-bottom, 0px));
+  border-top: var(--app-card-border);
+  background: var(--app-premium-panel-background);
+  text-align: center;
+`;
+const PurchasePriceText = styled.div`
+  color: var(--app-text-primary);
+  font-size: var(--app-font-size-xl);
+  font-family: var(--ion-font-family-bold);
+  font-weight: 900;
+  line-height: 1.2;
+`;
+const PaymentNote = styled.p`
+  margin: 4px 0 0;
+  color: var(--app-text-muted);
+  font-size: var(--app-font-size-sm);
+  line-height: 1.35;
+`;
+const Availability = styled.p`
+  margin: 8px 0;
+  color: var(--app-text-primary);
+  font-size: var(--app-font-size-sm);
+`;
+const PurchaseButton = styled(IonButton)`
+  width: 100%;
+  min-height: 54px;
+  height: auto;
+  margin: 12px 0 0;
+  white-space: normal;
+  font-size: var(--app-font-size-l);
+  font-weight: 900;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --background: var(--app-test-action-background);
+  --background-hover: var(--app-test-action-background);
+  --background-activated: var(--app-test-action-background);
+  --border-radius: 18px;
+  --box-shadow: var(--app-test-action-shadow);
+`;
+const RestoreButton = styled(IonButton)`
+  width: 100%;
+  min-height: 44px;
+  height: auto;
+  white-space: normal;
+  margin: 4px 0 0;
+  color: var(--app-text-muted);
+  font-size: var(--app-font-size-sm);
+  font-weight: 800;
+`;
 const Modal = styled(IonModal)`
   --background: var(--app-purchase-background);
-
   @media (min-width: 768px) {
-    --width: min(var(--app-readable-content-max-width), calc(100vw - 48px));
-    --height: min(860px, calc(100vh - 48px));
+    --width: min(520px, calc(100vw - 48px));
+    --height: min(780px, calc(100dvh - 48px));
     --border-radius: 24px;
   }
 `;

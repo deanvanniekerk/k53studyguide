@@ -1,5 +1,6 @@
 import { FirebaseAnalytics } from "@capacitor-firebase/analytics";
 import type { OrderState } from "@/state/purchase";
+import { isBrowserPreview } from "./browserPreview";
 
 export type PremiumStatus = "free" | "premium";
 
@@ -14,6 +15,9 @@ export type AnalyticsEventName =
   | "mock_test_complete"
   | "history_clear"
   | "rate_app_tap"
+  | "premium_invitation_view"
+  | "premium_invitation_tap"
+  | "premium_offer_close"
   | "view_promotion"
   | "select_promotion"
   | "begin_checkout"
@@ -102,10 +106,12 @@ const runNativeAnalytics = (operation: Promise<void> | void) => {
 
 export const analytics = {
   setCurrentScreen(screenName: string) {
+    if (isBrowserPreview) return;
     runNativeAnalytics(FirebaseAnalytics.setCurrentScreen({ screenName }));
   },
 
   setUserProperties(properties: UserProperties) {
+    if (isBrowserPreview) return;
     Object.entries(properties).forEach(([name, value]) => {
       if (value) runNativeAnalytics(FirebaseAnalytics.setUserProperty({ key: name, value }));
     });
@@ -113,6 +119,10 @@ export const analytics = {
 
   logEvent(eventName: AnalyticsEventName | LegacyAnalyticsEventName, params?: AnalyticsParams) {
     const normalizedParams = normalizeParams(params);
+    if (isBrowserPreview) {
+      console.info("[Analytics preview]", eventName, normalizedParams);
+      return;
+    }
     runNativeAnalytics(
       FirebaseAnalytics.logEvent({
         name: eventName,

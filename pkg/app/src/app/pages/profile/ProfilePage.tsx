@@ -5,7 +5,9 @@ import { PageHeader } from "@/app/components";
 import { SettingsOutlineIcon } from "@/app/components/icons";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { watermarkStyle } from "@/app/styles";
+import { isBrowserPreview } from "@/services/analytics/browserPreview";
 import { Checklist, Debug, History, Legal, Purchase, RateApp, Settings } from "./components";
+import { BrowserPurchasePreview } from "./components/BrowserPurchasePreview";
 
 const ProfilePage: React.FC = () => {
   useAnalytics("ProfilePage");
@@ -14,13 +16,14 @@ const ProfilePage: React.FC = () => {
       <PageHeader title="profile" page="profile" />
       <Watermark />
       <Content>
+        {isBrowserPreview && <BrowserPurchasePreview />}
         <Checklist />
         <History />
         <Purchase />
         <Settings />
         <RateApp />
         <Legal />
-        {__SHOW_DEBUG__ && <Debug />}
+        {__SHOW_DEBUG__ && !isBrowserPreview && <Debug />}
       </Content>
     </Page>
   );

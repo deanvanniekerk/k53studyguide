@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import { PageHeader, PageHeaderInfoIcon } from "@/app/components";
+import { PremiumInvitation } from "@/app/components/PremiumInvitation";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { RootState } from "@/state";
 import { notificationsSelector, recieveRecieveNotificationState } from "@/state/notifications";
@@ -65,6 +66,7 @@ const QuizPage: React.FC<Props> = (props) => {
       <Content>
         <Header />
         <Settings onStartTestClicked={onStartTestClicked} />
+        <PremiumInvitation origin="quiz_home" enabled={props.infoSeen && !infoModalVisible} />
       </Content>
     </Page>
   );
