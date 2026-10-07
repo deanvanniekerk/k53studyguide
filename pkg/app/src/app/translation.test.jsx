@@ -19,7 +19,7 @@ it("updates language and interpolates progress and HTML through the shared trans
       </p>
       <Translator>
         {({ translate }) => (
-          <article dangerouslySetInnerHTML={{ __html: translate({ text: "description", data: { count: 3 } }) }} />
+          <article dangerouslySetInnerHTML={{ __html: translate({ text: "description", data: { count: 0 } }) }} />
         )}
       </Translator>
     </Provider>
@@ -27,8 +27,8 @@ it("updates language and interpolates progress and HTML through the shared trans
   const page = render(content("en"));
   expect(screen.getByText("Hello Dean")).toBeTruthy();
   expect(screen.getByText("Literal fallback")).toBeTruthy();
-  expect(screen.getByRole("article").textContent).toBe("Read 3 signs");
+  expect(screen.getByRole("article").textContent).toBe("Read 0 signs");
   page.rerender(content("af"));
   expect(screen.getByText("Hallo Dean")).toBeTruthy();
-  expect(screen.getByRole("article").textContent).toBe("Lees 3 tekens");
+  expect(screen.getByRole("article").textContent).toBe("Lees 0 tekens");
 });

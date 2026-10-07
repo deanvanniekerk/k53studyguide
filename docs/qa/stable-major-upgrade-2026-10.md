@@ -130,21 +130,72 @@ All remote revisions are recorded in Package.resolved. The old Podfile.lock's Fi
 - **Pending owner acceptance:** Ionic 9.0.6 requires both Router packages >=6.4.0 <7. Use their 6.30.6 pair; registry latest 8.4.0/7.18.4 violates those peers. No incompatible peer override.
 - Root/workspace audit after refreshing supported child ranges: **5 advisories, 0 critical, 1 high, 3 moderate, 1 low**, reduced from 58 baseline advisories. Translator audit: **0**.
 - Router 6.30.6: GHSA-wrjc-x8rr-h8h6 (backslash redirects through Link/useNavigate) and GHSA-337j-9hxr-rhxg (SSR deserializeErrors). Fixed in 7.18+, beyond Ionic's supported peer. App destinations are fixed internal routes and the app has no SSR. Review is scoped to these call sites, not a blanket safety claim.
-- Capacitor CLI 8.5.2 → xcode 3.0.1 → uuid 7.0.3: GHSA-23c5-xmqv-rm6f (buffer bounds), patched >=11.1.1. This is CLI tooling, not browser/native application code. Parent's ^7 range cannot take 11 without a compatibility override.
+- Capacitor CLI 8.5.2 → xcode 3.0.1 → uuid 7.0.3: GHSA-w5hq-g745-h8pq (buffer bounds), patched >=11.1.1. This is CLI tooling, not browser/native application code. Parent's ^7 range cannot take 11 without a compatibility override.
 - Firebase 12.19.0 → Firestore 4.17.2 → @grpc/grpc-js ~1.9: GHSA-m9gg-hp2v-232j (certificate authorization, high) and GHSA-f596-whhp-79r4 (server error detail, low), patched >=1.13.6. This is the Node Firestore graph; app code imports Firebase app/analytics, not Firestore or its Node gRPC transport. Parent remains latest; do not force a version outside ~1.9.
 - Deprecated glob 8/inflight come from latest SVGR CLI 8.1.0, retained for the documented SVG conversion tool. Deprecated uuid 7 is CLI-only above; node-domexception 1 comes from latest Google translation tooling. React renderer 19 is latest but deprecated; existing behavioral tests still pass with warnings. The new translation and visibility regressions use actual DOM rendering.
 - Native parent graphs can trail standalone child tags, as shown in the table. This follows the issue's explicit supported-parent rule; no claim that every transitive is latest.
-- The existing [checkout sign-off](premium-checkout-signoff.md) owner acceptance covers real Apple/Google billing limitations. Fresh Test Store checks remain required for this SPM migration; Test Store does not validate real receipts, refunds, pending/deferred payments or store account/signing configuration.
+- The existing [checkout sign-off](premium-checkout-signoff.md) owner acceptance covers real Apple/Google billing limitations. The fresh Test Store smoke below covers this SPM migration; Test Store does not validate real receipts, refunds, pending/deferred payments or store account/signing configuration.
 
 ## Verification and readiness
 
 Completed locally on 2026-10-07:
 
 - Clean local clone at the two implementation commits: root and standalone translator frozen installs pass with Node 26.10.0 / pnpm 12.9.1; translator client/syntax/input check passes without credentials/API calls.
-- Repository lint (Biome + app and lander TypeScript), app **182 tests / 45 files**, lander **10 tests / 1 file**, app V8 coverage and both production web builds pass. The React 19 visibility and translation regressions were reproduced red before replacement and now pass.
+- Repository lint (Biome + app and lander TypeScript), app **180 tests / 44 files** after pruning two cases, lander **10 tests / 1 file**, app V8 coverage and both production web builds pass. The React 19 visibility and translation regressions were reproduced red before replacement and now pass.
 - Android `:app:assembleRelease :app:assembleDebug` and complete CI-equivalent `gradlew build` pass against the committed lock without lock updates. Existing Android lint baseline filters six pre-existing errors; no new errors. Current plugin Gradle deprecation warnings concern Gradle 10, not selected 9.8.
 - iOS SPM locked Release builds pass for generic iOS device and SE simulator, with signing disabled for compile checks; Debug simulator build passes. Crashlytics device run phase executes with dSYM inputs. Signed archive/export/upload and server-side crash ingestion have not been performed.
-- Browser: Study/article visibility and progress, a 10-question quiz scored 7/10, saved points (33 to next level) survive reload, Profile/history controls, dark appearance persists, English language picker works. Browser preview purchase unlocks mock tests; answers in all three sections submit to results. Native/Test Store and lifecycle evidence is being completed.
+- Browser: Study/article visibility and progress, a 10-question quiz scored 7/10, saved points (33 to next level) survive reload, Profile/history controls, dark appearance persists, English language picker works. Browser preview purchase unlocks mock tests; answers in all three sections submit to results. All seven legacy route aliases redirect correctly. The lander demo advances questions; store CTAs retain their destinations. A 375×667 Profile check keeps tabs and Premium status visible.
+
+
+- Android Pixel 9 / API 37: installed Debug over the existing QA app, retained Premium, Study controls reach 100%, quiz answer/continue reaches question 2, hardware Back returns to a resumable quiz, and a mock test ends with three-section results. Profile/history controls work. Dark appearance and Study progress survive background/resume and a cold launch; language remains English (the baseline UI only offers English).
+- iOS SE / iOS 26.4.1: installed Debug over the existing QA app. Study, Profile and the paused mock test remain accessible. Before/after preference comparison preserves Study/quiz/mock histories, sessions, navigation, settings and owned Premium. A separate fresh SE with XXXL text keeps onboarding, Unlock, GET PREMIUM and RESTORE CTAs visible.
+- Fresh iOS RevenueCat Test Store: restore on a free account returns to the available offer; cancellation and a failed payment leave the offer retryable; a valid retry unlocks START TEST. Premium survives terminate/relaunch. The baseline owned UI hides Restore, so this native smoke does not prove an owned-account restore; the real service/modal regression suite covers positive restore feedback and entitlement handling. Existing real-store sign-off still applies.
+- Lifecycle/deep links: Android background/resume and cold launch pass; its existing `app://profile` intent opens/delivers to the app. The baseline has no JavaScript deep-link route handler and no registered iOS URL scheme; iOS opening that scheme fails with LaunchServices 115 both before and after this migration. SceneDelegate proxy code is unchanged; no new deep-link feature is claimed.
+- Native telemetry: Android plugin logs show screen/events/properties and preference/RevenueCat calls; fresh iOS logs initialize Analytics 12.19.2 and Crashlytics 12.19.2 without a fatal launch. Server-side crash ingestion was not exercised. Purchase/restore event names, sandbox/internal exclusions and schemas are unchanged and covered by the existing service tests.
+- Standards review: no documented breaches. Spec review: one finding fixed—Azure install/build scripts now use `set -euo pipefail`, so a failed earlier check cannot be hidden by a successful later command.
+
+Release remains blocked on explicit owner acceptance of the Router peer constraint and five upstream advisories above. Publishing the review PR does not accept those exceptions or authorize a release.
+
+### Branch test pruning
+
+Scope: the six added/modified test files (32 expanded cases); no other changed component has an adjacent test file. Keep decisions exercise the real hook/component/service/translation boundary. Native SDKs are external observation ports; the app analytics module is no longer mocked in invitation tests.
+
+| Case | Verdict and deciding rubric |
+| --- | --- |
+| Invitation visible once, counted again on return | Keep: Behavior; real hook + analytics event contract |
+| Invitation excludes cached pages and owned Premium | Keep: Behavior; route/entitlement transition |
+| Offer opens and closes on route leave | Keep: Behavior |
+| Cold iOS invitation product attribution | Keep: Contract; real analytics path |
+| Saved finished order does not replay thanks | Keep: Regression pin; real modal state |
+| Initiating checkout thanked once | Keep: Behavior; real purchase service and modal |
+| Restore message without purchase thanks | Keep: Behavior |
+| Uninitiated Premium refresh stays silent | Keep: Behavior |
+| Cancelled checkout feedback and retry | Keep: Behavior |
+| Failed checkout feedback and retry | Keep: Behavior |
+| Quiz-results origin through checkout | Keep: Contract; modal-to-real-service attribution |
+| Restore while purchasing unavailable | Keep: Behavior; conditional UI |
+| Pending payment prevents close | Keep: Behavior |
+| Offline store retry retains Restore | Keep: Behavior |
+| Deferred payment consumes late access once | Keep: Behavior |
+| Deferred payment close/restore feedback | Keep: Behavior |
+| Closed modal silently grants late access | Keep: Behavior |
+| Declined deferred payment can retry after Restore | Keep: Behavior |
+| Invisible/visible Study card changes seen progress once | Keep: Regression pin; DOM, real Redux and analytics |
+| Language changes, HTML, fallback and zero interpolation | Keep: Regression pin; actual shared DOM renderer |
+| Localhost store links suppress collectors | Keep: Behavior; actual page links/collector gate |
+| Preview-host store links suppress collectors | Keep: Behavior |
+| Apex production links and referrals | Keep: Contract; actual destinations/event schemas |
+| www production links and referrals | Keep: Contract |
+| analytics_test query marks referrals | Keep: Behavior |
+| QA source query marks referrals | Keep: Behavior |
+| QA campaign query marks referrals | Keep: Behavior |
+| Production demo links and referrals | Keep: Behavior; real interactive dialog |
+| Test-labelled production demo referrals | Keep: Behavior |
+| Local demo links suppress collection | Keep: Behavior |
+| Historical results render without completion calls | Prune: render-only absence check; completion ownership is covered by state submission tests |
+| Fresh Checklist displays Level 0 | Prune: Prop echo / Duplicate altitude; level selectors and actual shared interpolation regression pin this value |
+
+**30 kept, 2 pruned.** Removed the historical-results case from `assessmentAnalytics.test.jsx` and the single-case `Checklist.test.jsx`. The retained Study regression now also asserts real persisted seen-state; invitation tests traverse real app analytics instead of an app-service mock. Complete suites, lint and types are rerun after pruning.
 
 No release or upload is authorized by this record. Azure remains `trigger: none` / `pr: none`; signing team, profile and secure-file names are preserved. Native version remains 1.39 (39), with final upload-history validation still required before packaging. Local Test Store bundles are QA-only and must be replaced with production platform-key bundles before release.
 

@@ -39,6 +39,7 @@ steps:
           version: "26.10.0"
       displayName: "Install Node.js"
     - script: |
+          set -euo pipefail
           npm install --global pnpm@12.9.1
           pnpm install --frozen-lockfile
           pnpm --dir tools/translator install --frozen-lockfile
@@ -51,6 +52,7 @@ steps:
           pnpm test
       displayName: "React App > Test"
     - script: |
+          set -euo pipefail
           pnpm build
           pnpm lander:build
       displayName: "React App > Build"
