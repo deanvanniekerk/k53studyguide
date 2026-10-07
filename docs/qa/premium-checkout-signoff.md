@@ -31,7 +31,8 @@ PASS means observed in this final native smoke. REUSED means earlier evidence or
 | Unavailable product/customer loading → retry; preserve existing access | REUSED | REUSED | Shared native service regressions in #13 cover failed loading, retry without duplicate setup, offline paid access and legacy reconciliation. Earlier #33 native failed-purchase/retry passed. No fresh airplane-mode recovery was run |
 | Small/enlarged-text layout and Profile fix | PASS | REUSED | Current iOS XXXL smoke; earlier Android 320×569 and browser 320/430 checks in #33/#35 |
 | Quiz/results entry points and premium invitation suppression | REUSED | REUSED | #33 browser journey and #13 regressions; not another full quiz in this pass |
-| Accessible labels/focus | REUSED | REUSED | Existing browser checks and #13 coverage only; native VoiceOver/TalkBack traversal NOT RUN, no accessibility compliance claim |
+| Accessible button labels | REUSED | REUSED | Existing browser label checks and #13 coverage only |
+| Keyboard/native focus traversal and screen readers | NOT RUN | NOT RUN | Focus behavior and VoiceOver/TalkBack traversal remain unverified; no accessibility compliance claim |
 | Analytics invitation → offer → checkout → access outcome received | PASS | PASS | GA4 server receipt plus native parameter inspection; details below |
 | Fresh App Store / Google Play billing integration | NOT RUN | NOT RUN | Accepted real-store limitation; previous physical Apple sandbox baseline remains supporting evidence |
 
