@@ -1,9 +1,9 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { Capacitor } from "@capacitor/core";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { PurchaseContext } from "@/context";
 import { analytics } from "@/services/analytics";
-import { DEFAULT_PREMIUM_PRODUCT_ID } from "@/services/purchase/productIds";
+import { getPremiumProductId } from "@/services/purchase/productIds";
 import type { OfferOrigin } from "@/services/purchase/types";
 import { purchaseSelector } from "@/state/purchase";
 
@@ -17,13 +17,12 @@ const routes: Record<OfferOrigin, string> = {
 /** Track actual invitation visibility once per visit, including Ionic's cached pages. */
 export function usePremiumOffer(origin: OfferOrigin, enabled = true) {
   const purchase = useSelector(purchaseSelector);
-  const service = useContext(PurchaseContext);
   const { pathname } = useLocation();
   const invitationRef = useRef<HTMLDivElement>(null);
   const seenThisVisit = useRef(false);
   const [isOpen, setOpen] = useState(false);
   const active = pathname === routes[origin];
-  const productId = service?.productId ?? DEFAULT_PREMIUM_PRODUCT_ID;
+  const productId = getPremiumProductId(Capacitor.getPlatform() === "ios");
 
   useEffect(() => {
     if (!active) {
