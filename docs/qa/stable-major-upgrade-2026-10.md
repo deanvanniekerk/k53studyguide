@@ -154,7 +154,7 @@ Completed locally on 2026-10-07:
 - Native telemetry: Android plugin logs show screen/events/properties and preference/RevenueCat calls; fresh iOS logs initialize Analytics 12.19.2 and Crashlytics 12.19.2 without a fatal launch. Server-side crash ingestion was not exercised. Purchase/restore event names, sandbox/internal exclusions and schemas are unchanged and covered by the existing service tests.
 - Standards review: no documented breaches. Spec review: one finding fixed—Azure install/build scripts now use `set -euo pipefail`, so a failed earlier check cannot be hidden by a successful later command.
 
-Delivery status: implementation, Standards/Spec review and pruning are complete. Publication failed on 2026-10-07: GitHub rejected three pushes (SSH and HTTPS) with Internal Server Error, and PR creation failed. A subsequent branch/PR lookup returned neither remote branch nor PR. Claude review and PR babysitting cannot run until publication succeeds.
+Delivery status: implementation, Standards/Spec review and pruning are complete. GitHub publication failed on 2026-10-07 with server errors, then succeeded on 2026-10-08. [PR #42](https://github.com/deanvanniekerk/k53studyguide/pull/42) is ready for review. Claude review and PR checks are in progress.
 
 Release remains blocked on explicit owner acceptance of the Router peer constraint and five upstream advisories above. Publishing the review PR does not accept those exceptions or authorize a release.
 
