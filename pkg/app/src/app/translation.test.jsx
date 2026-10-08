@@ -4,6 +4,15 @@ import { Provider, Translate, Translator } from "@k53studyguide/shared/translati
 import { cleanup, render, screen } from "@testing-library/react";
 
 afterEach(cleanup);
+it("uses canonical English for missing locale entries and preserves interpolation", () => {
+  render(
+    <Provider language="invalid" translation={{ progress: { en: "Viewed {count} signs" } }}>
+      <Translate text="progress" data={{ count: 0 }} />
+    </Provider>,
+  );
+  expect(screen.getByText("Viewed 0 signs")).toBeTruthy();
+});
+
 it("updates language and interpolates progress and HTML through the shared translation boundary", () => {
   const translation = {
     greeting: { en: "Hello {name}", af: "Hallo {name}" },

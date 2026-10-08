@@ -1,4 +1,15 @@
 export const SETTINGS_RECIEVE_LANGUAGE = "SETTINGS_RECIEVE_LANGUAGE";
+export const SETTINGS_COMPLETE_WELCOME = "SETTINGS_COMPLETE_WELCOME";
+
+export interface CompleteWelcomeAction {
+  type: typeof SETTINGS_COMPLETE_WELCOME;
+  payload: string;
+}
+
+export const completeWelcome = (language: string): CompleteWelcomeAction => ({
+  type: SETTINGS_COMPLETE_WELCOME,
+  payload: language,
+});
 
 export interface RecieveLanguageAction {
   type: typeof SETTINGS_RECIEVE_LANGUAGE;
@@ -43,6 +54,7 @@ export interface DismissQuizHomePremiumAction {
 
 export type SettingsActions =
   | RecieveLanguageAction
+  | CompleteWelcomeAction
   | SetThemeAction
   | SetDisplayModeAction
   | SetInitialDisplayModeAction

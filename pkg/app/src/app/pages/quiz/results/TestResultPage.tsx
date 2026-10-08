@@ -1,4 +1,5 @@
 import { IonPage, useIonViewWillLeave } from "@ionic/react";
+import { Translate } from "@k53studyguide/shared/translation";
 import type React from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +38,9 @@ const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveQuestionAnswe
         <ResultList>
           {questionAnswers.map((questionAnswer, index) => (
             <ResultItem key={questionAnswer.question.id}>
-              <QuestionNumber>Question {index + 1}</QuestionNumber>
+              <QuestionNumber>
+                <Translate text="questionNumber" data={{ number: index + 1 }} />
+              </QuestionNumber>
               <QuizQuestionCard question={questionAnswer.question} answer={questionAnswer.answer} showResult={true} />
             </ResultItem>
           ))}

@@ -11,8 +11,11 @@ const rootSelector: Selector<RootState, SettingsState> = (state: RootState): Set
 
 export const languageSelector: OutputSelector<RootState, string, (state: SettingsState) => string> = createSelector(
   rootSelector,
-  (root) => root.language,
+  (root) => resolveLocale(root.language),
 );
+
+export const welcomeCompletedSelector = createSelector(rootSelector, (root) => root.welcomeCompleted === true);
+export const hasSavedLanguageSelector = createSelector(rootSelector, (root) => root.hasSavedLanguage === true);
 
 export const themeSelector: OutputSelector<
   RootState,
@@ -26,3 +29,5 @@ export const quizHomePremiumDismissedSelector = createSelector(
   rootSelector,
   (root) => root.quizHomePremiumDismissed ?? false,
 );
+
+import { resolveLocale } from "@k53studyguide/shared/data";

@@ -14,11 +14,12 @@ export function Provider({ language, translation, children }: {
   return <TranslationContext.Provider value={{ language, translation }}>{children}</TranslationContext.Provider>;
 }
 
-function useTranslate() {
+export function useTranslate() {
   const context = useContext(TranslationContext);
   if (!context) throw new Error("Translation Provider is required");
   return ({ text, data = {} }: TranslateInput) => {
-    const template = context.translation[text]?.[context.language];
+    const entry = context.translation[text];
+    const template = entry?.[context.language] || entry?.en;
     const translated = typeof template === "function" ? template(data) : template;
     return (translated || text).replace(/\{([^{}]+)\}/g, (_, key: string) => String(data[key] ?? ""));
   };

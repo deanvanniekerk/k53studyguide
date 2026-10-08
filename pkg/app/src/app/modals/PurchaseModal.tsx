@@ -220,7 +220,9 @@ const PurchaseModal: React.FC<Props> = (props) => {
               </RestoreButton>
             )}
             {import.meta.env.DEV && Capacitor.getPlatform() === "web" && (
-              <PaymentNote>Browser preview · simulated price and purchase</PaymentNote>
+              <PaymentNote>
+                <Translate text="browserPaymentNote" />
+              </PaymentNote>
             )}
             <PurchaseButton
               mode="md"

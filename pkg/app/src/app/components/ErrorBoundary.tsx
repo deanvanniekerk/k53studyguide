@@ -1,10 +1,14 @@
 import { IonButton, IonContent, IonIcon, IonPage } from "@ionic/react";
+import { translations } from "@k53studyguide/shared/data";
+import { Translate, Provider as TranslationProvider } from "@k53studyguide/shared/translation";
 import { reload } from "ionicons/icons";
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
+import type { RootState } from "@/state";
 import { recieveLogMessage } from "@/state/log";
+import { languageSelector } from "@/state/settings";
 import { TestFailedIcon } from "./icons";
 
 type State = {
@@ -13,6 +17,7 @@ type State = {
 
 type Props = {
   children: React.ReactNode;
+  language?: string;
 } & PropsFromDispatch;
 
 export class ErrorBoundaryComponent extends React.Component<Props, State> {
@@ -41,29 +46,33 @@ export class ErrorBoundaryComponent extends React.Component<Props, State> {
     if (this.state.hasError) {
       // You can render any custom fallback UI
       return (
-        <Page>
-          <Content>
-            <Icon>
-              <TestFailedIcon />
-            </Icon>
-            <Header>K53 Study Guide has Crashed</Header>
+        <TranslationProvider language={this.props.language ?? "en"} translation={translations}>
+          <Page>
+            <Content>
+              <Icon>
+                <TestFailedIcon />
+              </Icon>
+              <Header>
+                <Translate text="crashTitle" />
+              </Header>
 
-            <Button>
-              <IonButton
-                color="light"
-                shape="round"
-                fill="solid"
-                className="button-med-large"
-                onClick={() => {
-                  document.location.reload();
-                }}
-              >
-                Restart
-                <IonIcon slot="end" icon={reload} />
-              </IonButton>
-            </Button>
-          </Content>
-        </Page>
+              <Button>
+                <IonButton
+                  color="light"
+                  shape="round"
+                  fill="solid"
+                  className="button-med-large"
+                  onClick={() => {
+                    document.location.reload();
+                  }}
+                >
+                  <Translate text="restart" />
+                  <IonIcon slot="end" icon={reload} />
+                </IonButton>
+              </Button>
+            </Content>
+          </Page>
+        </TranslationProvider>
       );
     }
     return this.props.children;
@@ -107,6 +116,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-const ErrorBoundary = connect(null, mapDispatchToProps)(ErrorBoundaryComponent);
+const ErrorBoundary = connect(
+  (state: RootState) => ({ language: languageSelector(state) }),
+  mapDispatchToProps,
+)(ErrorBoundaryComponent);
 
 export { ErrorBoundary };

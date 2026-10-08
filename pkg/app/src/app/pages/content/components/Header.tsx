@@ -1,5 +1,5 @@
 import { IonAlert, IonButton, IonText } from "@ionic/react";
-import { Translate, Translator } from "@k53studyguide/shared/translation";
+import { Translate, Translator, useTranslate } from "@k53studyguide/shared/translation";
 import type React from "react";
 import { useState } from "react";
 import { connect, useDispatch } from "react-redux";
@@ -18,6 +18,7 @@ import { SeenProgress } from "./SeenProgress";
 type Props = PropsFromState;
 
 const HeaderComponent: React.FC<Props> = (props) => {
+  const translate = useTranslate();
   const navigate = useNavigate();
   const dispatch = useDispatch<Dispatch<AnyAction> & ThunkDispatch<RootState, null, AnyAction>>();
   const [showStartQuizAlert, setShowStartQuizAlert] = useState(false);
@@ -35,7 +36,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
             shape="round"
             fill="solid"
             size="small"
-            aria-label="Start quiz for this section"
+            aria-label={translate({ text: "startSectionQuiz" })}
             onClick={() => setShowStartQuizAlert(true)}
           >
             <Translate text="quiz" />
@@ -48,18 +49,19 @@ const HeaderComponent: React.FC<Props> = (props) => {
           <IonAlert
             isOpen={showStartQuizAlert}
             onDidDismiss={() => setShowStartQuizAlert(false)}
-            message={`Start a new Quiz on '${translate({
-              text: props.currentNavigationKey,
-            })}' content?`}
+            message={translate({
+              text: "startSectionQuizConfirm",
+              data: { section: translate({ text: props.currentNavigationKey }) },
+            })}
             buttons={[
               {
-                text: "Cancel",
+                text: translate({ text: "cancel" }),
                 handler: () => {
                   setShowStartQuizAlert(false);
                 },
               },
               {
-                text: "Yes",
+                text: translate({ text: "yes" }),
                 handler: () => {
                   // so that we can continue
                   dispatch(recieveLastSeenParentContentKey(props.currentNavigationKey));

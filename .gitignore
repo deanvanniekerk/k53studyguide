@@ -18,6 +18,9 @@
 # misc
 .DS_Store
 /.codex-screenshots/
+/.translation-samples/
+pkg/shared/src/data/locales/*.lock
+pkg/shared/src/data/locales/*.tmp
 /.gradle/
 .env.local
 .dev.env

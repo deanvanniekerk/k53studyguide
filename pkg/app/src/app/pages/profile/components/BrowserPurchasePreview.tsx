@@ -1,4 +1,5 @@
 import { IonButton } from "@ionic/react";
+import { Translate } from "@k53studyguide/shared/translation";
 import { useDispatch } from "react-redux";
 import type { Action, Dispatch } from "redux";
 import styled from "styled-components";
@@ -14,10 +15,11 @@ export function BrowserPurchasePreview() {
   if (!isBrowserPreview) return null;
   return (
     <Panel>
-      <strong>Browser purchase preview</strong>
+      <strong>
+        <Translate text="browserPurchasePreview" />
+      </strong>
       <p>
-        Purchases and restores are simulated. No charge. Use this reset to try the free experience again; your study and
-        quiz progress is kept.
+        <Translate text="browserPurchaseInfo" />
       </p>
       <IonButton
         onClick={() => {
@@ -26,7 +28,7 @@ export function BrowserPurchasePreview() {
           dispatch(recievePurchaseProductCanPurchase(true));
         }}
       >
-        Reset to free
+        <Translate text="resetToFree" />
       </IonButton>
     </Panel>
   );

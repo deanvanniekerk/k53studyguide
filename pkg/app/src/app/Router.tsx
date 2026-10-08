@@ -1,6 +1,6 @@
 import { IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { Provider as TranslationProvider } from "@k53studyguide/shared/translation";
+import { Translate, Provider as TranslationProvider } from "@k53studyguide/shared/translation";
 import type React from "react";
 import { useEffect } from "react";
 import { connect } from "react-redux";
@@ -23,6 +23,7 @@ import StudyPage from "./pages/study/StudyPage";
 import TestResultPage from "./pages/test/results/TestResultPage";
 import TestSessionPage from "./pages/test/session/TestPage";
 import TestPage from "./pages/test/TestPage";
+import WelcomeGate from "./WelcomeGate";
 
 type Props = PropsFromState;
 
@@ -132,25 +133,33 @@ const AppTabs: React.FC<AnalyticsRouteTrackerProps> = (props) => {
         <IonTabButton tab="study" href="/study" style={tabAccentStyles.study}>
           <span className={tabPillClassName("study")}>
             <BookIcon style={iconStyles} />
-            <IonLabel>Study</IonLabel>
+            <IonLabel>
+              <Translate text="study" />
+            </IonLabel>
           </span>
         </IonTabButton>
         <IonTabButton tab="quiz" href="/quiz" style={tabAccentStyles.quiz}>
           <span className={tabPillClassName("quiz")}>
             <QuizIcon style={iconStyles} />
-            <IonLabel>Quiz</IonLabel>
+            <IonLabel>
+              <Translate text="quiz" />
+            </IonLabel>
           </span>
         </IonTabButton>
         <IonTabButton tab="test" href="/test" style={tabAccentStyles.test}>
           <span className={tabPillClassName("test")}>
             <TestPenIcon style={iconStyles} />
-            <IonLabel>Test</IonLabel>
+            <IonLabel>
+              <Translate text="test" />
+            </IonLabel>
           </span>
         </IonTabButton>
         <IonTabButton tab="profile" href="/profile" style={tabAccentStyles.profile}>
           <span className={tabPillClassName("profile")}>
             <SettingsIcon style={iconStyles} />
-            <IonLabel>Profile</IonLabel>
+            <IonLabel>
+              <Translate text="profile" />
+            </IonLabel>
           </span>
         </IonTabButton>
       </IonTabBar>
@@ -162,7 +171,9 @@ const Router: React.FC<Props> = (props) => {
   return (
     <TranslationProvider language={props.language} translation={translations}>
       <IonReactRouter>
-        <AppTabs language={props.language} theme={props.theme} hasFullAccess={props.hasFullAccess} />
+        <WelcomeGate>
+          <AppTabs language={props.language} theme={props.theme} hasFullAccess={props.hasFullAccess} />
+        </WelcomeGate>
       </IonReactRouter>
     </TranslationProvider>
   );

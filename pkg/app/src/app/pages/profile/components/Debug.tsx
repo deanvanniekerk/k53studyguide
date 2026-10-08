@@ -1,6 +1,7 @@
 import { App } from "@capacitor/app";
 import { Capacitor } from "@capacitor/core";
 import { Device } from "@capacitor/device";
+import { Translate, useTranslate } from "@k53studyguide/shared/translation";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -23,6 +24,7 @@ const apiKeyForPlatform = (platform: string): string => {
 };
 
 const Debug: React.FC = () => {
+  const translate = useTranslate();
   const [appVersionNumber, setAppVersionNumber] = useState("");
   const [appVersionCode, setAppVersionCode] = useState("");
   const [deviceModel, setDeviceModel] = useState("");
@@ -50,44 +52,56 @@ const Debug: React.FC = () => {
   return (
     <>
       <Section>
-        <SectionTitle>Device</SectionTitle>
+        <SectionTitle>
+          <Translate text="debugDevice" />
+        </SectionTitle>
         <GroupCard>
-          <Row name="App Version Number" value={appVersionNumber} />
-          <Row name="App Version Code" value={appVersionCode} />
-          <Row name="Device Model" value={deviceModel} />
-          <Row name="Device Id" value={deviceId} />
-          <Row name="Device Version" value={deviceVersion} />
+          <Row name={translate({ text: "debugAppVersionNumber" })} value={appVersionNumber} />
+          <Row name={translate({ text: "debugAppVersionCode" })} value={appVersionCode} />
+          <Row name={translate({ text: "debugDeviceModel" })} value={deviceModel} />
+          <Row name={translate({ text: "debugDeviceId" })} value={deviceId} />
+          <Row name={translate({ text: "debugDeviceVersion" })} value={deviceVersion} />
         </GroupCard>
       </Section>
 
       <Section>
-        <SectionTitle>Build</SectionTitle>
+        <SectionTitle>
+          <Translate text="debugBuild" />
+        </SectionTitle>
         <GroupCard>
-          <Row name="Environment" value={__ENVIRONMENT__} />
-          <Row name="Log Level" value={__LOG_LEVEL__} />
-          <Row name="Platform" value={platform} />
+          <Row name={translate({ text: "debugEnvironment" })} value={__ENVIRONMENT__} />
+          <Row name={translate({ text: "debugLogLevel" })} value={__LOG_LEVEL__} />
+          <Row name={translate({ text: "debugPlatform" })} value={platform} />
         </GroupCard>
       </Section>
 
       <Section>
-        <SectionTitle>Purchase</SectionTitle>
+        <SectionTitle>
+          <Translate text="debugPurchase" />
+        </SectionTitle>
         <GroupCard>
-          <Row name="RevenueCat API Key" value={maskKey(apiKeyForPlatform(platform))} />
-          <Row name="Product Id" value={productId} />
-          <Row name="Entitlement Id" value={REVENUECAT_PREMIUM_ENTITLEMENT_ID} />
-          <Row name="Can Purchase" value={String(purchase.canPurchase)} />
-          <Row name="Owned" value={String(purchase.owned)} />
-          <Row name="Order State" value={purchase.orderState} />
-          <Row name="Product Price" value={purchase.price || "(none)"} />
-          <Row name="Product Title" value={purchase.title || "(none)"} />
+          <Row name={translate({ text: "debugRevenuecatApiKey" })} value={maskKey(apiKeyForPlatform(platform))} />
+          <Row name={translate({ text: "debugProductId" })} value={productId} />
+          <Row name={translate({ text: "debugEntitlementId" })} value={REVENUECAT_PREMIUM_ENTITLEMENT_ID} />
+          <Row name={translate({ text: "debugCanPurchase" })} value={String(purchase.canPurchase)} />
+          <Row name={translate({ text: "debugOwned" })} value={String(purchase.owned)} />
+          <Row name={translate({ text: "debugOrderState" })} value={purchase.orderState} />
+          <Row name={translate({ text: "debugProductPrice" })} value={purchase.price || "(none)"} />
+          <Row name={translate({ text: "debugProductTitle" })} value={purchase.title || "(none)"} />
         </GroupCard>
       </Section>
 
       <Section>
-        <SectionTitle>Logs</SectionTitle>
+        <SectionTitle>
+          <Translate text="debugLogs" />
+        </SectionTitle>
         <GroupCard>
           <LogList>
-            {logEntries.length === 0 && <LogEmpty>No log messages yet.</LogEmpty>}
+            {logEntries.length === 0 && (
+              <LogEmpty>
+                <Translate text="debugNoLogMessagesYet" />
+              </LogEmpty>
+            )}
             {logEntries.map((entry, index) => (
               <LogItem key={`${entry.timestamp}-${index}`} $level={entry.level}>
                 <LogMeta>

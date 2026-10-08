@@ -1,0 +1,10 @@
+{
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "batchSize": 24,
+  "maxBatchCharacters": 16000,
+  "timeoutMs": 600000,
+  "retries": 2,
+  "activityMs": 10000,
+  "promptVersion": "k53-v1"
+}

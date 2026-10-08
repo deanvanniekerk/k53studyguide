@@ -1,16 +1,14 @@
 {
   "name": "translator",
   "version": "1.0.0",
-  "description": "",
+  "description": "Manually generated offline K53 translations through the signed-in Codex CLI",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "check": "node --check main.js && node -e \"const { Translate } = require('@google-cloud/translate').v2; new Translate(); require('./input/translations');\""
+    "check": "node --check main.js && node check.mjs",
+    "test": "node --test *.test.mjs"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@google-cloud/translate": "10.1.1"
-  },
   "private": true,
   "packageManager": "pnpm@12.9.1",
   "engines": {

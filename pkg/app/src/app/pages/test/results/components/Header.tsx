@@ -32,7 +32,9 @@ const HeaderComponent: React.FC<Props> = ({ testResults, sectionAPassed, section
 
       <SectionCard>
         <SectionResultRow>
-          <SectionName>Section A</SectionName>
+          <SectionName>
+            <Translate text="sectionA" />
+          </SectionName>
           <SectionScore>
             {testResults.A.correct} / {testResults.A.total}
           </SectionScore>
@@ -40,7 +42,9 @@ const HeaderComponent: React.FC<Props> = ({ testResults, sectionAPassed, section
         </SectionResultRow>
         <Divider />
         <SectionResultRow>
-          <SectionName>Section B</SectionName>
+          <SectionName>
+            <Translate text="sectionB" />
+          </SectionName>
           <SectionScore>
             {testResults.B.correct} / {testResults.B.total}
           </SectionScore>
@@ -48,7 +52,9 @@ const HeaderComponent: React.FC<Props> = ({ testResults, sectionAPassed, section
         </SectionResultRow>
         <Divider />
         <SectionResultRow>
-          <SectionName>Section C</SectionName>
+          <SectionName>
+            <Translate text="sectionC" />
+          </SectionName>
           <SectionScore>
             {testResults.C.correct} / {testResults.C.total}
           </SectionScore>

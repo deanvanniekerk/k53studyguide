@@ -1,4 +1,5 @@
 import { IonSelect, IonSelectOption } from "@ionic/react";
+import { releasedLocales } from "@k53studyguide/shared/data";
 import { Translate, Translator } from "@k53studyguide/shared/translation";
 import React, { useState } from "react";
 import { connect } from "react-redux";
@@ -34,7 +35,7 @@ const SettingsComponent: React.FC<Props> = (props) => {
           {({ translate }) => (
             <React.Fragment>
               <Row
-                name="Appearance"
+                name={translate({ text: "appearance" })}
                 value={
                   <Select
                     value={theme}
@@ -46,17 +47,23 @@ const SettingsComponent: React.FC<Props> = (props) => {
                     interface="action-sheet"
                     cancelText={translate({ text: "cancel" })}
                   >
-                    <IonSelectOption value="system">System default</IonSelectOption>
-                    <IonSelectOption value="light">Light</IonSelectOption>
-                    <IonSelectOption value="dark">Dark</IonSelectOption>
+                    <IonSelectOption value="system">
+                      <Translate text="systemDefault" />
+                    </IonSelectOption>
+                    <IonSelectOption value="light">
+                      <Translate text="lightTheme" />
+                    </IonSelectOption>
+                    <IonSelectOption value="dark">
+                      <Translate text="darkTheme" />
+                    </IonSelectOption>
                   </Select>
                 }
               />
               <Row
-                name="Display mode"
+                name={translate({ text: "displayMode" })}
                 value={
                   <Select
-                    aria-label="Display mode"
+                    aria-label={translate({ text: "displayMode" })}
                     value={props.displayMode ?? "comfortable"}
                     onIonChange={(event) => {
                       const value = event.detail.value as DisplayMode;
@@ -65,8 +72,12 @@ const SettingsComponent: React.FC<Props> = (props) => {
                     interface="action-sheet"
                     cancelText={translate({ text: "cancel" })}
                   >
-                    <IonSelectOption value="compact">Compact</IonSelectOption>
-                    <IonSelectOption value="comfortable">Comfortable</IonSelectOption>
+                    <IonSelectOption value="compact">
+                      <Translate text="compactDisplay" />
+                    </IonSelectOption>
+                    <IonSelectOption value="comfortable">
+                      <Translate text="comfortableDisplay" />
+                    </IonSelectOption>
                   </Select>
                 }
               />
@@ -74,6 +85,7 @@ const SettingsComponent: React.FC<Props> = (props) => {
                 name={translate({ text: "language" })}
                 value={
                   <Select
+                    aria-label={translate({ text: "language" })}
                     value={language}
                     onIonChange={(event) => {
                       setLanguage(event.detail.value);
@@ -82,10 +94,11 @@ const SettingsComponent: React.FC<Props> = (props) => {
                     interface="action-sheet"
                     cancelText={translate({ text: "cancel" })}
                   >
-                    <IonSelectOption value="en">English</IonSelectOption>
-                    {/* <IonSelectOption value="af">Afrikaans</IonSelectOption>
-                    <IonSelectOption value="zu">Zulu</IonSelectOption>
-                    <IonSelectOption value="xh">Xhosa</IonSelectOption> */}
+                    {releasedLocales.map(({ code, name }) => (
+                      <IonSelectOption key={code} value={code}>
+                        {name}
+                      </IonSelectOption>
+                    ))}
                   </Select>
                 }
               />

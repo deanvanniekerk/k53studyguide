@@ -1,5 +1,6 @@
 import { Browser } from "@capacitor/browser";
 import { IonButton } from "@ionic/react";
+import { Translate } from "@k53studyguide/shared/translation";
 import type React from "react";
 import styled from "styled-components";
 import { GroupCard, Section, SectionTitle } from "./";
@@ -14,16 +15,20 @@ const openLegalUrl = (url: string) => {
 const Legal: React.FC = () => {
   return (
     <Section>
-      <SectionTitle>Legal</SectionTitle>
+      <SectionTitle>
+        <Translate text="legal" />
+      </SectionTitle>
       <GroupCard>
         <PanelContent>
-          <Info>Review the policies that apply to K53 Study Guide.</Info>
+          <Info>
+            <Translate text="legalInfo" />
+          </Info>
           <ButtonRow>
             <SecondaryButton shape="round" fill="outline" onClick={() => openLegalUrl(PRIVACY_POLICY_URL)}>
-              Privacy Policy
+              <Translate text="privacyPolicy" />
             </SecondaryButton>
             <SecondaryButton shape="round" fill="outline" onClick={() => openLegalUrl(TERMS_OF_USE_URL)}>
-              Terms of Use
+              <Translate text="termsOfUse" />
             </SecondaryButton>
           </ButtonRow>
         </PanelContent>

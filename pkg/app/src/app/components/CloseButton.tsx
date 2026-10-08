@@ -1,4 +1,5 @@
 import { IonIcon } from "@ionic/react";
+import { Translator } from "@k53studyguide/shared/translation";
 import { closeOutline } from "ionicons/icons";
 import type React from "react";
 import styled from "styled-components";
@@ -9,9 +10,13 @@ type Props = {
 
 const CloseButton: React.FC<Props> = ({ onClick }) => {
   return (
-    <Button type="button" aria-label="Close" onClick={onClick}>
-      <IonIcon icon={closeOutline} />
-    </Button>
+    <Translator>
+      {({ translate }) => (
+        <Button type="button" aria-label={translate({ text: "close" })} onClick={onClick}>
+          <IonIcon icon={closeOutline} />
+        </Button>
+      )}
+    </Translator>
   );
 };
 

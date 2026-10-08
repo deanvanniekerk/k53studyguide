@@ -1,4 +1,5 @@
 import { IonIcon } from "@ionic/react";
+import { useTranslate } from "@k53studyguide/shared/translation";
 import { helpOutline } from "ionicons/icons";
 import type React from "react";
 import styled from "styled-components";
@@ -8,8 +9,9 @@ type Props = {
 };
 
 const PageHeaderInfoIcon: React.FC<Props> = (props) => {
+  const translate = useTranslate();
   return (
-    <InfoButton type="button" aria-label="Show information" onClick={props.onClick}>
+    <InfoButton type="button" aria-label={translate({ text: "showInformation" })} onClick={props.onClick}>
       <HelpBadge>
         <IonIcon icon={helpOutline} aria-hidden="true" />
       </HelpBadge>

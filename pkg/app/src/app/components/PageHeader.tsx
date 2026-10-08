@@ -1,5 +1,5 @@
 import { IonIcon } from "@ionic/react";
-import { Translate } from "@k53studyguide/shared/translation";
+import { Translate, useTranslate } from "@k53studyguide/shared/translation";
 import { arrowBackOutline } from "ionicons/icons";
 import type React from "react";
 import styled from "styled-components";
@@ -23,12 +23,13 @@ const gradients: Record<PageSection, string> = {
 };
 
 const PageHeader: React.FC<Props> = ({ title, subTitle, page, compact = false, onBackClick, rightSection }) => {
+  const translate = useTranslate();
   return (
     <Shell $gradient={gradients[page]} $compact={compact}>
       <Bar $hasSubtitle={Boolean(subTitle)} $compact={compact}>
         <Col1>
           {onBackClick && (
-            <BackBtn type="button" aria-label="Go back" onClick={onBackClick}>
+            <BackBtn type="button" aria-label={translate({ text: "goBack" })} onClick={onBackClick}>
               <IonIcon icon={arrowBackOutline} />
             </BackBtn>
           )}

@@ -11,7 +11,7 @@
     "bump:native": "node scripts/bump-native-version.mjs",
     "lint:tsc": "pnpm --filter app tsc && pnpm --filter lander tsc",
     "start": "pnpm --filter app start",
-    "test": "pnpm --filter app test && pnpm --filter lander test",
+    "test": "pnpm --filter app test && pnpm --filter lander test && pnpm --dir tools/translator test",
     "test:coverage": "pnpm --filter app test:coverage",
     "test:watch": "pnpm --filter app test:watch",
     "tsc": "pnpm --filter app tsc",
@@ -27,7 +27,9 @@
     "lander:build": "pnpm --filter lander build",
     "lander:deploy": "bash scripts/deploy-lander-ftp.sh",
     "lander:deploy:full": "LANDER_INCLUDE_QUIZ_IMAGES=1 bash scripts/deploy-lander-ftp.sh",
-    "translator:check": "pnpm --dir tools/translator check"
+    "translator:check": "pnpm --dir tools/translator check",
+    "translations:generate": "node tools/translator/main.js",
+    "translations:check": "node tools/translator/check.mjs --complete"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.15"

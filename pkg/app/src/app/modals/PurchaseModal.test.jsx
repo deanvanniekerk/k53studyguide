@@ -217,7 +217,7 @@ it("does not close the offer with the close button while a payment is pending", 
   const page = await mount("mock_test", true, dismiss);
   act(() => store.dispatch(recievePurchaseOrderState("pending")));
   FirebaseAnalytics.logEvent.mockClear();
-  act(() => page.root.findByProps({ "aria-label": "Close" }).props.onClick());
+  act(() => page.root.findByProps({ "aria-label": "close" }).props.onClick());
   expect(dismiss).not.toHaveBeenCalled();
   expect(FirebaseAnalytics.logEvent).not.toHaveBeenCalledWith(expect.objectContaining({ name: "premium_offer_close" }));
 });
@@ -259,7 +259,7 @@ it("allows closing and restoring a deferred payment without replaying a purchase
   const page = await mount("mock_test", true, dismiss);
   Purchases.purchaseStoreProduct.mockRejectedValueOnce({ code: "pending" });
   await click(page, "getPremium");
-  act(() => page.root.findByProps({ "aria-label": "Close" }).props.onClick());
+  act(() => page.root.findByProps({ "aria-label": "close" }).props.onClick());
   expect(dismiss).toHaveBeenCalledOnce();
   await click(page, "restorePurchase");
   expect(notifications(page)).toEqual(["purchaseRestored"]);

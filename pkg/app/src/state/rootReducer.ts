@@ -10,6 +10,7 @@ import { type PurchaseState, reducer as purchase } from "./purchase";
 import { reducer as questions } from "./questions";
 import { reducer as quiz } from "./quiz";
 import { type SettingsState, reducer as settings } from "./settings";
+import { migrateSettings } from "./settings/migration";
 import { reducer as study } from "./study";
 import { reducer as test } from "./test";
 import { reducer as translations } from "./translations";
@@ -17,6 +18,7 @@ import { reducer as translations } from "./translations";
 const settingsConfig: PersistConfig<SettingsState> = {
   key: "settings",
   storage: createStorage(),
+  migrate: migrateSettings,
 };
 
 const purchaseConfig: PersistConfig<PurchaseState> = {
