@@ -7,6 +7,7 @@ import { applyMiddleware, createStore } from "redux";
 import { thunk } from "redux-thunk";
 import { vi } from "vitest";
 import createRootReducer from "@/state/rootReducer";
+import { clearSeenContent } from "@/state/study/log";
 import { Content } from "./content/components/Content";
 
 vi.mock("@capacitor-firebase/analytics", () => ({ FirebaseAnalytics: { logEvent: vi.fn() } }));
@@ -56,6 +57,13 @@ it("reports study content visibility once per visit without claiming learning co
     visibility(false);
     visibility(true);
   });
+  expect(store.getState().study.log.seenContentKeys).toEqual({ "nav.roadSigns.warning": true });
+  act(() => {
+    visibility(false);
+    store.dispatch(clearSeenContent());
+  });
+  expect(store.getState().study.log.seenContentKeys).toEqual({});
+  act(() => visibility(true));
   expect(store.getState().study.log.seenContentKeys).toEqual({ "nav.roadSigns.warning": true });
   expect(vi.mocked(FirebaseAnalytics.logEvent).mock.calls.map(([event]) => event)).toEqual([
     { name: "study_content_view", params: { content_key: "nav.roadSigns.warning", content_category: "nav.roadSigns" } },

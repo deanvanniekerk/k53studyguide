@@ -26,9 +26,10 @@ const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenCon
     if (!card) return;
     let trackedVisible = false;
     const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting || trackedVisible) return;
-      trackedVisible = true;
+      if (!entry.isIntersecting) return;
       recieveSeenContentKey(navigationKey);
+      if (trackedVisible) return;
+      trackedVisible = true;
       analytics.trackStudyContentView({
         content_key: navigationKey,
         content_category: navigationKeyToBreadcrumb(navigationKey)[1] ?? navigationKey,
