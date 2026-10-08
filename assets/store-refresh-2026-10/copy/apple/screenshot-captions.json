@@ -1,0 +1,51 @@
+[
+  {
+    "order": 1,
+    "headline": "Study smart. See your progress.",
+    "supportingLine": "Road signs, rules and vehicle controls.",
+    "premium": false,
+    "altText": "Study dashboard with completed and partially studied topics."
+  },
+  {
+    "order": 2,
+    "headline": "Fresh questions. Focused practice.",
+    "supportingLine": "Randomized quizzes on the topics you choose.",
+    "premium": false,
+    "altText": "Quiz with a road-sign question and three answer choices."
+  },
+  {
+    "order": 3,
+    "headline": "Practise the mock-test format.",
+    "supportingLine": "64 questions. Three sections. One focused session.",
+    "premium": true,
+    "altText": "Premium mock test showing three sections and question progress."
+  },
+  {
+    "order": 4,
+    "headline": "Learn the signs. Know the rules.",
+    "supportingLine": "Clear study material, one topic at a time.",
+    "premium": false,
+    "altText": "Road-sign study material with speed-limit and mass-limit signs."
+  },
+  {
+    "order": 5,
+    "headline": "See where to focus next.",
+    "supportingLine": "Review your mock-test results by section.",
+    "premium": true,
+    "altText": "Premium mock-test results with section scores and answer review."
+  },
+  {
+    "order": 6,
+    "headline": "Four languages. Your choice.",
+    "supportingLine": "English · Afrikaans · isiZulu · isiXhosa",
+    "premium": false,
+    "altText": "Welcome screen offering English, Afrikaans, isiZulu and isiXhosa."
+  },
+  {
+    "order": 7,
+    "headline": "Light or dark. Study your way.",
+    "supportingLine": "Choose the view that feels right for you.",
+    "premium": false,
+    "altText": "The same study dashboard shown separately in light and dark mode."
+  }
+]

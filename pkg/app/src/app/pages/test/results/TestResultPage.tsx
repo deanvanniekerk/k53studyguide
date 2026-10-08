@@ -1,4 +1,4 @@
-import { IonPage, useIonViewWillLeave } from "@ionic/react";
+import { IonPage, useIonViewWillEnter } from "@ionic/react";
 import { Translate } from "@k53studyguide/shared/translation";
 import type React from "react";
 import { useEffect } from "react";
@@ -10,14 +10,24 @@ import { PageContent, PageHeader } from "@/app/components";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { QuizQuestionCard } from "@/app/pages/quiz/components";
 import type { RootState } from "@/state";
-import { currentSectionQuestionsSelector, recieveCurrentSection, recieveQuestionAnswers } from "@/state/test/session";
+import {
+  currentSectionQuestionsSelector,
+  recieveCurrentSection,
+  recieveQuestionAnswers,
+  totalQuestionsSelector,
+} from "@/state/test/session";
 import { Tabs } from "../components";
 import { TestWatermark } from "../TestWatermark";
 import { Header } from "./components";
 
 type Props = PropsFromState & PropsFromDispatch;
 
-const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveCurrentSection, recieveQuestionAnswers }) => {
+const TestResultPage: React.FC<Props> = ({
+  questionAnswers,
+  totalQuestions,
+  recieveCurrentSection,
+  recieveQuestionAnswers,
+}) => {
   const navigate = useNavigate();
 
   useAnalytics("TestPage:TestResultPage");
@@ -26,11 +36,13 @@ const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveCurrentSectio
     recieveCurrentSection("A");
   }, [recieveCurrentSection]);
 
-  useIonViewWillLeave(() => {
-    recieveQuestionAnswers([]); //Clear test
-  });
+  // Ionic restores cached result routes on tab return; leaving a tab must not clear its data.
+  useIonViewWillEnter(() => {
+    if (totalQuestions === 0) navigate("/test", { replace: true });
+  }, [totalQuestions, navigate]);
 
   const onBackClicked = () => {
+    recieveQuestionAnswers([]);
     navigate("/test", { replace: true });
   };
 
@@ -88,6 +100,7 @@ type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
   return {
     questionAnswers: currentSectionQuestionsSelector(state),
+    totalQuestions: totalQuestionsSelector(state),
   };
 };
 

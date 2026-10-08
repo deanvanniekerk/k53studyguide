@@ -1,0 +1,49 @@
+{
+  "tool": "Built-in Image Gen",
+  "date": "2026-10-08",
+  "accepted": [
+    {
+      "file": "concepts/portrait-background.png",
+      "sourcePixels": [
+        852,
+        1846
+      ],
+      "role": "Generated art surrounding unchanged app screenshots; no text/UI in source"
+    },
+    {
+      "file": "concepts/play-feature-master.png",
+      "sourcePixels": [
+        1795,
+        876
+      ],
+      "role": "Play landscape; original smiling driver"
+    },
+    {
+      "file": "concepts/apple-header-master.png",
+      "sourcePixels": [
+        1914,
+        822
+      ],
+      "role": "Wide header; revised to restore smiling driver at user request"
+    },
+    {
+      "file": "concepts/apple-search-master.png",
+      "sourcePixels": [
+        1536,
+        1024
+      ],
+      "role": "3:2 search composition; revised to restore smiling driver at user request"
+    }
+  ],
+  "rejected": [
+    {
+      "file": "concepts/01-study-pilot.png",
+      "reason": "Generated UI changed progress bars; style reference only"
+    },
+    {
+      "file": "concepts/rejected-opaque-header.png",
+      "reason": "User preferred smiling lady visible through windscreen"
+    }
+  ],
+  "finishing": "Browser HTML composition and full-page JPEG capture at exact output sizes. Original app screenshots inserted as immutable image elements with uniform scaling. No Python image edits."
+}

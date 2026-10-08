@@ -41,13 +41,18 @@ export const maxQuestionsSelector: OutputSelector<RootState, number, (state: Tes
   (root) => root.maxQuestions,
 );
 
-export const testInProgressSelector: OutputSelector<RootState, boolean, (totalQuestions: number) => boolean> =
-  createSelector(totalQuestionsSelector, (totalQuestions) => totalQuestions > 0);
+export const completedAtSelector: OutputSelector<RootState, string | null, (state: TestState) => string | null> =
+  createSelector(rootSelector, (root) => root.completedAt ?? null);
+
+export const testInProgressSelector: OutputSelector<
+  RootState,
+  boolean,
+  (totalQuestions: number, completedAt: string | null) => boolean
+> = createSelector(totalQuestionsSelector, completedAtSelector, (totalQuestions, completedAt) => {
+  return totalQuestions > 0 && !completedAt;
+});
 
 export const experienceGainedSelector: OutputSelector<RootState, number, (state: TestState) => number> = createSelector(
   rootSelector,
   (root) => root.experienceGained,
 );
-
-export const completedAtSelector: OutputSelector<RootState, string | null, (state: TestState) => string | null> =
-  createSelector(rootSelector, (root) => root.completedAt ?? null);

@@ -1,0 +1,762 @@
+{
+  "commit": "390d468cc519e6f6c965bd0bbc3b784daa4a21ef",
+  "nativeVersion": "1.40 (40)",
+  "azureBuild": "20261008.1 / 1805 — source matches; Success observed",
+  "ionicMode": "md (production configuration on both platforms)",
+  "method": "Authentic app in CSS viewport; iframe zoom produces requested raster scale. App UI and data unchanged; isolated demo progress.",
+  "captures": [
+    {
+      "family": "iphone",
+      "scene": "study",
+      "viewport": [
+        402,
+        874
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1206,
+        2622
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nProhibition\nStudy · 2 of 6 sections complete\nCONTINUE\nALL TOPICS\nVehicle Controls\n100%\nRules of the Road\n30%\nDefensive driving (K53)\n100%\nRoad markings\n61%\nRoad signals\n0%\nRo"
+    },
+    {
+      "family": "iphone",
+      "scene": "quiz",
+      "viewport": [
+        402,
+        874
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1206,
+        2622
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "QUIZ\nAll Content\nQuestion 1 of 10\nIf you see this sign, you must:\nStop immediately.\nStop immediately, but only if you are on a freeway.\nNot stop.\nCONTINUE\nStudy\nQuiz\nTest\nProfile"
+    },
+    {
+      "family": "iphone",
+      "scene": "test",
+      "viewport": [
+        402,
+        874
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1206,
+        2622
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "TEST\nSection A\n0 / 8\nSection B\n0 / 28\nSection C\n0 / 28\nQUESTION 1\n1 of 8\nThe order of the pedals (from left to right) is:\nClutch, Brake, Accelerator.\nAccelerator, Brake, Clutch.\nCl"
+    },
+    {
+      "family": "iphone",
+      "scene": "content",
+      "viewport": [
+        402,
+        874
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1206,
+        2622
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nStudy / Road signs / Regulatory /\nProhibition\n2 / 39\nQuiz\nSpeed limit\nThis is the maximum speed limit, in kilometers per hour. You may not drive faster than this.\nMass limit\n"
+    },
+    {
+      "family": "iphone",
+      "scene": "results",
+      "viewport": [
+        402,
+        874
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1206,
+        2622
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "RESULTS\nCONGRATULATIONS\nYou have successfully passed the Test\nSection A\n7 / 8\nSection B\n24 / 28\nSection C\n25 / 28\nSection A\nSection B\nSection C\nQuestion 1\nThe order of the pedals ("
+    },
+    {
+      "family": "iphone",
+      "scene": "languages",
+      "viewport": [
+        402,
+        874
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1206,
+        2622
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "Welcome to K53 Study Guide\n\nBuild your confidence for the learner’s licence test. Choose your study language to get started.\n\nChoose your language\nEnglish\nAfrikaans\nisiZulu\nisiXhos"
+    },
+    {
+      "family": "iphone",
+      "scene": "dark",
+      "viewport": [
+        402,
+        874
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1206,
+        2622
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nProhibition\nStudy · 2 of 6 sections complete\nCONTINUE\nALL TOPICS\nVehicle Controls\n100%\nRules of the Road\n30%\nDefensive driving (K53)\n100%\nRoad markings\n61%\nRoad signals\n0%\nRo"
+    },
+    {
+      "family": "android-phone",
+      "scene": "study",
+      "viewport": [
+        360,
+        640
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1080,
+        1920
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nProhibition\nStudy · 2 of 6 sections complete\nCONTINUE\nALL TOPICS\nVehicle Controls\nRules of the Road\nDefensive driving (K53)\nRoad markings\nRoad signals\nRoad signs\nStudy\nQuiz\nT"
+    },
+    {
+      "family": "android-phone",
+      "scene": "quiz",
+      "viewport": [
+        360,
+        640
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1080,
+        1920
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "QUIZ\nAll Content\nQuestion 1 of 10\nIf you see this sign, you must:\nStop immediately.\nStop immediately, but only if you are on a freeway.\nNot stop.\nCONTINUE\nStudy\nQuiz\nTest\nProfile"
+    },
+    {
+      "family": "android-phone",
+      "scene": "test",
+      "viewport": [
+        360,
+        640
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1080,
+        1920
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "TEST\nSection A\n0 / 8\nSection B\n0 / 28\nSection C\n0 / 28\nQUESTION 1\n1 of 8\nThe order of the pedals (from left to right) is:\nClutch, Brake, Accelerator.\nAccelerator, Brake, Clutch.\nCl"
+    },
+    {
+      "family": "android-phone",
+      "scene": "content",
+      "viewport": [
+        360,
+        640
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1080,
+        1920
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nStudy / Road signs / Regulatory /\nProhibition\n2 / 39\nQuiz\nSpeed limit\nThis is the maximum speed limit, in kilometers per hour. You may not drive faster than this.\nMass limit\n"
+    },
+    {
+      "family": "android-phone",
+      "scene": "results",
+      "viewport": [
+        360,
+        640
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1080,
+        1920
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "RESULTS\nCONGRATULATIONS\nYou have successfully passed the Test\nSection A\n7 / 8\nSection B\n24 / 28\nSection C\n25 / 28\nSection A\nSection B\nSection C\nQuestion 1\nThe order of the pedals ("
+    },
+    {
+      "family": "android-phone",
+      "scene": "languages",
+      "viewport": [
+        360,
+        640
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1080,
+        1920
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "Welcome to K53 Study Guide\n\nBuild your confidence for the learner’s licence test. Choose your study language to get started.\n\nChoose your language\nEnglish\nAfrikaans\nisiZulu\nisiXhos",
+      "framing": "Welcome content scrolled through normal keyboard focus so all four choices are visible; heading click removes focus ring; no UI edits"
+    },
+    {
+      "family": "android-phone",
+      "scene": "dark",
+      "viewport": [
+        360,
+        640
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1080,
+        1920
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nProhibition\nStudy · 2 of 6 sections complete\nCONTINUE\nALL TOPICS\nVehicle Controls\nRules of the Road\nDefensive driving (K53)\nRoad markings\nRoad signals\nRoad signs\nStudy\nQuiz\nT"
+    },
+    {
+      "family": "android-7",
+      "scene": "study",
+      "viewport": [
+        800,
+        1280
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1600,
+        2560
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nProhibition\nStudy · 2 of 6 sections complete\nCONTINUE\nALL TOPICS\nVehicle Controls\n100%\nRules of the Road\n30%\nDefensive driving (K53)\n100%\nRoad markings\n61%\nRoad signals\n0%\nRo"
+    },
+    {
+      "family": "android-7",
+      "scene": "quiz",
+      "viewport": [
+        800,
+        1280
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1600,
+        2560
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "QUIZ\nAll Content\nQuestion 1 of 10\nIf you see this sign, you must:\nStop immediately.\nStop immediately, but only if you are on a freeway.\nNot stop.\nCONTINUE\nStudy\nQuiz\nTest\nProfile"
+    },
+    {
+      "family": "android-7",
+      "scene": "test",
+      "viewport": [
+        800,
+        1280
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1600,
+        2560
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "TEST\nSection A\n0 / 8\nSection B\n0 / 28\nSection C\n0 / 28\nQUESTION 1\n1 of 8\nThe order of the pedals (from left to right) is:\nClutch, Brake, Accelerator.\nAccelerator, Brake, Clutch.\nCl"
+    },
+    {
+      "family": "android-7",
+      "scene": "content",
+      "viewport": [
+        800,
+        1280
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1600,
+        2560
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nStudy / Road signs / Regulatory /\nProhibition\n3 / 39\nQuiz\nSpeed limit\nThis is the maximum speed limit, in kilometers per hour. You may not drive faster than this.\nMass limit\n"
+    },
+    {
+      "family": "android-7",
+      "scene": "results",
+      "viewport": [
+        800,
+        1280
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1600,
+        2560
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "RESULTS\nCONGRATULATIONS\nYou have successfully passed the Test\nSection A\n7 / 8\nSection B\n24 / 28\nSection C\n25 / 28\nSection A\nSection B\nSection C\nQuestion 1\nThe order of the pedals ("
+    },
+    {
+      "family": "android-7",
+      "scene": "languages",
+      "viewport": [
+        800,
+        1280
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1600,
+        2560
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "Welcome to K53 Study Guide\n\nBuild your confidence for the learner’s licence test. Choose your study language to get started.\n\nChoose your language\nEnglish\nAfrikaans\nisiZulu\nisiXhos"
+    },
+    {
+      "family": "android-7",
+      "scene": "dark",
+      "viewport": [
+        800,
+        1280
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1600,
+        2560
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nProhibition\nStudy · 2 of 6 sections complete\nCONTINUE\nALL TOPICS\nVehicle Controls\n100%\nRules of the Road\n30%\nDefensive driving (K53)\n100%\nRoad markings\n61%\nRoad signals\n0%\nRo"
+    },
+    {
+      "family": "android-10",
+      "scene": "study",
+      "viewport": [
+        960,
+        1536
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1920,
+        3072
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nProhibition\nStudy · 2 of 6 sections complete\nCONTINUE\nALL TOPICS\nVehicle Controls\n100%\nRules of the Road\n30%\nDefensive driving (K53)\n100%\nRoad markings\n61%\nRoad signals\n0%\nRo"
+    },
+    {
+      "family": "android-10",
+      "scene": "quiz",
+      "viewport": [
+        960,
+        1536
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1920,
+        3072
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "QUIZ\nAll Content\nQuestion 1 of 10\nIf you see this sign, you must:\nStop immediately.\nStop immediately, but only if you are on a freeway.\nNot stop.\nCONTINUE\nStudy\nQuiz\nTest\nProfile"
+    },
+    {
+      "family": "android-10",
+      "scene": "test",
+      "viewport": [
+        960,
+        1536
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1920,
+        3072
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "TEST\nSection A\n0 / 8\nSection B\n0 / 28\nSection C\n0 / 28\nQUESTION 1\n1 of 8\nThe order of the pedals (from left to right) is:\nClutch, Brake, Accelerator.\nAccelerator, Brake, Clutch.\nCl"
+    },
+    {
+      "family": "android-10",
+      "scene": "content",
+      "viewport": [
+        960,
+        1536
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1920,
+        3072
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nStudy / Road signs / Regulatory /\nProhibition\n4 / 39\nQuiz\nSpeed limit\nThis is the maximum speed limit, in kilometers per hour. You may not drive faster than this.\nMass limit\n"
+    },
+    {
+      "family": "android-10",
+      "scene": "results",
+      "viewport": [
+        960,
+        1536
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1920,
+        3072
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "RESULTS\nCONGRATULATIONS\nYou have successfully passed the Test\nSection A\n7 / 8\nSection B\n24 / 28\nSection C\n25 / 28\nSection A\nSection B\nSection C\nQuestion 1\nThe order of the pedals ("
+    },
+    {
+      "family": "android-10",
+      "scene": "languages",
+      "viewport": [
+        960,
+        1536
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1920,
+        3072
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "Welcome to K53 Study Guide\n\nBuild your confidence for the learner’s licence test. Choose your study language to get started.\n\nChoose your language\nEnglish\nAfrikaans\nisiZulu\nisiXhos"
+    },
+    {
+      "family": "android-10",
+      "scene": "dark",
+      "viewport": [
+        960,
+        1536
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1920,
+        3072
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nProhibition\nStudy · 2 of 6 sections complete\nCONTINUE\nALL TOPICS\nVehicle Controls\n100%\nRules of the Road\n30%\nDefensive driving (K53)\n100%\nRoad markings\n61%\nRoad signals\n0%\nRo"
+    },
+    {
+      "family": "ipad",
+      "scene": "study",
+      "viewport": [
+        1032,
+        1376
+      ],
+      "renderScale": 2,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nProhibition\nStudy · 2 of 6 sections complete\nCONTINUE\nALL TOPICS\nVehicle Controls\n100%\nRules of the Road\n30%\nDefensive driving (K53)\n100%\nRoad markings\n61%\nRoad signals\n0%\nRo"
+    },
+    {
+      "family": "ipad",
+      "scene": "quiz",
+      "viewport": [
+        1032,
+        1376
+      ],
+      "renderScale": 2,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "QUIZ\nAll Content\nQuestion 1 of 10\nIf you see this sign, you must:\nStop immediately.\nStop immediately, but only if you are on a freeway.\nNot stop.\nCONTINUE\nStudy\nQuiz\nTest\nProfile"
+    },
+    {
+      "family": "ipad",
+      "scene": "test",
+      "viewport": [
+        1032,
+        1376
+      ],
+      "renderScale": 2,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "TEST\nSection A\n0 / 8\nSection B\n0 / 28\nSection C\n0 / 28\nQUESTION 1\n1 of 8\nThe order of the pedals (from left to right) is:\nClutch, Brake, Accelerator.\nAccelerator, Brake, Clutch.\nCl"
+    },
+    {
+      "family": "ipad",
+      "scene": "content",
+      "viewport": [
+        1032,
+        1376
+      ],
+      "renderScale": 2,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nStudy / Road signs / Regulatory /\nProhibition\n4 / 39\nQuiz\nSpeed limit\nThis is the maximum speed limit, in kilometers per hour. You may not drive faster than this.\nMass limit\n"
+    },
+    {
+      "family": "ipad",
+      "scene": "results",
+      "viewport": [
+        1032,
+        1376
+      ],
+      "renderScale": 2,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "RESULTS\nCONGRATULATIONS\nYou have successfully passed the Test\nSection A\n7 / 8\nSection B\n24 / 28\nSection C\n25 / 28\nSection A\nSection B\nSection C\nQuestion 1\nThe order of the pedals ("
+    },
+    {
+      "family": "ipad",
+      "scene": "languages",
+      "viewport": [
+        1032,
+        1376
+      ],
+      "renderScale": 2,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "Welcome to K53 Study Guide\n\nBuild your confidence for the learner’s licence test. Choose your study language to get started.\n\nChoose your language\nEnglish\nAfrikaans\nisiZulu\nisiXhos"
+    },
+    {
+      "family": "ipad",
+      "scene": "dark",
+      "viewport": [
+        1032,
+        1376
+      ],
+      "renderScale": 2,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nProhibition\nStudy · 2 of 6 sections complete\nCONTINUE\nALL TOPICS\nVehicle Controls\n100%\nRules of the Road\n30%\nDefensive driving (K53)\n100%\nRoad markings\n61%\nRoad signals\n0%\nRo"
+    },
+    {
+      "family": "iphone",
+      "scene": "localized",
+      "language": "xh",
+      "viewport": [
+        402,
+        874
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1206,
+        2622
+      ],
+      "images": true,
+      "text": "FUNDA\nUthintelo\nFunda · 2 of 6 sections complete\nQHUBEKA\nZONKE IZIHLOKO\nIzixhobo zokulawula isithuthi\n100%\nImithetho yendlela\n30%\nUkuqhuba ngokuzikhusela (K53)\n100%\nIimpawu ezipeyi"
+    },
+    {
+      "family": "android-phone",
+      "scene": "localized",
+      "language": "xh",
+      "viewport": [
+        360,
+        640
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1080,
+        1920
+      ],
+      "images": true,
+      "text": "FUNDA\nUthintelo\nFunda · 2 of 6 sections complete\nQHUBEKA\nZONKE IZIHLOKO\nIzixhobo zokulawula isithuthi\nImithetho yendlela\nUkuqhuba ngokuzikhusela (K53)\nIimpawu ezipeyintwe endleleni"
+    },
+    {
+      "family": "android-7",
+      "scene": "localized",
+      "language": "xh",
+      "viewport": [
+        800,
+        1280
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1600,
+        2560
+      ],
+      "images": true,
+      "text": "FUNDA\nUthintelo\nFunda · 2 of 6 sections complete\nQHUBEKA\nZONKE IZIHLOKO\nIzixhobo zokulawula isithuthi\n100%\nImithetho yendlela\n30%\nUkuqhuba ngokuzikhusela (K53)\n100%\nIimpawu ezipeyi"
+    },
+    {
+      "family": "android-10",
+      "scene": "localized",
+      "language": "xh",
+      "viewport": [
+        960,
+        1536
+      ],
+      "renderScale": 2,
+      "pixels": [
+        1920,
+        3072
+      ],
+      "images": true,
+      "text": "FUNDA\nUthintelo\nFunda · 2 of 6 sections complete\nQHUBEKA\nZONKE IZIHLOKO\nIzixhobo zokulawula isithuthi\n100%\nImithetho yendlela\n30%\nUkuqhuba ngokuzikhusela (K53)\n100%\nIimpawu ezipeyi"
+    },
+    {
+      "family": "ipad",
+      "scene": "localized",
+      "language": "xh",
+      "viewport": [
+        1032,
+        1376
+      ],
+      "renderScale": 2,
+      "pixels": [
+        2064,
+        2752
+      ],
+      "images": true,
+      "text": "FUNDA\nUthintelo\nFunda · 2 of 6 sections complete\nQHUBEKA\nZONKE IZIHLOKO\nIzixhobo zokulawula isithuthi\n100%\nImithetho yendlela\n30%\nUkuqhuba ngokuzikhusela (K53)\n100%\nIimpawu ezipeyi"
+    },
+    {
+      "family": "iphone-faceid-large",
+      "scene": "study",
+      "viewport": [
+        428,
+        926
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1284,
+        2778
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nProhibition\nStudy · 2 of 6 sections complete\nCONTINUE\nALL TOPICS\nVehicle Controls\n100%\nRules of the Road\n30%\nDefensive driving (K53)\n100%\nRoad markings\n61%\nRoad signals\n0%\nRo"
+    },
+    {
+      "family": "iphone-faceid-large",
+      "scene": "quiz",
+      "viewport": [
+        428,
+        926
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1284,
+        2778
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "QUIZ\nAll Content\nQuestion 1 of 10\nIf you see this sign, you must:\nStop immediately.\nStop immediately, but only if you are on a freeway.\nNot stop.\nCONTINUE\nStudy\nQuiz\nTest\nProfile"
+    },
+    {
+      "family": "iphone-faceid-large",
+      "scene": "test",
+      "viewport": [
+        428,
+        926
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1284,
+        2778
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "TEST\nSection A\n0 / 8\nSection B\n0 / 28\nSection C\n0 / 28\nQUESTION 1\n1 of 8\nThe order of the pedals (from left to right) is:\nClutch, Brake, Accelerator.\nAccelerator, Brake, Clutch.\nCl"
+    },
+    {
+      "family": "iphone-faceid-large",
+      "scene": "content",
+      "viewport": [
+        428,
+        926
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1284,
+        2778
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nStudy / Road signs / Regulatory /\nProhibition\n2 / 39\nQuiz\nSpeed limit\nThis is the maximum speed limit, in kilometers per hour. You may not drive faster than this.\nMass limit\n"
+    },
+    {
+      "family": "iphone-faceid-large",
+      "scene": "results",
+      "viewport": [
+        428,
+        926
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1284,
+        2778
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "RESULTS\nCONGRATULATIONS\nYou have successfully passed the Test\nSection A\n7 / 8\nSection B\n24 / 28\nSection C\n25 / 28\nSection A\nSection B\nSection C\nQuestion 1\nThe order of the pedals ("
+    },
+    {
+      "family": "iphone-faceid-large",
+      "scene": "languages",
+      "viewport": [
+        428,
+        926
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1284,
+        2778
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "Welcome to K53 Study Guide\n\nBuild your confidence for the learner’s licence test. Choose your study language to get started.\n\nChoose your language\nEnglish\nAfrikaans\nisiZulu\nisiXhos"
+    },
+    {
+      "family": "iphone-faceid-large",
+      "scene": "dark",
+      "viewport": [
+        428,
+        926
+      ],
+      "renderScale": 3,
+      "pixels": [
+        1284,
+        2778
+      ],
+      "fonts": "loaded",
+      "images": true,
+      "text": "STUDY\nProhibition\nStudy · 2 of 6 sections complete\nCONTINUE\nALL TOPICS\nVehicle Controls\n100%\nRules of the Road\n30%\nDefensive driving (K53)\n100%\nRoad markings\n61%\nRoad signals\n0%\nRo"
+    }
+  ]
+}
