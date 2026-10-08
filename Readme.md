@@ -120,7 +120,7 @@ pnpm lander:deploy:full
 
 ## Native Builds
 
-Android uses AGP 9.4.1, Gradle 9.8.0, SDK 37 and the JDK 21 bundled with Android Studio. Set `JAVA_HOME` and `ANDROID_HOME` to your installed JDK/SDK. iOS requires Xcode 26+ with Swift 6.1; Ionic 9 raises the minimum iOS version to 16. Native dependencies resolve through Swift Package Manager. Open `pkg/app/ios/App/App.xcodeproj`, with `CapApp-SPM` linked to the App target. CocoaPods is no longer used.
+Android uses AGP 9.4.1, Gradle 9.8.0, SDK 37 and the JDK 21 bundled with Android Studio. Set `JAVA_HOME` and `ANDROID_HOME` to your installed JDK/SDK. iOS requires Xcode 26.2+ with Swift 6.1; Ionic 9 raises the minimum iOS version to 16. Native dependencies resolve through Swift Package Manager. Open `pkg/app/ios/App/App.xcodeproj`, with `CapApp-SPM` linked to the App target. CocoaPods is no longer used.
 
 After sync, verify Release compilation without publishing:
 

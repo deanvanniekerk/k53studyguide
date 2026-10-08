@@ -191,16 +191,21 @@ steps:
           set -euo pipefail
 
           xcodebuild -version
+          xcodeVersion="$(xcodebuild -version | awk '/^Xcode / {print $2}')"
+          xcodeMajor="${xcodeVersion%%.*}"
+          xcodeMinor="${xcodeVersion#*.}"
+          xcodeMinor="${xcodeMinor%%.*}"
+          if (( xcodeMajor < 26 || (xcodeMajor == 26 && xcodeMinor < 2) )); then
+            echo "##vso[task.logissue type=error]Firebase SPM requires Xcode 26.2 or later."
+            exit 1
+          fi
           sdkVersion="$(xcrun --sdk iphoneos --show-sdk-version)"
           echo "iphoneos SDK: ${sdkVersion}"
 
-          case "${sdkVersion}" in
-            26.*|[3-9][0-9].*) ;;
-            *)
-              echo "##vso[task.logissue type=error]App Store uploads require the iOS 26 SDK or later."
-              exit 1
-              ;;
-          esac
+          if (( ${sdkVersion%%.*} < 26 )); then
+            echo "##vso[task.logissue type=error]App Store uploads require the iOS 26 SDK or later."
+            exit 1
+          fi
       displayName: "iOS > Verify Xcode SDK"
       condition: and(succeeded(), eq('${{ parameters.buildIOS }}', 'true'))
 
