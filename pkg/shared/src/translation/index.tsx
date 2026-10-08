@@ -6,7 +6,11 @@ type Translations = Record<string, Record<string, TranslationTemplate>>;
 type TranslateInput = { text: string; data?: TranslationData };
 const TranslationContext = createContext<{ language: string; translation: Translations } | undefined>(undefined);
 
-export function Provider({ language, translation, children }: {
+export function Provider({
+  language,
+  translation,
+  children,
+}: {
   language: string;
   translation: Translations;
   children?: ReactNode;
@@ -29,7 +33,9 @@ export function Translate(input: TranslateInput) {
   return <>{useTranslate()(input)}</>;
 }
 
-export function Translator({ children }: {
+export function Translator({
+  children,
+}: {
   children: (tools: { translate: (input: TranslateInput) => string }) => ReactNode;
 }) {
   return children({ translate: useTranslate() });

@@ -8,11 +8,16 @@ type LocaleResource = { locale: string; entries: Record<string, { text: string }
 const resources: LocaleResource[] = [af, zu, xh];
 
 export const translations: Translations = Object.fromEntries(
-  Object.entries(english).map(([key, entry]) => [key, {
-    ...entry,
-    ...Object.fromEntries(resources.flatMap((resource) => {
-      const text = resource.entries[key]?.text;
-      return text ? [[resource.locale, text]] : [];
-    })),
-  }]),
+  Object.entries(english).map(([key, entry]) => [
+    key,
+    {
+      ...entry,
+      ...Object.fromEntries(
+        resources.flatMap((resource) => {
+          const text = resource.entries[key]?.text;
+          return text ? [[resource.locale, text]] : [];
+        }),
+      ),
+    },
+  ]),
 );

@@ -44,6 +44,37 @@ Automated coverage includes English fallback/interpolation, the exact released r
 
 Before release, test fresh install, upgrade with each saved language (including English and invalid values), interruption, deep link with query/hash, language changes in Profile and relaunch on iOS, Android and web. Use regional tags en-ZA, af-ZA, zu-ZA, xh-ZA, unsupported tags and detection failure. Inspect translated study HTML and full question/option groups in light/dark mode, narrow screens and large system text. Confirm no change to active assessments or premium access. `pnpm translations:check` must pass, then run `pnpm test`, `pnpm lint`, `pnpm tsc`, `pnpm build` and `pnpm lander:build`.
 
-## Image text audit
+## Image text audit (8 October 2026)
 
-Dictionary translation does not change pixels. The asset tree contains sign diagrams, vehicle-control diagrams and legacy app screenshots. Inspect the images actually referenced by `pkg/shared/src/data/content.ts` and `questions.ts`; unrelated legacy files do not establish a shipped limitation. Embedded road-sign names, place names, units and official sign lettering may be protected exam material; explanatory English labels require separate localized assets or text extraction. Audit findings and device/layout sign-off remain pending until generated resources are available.
+Inspected all 418 unique image paths referenced by the shared study and question data with local Apple Vision OCR (first frame, accurate recognition). All files loaded; 100 had candidate text. The reproducible inspection inventory is `translation-image-text-45.json`; OCR may miss text or include false positives. Visually inspected the vehicle-control diagram and representative direction, restriction, busway and toll signs.
+
+The only referenced image outside `road-signs/` is `rules-of-the-road/vehicleControls.png`: it has numbered controls and no explanatory English copy. The legacy app screenshots in the asset tree are not referenced by current study/questions. No ordinary English UI screenshots require replacement in this boundary.
+
+Official sign lettering, place names, route identifiers, times and units remain unchanged in all languages: for example `GA2.gif` contains Sandton/Rivonia Rd/N1/M9; STOP/GO signs retain their actual lettering. Supplemental panels contain language-dependent English. Record these for fluent review of their adjacent translated explanations; use separate localized explanatory text if needed, preserving the exam sign image:
+
+| Asset under `pkg/app/public/assets/images/road-signs/` | Visible English | Follow-up |
+| --- | --- | --- |
+| `R533.gif` | up to 125 cc | Confirm localized explanation of the upper limit |
+| `R534.gif` | and Local Access Only | Confirm conjunction and local-access restriction |
+| `R535.gif`, `GS605.gif` | For 5km | Confirm distance scope without changing 5 km |
+| `GS701.gif` | Busway | Confirm meaning in adjacent translated description |
+| `R503.gif`, `R505.gif` | WEEK / SAT | Confirm weekday/Saturday time applicability |
+| `IN25.gif` | Including VAT | Confirm toll-board explanation and protected amounts |
+
+Separate asset localization is deferred: these are representations of real road signs, and blindly replacing their lettering would change the study question. Physical-device and translated-layout sign-off remains pending.
+
+## Local verification and review
+
+Implementation verification on 8 October 2026: 207 app tests, 12 lander tests and 13 generator/validation tests pass. `pnpm lint`, `pnpm tsc`, `pnpm build`, `pnpm lander:build`, `pnpm translator:check` and full/sample dry runs pass. The host runs Node 24.15.0; repository-supported Node 26 verification still needs a run on that runtime. The complete-release checker intentionally fails with 3,222 missing entries per target locale. No live Codex translation calls were made.
+
+Browser checks on a 390 × 844 viewport confirm Continue returns to the requested quiz URL, confirmation survives reload, Profile exposes English/Afrikaans/isiZulu/isiXhosa, and a Profile language change survives reload. Copy currently falls back to English because resources are empty. This is not translated-layout or native-device sign-off.
+
+### Standards
+
+No documented-standard violations. The reviewer identified duplicated model/effort defaults in CLI help and sample paths; both now derive from checked-in defaults. The additional prompt-size observation is fixed: limits cover the prompt, context and reserved correction space.
+
+### Spec
+
+The reviewer reproduced acceptance of changed units attached directly to numbers; validation now protects attached units, with regression coverage for 60km/h, 14m and 9000kg. The missing image audit is completed above. The known release blocker remains: complete dictionaries, fluent review, model comparisons, native-device and translated-layout checks. No scope creep identified.
+
+The tackle-issue flow stops in Phase 1. Phase 2 pruning, publication, headless Claude PR review and babysitting have not started; no PR exists and nothing was pushed.

@@ -15,7 +15,14 @@
       "pkg/app/src/**/*.tsx",
       "pkg/app/src/**/*.js",
       "pkg/app/src/**/*.jsx",
-      "pkg/app/src/**/*.css"
+      "pkg/app/src/**/*.css",
+      "tools/translator/*.mjs",
+      "tools/translator/main.js",
+      "tools/translator/*.json",
+      "pkg/shared/src/data/locales.ts",
+      "pkg/shared/src/data/localizedTranslations.ts",
+      "pkg/shared/src/data/locales/*.json",
+      "pkg/shared/src/translation/index.tsx"
     ]
   },
   "formatter": {

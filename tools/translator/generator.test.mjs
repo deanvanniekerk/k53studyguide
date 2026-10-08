@@ -4,6 +4,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
 import { generate } from "./generator.mjs";
+import { parseOptions } from "./main.js";
+import { hash } from "./validation.mjs";
 
 async function fixture(run, mode = "valid") {
   const root = await mkdtemp(join(tmpdir(), "k53-translation-test-"));
@@ -12,7 +14,9 @@ async function fixture(run, mode = "valid") {
     const outputPath = join(root, "af.json");
     const codex = join(root, "codex");
     await writeFile(sourcePath, JSON.stringify({ greeting: { en: "Hello" }, rule: { en: "Keep 5 m clear" } }));
-    await writeFile(codex, `#!/usr/bin/env node
+    await writeFile(
+      codex,
+      `#!/usr/bin/env node
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 const args = process.argv.slice(2);
 if (args.includes('status')) { console.log(${JSON.stringify(mode === "api" ? "Logged in using an API key" : "Logged in using ChatGPT")}); process.exit(0); }
@@ -31,28 +35,41 @@ else {
  if (${JSON.stringify(mode)} === 'partial' && prompt.entries.rule) delete result.rule;
  writeFileSync(args[args.indexOf('--output-last-message')+1], JSON.stringify(result));
 }
-`);
+`,
+    );
     await chmod(codex, 0o755);
-    await run({ target: "af", sourcePath, outputPath, codex, report: () => {}, activityMs: 20, retries: 1, retryDelayMs: 1 }, root);
-  } finally { await rm(root, { recursive: true, force: true }); }
+    await run(
+      { target: "af", sourcePath, outputPath, codex, report: () => {}, activityMs: 20, retries: 1, retryDelayMs: 1 },
+      root,
+    );
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
 }
 
 test("generation maps subscription-only arguments, checkpoints validated work and skips unchanged reruns", async () => {
   await fixture(async (config, root) => {
-    const result = await generate({ ...config, environment: { ...process.env, OPENAI_API_KEY: "must-not-reach-codex", OPENAI_BASE_URL: "https://example.invalid" } });
+    const result = await generate({
+      ...config,
+      environment: {
+        ...process.env,
+        OPENAI_API_KEY: "must-not-reach-codex",
+        OPENAI_BASE_URL: "https://example.invalid",
+      },
+    });
     assert.equal(result.translated, 2);
     const before = await readFile(config.outputPath, "utf8");
     assert.equal(JSON.parse(before).entries.greeting.text, "Hallo");
     const calls = JSON.parse(await readFile(join(root, "calls.json")));
     assert.equal(calls.length, 1);
-    assert.ok(calls[0].args.includes('--ignore-user-config'));
+    assert.ok(calls[0].args.includes("--ignore-user-config"));
     assert.ok(calls[0].args.includes('forced_login_method="chatgpt"'));
     assert.ok(calls[0].args.includes('model_provider="openai"'));
     assert.ok(calls[0].args.includes('model_reasoning_effort="medium"'));
-    assert.equal(calls[0].args[calls[0].args.indexOf('--model') + 1], 'gpt-6.1-sol');
-    assert.equal(calls[0].args[calls[0].args.indexOf('--sandbox') + 1], 'read-only');
+    assert.equal(calls[0].args[calls[0].args.indexOf("--model") + 1], "gpt-6.1-sol");
+    assert.equal(calls[0].args[calls[0].args.indexOf("--sandbox") + 1], "read-only");
     assert.deepEqual(calls[0].env, {});
-    const rerun = await generate({ ...config, codex: 'unavailable-codex', resume: true });
+    const rerun = await generate({ ...config, codex: "unavailable-codex", resume: true });
     assert.equal(rerun.skipped, 2);
     assert.equal(await readFile(config.outputPath, "utf8"), before);
   });
@@ -64,8 +81,14 @@ test("dry run reports work without invoking Codex or changing files", async () =
     const sourcePath = join(root, "source.json");
     await writeFile(sourcePath, JSON.stringify({ greeting: { en: "Hello" }, rule: { en: "Keep 5 m clear" } }));
     const lines = [];
-    const result = await generate({ target: "af", dryRun: true, sourcePath, outputPath: join(root, "af.json"),
-      codex: "unavailable-codex", report: (line) => lines.push(line) });
+    const result = await generate({
+      target: "af",
+      dryRun: true,
+      sourcePath,
+      outputPath: join(root, "af.json"),
+      codex: "unavailable-codex",
+      report: (line) => lines.push(line),
+    });
     assert.equal(result.pending, 2);
     assert.equal(result.translated, 0);
     assert.match(lines.join("\n"), /af.*gpt-6.1-sol.*medium/);
@@ -119,7 +142,10 @@ test("preserves manual corrections, flags stale manual text and regenerates stal
     const resource = JSON.parse(await readFile(config.outputPath));
     resource.entries.greeting.text = "Goeiedag";
     await writeFile(config.outputPath, JSON.stringify(resource));
-    await writeFile(config.sourcePath, JSON.stringify({ greeting: { en: "Welcome" }, rule: { en: "Leave 5 m clear" } }));
+    await writeFile(
+      config.sourcePath,
+      JSON.stringify({ greeting: { en: "Welcome" }, rule: { en: "Leave 5 m clear" } }),
+    );
     const result = await generate({ ...config, regenerateAI: true });
     assert.equal(result.reviewRequired, 1);
     assert.equal(result.translated, 1);
@@ -128,11 +154,15 @@ test("preserves manual corrections, flags stale manual text and regenerates stal
 });
 
 test("rejects API authentication and unavailable models without switching transport", async () => {
-  for (const mode of ["api", "model"]) await fixture(async (config, root) => {
-    await assert.rejects(generate(config), mode === "api" ? /ChatGPT subscription authentication/ : /model unavailable/);
-    await assert.rejects(readFile(config.outputPath), { code: "ENOENT" });
-    if (mode === "model") assert.equal(JSON.parse(await readFile(join(root, "calls.json"))).length, 1);
-  }, mode);
+  for (const mode of ["api", "model"])
+    await fixture(async (config, root) => {
+      await assert.rejects(
+        generate(config),
+        mode === "api" ? /ChatGPT subscription authentication/ : /model unavailable/,
+      );
+      await assert.rejects(readFile(config.outputPath), { code: "ENOENT" });
+      if (mode === "model") assert.equal(JSON.parse(await readFile(join(root, "calls.json"))).length, 1);
+    }, mode);
 });
 
 test("cancellation preserves completed work and reports the resume command", async () => {
@@ -150,4 +180,45 @@ test("cancellation preserves completed work and reports the resume command", asy
     assert.match(lines.join("\n"), /Summary.*translated=1/);
     assert.match(lines.join("\n"), /Resume.*--resume/);
   }, "cancel");
+});
+
+test("CLI accepts documented model/effort/target flags and rejects unsupported effort values", () => {
+  const options = parseOptions([
+    "--",
+    "--target",
+    "xh",
+    "--model",
+    "gpt-6-astra",
+    "--reasoning-effort",
+    "low",
+    "--sample",
+    "--resume",
+  ]);
+  assert.equal(options.target, "xh");
+  assert.equal(options.model, "gpt-6-astra");
+  assert.equal(options.reasoningEffort, "low");
+  assert.equal(options.resume, true);
+  assert.match(options.outputPath, /translation-samples.*xh-gpt-6-astra-low\.json$/);
+  assert.throws(() => parseOptions(["--target", "af", "--reasoning-effort", "impossible"]), /reasoning effort/);
+  assert.throws(() => parseOptions(["--target", "../af"]), /target/);
+});
+
+test("invalid regeneration leaves all previous valid resources byte-for-byte intact", async () => {
+  await fixture(async (config) => {
+    const entries = Object.fromEntries(
+      [
+        ["greeting", "Hello", "Hallo"],
+        ["rule", "Keep 5 m clear", "Hou 5 m oop"],
+      ].map(([key, english, text]) => [
+        key,
+        { text, sourceHash: hash(english), generatedHash: hash(text), promptVersion: "k53-v1" },
+      ]),
+    );
+    const before = JSON.stringify({ locale: "af", entries });
+    await writeFile(config.outputPath, before);
+    const result = await generate({ ...config, regenerateAI: true });
+    assert.equal(result.failed, 2);
+    assert.equal(result.translated, 0);
+    assert.equal(await readFile(config.outputPath, "utf8"), before);
+  }, "partial");
 });
