@@ -1,6 +1,6 @@
 import { IonContent } from "@ionic/react";
-import { ScrollFade } from "@k53studyguide/shared/react";
-import { type ComponentPropsWithoutRef, forwardRef, useCallback, useRef } from "react";
+import { getScrollActionTarget, ScrollFade } from "@k53studyguide/shared/react";
+import { type ComponentPropsWithoutRef, forwardRef, useCallback, useState } from "react";
 
 type Props = ComponentPropsWithoutRef<typeof IonContent> & { scrollHint?: boolean };
 
@@ -9,42 +9,37 @@ export const PageContent = forwardRef<HTMLIonContentElement, Props>(function Pag
   { children, scrollHint = false, ...props },
   forwardedRef,
 ) {
-  const content = useRef<HTMLIonContentElement | null>(null);
+  const [content, setContent] = useState<HTMLIonContentElement | null>(null);
+  const attachContent = useCallback(
+    (element: HTMLIonContentElement | null) => {
+      setContent(element);
+      if (typeof forwardedRef === "function") forwardedRef(element);
+      else if (forwardedRef) forwardedRef.current = element;
+    },
+    [forwardedRef],
+  );
+
   const getScrollElements = useCallback(async () => {
-    const scrollElement = await content.current?.getScrollElement();
-    const action = content.current?.querySelector<HTMLElement>("[data-scroll-action]");
+    const scrollElement = await content?.getScrollElement();
+    const action = content?.querySelector<HTMLElement>("[data-scroll-action]");
     return scrollElement && action ? { scrollElement, action } : null;
-  }, []);
+  }, [content]);
 
   const revealAction = async () => {
-    const scrollElement = await content.current?.getScrollElement();
-    const action = content.current?.querySelector<HTMLElement>("[data-scroll-action]");
-    if (!scrollElement || !action) return;
-    const actionBottom = action.getBoundingClientRect().bottom;
-    const viewportBottom = scrollElement.getBoundingClientRect().bottom;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    await content.current?.scrollToPoint(
-      undefined,
-      scrollElement.scrollTop + actionBottom - viewportBottom + 48,
-      reduceMotion ? 0 : 300,
-    );
+    const elements = await getScrollElements();
+    if (!elements) return;
+    const { top, duration } = getScrollActionTarget(elements);
+    await content?.scrollToPoint(undefined, top, duration);
   };
 
   return (
-    <IonContent
-      {...props}
-      ref={(element) => {
-        const nativeElement = element as HTMLIonContentElement | null;
-        content.current = nativeElement;
-        if (typeof forwardedRef === "function") forwardedRef(nativeElement);
-        else if (forwardedRef) forwardedRef.current = nativeElement;
-      }}
-    >
+    <IonContent {...props} ref={attachContent}>
       {children}
       <ScrollFade
         slot="fixed"
         getScrollElements={scrollHint ? getScrollElements : undefined}
         onRevealAction={() => void revealAction()}
+        observationKey={children}
       />
     </IonContent>
   );

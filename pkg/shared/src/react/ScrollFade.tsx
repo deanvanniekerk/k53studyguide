@@ -4,11 +4,17 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 type ScrollElements = { scrollElement: HTMLElement; action: HTMLElement } | null;
+
+// Keep the action clear of the fade, and use the same motion policy in both hosts.
+export const getScrollActionTarget = ({ scrollElement, action }: NonNullable<ScrollElements>) => ({
+  top: scrollElement.scrollTop + action.getBoundingClientRect().bottom - scrollElement.getBoundingClientRect().bottom + 48,
+  duration: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 300,
+});
 type Props = {
   slot?: string;
   getScrollElements?: () => ScrollElements | Promise<ScrollElements>;
   onRevealAction?: () => void;
-  observationKey?: string;
+  observationKey?: unknown;
 };
 
 // Works with Ionic's fixed slot and the landing-page preview's ordinary scroll div.

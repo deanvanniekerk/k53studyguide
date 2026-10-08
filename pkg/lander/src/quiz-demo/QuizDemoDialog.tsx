@@ -15,7 +15,7 @@ import {
 } from "ionicons/icons";
 import type React from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { QuizLevelCard, QuizNavigatorItem, QuizQuestionCard, ScrollFade } from "@k53studyguide/shared/react";
+import { getScrollActionTarget, QuizLevelCard, QuizNavigatorItem, QuizQuestionCard, ScrollFade } from "@k53studyguide/shared/react";
 import {
   ROOT_NAVIGATION_KEY,
   buildQuizQuestionAnswers,
@@ -288,11 +288,10 @@ export const QuizDemoDialog: React.FC = () => {
   const revealAction = () => {
     const elements = getScrollElements();
     if (!elements) return;
-    const { scrollElement, action } = elements;
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    scrollElement.scrollTo({
-      top: scrollElement.scrollTop + action.getBoundingClientRect().bottom - scrollElement.getBoundingClientRect().bottom + 48,
-      behavior: reduceMotion ? "instant" : "smooth",
+    const { top, duration } = getScrollActionTarget(elements);
+    elements.scrollElement.scrollTo({
+      top,
+      behavior: duration === 0 ? "instant" : "smooth",
     });
   };
 

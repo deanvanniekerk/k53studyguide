@@ -23,7 +23,7 @@ type Props = PropsFromState & PropsFromDispatch;
 const StudyPage: React.FC<Props> = (props) => {
   const navigate = useNavigate();
   const [infoModalVisible, setInfoModalVisible] = useState(false);
-  const content = useRef<HTMLIonContentElement>(null);
+  const [content, setContent] = useState<HTMLIonContentElement | null>(null);
   const layout = useRef<HTMLDivElement>(null);
   useStudyDisplayMode(content, layout);
 
@@ -57,7 +57,7 @@ const StudyPage: React.FC<Props> = (props) => {
       />
       <PageHeader title="study" page="study" rightSection={<PageHeaderInfoIcon onClick={() => showInfoModal()} />} />
       <Watermark />
-      <Content ref={content}>
+      <Content ref={setContent}>
         <div ref={layout}>
           <Header onNavigationItemClicked={onNavigationItemClicked} />
           <TopicList>

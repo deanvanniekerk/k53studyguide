@@ -31,7 +31,12 @@ afterEach(() => {
   vi.clearAllMocks();
 });
 
-function setup(availableHeight: number, requiredHeight: number, savedMode?: "compact" | "comfortable") {
+function setup(
+  availableHeight: number,
+  requiredHeight: number,
+  savedMode?: "compact" | "comfortable",
+  delayContent = false,
+) {
   const store = createStore(combineReducers({ settings }));
   if (savedMode) store.dispatch(setDisplayMode(savedMode));
   const scroll = document.createElement("div");
@@ -40,10 +45,14 @@ function setup(availableHeight: number, requiredHeight: number, savedMode?: "com
   Object.defineProperty(layout, "offsetHeight", { value: requiredHeight });
   // The entrance animation may overflow even when the actual layout fits.
   Object.defineProperty(scroll, "scrollHeight", { value: requiredHeight + 85 });
-  const content = { current: { getScrollElement: async () => scroll } };
+  const content = { getScrollElement: async () => scroll };
+  const layoutRef = { current: layout };
   const wrapper = ({ children }: PropsWithChildren) => <Provider store={store}>{children}</Provider>;
-  renderHook(() => useStudyDisplayMode(content, { current: layout }), { wrapper });
-  return { store, scroll };
+  const view = renderHook(({ nativeContent }) => useStudyDisplayMode(nativeContent, layoutRef), {
+    wrapper,
+    initialProps: { nativeContent: delayContent ? null : content },
+  });
+  return { store, scroll, attachContent: () => view.rerender({ nativeContent: content }) };
 }
 
 it("uses Comfortable when every Study section fits, ignoring entrance animations", async () => {
@@ -78,4 +87,12 @@ it("keeps the selected mode when the keyboard or rotation changes the height", a
   act(() => notifyResize?.());
   expect(store.getState().settings.displayMode).toBe("comfortable");
   expect(disconnect).toHaveBeenCalled();
+});
+
+it("chooses a default when Ionic attaches its native content after the first effect", async () => {
+  const { store, attachContent } = setup(497, 840, undefined, true);
+  await act(async () => {});
+  expect(store.getState().settings.displayMode).toBeNull();
+  attachContent();
+  await waitFor(() => expect(store.getState().settings.displayMode).toBe("compact"));
 });
