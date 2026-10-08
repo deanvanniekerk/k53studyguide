@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { questionData } from "@k53studyguide/shared/data";
+import { questionData, translations } from "@k53studyguide/shared/data";
 import { act, cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
@@ -51,7 +51,9 @@ it("suggests a browser language, confirms it and preserves study, session and en
   const before = store.getState();
   await waitFor(() => expect(screen.getByRole("radio", { name: "Afrikaans" }).checked).toBe(true));
   expect(screen.queryByText("Requested destination")).toBeNull();
-  fireEvent.click(screen.getByRole("button", { name: "Continue" }));
+  fireEvent.click(
+    screen.getByRole("button", { name: translations.welcomeContinue.af || translations.welcomeContinue.en }),
+  );
   expect(screen.getByText("Requested destination")).toBeTruthy();
   expect(store.getState()).toEqual({
     ...before,
@@ -72,7 +74,9 @@ it("keeps a user selection when native detection finishes late", async () => {
   fireEvent.click(screen.getByRole("radio", { name: "isiXhosa" }));
   await act(async () => finish({ value: "zu-ZA" }));
   expect(screen.getByRole("radio", { name: "isiXhosa" }).checked).toBe(true);
-  fireEvent.click(screen.getByRole("button", { name: "Continue" }));
+  fireEvent.click(
+    screen.getByRole("button", { name: translations.welcomeContinue.xh || translations.welcomeContinue.en }),
+  );
   expect(store.getState().settings.language).toBe("xh");
 });
 

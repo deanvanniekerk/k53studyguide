@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { chmod, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { spawnSync } from "node:child_process";
+import { chmod, copyFile, mkdir, mkdtemp, readFile, realpath, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
@@ -201,6 +202,100 @@ test("CLI accepts documented model/effort/target flags and rejects unsupported e
   assert.match(options.outputPath, /translation-samples.*xh-gpt-6-astra-low\.json$/);
   assert.throws(() => parseOptions(["--target", "af", "--reasoning-effort", "impossible"]), /reasoning effort/);
   assert.throws(() => parseOptions(["--target", "../af"]), /target/);
+  assert.equal(parseOptions(["--target", "af", "--limit", "50"]).limit, 50);
+  assert.equal(parseOptions(["--target", "af", "--all"]).all, true);
+  assert.throws(() => parseOptions(["--target", "af", "--limit", "50", "--all"]), /not both/);
+  for (const value of ["0", "-1", "2.5", "NaN", "", "Infinity", "9007199254740992"])
+    assert.throws(() => parseOptions(["--target", "af", `--limit=${value}`]), /positive whole number/);
+});
+
+test("limited chunks skip completed records on resume and keep question groups intact", async () => {
+  await fixture(async (config, root) => {
+    await writeFile(
+      config.sourcePath,
+      JSON.stringify({
+        greeting: { en: "Hello" },
+        rule: { en: "Keep 5 m clear" },
+        "section.question.1.text": { en: "Keep 5 m clear" },
+        "section.question.1.a": { en: "Keep 5 m clear" },
+        "section.question.1.b": { en: "Keep 5 m clear" },
+        final: { en: "Keep 5 m clear" },
+      }),
+    );
+    const first = await generate({
+      ...config,
+      requestLimit: async (remaining) => {
+        assert.equal(remaining, 6);
+        return 3;
+      },
+    });
+    assert.equal(first.translated, 2);
+    assert.equal(first.pending, 4);
+    assert.equal(first.deferred, 4);
+    const second = await generate({ ...config, limit: 3, resume: true });
+    assert.equal(second.translated, 3);
+    assert.equal(second.skipped, 2);
+    assert.equal(second.pending, 1);
+    assert.equal(second.deferred, 1);
+    const calls = JSON.parse(await readFile(join(root, "calls.json")));
+    assert.deepEqual(Object.keys(calls[1].prompt.entries), [
+      "section.question.1.text",
+      "section.question.1.a",
+      "section.question.1.b",
+    ]);
+    const final = await generate({ ...config, requestLimit: async () => undefined, resume: true });
+    assert.equal(final.translated, 1);
+    assert.equal(final.pending, 0);
+    assert.equal(final.deferred, 0);
+  });
+});
+
+test("a limited chunk can fail without losing its checkpoint and later resume unfinished entries", async () => {
+  await fixture(async (config, root) => {
+    const first = await generate({ ...config, limit: 1 });
+    assert.equal(first.translated, 1);
+    assert.equal(first.deferred, 1);
+    const before = await readFile(config.outputPath, "utf8");
+    const second = await generate({ ...config, limit: 1, resume: true });
+    assert.equal(second.skipped, 1);
+    assert.equal(second.failed, 1);
+    assert.equal(second.pending, 1);
+    assert.equal(second.deferred, 0);
+    assert.equal(await readFile(config.outputPath, "utf8"), before);
+    const calls = JSON.parse(await readFile(join(root, "calls.json")));
+    assert.ok(calls.slice(1).every((call) => Object.keys(call.prompt.entries).join() === "rule"));
+  }, "partial");
+});
+
+test("CLI chunk exits successfully with work remaining and resumes the next chunk", async () => {
+  await fixture(async (_config, root) => {
+    const toolPath = join(root, "tools/translator");
+    const dataPath = join(root, "pkg/shared/src/data");
+    await mkdir(toolPath, { recursive: true });
+    await mkdir(dataPath, { recursive: true });
+    for (const name of ["main.js", "generator.mjs", "codex.mjs", "validation.mjs", "defaults.json"])
+      await copyFile(new URL(name, import.meta.url), join(toolPath, name));
+    await writeFile(join(toolPath, "package.json"), '{"type":"module"}');
+    await writeFile(
+      join(dataPath, "translations.ts"),
+      'export const translations = {greeting:{en:"Hello"},rule:{en:"Keep 5 m clear"}};',
+    );
+    await writeFile(join(dataPath, "questions.ts"), "export const questionData = {};");
+    const mainPath = await realpath(join(toolPath, "main.js"));
+    const run = (args) =>
+      spawnSync(process.execPath, [mainPath, "--target", "af", ...args], {
+        encoding: "utf8",
+        env: { ...process.env, PATH: `${root}:${process.env.PATH}`, CI: "" },
+        timeout: 10000,
+      });
+    const first = run(["--limit", "1"]);
+    assert.equal(first.status, 0, first.stderr);
+    assert.match(first.stderr, /Chunk complete; 1 records remain/);
+    const second = run(["--resume", "--limit", "1"]);
+    assert.equal(second.status, 0, second.stderr);
+    assert.match(second.stderr, /translated=1 skipped=1.*pending=0/);
+    assert.equal(Object.keys(JSON.parse(await readFile(join(dataPath, "locales/af.json"))).entries).length, 2);
+  });
 });
 
 test("invalid regeneration leaves all previous valid resources byte-for-byte intact", async () => {

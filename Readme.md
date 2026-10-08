@@ -98,6 +98,79 @@ pnpm --filter app analyze:build
 pnpm --filter app analyze:run
 ```
 
+## Translations
+
+English is the canonical source. The translation tool generates offline UI, study and question text for Afrikaans (`af`), isiZulu (`zu`) and isiXhosa (`xh`). Afrikaans and isiZulu dictionaries are generated; isiXhosa generation and fluent review are pending. See the [translation release checklist](docs/qa/translations-45.md).
+
+Use the repository's Node/pnpm versions above. Install the official Codex CLI separately, with support for `--ignore-user-config`, and sign in using your ChatGPT subscription:
+
+```bash
+codex login
+pnpm translations:generate -- --help
+```
+
+Generation needs connectivity and consumes your subscription allowance. It uses the signed-in Codex CLI and excludes API credentials and provider overrides. Start it manually from a local terminal; never add generation to app startup, install, build, CI, deployment, schedules or background jobs.
+
+### Choose a chunk size
+
+```bash
+pnpm translations:generate -- --target af
+```
+
+The script prompts: `How many records should this run process? (N remaining; blank = all):`. Enter a positive whole number, such as `50`, to process at most that many remaining records, or press Enter to process everything remaining. Already completed entries, preserved manual corrections and intentional blank fields do not use the limit. Question/option groups stay together, so a chunk may finish slightly below its limit; choose a larger count if the next group cannot fit.
+
+Monitor your subscription percentages in the account's usage display between chunks. The script does not estimate token cost or subscription percentages. A completed chunk exits successfully and reports how many records remain. Dry runs and runs with nothing pending do not prompt.
+
+To choose a limit directly or process everything without prompting:
+
+```bash
+pnpm translations:generate -- --target af --limit 50
+pnpm translations:generate -- --target af --all
+```
+
+### Resume and checkpoints
+
+For the next chunk, or after a failure or Ctrl-C, run:
+
+```bash
+pnpm translations:generate -- --target af --resume
+```
+
+It prompts for a fresh limit and skips completed entries whose English source and prompt version are unchanged. This checkpoint behaviour is also the default without `--resume`. Use the same target and sample mode when continuing a run.
+
+Each validated batch is written atomically to `pkg/shared/src/data/locales/<locale>.json`. An interrupted or invalid batch is regenerated on resume. Progress reports validated counts, wait activity, retries and a final summary; waiting at zero while the first batch runs is normal. Validation failures, including changed protected brands, trigger bounded retries, and completed batches remain saved if later requests fail.
+
+A `.lock` beside the output prevents concurrent writes. If a forced termination leaves it behind, verify no generator is still running before removing that lock and resuming.
+
+Manual corrections to an entry's `text` are preserved. Changed English flags those corrections for review. `--regenerate-ai` explicitly regenerates unchanged AI entries while preserving manual corrections; use it for a deliberate refresh, rather than ordinary chunk continuation.
+
+### Preview, sample and configure
+
+```bash
+# Preview work without prompting, model calls or file changes.
+pnpm translations:generate -- --target af --dry-run
+pnpm translations:generate -- --target af --dry-run --limit 50
+# Generate a fixed representative sample for language/model comparison.
+pnpm translations:generate -- --target af --sample
+# Explicitly rerun an already completed sample.
+pnpm translations:generate -- --target af --sample --regenerate-ai
+# Override the default model and reasoning effort.
+pnpm translations:generate -- --target af --sample --model gpt-6-astra --reasoning-effort low
+```
+
+The default is `gpt-6.1-sol` with `medium` reasoning effort. Unavailable models, unsupported efforts, authentication errors and subscription limits fail without switching models or transport. Batch limits, timeout, retries and prompt version are configured in `tools/translator/defaults.json`.
+
+Samples contain UI, long passages, signs, controls, numbers/units, placeholders, negations and a complete question/option group. They write to ignored `.translation-samples/` files per locale/model/effort, leaving shipping resources untouched. Keep the same model and effort when resuming a sample. Replace `af` with `zu` or `xh` to generate the other languages.
+
+Review generated text with fluent speakers before shipping, then check completeness and source freshness:
+
+```bash
+pnpm translator:check
+pnpm translations:check
+```
+
+`translator:check` checks structure and reports missing/stale entries. `translations:check` fails until all three target dictionaries are complete and current. Validation protects keys, placeholders, HTML, brands, numbers and units; fluent review must confirm terminology, legal meaning, negations and correct answers. The release checklist includes model comparisons, image text and native-device checks.
+
 ## Landing Site
 
 Build the landing website:

@@ -36,13 +36,30 @@ function batchData(keys, source, questionContext) {
   return { entries: Object.fromEntries(keys.map((key) => [key, source[key]])), context: { relatedText, questions } };
 }
 
-function batches(pending, source, questionContext, config) {
+function groupedKeys(pending) {
   const groups = new Map();
   for (const key of pending) {
     const group = questionGroup(key);
     if (!groups.has(group)) groups.set(group, []);
     groups.get(group).push(key);
   }
+  return [...groups.values()];
+}
+
+function limitRecords(pending, limit) {
+  if (limit == null) return pending;
+  if (!Number.isSafeInteger(limit) || limit < 1) throw new Error("Record limit must be a positive integer.");
+  const selected = [];
+  for (const keys of groupedKeys(pending)) {
+    if (selected.length + keys.length > limit) break;
+    selected.push(...keys);
+  }
+  if (pending.length && !selected.length)
+    throw new Error(`The next question group needs ${groupedKeys(pending)[0].length} records; choose a larger limit.`);
+  return selected;
+}
+
+function batches(pending, source, questionContext, config) {
   const result = [];
   let batch = [];
   const size = (keys) => {
@@ -50,7 +67,7 @@ function batches(pending, source, questionContext, config) {
     // Reserve bounded space for a correction message on retries as well.
     return buildPrompt(config, entries, context, "x".repeat(1000)).length;
   };
-  for (const keys of groups.values()) {
+  for (const keys of groupedKeys(pending)) {
     const group = questionGroup(keys[0]);
     if (size(keys) > config.maxBatchCharacters || keys.length > config.batchSize)
       throw new Error(`Group ${group} exceeds the batch limits; increase the explicit batch limit.`);
@@ -141,10 +158,11 @@ export async function generate(options) {
     skipped: total - pending.length,
     failed: 0,
     reviewRequired: staleManual.length,
+    deferred: 0,
   };
   const summary = () => {
     report(
-      `Summary ${config.target}: translated=${counts.translated} skipped=${counts.skipped} failed=${counts.failed} pending=${counts.pending} manual-review=${counts.reviewRequired} duration=${((Date.now() - started) / 1000).toFixed(1)}s output=${config.outputPath}`,
+      `Summary ${config.target}: translated=${counts.translated} skipped=${counts.skipped} failed=${counts.failed} pending=${counts.pending} deferred=${counts.deferred} manual-review=${counts.reviewRequired} duration=${((Date.now() - started) / 1000).toFixed(1)}s output=${config.outputPath}`,
     );
     if (counts.pending && !config.dryRun)
       report(
@@ -155,7 +173,16 @@ export async function generate(options) {
     `${config.target} model=${config.model} effort=${config.reasoningEffort}: total=${total} requiring generation=${pending.length} skipped=${counts.skipped}`,
   );
   for (const key of staleManual) report(`Manual correction preserved; English changed, review required: ${key}`);
-  const work = batches(pending, source, questionContext, config);
+  const limit =
+    config.limit ?? (!config.dryRun && pending.length ? await config.requestLimit?.(pending.length) : undefined);
+  if (config.signal?.aborted) throw new Error("Translation generation cancelled");
+  const scheduled = limitRecords(pending, limit);
+  counts.deferred = pending.length - scheduled.length;
+  if (limit != null)
+    report(
+      `This run: ${scheduled.length}/${pending.length} remaining records; deferred=${counts.deferred} (question groups stay together).`,
+    );
+  const work = batches(scheduled, source, questionContext, config);
   report(
     `Planned ${work.length} sequential batches (entry limit=${config.batchSize}, full-prompt character limit=${config.maxBatchCharacters}).`,
   );
@@ -254,6 +281,8 @@ export async function generate(options) {
         report(`Checkpoint: ${config.outputPath}; --resume skips completed unchanged entries.`);
       }
     });
+    if (counts.deferred && counts.pending === counts.deferred && !counts.failed)
+      report(`Chunk complete; ${counts.pending} records remain for the next run.`);
     return counts;
   } finally {
     await lock.close();

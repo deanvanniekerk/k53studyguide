@@ -1,7 +1,7 @@
 # Translation release gate (#45)
 
 The tooling and welcome flow are implemented on `codex/issue-45-translations-welcome`.
-The Afrikaans, isiZulu and isiXhosa resources are empty placeholders. **This branch is not ready to publish or release.** No live translation generation, fluent review or model comparison has been performed.
+The maintainer generated all 3,222 nonblank Afrikaans and isiZulu entries with Sol/medium. The isiXhosa resource is still empty. **Release readiness is pending** isiXhosa generation, fluent review, model comparison and native-device checks.
 
 ## Manual generation
 
@@ -28,12 +28,31 @@ Edit an entry's `text` to correct it manually, keeping its metadata. A text/hash
 
 `--sample` writes to ignored `.translation-samples/<locale>-<model>-<effort>.json`, never to shipping resources. The deterministic sample includes UI, long passages, numbers/units, placeholders, signs, controls, negations and a complete question/option group. Record allowance before/after using the signed-in account's usage display; schema validity does not measure language quality.
 
+## Run in chunks
+
+Live runs prompt: `How many records should this run process? (N remaining; blank = all):`. Enter a positive whole number to process at most that many missing/stale entries, or press Enter to process all remaining entries. Counts exclude already completed entries, manual corrections and intentional blanks. Question/option groups stay together, so a chunk can finish slightly below its limit. If the next group alone exceeds the limit, choose a larger count. Dry runs and runs with nothing pending do not prompt.
+
+```bash
+# Enter a record count when prompted; blank processes everything remaining.
+pnpm translations:generate -- --target af
+# Subsequent chunks and recovery use the same checkpoint and prompt again.
+pnpm translations:generate -- --target af --resume
+# Explicit alternatives for manually started runs without a prompt:
+pnpm translations:generate -- --target af --limit 50
+pnpm translations:generate -- --target af --all
+pnpm translations:generate -- --target af --dry-run --limit 50
+```
+
+A completed chunk exits successfully even when records remain. Its summary distinguishes pending records from records deliberately deferred by the limit. Validation/request failures still exit unsuccessfully. Each validated batch is written atomically; Ctrl-C or a failed request preserves completed batches, and the next run skips their unchanged entries. An interrupted batch that has not passed validation is regenerated on resume. Never use `--regenerate-ai` for ordinary chunk continuation; it explicitly requests regeneration of existing AI text. After a forced termination that prevented cleanup, follow the lock-file guidance above before resuming.
+
+Monitor subscription percentages in the account's usage display between chunks. Automatic token/cost/allowance estimates and measurement sidecars have been removed. The maintainer's initial Afrikaans sample completed 21 entries in 157.1 seconds with one retry; fluent review is still pending. No live generation calls were made to implement or test chunking.
+
 ## Fluent review and model comparison (pending)
 
 | Locale | Sol/medium vs Astra/low | Semantic/terminology errors | Correct answers preserved | Retries/duration/allowance | Fluent reviewer/date |
 | --- | --- | --- | --- | --- | --- |
-| af | Not run | Not reviewed | Not reviewed | Not measured | Pending |
-| zu | Not run | Not reviewed | Not reviewed | Not measured | Pending |
+| af | Full Sol/medium dictionary generated; comparison pending | Not reviewed | Not reviewed | Sample: 1 retry, 157.1s; final full invocation: 4510.3s, 3122 translated, 155 skipped, 0 failed | Pending |
+| zu | Full Sol/medium dictionary generated; comparison pending | Not reviewed | Not reviewed | Duration/allowance unrecorded | Pending |
 | xh | Not run | Not reviewed | Not reviewed | Not measured | Pending |
 
 Fluent reviewers must check each full dictionary, paying particular attention to negations, numeric rules, South African terminology and each question's unchanged correct-answer letter. Keep the lightest configuration meeting that quality bar. Commit reviewed resources and completed evidence before publishing a PR that claims to close #45.
@@ -65,9 +84,9 @@ Separate asset localization is deferred: these are representations of real road 
 
 ## Local verification and review
 
-Implementation verification on 8 October 2026: 207 app tests, 12 lander tests and 13 generator/validation tests pass. `pnpm lint`, `pnpm tsc`, `pnpm build`, `pnpm lander:build`, `pnpm translator:check` and full/sample dry runs pass. The host runs Node 24.15.0; repository-supported Node 26 verification still needs a run on that runtime. The complete-release checker intentionally fails with 3,222 missing entries per target locale. No live Codex translation calls were made.
+Implementation verification on 8 October 2026: 207 app tests, 12 lander tests and the original 13 generator/validation tests pass. `pnpm lint`, `pnpm tsc`, `pnpm build`, `pnpm lander:build`, `pnpm translator:check` and full/sample dry runs pass. The chunking change passes all 18 generator/validation/CLI tests, lint/type checks, translator check and limited/full dry runs. The host runs Node 24.15.0; repository-supported Node 26 verification still needs a run on that runtime. The complete-release checker fails with 3,222 missing isiXhosa entries; Afrikaans and isiZulu are complete and current. No live Codex translation calls were made by the coding agent.
 
-Browser checks on a 390 × 844 viewport confirm Continue returns to the requested quiz URL, confirmation survives reload, Profile exposes English/Afrikaans/isiZulu/isiXhosa, and a Profile language change survives reload. Copy currently falls back to English because resources are empty. This is not translated-layout or native-device sign-off.
+Browser checks before generation on a 390 × 844 viewport confirmed Continue returns to the requested quiz URL, confirmation survives reload, Profile exposes English/Afrikaans/isiZulu/isiXhosa, and a Profile language change survives reload. Those checks used English fallback while resources were empty; translated-layout and native-device checks remain pending.
 
 ### Standards
 
@@ -77,4 +96,4 @@ No documented-standard violations. The reviewer identified duplicated model/effo
 
 The reviewer reproduced acceptance of changed units attached directly to numbers; validation now protects attached units, with regression coverage for 60km/h, 14m and 9000kg. The missing image audit is completed above. The known release blocker remains: complete dictionaries, fluent review, model comparisons, native-device and translated-layout checks. No scope creep identified.
 
-The tackle-issue flow stops in Phase 1. Phase 2 pruning, publication, headless Claude PR review and babysitting have not started; no PR exists and nothing was pushed.
+The issue delivery flow remains in Phase 1 pending the release checks above. The maintainer requested a commit/push checkpoint of the current branch; no PR claiming completion has been opened. Test pruning, headless Claude PR review and babysitting remain pending.
