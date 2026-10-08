@@ -96,7 +96,7 @@ A = `pkg/app`, L = `pkg/lander`, S = `pkg/shared`, R = root, T = separate `tools
 | iOS manager | CocoaPods 1.17.0, Podfile.lock | Capacitor SPM, generated CapApp-SPM + checked-in Package.resolved; CocoaPods removed |
 | iOS deployment / Swift package tools | 15.0 / no SPM | 16.0 / 6.1 (traits support); source Swift language mode remains 5 |
 | Local Xcode / SDK / Swift compiler | Xcode 27 already installed | 27.0 (27A266a) / iOS 27.0 / Swift 6.4 verified |
-| Azure Apple runtime | macOS-26, Xcode 26+ SDK gate | retained supported hosted image and SDK gate; Node/pnpm updated; no Azure run launched |
+| Azure Apple runtime | macOS-26, Xcode 26+ SDK gate | supported hosted image retained; Xcode >=26.2 for Firebase SPM, SDK >=26 including 27; Node/pnpm updated; no Azure run launched |
 | Firebase Apple | 12.19.0 CocoaPods | 12.19.2 SPM, Analytics trait retains former IDFA integration |
 | RevenueCat Apple hybrid / SDK | 19.5.0 / 5.92.0 | 19.5.0 / 5.92.0 exact latest Capacitor parent's supported graph |
 
@@ -153,10 +153,12 @@ Completed locally on 2026-10-07:
 - Lifecycle/deep links: Android background/resume and cold launch pass; its existing `app://profile` intent opens/delivers to the app. The baseline has no JavaScript deep-link route handler and no registered iOS URL scheme; iOS opening that scheme fails with LaunchServices 115 both before and after this migration. SceneDelegate proxy code is unchanged; no new deep-link feature is claimed.
 - Native telemetry: Android plugin logs show screen/events/properties and preference/RevenueCat calls; fresh iOS logs initialize Analytics 12.19.2 and Crashlytics 12.19.2 without a fatal launch. Server-side crash ingestion was not exercised. Purchase/restore event names, sandbox/internal exclusions and schemas are unchanged and covered by the existing service tests.
 - Standards review: no documented breaches. Spec review: one finding fixed—Azure install/build scripts now use `set -euo pipefail`, so a failed earlier check cannot be hidden by a successful later command.
+- PR review on 2026-10-08: Codex P1 fixed by adding inherited `-ObjC` to both iOS app configurations for transitive Firebase Analytics. Locked Release device and Debug simulator rebuilds pass; actual Release and both Debug architecture link commands include the flag. Claude P1 fixed by recording seen-content on every intersecting transition while deduplicating only analytics. The existing real Redux/DOM regression reproduced the history-clear failure before the fix and passes afterward, with one analytics event. Full 190 tests, lint/types and app production build pass again.
+- Firebase documents Xcode >=26.2 for SPM; README and Azure guard now match. The SDK guard accepts 27 rather than inadvertently rejecting it. Extracted guard checks reject Xcode 25.4/26.0/26.1 and SDK 25.4; accept Xcode/SDK 26.2, 27 and 30; the installed Xcode/SDK also passes. No Azure run was launched.
 
-Delivery status: implementation, Standards/Spec review and pruning are complete. GitHub publication failed on 2026-10-07 with server errors, then succeeded on 2026-10-08. [PR #42](https://github.com/deanvanniekerk/k53studyguide/pull/42) is ready for review. Claude review and PR checks are in progress.
+Delivery status: implementation, Standards/Spec review and pruning are complete. GitHub publication failed on 2026-10-07 with server errors, then succeeded on 2026-10-08. [PR #42](https://github.com/deanvanniekerk/k53studyguide/pull/42) is ready for review. Claude and Codex reviews completed; their two P1 findings are fixed and verified. Azure checks are intentionally manual, so GitHub has no automatic status checks. Claude’s release-tracking nit is addressed by [#43](https://github.com/deanvanniekerk/k53studyguide/issues/43), which stays open after #41 closes.
 
-Release remains blocked on explicit owner acceptance of the Router peer constraint and five upstream advisories above. Publishing the review PR does not accept those exceptions or authorize a release.
+Release remains blocked on explicit owner acceptance of the Router peer constraint and five upstream advisories above, tracked with the remaining release prerequisites in [#43](https://github.com/deanvanniekerk/k53studyguide/issues/43). Publishing the review PR does not accept those exceptions or authorize a release.
 
 ### Branch test pruning
 
@@ -182,7 +184,7 @@ Scope: the six added/modified test files (32 expanded cases); no other changed c
 | Deferred payment close/restore feedback | Keep: Behavior |
 | Closed modal silently grants late access | Keep: Behavior |
 | Declined deferred payment can retry after Restore | Keep: Behavior |
-| Invisible/visible Study card changes seen progress once | Keep: Regression pin; DOM, real Redux and analytics |
+| Study visibility and history reset on a cached page | Keep: Regression pin; DOM, real Redux seen-state restored on return, analytics once |
 | Language changes, HTML, fallback and zero interpolation | Keep: Regression pin; actual shared DOM renderer |
 | Localhost store links suppress collectors | Keep: Behavior; actual page links/collector gate |
 | Preview-host store links suppress collectors | Keep: Behavior |
@@ -203,7 +205,7 @@ No release or upload is authorized by this record. Azure remains `trigger: none`
 
 ## Primary migration references
 
-[Ionic 9 migration](https://ionicframework.com/docs/updating/9-0), [React 19 migration](https://react.dev/blog/2024/04/25/react-19-upgrade-guide), [Vitest migration](https://vitest.dev/guide/migration), [AGP 9.4 compatibility](https://developer.android.com/build/releases/agp-9-4-0-release-notes), [Capacitor SPM](https://capacitorjs.com/docs/ios/spm), [Firebase CocoaPods deprecation](https://firebase.google.com/docs/ios/cocoapods-deprecation), [Crashlytics symbol inputs](https://firebase.google.com/docs/crashlytics/ios/get-deobfuscated-reports?platform=ios), [hosted macOS-26 software](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md).
+[Ionic 9 migration](https://ionicframework.com/docs/updating/9-0), [React 19 migration](https://react.dev/blog/2024/04/25/react-19-upgrade-guide), [Vitest migration](https://vitest.dev/guide/migration), [AGP 9.4 compatibility](https://developer.android.com/build/releases/agp-9-4-0-release-notes), [Capacitor SPM](https://capacitorjs.com/docs/ios/spm), [Firebase CocoaPods deprecation](https://firebase.google.com/docs/ios/cocoapods-deprecation), [Firebase SPM Xcode and transitive Analytics requirements](https://firebase.google.com/docs/ios/installation-methods#product-specific-considerations), [Crashlytics symbol inputs](https://firebase.google.com/docs/crashlytics/ios/get-deobfuscated-reports?platform=ios), [hosted macOS-26 software](https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md).
 
 ## Rollback
 
