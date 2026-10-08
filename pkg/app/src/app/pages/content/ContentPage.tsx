@@ -2,7 +2,7 @@ import { IonContent, IonPage, type ScrollDetail } from "@ionic/react";
 import type React from "react";
 import { useRef, useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import { PageHeader } from "@/app/components";
@@ -37,7 +37,7 @@ const sectionAccentVars: Record<string, { color: string; rgb: string }> = {
 type Props = PropsFromState & PropsFromDispatch;
 
 const ContentPage: React.FC<Props> = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const content = useRef<HTMLIonContentElement>(null);
   const [headerCompact, setHeaderCompact] = useState(false);
 
@@ -77,7 +77,7 @@ const ContentPage: React.FC<Props> = (props) => {
     // }
 
     if (props.currentNavigationParent === ROOT_NAVIGATION_KEY) {
-      history.replace("/study");
+      navigate("/study", { replace: true });
       return;
     }
 

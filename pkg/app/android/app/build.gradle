@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 
 android {
 
+    buildFeatures { buildConfig true }
+
     namespace 'deanvniekerk.k53studyguide.app'
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
@@ -15,7 +17,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     packaging {
@@ -32,6 +34,8 @@ repositories {
         dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
     }
 }
+
+dependencyLocking { lockAllConfigurations() }
 
 dependencies {
     implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"

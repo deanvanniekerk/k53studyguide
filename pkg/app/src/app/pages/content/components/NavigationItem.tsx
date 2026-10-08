@@ -1,9 +1,9 @@
 import { CreateAnimation, IonIcon, IonText, useIonViewWillEnter } from "@ionic/react";
+import { Translate } from "@k53studyguide/shared/translation";
 import { chevronForwardOutline, eye } from "ionicons/icons";
 import type React from "react";
 import { useRef } from "react";
 import { connect } from "react-redux";
-import { Translate } from "react-translated";
 import styled from "styled-components";
 import { ProgressBar } from "@/app/components";
 import type { RootState } from "@/state";

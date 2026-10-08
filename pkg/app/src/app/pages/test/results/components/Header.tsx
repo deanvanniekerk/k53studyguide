@@ -1,8 +1,8 @@
 import { CreateAnimation, IonIcon } from "@ionic/react";
+import { Translate } from "@k53studyguide/shared/translation";
 import { checkmarkCircle, closeCircle } from "ionicons/icons";
 import type React from "react";
 import { connect } from "react-redux";
-import { Translate } from "react-translated";
 import styled from "styled-components";
 import { Illustration } from "@/app/components/Illustration";
 import type { RootState } from "@/state";

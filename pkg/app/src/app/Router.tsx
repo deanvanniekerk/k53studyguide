@@ -1,10 +1,10 @@
 import { IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
+import { Provider as TranslationProvider } from "@k53studyguide/shared/translation";
 import type React from "react";
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { Redirect, Route, useLocation } from "react-router-dom";
-import { Provider as TranslationProvider } from "react-translated";
+import { Navigate, Route, useLocation } from "react-router-dom";
 import { BookIcon, QuizIcon, SettingsIcon, TestPenIcon } from "@/app/components/icons";
 import { translations } from "@/data";
 import { analytics } from "@/services/analytics";
@@ -113,20 +113,20 @@ const AppTabs: React.FC<AnalyticsRouteTrackerProps> = (props) => {
     <IonTabs>
       <AnalyticsRouteTracker {...props} />
       <IonRouterOutlet>
-        <Route exact path="/study" component={StudyPage} />
-        <Route exact path="/content" component={ContentPage} />
-        <Route exact path="/quiz" component={QuizPage} />
-        <Route exact path="/quiz/session" component={QuizSessionPage} />
-        <Route exact path="/quiz/results" component={QuizResultPage} />
-        <Route exact path="/quiz/navigator" component={QuizNavigatorPage} />
-        <Route exact path="/test/session" component={TestSessionPage} />
-        <Route exact path="/test/results" component={TestResultPage} />
-        <Route exact path="/test" component={TestPage} />
-        <Route exact path="/profile" component={ProfilePage} />
+        <Route path="/study" element={<StudyPage />} />
+        <Route path="/content" element={<ContentPage />} />
+        <Route path="/quiz" element={<QuizPage />} />
+        <Route path="/quiz/session" element={<QuizSessionPage />} />
+        <Route path="/quiz/results" element={<QuizResultPage />} />
+        <Route path="/quiz/navigator" element={<QuizNavigatorPage />} />
+        <Route path="/test/session" element={<TestSessionPage />} />
+        <Route path="/test/results" element={<TestResultPage />} />
+        <Route path="/test" element={<TestPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         {legacyRouteRedirects.map((route) => (
-          <Route exact key={route.from} path={route.from} render={() => <Redirect to={route.to} />} />
+          <Route key={route.from} path={route.from} element={<Navigate to={route.to} replace />} />
         ))}
-        <Route exact path="/" render={() => <Redirect to="/study" />} />
+        <Route path="/" element={<Navigate to="/study" replace />} />
       </IonRouterOutlet>
       <IonTabBar selectedTab={activeTab} slot="bottom">
         <IonTabButton tab="study" href="/study" style={tabAccentStyles.study}>

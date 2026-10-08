@@ -2,7 +2,7 @@ import { IonContent, IonPage, useIonViewWillEnter } from "@ionic/react";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import { PageHeader } from "@/app/components";
@@ -17,7 +17,7 @@ import { Footer, Header } from "./components";
 type Props = PropsFromState & PropsFromDispatch;
 
 const TestPage: React.FC<Props> = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const content = useRef<HTMLIonContentElement>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
@@ -34,12 +34,12 @@ const TestPage: React.FC<Props> = (props) => {
   }, [currentQuestionIndex, props.questionAnswers.length]);
 
   const onBackClicked = () => {
-    history.replace("/quiz");
+    navigate("/quiz", { replace: true });
   };
 
   const onSubmitClicked = () => {
     props.submitTest();
-    history.replace("/quiz/results");
+    navigate("/quiz/results", { replace: true });
   };
 
   const onOptionClicked = (questionId: string, option: QuestionOption) => {

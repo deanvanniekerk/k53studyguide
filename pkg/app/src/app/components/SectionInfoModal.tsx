@@ -1,6 +1,6 @@
 import { IonContent, IonFooter, IonModal } from "@ionic/react";
+import { Translate } from "@k53studyguide/shared/translation";
 import { arrowForward } from "ionicons/icons";
-import { Translate } from "react-translated";
 import styled from "styled-components";
 import { Illustration, type IllustrationName } from "./Illustration";
 import { PrimaryButton } from "./PrimaryButton";

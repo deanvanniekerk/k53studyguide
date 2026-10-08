@@ -4,8 +4,14 @@ const config: CapacitorConfig = {
   appId: "deanvniekerk.k53studyguide.app",
   appName: "K53 Study Guide",
   webDir: "build",
-  bundledWebRuntime: false,
-  npmClient: "pnpm",
+  experimental: {
+    ios: {
+      spm: {
+        swiftToolsVersion: "6.1",
+        packageTraits: { "@capacitor-firebase/analytics": ["Analytics"] },
+      },
+    },
+  },
 };
 
 export default config;

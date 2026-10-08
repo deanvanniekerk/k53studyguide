@@ -2,7 +2,7 @@ import { IonContent, IonPage } from "@ionic/react";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import { PageHeader, PageHeaderInfoIcon } from "@/app/components";
@@ -18,7 +18,7 @@ import { QuizWatermark } from "./QuizWatermark";
 type Props = PropsFromState & PropsFromDispatch;
 
 const QuizPage: React.FC<Props> = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { analytics, logEvent } = useAnalytics("QuizPage");
 
@@ -45,7 +45,7 @@ const QuizPage: React.FC<Props> = (props) => {
     //If no test exists, load one, else continue with previous
     if (!props.testInProgress) props.loadQuestionAnswers();
 
-    history.push(`/quiz/session`);
+    navigate(`/quiz/session`);
   };
 
   return (

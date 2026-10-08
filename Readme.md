@@ -36,10 +36,13 @@ This is a pnpm monorepo with packages under `pkg/*`.
 
 ## Local Development
 
-Install dependencies:
+Use Node 26.10.0 (`.node-version`) and pnpm 12.9.1. Install the exact lockfile graph:
 
 ```bash
-pnpm install
+npm install --global pnpm@12.9.1
+pnpm install --frozen-lockfile
+pnpm --dir tools/translator install --frozen-lockfile
+pnpm translator:check
 ```
 
 Run the mobile app web shell:
@@ -116,6 +119,21 @@ pnpm lander:deploy:full
 ```
 
 ## Native Builds
+
+Android uses AGP 9.4.1, Gradle 9.8.0, SDK 37 and the JDK 21 bundled with Android Studio. Set `JAVA_HOME` and `ANDROID_HOME` to your installed JDK/SDK. iOS requires Xcode 26.2+ with Swift 6.1; Ionic 9 raises the minimum iOS version to 16. Native dependencies resolve through Swift Package Manager. Open `pkg/app/ios/App/App.xcodeproj`, with `CapApp-SPM` linked to the App target. CocoaPods is no longer used.
+
+After sync, verify Release compilation without publishing:
+
+```bash
+pkg/app/android/gradlew -p pkg/app/android :app:assembleRelease
+xcodebuild -project pkg/app/ios/App/App.xcodeproj -scheme App \
+  -configuration Release -destination 'generic/platform=iOS' \
+  -onlyUsePackageVersionsFromResolvedFile CODE_SIGNING_ALLOWED=NO build
+```
+
+The device command checks compilation only. The manual Azure path signs and archives with existing secure files. `Package.resolved` fixes remote Swift dependencies; Capacitor regenerates the local plugin paths from the pnpm lock. Preserve that lock during archive builds. Crashlytics uploads device dSYMs through its final build phase. Test Store keys belong only in local QA builds; rebuild production assets with platform keys before archiving.
+
+The [dated upgrade inventory and rollback](docs/qa/stable-major-upgrade-2026-10.md) records constraints and release evidence.
 
 Firebase native config files are not committed. For local native builds, copy your own Firebase config into:
 

@@ -2,12 +2,7 @@ packages:
   - "pkg/*"
 
 overrides:
-  "@types/react": "18.3.31"
-
-onlyBuiltDependencies:
-  - "@firebase/util"
-  - esbuild
-  - protobufjs
+  "@types/react": "19.3.0"
 
 allowBuilds:
   "@firebase/util": true

@@ -1,6 +1,6 @@
+import { Translate } from "@k53studyguide/shared/translation";
 import { arrowForwardOutline } from "ionicons/icons";
 import { useSelector } from "react-redux";
-import { Translate } from "react-translated";
 import styled from "styled-components";
 import { usePremiumOffer } from "@/app/hooks/usePremiumOffer";
 import PurchaseModal from "@/app/modals/PurchaseModal";

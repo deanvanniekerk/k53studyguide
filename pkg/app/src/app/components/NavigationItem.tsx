@@ -1,8 +1,8 @@
 import { CreateAnimation, IonIcon, IonItem, IonLabel, IonText, useIonViewWillEnter } from "@ionic/react";
+import { Translate } from "@k53studyguide/shared/translation";
 import { chevronBackOutline } from "ionicons/icons";
 import type React from "react";
 import { useRef } from "react";
-import { Translate } from "react-translated";
 
 type Props = {
   navigationItemKey: string;

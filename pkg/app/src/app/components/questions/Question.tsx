@@ -1,5 +1,5 @@
+import { Translate } from "@k53studyguide/shared/translation";
 import type React from "react";
-import { Translate } from "react-translated";
 import styled from "styled-components";
 import { HorizontalRule } from "@/app/components";
 import type { QuestionItem, QuestionOption } from "@/data";

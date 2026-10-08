@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { cleanup, fireEvent, render, within } from "@testing-library/react";
-import { Provider as TranslationProvider } from "react-translated";
+import { Provider as TranslationProvider } from "@k53studyguide/shared/translation";
 import { StyleSheetManager } from "styled-components";
 import { translations } from "@k53studyguide/shared/data";
 import { QuizDemoDialog } from "../src/quiz-demo/QuizDemoDialog";

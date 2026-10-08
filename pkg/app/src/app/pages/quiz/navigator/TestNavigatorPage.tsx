@@ -1,7 +1,7 @@
 import { IonContent, IonPage } from "@ionic/react";
 import type React from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import { PageHeader } from "@/app/components";
@@ -15,11 +15,11 @@ import { Header, Navigator } from "./components";
 type Props = PropsFromState & PropsFromDispatch;
 
 const TestNavigatorPage: React.FC<Props> = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { logEvent } = useAnalytics();
 
   const navigateToQuiz = () => {
-    history.replace("/quiz");
+    navigate("/quiz", { replace: true });
   };
 
   const onBackClicked = () => {
@@ -31,7 +31,7 @@ const TestNavigatorPage: React.FC<Props> = (props) => {
   };
 
   const selectTargetNavigationItem = () => {
-    history.replace("/quiz");
+    navigate("/quiz", { replace: true });
   };
 
   const onNavigationItemClicked = (key: string) => {

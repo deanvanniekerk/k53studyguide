@@ -2,7 +2,7 @@ import { IonContent, IonPage, useIonViewWillLeave } from "@ionic/react";
 import type React from "react";
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import { PageHeader } from "@/app/components";
@@ -17,7 +17,7 @@ import { Header } from "./components";
 type Props = PropsFromState & PropsFromDispatch;
 
 const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveCurrentSection, recieveQuestionAnswers }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useAnalytics("TestPage:TestResultPage");
 
@@ -30,7 +30,7 @@ const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveCurrentSectio
   });
 
   const onBackClicked = () => {
-    history.replace("/test");
+    navigate("/test", { replace: true });
   };
 
   return (

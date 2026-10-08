@@ -1,9 +1,9 @@
 import { IonContent, IonPage } from "@ionic/react";
+import { Translate } from "@k53studyguide/shared/translation";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { Translate } from "react-translated";
+import { useNavigate } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import { PageHeader, PageHeaderInfoIcon } from "@/app/components";
@@ -20,7 +20,7 @@ import { StudyInfoModal } from "./StudyInfoModal";
 type Props = PropsFromState & PropsFromDispatch;
 
 const StudyPage: React.FC<Props> = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [infoModalVisible, setInfoModalVisible] = useState(false);
 
   const { analytics, logEvent } = useAnalytics("StudyPage");
@@ -40,7 +40,7 @@ const StudyPage: React.FC<Props> = (props) => {
   const onNavigationItemClicked = (key: string) => {
     logEvent("NAVIGATE", { key: key, component: "StudyPage" });
     props.recieveCurrentNavigationKey(key);
-    history.push(`/content`);
+    navigate(`/content`);
   };
 
   return (

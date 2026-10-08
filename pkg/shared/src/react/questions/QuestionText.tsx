@@ -1,5 +1,5 @@
 import React from "react";
-import { Translate } from "react-translated";
+import { Translate } from "../../translation";
 import styled from "styled-components";
 import type { QuestionItem, QuestionText as QuestionList } from "../../data";
 

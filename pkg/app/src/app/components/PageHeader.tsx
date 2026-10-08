@@ -1,7 +1,7 @@
 import { IonIcon } from "@ionic/react";
+import { Translate } from "@k53studyguide/shared/translation";
 import { arrowBackOutline } from "ionicons/icons";
 import type React from "react";
-import { Translate } from "react-translated";
 import styled from "styled-components";
 
 export type PageSection = "study" | "quiz" | "test" | "profile";

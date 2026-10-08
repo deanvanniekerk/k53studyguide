@@ -1,9 +1,9 @@
 import { IonAlert, IonButton, IonText } from "@ionic/react";
+import { Translate, Translator } from "@k53studyguide/shared/translation";
 import type React from "react";
 import { useState } from "react";
 import { connect, useDispatch } from "react-redux";
-import { useHistory } from "react-router";
-import { Translate, Translator } from "react-translated";
+import { useNavigate } from "react-router";
 import type { AnyAction, Dispatch } from "redux";
 import type { ThunkDispatch } from "redux-thunk";
 import styled from "styled-components";
@@ -18,7 +18,7 @@ import { SeenProgress } from "./SeenProgress";
 type Props = PropsFromState;
 
 const HeaderComponent: React.FC<Props> = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch<Dispatch<AnyAction> & ThunkDispatch<RootState, null, AnyAction>>();
   const [showStartQuizAlert, setShowStartQuizAlert] = useState(false);
 
@@ -65,7 +65,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
                   dispatch(recieveLastSeenParentContentKey(props.currentNavigationKey));
                   dispatch(recieveTargetNavigationKey(props.currentNavigationKey));
                   dispatch(loadQuestionAnswers());
-                  history.push(`/quiz/session`);
+                  navigate(`/quiz/session`);
                 },
               },
             ]}
