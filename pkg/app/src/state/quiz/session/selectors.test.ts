@@ -85,13 +85,17 @@ describe("state > quiz > session > selectors", () => {
   });
 
   it("testInProgressSelector > true", () => {
-    const actual = selectors.testInProgressSelector.resultFunc(5);
+    const actual = selectors.testInProgressSelector.resultFunc(5, null);
 
     expect(actual).toEqual(true);
   });
 
+  it("does not resume retained results as an in-progress attempt", () => {
+    expect(selectors.testInProgressSelector.resultFunc(5, "2026-10-08T12:00:00.000Z")).toBe(false);
+  });
+
   it("testInProgressSelector > false", () => {
-    const actual = selectors.testInProgressSelector.resultFunc(0);
+    const actual = selectors.testInProgressSelector.resultFunc(0, null);
 
     expect(actual).toEqual(false);
   });

@@ -37,8 +37,16 @@ export const totalCorrectAnswersSelector: OutputSelector<
   (questionAnswers) => questionAnswers.filter((qa) => qa.answer === qa.question.answer).length,
 );
 
-export const testInProgressSelector: OutputSelector<RootState, boolean, (totalQuestions: number) => boolean> =
-  createSelector(totalQuestionsSelector, (totalQuestions) => totalQuestions > 0);
+export const completedAtSelector: OutputSelector<RootState, string | null, (state: TestState) => string | null> =
+  createSelector(rootSelector, (root) => root.completedAt ?? null);
+
+export const testInProgressSelector: OutputSelector<
+  RootState,
+  boolean,
+  (totalQuestions: number, completedAt: string | null) => boolean
+> = createSelector(totalQuestionsSelector, completedAtSelector, (totalQuestions, completedAt) => {
+  return totalQuestions > 0 && !completedAt;
+});
 
 export const testResultsSelector: OutputSelector<
   RootState,

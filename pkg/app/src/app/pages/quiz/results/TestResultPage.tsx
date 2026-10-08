@@ -1,4 +1,4 @@
-import { IonPage, useIonViewWillLeave } from "@ionic/react";
+import { IonPage, useIonViewWillEnter } from "@ionic/react";
 import { Translate } from "@k53studyguide/shared/translation";
 import type React from "react";
 import { connect } from "react-redux";
@@ -21,11 +21,13 @@ const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveQuestionAnswe
 
   useAnalytics("QuizPage:TestResultPage");
 
-  useIonViewWillLeave(() => {
-    recieveQuestionAnswers([]); //Clear test
-  });
+  // Ionic restores cached result routes on tab return; leaving a tab must not clear its data.
+  useIonViewWillEnter(() => {
+    if (questionAnswers.length === 0) navigate("/quiz", { replace: true });
+  }, [questionAnswers.length, navigate]);
 
   const onBackClicked = () => {
+    recieveQuestionAnswers([]);
     navigate("/quiz", { replace: true });
   };
 

@@ -10,7 +10,7 @@ android {
         applicationId "deanvniekerk.k53studyguide.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 40
+        versionCode 41
         versionName "1.40"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
