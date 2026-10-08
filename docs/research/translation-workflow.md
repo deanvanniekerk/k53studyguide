@@ -41,6 +41,12 @@ Evaluate UI labels, long HTML passages, road signs, vehicle controls, question/o
 
 The installed `@capacitor/device` v8 package exposes `Device.getLanguageTag()`. Its [official documentation](https://capacitorjs.com/docs/apis/device#getlanguagetag) specifies a BCP 47 locale tag. Use it on native devices and browser language preferences on web, normalize regional tags such as `af-ZA` to an enabled locale, and fall back to English. Device language is a first-run suggestion; explicit saved choices win on subsequent launches.
 
+## Manual execution and progress requirements
+
+The maintainer explicitly starts generation on their local machine using the CLI command. App startup, builds, installs, CI, deployments, schedules and background jobs must not trigger generation. Source changes can be reported as stale; regeneration waits for a manual run.
+
+The CLI shows progress by default: target language/model/effort, planned totals, current batch, processed/total entries and percentage, translated/skipped/failed counts and elapsed time. While awaiting Codex, show activity and elapsed time without fabricating completion progress. Report retries, limits, validation and checkpoint/resume state; finish with counts, duration, output paths and a resume command when work remains. Support redirected plain-text output and keep progress separate from translation data.
+
 ## Proposed boundaries
 
-English remains canonical. Generate reviewed, bundled locale resources locally through the signed-in Codex CLI; no runtime model calls. Use a registry of released locales shared by onboarding and Profile. Recommend English/Afrikaans first, then additional spoken test languages as complete translations are reviewed. Test-language evidence and its limits are recorded separately in `learners-test-languages.md`.
+English remains canonical. Generate reviewed, bundled locale resources locally through the signed-in Codex CLI; no runtime model calls. Use a registry of released locales shared by onboarding and Profile. Confirmed first-pass scope: English (`en`), Afrikaans (`af`), isiZulu (`zu`) and isiXhosa (`xh`). Generate and review all three target translations; expose exactly these four in onboarding and Profile. Other languages are deferred. Test-language evidence and its limits are recorded separately in `learners-test-languages.md`.

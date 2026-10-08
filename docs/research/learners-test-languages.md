@@ -19,7 +19,7 @@ South Africa now has **12 official languages**, including South African Sign Lan
 
 ## Implications for the issue
 
-1. Design locale support to accommodate all 11 spoken test languages. Publish only languages whose complete app/content translations have passed review; Afrikaans is a sensible first pilot because of the existing Jedidiah workflow, not because the exam is restricted to English and Afrikaans.
+1. Confirmed first-pass scope: English, Afrikaans, isiZulu and isiXhosa. Publish complete reviewed app/content translations for these four only. Keep locale generation extensible for later languages; the 11-language evidence describes test support, not this first release.
 2. Keep the app's available study languages separate from claims about a user's testing centre. Suggested wording if centre-language guidance is included: "Confirm your test language with your driving licence testing centre."
 3. Treat SASL as a separate accessibility/media scope requiring investigation; ordinary English-to-text translation cannot implement it.
 
