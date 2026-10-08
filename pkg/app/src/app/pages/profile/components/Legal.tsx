@@ -33,7 +33,7 @@ const Legal: React.FC = () => {
 };
 
 const PanelContent = styled.div`
-  padding: 20px 22px;
+  padding: var(--app-card-padding);
 `;
 
 const Info = styled.div`
@@ -46,7 +46,7 @@ const Info = styled.div`
 const ButtonRow = styled.div`
   display: grid;
   gap: 8px;
-  margin-top: 16px;
+  margin-top: var(--app-stack-gap);
 `;
 
 const SecondaryButton = styled(IonButton)`

@@ -28,6 +28,7 @@ export const Footer: React.FC = () => {
       <IonRow>
         <IonCol>
           <PrimaryButton
+            data-scroll-action
             section="study"
             text="yesTakeMeThere"
             onClick={() => {
@@ -42,11 +43,11 @@ export const Footer: React.FC = () => {
 };
 
 const Grid = styled(IonGrid)`
-  padding: 4px var(--app-padding) 34px;
+  padding: 0 var(--app-padding);
 `;
 
 const PromptRow = styled(IonRow)`
-  padding: 16px 10px 18px;
+  padding: var(--app-card-padding);
   color: var(--app-text-muted);
   font-size: var(--app-font-size-md);
   font-weight: 700;

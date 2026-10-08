@@ -66,9 +66,11 @@ const SettingsComponent: React.FC<Props> = (props) => {
                 text={props.targetNavigationKey === ROOT_NAVIGATION_KEY ? "allContent" : props.targetNavigationKey}
               />
             </InProgressSection>
-            <InProgressBreadcrumb>
-              <Breadcrumb navigationKey={props.targetNavigationKey} rootText="allContent" showLast={true} />
-            </InProgressBreadcrumb>
+            {props.targetNavigationKey !== ROOT_NAVIGATION_KEY && (
+              <InProgressBreadcrumb>
+                <Breadcrumb navigationKey={props.targetNavigationKey} rootText="allContent" />
+              </InProgressBreadcrumb>
+            )}
           </InProgressCard>
         ) : (
           <SettingsCard>
@@ -121,6 +123,7 @@ const SettingsComponent: React.FC<Props> = (props) => {
         )}
         <StartButtonWrapper>
           <PrimaryButton
+            data-scroll-action
             section="quiz"
             text={props.testInProgress ? "continueQuiz" : "startTest"}
             rightIcon={caretForward}
@@ -156,15 +159,15 @@ const SettingsComponent: React.FC<Props> = (props) => {
 
 const Grid = styled(IonGrid)`
   padding: 0 var(--app-padding);
-  margin-top: 34px;
+  margin-top: var(--app-section-gap);
 `;
 
 const SettingTitle = styled(IonText)`
   display: block;
-  margin-bottom: 14px;
+  margin-bottom: var(--app-stack-gap);
   color: var(--app-text-muted);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-section-title);
   font-weight: 900;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -182,7 +185,7 @@ const InProgressCard = styled.div`
   --breadcrumb-color: var(--app-text-muted);
 
   overflow: hidden;
-  padding: 22px 26px 24px;
+  padding: var(--app-card-padding);
   border: var(--app-card-border);
   border-radius: 24px;
   background: var(--app-card-background);
@@ -223,7 +226,7 @@ const InProgressSection = styled.div`
   margin-top: 12px;
   color: var(--app-text-primary);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-xl);
+  font-size: var(--app-font-size-card-title);
   font-weight: 900;
   line-height: 1.2;
 `;
@@ -252,12 +255,12 @@ const _InProgressMeta = styled.div`
 
 const SettingRow = styled.button`
   width: 100%;
-  min-height: 104px;
+  min-height: var(--app-control-min-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  padding: 18px 26px;
+  padding: var(--app-card-padding);
   border: 0;
   background: transparent;
   text-align: left;
@@ -308,7 +311,7 @@ const SettingValue = styled.div`
   margin-top: 6px;
   color: var(--app-text-primary);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-xl);
+  font-size: var(--app-font-size-card-title);
   font-weight: 900;
   line-height: 1.25;
 `;
@@ -321,7 +324,7 @@ const Divider = styled.div`
 const Chevron = styled(IonIcon)`
   flex: 0 0 auto;
   color: var(--app-decorative-icon-color);
-  font-size: var(--app-font-size-xl);
+  font-size: var(--app-font-size-card-title);
 `;
 
 const Select = styled(IonSelect)`
@@ -334,7 +337,7 @@ const Select = styled(IonSelect)`
   opacity: 0.9 !important;
   font-family: var(--ion-font-family-bold);
   font-weight: 900;
-  font-size: var(--app-font-size-xl);
+  font-size: var(--app-font-size-card-title);
   line-height: 1.5rem;
 
   &::part(container) {
@@ -352,7 +355,7 @@ const Select = styled(IonSelect)`
 `;
 
 const StartButtonWrapper = styled.div`
-  padding-top: 30px;
+  padding-top: var(--app-section-gap);
 `;
 
 const ResetButton = styled(IonButton)`

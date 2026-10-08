@@ -1,11 +1,11 @@
-import { IonContent, IonPage, type ScrollDetail } from "@ionic/react";
+import { IonPage, type ScrollDetail } from "@ionic/react";
 import type React from "react";
 import { useRef, useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
-import { PageHeader } from "@/app/components";
+import { PageContent, PageHeader } from "@/app/components";
 import { BookOutlineIcon } from "@/app/components/icons";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { watermarkStyle } from "@/app/styles";
@@ -106,7 +106,7 @@ const Watermark = styled(BookOutlineIcon)`
   ${watermarkStyle}
 `;
 
-const Content = styled(IonContent)`
+const Content = styled(PageContent)`
   --background: transparent;
 `;
 

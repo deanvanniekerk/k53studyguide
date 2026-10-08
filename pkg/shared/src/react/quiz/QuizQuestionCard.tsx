@@ -74,8 +74,8 @@ const QuizQuestionCard: React.FC<Props> = ({
 };
 
 const Card = styled.div`
-  margin: 0 var(--app-padding) 26px;
-  padding: 22px 22px 24px;
+  margin: 0 var(--app-padding) var(--app-stack-gap, 26px);
+  padding: var(--app-card-padding, 22px 22px 24px);
   border: var(--app-card-border);
   border-radius: 24px;
   background: var(--app-card-background);
@@ -85,7 +85,7 @@ const Card = styled.div`
 const QuestionCopy = styled.div`
   color: var(--app-text-primary);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-question, var(--app-font-size-l));
   font-weight: 600;
   line-height: 1.32;
 
@@ -105,9 +105,9 @@ const ImageFrame = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: var(--app-stack-gap, 14px);
   min-height: 160px;
-  margin-top: 22px;
+  margin-top: var(--app-stack-gap, 22px);
   padding: 12px;
   border: 2px dashed var(--app-card-border-color);
   border-radius: 20px;
@@ -123,16 +123,16 @@ const QuestionImage = styled.img`
 const Options = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding-top: 24px;
+  gap: var(--app-stack-gap, 14px);
+  padding-top: var(--app-stack-gap, 24px);
 `;
 
 const OptionButton = styled.button<{ state: OptionState }>`
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 76px;
-  padding: 14px 22px;
+  min-height: var(--app-control-min-height, 76px);
+  padding: var(--app-row-padding, 14px 22px);
   border: 2px solid ${(props) => optionBorder(props.state)};
   border-radius: 20px;
   background: ${(props) => optionBackground(props.state)};
@@ -146,9 +146,9 @@ const OptionButton = styled.button<{ state: OptionState }>`
 
 const OptionIcon = styled(IonIcon)<{ state: OptionState }>`
   flex: 0 0 auto;
-  margin-right: 18px;
+  margin-right: var(--app-element-gap, 18px);
   color: ${(props) => optionIconColor(props.state)};
-  font-size: 2.1rem;
+  font-size: var(--app-option-icon-size, 2.1rem);
 `;
 
 const OptionText = styled.div`

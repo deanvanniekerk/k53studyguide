@@ -56,17 +56,17 @@ const Wrapper = styled.div`
   margin: 0 var(--app-padding);
   border: var(--app-quiz-level-card-border);
   border-radius: 32px;
-  padding: 38px 40px 36px;
+  padding: var(--app-card-padding, 38px 40px 36px);
   color: var(--app-quiz-level-card-text);
   background: var(--app-quiz-level-card-background);
   box-shadow: var(--app-quiz-level-card-shadow);
 
   @media (max-width: 420px) {
-    padding: 26px 18px 28px;
+    padding: var(--app-card-padding, 26px 18px 28px);
   }
 
   @container (max-width: 420px) {
-    padding: 26px 18px 28px;
+    padding: var(--app-card-padding, 26px 18px 28px);
   }
 `;
 
@@ -132,16 +132,16 @@ const SparkIcon = styled(IonIcon)`
 
 const StarWrapper = styled.div`
   position: relative;
-  padding-top: 36px;
+  padding-top: var(--app-stack-gap, 36px);
   display: flex;
   justify-content: flex-start;
 
   @media (max-width: 420px) {
-    padding-top: 26px;
+    padding-top: var(--app-stack-gap, 26px);
   }
 
   @container (max-width: 420px) {
-    padding-top: 26px;
+    padding-top: var(--app-stack-gap, 26px);
   }
 `;
 

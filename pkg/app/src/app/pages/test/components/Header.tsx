@@ -113,7 +113,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--app-page-content-top) var(--app-padding) 24px;
+  padding: var(--app-page-content-top) var(--app-padding) var(--app-section-gap);
   text-align: center;
 `;
 
@@ -126,7 +126,7 @@ const MetricArea = styled.div`
 
 const Counter = styled.div`
   color: var(--app-test-accent);
-  font-size: 3rem;
+  font-size: var(--app-font-size-xxxl);
   font-family: var(--ion-font-family-bold);
   font-weight: 900;
   line-height: 1;
@@ -149,7 +149,7 @@ const UnlockCard = styled.div`
   width: 100%;
   max-width: 520px;
   margin-top: 0;
-  padding: 22px 20px;
+  padding: var(--app-card-padding);
   border: var(--app-card-border);
   border-radius: 24px;
   background: var(--app-card-background);
@@ -157,12 +157,12 @@ const UnlockCard = styled.div`
 `;
 
 const PracticeCard = styled(UnlockCard)`
-  padding: 22px 20px 20px;
+  padding: var(--app-card-padding);
 `;
 
 const PracticeSummary = styled.div`
-  margin-top: 22px;
-  padding: 16px;
+  margin-top: var(--app-stack-gap);
+  padding: var(--app-card-padding);
   border: var(--app-card-border);
   border-radius: 18px;
   background: var(--app-premium-badge-background);
@@ -192,7 +192,7 @@ const UnlockTitle = styled.h1`
 `;
 
 const PracticeTitle = styled(UnlockTitle)`
-  font-size: clamp(1.75rem, 7.5vw, 2rem);
+  font-size: var(--app-font-size-page-title);
   text-wrap: balance;
 `;
 

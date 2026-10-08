@@ -56,6 +56,7 @@ const FooterComponent: React.FC<Props> = (props) => {
           <Translate text="back" />
         </BackButton>
         <PrimaryButton
+          data-scroll-action
           section="test"
           text={props.isLastQuestion ? "submit" : "continue"}
           rightIcon={props.isLastQuestion ? checkmarkCircleOutline : arrowForwardOutline}
@@ -100,7 +101,7 @@ const FooterComponent: React.FC<Props> = (props) => {
 };
 
 const Wrapper = styled.div`
-  padding: 0 var(--app-padding) 35px;
+  padding: 0 var(--app-padding);
 `;
 
 const NavActions = styled.div`
@@ -110,7 +111,7 @@ const NavActions = styled.div`
 `;
 
 const BackButton = styled(IonButton)`
-  height: 56px;
+  height: var(--app-control-min-height);
   margin: 0;
   font-size: var(--app-font-size-md);
   font-weight: 900;

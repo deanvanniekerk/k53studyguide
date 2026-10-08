@@ -1,11 +1,11 @@
-import { IonContent, IonPage, useIonViewWillLeave } from "@ionic/react";
+import { IonPage, useIonViewWillLeave } from "@ionic/react";
 import type React from "react";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
-import { PageHeader } from "@/app/components";
+import { PageContent, PageHeader } from "@/app/components";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { QuizQuestionCard } from "@/app/pages/quiz/components";
 import type { RootState } from "@/state";
@@ -53,7 +53,7 @@ const TestResultPage: React.FC<Props> = ({ questionAnswers, recieveCurrentSectio
   );
 };
 
-const Content = styled(IonContent)`
+const Content = styled(PageContent)`
   --background: transparent;
 `;
 
@@ -74,10 +74,10 @@ const ResultItem = styled.div`
 `;
 
 const QuestionNumber = styled.div`
-  margin: 0 var(--app-padding) 12px;
+  margin: 0 var(--app-padding) var(--app-element-gap);
   color: var(--app-text-muted);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-section-title);
   font-weight: 900;
 `;
 

@@ -5,7 +5,16 @@ import { connect } from "react-redux";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import type { RootState } from "@/state";
-import { languageSelector, recieveLanguage, setTheme, type Theme, themeSelector } from "@/state/settings";
+import {
+  type DisplayMode,
+  displayModeSelector,
+  languageSelector,
+  recieveLanguage,
+  setDisplayMode,
+  setTheme,
+  type Theme,
+  themeSelector,
+} from "@/state/settings";
 import { GroupCard, Row, Section, SectionTitle } from "./";
 
 type Props = PropsFromState & PropsFromDispatch;
@@ -40,6 +49,24 @@ const SettingsComponent: React.FC<Props> = (props) => {
                     <IonSelectOption value="system">System default</IonSelectOption>
                     <IonSelectOption value="light">Light</IonSelectOption>
                     <IonSelectOption value="dark">Dark</IonSelectOption>
+                  </Select>
+                }
+              />
+              <Row
+                name="Display mode"
+                value={
+                  <Select
+                    aria-label="Display mode"
+                    value={props.displayMode ?? "comfortable"}
+                    onIonChange={(event) => {
+                      const value = event.detail.value as DisplayMode;
+                      props.setDisplayMode(value);
+                    }}
+                    interface="action-sheet"
+                    cancelText={translate({ text: "cancel" })}
+                  >
+                    <IonSelectOption value="compact">Compact</IonSelectOption>
+                    <IonSelectOption value="comfortable">Comfortable</IonSelectOption>
                   </Select>
                 }
               />
@@ -88,13 +115,14 @@ const mapStateToProps = (state: RootState) => {
   return {
     language: languageSelector(state),
     theme: themeSelector(state),
+    displayMode: displayModeSelector(state),
   };
 };
 
 type PropsFromDispatch = ReturnType<typeof mapDispatchToProps>;
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    ...bindActionCreators({ recieveLanguage, setTheme }, dispatch),
+    ...bindActionCreators({ recieveLanguage, setTheme, setDisplayMode }, dispatch),
   };
 };
 

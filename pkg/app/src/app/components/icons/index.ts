@@ -1,15 +1,5 @@
-// Section + star icons now live in the shared package so the app and the lander
-// render the exact same artwork.
-export {
-  CarIcon,
-  RoadIcon,
-  SpeedometerIcon,
-  StarIcon,
-  StarOutlineIcon,
-  StopIcon,
-  TestIcon,
-  TrafficLightIcon,
-} from "@k53studyguide/shared/react";
+// Shared functional star icons.
+export { StarIcon, StarOutlineIcon } from "@k53studyguide/shared/react";
 export * from "./BookIcon";
 export * from "./BookOutlineIcon";
 export * from "./QuizIcon";

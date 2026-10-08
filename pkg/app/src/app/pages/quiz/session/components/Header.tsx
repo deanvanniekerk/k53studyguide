@@ -20,13 +20,11 @@ const HeaderComponent: React.FC<Props> = (props) => {
           text={props.targetNavigationKey === ROOT_NAVIGATION_KEY ? "allContent" : props.targetNavigationKey}
         />
       </Title>
-      <SubTitle>
-        <Breadcrumb
-          navigationKey={props.targetNavigationKey}
-          rootText="allContent"
-          showLast={props.targetNavigationKey === ROOT_NAVIGATION_KEY}
-        />
-      </SubTitle>
+      {props.targetNavigationKey !== ROOT_NAVIGATION_KEY && (
+        <SubTitle>
+          <Breadcrumb navigationKey={props.targetNavigationKey} rootText="allContent" />
+        </SubTitle>
+      )}
       <ProgressCard>
         <QuestionCount>
           <Translate text="question" /> {props.currentQuestionIndex + 1} of {props.totalQuestions}
@@ -52,7 +50,7 @@ const HeaderShell = styled.header`
 const Title = styled.h1`
   color: var(--app-text-primary);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-xxxl);
+  font-size: var(--app-font-size-page-title);
   font-weight: 900;
   line-height: 1.1;
   margin: 0;
@@ -63,7 +61,7 @@ const SubTitle = styled.div`
 
   padding-top: 4px;
   color: var(--app-text-muted);
-  font-size: var(--app-font-size-xl);
+  font-size: var(--app-font-size-md);
   font-weight: 700;
 `;
 
@@ -73,17 +71,17 @@ const ProgressCard = styled.div`
   justify-content: space-between;
   min-width: 0;
   gap: 12px;
-  margin-top: 16px;
-  margin-bottom: 16px;
-  padding: 15px 22px;
+  margin-top: var(--app-stack-gap);
+  margin-bottom: var(--app-stack-gap);
+  padding: var(--app-row-padding);
   border: var(--app-card-border);
   border-radius: 18px;
   background: var(--app-card-background);
   box-shadow: var(--app-card-shadow);
 
   @media (max-width: 380px) {
-    padding-right: 16px;
-    padding-left: 16px;
+    padding-right: var(--app-row-padding-inline);
+    padding-left: var(--app-row-padding-inline);
   }
 `;
 

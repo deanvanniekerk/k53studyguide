@@ -1,4 +1,7 @@
+import { type SectionIllustrationName, sectionIllustrations } from "@k53studyguide/shared/react";
+
 export type IllustrationName =
+  | SectionIllustrationName
   | "study-seen"
   | "study-progress"
   | "study-reset"
@@ -7,12 +10,6 @@ export type IllustrationName =
   | "quiz-settings"
   | "quiz-reset"
   | "test-shuffle"
-  | "vehicle-controls"
-  | "road-rules"
-  | "defensive-driving"
-  | "road-markings"
-  | "traffic-signals"
-  | "road-signs"
   | "mock-tests"
   | "score-breakdown"
   | "repeat-practice"
@@ -22,10 +19,12 @@ export type IllustrationName =
   | "test-success"
   | "test-practice";
 
+const sharedIllustrations: Partial<Record<IllustrationName, string>> = sectionIllustrations;
+
 // Decorative artwork: the adjacent heading supplies the accessible label.
 export const Illustration = ({ name, size }: { name: IllustrationName; size: number }) => (
   <img
-    src={`/assets/images/illustrations/${name}.webp`}
+    src={sharedIllustrations[name] ?? `/assets/images/illustrations/${name}.webp`}
     alt=""
     width={size}
     height={size}

@@ -26,7 +26,7 @@ const NavigatorComponent: React.FC<Props> = (props) => {
 
 const List = styled(IonList)`
   background: transparent;
-  padding: 0 var(--app-padding) 28px;
+  padding: 0 var(--app-padding) var(--app-section-gap);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

@@ -27,7 +27,7 @@ const Row: React.FC<Props> = (props) => {
 
 const Section = styled.section`
   padding: 0 var(--app-padding);
-  margin-top: 32px;
+  margin-top: var(--app-section-gap);
 
   &:first-child {
     margin-top: var(--app-page-content-top);
@@ -41,14 +41,14 @@ const SectionTitle = styled.h2`
   margin: 0 0 12px;
   color: var(--app-profile-section-title);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-section-title);
   font-weight: 900;
   letter-spacing: 0;
   line-height: 1.1;
   text-transform: uppercase;
 
   ion-icon {
-    font-size: var(--app-font-size-l);
+    font-size: var(--app-font-size-section-title);
   }
 `;
 
@@ -67,8 +67,8 @@ const Container = styled.button<{ $clickable: boolean }>`
   align-items: center;
   gap: 12px;
   width: 100%;
-  min-height: 76px;
-  padding: 16px 22px;
+  min-height: var(--app-control-min-height);
+  padding: var(--app-row-padding);
   border: 0;
   border-bottom: 1px solid var(--app-profile-card-divider);
   background: transparent;
@@ -102,7 +102,7 @@ const StatusIcon = styled(IonIcon)<{ $status?: Props["status"] }>`
   flex: 0 0 auto;
   color: ${(props) =>
     props.$status === "complete" ? "var(--app-profile-status-complete)" : "var(--app-profile-status-incomplete)"};
-  font-size: var(--app-font-size-xxl);
+  font-size: var(--app-font-size-xl);
 `;
 
 const ValueCol = styled.div<{ $action?: boolean }>`

@@ -37,7 +37,7 @@ const RateApp: React.FC = () => {
 };
 
 const PanelContent = styled.div`
-  padding: 20px 22px;
+  padding: var(--app-card-padding);
 `;
 
 const Info = styled.div`
@@ -48,7 +48,7 @@ const Info = styled.div`
 `;
 
 const ButtonWrap = styled.div`
-  margin: 16px 0 0;
+  margin: var(--app-stack-gap) 0 0;
 `;
 
 export { RateApp };

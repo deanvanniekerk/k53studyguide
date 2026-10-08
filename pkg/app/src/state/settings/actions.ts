@@ -19,9 +19,50 @@ export interface SetThemeAction {
   payload: Theme;
 }
 
-export type SettingsActions = RecieveLanguageAction | SetThemeAction;
+export const SETTINGS_SET_DISPLAY_MODE = "SETTINGS_SET_DISPLAY_MODE";
+
+export type DisplayMode = "compact" | "comfortable";
+
+export interface SetDisplayModeAction {
+  type: typeof SETTINGS_SET_DISPLAY_MODE;
+  payload: DisplayMode;
+}
+
+export const SETTINGS_SET_INITIAL_DISPLAY_MODE = "SETTINGS_SET_INITIAL_DISPLAY_MODE";
+
+export interface SetInitialDisplayModeAction {
+  type: typeof SETTINGS_SET_INITIAL_DISPLAY_MODE;
+  payload: DisplayMode;
+}
+
+export const SETTINGS_DISMISS_QUIZ_HOME_PREMIUM = "SETTINGS_DISMISS_QUIZ_HOME_PREMIUM";
+
+export interface DismissQuizHomePremiumAction {
+  type: typeof SETTINGS_DISMISS_QUIZ_HOME_PREMIUM;
+}
+
+export type SettingsActions =
+  | RecieveLanguageAction
+  | SetThemeAction
+  | SetDisplayModeAction
+  | SetInitialDisplayModeAction
+  | DismissQuizHomePremiumAction;
 
 export const setTheme = (theme: Theme): SetThemeAction => ({
   type: SETTINGS_SET_THEME,
   payload: theme,
+});
+
+export const setDisplayMode = (displayMode: DisplayMode): SetDisplayModeAction => ({
+  type: SETTINGS_SET_DISPLAY_MODE,
+  payload: displayMode,
+});
+
+export const setInitialDisplayMode = (displayMode: DisplayMode): SetInitialDisplayModeAction => ({
+  type: SETTINGS_SET_INITIAL_DISPLAY_MODE,
+  payload: displayMode,
+});
+
+export const dismissQuizHomePremium = (): DismissQuizHomePremiumAction => ({
+  type: SETTINGS_DISMISS_QUIZ_HOME_PREMIUM,
 });

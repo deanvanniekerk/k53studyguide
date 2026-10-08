@@ -57,7 +57,7 @@ const SeenCount = styled.div<{ $complete: boolean }>`
   color: var(--app-text-primary);
   display: flex;
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-md);
   font-weight: 900;
   gap: 10px;
   white-space: nowrap;
@@ -68,7 +68,7 @@ const SeenCount = styled.div<{ $complete: boolean }>`
   }
 
   @media (max-width: 360px) {
-    font-size: var(--app-font-size-l);
+    font-size: var(--app-font-size-md);
     gap: 8px;
   }
 `;

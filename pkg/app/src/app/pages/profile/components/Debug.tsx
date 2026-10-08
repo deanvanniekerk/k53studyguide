@@ -111,13 +111,13 @@ const LogList = styled.div`
 `;
 
 const LogEmpty = styled.div`
-  padding: 12px 22px;
+  padding: var(--app-card-padding);
   color: var(--app-text-muted);
   font-size: var(--app-font-size-md);
 `;
 
 const LogItem = styled.div<{ $level: string }>`
-  padding: 10px 22px;
+  padding: var(--app-row-padding);
   border-bottom: 1px solid var(--app-profile-card-divider);
   color: ${(props) =>
     props.$level === "ERROR"

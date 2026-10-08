@@ -1,4 +1,4 @@
-import { IonContent, IonFooter, IonPage } from "@ionic/react";
+import { IonFooter, IonPage } from "@ionic/react";
 import { Translate } from "@k53studyguide/shared/translation";
 import { caretForward } from "ionicons/icons";
 import type React from "react";
@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
-import { PageHeader, PageHeaderInfoIcon } from "@/app/components";
+import { PageContent, PageHeader, PageHeaderInfoIcon } from "@/app/components";
 import { PrimaryButton } from "@/app/components/PrimaryButton";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { usePremiumOffer } from "@/app/hooks/usePremiumOffer";
@@ -91,7 +91,7 @@ const Actions = styled(IonFooter)`
   background: var(--app-card-background);
   border-top: var(--app-card-border);
   /* The tab bar owns the bottom safe-area inset. This footer sits above it. */
-  padding: 12px var(--app-padding) 16px;
+  padding: var(--app-card-padding);
 `;
 const ActionContent = styled.div`
   max-width: var(--app-readable-content-max-width);
@@ -104,7 +104,7 @@ const ActionNote = styled.p`
   font-size: var(--app-font-size-sm);
 `;
 
-const Content = styled(IonContent)`
+const Content = styled(PageContent)`
   --background: transparent;
 `;
 

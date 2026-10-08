@@ -1,4 +1,4 @@
-import { IonContent, IonPage, useIonViewWillEnter } from "@ionic/react";
+import { IonPage, useIonViewWillEnter } from "@ionic/react";
 import { Translate } from "@k53studyguide/shared/translation";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
-import { PageHeader } from "@/app/components";
+import { PageContent, PageHeader } from "@/app/components";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { QuizQuestionCard } from "@/app/pages/quiz/components";
 import type { QuestionOption } from "@/data";
@@ -122,7 +122,7 @@ const TestPage: React.FC<Props> = (props) => {
     <Page>
       <PageHeader title="test" page="test" onBackClick={onBackClicked} />
       <TestWatermark />
-      <Content ref={content}>
+      <Content ref={content} scrollHint>
         <Header />
         <Tabs onSectionClicked={onSectionClicked} />
         {currentQuestionAnswer && (
@@ -157,8 +157,9 @@ const TestPage: React.FC<Props> = (props) => {
   );
 };
 
-const Content = styled(IonContent)`
+const Content = styled(PageContent)`
   --background: transparent;
+  --padding-bottom: var(--app-scroll-fade-height);
 `;
 
 const Page = styled(IonPage)`
@@ -178,13 +179,13 @@ const QuestionMeta = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin: 0 var(--app-padding) 12px;
+  margin: 0 var(--app-padding) var(--app-element-gap);
 `;
 
 const QuestionLabel = styled.div`
   color: var(--app-question-accent);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-section-title);
   font-weight: 700;
   letter-spacing: 1.4px;
   text-transform: uppercase;
@@ -193,7 +194,7 @@ const QuestionLabel = styled.div`
 const QuestionPosition = styled.div`
   color: var(--app-text-muted);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-section-title);
   font-weight: 700;
   white-space: nowrap;
 `;

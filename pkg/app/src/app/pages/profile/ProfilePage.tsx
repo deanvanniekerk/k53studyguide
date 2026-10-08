@@ -1,7 +1,7 @@
-import { IonContent, IonPage } from "@ionic/react";
+import { IonPage } from "@ionic/react";
 import type React from "react";
 import styled from "styled-components";
-import { PageHeader } from "@/app/components";
+import { PageContent, PageHeader } from "@/app/components";
 import { SettingsOutlineIcon } from "@/app/components/icons";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { watermarkStyle } from "@/app/styles";
@@ -35,9 +35,9 @@ const Watermark = styled(SettingsOutlineIcon)`
   opacity: 0.06;
 `;
 
-const Content = styled(IonContent)`
+const Content = styled(PageContent)`
   --background: transparent;
-  --padding-bottom: 32px;
+  --padding-bottom: var(--app-section-gap);
 `;
 
 const Page = styled(IonPage)`

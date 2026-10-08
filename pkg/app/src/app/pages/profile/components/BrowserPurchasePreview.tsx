@@ -32,8 +32,8 @@ export function BrowserPurchasePreview() {
   );
 }
 const Panel = styled.div`
-  margin: var(--app-page-content-top) var(--app-padding) 20px;
-  padding: 16px;
+  margin: var(--app-page-content-top) var(--app-padding) var(--app-stack-gap);
+  padding: var(--app-card-padding);
   background: var(--app-card-background);
   color: var(--app-text-primary);
   border: var(--app-card-border);

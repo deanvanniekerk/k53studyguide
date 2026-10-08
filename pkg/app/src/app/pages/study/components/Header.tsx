@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { PrimaryButton } from "@/app/components";
 import type { RootState } from "@/state";
 import { rootNavigationChildrenSelector } from "@/state/navigation";
-import { lastSeenParentContentKeySelector, seenContentKeysSelector, seenTotalsSelector } from "@/state/study/log";
+import { lastSeenParentContentKeySelector, seenTotalsSelector } from "@/state/study/log";
 
 type Props = {
   onNavigationItemClicked: (navigationItemKey: string) => void;
@@ -18,13 +18,9 @@ const HeaderComponent: React.FC<Props> = (props) => {
     return sectionTotal && sectionTotal.total > 0 && sectionTotal.seen === sectionTotal.total;
   }).length;
   const totalSections = props.rootNavigationChildren.length;
-  const isFirstStudyOpen = Object.keys(props.seenContentKeys).length === 0;
 
   return (
     <HeroHeader>
-      <Eyebrow>
-        <Translate text={isFirstStudyOpen ? "startStudying" : "continueWhereYouLeftOff"} />
-      </Eyebrow>
       <Title>
         <Translate text={props.lastSeenParentContentKey} />
       </Title>
@@ -45,37 +41,28 @@ const HeaderComponent: React.FC<Props> = (props) => {
 
 const HeroHeader = styled.div`
   display: block;
-  padding: var(--app-page-content-top) var(--app-padding) 28px;
+  padding: var(--app-page-content-top) var(--app-padding) var(--app-section-gap);
   background: var(--app-study-background);
-`;
-
-const Eyebrow = styled.div`
-  color: var(--app-study-section-defensive);
-  font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-md);
-  font-weight: 800;
-  letter-spacing: 0;
-  text-transform: uppercase;
 `;
 
 const Title = styled.h1`
   color: var(--app-text-primary);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-xxxl);
+  font-size: var(--app-font-size-page-title);
   line-height: 1.05;
-  margin: 18px 0 12px;
+  margin: 0 0 var(--app-element-gap);
   max-width: 100%;
   overflow-wrap: anywhere;
 `;
 
 const SubTitle = styled.div`
   color: var(--app-text-muted);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-md);
   line-height: 1.3;
 `;
 
 const ButtonWrap = styled.div`
-  margin: 14px 0 0;
+  margin: var(--app-stack-gap) 0 0;
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;
@@ -83,7 +70,6 @@ const mapStateToProps = (state: RootState) => {
   return {
     lastSeenParentContentKey: lastSeenParentContentKeySelector(state),
     rootNavigationChildren: rootNavigationChildrenSelector(state),
-    seenContentKeys: seenContentKeysSelector(state),
     seenTotals: seenTotalsSelector(state),
   };
 };

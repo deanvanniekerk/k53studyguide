@@ -1,10 +1,10 @@
-import { IonContent, IonPage } from "@ionic/react";
+import { IonPage } from "@ionic/react";
 import type React from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
-import { PageHeader } from "@/app/components";
+import { PageContent, PageHeader } from "@/app/components";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { RootState } from "@/state";
 import { navigateUp, recieveTargetNavigationKey, targetNavigationKeySelector } from "@/state/quiz/navigation";
@@ -43,7 +43,7 @@ const TestNavigatorPage: React.FC<Props> = (props) => {
     <Page>
       <PageHeader title="selectSection" page="quiz" onBackClick={onBackClicked} />
       <QuizWatermark />
-      <Content>
+      <Content scrollHint>
         <Header selectTargetNavigationItem={selectTargetNavigationItem} />
         <Navigator onNavigationItemClicked={onNavigationItemClicked} />
       </Content>
@@ -51,8 +51,9 @@ const TestNavigatorPage: React.FC<Props> = (props) => {
   );
 };
 
-const Content = styled(IonContent)`
+const Content = styled(PageContent)`
   --background: transparent;
+  --padding-bottom: var(--app-scroll-fade-height);
 `;
 
 const Page = styled(IonPage)`

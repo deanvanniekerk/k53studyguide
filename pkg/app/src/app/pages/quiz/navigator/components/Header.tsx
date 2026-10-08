@@ -15,21 +15,16 @@ type Props = {
 const HeaderComponent: React.FC<Props> = (props) => {
   return (
     <HeaderShell>
-      <Eyebrow>
-        <Translate text="chooseQuizSection" />
-      </Eyebrow>
       <Title>
         <Translate
           text={props.targetNavigationKey === ROOT_NAVIGATION_KEY ? "allContent" : props.targetNavigationKey}
         />
       </Title>
-      <BreadcrumbWrap>
-        <Breadcrumb
-          navigationKey={props.targetNavigationKey || ""}
-          rootText="allContent"
-          showLast={props.targetNavigationKey === ROOT_NAVIGATION_KEY}
-        />
-      </BreadcrumbWrap>
+      {props.targetNavigationKey !== ROOT_NAVIGATION_KEY && (
+        <BreadcrumbWrap>
+          <Breadcrumb navigationKey={props.targetNavigationKey || ""} rootText="allContent" />
+        </BreadcrumbWrap>
+      )}
       <SummaryCard>
         <SummaryTop>
           <SummaryLabel>
@@ -42,6 +37,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
       </SummaryCard>
       <ButtonWrap>
         <PrimaryButton
+          data-scroll-action
           section="quiz"
           text="useThisSection"
           rightIcon={checkmarkCircleOutline}
@@ -53,25 +49,16 @@ const HeaderComponent: React.FC<Props> = (props) => {
 };
 
 const HeaderShell = styled.header`
-  padding: var(--app-page-content-top) var(--app-padding) 22px;
-`;
-
-const Eyebrow = styled.div`
-  color: var(--ion-color-tertiary);
-  font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-md);
-  font-weight: 900;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
+  padding: var(--app-page-content-top) var(--app-padding) var(--app-section-gap);
 `;
 
 const Title = styled.h1`
   color: var(--app-text-primary);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-xxxl);
+  font-size: var(--app-font-size-page-title);
   font-weight: 900;
   line-height: 1.05;
-  margin: 12px 0 8px;
+  margin: 0 0 var(--app-element-gap);
   overflow-wrap: anywhere;
 `;
 
@@ -86,9 +73,9 @@ const BreadcrumbWrap = styled.div`
 
 const SummaryCard = styled.div`
   display: grid;
-  gap: 12px;
-  margin-top: 18px;
-  padding: 18px;
+  gap: var(--app-element-gap);
+  margin-top: var(--app-stack-gap);
+  padding: var(--app-card-padding);
   border: 2px solid var(--app-card-border-color);
   border-radius: 24px;
   background: var(--app-card-background);
@@ -119,7 +106,7 @@ const IntroText = styled.div`
 `;
 
 const ButtonWrap = styled.div`
-  margin: 18px 0 0;
+  margin: var(--app-stack-gap) 0 0;
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

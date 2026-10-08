@@ -3,6 +3,7 @@ export * from "./CloseButton";
 export * from "./ErrorBoundary";
 export * from "./HorizontalRule";
 export * from "./NavigationItem";
+export * from "./PageContent";
 export * from "./PageHeader";
 export * from "./PageHeaderInfoIcon";
 export * from "./PrimaryButton";

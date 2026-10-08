@@ -1,11 +1,11 @@
 import { CreateAnimation, IonIcon, IonLabel, IonText, useIonViewWillEnter } from "@ionic/react";
+import { SectionIcon } from "@k53studyguide/shared/react";
 import { Translate } from "@k53studyguide/shared/translation";
 import { chevronBackOutline, eye } from "ionicons/icons";
 import type React from "react";
 import { useRef } from "react";
 import { connect } from "react-redux";
 import { ProgressBar } from "@/app/components";
-import { Illustration } from "@/app/components/Illustration";
 import type { RootState } from "@/state";
 import { seenTotalsSelector } from "@/state/study/log";
 import "./NavigationItem.css";
@@ -48,7 +48,9 @@ const NavigationItemComponent: React.FC<Props> = (props) => {
       }}
     >
       <div className="root-navigation-item" style={itemStyle} onClick={() => props.onClick(props.navigationItemKey)}>
-        <div className="root-navigation-icon-tile">{navigationIcons[props.navigationItemKey]}</div>
+        <div className="root-navigation-icon-tile">
+          <SectionIcon navigationItemKey={props.navigationItemKey} size={52} />
+        </div>
         <IonLabel className="root-navigation-label">
           <IonText>
             <Translate text={props.navigationItemKey} />
@@ -71,15 +73,6 @@ const NavigationItemComponent: React.FC<Props> = (props) => {
       </div>
     </CreateAnimation>
   );
-};
-
-const navigationIcons: { [key: string]: React.ReactNode } = {
-  "nav.vehicleControls": <Illustration name="vehicle-controls" size={52} />,
-  "nav.rulesOfTheRoad": <Illustration name="road-rules" size={52} />,
-  "nav.defensiveDriving": <Illustration name="defensive-driving" size={52} />,
-  "nav.roadMarkings": <Illustration name="road-markings" size={52} />,
-  "nav.roadSignals": <Illustration name="traffic-signals" size={52} />,
-  "nav.signs": <Illustration name="road-signs" size={52} />,
 };
 
 const navigationThemes: { [key: string]: { color: string; rgb: string } } = {
