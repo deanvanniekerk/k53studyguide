@@ -36,8 +36,8 @@ const ContentListComponent: React.FC<Props> = ({
 
 const ListShell = styled.section`
   display: grid;
-  gap: 28px;
-  padding: 18px var(--app-padding) 32px;
+  gap: var(--app-stack-gap);
+  padding: var(--app-stack-gap) var(--app-padding) var(--app-section-gap);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

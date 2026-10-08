@@ -1,11 +1,11 @@
-import { IonContent, IonPage } from "@ionic/react";
+import { IonPage } from "@ionic/react";
 import type React from "react";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
-import { PageHeader, PageHeaderInfoIcon } from "@/app/components";
+import { PageContent, PageHeader, PageHeaderInfoIcon } from "@/app/components";
 import { PremiumInvitation } from "@/app/components/PremiumInvitation";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { RootState } from "@/state";
@@ -63,7 +63,7 @@ const QuizPage: React.FC<Props> = (props) => {
         rightSection={<PageHeaderInfoIcon onClick={() => showInfoModal()} />}
       />
       <QuizWatermark />
-      <Content>
+      <Content scrollHint>
         <Header />
         <Settings onStartTestClicked={onStartTestClicked} />
         <PremiumInvitation origin="quiz_home" enabled={props.infoSeen && !infoModalVisible} />
@@ -72,8 +72,9 @@ const QuizPage: React.FC<Props> = (props) => {
   );
 };
 
-const Content = styled(IonContent)`
+const Content = styled(PageContent)`
   --background: transparent;
+  --padding-bottom: var(--app-scroll-fade-height);
 `;
 
 const Page = styled(IonPage)`

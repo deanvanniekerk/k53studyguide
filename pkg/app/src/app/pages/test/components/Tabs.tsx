@@ -57,7 +57,7 @@ const TabsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
-  margin: 16px var(--app-padding) 30px;
+  margin: var(--app-stack-gap) var(--app-padding) var(--app-stack-gap);
   padding: 6px;
   border: var(--app-card-border);
   border-radius: 22px;
@@ -67,8 +67,8 @@ const TabsWrapper = styled.div`
 
 const Tab = styled.button<{ selected: boolean }>`
   min-width: 0;
-  min-height: 72px;
-  padding: 10px 4px;
+  min-height: var(--app-control-min-height);
+  padding: var(--app-row-padding-block) 4px;
   border: 0;
   border-radius: 18px;
   background: ${(props) => (props.selected ? "var(--app-test-action-background)" : "transparent")};
@@ -82,9 +82,9 @@ const Tab = styled.button<{ selected: boolean }>`
 
 const TabInfo = styled.div<{ selected: boolean }>`
   display: block;
-  padding-top: 8px;
+  padding-top: 4px;
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-md);
   font-weight: 900;
   opacity: ${(props) => (props.selected ? "1" : "0.72")};
 `;

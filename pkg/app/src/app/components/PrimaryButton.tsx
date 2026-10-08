@@ -21,14 +21,14 @@ const PrimaryButton: React.FC<Props> = ({ section, text, rightIcon, disabled, ..
 
 const Button = styled(IonButton)<{ $section: PageSection }>`
   width: 100%;
-  min-height: 56px;
+  min-height: var(--app-control-min-height);
   height: auto;
   white-space: normal;
-  --padding-top: 14px;
-  --padding-bottom: 14px;
+  --padding-top: var(--app-row-padding-block);
+  --padding-bottom: var(--app-row-padding-block);
   margin: 0;
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-md);
   font-weight: 900;
   letter-spacing: 0;
   --background: ${(props) => `var(--app-${props.$section}-action-background)`};

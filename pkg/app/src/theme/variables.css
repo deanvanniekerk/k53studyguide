@@ -11,6 +11,10 @@
   --app-font-size-xxl: 1.5rem;
   --app-font-size-xxxl: 2rem;
   --app-line-height: 1.7;
+  --app-font-size-page-title: var(--app-font-size-xxl);
+  --app-font-size-section-title: var(--app-font-size-md);
+  --app-font-size-card-title: 1rem;
+  --app-font-size-question: 1rem;
 
   /* Layout */
   --app-padding: 16px;
@@ -26,8 +30,16 @@
     var(--app-page-header-padding-top) +
     var(--app-page-header-collapsed-visual-height)
   );
-  --app-page-content-gap: 16px;
+  --app-page-content-gap: 12px;
   --app-page-content-top: calc(var(--app-page-header-height) + var(--app-page-content-gap));
+  --app-section-gap: 20px;
+  --app-stack-gap: 12px;
+  --app-element-gap: 8px;
+  --app-control-min-height: 44px;
+  --app-scroll-fade-height: 40px;
+  --app-option-icon-size: var(--app-font-size-xxl);
+  --app-navigation-icon-size: 36px;
+  --app-navigation-icon-tile-size: 44px;
 
   /* Ionic component defaults */
   --ion-item-background: transparent;
@@ -42,7 +54,13 @@
 
   /* Surfaces */
   --app-card-radius: 18px;
-  --app-card-padding: 8px;
+  /* Density controls: adjust these to change padding across all app screens. */
+  --app-card-padding-block: 12px;
+  --app-card-padding-inline: 16px;
+  --app-card-padding: var(--app-card-padding-block) var(--app-card-padding-inline);
+  --app-row-padding-block: var(--app-element-gap);
+  --app-row-padding-inline: var(--app-card-padding-inline);
+  --app-row-padding: var(--app-row-padding-block) var(--app-row-padding-inline);
   --app-card-border-color: #eeecf7;
   --app-card-border: 1px solid var(--app-card-border-color);
   --app-card-shadow: 0 2px 0 var(--app-card-border-color);
@@ -215,6 +233,15 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+}
+
+/* Compact uses the :root density above; both palettes share these mode overrides. */
+:root[data-display-mode="comfortable"] {
+  --app-card-padding-block: 18px;
+  --app-row-padding-block: 14px;
+  --app-page-content-gap: 16px;
+  --app-section-gap: 24px;
+  --app-stack-gap: 16px;
 }
 
 .ion-palette-dark {

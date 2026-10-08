@@ -19,3 +19,10 @@ export const themeSelector: OutputSelector<
   SettingsState["theme"],
   (state: SettingsState) => SettingsState["theme"]
 > = createSelector(rootSelector, (root) => root.theme);
+
+export const displayModeSelector = createSelector(rootSelector, (root) => root.displayMode ?? null);
+
+export const quizHomePremiumDismissedSelector = createSelector(
+  rootSelector,
+  (root) => root.quizHomePremiumDismissed ?? false,
+);

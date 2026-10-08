@@ -1,14 +1,15 @@
-import { IonContent, IonPage } from "@ionic/react";
+import { IonPage } from "@ionic/react";
 import { Translate } from "@k53studyguide/shared/translation";
 import type React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
-import { PageHeader, PageHeaderInfoIcon } from "@/app/components";
+import { PageContent, PageHeader, PageHeaderInfoIcon } from "@/app/components";
 import { BookOutlineIcon } from "@/app/components/icons";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
+import { useStudyDisplayMode } from "@/app/hooks/useStudyDisplayMode";
 import { watermarkStyle } from "@/app/styles";
 import type { RootState } from "@/state";
 import { rootNavigationChildrenSelector } from "@/state/navigation";
@@ -22,6 +23,9 @@ type Props = PropsFromState & PropsFromDispatch;
 const StudyPage: React.FC<Props> = (props) => {
   const navigate = useNavigate();
   const [infoModalVisible, setInfoModalVisible] = useState(false);
+  const [content, setContent] = useState<HTMLIonContentElement | null>(null);
+  const layout = useRef<HTMLDivElement>(null);
+  useStudyDisplayMode(content, layout);
 
   const { analytics, logEvent } = useAnalytics("StudyPage");
 
@@ -53,16 +57,20 @@ const StudyPage: React.FC<Props> = (props) => {
       />
       <PageHeader title="study" page="study" rightSection={<PageHeaderInfoIcon onClick={() => showInfoModal()} />} />
       <Watermark />
-      <Content>
-        <Header onNavigationItemClicked={onNavigationItemClicked} />
-        <TopicList>
-          <TopicHeading>
-            <Translate text="allTopics" />
-          </TopicHeading>
-          {props.navigationChildren.map((key, index) => {
-            return <NavigationItem key={key} navigationItemKey={key} onClick={onNavigationItemClicked} index={index} />;
-          })}
-        </TopicList>
+      <Content ref={setContent}>
+        <div ref={layout}>
+          <Header onNavigationItemClicked={onNavigationItemClicked} />
+          <TopicList>
+            <TopicHeading>
+              <Translate text="allTopics" />
+            </TopicHeading>
+            {props.navigationChildren.map((key, index) => {
+              return (
+                <NavigationItem key={key} navigationItemKey={key} onClick={onNavigationItemClicked} index={index} />
+              );
+            })}
+          </TopicList>
+        </div>
       </Content>
     </Page>
   );
@@ -72,20 +80,20 @@ const Watermark = styled(BookOutlineIcon)`
   ${watermarkStyle}
 `;
 
-const Content = styled(IonContent)`
+const Content = styled(PageContent)`
   --background: transparent;
 `;
 
 const TopicList = styled.div`
-  padding: 0 var(--app-padding) 28px;
+  padding: 0 var(--app-padding) var(--app-section-gap);
 `;
 
 const TopicHeading = styled.h2`
   color: var(--app-text-muted);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-section-title);
   letter-spacing: 0;
-  margin: 0 0 14px;
+  margin: 0 0 var(--app-stack-gap);
   text-transform: uppercase;
 `;
 

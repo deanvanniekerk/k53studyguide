@@ -41,6 +41,7 @@ const FooterComponent: React.FC<Props> = (props) => {
   return (
     <Wrapper>
       <PrimaryButton
+        data-scroll-action
         section="quiz"
         text={props.isLastQuestion ? "submit" : "continue"}
         rightIcon={props.isLastQuestion ? checkmarkCircleOutline : caretForward}
@@ -65,7 +66,7 @@ const FooterComponent: React.FC<Props> = (props) => {
 
 const Wrapper = styled.div`
   text-align: center;
-  padding: 0 var(--app-padding) 35px;
+  padding: 0 var(--app-padding);
 `;
 
 type PropsFromState = ReturnType<typeof mapStateToProps>;

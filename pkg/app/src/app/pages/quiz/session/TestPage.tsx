@@ -1,11 +1,11 @@
-import { IonContent, IonPage, useIonViewWillEnter } from "@ionic/react";
+import { IonPage, useIonViewWillEnter } from "@ionic/react";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
-import { PageHeader } from "@/app/components";
+import { PageContent, PageHeader } from "@/app/components";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { QuestionOption } from "@/data";
 import type { RootState } from "@/state";
@@ -73,7 +73,7 @@ const TestPage: React.FC<Props> = (props) => {
     <Page>
       <PageHeader title="quiz" page="quiz" onBackClick={onBackClicked} />
       <QuizWatermark />
-      <Content ref={content}>
+      <Content ref={content} scrollHint>
         <Header currentQuestionIndex={currentQuestionIndex} />
         {currentQuestionAnswer && (
           <QuizQuestionCard
@@ -93,8 +93,9 @@ const TestPage: React.FC<Props> = (props) => {
   );
 };
 
-const Content = styled(IonContent)`
+const Content = styled(PageContent)`
   --background: transparent;
+  --padding-bottom: var(--app-scroll-fade-height);
 `;
 
 const Page = styled(IonPage)`

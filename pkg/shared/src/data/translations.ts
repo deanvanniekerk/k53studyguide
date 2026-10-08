@@ -44,6 +44,7 @@ const translations: Translations = {
   premiumResultsImproveTitle: { en: "Find your gaps before test day" },
   premiumResultsImproveInfo: { en: "Unlock full mock tests with a score for each section." },
   premiumSeeOffer: { en: "Explore premium" },
+  dismissPremiumInvitation: { en: "Dismiss premium invitation" },
   premiumFreeReminder: { en: "Your study material and practice quizzes stay free." },
   premiumAlreadyPurchased: { en: "Already purchased?" },
   premiumPriceLoading: { en: "Price unavailable" },

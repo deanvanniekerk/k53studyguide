@@ -3,7 +3,7 @@ import { chevronForwardOutline } from "ionicons/icons";
 import type React from "react";
 import { Translate } from "../../translation";
 import styled, { keyframes } from "styled-components";
-import { CarIcon, RoadIcon, SpeedometerIcon, StarIcon, StopIcon, TestIcon, TrafficLightIcon } from "../icons";
+import { SectionIcon, sectionIconSources, StarIcon } from "../icons";
 
 type Props = {
   navigationItemKey: string;
@@ -15,8 +15,7 @@ type Props = {
 
 const QuizNavigatorItem: React.FC<Props> = (props) => {
   const sectionTheme = navigationThemes[props.navigationItemKey] ?? navigationThemes["nav.vehicleControls"];
-  const icon = navigationIcons[props.navigationItemKey];
-  const hasIcon = Boolean(icon);
+  const hasIcon = Boolean(sectionIconSources[props.navigationItemKey]);
   const itemStyle = {
     "--section-accent": sectionTheme.color,
     "--section-accent-rgb": sectionTheme.rgb,
@@ -27,7 +26,9 @@ const QuizNavigatorItem: React.FC<Props> = (props) => {
     <Card type="button" style={itemStyle} $hasIcon={hasIcon} onClick={() => props.onClick(props.navigationItemKey)}>
       {hasIcon && (
         <IconTile>
-          <Icon>{icon}</Icon>
+          <Icon>
+            <SectionIcon navigationItemKey={props.navigationItemKey} size={52} />
+          </Icon>
         </IconTile>
       )}
       <Label>
@@ -62,20 +63,20 @@ const Card = styled.button<{ $hasIcon: boolean }>`
   cursor: pointer;
   display: grid;
   gap: 16px;
-  grid-template-columns: ${(props) => (props.$hasIcon ? "70px minmax(0, 1fr) auto 24px" : "minmax(0, 1fr) auto 24px")};
-  margin: 0 0 24px;
-  min-height: 112px;
-  padding: 16px 18px;
+  grid-template-columns: ${(props) => (props.$hasIcon ? "var(--app-navigation-icon-tile-size, 70px) minmax(0, 1fr) auto 24px" : "minmax(0, 1fr) auto 24px")};
+  margin: 0 0 var(--app-stack-gap, 24px);
+  min-height: var(--app-control-min-height, 112px);
+  padding: var(--app-row-padding, 16px 18px);
   text-align: left;
   width: 100%;
   animation: ${slideUp} 300ms ease var(--item-delay, 0ms) both;
   -webkit-tap-highlight-color: transparent;
 
   @media (max-width: 420px) {
-    grid-template-columns: ${(props) => (props.$hasIcon ? "58px minmax(0, 1fr) auto 20px" : "minmax(0, 1fr) auto 20px")};
+    grid-template-columns: ${(props) => (props.$hasIcon ? "var(--app-navigation-icon-tile-size, 58px) minmax(0, 1fr) auto 20px" : "minmax(0, 1fr) auto 20px")};
     gap: 12px;
-    min-height: 96px;
-    padding: 14px 12px;
+    min-height: var(--app-control-min-height, 96px);
+    padding: var(--app-row-padding-block, 14px) 12px;
   }
 
   /* Container-query variant so the layout adapts to the width of the phone
@@ -83,10 +84,10 @@ const Card = styled.button<{ $hasIcon: boolean }>`
      where the @media query above never triggers). Harmless in the app, which
      does not establish a query container. */
   @container (max-width: 420px) {
-    grid-template-columns: ${(props) => (props.$hasIcon ? "58px minmax(0, 1fr) auto 20px" : "minmax(0, 1fr) auto 20px")};
+    grid-template-columns: ${(props) => (props.$hasIcon ? "var(--app-navigation-icon-tile-size, 58px) minmax(0, 1fr) auto 20px" : "minmax(0, 1fr) auto 20px")};
     gap: 12px;
-    min-height: 96px;
-    padding: 14px 12px;
+    min-height: var(--app-control-min-height, 96px);
+    padding: var(--app-row-padding-block, 14px) 12px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -100,21 +101,21 @@ const IconTile = styled.div`
   border-radius: 24px;
   color: var(--section-accent);
   display: flex;
-  height: 70px;
+  height: var(--app-navigation-icon-tile-size, 70px);
   justify-content: center;
   overflow: hidden;
-  width: 70px;
+  width: var(--app-navigation-icon-tile-size, 70px);
 
   @media (max-width: 420px) {
     border-radius: 20px;
-    height: 58px;
-    width: 58px;
+    height: var(--app-navigation-icon-tile-size, 58px);
+    width: var(--app-navigation-icon-tile-size, 58px);
   }
 
   @container (max-width: 420px) {
     border-radius: 20px;
-    height: 58px;
-    width: 58px;
+    height: var(--app-navigation-icon-tile-size, 58px);
+    width: var(--app-navigation-icon-tile-size, 58px);
   }
 `;
 
@@ -127,7 +128,7 @@ const Title = styled.span`
   color: var(--app-text-primary);
   display: block;
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-card-title, var(--app-font-size-l));
   font-weight: 800;
   line-height: 1.15;
 `;
@@ -137,7 +138,7 @@ const Meta = styled.div`
   color: var(--app-text-muted);
   display: flex;
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-card-title, var(--app-font-size-l));
   font-weight: 900;
   gap: 5px;
   white-space: nowrap;
@@ -172,18 +173,13 @@ const Chevron = styled(IonIcon)`
 `;
 
 const Icon = styled.div`
-  font-size: 2.6rem;
   line-height: 1;
-`;
 
-const navigationIcons: { [key: string]: React.ReactNode } = {
-  "nav.vehicleControls": <SpeedometerIcon />,
-  "nav.rulesOfTheRoad": <TestIcon />,
-  "nav.defensiveDriving": <CarIcon />,
-  "nav.roadMarkings": <RoadIcon />,
-  "nav.roadSignals": <TrafficLightIcon />,
-  "nav.signs": <StopIcon />,
-};
+  img {
+    height: var(--app-navigation-icon-size, 52px);
+    width: var(--app-navigation-icon-size, 52px);
+  }
+`;
 
 const navigationThemes: { [key: string]: { color: string; rgb: string } } = {
   "nav.vehicleControls": {

@@ -4,16 +4,16 @@ Updated 2026-10-07 for the premium conversion work on #30. The approved woman-in
 
 ## Generated replacements
 
-All filenames below are under `pkg/app/public/assets/images/illustrations/`. Each asset was generated individually with ImageGen, then encoded as a 256×256 WebP with transparent alpha. The app uses `Illustration` for decorative images with empty alt text; adjacent visible headings carry their meaning.
+The six section assets live under `pkg/shared/src/react/icons/illustrations/` and are bundled for both the app and landing-page demo. Other filenames below are under `pkg/app/public/assets/images/illustrations/`. Each asset was generated individually with ImageGen, then encoded as a 256×256 WebP with transparent alpha. Study and quiz navigation share `SectionIcon`; other app artwork uses `Illustration`. All decorative images have empty alt text; adjacent visible headings carry their meaning.
 
 | Location | Previous icon | New asset | Palette | Display size |
 | --- | --- | --- | --- | --- |
-| Study: vehicle controls | Speedometer SVG | `vehicle-controls.webp` — gauge | Coral `#ff828a` | 52px |
-| Study: rules of the road | Clipboard SVG | `road-rules.webp` — driving handbook | Turquoise `#63d6ce` | 52px |
-| Study: defensive driving | Car SVG | `defensive-driving.webp` — car and shield | Lavender `#a38cf4` | 52px |
-| Study: road markings | Straight road SVG | `road-markings.webp` — curved marked road | Orange `#ffad66`, indigo | 52px |
-| Study: road signals | Traffic light SVG | `traffic-signals.webp` — traffic light | Blue `#6eb0f9`; red/amber/green lights | 52px |
-| Study: road signs | Stop sign SVG | `road-signs.webp` — signposts | Gold `#ffdb70`, red/blue sign faces | 52px |
+| Study / quiz selection: vehicle controls | Speedometer SVG | `vehicle-controls.webp` — gauge | Coral `#ff828a` | 36px |
+| Study / quiz selection: rules of the road | Clipboard SVG | `road-rules.webp` — driving handbook | Turquoise `#63d6ce` | 36px |
+| Study / quiz selection: defensive driving | Car SVG | `defensive-driving.webp` — car and shield | Lavender `#a38cf4` | 36px |
+| Study / quiz selection: road markings | Straight road SVG | `road-markings.webp` — curved marked road | Orange `#ffad66`, indigo | 36px |
+| Study / quiz selection: road signals | Traffic light SVG | `traffic-signals.webp` — traffic light | Blue `#6eb0f9`; red/amber/green lights | 36px |
+| Study / quiz selection: road signs | Stop sign SVG | `road-signs.webp` — signposts | Gold `#ffdb70`, red/blue sign faces | 36px |
 | Purchase sheet: mock tests | Clipboard outline | `mock-tests.webp` — checked clipboard | Purple/blue | 40px |
 | Purchase sheet: scores | Bar chart outline | `score-breakdown.webp` — three ascending bars | Purple/blue, gold accent | 40px |
 | Purchase sheet: repeat practice | Refresh outline | `repeat-practice.webp` — circular arrows | Purple/blue | 40px |
@@ -23,7 +23,7 @@ All filenames below are under `pkg/app/public/assets/images/illustrations/`. Eac
 | Test result: passed | Passed document SVG | `test-success.webp` — checkmark rosette | Purple/blue, gold trim | 64px |
 | Test result: more practice | Warning document SVG | `test-practice.webp` — result sheet and magnifier | Purple/blue, gold | 64px |
 
-The magnifier expresses review and continued practice. Existing scores, result text and pass criteria remain unchanged. The Study tiles place the progress percentage below the label at widths up to 360px to prevent topic names being squeezed between the artwork and percentage.
+The magnifier expresses review and continued practice. Existing scores, result text and pass criteria remain unchanged. Study tiles hide the eye and progress percentage at widths up to 360px; the progress bar remains visible.
 
 ## Other icons audited
 
@@ -37,7 +37,7 @@ The magnifier expresses review and continued practice. Existing scores, result t
 | Error boundary | Legacy warning-document SVG | Retained for technical errors; distinct from a learner needing more practice. |
 | Unused custom exports | ResetIcon, YinYangIcon | No consuming app call sites found; no new artwork generated. |
 | Educational content | Road signs, controls and question diagrams | Existing teaching assets retained; these are content, not decorative navigation art. |
-| Landing website | Shared study SVG icons | Retained. App-specific raster assets do not change the shared package or website. |
+| Landing website quiz demo | Shared section illustrations | Uses the same six section assets as Study and quiz selection. The six legacy section SVG components and exports have been removed. |
 
 ## Generation recipe
 

@@ -102,10 +102,10 @@ const Content = styled(IonContent)`--background: transparent;`;
 const Container = styled.div`
   max-width: 560px;
   margin: 0 auto;
-  padding: calc(var(--app-safe-area-top) + 12px) var(--app-padding) 24px;
+  padding: calc(var(--app-safe-area-top) + var(--app-stack-gap)) var(--app-padding) var(--app-section-gap);
 `;
 const Hero = styled.section<{ $section: Section }>`
-  padding: 12px 22px 24px;
+  padding: var(--app-card-padding);
   border-radius: 24px;
   background: ${(props) => `var(--app-${props.$section}-header-gradient)`};
   color: #fff;
@@ -128,27 +128,27 @@ const Heading = styled.h1`
   margin: 0;
   max-width: 360px;
   font-family: var(--ion-font-family-bold);
-  font-size: clamp(1.5rem, 6.5vw, 1.9rem);
+  font-size: var(--app-font-size-page-title);
   font-weight: 900;
   line-height: 1.16;
   text-wrap: balance;
 `;
 const Introduction = styled.p`
   margin: 12px 0 0;
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-card-title);
   line-height: 1.45;
 `;
 const Cards = styled.div`
   display: grid;
-  gap: 12px;
-  margin-top: 18px;
+  gap: var(--app-stack-gap);
+  margin-top: var(--app-stack-gap);
 `;
 const Card = styled.article`
   display: grid;
   grid-template-columns: 56px minmax(0, 1fr);
   gap: 14px;
   align-items: start;
-  padding: 18px 16px;
+  padding: var(--app-card-padding);
   border: var(--app-card-border);
   border-radius: 20px;
   background: var(--app-card-background);
@@ -156,8 +156,8 @@ const Card = styled.article`
 
   @media (max-width: 360px) {
     grid-template-columns: 44px minmax(0, 1fr);
-    gap: 12px;
-    padding: 16px 12px;
+    gap: var(--app-stack-gap);
+    padding: var(--app-card-padding-block) 12px;
   }
 `;
 const Artwork = styled.div`
@@ -170,7 +170,7 @@ const CardCopy = styled.div`min-width: 0;`;
 const CardTitle = styled.h2`
   margin: 0 0 6px;
   color: var(--app-text-primary);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-card-title);
   font-family: var(--ion-font-family-bold);
   font-weight: 900;
   line-height: 1.25;
@@ -185,7 +185,7 @@ const Footer = styled(IonFooter)`
   flex-shrink: 0;
   border-top: var(--app-card-border);
   background: var(--app-card-background);
-  padding: 12px var(--app-padding) calc(12px + max(env(safe-area-inset-bottom, 0px), var(--ion-safe-area-bottom, 0px)));
+  padding: var(--app-card-padding-block) var(--app-padding) calc(var(--app-card-padding-block) + max(env(safe-area-inset-bottom, 0px), var(--ion-safe-area-bottom, 0px)));
 `;
 const FooterContent = styled.div`
   max-width: 528px;

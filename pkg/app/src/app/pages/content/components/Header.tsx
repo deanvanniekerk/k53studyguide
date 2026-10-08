@@ -80,7 +80,7 @@ const HeaderShell = styled.header`
   --breadcrumb-color: var(--app-text-muted);
 
   padding: calc(var(--content-page-header-height, var(--app-page-header-height)) + var(--app-page-content-gap))
-    var(--app-padding) 22px;
+    var(--app-padding) 0;
   transition: padding 180ms ease;
 `;
 
@@ -88,15 +88,12 @@ const Title = styled(IonText)`
   color: var(--app-text-primary);
   display: block;
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-xxxl);
+  font-size: var(--app-font-size-page-title);
   font-weight: 900;
   letter-spacing: 0;
   line-height: 1.05;
-  margin: 12px 0 24px;
+  margin: var(--app-element-gap) 0 var(--app-stack-gap);
 
-  @media (max-width: 420px) {
-    font-size: var(--app-font-size-xxl);
-  }
 `;
 
 const ProgressPanel = styled.div`
@@ -108,8 +105,8 @@ const ProgressPanel = styled.div`
   display: grid;
   gap: 14px;
   grid-template-columns: minmax(0, 1fr) auto;
-  min-height: 78px;
-  padding: 14px 16px;
+  min-height: var(--app-control-min-height);
+  padding: var(--app-row-padding);
 `;
 
 const QuizButton = styled(IonButton)`

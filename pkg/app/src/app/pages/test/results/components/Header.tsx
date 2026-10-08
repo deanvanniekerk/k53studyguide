@@ -110,8 +110,8 @@ const ResultText: React.FC<ResultTextProps> = (props) => {
 const ResultCard = styled.div`
   position: relative;
   overflow: hidden;
-  margin: var(--app-page-content-top) var(--app-padding) 18px;
-  padding: 28px 22px 26px;
+  margin: var(--app-page-content-top) var(--app-padding) var(--app-stack-gap);
+  padding: var(--app-card-padding);
   border-radius: 28px;
   color: var(--ion-color-light);
   background: var(--app-test-header-gradient);
@@ -131,7 +131,7 @@ const Glow = styled.div`
 
 const PrimaryResultText = styled.div`
   position: relative;
-  padding: 12px 0;
+  padding: var(--app-element-gap) 0;
   font-family: var(--ion-font-family-bold);
   font-size: var(--app-font-size-xxl);
   font-weight: 900;
@@ -143,15 +143,15 @@ const PrimaryResultSubText = styled.div`
   position: relative;
   max-width: 360px;
   margin: 0 auto;
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-md);
   font-weight: 800;
   line-height: 1.35;
   opacity: 0.86;
 `;
 
 const SectionCard = styled.div`
-  margin: 0 var(--app-padding) 28px;
-  padding: 8px 18px;
+  margin: 0 var(--app-padding) var(--app-stack-gap);
+  padding: var(--app-row-padding);
   border: var(--app-card-border);
   border-radius: 24px;
   background: var(--app-card-background);
@@ -163,20 +163,20 @@ const SectionResultRow = styled.div`
   grid-template-columns: minmax(0, 1fr) auto 34px;
   align-items: center;
   gap: 16px;
-  min-height: 58px;
+  min-height: var(--app-control-min-height);
 `;
 
 const SectionName = styled.div`
   color: var(--app-text-primary);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-md);
   font-weight: 900;
 `;
 
 const SectionScore = styled.div`
   color: var(--app-text-muted);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-md);
   font-weight: 900;
   white-space: nowrap;
 `;

@@ -73,7 +73,7 @@ const Card = styled.article`
   border-radius: 28px;
   box-shadow: 0 6px 0 var(--app-card-border-color);
   box-sizing: border-box;
-  padding: 24px 20px 26px;
+  padding: var(--app-card-padding);
 `;
 
 const CardHeader = styled.div`
@@ -81,14 +81,14 @@ const CardHeader = styled.div`
   display: grid;
   gap: 12px;
   grid-template-columns: minmax(0, 1fr) auto;
-  margin-bottom: 20px;
+  margin-bottom: var(--app-stack-gap);
 `;
 
 const Heading = styled(IonText)`
   color: var(--app-text-primary);
   display: block;
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-xl);
+  font-size: var(--app-font-size-card-title);
   font-weight: 900;
   letter-spacing: 0;
   line-height: 1.12;
@@ -101,9 +101,9 @@ const ImageFrame = styled.div`
   border-radius: 24px;
   display: flex;
   justify-content: center;
-  margin: 0 0 24px;
+  margin: 0 0 var(--app-stack-gap);
   min-height: 190px;
-  padding: 10px;
+  padding: var(--app-element-gap);
 
   img {
     display: block;

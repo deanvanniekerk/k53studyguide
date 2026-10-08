@@ -286,7 +286,7 @@ const OfferContent = styled.div`
   padding-top: calc(var(--app-safe-area-top) + 54px);
 `;
 const Hero = styled.div`
-  padding: 8px var(--app-padding) 16px;
+  padding: var(--app-element-gap) var(--app-padding) var(--app-stack-gap);
 `;
 const Header = styled.h1`
   margin: 8px 0 0;
@@ -310,13 +310,13 @@ const HeroText = styled.p`
   line-height: 1.45;
 `;
 const Benefits = styled.div`
-  padding: 0 var(--app-padding) 16px;
+  padding: 0 var(--app-padding) var(--app-stack-gap);
 `;
 const Benefit = styled.div`
   display: flex;
   gap: 12px;
   align-items: flex-start;
-  padding: 16px 0;
+  padding: var(--app-card-padding-block) 0;
   border-top: var(--app-card-border);
 `;
 const BenefitIcon = styled.div`
@@ -344,7 +344,7 @@ const FreeNote = styled.p`
 `;
 const PriceCard = styled.div`
   flex: 0 0 auto;
-  padding: 14px var(--app-padding) calc(12px + env(safe-area-inset-bottom, 0px));
+  padding: var(--app-card-padding-block) var(--app-padding) calc(var(--app-card-padding-block) + env(safe-area-inset-bottom, 0px));
   border-top: var(--app-card-border);
   background: var(--app-premium-panel-background);
   text-align: center;
@@ -369,14 +369,14 @@ const Availability = styled.p`
 `;
 const PurchaseButton = styled(IonButton)`
   width: 100%;
-  min-height: 54px;
+  min-height: var(--app-control-min-height);
   height: auto;
   margin: 12px 0 0;
   white-space: normal;
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-md);
   font-weight: 900;
-  --padding-top: 12px;
-  --padding-bottom: 12px;
+  --padding-top: var(--app-row-padding-block);
+  --padding-bottom: var(--app-row-padding-block);
   --background: var(--app-test-action-background);
   --background-hover: var(--app-test-action-background);
   --background-activated: var(--app-test-action-background);

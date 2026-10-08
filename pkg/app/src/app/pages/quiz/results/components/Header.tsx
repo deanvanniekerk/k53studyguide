@@ -109,14 +109,14 @@ const Result = styled.div`
   grid-template-columns: 52px minmax(0, 1fr);
   align-items: center;
   gap: 14px;
-  margin: var(--app-page-content-top) var(--app-padding) 16px;
-  padding: 18px;
+  margin: var(--app-page-content-top) var(--app-padding) var(--app-stack-gap);
+  padding: var(--app-card-padding);
   h2 { margin: 0; font-size: var(--app-font-size-xl); font-weight: 900; }
   border-radius: 28px;
   color: var(--ion-color-light);
   background: var(--app-quiz-header-gradient);
   box-shadow: 0 18px 35px rgba(var(--app-progress-foreground-rgb), 0.2);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-section-title);
   text-align: left;
   font-family: var(--ion-font-family-bold);
   font-weight: bold;
@@ -159,10 +159,10 @@ const ReviewTitle = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 0 var(--app-padding) 16px;
+  margin: 0 var(--app-padding) var(--app-stack-gap);
   color: var(--app-text-muted);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-section-title);
   font-weight: 900;
   letter-spacing: 1px;
   text-transform: uppercase;

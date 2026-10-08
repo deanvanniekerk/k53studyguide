@@ -66,7 +66,7 @@ const PremiumCard = styled.div`
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 16px;
-  padding: 20px 18px;
+  padding: var(--app-card-padding);
   border: 2px solid var(--app-profile-premium-border);
   border-radius: 22px;
   background: var(--app-profile-premium-background);
@@ -89,7 +89,7 @@ const PremiumCopy = styled.div`
 const PremiumTitle = styled.div`
   color: var(--app-profile-premium-text);
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-xl);
+  font-size: var(--app-font-size-card-title);
   font-weight: 900;
   line-height: 1.15;
 `;

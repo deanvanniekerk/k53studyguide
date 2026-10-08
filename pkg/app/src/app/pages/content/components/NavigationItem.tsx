@@ -80,15 +80,15 @@ const NavigatorCard = styled.button`
   display: grid;
   gap: 14px;
   grid-template-columns: minmax(0, 1fr) auto 20px;
-  min-height: 104px;
-  padding: 20px 18px 18px 22px;
+  min-height: var(--app-control-min-height);
+  padding: var(--app-row-padding);
   text-align: left;
   width: 100%;
   -webkit-tap-highlight-color: transparent;
 
   .container {
     align-items: stretch;
-    margin-top: 14px;
+    margin-top: var(--app-element-gap);
     width: 100%;
   }
 
@@ -101,7 +101,7 @@ const NavigatorCard = styled.button`
   @media (max-width: 360px) {
     gap: 10px;
     grid-template-columns: minmax(0, 1fr) auto 18px;
-    padding-left: 18px;
+    padding-left: var(--app-row-padding-inline);
   }
 `;
 
@@ -113,7 +113,7 @@ const Title = styled(IonText)`
   color: var(--app-text-primary);
   display: block;
   font-family: var(--ion-font-family-bold);
-  font-size: var(--app-font-size-l);
+  font-size: var(--app-font-size-card-title);
   font-weight: 900;
   letter-spacing: 0;
   line-height: 1.15;

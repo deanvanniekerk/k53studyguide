@@ -5,16 +5,17 @@ import {
   checkmarkCircleOutline,
   chevronForwardOutline,
   close,
+  contractOutline,
+  expandOutline,
   flash,
   flashOffOutline,
   moonOutline,
   refreshOutline,
   sunnyOutline,
-  trophy,
 } from "ionicons/icons";
 import type React from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { QuizLevelCard, QuizNavigatorItem, QuizQuestionCard } from "@k53studyguide/shared/react";
+import { getScrollActionTarget, QuizLevelCard, QuizNavigatorItem, QuizQuestionCard, ScrollFade } from "@k53studyguide/shared/react";
 import {
   ROOT_NAVIGATION_KEY,
   buildQuizQuestionAnswers,
@@ -25,6 +26,8 @@ import {
   type SuccessfullyAnsweredDates,
 } from "@k53studyguide/shared/quiz";
 import { navigationData, questionData, type QuestionOption, translations } from "@k53studyguide/shared/data";
+import quizSuccessUrl from "../../../app/public/assets/images/illustrations/quiz-success.webp";
+import quizPracticeUrl from "../../../app/public/assets/images/illustrations/quiz-practice.webp";
 import phoneFrameUrl from "../../assets/generated/quiz-phone-frame.png";
 
 type PreviewTab = "study" | "quiz" | "test" | "profile";
@@ -150,12 +153,12 @@ export const QuizDemoDialog: React.FC = () => {
   const [state, setState] = useState<QuizPreviewState>(defaultQuizPreviewState);
   const [notice, setNotice] = useState<string | null>(null);
   const [theme, setTheme] = useState<"light" | "dark">(() => (prefersDarkScheme() ? "dark" : "light"));
+  const [displayMode, setDisplayMode] = useState<"compact" | "comfortable">("compact");
   const hasManualThemeRef = useRef(false);
   const isDarkTheme = theme === "dark";
 
   const currentQuestionAnswer = state.questionAnswers[state.currentQuestionIndex];
   const isLastQuestion = state.currentQuestionIndex === state.questionAnswers.length - 1;
-  const answeredCount = state.questionAnswers.filter((questionAnswer) => questionAnswer.answer).length;
   const totalCorrectAnswers = state.questionAnswers.filter(
     (questionAnswer) => questionAnswer.answer === questionAnswer.question.answer,
   ).length;
@@ -262,6 +265,35 @@ export const QuizDemoDialog: React.FC = () => {
     root.classList.toggle("ion-palette-dark", isOpen && isDarkTheme);
     return () => root.classList.remove("ion-palette-dark");
   }, [isOpen, isDarkTheme]);
+
+  // The demo opens in compact mode because its Study tab is a download prompt.
+  // Apply density at the root so composite app variables resolve just as in the app.
+  useEffect(() => {
+    if (!isOpen) return;
+    const root = document.documentElement;
+    const previousMode = root.dataset.displayMode;
+    root.dataset.displayMode = displayMode;
+    return () => {
+      if (previousMode) root.dataset.displayMode = previousMode;
+      else delete root.dataset.displayMode;
+    };
+  }, [isOpen, displayMode]);
+
+  const getScrollElements = useCallback(() => {
+    const scrollElement = screenScrollRef.current;
+    const action = scrollElement?.querySelector<HTMLElement>("[data-scroll-action]");
+    return scrollElement && action ? { scrollElement, action } : null;
+  }, []);
+
+  const revealAction = () => {
+    const elements = getScrollElements();
+    if (!elements) return;
+    const { top, duration } = getScrollActionTarget(elements);
+    elements.scrollElement.scrollTo({
+      top,
+      behavior: duration === 0 ? "instant" : "smooth",
+    });
+  };
 
   const toggleTheme = () => {
     hasManualThemeRef.current = true;
@@ -482,6 +514,16 @@ export const QuizDemoDialog: React.FC = () => {
           </div>
           <div className="quiz-demo-dialog-actions">
             <button
+              className="quiz-demo-header-action"
+              type="button"
+              aria-label={`Switch to ${displayMode === "compact" ? "comfortable" : "compact"} display mode`}
+              title={`Display mode: ${displayMode}. Click to switch.`}
+              aria-pressed={displayMode === "comfortable"}
+              onClick={() => setDisplayMode(displayMode === "compact" ? "comfortable" : "compact")}
+            >
+              <IonIcon icon={displayMode === "compact" ? expandOutline : contractOutline} />
+            </button>
+            <button
               className="quiz-demo-header-action quiz-demo-theme-toggle"
               type="button"
               aria-label={isDarkTheme ? "Switch to light mode" : "Switch to dark mode"}
@@ -521,180 +563,193 @@ export const QuizDemoDialog: React.FC = () => {
                 title={screenTitle}
                 subtitle={screenSubtitle}
               />
-              <div className="quiz-demo-screen-scroll" ref={screenScrollRef}>
-                {activeTab !== "quiz" && <LockedTabContent tab={activeTab} />}
+              <div className="quiz-demo-content">
+                <div className="quiz-demo-screen-scroll" ref={screenScrollRef}>
+                  {activeTab !== "quiz" && <LockedTabContent tab={activeTab} />}
 
-                {activeTab === "quiz" && state.mode === "home" && (
-                  <section className="quiz-demo-page quiz-demo-home" aria-label="Quiz settings">
-                    <QuizLevelCard
-                      level={level}
-                      requiredLevelUpExperiencePoints={requiredLevelUpPoints}
-                      currentExperiencePercent={progressPercent}
-                    />
+                  {activeTab === "quiz" && state.mode === "home" && (
+                    <section className="quiz-demo-page quiz-demo-home" aria-label="Quiz settings">
+                      <QuizLevelCard
+                        level={level}
+                        requiredLevelUpExperiencePoints={requiredLevelUpPoints}
+                        currentExperiencePercent={progressPercent}
+                      />
 
-                    {hasQuizInProgress ? (
-                      <div className="quiz-demo-in-progress-card">
-                        <div className="quiz-demo-in-progress-top">
-                          <span>Current Quiz</span>
-                          <ProgressDots questionAnswers={state.questionAnswers} />
+                      {hasQuizInProgress ? (
+                        <div className="quiz-demo-in-progress-card">
+                          <div className="quiz-demo-in-progress-top">
+                            <span>Current Quiz</span>
+                            <ProgressDots questionAnswers={state.questionAnswers} />
+                          </div>
+                          <strong>{selectedSectionLabel}</strong>
+                          {selectedSectionBreadcrumb !== "All Content" && <p>{selectedSectionBreadcrumb}</p>}
                         </div>
-                        <strong>{selectedSectionLabel}</strong>
-                        <p>{selectedSectionBreadcrumb}</p>
-                      </div>
-                    ) : (
-                      <>
-                        <div className="quiz-demo-setting-title">Configure</div>
-                        <div className="quiz-demo-settings-card">
-                          <button className="quiz-demo-setting-row" type="button" onClick={openNavigator}>
-                            <span className="quiz-demo-setting-copy">
-                              <span className="quiz-demo-setting-name">Quiz Section</span>
-                              {selectedSectionParentBreadcrumb && (
-                                <span className="quiz-demo-setting-path">{selectedSectionParentBreadcrumb}</span>
-                              )}
-                              <strong>{selectedSectionLabel}</strong>
-                            </span>
-                            <IonIcon icon={chevronForwardOutline} />
+                      ) : (
+                        <>
+                          <div className="quiz-demo-setting-title">Configure</div>
+                          <div className="quiz-demo-settings-card">
+                            <button className="quiz-demo-setting-row" type="button" onClick={openNavigator}>
+                              <span className="quiz-demo-setting-copy">
+                                <span className="quiz-demo-setting-name">Quiz Section</span>
+                                {selectedSectionParentBreadcrumb && (
+                                  <span className="quiz-demo-setting-path">{selectedSectionParentBreadcrumb}</span>
+                                )}
+                                <strong>{selectedSectionLabel}</strong>
+                              </span>
+                              <IonIcon icon={chevronForwardOutline} />
+                            </button>
+                            <label className="quiz-demo-setting-row">
+                              <span className="quiz-demo-setting-copy">
+                                <span className="quiz-demo-setting-name">Max Questions</span>
+                                <strong>
+                                  <select
+                                    value={state.maxQuestions}
+                                    onChange={(event) =>
+                                      setState({
+                                        ...state,
+                                        maxQuestions: Number(event.target.value),
+                                      })
+                                    }
+                                  >
+                                    <option value={5}>5</option>
+                                    <option value={10}>10</option>
+                                    <option value={15}>15</option>
+                                  </select>
+                                </strong>
+                              </span>
+                              <IonIcon icon={chevronForwardOutline} />
+                            </label>
+                          </div>
+                        </>
+                      )}
+
+                      <div className="quiz-demo-footer">
+                        <button className="quiz-demo-primary" data-scroll-action type="button" onClick={() => startQuiz()}>
+                          {hasQuizInProgress ? "Continue Quiz" : "Start Quiz"}
+                          <IonIcon icon={caretForward} />
+                        </button>
+                        {hasQuizInProgress && (
+                          <button className="quiz-demo-secondary" type="button" onClick={resetQuiz}>
+                            <IonIcon icon={refreshOutline} />
+                            Reset Quiz
                           </button>
-                          <label className="quiz-demo-setting-row">
-                            <span className="quiz-demo-setting-copy">
-                              <span className="quiz-demo-setting-name">Max Questions</span>
-                              <strong>
-                                <select
-                                  value={state.maxQuestions}
-                                  onChange={(event) =>
-                                    setState({
-                                      ...state,
-                                      maxQuestions: Number(event.target.value),
-                                    })
-                                  }
-                                >
-                                  <option value={5}>5</option>
-                                  <option value={10}>10</option>
-                                  <option value={15}>15</option>
-                                </select>
-                              </strong>
-                            </span>
-                            <IonIcon icon={chevronForwardOutline} />
-                          </label>
-                        </div>
-                      </>
-                    )}
+                        )}
+                      </div>
+                    </section>
+                  )}
 
-                    <div className="quiz-demo-footer">
-                      <button className="quiz-demo-primary" type="button" onClick={() => startQuiz()}>
-                        {hasQuizInProgress ? "Continue Quiz" : "Start Quiz"}
-                        <IonIcon icon={caretForward} />
-                      </button>
-                      {hasQuizInProgress && (
+                  {activeTab === "quiz" && state.mode === "navigator" && (
+                    <section className="quiz-demo-page quiz-demo-navigator" aria-label="Select quiz section">
+                      <header className="quiz-demo-navigator-header">
+                        <h3>{getNavigationLabel(state.navigatorNavigationKey)}</h3>
+                        {state.navigatorNavigationKey !== ROOT_NAVIGATION_KEY && <p>{navigatorBreadcrumb}</p>}
+                        <div className="quiz-demo-question-pool-card">
+                          <strong>Question Pool</strong>
+                          <span>
+                            {getQuestionPoolCount(state.navigatorNavigationKey)} questions from this section and below
+                          </span>
+                        </div>
+                        <button className="quiz-demo-primary" data-scroll-action type="button" onClick={useNavigatorSection}>
+                          Use This Section
+                          <IonIcon icon={checkmarkCircleOutline} />
+                        </button>
+                      </header>
+
+                      <div className="quiz-demo-nav-list">
+                        {navigatorChildren.map((key, index) => (
+                          <QuizNavigatorItem
+                            key={key}
+                            navigationItemKey={key}
+                            correct={0}
+                            total={getQuestionPoolCount(key)}
+                            index={index}
+                            onClick={selectNavigatorChild}
+                          />
+                        ))}
+                        {navigatorChildren.length === 0 && (
+                          <div className="quiz-demo-empty-section">This is the deepest section. Use it for your quiz.</div>
+                        )}
+                      </div>
+                    </section>
+                  )}
+
+                  {activeTab === "quiz" && state.mode === "session" && (
+                    <section className="quiz-demo-page" aria-label="Quiz session">
+                      <QuizDemoHeader
+                        currentQuestionIndex={state.currentQuestionIndex}
+                        questionAnswers={state.questionAnswers}
+                        selectedSectionBreadcrumb={selectedSectionBreadcrumb}
+                        selectedSectionLabel={selectedSectionLabel}
+                      />
+                      {currentQuestionAnswer && (
+                        <QuizQuestionCard
+                          question={currentQuestionAnswer.question}
+                          answer={currentQuestionAnswer.answer}
+                          imageAssetBaseUrl={QUESTION_IMAGE_BASE_URL}
+                          onOptionClicked={updateAnswer}
+                        />
+                      )}
+                      <div className="quiz-demo-footer">
+                        <button className="quiz-demo-primary" data-scroll-action type="button" onClick={submitQuiz}>
+                          {isLastQuestion ? "Submit" : "Continue"}
+                          <IonIcon icon={isLastQuestion ? checkmarkCircleOutline : caretForward} />
+                        </button>
                         <button className="quiz-demo-secondary" type="button" onClick={resetQuiz}>
                           <IonIcon icon={refreshOutline} />
                           Reset Quiz
                         </button>
-                      )}
-                    </div>
-                  </section>
-                )}
-
-                {activeTab === "quiz" && state.mode === "navigator" && (
-                  <section className="quiz-demo-page quiz-demo-navigator" aria-label="Select quiz section">
-                    <header className="quiz-demo-navigator-header">
-                      <span>Choose Quiz Section</span>
-                      <h3>{getNavigationLabel(state.navigatorNavigationKey)}</h3>
-                      <p>{navigatorBreadcrumb}</p>
-                      <div className="quiz-demo-question-pool-card">
-                        <strong>Question Pool</strong>
-                        <span>
-                          {getQuestionPoolCount(state.navigatorNavigationKey)} questions from this section and below
-                        </span>
                       </div>
-                      <button className="quiz-demo-primary" type="button" onClick={useNavigatorSection}>
-                        Use This Section
-                        <IonIcon icon={checkmarkCircleOutline} />
-                      </button>
-                    </header>
+                    </section>
+                  )}
 
-                    <div className="quiz-demo-nav-list">
-                      {navigatorChildren.map((key, index) => (
-                        <QuizNavigatorItem
-                          key={key}
-                          navigationItemKey={key}
-                          correct={0}
-                          total={getQuestionPoolCount(key)}
-                          index={index}
-                          onClick={selectNavigatorChild}
+                  {activeTab === "quiz" && state.mode === "results" && (
+                    <section className="quiz-demo-page" aria-label="Quiz results">
+                      <div className="quiz-demo-result-card">
+                        <img
+                          className="quiz-demo-result-icon"
+                          src={totalCorrectAnswers === state.questionAnswers.length ? quizSuccessUrl : quizPracticeUrl}
+                          alt=""
+                          width={52}
+                          height={52}
                         />
-                      ))}
-                      {navigatorChildren.length === 0 && (
-                        <div className="quiz-demo-empty-section">This is the deepest section. Use it for your quiz.</div>
-                      )}
-                    </div>
-                  </section>
-                )}
-
-                {activeTab === "quiz" && state.mode === "session" && (
-                  <section className="quiz-demo-page" aria-label="Quiz session">
-                    <QuizDemoHeader
-                      currentQuestionIndex={state.currentQuestionIndex}
-                      questionAnswers={state.questionAnswers}
-                      selectedSectionBreadcrumb={selectedSectionBreadcrumb}
-                      selectedSectionLabel={selectedSectionLabel}
-                    />
-                    {currentQuestionAnswer && (
-                      <QuizQuestionCard
-                        question={currentQuestionAnswer.question}
-                        answer={currentQuestionAnswer.answer}
-                        imageAssetBaseUrl={QUESTION_IMAGE_BASE_URL}
-                        onOptionClicked={updateAnswer}
-                      />
-                    )}
-                    <div className="quiz-demo-footer">
-                      <button className="quiz-demo-primary" type="button" onClick={submitQuiz}>
-                        {isLastQuestion ? "Submit" : "Continue"}
-                        <IonIcon icon={isLastQuestion ? checkmarkCircleOutline : caretForward} />
-                      </button>
-                      <button className="quiz-demo-secondary" type="button" onClick={resetQuiz}>
-                        <IonIcon icon={refreshOutline} />
-                        Reset Quiz
-                      </button>
-                    </div>
-                  </section>
-                )}
-
-                {activeTab === "quiz" && state.mode === "results" && (
-                  <section className="quiz-demo-page" aria-label="Quiz results">
-                    <div className="quiz-demo-result-card">
-                      <span>Result</span>
-                      <IonIcon className="quiz-demo-result-icon" icon={trophy} />
-                      <strong>
-                        {totalCorrectAnswers} / {state.questionAnswers.length}
-                      </strong>
-                      <p>
-                        <IonIcon icon={state.experienceGained === 0 ? flashOffOutline : flash} />
-                        {state.experienceGained} quiz point{state.experienceGained === 1 ? "" : "s"} gained
-                      </p>
-                    </div>
-                    <div className="quiz-demo-review-title">Review answers</div>
-                    <div className="quiz-demo-results-list">
-                      {state.questionAnswers.map((questionAnswer, index) => (
-                        <div className="quiz-demo-result-item" key={questionAnswer.question.id}>
-                          <div className="quiz-demo-question-number">Question {index + 1}</div>
-                          <QuizQuestionCard
-                            question={questionAnswer.question}
-                            answer={questionAnswer.answer}
-                            showResult={true}
-                            imageAssetBaseUrl={QUESTION_IMAGE_BASE_URL}
-                          />
+                        <div className="quiz-demo-result-copy">
+                        <strong>
+                          Result: {totalCorrectAnswers} / {state.questionAnswers.length}
+                        </strong>
+                        <p>
+                          <IonIcon icon={state.experienceGained === 0 ? flashOffOutline : flash} />
+                          {state.experienceGained} quiz point{state.experienceGained === 1 ? "" : "s"} gained
+                        </p>
                         </div>
-                      ))}
-                    </div>
-                    <div className="quiz-demo-footer">
-                      <button className="quiz-demo-primary" type="button" onClick={() => startQuiz(true)}>
-                        Try another quiz
-                        <IonIcon icon={refreshOutline} />
-                      </button>
-                    </div>
-                  </section>
-                )}
+                      </div>
+                      <div className="quiz-demo-review-title">Review answers</div>
+                      <div className="quiz-demo-results-list">
+                        {state.questionAnswers.map((questionAnswer, index) => (
+                          <div className="quiz-demo-result-item" key={questionAnswer.question.id}>
+                            <div className="quiz-demo-question-number">Question {index + 1}</div>
+                            <QuizQuestionCard
+                              question={questionAnswer.question}
+                              answer={questionAnswer.answer}
+                              showResult={true}
+                              imageAssetBaseUrl={QUESTION_IMAGE_BASE_URL}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      <div className="quiz-demo-footer">
+                        <button className="quiz-demo-primary" data-scroll-action type="button" onClick={() => startQuiz(true)}>
+                          Try another quiz
+                          <IonIcon icon={refreshOutline} />
+                        </button>
+                      </div>
+                    </section>
+                  )}
+                </div>
+                <ScrollFade
+                  getScrollElements={isOpen && activeTab === "quiz" ? getScrollElements : undefined}
+                  observationKey={`${state.mode}:${state.currentQuestionIndex}:${state.navigatorNavigationKey}:${displayMode}`}
+                  onRevealAction={revealAction}
+                />
               </div>
               <PreviewTabBar activeTab={activeTab} onTabClick={selectTab} />
             </div>
@@ -816,7 +871,7 @@ const QuizDemoHeader: React.FC<QuizDemoHeaderProps> = ({
 }) => (
   <header className="quiz-demo-header">
     <h3>{selectedSectionLabel}</h3>
-    <p>{selectedSectionBreadcrumb}</p>
+    {selectedSectionBreadcrumb !== "All Content" && <p>{selectedSectionBreadcrumb}</p>}
     <div className="quiz-demo-progress-card">
       <span>
         Question {currentQuestionIndex + 1} of {questionAnswers.length}
