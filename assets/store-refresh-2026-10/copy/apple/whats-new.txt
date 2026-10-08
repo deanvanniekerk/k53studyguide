@@ -1,0 +1,4 @@
+A refreshed welcome screen makes choosing your study language easier.
+Study in English, Afrikaans, isiZulu or isiXhosa.
+Updated translations and interface polish across the app.
+Fixed quiz and mock-test results disappearing after switching tabs.

@@ -1,0 +1,32 @@
+[
+  {
+    "url": "https://k53studyguide.online/",
+    "status": 200,
+    "resolved": "https://k53studyguide.online/",
+    "type": "text/html"
+  },
+  {
+    "url": "https://k53studyguide.online/terms.html",
+    "status": 200,
+    "resolved": "https://k53studyguide.online/terms.html",
+    "type": "text/html"
+  },
+  {
+    "url": "https://k53studyguide.online/privacy.html",
+    "status": 200,
+    "resolved": "https://k53studyguide.online/privacy.html",
+    "type": "text/html"
+  },
+  {
+    "url": "https://www.gov.za/services/driving-licence/apply-learner%E2%80%99s-licence",
+    "status": 200,
+    "resolved": "https://www.gov.za/services/driving-licence/apply-learners-licence",
+    "type": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.gov.za/documents/national-road-traffic-act",
+    "status": 200,
+    "resolved": "https://www.gov.za/documents/national-road-traffic-act",
+    "type": "text/html; charset=UTF-8"
+  }
+]

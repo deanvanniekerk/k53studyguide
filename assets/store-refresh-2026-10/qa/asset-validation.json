@@ -1,0 +1,459 @@
+{
+  "date": "2026-10-08",
+  "status": "PASS",
+  "total": 45,
+  "screenshots": 42,
+  "landscapes": 3,
+  "files": [
+    {
+      "file": "apple/header.jpg",
+      "width": 3840,
+      "height": 1646,
+      "bytes": 403654,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "0933a9cec46d1e5a8e9adc6cbbe09723439c415b91dd4f91d5c531b17ccd3245"
+    },
+    {
+      "file": "apple/ipad/01-study.jpg",
+      "width": 2064,
+      "height": 2752,
+      "bytes": 248368,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "2ef101fde6f4c3c7e273490d6d62b586e61dc6452571c1afcf526ee6cc72ec5f"
+    },
+    {
+      "file": "apple/ipad/02-quiz.jpg",
+      "width": 2064,
+      "height": 2752,
+      "bytes": 236031,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "5e65fa3b449c0df6690141615cfd042174480c91bdb5440935750c67c83a20d7"
+    },
+    {
+      "file": "apple/ipad/03-test.jpg",
+      "width": 2064,
+      "height": 2752,
+      "bytes": 231333,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "c8f0e90f47e24e499d1b49ec11444b95fbcc35677090bc3808982c72f993ce21"
+    },
+    {
+      "file": "apple/ipad/04-content.jpg",
+      "width": 2064,
+      "height": 2752,
+      "bytes": 279225,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "d28d07a803abb733213da6a85599ca167c5bace0048944992651e474eefe329a"
+    },
+    {
+      "file": "apple/ipad/05-results.jpg",
+      "width": 2064,
+      "height": 2752,
+      "bytes": 298029,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "bb8dc3be29eef6fbac2b55baba35db6687adccfc317ecbf90c3fc11caac52f0d"
+    },
+    {
+      "file": "apple/ipad/06-languages.jpg",
+      "width": 2064,
+      "height": 2752,
+      "bytes": 219699,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "46d29119ec3b79e99091dbab38ef9442b9923ed8d2f3f3a0574779044b3d2750"
+    },
+    {
+      "file": "apple/ipad/07-dark.jpg",
+      "width": 2064,
+      "height": 2752,
+      "bytes": 271802,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "b01bb7fd6038235c9101862a304633c34bd11c314e76d5310bfaadea93fd2575"
+    },
+    {
+      "file": "apple/iphone/01-study.jpg",
+      "width": 1206,
+      "height": 2622,
+      "bytes": 224871,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "8fc6716e0ca3c4a4b7fea883910fb12c17254c9c1ad66e8eb401813d72c1aa0a"
+    },
+    {
+      "file": "apple/iphone/02-quiz.jpg",
+      "width": 1206,
+      "height": 2622,
+      "bytes": 206723,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "e28fab6ff98194d4beba11844e0d4c1a58754902d3631b5230e95b2594a21e8b"
+    },
+    {
+      "file": "apple/iphone/03-test.jpg",
+      "width": 1206,
+      "height": 2622,
+      "bytes": 199848,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "85624a8b0eeec22b2cbf1bca238dad21973a0840edb6bc03fad66d6f10cef3c1"
+    },
+    {
+      "file": "apple/iphone/04-content.jpg",
+      "width": 1206,
+      "height": 2622,
+      "bytes": 206856,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "20fdc5e26fdd7e68ff951d7b52674ac4e2ae81971a2ba0e4dfb92516defc4451"
+    },
+    {
+      "file": "apple/iphone/05-results.jpg",
+      "width": 1206,
+      "height": 2622,
+      "bytes": 233657,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "f1dfdae5aef4387abda828d8892bb332c6bdc8eb021eb395bdeb0e872f9cbbe5"
+    },
+    {
+      "file": "apple/iphone/06-languages.jpg",
+      "width": 1206,
+      "height": 2622,
+      "bytes": 214928,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "394221f336f8a9c798a4bfb919d5d490d3cb41c965b69152ff73aa0e4f24c9a5"
+    },
+    {
+      "file": "apple/iphone/07-dark.jpg",
+      "width": 1206,
+      "height": 2622,
+      "bytes": 240059,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "e81e8e05d3dd9a8c4219d3db8dc801d0ef5da386c72e7ba3ec1877d62f312508"
+    },
+    {
+      "file": "apple/iphone-faceid-large/01-study.jpg",
+      "width": 1284,
+      "height": 2778,
+      "bytes": 245448,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "994544606cfb589d4be18fd2e3c82aabac753dad5e734f060e0f960b7af658c4"
+    },
+    {
+      "file": "apple/iphone-faceid-large/02-quiz.jpg",
+      "width": 1284,
+      "height": 2778,
+      "bytes": 222370,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "a25ee8d5c7736da398ac0f6dd84ce65dd1ac225486c7a8ebf46a2205e63940e8"
+    },
+    {
+      "file": "apple/iphone-faceid-large/03-test.jpg",
+      "width": 1284,
+      "height": 2778,
+      "bytes": 220830,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "2a6a3065403abc449b9de9ad4f9ea8360d0d668cd758001d187f48f0a41199e8"
+    },
+    {
+      "file": "apple/iphone-faceid-large/04-content.jpg",
+      "width": 1284,
+      "height": 2778,
+      "bytes": 230785,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "8e405a7acfcb1efa24860045e99b6e0fe2b78e8faa18b88f79e04d9e241a5754"
+    },
+    {
+      "file": "apple/iphone-faceid-large/05-results.jpg",
+      "width": 1284,
+      "height": 2778,
+      "bytes": 259876,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "a832b04bfb581eeb59c3d0de51a6d607d3e7b9a061d93f17cf8fa4a462fd9a5c"
+    },
+    {
+      "file": "apple/iphone-faceid-large/06-languages.jpg",
+      "width": 1284,
+      "height": 2778,
+      "bytes": 232849,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "8eb27cf706747d239fb5af7c71cbc609abfd3d7006f5923c3ddc9d883956ede6"
+    },
+    {
+      "file": "apple/iphone-faceid-large/07-dark.jpg",
+      "width": 1284,
+      "height": 2778,
+      "bytes": 254592,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "cc513dde9604a8fb7ac30dc12a7a3bbdad38e5d39a12b81d2eb06000fcab7232"
+    },
+    {
+      "file": "apple/search-results.jpg",
+      "width": 3840,
+      "height": 2560,
+      "bytes": 563475,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "a1e1c6d5d452df5465bcffe64979622e3f4f6becce9bc07d24593e0d4152835b"
+    },
+    {
+      "file": "google-play/feature-graphic.jpg",
+      "width": 1024,
+      "height": 500,
+      "bytes": 85427,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "b7a6431a7a8697a712c63a1863227785de0cc9e7eb7699923e22864d17f7f34e"
+    },
+    {
+      "file": "google-play/phone/01-study.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 172111,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "c8bceeb10ba01dea9ad537752cafdcba9ce01ad32434a1b3766aa0a0d342c509"
+    },
+    {
+      "file": "google-play/phone/02-quiz.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 163536,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "3e3c505251c20139a4731952e468dd29221d68f3a51350d75b212a8bfd5b4079"
+    },
+    {
+      "file": "google-play/phone/03-test.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169571,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "f8e94fdc2dd01692366004d3259a21eb35e9f7def13b43479d6cdcab6836c128"
+    },
+    {
+      "file": "google-play/phone/04-content.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 159350,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "c5c728679bab42fd0274ec4b6a7ce96c81a13246e8f5e2aa0504be8ff0974f47"
+    },
+    {
+      "file": "google-play/phone/05-results.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 168362,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "ce0a33d4755654b264d1f5cd3264b0ac38dd808bcc2fed4a5ec3056f447927e8"
+    },
+    {
+      "file": "google-play/phone/06-languages.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 161312,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "b497bc41c388242f6a051d5662497b29c27833a446480a8617c99cd6d35db120"
+    },
+    {
+      "file": "google-play/phone/07-dark.jpg",
+      "width": 1080,
+      "height": 1920,
+      "bytes": 179692,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "8f99af5b5f1c1197287d42d0a32ac8ad02a27de812d4067b7fdf6e2bfd4a6c0a"
+    },
+    {
+      "file": "google-play/tablet-10/01-study.jpg",
+      "width": 1800,
+      "height": 3200,
+      "bytes": 264493,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "6b0abcce19d3291664e0d0e1ad0e76ce76635510de5db9e4832ace0ab51bf5d4"
+    },
+    {
+      "file": "google-play/tablet-10/02-quiz.jpg",
+      "width": 1800,
+      "height": 3200,
+      "bytes": 251684,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "1d728c8621c621a8c028b02a3171f8adbffaa1766decba7e0cf78564a2fd8176"
+    },
+    {
+      "file": "google-play/tablet-10/03-test.jpg",
+      "width": 1800,
+      "height": 3200,
+      "bytes": 247077,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "bd40276f02bf1bc1b1fd77838260862a0cad181997a196f136783687ba154a7b"
+    },
+    {
+      "file": "google-play/tablet-10/04-content.jpg",
+      "width": 1800,
+      "height": 3200,
+      "bytes": 304906,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "d59f37800ac966c296d59feef5b6a2be76557c54b08c228ab6e70090b3b7a309"
+    },
+    {
+      "file": "google-play/tablet-10/05-results.jpg",
+      "width": 1800,
+      "height": 3200,
+      "bytes": 334077,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "14aa33a654c9bbddf376a5f630d09ed29908e7c8735dffd5c917301b46e36411"
+    },
+    {
+      "file": "google-play/tablet-10/06-languages.jpg",
+      "width": 1800,
+      "height": 3200,
+      "bytes": 236233,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "040a32a843b0f228cf8d21de4b32d3c711c3bc459f348fdb4a83f257fcd2abe1"
+    },
+    {
+      "file": "google-play/tablet-10/07-dark.jpg",
+      "width": 1800,
+      "height": 3200,
+      "bytes": 283773,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "19e9bb885b58278b9c7b6314c435aec80d57b0a9f0e959a449deca84a87cd99b"
+    },
+    {
+      "file": "google-play/tablet-7/01-study.jpg",
+      "width": 1440,
+      "height": 2560,
+      "bytes": 210908,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "3d69bfdfacacb570e9c21954fcea10a4e51d5ab6a159112719706d10847427d9"
+    },
+    {
+      "file": "google-play/tablet-7/02-quiz.jpg",
+      "width": 1440,
+      "height": 2560,
+      "bytes": 195521,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "f09803db98144e8f8dddb9876f75d497bd6ad23e979be1f5ddcf3ee4772c8503"
+    },
+    {
+      "file": "google-play/tablet-7/03-test.jpg",
+      "width": 1440,
+      "height": 2560,
+      "bytes": 191503,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "aa03025278920daeebb08a8a200df1431dc4022456505feb9bc75b5979071ffa"
+    },
+    {
+      "file": "google-play/tablet-7/04-content.jpg",
+      "width": 1440,
+      "height": 2560,
+      "bytes": 235239,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "dfef58bfb3caa0628d8d2fe46957c657244a8840649127942e39c92a77968fcd"
+    },
+    {
+      "file": "google-play/tablet-7/05-results.jpg",
+      "width": 1440,
+      "height": 2560,
+      "bytes": 252584,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "7c7d0aef26fecad3f6ef6f15fd53c42ca012cf53ce90cf71710c50540f81624c"
+    },
+    {
+      "file": "google-play/tablet-7/06-languages.jpg",
+      "width": 1440,
+      "height": 2560,
+      "bytes": 187260,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "fae3e351751329aa95068f46446139750cd2d310cde348a48aa06ffd5805088c"
+    },
+    {
+      "file": "google-play/tablet-7/07-dark.jpg",
+      "width": 1440,
+      "height": 2560,
+      "bytes": 223455,
+      "format": "JPEG",
+      "colorSpace": "RGB",
+      "alpha": false,
+      "sha256": "592fe34a4588daaaf457126a100b180325301698ac2b8feeebd4a1aaa1dc00f7"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>K53 store creative renderer</title><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"><style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#263db7}body{font-family:'Plus Jakarta Sans',sans-serif;color:white}.background{position:absolute;width:100%;height:100%;object-fit:cover;inset:0}.shade{position:absolute;inset:0;background:linear-gradient(145deg,rgba(25,23,110,.32),transparent 60%)}header{position:absolute;left:7%;right:7%;top:4.2%;z-index:2}.brand{font-size:2.8vw;font-weight:800;letter-spacing:.24em;margin-bottom:2.3vw}h1{font-size:8.3vw;letter-spacing:-.025em;line-height:1.08;margin:0;font-weight:800;white-space:pre-line}p{font-size:3.05vw;line-height:1.45;margin:2.4vw 0 0;font-weight:600;max-width:94%;text-wrap:balance}.premium{position:absolute;right:0;top:-.3vw;font-size:2.1vw;font-weight:800;letter-spacing:.04em;border:1px solid #ffffff85;padding:.8vw 1.4vw;border-radius:2vw;background:#1e20676b}.screen{position:absolute;object-fit:contain;height:71%;max-width:88%;width:auto;top:26%;left:50%;transform:translateX(-50%);border-radius:2.4vw;box-shadow:0 1.6vw 5vw #11123966}.pair .screen{width:43%;height:auto;max-width:none;top:33%;transform:none;left:5%;border-radius:2vw}.pair .screen.second{left:52%;top:36%}.mode{position:absolute;top:29%;left:5%;width:43%;text-align:center;font-size:3vw;font-weight:800}.mode.second{left:52%;top:32%}.tablet .background{object-position:center top}.tablet header{top:4%}.tablet h1{font-size:7vw}.tablet .brand{font-size:2.2vw;margin-bottom:1.7vw}.tablet p{font-size:2.5vw;margin-top:1.8vw}.tablet .premium{font-size:1.8vw}.tablet .screen{top:25%;height:72%}.tablet.pair .screen{height:auto;top:33%}.tablet.pair .screen.second{top:36%}.landscape .background{object-fit:cover}.landscape header,.landscape .shade{display:none}
+</style></head><body><img class="background" alt="" src="../concepts/portrait-background.png"><div class="shade"></div><header><div class="brand">K53 STUDY GUIDE</div><h1></h1><p></p></header><script>
+const p=new URLSearchParams(location.search),family=p.get('family')||'iphone',scene=p.get('scene')||'study';
+const stories={
+ study:['Study smart.\nSee your progress.','Road signs, rules and vehicle controls.'],
+ quiz:['Fresh questions.\nFocused practice.','Randomized quizzes on the topics you choose.'],
+ test:['Practise the\nmock-test format.','64 questions. Three sections. One focused session.'],
+ content:['Learn the signs.\nKnow the rules.','Clear study material, one topic at a time.'],
+ results:['See where to\nfocus next.','Review your mock-test results by section.'],
+ languages:['Four languages.\nYour choice.','English · Afrikaans · isiZulu · isiXhosa'],
+ dark:['Light or dark.\nStudy your way.','Choose the view that feels right for you.']};
+if(p.has('landscape')){document.body.className='landscape';document.querySelector('.background').src='../concepts/'+({'apple':'apple-header-master.png','search':'apple-search-master.png','play':'play-feature-master.png'}[p.get('landscape')]);}
+else {
+ document.body.className=(family==='ipad'?'tablet ':'')+(scene==='dark'?'pair':'');
+ const [headline,sub]=stories[scene];document.querySelector('h1').textContent=headline;document.querySelector('p').textContent=sub;
+ if(scene==='test'||scene==='results'){let badge=document.createElement('span');badge.className='premium';badge.textContent='PREMIUM';document.querySelector('header').append(badge);}
+ function screen(source,extra=''){let img=document.createElement('img');img.className='screen '+extra;img.alt=source+' — authentic '+family+' app capture';img.src='../source-captures/'+family+'/'+source+'.jpg';document.body.append(img);}
+ if(scene==='dark'){screen('study');screen('dark','second');for(const [name,cls] of [['Light',''],['Dark','second']]){let label=document.createElement('div');label.className='mode '+cls;label.textContent=name;document.body.append(label);}}
+ else screen(scene);
+}
+Promise.all([...document.images].map(img=>img.decode())).then(()=>document.fonts.ready).then(()=>requestAnimationFrame(()=>requestAnimationFrame(()=>document.body.dataset.ready='true')));
+</script></body></html>

@@ -1,0 +1,62 @@
+[
+  {
+    "store": "google-play",
+    "field": "title",
+    "characters": 29,
+    "limit": 30
+  },
+  {
+    "store": "google-play",
+    "field": "short-description",
+    "characters": 76,
+    "limit": 80
+  },
+  {
+    "store": "google-play",
+    "field": "full-description",
+    "characters": 2161,
+    "limit": 4000
+  },
+  {
+    "store": "google-play",
+    "field": "release-notes",
+    "characters": 245,
+    "limit": 500
+  },
+  {
+    "store": "apple",
+    "field": "name",
+    "characters": 29,
+    "limit": 30
+  },
+  {
+    "store": "apple",
+    "field": "subtitle",
+    "characters": 30,
+    "limit": 30
+  },
+  {
+    "store": "apple",
+    "field": "promotional-text",
+    "characters": 150,
+    "limit": 170
+  },
+  {
+    "store": "apple",
+    "field": "description",
+    "characters": 2161,
+    "limit": 4000
+  },
+  {
+    "store": "apple",
+    "field": "keywords",
+    "characters": 99,
+    "limit": 100
+  },
+  {
+    "store": "apple",
+    "field": "whats-new",
+    "characters": 245,
+    "limit": 4000
+  }
+]
