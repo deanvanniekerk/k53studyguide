@@ -37,7 +37,7 @@ const QuizLevelCard: React.FC<Props> = (props) => {
         <StarRating
           total={5}
           current={props.level}
-          size="2.75rem"
+          size="min(2.75rem, calc((100cqw - 60px) / 5))"
           padding="6px"
           inActiveFill="var(--app-quiz-level-star-inactive)"
           inActiveOpacity={1}
@@ -73,6 +73,7 @@ const Wrapper = styled.div`
 const LevelHeader = styled.div`
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
@@ -132,6 +133,8 @@ const SparkIcon = styled(IonIcon)`
 
 const StarWrapper = styled.div`
   position: relative;
+  container-type: inline-size;
+  width: 100%;
   padding-top: var(--app-stack-gap, 36px);
   display: flex;
   justify-content: flex-start;
@@ -150,7 +153,8 @@ const LevelUpText = styled.div`
   font-size: var(--app-font-size-md);
   font-weight: 700;
   color: var(--app-quiz-level-card-text);
-  white-space: nowrap;
+  max-width: 100%;
+  white-space: normal;
 
   @media (max-width: 420px) {
     font-size: var(--app-font-size-sm);

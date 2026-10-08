@@ -21,8 +21,9 @@
   --app-readable-content-max-width: 680px;
   --app-safe-area-top: max(env(safe-area-inset-top, 0px), var(--ion-safe-area-top, 0px));
   --app-page-header-safe-area-top: max(0px, calc(var(--app-safe-area-top) - 18px));
-  --app-page-header-visual-height: 65px;
-  --app-page-header-collapsed-visual-height: 48px;
+  /* Preserve the default 65px header while reserving extra lines as text grows. */
+  --app-page-header-visual-height: max(65px, calc(6rem - 31px));
+  --app-page-header-collapsed-visual-height: max(48px, 2.5rem);
   --app-page-header-bar-height: 44px;
   --app-page-header-padding-top: var(--app-page-header-safe-area-top);
   --app-page-header-height: calc(var(--app-page-header-padding-top) + var(--app-page-header-visual-height));
