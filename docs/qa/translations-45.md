@@ -1,7 +1,52 @@
 # Translation release gate (#45)
 
 The tooling and welcome flow are implemented on `codex/issue-45-translations-welcome`.
-The maintainer generated all 3,222 nonblank Afrikaans and isiZulu entries with Sol/medium. The isiXhosa resource is still empty. **Release readiness is pending** isiXhosa generation, fluent review, model comparison and native-device checks.
+The maintainer generated all 3,222 nonblank entries in each Afrikaans, isiZulu and isiXhosa dictionary with Sol/medium. **Release readiness is pending** fluent review, model comparison and native-device checks. The UI follow-up can merge independently of those release gates; it does not close #45.
+
+## Manual UI copy overrides
+
+### 8 October 2026: compact isiZulu labels and supporting copy
+
+These eight `zu.json` entries were manually shortened after generated copy crowded the navigation, quiz header, level indicator and premium cards. Only `text` changed; the original `generatedHash` and other metadata remain intact so subsequent generation preserves the overrides. This pass made no manual changes to isiXhosa, whose generator was still running at that checkpoint.
+
+| Key | Replacement wording | Reason |
+| --- | --- | --- |
+| `quiz` | Imibuzo | Replaces “Imibuzo yokuzilolonga” in tabs, headers and study controls; matches the existing “Qala Imibuzo” and “Qhubeka Nemibuzo” actions. |
+| `quizIntro` | Phendula imibuzo, uthole amaphuzu, ukhuphuke ngezinga. | Shortens the header explanation of questions, points and level progression. |
+| `quizLevelUpAfterShort` | {number} pts → Izinga {level} | Compact progress label; preserves both placeholders. |
+| `premiumQuizTitle` | Ulungele inselele enkulu? | Shorter invitation heading. |
+| `premiumQuizInfo` | Funda ngemibuzo emifushane. Nge-Premium, zilolonge ngesivivinyo esiphelele se-K53. | Keeps the short-question/full-test distinction in less space. |
+| `testLockedInfo` | Zilolonge ngesivivinyo esiphelele se-K53. Thola izigaba okufanele ugxile kuzo. | Retains the full mock-test and focus-area message. |
+| `testLockedBenefitStructure` | Izivivinyo ezigcwele: zonke izigaba ezi-3 | Shortens the benefit while retaining all three sections. |
+| `testLockedBenefitScoring` | Bona amamaki akho nawokuphasa esigabeni ngasinye | Shortens the score/pass-mark benefit. |
+
+The compact `quiz` label is also supported by the [Translate.com isiZulu dictionary entry for “imibuzo”](https://www.translate.com/dictionary/zulu-english/imibuzo-24477498). This lookup is supporting evidence, not fluent sign-off for the full set of edits.
+
+Verification: `pnpm translator:check`, lint and all 207 app tests passed. Browser checks at 320 × 568 and 390 × 844 confirmed readable navigation labels and the revised quiz layout; light and dark themes were inspected. Shared tab padding/type sizing and header subtitle spacing were adjusted alongside these edits. Fluent review of all eight overrides, large-system-text checks for the revised navigation and physical-device sign-off remain pending.
+
+For later overrides, add a dated entry with locale, keys, replacement wording, rationale and review evidence. Follow the [README override workflow](../../Readme.md#manual-translation-overrides); never edit a locale while its generator is writing checkpoints.
+
+### 8 October 2026: completed isiXhosa and compact UI copy
+
+The generator completed all 3,222 entries and exited; its locale lock was absent before editing. The following nine overrides change only `text`, preserving the original generated hash and metadata. Study content and question/answer translations were not manually rewritten.
+
+| Key | Replacement wording | Reason |
+| --- | --- | --- |
+| `quiz` | Ikhwizi | Replaces “Imibuzo yokuziqhelanisa”; matches existing start/continue actions and fits tabs and study controls. |
+| `quizIntro` | Phendula imibuzo, ufumane amanqaku, unyuke ngenqanaba. | Compact questions/points/level explanation. |
+| `quizLevelUpAfterShort` | {number} pts → Inqanaba {level} | Preserves placeholders while removing the clipped sentence. |
+| `premiumQuizTitle` | Ukulungele umngeni omkhulu? | Shorter invitation to a bigger challenge. |
+| `premiumQuizInfo` | Funda ngeekhwizi ezimfutshane. NgePremium, ziqhelanise novavanyo olupheleleyo lwe-K53. | Retains short quizzes versus the full mock test. |
+| `premiumSeeOffer` | Jonga iPremium | Compact action to view premium details. |
+| `testLockedInfo` | Ziqhelanise novavanyo olupheleleyo lwe-K53. Fumana amacandelo ekufuneka uwaphucule. | Keeps the full-test and improvement-area message. |
+| `testLockedBenefitStructure` | Iimvavanyo ezipheleleyo: onke amacandelo ama-3 | Retains coverage of all three sections. |
+| `testLockedBenefitScoring` | Bona amanqaku akho nawokuphumelela kwicandelo ngalinye | Shorter score/pass-mark benefit. |
+
+“Ikhwizi” is listed for “quiz” in the Department of Sport, Arts and Culture [Multilingual Mathematics Dictionary](https://www.dsac.gov.za/sites/default/files/2023-11/Multilingual%20Mathematics%20Dictionary.pdf), and is used by the [Western Cape Education Department](https://wcedonline.westerncape.gov.za/circulars/minutes24/CMminutes/DCG/xdcg0003-2024.pdf). These terminology sources do not provide fluent sign-off for the full copy edits.
+
+The narrow-screen review also found clipping with enlarged text. Shared headers now grow with the root font size, navigation labels can wrap, the level indicator can wrap onto a second row, and all five stars fit their card. Default header height stays 65px.
+
+Fluent review and physical-device sign-off remain pending. Verification results for this follow-up are recorded below separately from the original implementation checks.
 
 ## Manual generation
 
@@ -53,7 +98,7 @@ Monitor subscription percentages in the account's usage display between chunks. 
 | --- | --- | --- | --- | --- | --- |
 | af | Full Sol/medium dictionary generated; comparison pending | Not reviewed | Not reviewed | Sample: 1 retry, 157.1s; final full invocation: 4510.3s, 3122 translated, 155 skipped, 0 failed | Pending |
 | zu | Full Sol/medium dictionary generated; comparison pending | Not reviewed | Not reviewed | Duration/allowance unrecorded | Pending |
-| xh | Not run | Not reviewed | Not reviewed | Not measured | Pending |
+| xh | Full Sol/medium dictionary generated; comparison pending | Not reviewed | Not reviewed | Completed 8 October 2026; duration/allowance unrecorded | Pending |
 
 Fluent reviewers must check each full dictionary, paying particular attention to negations, numeric rules, South African terminology and each question's unchanged correct-answer letter. Keep the lightest configuration meeting that quality bar. Commit reviewed resources and completed evidence before publishing a PR that claims to close #45.
 
@@ -82,9 +127,9 @@ Official sign lettering, place names, route identifiers, times and units remain 
 
 Separate asset localization is deferred: these are representations of real road signs, and blindly replacing their lettering would change the study question. Physical-device and translated-layout sign-off remains pending.
 
-## Local verification and review
+## Original implementation verification and review
 
-Implementation verification on 8 October 2026: 207 app tests, 12 lander tests and the original 13 generator/validation tests pass. `pnpm lint`, `pnpm tsc`, `pnpm build`, `pnpm lander:build`, `pnpm translator:check` and full/sample dry runs pass. The chunking change passes all 18 generator/validation/CLI tests, lint/type checks, translator check and limited/full dry runs. The host runs Node 24.15.0; repository-supported Node 26 verification still needs a run on that runtime. The complete-release checker fails with 3,222 missing isiXhosa entries; Afrikaans and isiZulu are complete and current. No live Codex translation calls were made by the coding agent.
+Historical checkpoint before isiXhosa generation on 8 October 2026: 207 app tests, 12 lander tests and the original 13 generator/validation tests pass. `pnpm lint`, `pnpm tsc`, `pnpm build`, `pnpm lander:build`, `pnpm translator:check` and full/sample dry runs pass. The chunking change passes all 18 generator/validation/CLI tests, lint/type checks, translator check and limited/full dry runs. The host runs Node 24.15.0; repository-supported Node 26 verification still needs a run on that runtime. At that checkpoint, the complete-release checker failed with 3,222 missing isiXhosa entries; Afrikaans and isiZulu were complete and current. No live Codex translation calls were made by the coding agent.
 
 Browser checks before generation on a 390 × 844 viewport confirmed Continue returns to the requested quiz URL, confirmation survives reload, Profile exposes English/Afrikaans/isiZulu/isiXhosa, and a Profile language change survives reload. Those checks used English fallback while resources were empty; translated-layout and native-device checks remain pending.
 
@@ -94,6 +139,19 @@ No documented-standard violations. The reviewer identified duplicated model/effo
 
 ### Spec
 
-The reviewer reproduced acceptance of changed units attached directly to numbers; validation now protects attached units, with regression coverage for 60km/h, 14m and 9000kg. The missing image audit is completed above. The known release blocker remains: complete dictionaries, fluent review, model comparisons, native-device and translated-layout checks. No scope creep identified.
+The reviewer reproduced acceptance of changed units attached directly to numbers; validation now protects attached units, with regression coverage for 60km/h, 14m and 9000kg. The missing image audit is completed above. The original release blockers were complete dictionaries, fluent review, model comparisons, native-device and translated-layout checks. See the follow-up below for the completed dictionary and browser checks. No scope creep identified.
 
-The issue delivery flow remains in Phase 1 pending the release checks above. The maintainer requested a commit/push checkpoint of the current branch; no PR claiming completion has been opened. Test pruning, headless Claude PR review and babysitting remain pending.
+The original implementation was merged separately. The maintainer authorized publishing and merging this UI/isiXhosa follow-up after review and CI; it does not claim the remaining #45 release gates are complete.
+
+
+## UI follow-up verification (8 October 2026)
+
+All three dictionaries now contain 3,222 current nonblank entries. The isiXhosa writer exited and its locale lock was absent before the nine wording-only overrides were applied. `pnpm translations:check` passes for the complete dictionaries, including protected placeholders, numbers, units and brands. No translation generation was started by the coding agent.
+
+The follow-up passed 207 app tests, 12 lander tests, 18 translator tests, lint/type checks, the app build and the lander build. The full suite was repeated successfully using the supported Node 26.10.0 and pnpm 12.9.1, after the initial host Node 24.15.0 checks. App and lander builds report large-chunk warnings. Azure Pipelines is configured for manual runs (`trigger: none`, `pr: none`); no automatic build is expected on PR creation.
+
+Browser review covered isiXhosa navigation, quiz title/subtitle and premium card, study Quiz control, level progress and mock-test premium copy at narrow phone widths (320 × 568 and 390 × 844), with light/dark appearance checks. At 320px and a 24px root font (150%), shared headers, wrapping labels/progress and all five stars remained readable. This root-font simulation is not native OS text scaling.
+
+Welcome checks used the real component in a temporary fresh-store browser fixture, including simulated 47px top/34px bottom safe areas. At 320px and 150% text, switching all four languages kept title/body/menu positions stable; the title and body reserved 130px and 207px respectively. The footer remained visible at the bottom of the 568px viewport while the content scrolled, and Continue completed onboarding. The 390px light-mode isiXhosa layout was also inspected. Temporary fixtures are excluded from the shipped app.
+
+Fluent review of the generated dictionaries and all manual overrides, model comparison, and physical iOS/Android lifecycle, safe-area and system-text checks remain release gates. These browser checks do not provide fluent or physical-device sign-off; #45 stays open.

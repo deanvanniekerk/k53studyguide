@@ -100,7 +100,7 @@ pnpm --filter app analyze:run
 
 ## Translations
 
-English is the canonical source. The translation tool generates offline UI, study and question text for Afrikaans (`af`), isiZulu (`zu`) and isiXhosa (`xh`). Afrikaans and isiZulu dictionaries are generated; isiXhosa generation and fluent review are pending. See the [translation release checklist](docs/qa/translations-45.md).
+English is the canonical source. The translation tool generates offline UI, study and question text for Afrikaans (`af`), isiZulu (`zu`) and isiXhosa (`xh`). All three dictionaries are generated; fluent review is pending. See the [translation release checklist](docs/qa/translations-45.md).
 
 Use the repository's Node/pnpm versions above. Install the official Codex CLI separately, with support for `--ignore-user-config`, and sign in using your ChatGPT subscription:
 
@@ -143,6 +143,14 @@ Each validated batch is written atomically to `pkg/shared/src/data/locales/<loca
 A `.lock` beside the output prevents concurrent writes. If a forced termination leaves it behind, verify no generator is still running before removing that lock and resuming.
 
 Manual corrections to an entry's `text` are preserved. Changed English flags those corrections for review. `--regenerate-ai` explicitly regenerates unchanged AI entries while preserving manual corrections; use it for a deliberate refresh, rather than ordinary chunk continuation.
+
+### Manual translation overrides
+
+Edit only the relevant entry's `text` in `pkg/shared/src/data/locales/<locale>.json`. Keep its `generatedHash` unchanged: the generator compares that original hash with the current text to identify and preserve manual edits, including during `--regenerate-ai`. Keep the source and generation metadata unchanged for a wording-only correction; do not recalculate hashes to make an override look generated.
+
+Wait for any generator writing that locale to finish before editing its file. Its next checkpoint can overwrite concurrent edits. In particular, leave `xh.json` untouched while isiXhosa generation is running.
+
+Record the date, locale, keys, replacement wording, reason and review status in the [manual override log](docs/qa/translations-45.md#manual-ui-copy-overrides). Prefer concise navigation labels and supporting copy while preserving meaning, placeholders, numbers, units and brands. Check the affected screens at narrow widths and with large text, then run `pnpm translator:check`. Layout checks do not replace fluent review. If English changes later, the generator reports the preserved override as needing manual review.
 
 ### Preview, sample and configure
 

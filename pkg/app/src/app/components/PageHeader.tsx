@@ -100,7 +100,7 @@ const Title = styled.div`
 `;
 
 const SubTitle = styled.div`
-  margin: 10px -44px 0;
+  margin: 6px 0 0;
   font-family: var(--ion-font-family);
   font-size: var(--app-font-size-xs);
   font-weight: 600;

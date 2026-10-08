@@ -25042,7 +25042,7 @@
       "promptVersion": "k53-v1"
     },
     "premiumQuizInfo": {
-      "text": "Izivivinyo ezimfushane zikhulisa ulwazi lwakho. I-Premium ihlanganisa konke esivivinyweni esiphelele sokuzilolonga sesitayela se-K53.",
+      "text": "Funda ngemibuzo emifushane. Nge-Premium, zilolonge ngesivivinyo esiphelele se-K53.",
       "sourceHash": "58f1736ac8b746e6e27feea14f497fd20356484899fb1d3f3cc8439ecf4c74d1",
       "generatedHash": "c346f67d65bf6cf125b9f05a8994b57217ac80b0f3778310e53cdbcc589f962d",
       "model": "gpt-6.1-sol",
@@ -25050,7 +25050,7 @@
       "promptVersion": "k53-v1"
     },
     "premiumQuizTitle": {
-      "text": "Usukulungele inselele enkulu?",
+      "text": "Ulungele inselele enkulu?",
       "sourceHash": "659bcdc7be062b59d849dda742c80cb62de39b2d7d0b8c47f844d79a33c67945",
       "generatedHash": "c7d03feb29622e40b539ca6ef63f839aecd4d2237813179f22d992b1aa828cae",
       "model": "gpt-6.1-sol",
@@ -25258,7 +25258,7 @@
       "promptVersion": "k53-v1"
     },
     "quiz": {
-      "text": "Imibuzo yokuzilolonga",
+      "text": "Imibuzo",
       "sourceHash": "03aa7dc16797a82b4892dcc79747011b78a071b5a1c1213b4d08ee8e8a0450ff",
       "generatedHash": "7ebb7a8612d85caef21bf1705d66adaf0322ddcbd3e71b4dd7692f0d8632903c",
       "model": "gpt-6.1-sol",
@@ -25266,7 +25266,7 @@
       "promptVersion": "k53-v1"
     },
     "quizIntro": {
-      "text": "Zilolonge ngokuphendula imibuzo, uthole ulwazi futhi ukhuphukele ezingeni elilandelayo",
+      "text": "Phendula imibuzo, uthole amaphuzu, ukhuphuke ngezinga.",
       "sourceHash": "73376165e9448dda482f67fe36a80ceb57514bae211a2a5721129ce57aa61e8d",
       "generatedHash": "440b7a00184b6b3dd7d649cb1c87dfae9f6503a7ae9bde34690e3f1333cf4717",
       "model": "gpt-6.1-sol",
@@ -25282,7 +25282,7 @@
       "promptVersion": "k53-v1"
     },
     "quizLevelUpAfterShort": {
-      "text": "{number} pts ukuze ufike ezingeni {level}",
+      "text": "{number} pts → Izinga {level}",
       "sourceHash": "67be20c41f566175042a34824a0483a43e2c53c9415c7c5c19f4434382d6777c",
       "generatedHash": "a9f5765f00530b45f3a31267f0b5ec143263fec288b9930510d1a5c3ea964062",
       "model": "gpt-6.1-sol",
@@ -25602,7 +25602,7 @@
       "promptVersion": "k53-v1"
     },
     "testLockedBenefitScoring": {
-      "text": "Bona amamaki akho namamaki adingekayo ukuze uphumelele esigabeni ngasinye",
+      "text": "Bona amamaki akho nawokuphasa esigabeni ngasinye",
       "sourceHash": "c4cd9a52b0bf45cbde186a94a0689327a2360996cc4fb5e38feed50ef26cdacb",
       "generatedHash": "277bc457e2c86ee3fc08b7febd40ef99012e00d1817cd63e697cdf9e9c8ced9c",
       "model": "gpt-6.1-sol",
@@ -25610,7 +25610,7 @@
       "promptVersion": "k53-v1"
     },
     "testLockedBenefitStructure": {
-      "text": "Izivivinyo zokuzilolonga ezigcwele ezihlanganisa zonke izigaba ezi-3",
+      "text": "Izivivinyo ezigcwele: zonke izigaba ezi-3",
       "sourceHash": "292e29c02003ffd58e4ab92807b3fa00040d8fa20791e1e21802bb6dba1dd162",
       "generatedHash": "b9ddaaed7502d22855a5b7c860ae0afe06c76d054017214b0b1faf268ab5d54c",
       "model": "gpt-6.1-sol",
@@ -25618,7 +25618,7 @@
       "promptVersion": "k53-v1"
     },
     "testLockedInfo": {
-      "text": "Dlulela ngale kwemibuzo emifushane. Zijwayeze ngesivivinyo esigcwele esilingisa ukuhlolwa kwe-K53 bese uthola izigaba okudingeka ugxile kuzo.",
+      "text": "Zilolonge ngesivivinyo esiphelele se-K53. Thola izigaba okufanele ugxile kuzo.",
       "sourceHash": "e5e8b787751b963b4e6a7ee0177ae1bf7f1062ba5ef6d1e7da1b13ca92e81de5",
       "generatedHash": "eec69394f1e0ff3ad3c5e731a3c3425c001fc3b7869ab13100c28b9571911c0b",
       "model": "gpt-6.1-sol",

@@ -8,6 +8,8 @@ ion-tab-bar {
 
 ion-tab-button {
   --color: var(--app-text-muted);
+  --padding-start: 0;
+  --padding-end: 0;
   flex: 0 1 112px;
   font-family: var(--ion-font-family-bold);
   min-width: 0;
@@ -23,10 +25,11 @@ ion-tab-button ion-icon {
 
 ion-tab-button ion-label {
   margin-top: 0;
-  font-size: var(--app-font-size-l);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  max-width: 100%;
+  font-size: clamp(0.75rem, 3.3vw, 0.9rem);
+  overflow-wrap: anywhere;
+  white-space: normal;
+  text-align: center;
 }
 
 .app-tab-pill {
@@ -38,7 +41,7 @@ ion-tab-button ion-label {
   min-height: 46px;
   min-width: 0;
   width: min(108px, calc(100% - 8px));
-  padding: 13px clamp(12px, 3vw, 24px);
+  padding: 13px 8px;
   box-sizing: border-box;
   transition:
     background-color 160ms ease,
@@ -81,14 +84,10 @@ ion-tab-button:active .app-tab-pill-active {
     flex: 1 1 0;
   }
 
-  ion-tab-button ion-label {
-    font-size: var(--app-font-size-md);
-  }
-
   .app-tab-pill {
     min-height: 42px;
     width: min(96px, calc(100% - 4px));
-    padding: 11px 12px;
+    padding: 11px 2px;
   }
 }
 
