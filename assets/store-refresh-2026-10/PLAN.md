@@ -21,7 +21,7 @@ Inspected the signed-in Google Play Console and App Store Connect in Safari on 8
 | Apple screenshots | Default iPhone slot is now “Dynamic Island (medium display)”; inherited images shown; iPad 13-inch has nine screenshots | Supply current, deliberately sequenced phone and tablet sets |
 | Apple landscape artwork | Header and Search Results tab is available; header empty; accepts 3,840 × 1,646 or 5,244 × 2,950 | Produce a dedicated header and an optional search-results asset |
 | Existing creative | Repository feature graphic says “K53 Questions” with neon road imagery; existing screenshots are mostly uncaptioned and repeat light/dark views | Broaden the benefit story; reserve one deliberate slide for appearance choice |
-| Existing growth work | `docs/growth/store-listing-19` proposes a separate, unpublished copy-only evaluation | Preserve it as historical work; this multi-asset release refresh cannot be evaluated as that isolated copy treatment |
+| Existing growth work | Issue #19 proposed a separate, unpublished copy-only evaluation (superseded by this refresh) | Preserve it as historical work; this multi-asset release refresh cannot be evaluated as that isolated copy treatment |
 
 Source checkout at planning time: `390d468`. The successful Azure build was later confirmed to match this commit. Fresh release-source web captures are now included in the review package.
 
@@ -147,7 +147,7 @@ Store only public-facing app content and creative work here. Keep console accoun
 - [Apple screenshot specifications](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/)
 - [Apple creative asset specifications](https://developer.apple.com/help/app-store-connect/reference/app-information/creative-assets-specifications/)
 - [Apple asset guidance](https://developer.apple.com/app-store/asset-best-practices/)
-- [Previous copy-only proposal](../../docs/growth/store-listing-19/README.md)
+- [Previous copy-only proposal (historical)](https://github.com/deanvanniekerk/k53studyguide/blob/fd7ed33319c67201c1183058cc97efecb1939582/docs/growth/store-listing-19/README.md)
 - [App design tokens](../../pkg/app/src/theme/variables.css)
 - [Released languages](../../pkg/shared/src/data/locales.ts)
 

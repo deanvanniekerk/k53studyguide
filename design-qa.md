@@ -35,7 +35,7 @@ The first browser capture was stale because the earlier preview server had stopp
 
 ## Cohesive icon set — 2026-10-07
 
-Scope: 14 decorative illustrations across Study topics, the premium purchase sheet, Profile premium card and Quiz/Test results. Full inventory and generation recipe: `docs/design/icon-inventory.md`.
+Scope: 14 decorative illustrations across Study topics, the premium purchase sheet, Profile premium card and Quiz/Test results. Current artwork locations and maintenance rules: [content and artwork](docs/maintenance/content.md#creative-sources).
 
 ### Asset acceptance
 

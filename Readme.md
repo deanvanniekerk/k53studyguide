@@ -34,6 +34,10 @@ This is a pnpm monorepo with packages under `pkg/*`.
 - `assets`: store and README media.
 - `scripts`: release and deployment helpers.
 
+## Working Documentation
+
+Start with [the docs index](docs/README.md) for the Premium sales plan, analytics definitions and ongoing maintenance checks.
+
 ## Local Development
 
 Use Node 26.10.0 (`.node-version`) and pnpm 12.9.1. Install the exact lockfile graph:
@@ -100,7 +104,7 @@ pnpm --filter app analyze:run
 
 ## Translations
 
-English is the canonical source. The translation tool generates offline UI, study and question text for Afrikaans (`af`), isiZulu (`zu`) and isiXhosa (`xh`). All three dictionaries are generated; fluent review is pending. See the [translation release checklist](docs/qa/translations-45.md).
+English is the canonical source. The translation tool generates offline UI, study and question text for Afrikaans (`af`), isiZulu (`zu`) and isiXhosa (`xh`). All three dictionaries are generated; fluent review is pending. See the [content maintenance checklist](docs/maintenance/content.md).
 
 Use the repository's Node/pnpm versions above. Install the official Codex CLI separately, with support for `--ignore-user-config`, and sign in using your ChatGPT subscription:
 
@@ -148,9 +152,9 @@ Manual corrections to an entry's `text` are preserved. Changed English flags tho
 
 Edit only the relevant entry's `text` in `pkg/shared/src/data/locales/<locale>.json`. Keep its `generatedHash` unchanged: the generator compares that original hash with the current text to identify and preserve manual edits, including during `--regenerate-ai`. Keep the source and generation metadata unchanged for a wording-only correction; do not recalculate hashes to make an override look generated.
 
-Wait for any generator writing that locale to finish before editing its file. Its next checkpoint can overwrite concurrent edits. In particular, leave `xh.json` untouched while isiXhosa generation is running.
+Wait for any generator writing that locale to finish before editing its file. Its next checkpoint can overwrite concurrent edits.
 
-Record the date, locale, keys, replacement wording, reason and review status in the [manual override log](docs/qa/translations-45.md#manual-ui-copy-overrides). Prefer concise navigation labels and supporting copy while preserving meaning, placeholders, numbers, units and brands. Check the affected screens at narrow widths and with large text, then run `pnpm translator:check`. Layout checks do not replace fluent review. If English changes later, the generator reports the preserved override as needing manual review.
+Record the affected locale/keys, reason and fluent-review status in the change’s issue or PR; see [content maintenance](docs/maintenance/content.md#translation-maintenance). Prefer concise navigation labels and supporting copy while preserving meaning, placeholders, numbers, units and brands. Check the affected screens at narrow widths and with large text, then run `pnpm translator:check`. Layout checks do not replace fluent review. If English changes later, the generator reports the preserved override as needing manual review.
 
 ### Preview, sample and configure
 
@@ -177,7 +181,7 @@ pnpm translator:check
 pnpm translations:check
 ```
 
-`translator:check` checks structure and reports missing/stale entries. `translations:check` fails until all three target dictionaries are complete and current. Validation protects keys, placeholders, HTML, brands, numbers and units; fluent review must confirm terminology, legal meaning, negations and correct answers. The release checklist includes model comparisons, image text and native-device checks.
+`translator:check` checks structure and reports missing/stale entries. `translations:check` fails until all three target dictionaries are complete and current. Validation protects keys, placeholders, HTML, brands, numbers and units; fluent review must confirm terminology, legal meaning, negations and correct answers. The content maintenance checklist covers image text and native-device checks.
 
 ## Landing Site
 
@@ -214,7 +218,7 @@ xcodebuild -project pkg/app/ios/App/App.xcodeproj -scheme App \
 
 The device command checks compilation only. The manual Azure path signs and archives with existing secure files. `Package.resolved` fixes remote Swift dependencies; Capacitor regenerates the local plugin paths from the pnpm lock. Preserve that lock during archive builds. Crashlytics uploads device dSYMs through its final build phase. Test Store keys belong only in local QA builds; rebuild production assets with platform keys before archiving.
 
-The [dated upgrade inventory and rollback](docs/qa/stable-major-upgrade-2026-10.md) records constraints and release evidence.
+The [release checklist](docs/maintenance/release.md) records current validation requirements and dependency constraints.
 
 Firebase native config files are not committed. For local native builds, copy your own Firebase config into:
 
