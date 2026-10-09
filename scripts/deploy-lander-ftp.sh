@@ -54,11 +54,14 @@ while IFS= read -r -d '' file; do
     --upload-file "$file" \
     "$remote_url"
 done < <(
+  # Publish fingerprinted dependencies before the pages that reference them.
+  # Existing assets remain available to visitors with the previous HTML cached.
   if [[ "$LANDER_INCLUDE_QUIZ_IMAGES" == "1" ]]; then
-    find "$DIST_DIR" -type f -print0
+    find "$DIST_DIR" -type f ! -name '*.html' -print0
   else
-    find "$DIST_DIR" -path "$DIST_DIR/quiz-assets/images" -prune -o -type f -print0
+    find "$DIST_DIR" -path "$DIST_DIR/quiz-assets/images" -prune -o -type f ! -name '*.html' -print0
   fi
+  find "$DIST_DIR" -type f -name '*.html' -print0
 )
 
 echo "Lander deployed."

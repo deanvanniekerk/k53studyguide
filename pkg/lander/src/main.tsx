@@ -1,21 +1,30 @@
-import { setupIonicReact } from "@ionic/react";
-import { createRoot } from "react-dom/client";
-import { Provider as TranslationProvider } from "@k53studyguide/shared/translation";
-import { translations } from "@k53studyguide/shared/data";
-import "../../app/src/theme/variables.css";
-import "./quiz-demo.css";
-import { QuizDemoDialog } from "./quiz-demo/QuizDemoDialog";
+// Keep React, Ionic and the question bank out of the initial marketing page load.
+const triggers = document.querySelectorAll<HTMLButtonElement>("[data-quiz-demo-open]");
+const labels = new Map(Array.from(triggers, button => [button, button.innerHTML]));
+let loading = false;
 
-setupIonicReact({
-  mode: "md",
-});
+const loadDemo = async (event: MouseEvent) => {
+  event.preventDefault();
+  if (loading) return;
+  loading = true;
+  const trigger = event.currentTarget as HTMLButtonElement;
+  const originalContent = labels.get(trigger)!;
+  triggers.forEach(button => { button.disabled = true; });
+  trigger.setAttribute("aria-busy", "true");
+  trigger.textContent = "Loading your quiz…";
+  try {
+    const { mountDemo } = await import("./demo-bootstrap");
+    mountDemo(trigger.dataset.analyticsLocation ?? "unknown");
+    triggers.forEach(button => button.removeEventListener("click", loadDemo));
+    trigger.innerHTML = originalContent;
+  } catch {
+    // A failed download remains retryable without taking away the store links.
+    trigger.textContent = "Couldn’t load the quiz. Try again";
+  } finally {
+    trigger.removeAttribute("aria-busy");
+    triggers.forEach(button => { button.disabled = false; });
+    loading = false;
+  }
+};
 
-const rootElement = document.getElementById("quiz-demo-root");
-
-if (rootElement) {
-  createRoot(rootElement).render(
-    <TranslationProvider language="en" translation={translations}>
-      <QuizDemoDialog />
-    </TranslationProvider>,
-  );
-}
+triggers.forEach(button => button.addEventListener("click", loadDemo));

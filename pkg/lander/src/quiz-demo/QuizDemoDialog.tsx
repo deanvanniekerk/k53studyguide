@@ -145,7 +145,7 @@ const trackStoreCta = (ctaLocation: string, storePlatform: StorePlatform = "andr
   trackAnalyticsEvent(storePlatform === "ios" ? "app_store_referral_click" : "play_store_referral_click", params);
 };
 
-export const QuizDemoDialog: React.FC = () => {
+export const QuizDemoDialog: React.FC<{ initialLocation?: string }> = ({ initialLocation }) => {
   const dialogRef = useRef<HTMLDivElement>(null);
   const screenScrollRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -199,6 +199,10 @@ export const QuizDemoDialog: React.FC = () => {
     setActiveTab("quiz");
     trackAnalyticsEvent("quiz_demo_open", { cta_location: location });
   }, []);
+
+  useEffect(() => {
+    if (initialLocation !== undefined) openDialog(initialLocation);
+  }, [initialLocation, openDialog]);
 
   const closeDialog = useCallback(() => {
     setIsOpen(false);

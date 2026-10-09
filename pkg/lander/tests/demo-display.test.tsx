@@ -64,3 +64,13 @@ test("reobserves the action when navigating and reveals it from the shared arrow
   fireEvent.click(screen.getByRole("button", { name: "Study", exact: true }));
   expect(observers[1].disconnect).toHaveBeenCalledOnce();
 });
+
+
+test("opens from the first lazy-loaded click and can reopen after closing", () => {
+  render(<TranslationProvider language="en" translation={translations}><QuizDemoDialog initialLocation="hero_try_it_now" /></TranslationProvider>);
+  expect(screen.getByRole("button", { name: "Close quiz demo" })).toBeTruthy();
+  fireEvent.click(screen.getByRole("button", { name: "Close quiz demo" }));
+  expect(screen.queryByRole("button", { name: "Close quiz demo" })).toBeNull();
+  fireEvent.click(screen.getByText("Try quiz"));
+  expect(screen.getByRole("button", { name: "Close quiz demo" })).toBeTruthy();
+});
