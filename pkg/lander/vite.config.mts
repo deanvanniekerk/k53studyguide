@@ -71,6 +71,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: resolve(__dirname, "index.html"),
+        "k53-road-signs": resolve(__dirname, "k53-road-signs.html"),
+        "vehicle-controls": resolve(__dirname, "vehicle-controls.html"),
+        "k53-practice-questions": resolve(__dirname, "k53-practice-questions.html"),
         privacy: resolve(__dirname, "privacy.html"),
         terms: resolve(__dirname, "terms.html"),
       },

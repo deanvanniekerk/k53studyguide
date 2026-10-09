@@ -196,3 +196,14 @@ footer { padding-block: 38px; border-top: 1px solid var(--site-line); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* Crawlable study resources connect the landing page to useful public material. */
+#study-guides { border-top: 1px solid var(--site-line); }
+.guide-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; }
+.guide-links > a { display: flex; flex-direction: column; text-decoration: none; border-top: 2px solid var(--site-accent); padding-top: 24px; }
+.guide-links h3 { font-size: 1.45rem; margin-block: 14px; }
+.guide-links p { font-size: .92rem; margin-bottom: 24px; }
+.guide-links .eyebrow { font-size: .65rem; margin: 0; }
+.guide-link-label { margin-top: auto; color: var(--site-accent); font-weight: 700; font-size: .85rem; }
+.guide-links a:hover .guide-link-label { text-decoration: underline; text-underline-offset: 5px; }
+@media (max-width: 700px) { .guide-links { grid-template-columns: 1fr; } }

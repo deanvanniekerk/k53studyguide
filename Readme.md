@@ -6,7 +6,7 @@
 
 ## App Links
 
-- [Website](https://k53studyguide.online/)
+- [Website](https://www.k53studyguide.online/)
 - [Google Play](https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en_US)
 - [App Store](https://apps.apple.com/us/app/k53-study-guide/id6784718443)
 

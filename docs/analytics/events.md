@@ -1,6 +1,6 @@
 # Event reference
 
-Current implementation: [analytics adapter](../../pkg/app/src/services/analytics/index.ts), [purchase service](../../pkg/app/src/services/purchase/RevenueCatPurchaseService.ts), [app pages](../../pkg/app/src/app/pages), and [website](../../pkg/lander/index.html). Update this contract when those boundaries change.
+Current implementation: [analytics adapter](../../pkg/app/src/services/analytics/index.ts), [purchase service](../../pkg/app/src/services/purchase/RevenueCatPurchaseService.ts), [app pages](../../pkg/app/src/app/pages), and [website analytics](../../pkg/lander/src/analytics.js). Update this contract when those boundaries change.
 
 ## Engagement
 
@@ -52,8 +52,9 @@ Count `select_store_cta` separately in each collector. Do not add it to legacy s
 | Navigation | `nav_cta` | `android` |
 | Hero | `hero_cta`, `hero_ios_cta` | `android`, `ios` |
 | Footer | `footer_cta`, `footer_ios_cta` | `android`, `ios` |
+| Public study guides | `guide_{road_signs,vehicle_controls,practice_questions}_{android,ios}` | Matching destination |
 | Demo locked tabs | `quiz_demo_locked_{study,test,profile}_{android,ios}` | Matching destination |
 
-These are 11 combinations; navigation has no iOS CTA. Links open the actual store in a new tab. A referral is not an install.
+These are 17 combinations; navigation has no iOS CTA. Links open the actual store in a new tab. A referral is not an install.
 
 Collectors initialize only on `k53studyguide.online` and `www.k53studyguide.online`. Custom events carry `analytics_environment=production` and `analytics_test`. QA markers are `analytics_test=true`, `utm_source=qa` or `utm_campaign=issue7`. Filter exact hostnames and exclude QA URLs/campaigns even for historical or automatic events without these properties. Verify the received boolean representation before filtering. Choose GA `page_view` or PostHog `$pageview` for its own visitor denominator, not a sum with `landing_page_view`.

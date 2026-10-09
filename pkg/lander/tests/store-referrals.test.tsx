@@ -8,20 +8,20 @@ import { afterEach, expect, test, vi } from "vitest";
 
 const html = readFileSync("index.html", "utf8");
 
-const loadWebsite = (url: string) => {
-  // Run the real page's inline scripts with build-time environment variables.
+const loadWebsite = (url: string, page = html) => {
+  // Run the page's shared analytics and inline scripts with build-time environment variables.
   // External analytics SDKs are the observation boundary; no requests are sent.
   globalThis.jsdom.reconfigure({ url });
   document.open();
-  document.write(html);
+  document.write(page);
   document.close();
   const posthog = { __loaded: true, init: vi.fn(), capture: vi.fn() };
   Object.assign(window, { posthog, dataLayer: [], gtag: undefined });
   vi.stubGlobal("IntersectionObserver", class { observe() {} });
   window.matchMedia = vi.fn().mockReturnValue({ matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() });
-  for (const script of document.querySelectorAll("script:not([src])")) {
+  for (const script of document.querySelectorAll('script:not([src]), script[src="/src/analytics.js"]')) {
     if (script.type === "application/ld+json") continue;
-    const source = script.textContent!.replace(
+    const source = (script.getAttribute("src") === "/src/analytics.js" ? readFileSync("src/analytics.js", "utf8") : script.textContent!).replace(
       /import\.meta\.env/g,
       JSON.stringify({ VITE_GA_MEASUREMENT_ID: "G-TEST123" }),
     );
@@ -144,4 +144,36 @@ test.each([
   }));
   expect(gaEvents()).toEqual(collected ? expected : []);
   expect(posthogEvents()).toEqual(collected ? expected : []);
+});
+
+test.each([
+  ["k53-road-signs", "road_signs"],
+  ["vehicle-controls", "vehicle_controls"],
+  ["k53-practice-questions", "practice_questions"],
+])("%s keeps both guide referrals attributable and excludes preview traffic", (slug, key) => {
+  const page = readFileSync(`${slug}.html`, "utf8");
+  for (const host of ["www.k53studyguide.online", "localhost:5173"]) {
+    const { gaEvents, posthogEvents } = loadWebsite(`https://${host}/${slug}.html?analytics_test=true`, page);
+    const links = document.querySelectorAll<HTMLAnchorElement>('a[data-analytics-location]');
+    expect(links).toHaveLength(2);
+    links.forEach(link => {
+      expect(link.target).toBe("_blank");
+      expect(link.rel).toContain("noopener");
+      const destination = new URL(link.href);
+      if (destination.hostname === "play.google.com") {
+        expect(destination.searchParams.get("id")).toBe("deanvniekerk.k53studyguide.app");
+        expect(new URLSearchParams(destination.searchParams.get("referrer")!).get("utm_medium")).toBe(`guide_${key}_android`);
+      } else {
+        expect(destination.hostname).toBe("apps.apple.com");
+        expect(destination.pathname).toBe("/us/app/k53-study-guide/id6784718443");
+      }
+      link.click();
+    });
+    const expected = host.startsWith("www.") ? ["android", "ios"].map(platform => ({
+      cta_location: `guide_${key}_${platform}`, store_platform: platform,
+      analytics_environment: "production", analytics_test: true,
+    })) : [];
+    expect(gaEvents()).toEqual(expected);
+    expect(posthogEvents()).toEqual(expected);
+  }
 });

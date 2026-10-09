@@ -51,3 +51,17 @@ The earlier diagnosis found fewer Android listing visitors while the visitor-to-
 Before asking for a pilot budget, document audience, creative, destination, attribution, daily/total caps, duration and stop/expand rules. Use verified net proceeds per new buyer and explicitly labeled install-to-buyer scenarios to calculate a break-even CPI ceiling; allow a margin below it. Historical install costs are not a forecast.
 
 Assess mature 7/30/60/90-day acquired cohorts only where inputs and joins exist. Keep spend and net contribution in private reports. Activate only after an explicit budget decision and confirmation that the tested release and production measurement are available to the campaign audience.
+
+## Organic search and website discovery
+
+Use the canonical website URL, `https://www.k53studyguide.online/`, in owned profiles and future store edits. The app listings already link to this domain; the public repository’s About website and README also link to it. Store URLs without `www` currently rely on the site’s canonical tag. Keep the brand name “K53 Study Guide” consistent across titles, visible copy and `WebSite` metadata.
+
+The public [road-sign guide](https://www.k53studyguide.online/k53-road-signs.html), [vehicle-control guide](https://www.k53studyguide.online/vehicle-controls.html) and [practice questions](https://www.k53studyguide.online/k53-practice-questions.html) are useful entry points and resources that driving schools can reference. Improve these when learner questions reveal gaps; do not create thin keyword variants or buy links. Future partner outreach needs a specific recipient and message approved separately.
+
+During the weekly scorecard review:
+
+- Open the [South Africa exact-brand comparison](https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Ak53studyguide.online&country=zaf&compare_query=!k53%20study%20guide&query=!k53studyguide). Track `k53studyguide` and `k53 study guide` separately: clicks, impressions, CTR and position. Use 28 complete days, compare the preceding period and record the actual date range. Sparse or withheld query data is not proof of no searches; position is unavailable when there are no reported impressions.
+- Remove the query comparison to assess non-brand discovery and each guide’s search landing traffic. Keep South Africa selected. Check Pages and the sitemap when a new guide is published, rather than repeatedly requesting the same URL.
+- In one website collector, segment organic-search landing sessions by landing page and compare `select_store_cta` by `cta_location` and `store_platform`. Exclude QA. Use the same cohort for any session-to-referral rate; event count divided by visitors is not that rate. Keep referral clicks, store downloads and confirmed Premium purchases as separate measures until attribution joins are verified.
+
+Give Google time to recrawl and collect enough observations before judging the change. Structured data, sitemap submission and a unique domain name do not guarantee indexing or a top position. Keep private performance exports outside this public repository.
