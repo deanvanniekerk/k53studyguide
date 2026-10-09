@@ -5,6 +5,7 @@ Our next priority is to understand how learners use the app and increase confirm
 | Start here | Purpose |
 | --- | --- |
 | [Premium sales plan](growth/premium-sales.md) | Priorities, weekly scorecard and experiment decisions |
+| [Paid acquisition pilot](growth/paid-acquisition.md) | Channel choice, creative brief, proposed budget and success rules |
 | [Analytics reporting](analytics/README.md) | Sources, denominators, exclusions and cohort rules |
 | [Event reference](analytics/events.md) | What the app and website actually measure |
 | [Analytics access](analytics/access.md) | Account identities and repeatable read-only reporting |

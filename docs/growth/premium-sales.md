@@ -46,6 +46,8 @@ The 1.40 refresh changes app behavior, copy and multiple assets together. Treat 
 
 ## Paid acquisition decision
 
+Use the [paid acquisition pilot](paid-acquisition.md) for the current channel research, proposed minimum budget, creative brief and stop/expand rules.
+
 The earlier diagnosis found fewer Android listing visitors while the visitor-to-install-click ratio improved. Historical Ads “conversions” counted downloads, not Premium buyers. Neither observation establishes profitable acquisition. Keep older-version international traffic separate until its provenance is understood; do not label it fraud.
 
 Before asking for a pilot budget, document audience, creative, destination, attribution, daily/total caps, duration and stop/expand rules. Use verified net proceeds per new buyer and explicitly labeled install-to-buyer scenarios to calculate a break-even CPI ceiling; allow a margin below it. Historical install costs are not a forecast.
