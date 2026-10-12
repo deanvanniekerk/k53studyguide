@@ -247,19 +247,23 @@ export class RevenueCatPurchaseService implements PurchaseService {
       analytics.logEvent("purchase_initialization_error", {
         ...this.getAnalyticsPurchaseParams(),
         failure_reason: "missing_api_key",
+        initialization_stage: "configuration",
       });
       this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));
       this._reduxStore.dispatch(recievePurchaseAvailability("unavailable"));
       return;
     }
 
+    let initializationStage = "configure";
     try {
       if (!this._configured) {
         await Purchases.configure({ apiKey });
         this._configured = true;
       }
       if (!this._listening) {
+        initializationStage = "setLogLevel";
         await Purchases.setLogLevel({ level: LOG_LEVEL.WARN });
+        initializationStage = "addCustomerInfoUpdateListener";
         await Purchases.addCustomerInfoUpdateListener((customerInfo) => {
           this._customerInfoRevision += 1;
           this._latestCustomerInfo = customerInfo;
@@ -268,6 +272,7 @@ export class RevenueCatPurchaseService implements PurchaseService {
         this._listening = true;
       }
 
+      initializationStage = "loadProductsAndCustomerInfo";
       const [productResult, customerResult] = await Promise.allSettled([
         Purchases.getProducts({
           productIdentifiers: [this._productId],
@@ -283,13 +288,22 @@ export class RevenueCatPurchaseService implements PurchaseService {
       }
       // A billing/product error must not suppress an independently fetched entitlement.
       if (customerResult.status === "fulfilled") {
+        initializationStage = "reconcileCustomerInfo";
         this.logCustomerInfoDiagnostics(customerResult.value.customerInfo, "initialize");
         await this.applyCustomerInfoWithLegacySync(
           this.currentCustomerInfo(customerResult.value.customerInfo, revision),
         );
       }
-      if (productResult.status === "rejected") throw productResult.reason;
-      if (customerResult.status === "rejected") throw customerResult.reason;
+      // Keep one failure per attempt; product failure takes precedence if both requests fail.
+      if (productResult.status === "rejected") {
+        initializationStage = "getProducts";
+        throw productResult.reason;
+      }
+      if (customerResult.status === "rejected") {
+        initializationStage = "getCustomerInfo";
+        throw customerResult.reason;
+      }
+      initializationStage = "getProducts";
       const { products } = productResult.value;
       await this.logOfferingsDiagnostics();
 
@@ -298,6 +312,7 @@ export class RevenueCatPurchaseService implements PurchaseService {
         analytics.logEvent("purchase_initialization_error", {
           ...this.getAnalyticsPurchaseParams(),
           failure_reason: "product_unavailable",
+          initialization_stage: "getProducts",
         });
         this.log("ERROR", "RevenueCatPurchaseService > initialize > product unavailable", {
           productId: this._productId,
@@ -309,6 +324,7 @@ export class RevenueCatPurchaseService implements PurchaseService {
         return;
       }
 
+      initializationStage = "publishAvailability";
       this.log("INFO", "RevenueCatPurchaseService > initialize > product available", {
         identifier: product.identifier,
         price: product.priceString,
@@ -326,12 +342,14 @@ export class RevenueCatPurchaseService implements PurchaseService {
     } catch (error) {
       const purchaseError = toPurchasesError(error);
       this.log("ERROR", "RevenueCatPurchaseService > initialize > error", {
+        initializationStage,
         code: purchaseError?.code ?? "unknown",
         message: purchaseError?.message ?? String(error),
       });
       analytics.logEvent("purchase_initialization_error", {
         ...this.getAnalyticsPurchaseParams(),
         failure_reason: "sdk_error",
+        initialization_stage: initializationStage,
         error_code: purchaseError?.code ?? "unknown",
       });
       this._reduxStore.dispatch(recievePurchaseProductCanPurchase(false));

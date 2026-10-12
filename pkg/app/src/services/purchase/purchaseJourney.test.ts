@@ -53,6 +53,7 @@ it("reports a missing purchase key once during initialization without an offer o
       params: expect.objectContaining({
         product_id: "premium_access",
         failure_reason: "missing_api_key",
+        initialization_stage: "configuration",
         transaction_environment: "unknown",
       }),
     },
@@ -138,7 +139,11 @@ it("reports a missing product before disabled premium controls can be used, once
   expect(events()).toEqual([
     {
       name: "purchase_initialization_error",
-      params: expect.objectContaining({ product_id: "premium_access", failure_reason: "product_unavailable" }),
+      params: expect.objectContaining({
+        product_id: "premium_access",
+        failure_reason: "product_unavailable",
+        initialization_stage: "getProducts",
+      }),
     },
   ]);
 });

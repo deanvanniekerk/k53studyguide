@@ -88,6 +88,33 @@ describe("RevenueCatPurchaseService", () => {
     vi.unstubAllGlobals();
   });
 
+  it.each(["configure", "setLogLevel", "addCustomerInfoUpdateListener", "getProducts", "getCustomerInfo"] as const)(
+    "identifies %s failures without exposing private SDK diagnostics, then recovers",
+    async (method) => {
+      vi.mocked(Purchases[method]).mockRejectedValueOnce({ code: "10", message: "private SDK diagnostic" });
+      const store = checkoutStore();
+      const service = new RevenueCatPurchaseService(store);
+      await service.initialize();
+
+      expect(store.getState().purchase.canPurchase).toBe(false);
+      expect(store.getState().purchase.availability).toBe("unavailable");
+      const failures = vi
+        .mocked(FirebaseAnalytics.logEvent)
+        .mock.calls.map(([event]) => event)
+        .filter((event) => event.name === "purchase_initialization_error");
+      expect(failures).toHaveLength(1);
+      expect(failures[0].params).toMatchObject({
+        failure_reason: "sdk_error",
+        initialization_stage: method,
+        error_code: "10",
+      });
+      expect(JSON.stringify(failures)).not.toContain("private SDK diagnostic");
+
+      await service.initialize();
+      expect(store.getState().purchase.canPurchase).toBe(true);
+    },
+  );
+
   it.each(["products", "customer"])(
     "recovers a failed %s load without configuring or subscribing twice",
     async (resource) => {
@@ -111,6 +138,23 @@ describe("RevenueCatPurchaseService", () => {
     const store = checkoutStore();
     await new RevenueCatPurchaseService(store).initialize();
     expect(store.getState().purchase.owned).toBe(true);
+    expect(store.getState().purchase.canPurchase).toBe(false);
+  });
+
+  it("reports one product-stage failure when both parallel loads fail", async () => {
+    vi.mocked(Purchases.getProducts).mockRejectedValueOnce({ code: "10" });
+    vi.mocked(Purchases.getCustomerInfo).mockRejectedValueOnce({ code: "35" });
+    const store = checkoutStore();
+    await new RevenueCatPurchaseService(store).initialize();
+    const failures = vi
+      .mocked(FirebaseAnalytics.logEvent)
+      .mock.calls.map(([event]) => event)
+      .filter((event) => event.name === "purchase_initialization_error");
+    expect(failures).toHaveLength(1);
+    expect(failures[0].params).toMatchObject({
+      initialization_stage: "getProducts",
+      error_code: "10",
+    });
     expect(store.getState().purchase.canPurchase).toBe(false);
   });
 
