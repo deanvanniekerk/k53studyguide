@@ -1,0 +1,4 @@
+interface:
+  display_name: "Generate K53 Report"
+  short_description: "K53 sales, engagement and release HTML reports"
+  default_prompt: "Use $generate-report to create a K53 global summary for last week."
