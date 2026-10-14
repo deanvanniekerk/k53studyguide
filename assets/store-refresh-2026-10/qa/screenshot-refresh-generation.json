@@ -1,0 +1,7 @@
+{
+  "date": "2026-10-14",
+  "tool": "Built-in Image Gen",
+  "asset": "concepts/quiet-background.png",
+  "prompt": "Use case: ads-marketing. Create a quiet portrait background for K53 Study Guide app store screenshots, aspect ratio 9:19.5. Only a restrained smooth indigo blue field with a subtle soft teal glow near the bottom right edge. Low contrast, dark enough for a white headline. Almost all the image will sit behind a large authentic app screenshot. Flat, clean digital colour, elegant and calm. No objects, roads, clouds, sun, cars, people, patterns, grain, text, logos, mockup, devices or borders. This is background artwork only. It must feel very subdued and let the app screenshot take focus.",
+  "composition": "Repository HTML renderer uses the original unedited app captures and local font; generated artwork is background only."
+}

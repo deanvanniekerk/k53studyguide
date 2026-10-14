@@ -1,13 +1,9 @@
 [
   {
     "file": "final/apple/iphone/01-study.jpg",
-    "size": [
-      1206,
-      2622
-    ],
     "font": true,
-    "headerBottom": 478.8359375,
-    "headline": "Study smart.\nSee your progress.",
+    "headerBottom": 206.703125,
+    "headline": "Track your study progress",
     "images": [
       {
         "box": [
@@ -20,14 +16,14 @@
           852,
           1846
         ],
-        "src": "../concepts/portrait-background.png"
+        "src": "../concepts/quiet-background.png"
       },
       {
         "box": [
-          174.87109375,
-          681.71875,
-          856.2578125,
-          1861.6171875
+          84.421875,
+          314.6328125,
+          1037.15625,
+          2254.9140625
         ],
         "natural": [
           1206,
@@ -36,17 +32,17 @@
         "src": "../source-captures/iphone/study.jpg"
       }
     ],
-    "screenTop": 681.71875
-  },
-  {
-    "file": "final/apple/iphone/02-quiz.jpg",
+    "screenTop": 314.6328125,
     "size": [
       1206,
       2622
-    ],
+    ]
+  },
+  {
+    "file": "final/apple/iphone/02-quiz.jpg",
     "font": true,
-    "headerBottom": 478.8359375,
-    "headline": "Fresh questions.\nFocused practice.",
+    "headerBottom": 206.703125,
+    "headline": "Practise with fresh quizzes",
     "images": [
       {
         "box": [
@@ -59,14 +55,14 @@
           852,
           1846
         ],
-        "src": "../concepts/portrait-background.png"
+        "src": "../concepts/quiet-background.png"
       },
       {
         "box": [
-          174.87109375,
-          681.71875,
-          856.2578125,
-          1861.6171875
+          84.421875,
+          314.6328125,
+          1037.15625,
+          2254.9140625
         ],
         "natural": [
           1206,
@@ -75,17 +71,17 @@
         "src": "../source-captures/iphone/quiz.jpg"
       }
     ],
-    "screenTop": 681.71875
-  },
-  {
-    "file": "final/apple/iphone/03-test.jpg",
+    "screenTop": 314.6328125,
     "size": [
       1206,
       2622
-    ],
+    ]
+  },
+  {
+    "file": "final/apple/iphone/03-test.jpg",
     "font": true,
-    "headerBottom": 478.8359375,
-    "headline": "Practise the\nmock-test format.",
+    "headerBottom": 246.9140625,
+    "headline": "Build confidence with Premium mock tests",
     "images": [
       {
         "box": [
@@ -98,14 +94,14 @@
           852,
           1846
         ],
-        "src": "../concepts/portrait-background.png"
+        "src": "../concepts/quiet-background.png"
       },
       {
         "box": [
-          174.87109375,
-          681.71875,
-          856.2578125,
-          1861.6171875
+          84.421875,
+          314.6328125,
+          1037.15625,
+          2254.9140625
         ],
         "natural": [
           1206,
@@ -114,17 +110,17 @@
         "src": "../source-captures/iphone/test.jpg"
       }
     ],
-    "screenTop": 681.71875
-  },
-  {
-    "file": "final/apple/iphone/04-content.jpg",
+    "screenTop": 314.6328125,
     "size": [
       1206,
       2622
-    ],
+    ]
+  },
+  {
+    "file": "final/apple/iphone/04-content.jpg",
     "font": true,
-    "headerBottom": 478.8359375,
-    "headline": "Learn the signs.\nKnow the rules.",
+    "headerBottom": 206.703125,
+    "headline": "Learn road signs and rules",
     "images": [
       {
         "box": [
@@ -137,14 +133,14 @@
           852,
           1846
         ],
-        "src": "../concepts/portrait-background.png"
+        "src": "../concepts/quiet-background.png"
       },
       {
         "box": [
-          174.87109375,
-          681.71875,
-          856.2578125,
-          1861.6171875
+          84.421875,
+          314.6328125,
+          1037.15625,
+          2254.9140625
         ],
         "natural": [
           1206,
@@ -153,17 +149,17 @@
         "src": "../source-captures/iphone/content.jpg"
       }
     ],
-    "screenTop": 681.71875
-  },
-  {
-    "file": "final/apple/iphone/05-results.jpg",
+    "screenTop": 314.6328125,
     "size": [
       1206,
       2622
-    ],
+    ]
+  },
+  {
+    "file": "final/apple/iphone/05-results.jpg",
     "font": true,
-    "headerBottom": 478.8359375,
-    "headline": "See where to\nfocus next.",
+    "headerBottom": 206.703125,
+    "headline": "Review your Premium test results",
     "images": [
       {
         "box": [
@@ -176,14 +172,14 @@
           852,
           1846
         ],
-        "src": "../concepts/portrait-background.png"
+        "src": "../concepts/quiet-background.png"
       },
       {
         "box": [
-          174.87109375,
-          681.71875,
-          856.2578125,
-          1861.6171875
+          84.421875,
+          314.6328125,
+          1037.15625,
+          2254.9140625
         ],
         "natural": [
           1206,
@@ -192,17 +188,17 @@
         "src": "../source-captures/iphone/results.jpg"
       }
     ],
-    "screenTop": 681.71875
-  },
-  {
-    "file": "final/apple/iphone/06-languages.jpg",
+    "screenTop": 314.6328125,
     "size": [
       1206,
       2622
-    ],
+    ]
+  },
+  {
+    "file": "final/apple/iphone/06-languages.jpg",
     "font": true,
-    "headerBottom": 478.8359375,
-    "headline": "Four languages.\nYour choice.",
+    "headerBottom": 206.703125,
+    "headline": "Choose from four languages",
     "images": [
       {
         "box": [
@@ -215,14 +211,14 @@
           852,
           1846
         ],
-        "src": "../concepts/portrait-background.png"
+        "src": "../concepts/quiet-background.png"
       },
       {
         "box": [
-          174.87109375,
-          681.71875,
-          856.2578125,
-          1861.6171875
+          84.421875,
+          314.6328125,
+          1037.15625,
+          2254.9140625
         ],
         "natural": [
           1206,
@@ -231,17 +227,17 @@
         "src": "../source-captures/iphone/languages.jpg"
       }
     ],
-    "screenTop": 681.71875
-  },
-  {
-    "file": "final/apple/iphone/07-dark.jpg",
+    "screenTop": 314.6328125,
     "size": [
       1206,
       2622
-    ],
+    ]
+  },
+  {
+    "file": "final/apple/iphone/07-dark.jpg",
     "font": true,
-    "headerBottom": 478.8359375,
-    "headline": "Light or dark.\nStudy your way.",
+    "headerBottom": 206.703125,
+    "headline": "Study in light or dark mode",
     "images": [
       {
         "box": [
@@ -254,27 +250,14 @@
           852,
           1846
         ],
-        "src": "../concepts/portrait-background.png"
+        "src": "../concepts/quiet-background.png"
       },
       {
         "box": [
-          60.296875,
-          865.2578125,
-          518.578125,
-          1127.453125
-        ],
-        "natural": [
-          1206,
-          2622
-        ],
-        "src": "../source-captures/iphone/study.jpg"
-      },
-      {
-        "box": [
-          627.1171875,
-          943.9140625,
-          518.578125,
-          1127.453125
+          84.421875,
+          314.6328125,
+          1037.15625,
+          2254.9140625
         ],
         "natural": [
           1206,
@@ -283,589 +266,17 @@
         "src": "../source-captures/iphone/dark.jpg"
       }
     ],
-    "screenTop": 865.2578125
-  },
-  {
-    "file": "final/google-play/tablet-7/01-study.jpg",
+    "screenTop": 314.6328125,
     "size": [
-      1440,
-      2560
-    ],
-    "font": true,
-    "headerBottom": 548.0234375,
-    "headline": "Study smart.\nSee your progress.",
-    "images": [
-      {
-        "box": [
-          0,
-          0,
-          1440,
-          2560
-        ],
-        "natural": [
-          852,
-          1846
-        ],
-        "src": "../concepts/portrait-background.png"
-      },
-      {
-        "box": [
-          152.00390625,
-          665.59375,
-          1135.9921875,
-          1817.59375
-        ],
-        "natural": [
-          1600,
-          2560
-        ],
-        "src": "../source-captures/android-7/study.jpg"
-      }
-    ],
-    "screenTop": 665.59375
-  },
-  {
-    "file": "final/google-play/tablet-7/02-quiz.jpg",
-    "size": [
-      1440,
-      2560
-    ],
-    "font": true,
-    "headerBottom": 548.0234375,
-    "headline": "Fresh questions.\nFocused practice.",
-    "images": [
-      {
-        "box": [
-          0,
-          0,
-          1440,
-          2560
-        ],
-        "natural": [
-          852,
-          1846
-        ],
-        "src": "../concepts/portrait-background.png"
-      },
-      {
-        "box": [
-          152.00390625,
-          665.59375,
-          1135.9921875,
-          1817.59375
-        ],
-        "natural": [
-          1600,
-          2560
-        ],
-        "src": "../source-captures/android-7/quiz.jpg"
-      }
-    ],
-    "screenTop": 665.59375
-  },
-  {
-    "file": "final/google-play/tablet-7/03-test.jpg",
-    "size": [
-      1440,
-      2560
-    ],
-    "font": true,
-    "headerBottom": 548.0234375,
-    "headline": "Practise the\nmock-test format.",
-    "images": [
-      {
-        "box": [
-          0,
-          0,
-          1440,
-          2560
-        ],
-        "natural": [
-          852,
-          1846
-        ],
-        "src": "../concepts/portrait-background.png"
-      },
-      {
-        "box": [
-          152.00390625,
-          665.59375,
-          1135.9921875,
-          1817.59375
-        ],
-        "natural": [
-          1600,
-          2560
-        ],
-        "src": "../source-captures/android-7/test.jpg"
-      }
-    ],
-    "screenTop": 665.59375
-  },
-  {
-    "file": "final/google-play/tablet-7/04-content.jpg",
-    "size": [
-      1440,
-      2560
-    ],
-    "font": true,
-    "headerBottom": 548.0234375,
-    "headline": "Learn the signs.\nKnow the rules.",
-    "images": [
-      {
-        "box": [
-          0,
-          0,
-          1440,
-          2560
-        ],
-        "natural": [
-          852,
-          1846
-        ],
-        "src": "../concepts/portrait-background.png"
-      },
-      {
-        "box": [
-          152.00390625,
-          665.59375,
-          1135.9921875,
-          1817.59375
-        ],
-        "natural": [
-          1600,
-          2560
-        ],
-        "src": "../source-captures/android-7/content.jpg"
-      }
-    ],
-    "screenTop": 665.59375
-  },
-  {
-    "file": "final/google-play/tablet-7/05-results.jpg",
-    "size": [
-      1440,
-      2560
-    ],
-    "font": true,
-    "headerBottom": 548.0234375,
-    "headline": "See where to\nfocus next.",
-    "images": [
-      {
-        "box": [
-          0,
-          0,
-          1440,
-          2560
-        ],
-        "natural": [
-          852,
-          1846
-        ],
-        "src": "../concepts/portrait-background.png"
-      },
-      {
-        "box": [
-          152.00390625,
-          665.59375,
-          1135.9921875,
-          1817.59375
-        ],
-        "natural": [
-          1600,
-          2560
-        ],
-        "src": "../source-captures/android-7/results.jpg"
-      }
-    ],
-    "screenTop": 665.59375
-  },
-  {
-    "file": "final/google-play/tablet-7/06-languages.jpg",
-    "size": [
-      1440,
-      2560
-    ],
-    "font": true,
-    "headerBottom": 548.0234375,
-    "headline": "Four languages.\nYour choice.",
-    "images": [
-      {
-        "box": [
-          0,
-          0,
-          1440,
-          2560
-        ],
-        "natural": [
-          852,
-          1846
-        ],
-        "src": "../concepts/portrait-background.png"
-      },
-      {
-        "box": [
-          152.00390625,
-          665.59375,
-          1135.9921875,
-          1817.59375
-        ],
-        "natural": [
-          1600,
-          2560
-        ],
-        "src": "../source-captures/android-7/languages.jpg"
-      }
-    ],
-    "screenTop": 665.59375
-  },
-  {
-    "file": "final/google-play/tablet-7/07-dark.jpg",
-    "size": [
-      1440,
-      2560
-    ],
-    "font": true,
-    "headerBottom": 548.0234375,
-    "headline": "Light or dark.\nStudy your way.",
-    "images": [
-      {
-        "box": [
-          0,
-          0,
-          1440,
-          2560
-        ],
-        "natural": [
-          852,
-          1846
-        ],
-        "src": "../concepts/portrait-background.png"
-      },
-      {
-        "box": [
-          72,
-          844.796875,
-          619.1953125,
-          990.7109375
-        ],
-        "natural": [
-          1600,
-          2560
-        ],
-        "src": "../source-captures/android-7/study.jpg"
-      },
-      {
-        "box": [
-          748.796875,
-          921.59375,
-          619.1953125,
-          990.7109375
-        ],
-        "natural": [
-          1600,
-          2560
-        ],
-        "src": "../source-captures/android-7/dark.jpg"
-      }
-    ],
-    "screenTop": 844.796875
-  },
-  {
-    "file": "final/google-play/tablet-10/01-study.jpg",
-    "size": [
-      1800,
-      3200
-    ],
-    "font": true,
-    "headerBottom": 684.78125,
-    "headline": "Study smart.\nSee your progress.",
-    "images": [
-      {
-        "box": [
-          0,
-          0,
-          1800,
-          3200
-        ],
-        "natural": [
-          852,
-          1846
-        ],
-        "src": "../concepts/portrait-background.png"
-      },
-      {
-        "box": [
-          190,
-          832,
-          1420,
-          2272
-        ],
-        "natural": [
-          1920,
-          3072
-        ],
-        "src": "../source-captures/android-10/study.jpg"
-      }
-    ],
-    "screenTop": 832
-  },
-  {
-    "file": "final/google-play/tablet-10/02-quiz.jpg",
-    "size": [
-      1800,
-      3200
-    ],
-    "font": true,
-    "headerBottom": 684.78125,
-    "headline": "Fresh questions.\nFocused practice.",
-    "images": [
-      {
-        "box": [
-          0,
-          0,
-          1800,
-          3200
-        ],
-        "natural": [
-          852,
-          1846
-        ],
-        "src": "../concepts/portrait-background.png"
-      },
-      {
-        "box": [
-          190,
-          832,
-          1420,
-          2272
-        ],
-        "natural": [
-          1920,
-          3072
-        ],
-        "src": "../source-captures/android-10/quiz.jpg"
-      }
-    ],
-    "screenTop": 832
-  },
-  {
-    "file": "final/google-play/tablet-10/03-test.jpg",
-    "size": [
-      1800,
-      3200
-    ],
-    "font": true,
-    "headerBottom": 684.78125,
-    "headline": "Practise the\nmock-test format.",
-    "images": [
-      {
-        "box": [
-          0,
-          0,
-          1800,
-          3200
-        ],
-        "natural": [
-          852,
-          1846
-        ],
-        "src": "../concepts/portrait-background.png"
-      },
-      {
-        "box": [
-          190,
-          832,
-          1420,
-          2272
-        ],
-        "natural": [
-          1920,
-          3072
-        ],
-        "src": "../source-captures/android-10/test.jpg"
-      }
-    ],
-    "screenTop": 832
-  },
-  {
-    "file": "final/google-play/tablet-10/04-content.jpg",
-    "size": [
-      1800,
-      3200
-    ],
-    "font": true,
-    "headerBottom": 684.78125,
-    "headline": "Learn the signs.\nKnow the rules.",
-    "images": [
-      {
-        "box": [
-          0,
-          0,
-          1800,
-          3200
-        ],
-        "natural": [
-          852,
-          1846
-        ],
-        "src": "../concepts/portrait-background.png"
-      },
-      {
-        "box": [
-          190,
-          832,
-          1420,
-          2272
-        ],
-        "natural": [
-          1920,
-          3072
-        ],
-        "src": "../source-captures/android-10/content.jpg"
-      }
-    ],
-    "screenTop": 832
-  },
-  {
-    "file": "final/google-play/tablet-10/05-results.jpg",
-    "size": [
-      1800,
-      3200
-    ],
-    "font": true,
-    "headerBottom": 684.78125,
-    "headline": "See where to\nfocus next.",
-    "images": [
-      {
-        "box": [
-          0,
-          0,
-          1800,
-          3200
-        ],
-        "natural": [
-          852,
-          1846
-        ],
-        "src": "../concepts/portrait-background.png"
-      },
-      {
-        "box": [
-          190,
-          832,
-          1420,
-          2272
-        ],
-        "natural": [
-          1920,
-          3072
-        ],
-        "src": "../source-captures/android-10/results.jpg"
-      }
-    ],
-    "screenTop": 832
-  },
-  {
-    "file": "final/google-play/tablet-10/06-languages.jpg",
-    "size": [
-      1800,
-      3200
-    ],
-    "font": true,
-    "headerBottom": 684.78125,
-    "headline": "Four languages.\nYour choice.",
-    "images": [
-      {
-        "box": [
-          0,
-          0,
-          1800,
-          3200
-        ],
-        "natural": [
-          852,
-          1846
-        ],
-        "src": "../concepts/portrait-background.png"
-      },
-      {
-        "box": [
-          190,
-          832,
-          1420,
-          2272
-        ],
-        "natural": [
-          1920,
-          3072
-        ],
-        "src": "../source-captures/android-10/languages.jpg"
-      }
-    ],
-    "screenTop": 832
-  },
-  {
-    "file": "final/google-play/tablet-10/07-dark.jpg",
-    "size": [
-      1800,
-      3200
-    ],
-    "font": true,
-    "headerBottom": 684.78125,
-    "headline": "Light or dark.\nStudy your way.",
-    "images": [
-      {
-        "box": [
-          0,
-          0,
-          1800,
-          3200
-        ],
-        "natural": [
-          852,
-          1846
-        ],
-        "src": "../concepts/portrait-background.png"
-      },
-      {
-        "box": [
-          90,
-          1056,
-          774,
-          1238.3984375
-        ],
-        "natural": [
-          1920,
-          3072
-        ],
-        "src": "../source-captures/android-10/study.jpg"
-      },
-      {
-        "box": [
-          936,
-          1152,
-          774,
-          1238.3984375
-        ],
-        "natural": [
-          1920,
-          3072
-        ],
-        "src": "../source-captures/android-10/dark.jpg"
-      }
-    ],
-    "screenTop": 1056
+      1206,
+      2622
+    ]
   },
   {
     "file": "final/apple/iphone-faceid-large/01-study.jpg",
-    "size": [
-      1284,
-      2778
-    ],
     "font": true,
-    "headerBottom": 509.484375,
-    "headline": "Study smart.\nSee your progress.",
+    "headerBottom": 219.2109375,
+    "headline": "Track your study progress",
     "images": [
       {
         "box": [
@@ -878,14 +289,14 @@
           852,
           1846
         ],
-        "src": "../concepts/portrait-background.png"
+        "src": "../concepts/quiet-background.png"
       },
       {
         "box": [
-          186.18359375,
-          722.2734375,
-          911.6328125,
-          1972.375
+          89.8828125,
+          333.359375,
+          1104.234375,
+          2389.078125
         ],
         "natural": [
           1284,
@@ -894,17 +305,17 @@
         "src": "../source-captures/iphone-faceid-large/study.jpg"
       }
     ],
-    "screenTop": 722.2734375
-  },
-  {
-    "file": "final/apple/iphone-faceid-large/02-quiz.jpg",
+    "screenTop": 333.359375,
     "size": [
       1284,
       2778
-    ],
+    ]
+  },
+  {
+    "file": "final/apple/iphone-faceid-large/02-quiz.jpg",
     "font": true,
-    "headerBottom": 509.484375,
-    "headline": "Fresh questions.\nFocused practice.",
+    "headerBottom": 219.2109375,
+    "headline": "Practise with fresh quizzes",
     "images": [
       {
         "box": [
@@ -917,14 +328,14 @@
           852,
           1846
         ],
-        "src": "../concepts/portrait-background.png"
+        "src": "../concepts/quiet-background.png"
       },
       {
         "box": [
-          186.18359375,
-          722.2734375,
-          911.6328125,
-          1972.375
+          89.8828125,
+          333.359375,
+          1104.234375,
+          2389.078125
         ],
         "natural": [
           1284,
@@ -933,17 +344,17 @@
         "src": "../source-captures/iphone-faceid-large/quiz.jpg"
       }
     ],
-    "screenTop": 722.2734375
-  },
-  {
-    "file": "final/apple/iphone-faceid-large/03-test.jpg",
+    "screenTop": 333.359375,
     "size": [
       1284,
       2778
-    ],
+    ]
+  },
+  {
+    "file": "final/apple/iphone-faceid-large/03-test.jpg",
     "font": true,
-    "headerBottom": 509.484375,
-    "headline": "Practise the\nmock-test format.",
+    "headerBottom": 262.0234375,
+    "headline": "Build confidence with Premium mock tests",
     "images": [
       {
         "box": [
@@ -956,14 +367,14 @@
           852,
           1846
         ],
-        "src": "../concepts/portrait-background.png"
+        "src": "../concepts/quiet-background.png"
       },
       {
         "box": [
-          186.18359375,
-          722.2734375,
-          911.6328125,
-          1972.375
+          89.8828125,
+          333.359375,
+          1104.234375,
+          2389.078125
         ],
         "natural": [
           1284,
@@ -972,17 +383,17 @@
         "src": "../source-captures/iphone-faceid-large/test.jpg"
       }
     ],
-    "screenTop": 722.2734375
-  },
-  {
-    "file": "final/apple/iphone-faceid-large/04-content.jpg",
+    "screenTop": 333.359375,
     "size": [
       1284,
       2778
-    ],
+    ]
+  },
+  {
+    "file": "final/apple/iphone-faceid-large/04-content.jpg",
     "font": true,
-    "headerBottom": 509.484375,
-    "headline": "Learn the signs.\nKnow the rules.",
+    "headerBottom": 219.2109375,
+    "headline": "Learn road signs and rules",
     "images": [
       {
         "box": [
@@ -995,14 +406,14 @@
           852,
           1846
         ],
-        "src": "../concepts/portrait-background.png"
+        "src": "../concepts/quiet-background.png"
       },
       {
         "box": [
-          186.18359375,
-          722.2734375,
-          911.6328125,
-          1972.375
+          89.8828125,
+          333.359375,
+          1104.234375,
+          2389.078125
         ],
         "natural": [
           1284,
@@ -1011,17 +422,17 @@
         "src": "../source-captures/iphone-faceid-large/content.jpg"
       }
     ],
-    "screenTop": 722.2734375
-  },
-  {
-    "file": "final/apple/iphone-faceid-large/05-results.jpg",
+    "screenTop": 333.359375,
     "size": [
       1284,
       2778
-    ],
+    ]
+  },
+  {
+    "file": "final/apple/iphone-faceid-large/05-results.jpg",
     "font": true,
-    "headerBottom": 509.484375,
-    "headline": "See where to\nfocus next.",
+    "headerBottom": 219.2109375,
+    "headline": "Review your Premium test results",
     "images": [
       {
         "box": [
@@ -1034,14 +445,14 @@
           852,
           1846
         ],
-        "src": "../concepts/portrait-background.png"
+        "src": "../concepts/quiet-background.png"
       },
       {
         "box": [
-          186.18359375,
-          722.2734375,
-          911.6328125,
-          1972.375
+          89.8828125,
+          333.359375,
+          1104.234375,
+          2389.078125
         ],
         "natural": [
           1284,
@@ -1050,17 +461,17 @@
         "src": "../source-captures/iphone-faceid-large/results.jpg"
       }
     ],
-    "screenTop": 722.2734375
-  },
-  {
-    "file": "final/apple/iphone-faceid-large/06-languages.jpg",
+    "screenTop": 333.359375,
     "size": [
       1284,
       2778
-    ],
+    ]
+  },
+  {
+    "file": "final/apple/iphone-faceid-large/06-languages.jpg",
     "font": true,
-    "headerBottom": 509.484375,
-    "headline": "Four languages.\nYour choice.",
+    "headerBottom": 219.2109375,
+    "headline": "Choose from four languages",
     "images": [
       {
         "box": [
@@ -1073,14 +484,14 @@
           852,
           1846
         ],
-        "src": "../concepts/portrait-background.png"
+        "src": "../concepts/quiet-background.png"
       },
       {
         "box": [
-          186.18359375,
-          722.2734375,
-          911.6328125,
-          1972.375
+          89.8828125,
+          333.359375,
+          1104.234375,
+          2389.078125
         ],
         "natural": [
           1284,
@@ -1089,17 +500,17 @@
         "src": "../source-captures/iphone-faceid-large/languages.jpg"
       }
     ],
-    "screenTop": 722.2734375
-  },
-  {
-    "file": "final/apple/iphone-faceid-large/07-dark.jpg",
+    "screenTop": 333.359375,
     "size": [
       1284,
       2778
-    ],
+    ]
+  },
+  {
+    "file": "final/apple/iphone-faceid-large/07-dark.jpg",
     "font": true,
-    "headerBottom": 509.484375,
-    "headline": "Light or dark.\nStudy your way.",
+    "headerBottom": 219.2109375,
+    "headline": "Study in light or dark mode",
     "images": [
       {
         "box": [
@@ -1112,27 +523,14 @@
           852,
           1846
         ],
-        "src": "../concepts/portrait-background.png"
+        "src": "../concepts/quiet-background.png"
       },
       {
         "box": [
-          64.1953125,
-          916.734375,
-          552.1171875,
-          1194.53125
-        ],
-        "natural": [
-          1284,
-          2778
-        ],
-        "src": "../source-captures/iphone-faceid-large/study.jpg"
-      },
-      {
-        "box": [
-          667.6796875,
-          1000.078125,
-          552.1171875,
-          1194.53125
+          89.8828125,
+          333.359375,
+          1104.234375,
+          2389.078125
         ],
         "natural": [
           1284,
@@ -1141,6 +539,1102 @@
         "src": "../source-captures/iphone-faceid-large/dark.jpg"
       }
     ],
-    "screenTop": 916.734375
+    "screenTop": 333.359375,
+    "size": [
+      1284,
+      2778
+    ]
+  },
+  {
+    "file": "final/apple/ipad/01-study.jpg",
+    "font": true,
+    "headerBottom": 243.5703125,
+    "headline": "Track your study progress",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          2064,
+          2752
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          144.48046875,
+          330.234375,
+          1775.0390625,
+          2366.71875
+        ],
+        "natural": [
+          2064,
+          2752
+        ],
+        "src": "../source-captures/ipad/study.jpg"
+      }
+    ],
+    "screenTop": 330.234375,
+    "size": [
+      2064,
+      2752
+    ]
+  },
+  {
+    "file": "final/apple/ipad/02-quiz.jpg",
+    "font": true,
+    "headerBottom": 243.5703125,
+    "headline": "Practise with fresh quizzes",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          2064,
+          2752
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          144.48046875,
+          330.234375,
+          1775.0390625,
+          2366.71875
+        ],
+        "natural": [
+          2064,
+          2752
+        ],
+        "src": "../source-captures/ipad/quiz.jpg"
+      }
+    ],
+    "screenTop": 330.234375,
+    "size": [
+      2064,
+      2752
+    ]
+  },
+  {
+    "file": "final/apple/ipad/03-test.jpg",
+    "font": true,
+    "headerBottom": 312.40625,
+    "headline": "Build confidence with Premium mock tests",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          2064,
+          2752
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          144.48046875,
+          330.234375,
+          1775.0390625,
+          2366.71875
+        ],
+        "natural": [
+          2064,
+          2752
+        ],
+        "src": "../source-captures/ipad/test.jpg"
+      }
+    ],
+    "screenTop": 330.234375,
+    "size": [
+      2064,
+      2752
+    ]
+  },
+  {
+    "file": "final/apple/ipad/04-content.jpg",
+    "font": true,
+    "headerBottom": 243.5703125,
+    "headline": "Learn road signs and rules",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          2064,
+          2752
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          144.48046875,
+          330.234375,
+          1775.0390625,
+          2366.71875
+        ],
+        "natural": [
+          2064,
+          2752
+        ],
+        "src": "../source-captures/ipad/content.jpg"
+      }
+    ],
+    "screenTop": 330.234375,
+    "size": [
+      2064,
+      2752
+    ]
+  },
+  {
+    "file": "final/apple/ipad/05-results.jpg",
+    "font": true,
+    "headerBottom": 243.5703125,
+    "headline": "Review your Premium test results",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          2064,
+          2752
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          144.48046875,
+          330.234375,
+          1775.0390625,
+          2366.71875
+        ],
+        "natural": [
+          2064,
+          2752
+        ],
+        "src": "../source-captures/ipad/results.jpg"
+      }
+    ],
+    "screenTop": 330.234375,
+    "size": [
+      2064,
+      2752
+    ]
+  },
+  {
+    "file": "final/apple/ipad/06-languages.jpg",
+    "font": true,
+    "headerBottom": 243.5703125,
+    "headline": "Choose from four languages",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          2064,
+          2752
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          144.48046875,
+          330.234375,
+          1775.0390625,
+          2366.71875
+        ],
+        "natural": [
+          2064,
+          2752
+        ],
+        "src": "../source-captures/ipad/languages.jpg"
+      }
+    ],
+    "screenTop": 330.234375,
+    "size": [
+      2064,
+      2752
+    ]
+  },
+  {
+    "file": "final/apple/ipad/07-dark.jpg",
+    "font": true,
+    "headerBottom": 243.5703125,
+    "headline": "Study in light or dark mode",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          2064,
+          2752
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          144.48046875,
+          330.234375,
+          1775.0390625,
+          2366.71875
+        ],
+        "natural": [
+          2064,
+          2752
+        ],
+        "src": "../source-captures/ipad/dark.jpg"
+      }
+    ],
+    "screenTop": 330.234375,
+    "size": [
+      2064,
+      2752
+    ]
+  },
+  {
+    "file": "final/google-play/phone/01-study.jpg",
+    "font": true,
+    "headerBottom": 157.9296875,
+    "headline": "Track your study progress",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1080,
+          1920
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          75.6015625,
+          230.3984375,
+          928.796875,
+          1651.1953125
+        ],
+        "natural": [
+          1080,
+          1920
+        ],
+        "src": "../source-captures/android-phone/study.jpg"
+      }
+    ],
+    "screenTop": 230.3984375,
+    "size": [
+      1080,
+      1920
+    ]
+  },
+  {
+    "file": "final/google-play/phone/02-quiz.jpg",
+    "font": true,
+    "headerBottom": 157.9296875,
+    "headline": "Practise with fresh quizzes",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1080,
+          1920
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          75.6015625,
+          230.3984375,
+          928.796875,
+          1651.1953125
+        ],
+        "natural": [
+          1080,
+          1920
+        ],
+        "src": "../source-captures/android-phone/quiz.jpg"
+      }
+    ],
+    "screenTop": 230.3984375,
+    "size": [
+      1080,
+      1920
+    ]
+  },
+  {
+    "file": "final/google-play/phone/03-test.jpg",
+    "font": true,
+    "headerBottom": 193.9453125,
+    "headline": "Build confidence with Premium mock tests",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1080,
+          1920
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          75.6015625,
+          230.3984375,
+          928.796875,
+          1651.1953125
+        ],
+        "natural": [
+          1080,
+          1920
+        ],
+        "src": "../source-captures/android-phone/test.jpg"
+      }
+    ],
+    "screenTop": 230.3984375,
+    "size": [
+      1080,
+      1920
+    ]
+  },
+  {
+    "file": "final/google-play/phone/04-content.jpg",
+    "font": true,
+    "headerBottom": 157.9296875,
+    "headline": "Learn road signs and rules",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1080,
+          1920
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          75.6015625,
+          230.3984375,
+          928.796875,
+          1651.1953125
+        ],
+        "natural": [
+          1080,
+          1920
+        ],
+        "src": "../source-captures/android-phone/content.jpg"
+      }
+    ],
+    "screenTop": 230.3984375,
+    "size": [
+      1080,
+      1920
+    ]
+  },
+  {
+    "file": "final/google-play/phone/05-results.jpg",
+    "font": true,
+    "headerBottom": 157.9296875,
+    "headline": "Review your Premium test results",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1080,
+          1920
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          75.6015625,
+          230.3984375,
+          928.796875,
+          1651.1953125
+        ],
+        "natural": [
+          1080,
+          1920
+        ],
+        "src": "../source-captures/android-phone/results.jpg"
+      }
+    ],
+    "screenTop": 230.3984375,
+    "size": [
+      1080,
+      1920
+    ]
+  },
+  {
+    "file": "final/google-play/phone/06-languages.jpg",
+    "font": true,
+    "headerBottom": 157.9296875,
+    "headline": "Choose from four languages",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1080,
+          1920
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          75.6015625,
+          230.3984375,
+          928.796875,
+          1651.1953125
+        ],
+        "natural": [
+          1080,
+          1920
+        ],
+        "src": "../source-captures/android-phone/languages.jpg"
+      }
+    ],
+    "screenTop": 230.3984375,
+    "size": [
+      1080,
+      1920
+    ]
+  },
+  {
+    "file": "final/google-play/phone/07-dark.jpg",
+    "font": true,
+    "headerBottom": 157.9296875,
+    "headline": "Study in light or dark mode",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1080,
+          1920
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          75.6015625,
+          230.3984375,
+          928.796875,
+          1651.1953125
+        ],
+        "natural": [
+          1080,
+          1920
+        ],
+        "src": "../source-captures/android-phone/dark.jpg"
+      }
+    ],
+    "screenTop": 230.3984375,
+    "size": [
+      1080,
+      1920
+    ]
+  },
+  {
+    "file": "final/google-play/tablet-7/01-study.jpg",
+    "font": true,
+    "headerBottom": 210.578125,
+    "headline": "Track your study progress",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1440,
+          2560
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          43.203125,
+          325.1171875,
+          1353.59375,
+          2165.7578125
+        ],
+        "natural": [
+          1600,
+          2560
+        ],
+        "src": "../source-captures/android-7/study.jpg"
+      }
+    ],
+    "screenTop": 325.1171875,
+    "size": [
+      1440,
+      2560
+    ]
+  },
+  {
+    "file": "final/google-play/tablet-7/02-quiz.jpg",
+    "font": true,
+    "headerBottom": 210.578125,
+    "headline": "Practise with fresh quizzes",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1440,
+          2560
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          43.203125,
+          325.1171875,
+          1353.59375,
+          2165.7578125
+        ],
+        "natural": [
+          1600,
+          2560
+        ],
+        "src": "../source-captures/android-7/quiz.jpg"
+      }
+    ],
+    "screenTop": 325.1171875,
+    "size": [
+      1440,
+      2560
+    ]
+  },
+  {
+    "file": "final/google-play/tablet-7/03-test.jpg",
+    "font": true,
+    "headerBottom": 258.6015625,
+    "headline": "Build confidence with Premium mock tests",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1440,
+          2560
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          43.203125,
+          325.1171875,
+          1353.59375,
+          2165.7578125
+        ],
+        "natural": [
+          1600,
+          2560
+        ],
+        "src": "../source-captures/android-7/test.jpg"
+      }
+    ],
+    "screenTop": 325.1171875,
+    "size": [
+      1440,
+      2560
+    ]
+  },
+  {
+    "file": "final/google-play/tablet-7/04-content.jpg",
+    "font": true,
+    "headerBottom": 210.578125,
+    "headline": "Learn road signs and rules",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1440,
+          2560
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          43.203125,
+          325.1171875,
+          1353.59375,
+          2165.7578125
+        ],
+        "natural": [
+          1600,
+          2560
+        ],
+        "src": "../source-captures/android-7/content.jpg"
+      }
+    ],
+    "screenTop": 325.1171875,
+    "size": [
+      1440,
+      2560
+    ]
+  },
+  {
+    "file": "final/google-play/tablet-7/05-results.jpg",
+    "font": true,
+    "headerBottom": 210.578125,
+    "headline": "Review your Premium test results",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1440,
+          2560
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          43.203125,
+          325.1171875,
+          1353.59375,
+          2165.7578125
+        ],
+        "natural": [
+          1600,
+          2560
+        ],
+        "src": "../source-captures/android-7/results.jpg"
+      }
+    ],
+    "screenTop": 325.1171875,
+    "size": [
+      1440,
+      2560
+    ]
+  },
+  {
+    "file": "final/google-play/tablet-7/06-languages.jpg",
+    "font": true,
+    "headerBottom": 210.578125,
+    "headline": "Choose from four languages",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1440,
+          2560
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          43.203125,
+          325.1171875,
+          1353.59375,
+          2165.7578125
+        ],
+        "natural": [
+          1600,
+          2560
+        ],
+        "src": "../source-captures/android-7/languages.jpg"
+      }
+    ],
+    "screenTop": 325.1171875,
+    "size": [
+      1440,
+      2560
+    ]
+  },
+  {
+    "file": "final/google-play/tablet-7/07-dark.jpg",
+    "font": true,
+    "headerBottom": 210.578125,
+    "headline": "Study in light or dark mode",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1440,
+          2560
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          43.203125,
+          325.1171875,
+          1353.59375,
+          2165.7578125
+        ],
+        "natural": [
+          1600,
+          2560
+        ],
+        "src": "../source-captures/android-7/dark.jpg"
+      }
+    ],
+    "screenTop": 325.1171875,
+    "size": [
+      1440,
+      2560
+    ]
+  },
+  {
+    "file": "final/google-play/tablet-10/01-study.jpg",
+    "font": true,
+    "headerBottom": 263.21875,
+    "headline": "Track your study progress",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1800,
+          3200
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          54,
+          406.3984375,
+          1692,
+          2707.1953125
+        ],
+        "natural": [
+          1920,
+          3072
+        ],
+        "src": "../source-captures/android-10/study.jpg"
+      }
+    ],
+    "screenTop": 406.3984375,
+    "size": [
+      1800,
+      3200
+    ]
+  },
+  {
+    "file": "final/google-play/tablet-10/02-quiz.jpg",
+    "font": true,
+    "headerBottom": 263.21875,
+    "headline": "Practise with fresh quizzes",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1800,
+          3200
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          54,
+          406.3984375,
+          1692,
+          2707.1953125
+        ],
+        "natural": [
+          1920,
+          3072
+        ],
+        "src": "../source-captures/android-10/quiz.jpg"
+      }
+    ],
+    "screenTop": 406.3984375,
+    "size": [
+      1800,
+      3200
+    ]
+  },
+  {
+    "file": "final/google-play/tablet-10/03-test.jpg",
+    "font": true,
+    "headerBottom": 323.25,
+    "headline": "Build confidence with Premium mock tests",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1800,
+          3200
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          54,
+          406.3984375,
+          1692,
+          2707.1953125
+        ],
+        "natural": [
+          1920,
+          3072
+        ],
+        "src": "../source-captures/android-10/test.jpg"
+      }
+    ],
+    "screenTop": 406.3984375,
+    "size": [
+      1800,
+      3200
+    ]
+  },
+  {
+    "file": "final/google-play/tablet-10/04-content.jpg",
+    "font": true,
+    "headerBottom": 263.21875,
+    "headline": "Learn road signs and rules",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1800,
+          3200
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          54,
+          406.3984375,
+          1692,
+          2707.1953125
+        ],
+        "natural": [
+          1920,
+          3072
+        ],
+        "src": "../source-captures/android-10/content.jpg"
+      }
+    ],
+    "screenTop": 406.3984375,
+    "size": [
+      1800,
+      3200
+    ]
+  },
+  {
+    "file": "final/google-play/tablet-10/05-results.jpg",
+    "font": true,
+    "headerBottom": 263.21875,
+    "headline": "Review your Premium test results",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1800,
+          3200
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          54,
+          406.3984375,
+          1692,
+          2707.1953125
+        ],
+        "natural": [
+          1920,
+          3072
+        ],
+        "src": "../source-captures/android-10/results.jpg"
+      }
+    ],
+    "screenTop": 406.3984375,
+    "size": [
+      1800,
+      3200
+    ]
+  },
+  {
+    "file": "final/google-play/tablet-10/06-languages.jpg",
+    "font": true,
+    "headerBottom": 263.21875,
+    "headline": "Choose from four languages",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1800,
+          3200
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          54,
+          406.3984375,
+          1692,
+          2707.1953125
+        ],
+        "natural": [
+          1920,
+          3072
+        ],
+        "src": "../source-captures/android-10/languages.jpg"
+      }
+    ],
+    "screenTop": 406.3984375,
+    "size": [
+      1800,
+      3200
+    ]
+  },
+  {
+    "file": "final/google-play/tablet-10/07-dark.jpg",
+    "font": true,
+    "headerBottom": 263.21875,
+    "headline": "Study in light or dark mode",
+    "images": [
+      {
+        "box": [
+          0,
+          0,
+          1800,
+          3200
+        ],
+        "natural": [
+          852,
+          1846
+        ],
+        "src": "../concepts/quiet-background.png"
+      },
+      {
+        "box": [
+          54,
+          406.3984375,
+          1692,
+          2707.1953125
+        ],
+        "natural": [
+          1920,
+          3072
+        ],
+        "src": "../source-captures/android-10/dark.jpg"
+      }
+    ],
+    "screenTop": 406.3984375,
+    "size": [
+      1800,
+      3200
+    ]
   }
 ]

@@ -1,12 +1,12 @@
 # K53 Study Guide — storefront review
 
-Prepared 8 October 2026. **Approved by the user on 8 October 2026. Nothing uploaded, saved to either store, or published.**
+Updated 14 October 2026 for release 1.41 (42). Screenshot layout revised at the user’s request; store upload status is recorded in [the release update](SCREENSHOT-REFRESH.md).
 
 The package contains **42 screenshots across six size families, a Google Play feature graphic, an Apple header and an optional Apple search-results graphic**. All landscape graphics retain the smiling lady, following your feedback. English (UK) copy and captions are the first release package; in-app language choice is shown explicitly.
 
 ## Positioning and changes
 
-**Prepare for your learner’s licence with confidence.** The first three images tell the core story: study, practise, then try a structured mock test. The following images show useful content, section results, four languages and light/dark mode. The blue/indigo/teal road-and-sunrise artwork connects the storefronts to the app’s palette.
+**Prepare for your learner’s licence with confidence.** The first three images tell the core story: study, practise, then try a structured mock test. The following images show useful content, section results, four languages and light/dark mode. The landscape artwork retains the road-and-sunrise concept. Screenshots now use a subdued indigo/teal background, a single title and a much larger authentic app capture.
 
 The refreshed copy puts the learner’s task first, makes progress and randomized practice concrete, and clearly separates free study/quizzes from Premium mock tests. The title adds a readable search-intent phrase while retaining the existing brand. Apple’s keyword field avoids repeating words already present in its title and subtitle. These are relevance choices, not a promise of higher ranking. No measured conversion uplift is claimed.
 
@@ -32,53 +32,53 @@ The search creative is included for review; using it is a separate choice from r
 
 ## Screenshot order and previews
 
-Each row is a complete export family. Click an image/file for full resolution. Orders 3 and 5 visibly identify Premium. Order 6 shows the actual welcome language selector. Order 7 pairs separate authentic light and dark screens; it does not invent a split-theme app interface.
+Each row is a complete export family. Orders 3 and 5 identify Premium in the single title. Order 6 shows the actual welcome language selector. Order 7 uses one large, authentic dark-mode screen; the other images show light mode.
 
-| Order | Headline | Supporting line |
-| --- | --- | --- |
-| 1 | Study smart. See your progress. | Road signs, rules and vehicle controls. |
-| 2 | Fresh questions. Focused practice. | Randomized quizzes on the topics you choose. |
-| 3 | Practise the mock-test format. | 64 questions. Three sections. One focused session. **Premium.** |
-| 4 | Learn the signs. Know the rules. | Clear study material, one topic at a time. |
-| 5 | See where to focus next. | Review your mock-test results by section. **Premium.** |
-| 6 | Four languages. Your choice. | English · Afrikaans · isiZulu · isiXhosa |
-| 7 | Light or dark. Study your way. | Choose the view that feels right for you. |
+| Order | Title |
+| --- | --- |
+| 1 | Track your study progress |
+| 2 | Practise with fresh quizzes |
+| 3 | Build confidence with Premium mock tests |
+| 4 | Learn road signs and rules |
+| 5 | Review your Premium test results |
+| 6 | Choose from four languages |
+| 7 | Study in light or dark mode |
 
 ### iPhone — Dynamic Island medium — 1206 × 2622
 
 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 | --- | --- | --- | --- | --- | --- | --- |
-| [![Study smart. See your progress.](final/apple/iphone/01-study.jpg)](final/apple/iphone/01-study.jpg) | [![Fresh questions. Focused practice.](final/apple/iphone/02-quiz.jpg)](final/apple/iphone/02-quiz.jpg) | [![Practise the mock-test format.](final/apple/iphone/03-test.jpg)](final/apple/iphone/03-test.jpg) | [![Learn the signs. Know the rules.](final/apple/iphone/04-content.jpg)](final/apple/iphone/04-content.jpg) | [![See where to focus next.](final/apple/iphone/05-results.jpg)](final/apple/iphone/05-results.jpg) | [![Four languages. Your choice.](final/apple/iphone/06-languages.jpg)](final/apple/iphone/06-languages.jpg) | [![Light or dark. Study your way.](final/apple/iphone/07-dark.jpg)](final/apple/iphone/07-dark.jpg) |
+| [![Track your study progress](final/apple/iphone/01-study.jpg)](final/apple/iphone/01-study.jpg) | [![Practise with fresh quizzes](final/apple/iphone/02-quiz.jpg)](final/apple/iphone/02-quiz.jpg) | [![Build confidence with Premium mock tests](final/apple/iphone/03-test.jpg)](final/apple/iphone/03-test.jpg) | [![Learn road signs and rules](final/apple/iphone/04-content.jpg)](final/apple/iphone/04-content.jpg) | [![Review your Premium test results](final/apple/iphone/05-results.jpg)](final/apple/iphone/05-results.jpg) | [![Choose from four languages](final/apple/iphone/06-languages.jpg)](final/apple/iphone/06-languages.jpg) | [![Study in light or dark mode](final/apple/iphone/07-dark.jpg)](final/apple/iphone/07-dark.jpg) |
 
 ### iPhone — Face ID large override — 1284 × 2778
 
 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 | --- | --- | --- | --- | --- | --- | --- |
-| [![Study smart. See your progress.](final/apple/iphone-faceid-large/01-study.jpg)](final/apple/iphone-faceid-large/01-study.jpg) | [![Fresh questions. Focused practice.](final/apple/iphone-faceid-large/02-quiz.jpg)](final/apple/iphone-faceid-large/02-quiz.jpg) | [![Practise the mock-test format.](final/apple/iphone-faceid-large/03-test.jpg)](final/apple/iphone-faceid-large/03-test.jpg) | [![Learn the signs. Know the rules.](final/apple/iphone-faceid-large/04-content.jpg)](final/apple/iphone-faceid-large/04-content.jpg) | [![See where to focus next.](final/apple/iphone-faceid-large/05-results.jpg)](final/apple/iphone-faceid-large/05-results.jpg) | [![Four languages. Your choice.](final/apple/iphone-faceid-large/06-languages.jpg)](final/apple/iphone-faceid-large/06-languages.jpg) | [![Light or dark. Study your way.](final/apple/iphone-faceid-large/07-dark.jpg)](final/apple/iphone-faceid-large/07-dark.jpg) |
+| [![Track your study progress](final/apple/iphone-faceid-large/01-study.jpg)](final/apple/iphone-faceid-large/01-study.jpg) | [![Practise with fresh quizzes](final/apple/iphone-faceid-large/02-quiz.jpg)](final/apple/iphone-faceid-large/02-quiz.jpg) | [![Build confidence with Premium mock tests](final/apple/iphone-faceid-large/03-test.jpg)](final/apple/iphone-faceid-large/03-test.jpg) | [![Learn road signs and rules](final/apple/iphone-faceid-large/04-content.jpg)](final/apple/iphone-faceid-large/04-content.jpg) | [![Review your Premium test results](final/apple/iphone-faceid-large/05-results.jpg)](final/apple/iphone-faceid-large/05-results.jpg) | [![Choose from four languages](final/apple/iphone-faceid-large/06-languages.jpg)](final/apple/iphone-faceid-large/06-languages.jpg) | [![Study in light or dark mode](final/apple/iphone-faceid-large/07-dark.jpg)](final/apple/iphone-faceid-large/07-dark.jpg) |
 
 ### iPad 13-inch — 2064 × 2752
 
 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 | --- | --- | --- | --- | --- | --- | --- |
-| [![Study smart. See your progress.](final/apple/ipad/01-study.jpg)](final/apple/ipad/01-study.jpg) | [![Fresh questions. Focused practice.](final/apple/ipad/02-quiz.jpg)](final/apple/ipad/02-quiz.jpg) | [![Practise the mock-test format.](final/apple/ipad/03-test.jpg)](final/apple/ipad/03-test.jpg) | [![Learn the signs. Know the rules.](final/apple/ipad/04-content.jpg)](final/apple/ipad/04-content.jpg) | [![See where to focus next.](final/apple/ipad/05-results.jpg)](final/apple/ipad/05-results.jpg) | [![Four languages. Your choice.](final/apple/ipad/06-languages.jpg)](final/apple/ipad/06-languages.jpg) | [![Light or dark. Study your way.](final/apple/ipad/07-dark.jpg)](final/apple/ipad/07-dark.jpg) |
+| [![Track your study progress](final/apple/ipad/01-study.jpg)](final/apple/ipad/01-study.jpg) | [![Practise with fresh quizzes](final/apple/ipad/02-quiz.jpg)](final/apple/ipad/02-quiz.jpg) | [![Build confidence with Premium mock tests](final/apple/ipad/03-test.jpg)](final/apple/ipad/03-test.jpg) | [![Learn road signs and rules](final/apple/ipad/04-content.jpg)](final/apple/ipad/04-content.jpg) | [![Review your Premium test results](final/apple/ipad/05-results.jpg)](final/apple/ipad/05-results.jpg) | [![Choose from four languages](final/apple/ipad/06-languages.jpg)](final/apple/ipad/06-languages.jpg) | [![Study in light or dark mode](final/apple/ipad/07-dark.jpg)](final/apple/ipad/07-dark.jpg) |
 
 ### Android phone — 1080 × 1920
 
 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 | --- | --- | --- | --- | --- | --- | --- |
-| [![Study smart. See your progress.](final/google-play/phone/01-study.jpg)](final/google-play/phone/01-study.jpg) | [![Fresh questions. Focused practice.](final/google-play/phone/02-quiz.jpg)](final/google-play/phone/02-quiz.jpg) | [![Practise the mock-test format.](final/google-play/phone/03-test.jpg)](final/google-play/phone/03-test.jpg) | [![Learn the signs. Know the rules.](final/google-play/phone/04-content.jpg)](final/google-play/phone/04-content.jpg) | [![See where to focus next.](final/google-play/phone/05-results.jpg)](final/google-play/phone/05-results.jpg) | [![Four languages. Your choice.](final/google-play/phone/06-languages.jpg)](final/google-play/phone/06-languages.jpg) | [![Light or dark. Study your way.](final/google-play/phone/07-dark.jpg)](final/google-play/phone/07-dark.jpg) |
+| [![Track your study progress](final/google-play/phone/01-study.jpg)](final/google-play/phone/01-study.jpg) | [![Practise with fresh quizzes](final/google-play/phone/02-quiz.jpg)](final/google-play/phone/02-quiz.jpg) | [![Build confidence with Premium mock tests](final/google-play/phone/03-test.jpg)](final/google-play/phone/03-test.jpg) | [![Learn road signs and rules](final/google-play/phone/04-content.jpg)](final/google-play/phone/04-content.jpg) | [![Review your Premium test results](final/google-play/phone/05-results.jpg)](final/google-play/phone/05-results.jpg) | [![Choose from four languages](final/google-play/phone/06-languages.jpg)](final/google-play/phone/06-languages.jpg) | [![Study in light or dark mode](final/google-play/phone/07-dark.jpg)](final/google-play/phone/07-dark.jpg) |
 
 ### Android 7-inch tablet — 1440 × 2560
 
 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 | --- | --- | --- | --- | --- | --- | --- |
-| [![Study smart. See your progress.](final/google-play/tablet-7/01-study.jpg)](final/google-play/tablet-7/01-study.jpg) | [![Fresh questions. Focused practice.](final/google-play/tablet-7/02-quiz.jpg)](final/google-play/tablet-7/02-quiz.jpg) | [![Practise the mock-test format.](final/google-play/tablet-7/03-test.jpg)](final/google-play/tablet-7/03-test.jpg) | [![Learn the signs. Know the rules.](final/google-play/tablet-7/04-content.jpg)](final/google-play/tablet-7/04-content.jpg) | [![See where to focus next.](final/google-play/tablet-7/05-results.jpg)](final/google-play/tablet-7/05-results.jpg) | [![Four languages. Your choice.](final/google-play/tablet-7/06-languages.jpg)](final/google-play/tablet-7/06-languages.jpg) | [![Light or dark. Study your way.](final/google-play/tablet-7/07-dark.jpg)](final/google-play/tablet-7/07-dark.jpg) |
+| [![Track your study progress](final/google-play/tablet-7/01-study.jpg)](final/google-play/tablet-7/01-study.jpg) | [![Practise with fresh quizzes](final/google-play/tablet-7/02-quiz.jpg)](final/google-play/tablet-7/02-quiz.jpg) | [![Build confidence with Premium mock tests](final/google-play/tablet-7/03-test.jpg)](final/google-play/tablet-7/03-test.jpg) | [![Learn road signs and rules](final/google-play/tablet-7/04-content.jpg)](final/google-play/tablet-7/04-content.jpg) | [![Review your Premium test results](final/google-play/tablet-7/05-results.jpg)](final/google-play/tablet-7/05-results.jpg) | [![Choose from four languages](final/google-play/tablet-7/06-languages.jpg)](final/google-play/tablet-7/06-languages.jpg) | [![Study in light or dark mode](final/google-play/tablet-7/07-dark.jpg)](final/google-play/tablet-7/07-dark.jpg) |
 
 ### Android 10-inch tablet — 1800 × 3200
 
 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
 | --- | --- | --- | --- | --- | --- | --- |
-| [![Study smart. See your progress.](final/google-play/tablet-10/01-study.jpg)](final/google-play/tablet-10/01-study.jpg) | [![Fresh questions. Focused practice.](final/google-play/tablet-10/02-quiz.jpg)](final/google-play/tablet-10/02-quiz.jpg) | [![Practise the mock-test format.](final/google-play/tablet-10/03-test.jpg)](final/google-play/tablet-10/03-test.jpg) | [![Learn the signs. Know the rules.](final/google-play/tablet-10/04-content.jpg)](final/google-play/tablet-10/04-content.jpg) | [![See where to focus next.](final/google-play/tablet-10/05-results.jpg)](final/google-play/tablet-10/05-results.jpg) | [![Four languages. Your choice.](final/google-play/tablet-10/06-languages.jpg)](final/google-play/tablet-10/06-languages.jpg) | [![Light or dark. Study your way.](final/google-play/tablet-10/07-dark.jpg)](final/google-play/tablet-10/07-dark.jpg) |
+| [![Track your study progress](final/google-play/tablet-10/01-study.jpg)](final/google-play/tablet-10/01-study.jpg) | [![Practise with fresh quizzes](final/google-play/tablet-10/02-quiz.jpg)](final/google-play/tablet-10/02-quiz.jpg) | [![Build confidence with Premium mock tests](final/google-play/tablet-10/03-test.jpg)](final/google-play/tablet-10/03-test.jpg) | [![Learn road signs and rules](final/google-play/tablet-10/04-content.jpg)](final/google-play/tablet-10/04-content.jpg) | [![Review your Premium test results](final/google-play/tablet-10/05-results.jpg)](final/google-play/tablet-10/05-results.jpg) | [![Choose from four languages](final/google-play/tablet-10/06-languages.jpg)](final/google-play/tablet-10/06-languages.jpg) | [![Study in light or dark mode](final/google-play/tablet-10/07-dark.jpg)](final/google-play/tablet-10/07-dark.jpg) |
 
 ## Proposed store copy
 
@@ -258,7 +258,7 @@ The app’s compact phone layout naturally scrolls some topics on short screens;
 - [Rendered panel geometry](qa/render-manifest.json) and [production tools](tooling/README.md).
 - `source-captures/` preserves the app originals; `concepts/` holds generated masters and rejected concepts; **only `final/` contains upload candidates**.
 
-The user approved all copy, screenshot order and all three landscape graphics, including the Apple search creative. The package is committed with the release preparation. Release notes additionally mention the subsequently requested result-navigation fix. Storefront updates and publication remain pending the rebuilt release and the user’s go-ahead; no console changes have been made.
+The original landscape graphics and listing copy remain unchanged. The user requested replacement of all screenshot creatives on 14 October 2026 for release 1.41 (42). See [the screenshot refresh](SCREENSHOT-REFRESH.md) for current console status and release notes; asset upload does not itself publish a release.
 
 ## Requirement references
 

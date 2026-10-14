@@ -18,7 +18,9 @@ assert len(rows)==45,len(rows)
 for key in EXPECTED:
  if not key.endswith('.jpg'):assert len(list((ROOT/'final'/key).glob('*.jpg')))==7,key
 manifest=json.loads((ROOT/'qa/render-manifest.json').read_text())
+assert len(manifest)==42,len(manifest)
 for row in manifest:
+ assert len(row['images'])==2,(row['file'],'expected one background and one authentic capture')
  assert row['font'] and row['headerBottom']<row['screenTop'],row['file']
  for img in row['images'][1:]:
   x,y,w,h=img['box'];nw,nh=img['natural'];W,H=row['size']
@@ -28,6 +30,6 @@ copies=json.loads((ROOT/'qa/copy-validation.json').read_text())
 for c in copies:
  value=(ROOT/'copy'/c['store']/(c['field']+'.txt')).read_text()
  assert len(value)==c['characters'] and len(value)<=c['limit'],c
-(ROOT/'qa/asset-validation.json').write_text(json.dumps({'date':'2026-10-08','status':'PASS','total':len(rows),'screenshots':42,'landscapes':3,'files':rows},indent=2)+'\n')
+(ROOT/'qa/asset-validation.json').write_text(json.dumps({'date':'2026-10-14','status':'PASS','total':len(rows),'screenshots':42,'landscapes':3,'files':rows},indent=2)+'\n')
 print(f'PASS: {len(rows)} exact-size RGB JPEG assets; 42 undistorted screenshot panels; {len(copies)} copy fields within limits.')
 print(f'Final assets: {sum(x["bytes"] for x in rows)/1000000:.1f} MB; largest: {max(x["bytes"] for x in rows)/1000000:.2f} MB.')
