@@ -10,9 +10,11 @@ Validation: 42 screenshot exports and three existing landscape graphics pass exa
 
 ## Store status
 
-- Apple: 1.41 draft created. All 21 screenshots uploaded: Dynamic Island medium, Face ID large override and iPad 13-inch, seven ordered images each. New purchase-recovery release notes saved. Prepare for Submission; build attachment and App Review submission pending.
-- Google Play: all 21 screenshots uploaded and ordered across phone, 7-inch tablet and 10-inch tablet. Listing saved; changes ready to send for review alongside the new Android release.
-- Azure: run 1820 builds native 1.41 (42) from main commit 5ddbaab; screenshot assets do not require a native rebuild.
+- Apple: 1.41 draft created. All 21 screenshots uploaded: Dynamic Island medium, Face ID large override and iPad 13-inch, seven ordered images each. New purchase-recovery release notes saved. Build 42 attached and submitted on 14 October 2026; status **Waiting for Review**. Existing manual release setting retained.
+- Google Play: all 21 screenshots uploaded and ordered across phone, 7-inch tablet and 10-inch tablet. Submitted with production release 1.41 (42) on 14 October 2026. Publishing overview shows **Changes in review**, with automated quick checks still running at submission. Managed publishing remains off: approval will publish the release to 100% of the existing target countries. No supported devices were lost.
+- Azure: run 1820 succeeded in 38m 38s, building native 1.41 (42) from main commit 5ddbaab and uploading iOS to App Store Connect. Downloaded Android APK package/version verified; v2 and v3 signatures passed. Screenshot assets are on main at ddbda81 and do not require a native rebuild.
+
+Google Play returned three non-blocking warnings: APK rather than App Bundle, no deobfuscation mapping, and no native debug symbols. These affect optimisation/diagnostics, not submission eligibility. No new real-device or real-store purchase smoke was performed during this submission. Store submission is not approval or public availability.
 
 ## Release notes for 1.41
 
