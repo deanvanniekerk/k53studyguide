@@ -25018,8 +25018,8 @@
       "promptVersion": "k53-v1"
     },
     "premiumPriceLoading": {
-      "text": "Ixabiso alifumaneki",
-      "sourceHash": "6a9e657bba78dd439a0e1f0e291bb9d67eb56ebda13cc9b29a90c9d64d4fdb6d",
+      "text": "Iqhagamshela kwivenkile…",
+      "sourceHash": "2d655ab7d05c988c4e3563b9070203e78b99c8dc0b96a6b69cc893cd26c66635",
       "generatedHash": "8e1563112e671db83bd9c5685d4430baab8e76e36bc941f1916f97c80c2e0377",
       "model": "gpt-6.1-sol",
       "reasoningEffort": "medium",
@@ -25154,8 +25154,8 @@
       "promptVersion": "k53-v1"
     },
     "premiumUnavailable": {
-      "text": "Awukwazi ukuthenga okwangoku. Zama kwakhona kamva, okanye ubuyisele into osele uyithengile.",
-      "sourceHash": "c4515f49126a88f0649a78d14dfdecc145c4a87b03cb45e6f563b97bdfbdb7f8",
+      "text": "Asikwazanga ukulayisha ivenkile. Jonga uqhagamshelo lwakho uze uzame kwakhona. Ungaqhubeka ufunda simahla.",
+      "sourceHash": "a3ec382e046138d56dd0b5054ab6fb128f23fef96a69e25a2cedf080e3a4c74e",
       "generatedHash": "31d2fe0b6319c6541d00af08a1fdabc7fa680aa2c4b81a750526c6f96934cecc",
       "model": "gpt-6.1-sol",
       "reasoningEffort": "medium",

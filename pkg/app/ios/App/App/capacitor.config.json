@@ -20,6 +20,7 @@
 		"AppPlugin",
 		"CAPBrowserPlugin",
 		"DevicePlugin",
+		"CAPNetworkPlugin",
 		"PreferencesPlugin",
 		"AppReviewPlugin",
 		"PurchasesPlugin"

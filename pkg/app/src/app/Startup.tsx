@@ -5,6 +5,7 @@ import { PurchaseContext } from "@/context";
 import { analytics } from "@/services/analytics";
 import { ownedSelector } from "@/state/purchase";
 import { displayModeSelector, languageSelector, themeSelector } from "@/state/settings";
+import { usePurchaseRecovery } from "./hooks/usePurchaseRecovery";
 import Router from "./Router";
 
 const Startup: React.FC = () => {
@@ -13,6 +14,7 @@ const Startup: React.FC = () => {
   const theme = useSelector(themeSelector);
   const language = useSelector(languageSelector);
   const hasFullAccess = useSelector(ownedSelector);
+  usePurchaseRecovery(purchaseService);
 
   useLayoutEffect(() => {
     // Measure Study in Comfortable before saving a default for this device.

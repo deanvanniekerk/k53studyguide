@@ -25018,8 +25018,8 @@
       "promptVersion": "k53-v1"
     },
     "premiumPriceLoading": {
-      "text": "Intengo ayitholakali",
-      "sourceHash": "6a9e657bba78dd439a0e1f0e291bb9d67eb56ebda13cc9b29a90c9d64d4fdb6d",
+      "text": "Ixhuma esitolo…",
+      "sourceHash": "2d655ab7d05c988c4e3563b9070203e78b99c8dc0b96a6b69cc893cd26c66635",
       "generatedHash": "8e6d5a4f69cb841ddcc43f915b2ce38d0d1dc74fc94bb15629db880452ab942d",
       "model": "gpt-6.1-sol",
       "reasoningEffort": "medium",
@@ -25154,8 +25154,8 @@
       "promptVersion": "k53-v1"
     },
     "premiumUnavailable": {
-      "text": "Ukuthenga akutholakali okwamanje. Zama futhi ngokuhamba kwesikhathi, noma ubuyisele ukuthenga osuvele ukwenzile.",
-      "sourceHash": "c4515f49126a88f0649a78d14dfdecc145c4a87b03cb45e6f563b97bdfbdb7f8",
+      "text": "Asikwazanga ukulayisha isitolo. Hlola uxhumano lwakho bese uzama futhi. Ungaqhubeka nokufunda mahhala.",
+      "sourceHash": "a3ec382e046138d56dd0b5054ab6fb128f23fef96a69e25a2cedf080e3a4c74e",
       "generatedHash": "dde54e196df3b1a841caf4bbd4dbd4221c38c9c67733808f0919335f859dd834",
       "model": "gpt-6.1-sol",
       "reasoningEffort": "medium",

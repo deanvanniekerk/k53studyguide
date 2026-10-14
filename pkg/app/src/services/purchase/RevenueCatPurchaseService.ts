@@ -305,7 +305,8 @@ export class RevenueCatPurchaseService implements PurchaseService {
       }
       initializationStage = "getProducts";
       const { products } = productResult.value;
-      await this.logOfferingsDiagnostics();
+      // Optional diagnostics must not hold the purchase UI in its loading state.
+      void this.logOfferingsDiagnostics();
 
       const product = products.find((candidate) => candidate.identifier === this._productId);
       if (!product) {

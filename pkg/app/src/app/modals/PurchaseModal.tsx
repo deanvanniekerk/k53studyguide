@@ -192,12 +192,16 @@ const PurchaseModal: React.FC<Props> = (props) => {
             </Benefits>
           </OfferContent>
           <PriceCard>
-            <PurchasePriceText role={isLoadingStore ? "status" : undefined}>
-              {isLoadingStore ? <Translate text="premiumPriceLoading" /> : props.purchase.price}
-            </PurchasePriceText>
-            <PaymentNote>
-              <Translate text="premiumOneTime" />
-            </PaymentNote>
+            {!isUnavailable && (
+              <React.Fragment>
+                <PurchasePriceText role={isLoadingStore ? "status" : undefined}>
+                  {isLoadingStore ? <Translate text="premiumPriceLoading" /> : props.purchase.price}
+                </PurchasePriceText>
+                <PaymentNote>
+                  <Translate text="premiumOneTime" />
+                </PaymentNote>
+              </React.Fragment>
+            )}
             {props.purchase.paymentPending && (
               <Availability role="status">
                 <Translate text="premiumPaymentPending" />
@@ -213,6 +217,7 @@ const PurchaseModal: React.FC<Props> = (props) => {
               )}
             {isUnavailable && (
               <RestoreButton
+                fill="outline"
                 disabled={isPending || !purchaseService || undefined}
                 onClick={() => void purchaseService?.initialize(true)}
               >

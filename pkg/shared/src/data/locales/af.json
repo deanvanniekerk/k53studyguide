@@ -25018,8 +25018,8 @@
       "promptVersion": "k53-v1"
     },
     "premiumPriceLoading": {
-      "text": "Prys nie beskikbaar nie",
-      "sourceHash": "6a9e657bba78dd439a0e1f0e291bb9d67eb56ebda13cc9b29a90c9d64d4fdb6d",
+      "text": "Besig om aan die winkel te koppel…",
+      "sourceHash": "2d655ab7d05c988c4e3563b9070203e78b99c8dc0b96a6b69cc893cd26c66635",
       "generatedHash": "e1addbac036b3402374270ec429250d10ce1cc407eab0f84fd4364e98f7b6a12",
       "model": "gpt-6.1-sol",
       "reasoningEffort": "medium",
@@ -25154,8 +25154,8 @@
       "promptVersion": "k53-v1"
     },
     "premiumUnavailable": {
-      "text": "Aankope is tans nie beskikbaar nie. Probeer later weer, of herstel ’n bestaande aankoop.",
-      "sourceHash": "c4515f49126a88f0649a78d14dfdecc145c4a87b03cb45e6f563b97bdfbdb7f8",
+      "text": "Ons kon nie die winkel laai nie. Gaan jou verbinding na en probeer weer. Jy kan gratis verder studeer.",
+      "sourceHash": "a3ec382e046138d56dd0b5054ab6fb128f23fef96a69e25a2cedf080e3a4c74e",
       "generatedHash": "d7e04d9327f9f2b7dc393d9d748e813d49829f956f22bdfc87a0ba5729098e16",
       "model": "gpt-6.1-sol",
       "reasoningEffort": "medium",
