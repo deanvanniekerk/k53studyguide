@@ -44,8 +44,8 @@ const translations: Translations = {
   browserPurchaseInfo: { en: "Purchases and restores are simulated. No charge. Use this reset to try the free experience again; your study and quiz progress is kept." },
   resetToFree: { en: "Reset to free" },
   browserPaymentNote: { en: "Browser preview · simulated price and purchase" },
-  crashTitle: { en: "K53 Study Guide has Crashed" },
-  restart: { en: "Restart" },
+  crashTitle: { en: "K53 Study Guide has Crashed", af: "K53 Study Guide het onverwags opgehou werk", zu: "I-K53 Study Guide iyekile ukusebenza", xh: "I-K53 Study Guide iyekile ukusebenza" },
+  restart: { en: "Restart", af: "Herbegin", zu: "Qala kabusha", xh: "Qalisa kwakhona" },
 
   welcomeTitle: { en: "Welcome to K53 Study Guide", af: "Welkom by K53 Study Guide", zu: "Siyakwamukela ku-K53 Study Guide", xh: "Wamkelekile kwi-K53 Study Guide" },
   welcomeBody: { en: "Build your confidence for the learner’s licence test. Choose your study language to get started.", af: "Bou jou selfvertroue vir die leerlinglisensietoets. Kies jou studietaal om te begin.", zu: "Khulisa ukuzethemba kwakho ukuze ulungele ukuhlolwa kwelayisensi yokufundela ukushayela. Khetha ulimi lokufunda ukuze uqale.", xh: "Zithembe ngakumbi xa ulungiselela uvavanyo lwelayisensi yokufundela ukuqhuba. Khetha ulwimi oza kufunda ngalo ukuze uqalise." },

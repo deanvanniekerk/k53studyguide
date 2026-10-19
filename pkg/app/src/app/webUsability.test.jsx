@@ -184,3 +184,29 @@ it.each([
     errorOutput.mockRestore();
   }
 });
+
+it.each([
+  ["af", "Herbegin"],
+  ["zu", "Qala kabusha"],
+  ["xh", "Qalisa kwakhona"],
+])("offers translated startup recovery before the %s dictionary loads", (language, restart) => {
+  const reducer = createRootReducer("free_web");
+  const initial = reducer(undefined, { type: "@@test/init" });
+  const store = createStore(reducer, { ...initial, settings: { ...initial.settings, language } });
+  const errorOutput = vi.spyOn(console, "error").mockImplementation(() => {});
+  function BrokenStartup() {
+    throw new Error("Startup crash fixture");
+  }
+  try {
+    render(
+      <Provider store={store}>
+        <ErrorBoundary>
+          <BrokenStartup />
+        </ErrorBoundary>
+      </Provider>,
+    );
+    expect(screen.getByRole("button", { name: restart })).toBeTruthy();
+  } finally {
+    errorOutput.mockRestore();
+  }
+});
