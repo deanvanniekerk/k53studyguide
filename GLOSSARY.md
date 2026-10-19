@@ -21,8 +21,12 @@ A practice assessment organised into the learner’s-test sections, with a resul
 _Avoid_: Practice quiz, official test.
 
 **Premium access**:
-The one-time paid unlock that provides mock tests and the ability to reset study and assessment history.
+The one-time paid mobile unlock that provides mock tests and the ability to reset study and assessment history.
 _Avoid_: Subscription, recurring plan.
+
+**Free web access**:
+Access to study content, practice quizzes and mock tests in the web version without a purchase. It does not confer a mobile Premium entitlement.
+_Avoid_: Premium purchase, paid user, trial.
 
 **Premium offer**:
 The presentation of premium benefits and the current purchase price to a learner.

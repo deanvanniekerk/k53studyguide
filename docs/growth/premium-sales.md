@@ -6,6 +6,8 @@ Increase **confirmed new Premium buyers and net proceeds**, with useful free stu
 
 The core journey is: discover the app → use free study or quizzes → see a relevant Premium invitation → open the offer → attempt checkout → receive access. Store-confirmed transactions establish sales; client events explain the experience around them.
 
+This sales objective applies to the mobile product. The planned [free web version](../adr/0001-free-web-access-with-paid-mobile-premium.md) prioritises useful study access and organic reach, with mobile sales secondary; it may reduce mobile Premium demand. Keep free web activity separate from paid ownership and track the revenue impact. The web version is not yet implemented; the [launch plan](web-launch.md) records its agreed scope and release gates.
+
 ## Work in this order
 
 1. **Establish the released baseline.** Confirm 1.40 availability separately on Android and iOS. Validate received events, usable reporting dimensions and exclusion of internal/sandbox traffic on the released build. Record rollout and website deployment dates separately.
