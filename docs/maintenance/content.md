@@ -6,6 +6,8 @@ English is canonical; the app exposes English, Afrikaans, isiZulu and isiXhosa. 
 
 The [root README](../../Readme.md#translations) owns generation, checkpoint and CLI instructions. Generation is manually initiated through the maintainer's signed-in Codex subscription, never app startup, CI, deployment or a scheduled/background job. Do not regenerate content merely to tidy documentation.
 
+The five `welcome*` entries and `crashTitle`/`restart` also carry eager Afrikaans, isiZulu and isiXhosa values in the English dictionary so welcome can reserve stable layout and startup crash recovery stays translated before locale loading. Keep those inline values identical to their JSON entries when editing welcome or recovery copy. A regression test compares these eager copies with the generated dictionaries; update both together. Welcome uses the eager copies to reserve layout. Elsewhere the selected generated dictionary loads on demand and wins for its locale; English remains the fallback while loading.
+
 For a wording correction:
 
 1. Wait for that locale's generator to finish. Edit only the entry's `text`; retain `generatedHash` and source/generation metadata so the tool preserves the override.

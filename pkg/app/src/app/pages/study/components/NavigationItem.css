@@ -1,4 +1,8 @@
 .root-navigation-item {
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  text-align: left;
   align-items: center;
   background: var(--app-card-background);
   border: 2px solid var(--app-card-border-color);
@@ -112,4 +116,9 @@
   .root-navigation-progress {
     display: none;
   }
+}
+
+.root-navigation-item:focus-visible {
+  outline: 3px solid var(--app-question-accent);
+  outline-offset: 3px;
 }
