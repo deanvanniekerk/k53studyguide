@@ -1,6 +1,7 @@
 import type { PluginListenerHandle } from "@capacitor/core";
 import { Network } from "@capacitor/network";
-import { createContext, type ReactNode, useContext, useEffect, useState, useSyncExternalStore } from "react";
+import { Translate } from "@k53studyguide/shared/translation";
+import { Component, createContext, type ReactNode, useContext, useEffect, useState, useSyncExternalStore } from "react";
 import { useSelector } from "react-redux";
 import { accessModelSelector } from "@/state/access";
 import { probeBrowserStorage, storageUnavailable, subscribeStorageStatus } from "@/state/storage";
@@ -22,8 +23,7 @@ export function WebRuntimeProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!isWeb) return;
     probeBrowserStorage();
-    const chunkError = (event: Event) => {
-      event.preventDefault();
+    const chunkError = () => {
       setChunkFailed(true);
     };
     window.addEventListener("vite:preloadError", chunkError);
@@ -56,7 +56,35 @@ export function WebRuntimeProvider({ children }: { children: ReactNode }) {
   }, [isWeb]);
   return (
     <WebRuntimeContext.Provider value={{ connected, isWeb, storageUnavailable: cannotSave, chunkFailed }}>
-      {children}
+      <WebChunkBoundary chunkFailed={chunkFailed}>{children}</WebChunkBoundary>
     </WebRuntimeContext.Provider>
   );
+}
+
+function ChunkRecovery() {
+  return (
+    <main role="alert" style={{ padding: "15vh 24px", maxWidth: 640, margin: "auto", lineHeight: 1.6 }}>
+      <p>
+        <Translate text="webChunkFailed" />
+      </p>
+      <button type="button" onClick={() => window.location.reload()}>
+        <Translate text="webReload" />
+      </button>
+    </main>
+  );
+}
+
+/** Keep a failed route's recovery outside the page that could not load. */
+class WebChunkBoundary extends Component<{ children: ReactNode; chunkFailed: boolean }, { error: Error | null }> {
+  state: { error: Error | null } = { error: null };
+  static getDerivedStateFromError(error: Error) {
+    return { error };
+  }
+  render() {
+    if (this.state.error) {
+      if (this.props.chunkFailed) return <ChunkRecovery />;
+      throw this.state.error;
+    }
+    return this.props.children;
+  }
 }

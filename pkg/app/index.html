@@ -25,7 +25,12 @@
 </head>
 
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <div role="status" style="font-family:system-ui;max-width:34rem;margin:15vh auto;padding:1.5rem;line-height:1.5">
+            <p>Opening K53 Study Guide… If it doesn’t open, check your connection and reload.</p>
+            <button type="button" onclick="window.location.reload()">Reload study app</button>
+        </div>
+    </div>
     <script type="module" src="/src/index.tsx"></script>
 </body>
 

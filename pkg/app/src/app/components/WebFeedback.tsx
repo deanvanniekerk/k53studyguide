@@ -6,7 +6,7 @@ export function WebFeedback() {
   const { connected, isWeb, storageUnavailable, chunkFailed } = useWebRuntime();
   if (!isWeb) return null;
   return (
-    <>
+    <FeedbackStack>
       {chunkFailed && (
         <Notice role="alert">
           <Translate text="webChunkFailed" />{" "}
@@ -25,7 +25,7 @@ export function WebFeedback() {
           <Translate text="webOffline" />
         </Notice>
       )}
-    </>
+    </FeedbackStack>
   );
 }
 const Notice = styled.div`
@@ -36,4 +36,10 @@ const Notice = styled.div`
   background: var(--app-card-background);
   color: var(--app-text-primary);
   line-height: 1.5;
+`;
+
+const FeedbackStack = styled.div`
+  position: sticky;
+  top: var(--app-page-header-height);
+  z-index: 50;
 `;

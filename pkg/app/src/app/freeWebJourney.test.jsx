@@ -2,7 +2,7 @@
 
 import { FirebaseAnalytics } from "@capacitor-firebase/analytics";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { act } from "react";
+import { act, lazy, Suspense } from "react";
 import { Provider } from "react-redux";
 import { Link, MemoryRouter, Route, Routes } from "react-router-dom";
 import { applyMiddleware, createStore } from "redux";
@@ -247,7 +247,7 @@ it("offers recovery when a lazy application update cannot load", async () => {
   await act(async () => {});
   const event = new Event("vite:preloadError", { cancelable: true });
   act(() => window.dispatchEvent(event));
-  expect(event.defaultPrevented).toBe(true);
+  expect(event.defaultPrevented).toBe(false);
   expect(screen.getByText("webChunkFailed")).toBeTruthy();
   expect(screen.getByRole("button", { name: "webReload" })).toBeTruthy();
   expect(screen.getByText("allTopics")).toBeTruthy();
@@ -260,6 +260,36 @@ it("remembers dismissal of the first browser progress notice after reload", () =
   cleanup();
   journey("free_web", saved);
   expect(screen.queryByText("webProgressBody")).toBeNull();
+});
+
+it("keeps a failed lazy route recoverable without losing the saved learner state", async () => {
+  const store = createStore(createRootReducer("free_web"), applyMiddleware(thunk));
+  let rejectLoad;
+  const Page = lazy(
+    () =>
+      new Promise((_, reject) => {
+        rejectLoad = reject;
+      }),
+  );
+  const errors = vi.spyOn(console, "error").mockImplementation(() => {});
+  render(
+    <Provider store={store}>
+      <WebRuntimeProvider>
+        <Suspense fallback="Loading route">
+          <Page />
+        </Suspense>
+      </WebRuntimeProvider>
+    </Provider>,
+  );
+  const before = JSON.stringify(store.getState());
+  await act(async () => {
+    window.dispatchEvent(new Event("vite:preloadError"));
+    rejectLoad(new Error("Failed to fetch dynamically imported module"));
+  });
+  expect(screen.getByText("webChunkFailed")).toBeTruthy();
+  expect(screen.getByRole("button", { name: "webReload" })).toBeTruthy();
+  expect(JSON.stringify(store.getState())).toBe(before);
+  errors.mockRestore();
 });
 
 it("keeps Study usable and warns when a browser save fails", async () => {
