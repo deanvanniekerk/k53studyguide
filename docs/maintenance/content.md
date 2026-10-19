@@ -33,3 +33,11 @@ Landing screenshots live in `pkg/lander/assets/screens/`, exported at 804 × 174
 Keep the indigo/blue/teal palette, rounded artwork and visible smiling driver consistent. Decorative app illustrations are compact transparent WebP assets; real UI screenshots and educational signs remain accurate. Keep functional symbols legible and decorative imagery silent to assistive technology where adjacent text supplies meaning.
 
 For future storefront experiments, derive a variant from the approved package and document exactly which element changes. Keep generated backgrounds separate from authentic UI captures. Retain truthful one-time Premium wording and independent-app positioning; avoid official endorsement, exact official-paper claims or pass guarantees.
+
+## Static English study topics
+
+`pnpm lander:build` generates `/study/` pages from the shared English navigation, content and translations, then builds them with the existing guide styles. Generated HTML and `public/sitemap.xml` are ignored; `pkg/lander/scripts/sitemap-base.xml` preserves the six existing public entries and dates. A section receives a URL when its subtree has at least three content items or 150 words; smaller sections appear under their parent. Review `pkg/lander/tests/topics.urls.txt` deliberately when shared content changes a public URL.
+
+The default is a noindex preview linking to `/app-preview/`, with no generated topics in the sitemap or production analytics script. `TOPIC_PREVIEW=0 pnpm lander:build` prepares indexable pages linking to `/app/`; use it only after the #55 launch approval. `TOPIC_APP_BASE` and `TOPIC_IMAGE_BASE` override the app and image mounts. Images reuse the app's asset tree and are not copied into the lander.
+
+`pnpm --filter lander test` builds the site, verifies generated HTML without running scripts, and checks all built internal links/assets. Apache serves directory `index.html` files; `public/.htaccess` configures the root custom 404 page. Test a missing URL after an approved deployment and check the HTTP status remains 404.

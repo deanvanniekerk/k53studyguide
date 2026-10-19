@@ -6,6 +6,6 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     environmentOptions: { jsdom: { runScripts: "outside-only" } },
-    include: ["tests/**/*.test.tsx"],
+    include: ["tests/**/*.test.tsx", "tests/**/*.test.ts"],
   },
 });

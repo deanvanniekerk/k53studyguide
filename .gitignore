@@ -39,3 +39,7 @@ stats.html
 /pkg/app/stats.html
 
 package-lock.json
+
+# Static topic HTML and sitemap are generated from shared content.
+/pkg/lander/study/
+/pkg/lander/public/sitemap.xml

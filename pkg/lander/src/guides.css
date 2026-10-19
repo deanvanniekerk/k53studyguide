@@ -49,3 +49,8 @@
   .sign-list img { width: 72px; height: 72px; padding: 6px; }
   .control-list div { grid-template-columns: 1fr; gap: 6px; }
 }
+.topic-breadcrumb { position: static; display: block; background: transparent; border: 0; padding: 0 0 24px; font-size: .8rem; }
+.topic-breadcrumb a, .topic-pagination a, .guide-body h2 a { color: var(--site-accent); text-underline-offset: 4px; }
+.topic-image { max-width: 100%; max-height: 520px; width: auto; height: auto; object-fit: contain; background: white; border-radius: 12px; padding: 12px; margin-bottom: 24px; }
+.topic-pagination { position: static; display: flex; flex-wrap: wrap; gap: 24px; background: transparent; border: 0; padding-block: 32px; }
+.guide-app .button { display: flex; margin-top: 18px; text-align: center; }

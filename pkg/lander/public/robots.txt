@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /app/
+Disallow: /app-preview/
 
 Sitemap: https://www.k53studyguide.online/sitemap.xml
