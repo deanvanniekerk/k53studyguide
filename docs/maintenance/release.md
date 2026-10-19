@@ -54,3 +54,89 @@ The last audit recorded five upstream advisories (not a fresh audit). Reassess a
 | Firebase → Node Firestore → gRPC | `GHSA-m9gg-hp2v-232j`, `GHSA-f596-whhp-79r4`; app imports Firebase app/analytics, not Node Firestore transport |
 
 Keep compatible parent graphs and lockfiles together; limited call-site exposure is not a blanket safety claim. Reverting a native/framework migration requires reverting its coupled configuration and dependency changes, followed by a new build number and validation.
+
+## Web release
+
+Production is not launched. The preview is <https://www.k53studyguide.online/app-preview/>; generated noindex topics start at <https://www.k53studyguide.online/study/>. The live homepage/guides remain the previous release. Review new homepage/guide CTAs locally with `pnpm lander:start`; publishing those HTML files is the launch, not a hidden preview.
+
+### Preconditions and evidence
+
+Record the source commit, checks and preview evidence in #55. Run all of:
+
+```bash
+pnpm lint
+pnpm test
+pnpm build
+WEB_APP_OUT_DIR=build-web pnpm web:build
+pnpm lander:build
+pnpm translator:check
+pnpm translations:check
+```
+
+Use Node 26.10+ within the pinned major and the lockfile's pnpm version. Do not hide failed translation completeness checks. The owner runs `pnpm translations:generate -- --target <locale>` for af/zu/xh manually, then reruns both translation checks; agents must not run generation. English fallbacks keep preview usable while this gate is pending.
+
+Verify Firebase web config in the existing `k53-study-guide` project and its GA4 stream/property association, tagged QA receipt and the production enablement decision. Keep config in ignored `.dev.env` and Azure variables. Capture the prior deployed website/app artifacts, current `.htaccess`/robots and checksums privately before a launch; Git history alone does not prove which files are live. FTP uploads have no atomic swap. Keep earlier fingerprinted assets available for cached clients.
+
+The owner must approve this preview in writing on #55 before production publishing. `WEB_LAUNCH_APPROVED=1` records that prerequisite for the deploy helpers; setting a variable is not a substitute for approval. A merge authorizes code integration, not production launch. Native release remains a separate decision.
+
+### Repeatable preview deployment
+
+1. Inspect the existing root `.htaccess` via FTP without displaying credentials. Merge existing host rules into `pkg/lander/public/.htaccess` if present, then rebuild; do not edit only `dist`, which is regenerated. The first 19 October inspection returned FTP “file does not exist”; no existing root rules were replaced. The helper refuses all uploads if existing root rules differ from the built file. For an intentional source update, retain the reviewed downloaded file privately and set `FTP_EXPECTED_ROOT_RULES=/absolute/private/captured.htaccess` on the deploy command. It proceeds only if the remote file still exactly matches that capture, preserving subsequent host changes. This is a content baseline, not a bypass flag.
+2. Run `pnpm web:deploy:preview`. It clears the production analytics flag, builds `/app-preview/`, uploads dependencies first, `index.html` next and app rewrite rules last. `FIREBASE_WEB_CONFIG`, if provided, permits explicit QA only.
+3. Run `pnpm lander:deploy:preview`. It forces noindex topics and `/app-preview/` app/image URLs, then uploads dependencies, root/scoped custom 404 rules, crawler exclusions and `/study/` HTML. It does not publish the live homepage, guide, privacy or sitemap changes. Existing topic routes are overwritten, including retired-route replacement pages.
+4. Exercise the journeys and hosting checks below. An ignored FTP environment is required; never put credentials on a public issue or in a committed command.
+
+### Hosting and journey checks
+
+Use curl to record status/content type and HTML, without following a failed route into a misleading homepage response:
+
+```bash
+curl -sS -D /tmp/k53-app-headers -o /tmp/k53-app.html https://www.k53studyguide.online/app-preview/quiz/results
+curl -sSI https://www.k53studyguide.online/app-preview/dist/ACTUAL_HASH.js
+curl -sSI https://www.k53studyguide.online/app-preview/assets/images/ACTUAL_FILE.png
+curl -sS -D /tmp/k53-topic-headers -o /tmp/k53-topic.html https://www.k53studyguide.online/study/road-signs/
+curl -sS -D /tmp/k53-404-headers -o /tmp/k53-404.html https://www.k53studyguide.online/study/does-not-exist/
+curl -sS https://www.k53studyguide.online/robots.txt
+curl -sSI http://k53studyguide.online/
+curl -sSI http://www.k53studyguide.online/
+curl -sSI https://k53studyguide.online/
+```
+
+Read actual fingerprint/image paths from delivered HTML/content; placeholders above are not URLs to test. Expect app deep links 200 with the same noindex shell, JS 200 with a JavaScript content type, CSS/image types matching their content, topics 200 with substantive HTML, and missing topic/root URLs 404 with custom helpful HTML. Expect crawler exclusions for both app mounts and an image exception for production topic illustrations. App navigation paths are rewritten; missing fingerprinted files must still produce a recoverable opening failure. If rewrite is ignored, stop and ask the owner to enable it in cPanel; do not silently switch to hash routing.
+
+Canonical tags point at `https://www.k53studyguide.online`. On 19 October, HTTP and apex URLs returned 200 rather than redirecting. Record this host configuration gap for owner/cPanel correction; the canonical tag is not a redirect. Repeat the checks after any change.
+
+Exercise topic → app study → quiz → results → mock test → results → optional store link. Verify score/history after reload, deliberate history reset without settings loss, direct study/quiz/result links, browser Back/Forward, failed-image retry, lost connection and recovery. Confirm free web access never sets paid ownership or shows checkout/restore. Confirm mobile links explain separate Premium and browser-local progress. In a marked QA tab, complete an attempt, revisit/reload/reconnect and confirm one received completion, web platform, free status and no purchase-family events. Open a separate unmarked preview tab and verify no production receipt; close QA tabs afterward and retain windows privately.
+
+Required browser matrix: iPhone Safari 375×812 and 430×932; Android Chrome 360×800; desktop Chrome/Firefox/Safari at 1280×800 and 1920×1080, light/dark/system, en/af/zu/xh. Include a keyboard-only journey, language switch during an attempt, zoom and a Slow 4G first load. Responsive Safari desktop emulation is useful evidence but does not certify physical iPhone/Android behavior. Record missing matrix cells plainly in #55.
+
+Native shared UI changed in #49: `app/Router.tsx`, `app/Startup.tsx`, `app/pages/test/TestPage.tsx`, quiz/test `History.tsx`, profile `Purchase.tsx`, `PremiumInvitation.tsx`, `usePremiumOffer.ts`, `usePurchaseRecovery.ts` and `state/configureStore.ts`. Later work also changes shared question-image rendering, translation loading and optional-link render guards. Automated SDK-mocked suites cover RevenueCat purchase/recovery, purchase journeys/modals, assessment result navigation and web/native access. They do not certify a device store sheet. Before the next store release, the owner decides on one Android or iOS dev-build smoke of the Free learner and Successful purchase rows above. Record whether performed, build and environment; no native device smoke has been performed for this web workstream.
+
+### Approved production deployment
+
+After written owner approval and completed translation/config/receipt gates:
+
+1. Save current host artifacts privately and record their checksums and source provenance. Set `FIREBASE_WEB_CONFIG` in the ignored environment and approve `WEB_ANALYTICS=production`. Build/check the launch app and topics; use explicit `TOPIC_PREVIEW=0` because the safe default is preview. Example preparation:
+
+   ```bash
+   WEB_APP_BASE=/app/ WEB_APP_OUT_DIR=build-web WEB_ANALYTICS=production pnpm web:build
+   TOPIC_PREVIEW=0 TOPIC_APP_BASE=/app/ TOPIC_IMAGE_BASE=/app/assets/images pnpm lander:build
+   ```
+
+2. Deploy the app first: `WEB_LAUNCH_APPROVED=1 WEB_ANALYTICS=production pnpm web:deploy`. The helper rebuilds and uploads fingerprinted files, shell, then `.htaccess`. It does not release a native app. Do not run Capacitor copy against a web build; Azure keeps outputs separate.
+3. Deploy the website: `WEB_LAUNCH_APPROVED=1 TOPIC_PREVIEW=0 pnpm lander:deploy`. The helper rebuilds; flags must be present on this command too. Dependencies/config/sitemap/robots go first, then topic/guide HTML; homepage HTML is last. Confirm topics are indexable and listed once in the sitemap, with canonical URLs and production image/app mounts.
+4. Repeat hosting checks against `/app/` and `/study/`, exercise the live homepage CTA and one marked quiz, and confirm live tagged receipt. Record any interval where app access was available before the homepage switched.
+5. Record actual launch timestamp/timezone and measurement coverage in `docs/growth/web-launch.md`. The owner submits the sitemap in Search Console. Keep `/app-preview/` for seven days; remove that mount only after owner confirmation and successful live verification. Preserve its crawler exclusion.
+6. Fill the four weekly dates and 28-complete-day review date from the scorecard's launch-time rule. Weekly checks cover hosting, GA web startup/completions, Search Console coverage and reconciled mobile transactions. Scheduling is optional and requires an explicit owner request; this document creates no automation.
+
+### Rollback
+
+Retain the captured pre-launch artifacts. Restore prior homepage/guide/privacy HTML and any changed root server rules from that capture; upload dependencies before HTML and homepage last. If rebuilding an old checkout, use its exact lockfile/config and verify its output before upload. Additive topic pages may remain noindex while entry points are restored; restore the captured sitemap/robots where needed. Do not run a full current-source build and call it a prior-release rollback.
+
+For `/app/`, re-upload the last known good web build with dependencies before shell. If there is no prior app build, upload a small `index.html` redirecting to `/` and retain app rewrite rules so deep links reach it. Example emergency shell:
+
+```html
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/"><title>Study guide</title><a href="/">Return to the study guide</a></html>
+```
+
+Do not delete old app assets or change persistence keys during rollback. Existing local progress stays in the browser; neither FTP nor a redirect guarantees recovery of already-cleared storage. Check root/deep links and previous homepage/store destinations after restore. Record rollback time and the incomplete measurement interval. Preview rehearsal verifies ordering and scoped paths with the fixture deployment tests; destructive production rollback has not been executed.

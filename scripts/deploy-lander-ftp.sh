@@ -42,6 +42,34 @@ if [[ ! -d "$DIST_DIR" ]]; then
   exit 1
 fi
 
+# Refuse unknown host drift. An intentional source update needs an exact
+# privately captured remote baseline; a stale baseline cannot overwrite new edits.
+if [[ ! -f "$DIST_DIR/.htaccess" ]]; then
+  echo "Build output missing $DIST_DIR/.htaccess; no files uploaded." >&2
+  exit 1
+fi
+existing_rules=$(mktemp)
+scoped_rules=$(mktemp)
+read_error=$(mktemp)
+trap 'rm -f "$existing_rules" "$scoped_rules" "$read_error"' EXIT
+if curl --fail --silent --show-error --user "$FTP_USER:$FTP_PASSWORD" \
+  "ftp://$FTP_HOST/$FTP_REMOTE_DIR/.htaccess" --output "$existing_rules" 2> "$read_error"; then
+  if ! cmp -s "$existing_rules" "$DIST_DIR/.htaccess"; then
+    if [[ -z "${FTP_EXPECTED_ROOT_RULES:-}" || ! -f "$FTP_EXPECTED_ROOT_RULES" ]] ||
+      ! cmp -s "$existing_rules" "$FTP_EXPECTED_ROOT_RULES"; then
+      echo "Refusing to replace existing root .htaccess; preserve its rules in source and supply FTP_EXPECTED_ROOT_RULES pointing to the reviewed remote baseline." >&2
+      exit 1
+    fi
+  fi
+else
+  status=$?
+  if [[ "$status" != 78 ]]; then
+    cat "$read_error" >&2
+    echo "Could not verify existing root .htaccess (curl $status); no files uploaded." >&2
+    exit 1
+  fi
+fi
+
 upload() {
   local file="$1" relative_path="$2"
   echo "Uploading $relative_path"
@@ -52,15 +80,17 @@ upload() {
 
 if [[ "$preview_topics" == 1 ]]; then
   # Add preview dependencies first. Do not replace the live homepage, guides,
-  # privacy, sitemap, robots or root server rules before the owner launch gate.
+  # privacy or sitemap before the owner launch gate. Root preview routing and
+  # crawler exclusions are shared by preview and production.
   while IFS= read -r -d '' file; do
     upload "$file" "${file#$DIST_DIR/}"
   done < <(find "$DIST_DIR/assets" -type f -print0)
+  upload "$DIST_DIR/404.html" 404.html
+  upload "$DIST_DIR/.htaccess" .htaccess
+  upload "$DIST_DIR/robots.txt" robots.txt
   upload "$DIST_DIR/404.html" study/404.html
-  rules=$(mktemp)
-  trap 'rm -f "$rules"' EXIT
-  printf 'ErrorDocument 404 /study/404.html\n' > "$rules"
-  upload "$rules" study/.htaccess
+  printf 'ErrorDocument 404 /study/404.html\n' > "$scoped_rules"
+  upload "$scoped_rules" study/.htaccess
   while IFS= read -r -d '' file; do
     upload "$file" "${file#$DIST_DIR/}"
   done < <(find "$DIST_DIR/study" -type f -name '*.html' -print0)
