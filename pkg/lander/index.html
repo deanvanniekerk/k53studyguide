@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>K53 Study Guide | Learner's Licence App for South Africa</title>
-  <meta name="description" content="Prepare for your South African learner's licence with free K53 study material and quizzes in four languages. Add mock tests with one-time Premium." />
+  <meta name="description" content="Prepare for your South African learner's licence with free web study, quizzes and mock tests in four languages. No account or installation needed." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://www.k53studyguide.online/" />
   <meta property="og:type" content="website" />
@@ -83,11 +83,31 @@
       "mainEntityOfPage": {
         "@id": "https://www.k53studyguide.online/#website"
       }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.k53studyguide.online/#web-app",
+      "name": "K53 Study Guide Web",
+      "url": "https://www.k53studyguide.online/app/",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web browser",
+      "inLanguage": [
+        "en",
+        "af",
+        "zu",
+        "xh"
+      ],
+      "description": "Free K53 study, quizzes, mock tests and browser-local progress. No account required.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "ZAR"
+      }
     }
   ]
 }
-  </script>
-  <script type="module" src="/src/main.tsx"></script>
+</script>
+
 
   <link rel="stylesheet" href="/src/landing.css" />
 </head>
@@ -98,11 +118,12 @@
     <a class="nav-logo" href="#"><img src="assets/logo.png" width="36" height="36" alt="" />K53 Study Guide</a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu">Menu <span aria-hidden="true">+</span></button>
     <ul class="nav-links" id="main-menu">
+      <li><a href="/app/">Start studying</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#study-guides">Study guides</a></li>
       <li><a href="#screenshots">Screenshots</a></li>
       <li><a href="#premium">Premium</a></li>
-      <li><a href="https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=utm_source%3Dwebsite%26utm_medium%3Dnav_cta%26utm_campaign%3Dorganic_web" target="_blank" rel="noopener noreferrer" class="nav-cta">Get the App</a></li>
+      <li><a href="https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=utm_source%3Dwebsite%26utm_medium%3Dnav_cta%26utm_campaign%3Dorganic_web" target="_blank" rel="noopener noreferrer" class="nav-cta">Mobile app</a></li>
     </ul>
   </div>
 </nav>
@@ -112,13 +133,14 @@
     <div class="hero-content">
       <p class="eyebrow">Your South African learner’s licence</p>
       <h1 id="hero-title">Learn your K53.<br/><span>Build confidence.</span></h1>
-      <p class="hero-subtitle">K53 Study Guide is your learner’s licence app for South Africa. Learn road signs and rules, track your progress and practise with free quizzes on Android and iPhone.</p>
+      <p class="hero-subtitle">Study road signs and rules, track your progress, and take quizzes and mock tests for free in your browser. No account or installation needed.</p>
       <div class="hero-ctas">
+        <a class="button" href="/app/" data-analytics-location="hero_start_free">Start studying free <span aria-hidden="true">↗</span></a>
+        <p>Or get the mobile app</p>
         <div class="store-badges">
           <a href="https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=utm_source%3Dwebsite%26utm_medium%3Dhero_cta%26utm_campaign%3Dorganic_web" target="_blank" rel="noopener noreferrer" class="store-badge"><span>Get it on</span><strong>Google Play</strong></a>
           <a href="https://apps.apple.com/us/app/k53-study-guide/id6784718443?ct=organic_web_hero" target="_blank" rel="noopener noreferrer" class="store-badge" data-analytics-location="hero_ios_cta"><span>Download on the</span><strong>App Store</strong></a>
         </div>
-        <button class="text-action" type="button" data-quiz-demo-open data-analytics-location="hero_try_it_now">Try a free quiz here <span aria-hidden="true">↗</span></button>
       </div>
     </div>
     <div class="hero-visual" aria-label="K53 study progress and quiz screens">
@@ -134,7 +156,7 @@
     <div class="features-grid">
       <article class="feature study"><img src="assets/icon-study.svg" width="48" height="48" alt="" /><p class="feature-access">Study · Free</p><h3>Pick up where<br/>you left off.</h3><p>Explore six topics, from vehicle controls to road signs. See what you’ve covered and continue your next section.</p><img class="feature-screen phone" src="assets/screens/study.webp" width="804" height="1748" loading="lazy" alt="Topic progress and a Continue button on the Study screen" /></article>
       <article class="feature quiz"><img src="assets/icon-quiz.svg" width="48" height="48" alt="" /><p class="feature-access">Quiz · Free</p><h3>Make practice<br/>a daily habit.</h3><p>Choose a topic and question count. Randomised quizzes keep each session fresh, with feedback to help you learn.</p><img class="feature-screen phone" src="assets/screens/quiz.webp" width="804" height="1748" loading="lazy" alt="Multiple-choice quiz asking what a road sign means" /></article>
-      <article class="feature test"><img src="assets/icon-test.svg" width="48" height="48" alt="" /><p class="feature-access">Test · Premium</p><h3>Put it all<br/>into practice.</h3><p>Work through 64 questions across vehicle controls, road rules and signs. Review each section to find what needs more practice.</p><img class="feature-screen phone" src="assets/screens/test.webp" width="804" height="1748" loading="lazy" alt="Mock test with three sections and question progress" /></article>
+      <article class="feature test"><img src="assets/icon-test.svg" width="48" height="48" alt="" /><p class="feature-access">Test · Free on web · Premium on mobile</p><h3>Put it all<br/>into practice.</h3><p>Work through 64 questions across vehicle controls, road rules and signs. Review each section to find what needs more practice.</p><img class="feature-screen phone" src="assets/screens/test.webp" width="804" height="1748" loading="lazy" alt="Mock test with three sections and question progress" /></article>
     </div>
   </div>
 </section>
@@ -159,7 +181,7 @@
       <div class="steps" aria-label="Explore the study routine">
         <button class="hiw-step active" type="button" aria-pressed="true"><img class="hiw-step-screen-source" src="assets/screens/content.webp" alt="" hidden /><span class="step-num">01</span><span><strong>Understand the material</strong><span class="step-desc">Read the rules alongside clear signs and illustrations. Mark your progress as you go.</span></span></button>
         <button class="hiw-step" type="button" aria-pressed="false"><img class="hiw-step-screen-source" src="assets/screens/quiz.webp" alt="" hidden /><span class="step-num">02</span><span><strong>Check what you remember</strong><span class="step-desc">Practise a specific topic or mix all content. Use your quiz results to guide your next session.</span></span></button>
-        <button class="hiw-step" type="button" aria-pressed="false"><img class="hiw-step-screen-source" src="assets/screens/results.webp" alt="" hidden /><span class="step-num">03</span><span><strong>Find the gaps with Premium</strong><span class="step-desc">Complete a mock test and review your score in each section. Return to the topics that need attention.</span></span></button>
+        <button class="hiw-step" type="button" aria-pressed="false"><img class="hiw-step-screen-source" src="assets/screens/results.webp" alt="" hidden /><span class="step-num">03</span><span><strong>Find the gaps</strong><span class="step-desc">Complete a mock test and review your score in each section. Return to the topics that need attention.</span></span></button>
       </div>
     </div>
     <figure class="workflow-visual"><img class="phone" id="hiwPhone" src="assets/screens/content.webp" width="804" height="1748" loading="lazy" alt="Study material with illustrated road signs" /><figcaption id="hiwCaption">Understand the material</figcaption></figure>
@@ -195,27 +217,28 @@
 
 <section id="premium" aria-labelledby="premium-title">
   <div class="container premium-layout">
-    <div class="premium-copy"><p class="eyebrow">A little extra preparation</p><h2 id="premium-title">Start free.<br/>Go further with Premium.</h2><p>Study material, quizzes and progress tracking are free. When you’re ready for full mock tests, upgrade inside the app.</p><p class="premium-note">One purchase. No subscription.</p><p>The price is shown in your store’s currency before you buy.</p></div>
-    <div class="premium-details"><h3>What Premium adds</h3><ul><li><strong>Full mock tests</strong><span>64 questions across three sections, with section-by-section results.</span></li><li><strong>A fresh start whenever you need it</strong><span>Reset your study, quiz and test history to begin again.</span></li><li><strong>Support continued development</strong><span>Your purchase helps maintain and improve this independently built app.</span></li></ul><a class="button" href="#download">Get the app to unlock Premium <span aria-hidden="true">↗</span></a></div>
+    <div class="premium-copy"><p class="eyebrow">A little extra preparation</p><h2 id="premium-title">Free on the web.<br/>A choice on mobile.</h2><p>Everything is free on the web: study, quizzes, mock tests, progress and history reset. On Android and iOS, Premium is a separate one-time purchase that unlocks mock tests and history reset.</p><p class="premium-note">One purchase. No subscription.</p><p>The mobile price is shown in your store’s currency before you buy. Web progress stays in this browser and does not transfer to the mobile app.</p></div>
+    <div class="premium-details"><h3>Mobile Premium</h3><ul><li><strong>Full mock tests</strong><span>64 questions across three sections, with section-by-section results.</span></li><li><strong>A fresh start whenever you need it</strong><span>Reset your study, quiz and test history to begin again.</span></li><li><strong>Support continued development</strong><span>Your purchase helps maintain and improve this independently built app.</span></li></ul><a class="button" href="#download">Explore the mobile app <span aria-hidden="true">↗</span></a></div>
   </div>
 </section>
 
 <section class="faq" aria-labelledby="faq-title">
   <div class="container faq-inner"><h2 id="faq-title">Before you get started.</h2>
-    <details><summary>What can I use for free?</summary><p>All six study topics, randomised practice quizzes and progress tracking. Premium adds full mock tests and the option to reset your study, quiz and test history.</p></details>
-    <details><summary>Is Premium a subscription?</summary><p>No. Premium is a one-time in-app purchase. Check the price in the app before buying. If you’ve already purchased, use Restore Purchases with the same store account.</p></details>
+    <details><summary>What can I use for free?</summary><p>On the web, all six study topics, practice quizzes, mock tests, progress and history reset are free. On Android and iOS, study and quizzes are free; mobile Premium is a separate one-time purchase for mock tests and history reset.</p></details>
+    <details><summary>Is Premium a subscription?</summary><p>No. Mobile Premium is a separate one-time in-app purchase. Check the price in the app before buying. If you’ve already purchased, use Restore Purchases with the same store account.</p></details>
+    <details><summary>Does my web progress sync to the app?</summary><p>No. Progress stays in this browser when site storage is available. Clearing browser data can erase it. It does not transfer to another browser, device or the mobile app.</p></details>
     <details><summary>Which languages are available?</summary><p>English, Afrikaans, isiZulu and isiXhosa. Choose your preferred language in Profile.</p></details>
     <details><summary>Is this an official test or a pass guarantee?</summary><p>K53 Study Guide is an independent study aid, not a government service or an official test provider. Mock tests help you practise and spot gaps; results do not guarantee a pass in your learner’s licence test.</p></details>
   </div>
 </section>
 
 <section id="download" aria-labelledby="download-title">
-  <div class="container download-layout"><img src="assets/ready-to-learn.webp" width="1024" height="500" loading="lazy" alt="Ready for your learner’s licence? Study, practise and build confidence. A smiling driver on the road ahead." /><div><h2 id="download-title">Your next step<br/>starts here.</h2><p>Download K53 Study Guide and start studying for free.</p><div class="download-links"><a class="button" href="https://apps.apple.com/us/app/k53-study-guide/id6784718443?ct=organic_web_footer" target="_blank" rel="noopener noreferrer" data-analytics-location="footer_ios_cta">App Store <span aria-hidden="true">↗</span></a><a class="button secondary" href="https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=utm_source%3Dwebsite%26utm_medium%3Dfooter_cta%26utm_campaign%3Dorganic_web" target="_blank" rel="noopener noreferrer">Google Play <span aria-hidden="true">↗</span></a></div></div></div>
+  <div class="container download-layout"><img src="assets/ready-to-learn.webp" width="1024" height="500" loading="lazy" alt="Ready for your learner’s licence? Study, practise and build confidence. A smiling driver on the road ahead." /><div><h2 id="download-title">Prefer studying<br/>on your phone?</h2><p>The mobile app is optional. Mobile Premium is a separate one-time purchase; your web progress does not transfer.</p><div class="download-links"><a class="button" href="https://apps.apple.com/us/app/k53-study-guide/id6784718443?ct=organic_web_footer" target="_blank" rel="noopener noreferrer" data-analytics-location="footer_ios_cta">App Store <span aria-hidden="true">↗</span></a><a class="button secondary" href="https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=utm_source%3Dwebsite%26utm_medium%3Dfooter_cta%26utm_campaign%3Dorganic_web" target="_blank" rel="noopener noreferrer">Google Play <span aria-hidden="true">↗</span></a></div></div></div>
 </section>
 <section id="contact" aria-labelledby="contact-title"><div class="container contact-inner"><div><h2 id="contact-title">Need a hand?</h2><p>Questions, feedback or help with your purchase.</p></div><a href="mailto:info@k53studyguide.online">info@k53studyguide.online <span aria-hidden="true">↗</span></a></div></section>
 </main>
 <footer><div class="container footer-inner"><a class="nav-logo" href="#"><img src="assets/logo.png" width="32" height="32" alt="" />K53 Study Guide</a><p>Made with care in South Africa.</p><div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></div><small>© 2026 K53 Study Guide. All rights reserved.</small></div></footer>
-<div id="quiz-demo-root"></div>
+
 <script>
 // Mobile navigation remains keyboard-accessible and closes after selection.
 const menuButton = document.querySelector('.menu-toggle');

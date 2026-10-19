@@ -18,8 +18,32 @@ import QuizPage from "./pages/quiz/QuizPage";
 import QuizResultPage from "./pages/quiz/results/TestResultPage";
 import QuizSessionPage from "./pages/quiz/session/TestPage";
 import StudyPage from "./pages/study/StudyPage";
+import MockTestResultPage from "./pages/test/results/TestResultPage";
+import MockTestSessionPage from "./pages/test/session/TestPage";
 import TestPage from "./pages/test/TestPage";
+import Startup from "./Startup";
 import { WebRuntimeProvider } from "./WebRuntimeProvider";
+
+// Substitute external browser/platform and collector inputs; keep app state/routing real.
+vi.hoisted(() => {
+  vi.stubGlobal(
+    "__FIREBASE_WEB_CONFIG__",
+    JSON.stringify({ apiKey: "fixture", projectId: "fixture", appId: "fixture", measurementId: "G-FIXTURE" }),
+  );
+  vi.stubGlobal("__WEB_ANALYTICS__", "");
+  globalThis.jsdom.reconfigure({ url: "https://www.k53studyguide.online/app-preview/?analytics_test=true" });
+});
+vi.mock("@capacitor/core", async (original) => ({
+  ...(await original()),
+  Capacitor: { ...(await original()).Capacitor, getPlatform: () => "web", isNativePlatform: () => false },
+}));
+vi.mock("firebase/app", () => ({ initializeApp: () => ({ name: "[DEFAULT]" }), getApps: () => [] }));
+vi.mock("firebase/analytics", () => ({ initializeAnalytics: () => {} }));
+afterAll(() => vi.unstubAllGlobals());
+
+vi.mock("@ionic/react-router", () => ({
+  IonReactRouter: ({ children }) => <MemoryRouter initialEntries={["/study"]}>{children}</MemoryRouter>,
+}));
 
 // Substitute only the Ionic host widgets, keeping routing, content, UI and Redux real.
 vi.mock("@ionic/react", async (original) => {
@@ -38,6 +62,8 @@ vi.mock("@ionic/react", async (original) => {
     ...actual,
     ...widgets,
     IonIcon: () => null,
+    IonRouterOutlet: ({ children }) => <Routes>{children}</Routes>,
+    IonTabButton: ({ children, href }) => <Link to={href}>{children}</Link>,
     IonButton: ({ children, onClick, disabled, className }) => (
       <button type="button" className={className} disabled={disabled} onClick={onClick}>
         {children}
@@ -122,6 +148,8 @@ function journey(model, preloaded, entry = "study") {
             <Route path="/quiz/session" element={<QuizSessionPage />} />
             <Route path="/quiz/results" element={<QuizResultPage />} />
             <Route path="/test" element={<TestPage />} />
+            <Route path="/test/results" element={<MockTestResultPage />} />
+            <Route path="/test/session" element={<MockTestSessionPage />} />
             <Route
               path="/profile"
               element={
@@ -165,7 +193,9 @@ it("lets a browser learner study, finish practice and access mock tests and rese
   expect(screen.getByRole("alert").textContent).toContain("historyCleanSeenConfirm");
   expect(screen.queryByText("goPremium")).toBeNull();
   expect(store.getState().purchase.owned).toBe(false);
-  await Promise.resolve();
+  await vi.waitFor(() =>
+    expect(FirebaseAnalytics.logEvent.mock.calls.some(([event]) => event.name === "quiz_complete")).toBe(true),
+  );
   const events = FirebaseAnalytics.logEvent.mock.calls.map(([event]) => event.name);
   expect(events).toContain("quiz_complete");
   expect(events.some((event) => /^(begin_checkout|checkout_outcome|premium_invitation_)/.test(event))).toBe(false);
@@ -174,6 +204,7 @@ it("lets a browser learner study, finish practice and access mock tests and rese
 it("keeps mock tests and history reset locked for a free mobile learner", () => {
   const store = journey("mobile");
   finishPractice(store);
+  expect(screen.queryByRole("link", { name: "Google Play" })).toBeNull();
   fireEvent.click(screen.getByRole("link", { name: "Mock tests" }));
   expect(screen.getByRole("button", { name: "unlockMockTests" })).toBeTruthy();
   fireEvent.click(screen.getByRole("link", { name: "History" }));
@@ -186,6 +217,9 @@ it("reports connection loss and recovery without changing saved work or emitting
   const store = journey("free_web");
   await act(async () => {});
   finishPractice(store);
+  await vi.waitFor(() =>
+    expect(FirebaseAnalytics.logEvent.mock.calls.some(([event]) => event.name === "quiz_complete")).toBe(true),
+  );
   await createStorage().setItem("persist:quiz-session", JSON.stringify(store.getState().quiz.session));
   const savedStorage = Object.fromEntries(Object.entries(localStorage));
   const before = JSON.stringify(store.getState());
@@ -203,12 +237,17 @@ it("reports connection loss and recovery without changing saved work or emitting
   expect(FirebaseAnalytics.logEvent.mock.calls.length).toBe(events);
 });
 
-it("preserves completed practice through reload and deliberately clears history without changing settings", () => {
+it("preserves completed practice through reload and deliberately clears history without changing settings", async () => {
   const store = journey("free_web");
   finishPractice(store);
+  await vi.waitFor(() =>
+    expect(FirebaseAnalytics.logEvent.mock.calls.filter(([event]) => event.name === "quiz_complete")).toHaveLength(1),
+  );
   const saved = JSON.parse(JSON.stringify(store.getState()));
   cleanup();
   const reloaded = journey("free_web", saved, "quiz/results");
+  await act(async () => {});
+  expect(FirebaseAnalytics.logEvent.mock.calls.filter(([event]) => event.name === "quiz_complete")).toHaveLength(1);
   expect(screen.getByRole("heading", { name: "result: 1 / 1" })).toBeTruthy();
   fireEvent.click(screen.getByRole("link", { name: "History" }));
   fireEvent.click(screen.getByRole("button", { name: "clearQuizHistory" }));
@@ -317,4 +356,228 @@ it("keeps Study usable and warns when a browser save fails", async () => {
   expect(screen.getByRole("heading", { name: "result: 1 / 1" })).toBeTruthy();
   expect(store.getState().purchase.owned).toBe(false);
   setItem.mockRestore();
+});
+
+it.each(["profile", "quiz_results", "test_results"])(
+  "offers optional mobile referrals from web %s",
+  async (placement) => {
+    if (placement === "quiz_results") {
+      finishPractice(journey("free_web"));
+    } else if (placement === "test_results") {
+      const reducer = createRootReducer("free_web");
+      const state = reducer(undefined, { type: "@@test/init" });
+      const answer = {
+        section: "A",
+        answer: "A",
+        question: { id: "sign", text: "Sign fixture", answer: "A", option: [{ id: "A", value: "Stop" }] },
+      };
+      journey(
+        "free_web",
+        {
+          ...state,
+          test: { ...state.test, session: { ...state.test.session, questionAnswers: [answer], completedAt: 1 } },
+        },
+        "test/results",
+      );
+    } else {
+      journey("free_web", undefined, "profile");
+    }
+    expect(screen.getByText("mobileAppHonesty")).toBeTruthy();
+    const referrals = [];
+    for (const [name, platform] of [
+      ["Google Play", "android"],
+      ["App Store", "ios"],
+    ]) {
+      const link = screen.getByRole("link", { name });
+      expect(link.target).toBe("_blank");
+      expect(link.rel).toContain("noopener");
+      const destination = new URL(link.href);
+      const location = `web_app_${placement}_${platform}`;
+      if (platform === "android") {
+        expect(destination.searchParams.get("id")).toBe("deanvniekerk.k53studyguide.app");
+        expect(new URLSearchParams(destination.searchParams.get("referrer")).get("utm_medium")).toBe(location);
+      } else {
+        expect(destination.pathname).toBe("/us/app/k53-study-guide/id6784718443");
+        expect(destination.searchParams.get("ct")).toBe(location);
+      }
+      link.addEventListener("click", (event) => event.preventDefault());
+      fireEvent.click(link);
+      referrals.push({
+        name: "select_store_cta",
+        params: {
+          cta_location: location,
+          store_platform: platform,
+          premium_status: "free",
+          analytics_schema_version: "v2",
+          analytics_test: "true",
+        },
+      });
+    }
+    await Promise.resolve();
+    expect(
+      FirebaseAnalytics.logEvent.mock.calls
+        .map(([event]) => event)
+        .filter((event) => event.name === "select_store_cta"),
+    ).toEqual(referrals);
+    expect(screen.queryByText("goPremium")).toBeNull();
+  },
+);
+
+it("counts one completed web mock test through result reload and reconnect without purchase signals", async () => {
+  const reducer = createRootReducer("free_web");
+  const initial = reducer(undefined, { type: "@@test/init" });
+  const answers = ["A", "B", "C"].map((section) => ({
+    section,
+    answer: null,
+    question: {
+      id: section,
+      text: `Question ${section}`,
+      answer: "yes",
+      option: [{ id: "yes", value: `Answer ${section}` }],
+    },
+  }));
+  const store = journey(
+    "free_web",
+    {
+      ...initial,
+      test: {
+        ...initial.test,
+        session: {
+          ...initial.test.session,
+          questionAnswers: answers,
+          completionAnalyticsVersion: 2,
+          completedAt: null,
+        },
+      },
+    },
+    "test/session",
+  );
+  for (const section of ["A", "B", "C"]) {
+    fireEvent.click(screen.getByRole("button", { name: `Answer ${section}` }));
+    fireEvent.click(screen.getByRole("button", { name: section === "C" ? "submit" : "continue" }));
+  }
+  const completions = () =>
+    FirebaseAnalytics.logEvent.mock.calls
+      .map(([event]) => event)
+      .filter((event) => event.name === "mock_test_complete");
+  await vi.waitFor(() => expect(completions()).toHaveLength(1));
+  expect(completions()[0].params).toMatchObject({
+    question_count: 3,
+    section_a_total: 1,
+    section_b_total: 1,
+    section_c_total: 1,
+    premium_status: "free",
+    analytics_schema_version: "v2",
+    analytics_test: "true",
+  });
+  const saved = JSON.parse(JSON.stringify(store.getState()));
+  cleanup();
+  journey("free_web", saved, "test/results");
+  await act(async () => {});
+  await act(async () => {
+    for (const listener of networkListeners) listener({ connected: false });
+  });
+  await act(async () => {
+    for (const listener of networkListeners) listener({ connected: true });
+  });
+  expect(screen.getByText("mobileAppResults")).toBeTruthy();
+  expect(completions()).toHaveLength(1);
+  const events = FirebaseAnalytics.logEvent.mock.calls.map(([event]) => event.name);
+  expect(
+    events.some((name) =>
+      /^(premium_|view_promotion|select_promotion|begin_checkout|checkout_outcome|restore_|purchase_)/.test(name),
+    ),
+  ).toBe(false);
+});
+
+it("sends the ordered free web event journey from startup through study, quiz and a full mock test", async () => {
+  vi.stubGlobal("matchMedia", () => ({ matches: false, addEventListener() {}, removeEventListener() {} }));
+  let observed = false;
+  vi.stubGlobal(
+    "IntersectionObserver",
+    class {
+      constructor(callback) {
+        this.callback = callback;
+      }
+      observe() {
+        if (!observed) {
+          observed = true;
+          this.callback([{ isIntersecting: true }]);
+        }
+      }
+      disconnect() {}
+    },
+  );
+  const reducer = createRootReducer("free_web");
+  const initial = reducer(undefined, { type: "@@test/init" });
+  const store = createStore(
+    reducer,
+    {
+      ...initial,
+      settings: { ...initial.settings, welcomeCompleted: true },
+      notifications: {
+        notifications: Object.fromEntries(
+          Object.keys(initial.notifications.notifications).map((key) => [key, { seen: true }]),
+        ),
+      },
+    },
+    applyMiddleware(thunk),
+  );
+  store.dispatch(recieveMaxQuestions(1));
+  render(
+    <Provider store={store}>
+      <Startup />
+    </Provider>,
+  );
+  fireEvent.click(screen.getByRole("button", { name: /nav.vehicleControls/ }));
+  fireEvent.click(screen.getByRole("link", { name: "quiz" }));
+  fireEvent.click(screen.getByRole("button", { name: "startTest" }));
+  const quizQuestion = store.getState().quiz.session.questionAnswers[0].question;
+  fireEvent.click(screen.getByText(quizQuestion.option[0].value));
+  fireEvent.click(screen.getByRole("button", { name: "submit" }));
+  fireEvent.click(screen.getByRole("link", { name: "test" }));
+  fireEvent.click(screen.getByRole("button", { name: "enterTest" }));
+  const questions = store.getState().test.session.questionAnswers;
+  expect(questions).toHaveLength(64);
+  for (const [index, { question }] of questions.entries()) {
+    fireEvent.click(screen.getByText(question.option[0].value));
+    fireEvent.click(screen.getByRole("button", { name: index === questions.length - 1 ? "submit" : "continue" }));
+  }
+  await vi.waitFor(() =>
+    expect(FirebaseAnalytics.logEvent.mock.calls.some(([event]) => event.name === "mock_test_complete")).toBe(true),
+  );
+  const events = FirebaseAnalytics.logEvent.mock.calls.map(([event]) => event);
+  expect(
+    events
+      .filter((event) =>
+        ["study_content_view", "quiz_start", "quiz_complete", "mock_test_start", "mock_test_complete"].includes(
+          event.name,
+        ),
+      )
+      .map((event) => event.name),
+  ).toEqual(["study_content_view", "quiz_start", "quiz_complete", "mock_test_start", "mock_test_complete"]);
+  expect(events.filter((event) => event.name === "screen_view").map((event) => event.params.firebase_screen)).toEqual([
+    "StudyPage",
+    "ContentPage",
+    "QuizPage",
+    "QuizPage:TestPage",
+    "QuizPage:TestResultPage",
+    "TestPage",
+    "TestPage:TestPage",
+    "TestPage:TestResultPage",
+  ]);
+  expect(events.filter((event) => event.name === "app_open")).toHaveLength(1);
+  expect(
+    events.every(
+      (event) =>
+        event.params.premium_status === "free" &&
+        event.params.analytics_test === "true" &&
+        event.params.analytics_schema_version === "v2",
+    ),
+  ).toBe(true);
+  expect(
+    events.some((event) =>
+      /^(premium_|view_promotion|select_promotion|begin_checkout|checkout_outcome|restore_|purchase_)/.test(event.name),
+    ),
+  ).toBe(false);
 });

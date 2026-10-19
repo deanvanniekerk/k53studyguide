@@ -194,14 +194,12 @@ pnpm lander:build
 Deploy the normal landing site build:
 
 ```bash
-pnpm lander:deploy
+pnpm lander:deploy:preview
+# After owner launch approval (#55):
+WEB_LAUNCH_APPROVED=1 TOPIC_PREVIEW=0 pnpm lander:deploy
 ```
 
-The default deploy skips the large quiz image asset tree. Use the full deploy only when those assets need to be uploaded:
-
-```bash
-pnpm lander:deploy:full
-```
+The website links to the full free web app. Generated English study topics reuse its image assets. See [content maintenance](docs/maintenance/content.md) for preview and launch build settings.
 
 ## Native Builds
 

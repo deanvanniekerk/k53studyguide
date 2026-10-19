@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Illustration } from "@/app/components/Illustration";
+import { MobileAppLinks } from "@/app/components/MobileAppLinks";
 import { PremiumInvitation } from "@/app/components/PremiumInvitation";
 import { useSuccessfulQuizReviewPrompt } from "@/app/hooks/useSuccessfulQuizReviewPrompt";
 import type { RootState } from "@/state";
@@ -45,6 +46,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
         </ResultCopy>
       </Result>
       <PremiumInvitation origin="quiz_results" needsPractice={!allCorrect} />
+      <MobileAppLinks placement="quiz_results" />
       <ReviewTitle>
         <IonIcon icon={trophy} />
         <Translate text="results" />

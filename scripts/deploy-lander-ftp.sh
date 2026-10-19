@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+preview_topics=0
+case "${1:-}" in
+  --preview-topics) preview_topics=1 ;;
+  "") ;;
+  *) echo "Usage: $0 [--preview-topics]" >&2; exit 1 ;;
+esac
+
 if [[ -f ".dev.env" ]]; then
   set -a
   # shellcheck disable=SC1091
@@ -8,20 +15,18 @@ if [[ -f ".dev.env" ]]; then
   set +a
 fi
 
+if [[ "$preview_topics" == 1 ]]; then
+  export TOPIC_PREVIEW=1 TOPIC_APP_BASE=/app-preview/ TOPIC_IMAGE_BASE=/app-preview/assets/images
+elif [[ "${WEB_LAUNCH_APPROVED:-}" != 1 || "${TOPIC_PREVIEW:-}" != 0 ]]; then
+  echo "Full website publishing requires owner launch approval (#55): WEB_LAUNCH_APPROVED=1 TOPIC_PREVIEW=0." >&2
+  echo "Use --preview-topics to upload only preview topics and their dependencies." >&2
+  exit 1
+fi
+
 FTP_HOST="${FTP_HOST:-ftp.k53studyguide.online}"
 FTP_USER="${FTP_USER:-publisher@k53studyguide.online}"
 FTP_REMOTE_DIR="${FTP_REMOTE_DIR:-.}"
 DIST_DIR="pkg/lander/dist"
-
-case "${LANDER_INCLUDE_QUIZ_IMAGES:-0}" in
-  1 | true | TRUE | yes | YES)
-    LANDER_INCLUDE_QUIZ_IMAGES=1
-    ;;
-  *)
-    LANDER_INCLUDE_QUIZ_IMAGES=0
-    ;;
-esac
-export LANDER_INCLUDE_QUIZ_IMAGES
 
 if [[ -z "${FTP_PASSWORD:-}" ]]; then
   echo "Missing FTP_PASSWORD."
@@ -37,31 +42,37 @@ if [[ ! -d "$DIST_DIR" ]]; then
   exit 1
 fi
 
-echo "Uploading $DIST_DIR to ftp://$FTP_HOST/$FTP_REMOTE_DIR"
-if [[ "$LANDER_INCLUDE_QUIZ_IMAGES" == "1" ]]; then
-  echo "Including quiz image assets."
-else
-  echo "Skipping quiz image assets. Run pnpm lander:deploy:full to upload them."
-fi
-
-while IFS= read -r -d '' file; do
-  relative_path="${file#$DIST_DIR/}"
-  remote_url="ftp://$FTP_HOST/$FTP_REMOTE_DIR/$relative_path"
-
+upload() {
+  local file="$1" relative_path="$2"
   echo "Uploading $relative_path"
   curl --fail --silent --show-error --ftp-create-dirs \
-    --user "$FTP_USER:$FTP_PASSWORD" \
-    --upload-file "$file" \
-    "$remote_url"
-done < <(
-  # Publish fingerprinted dependencies before the pages that reference them.
-  # Existing assets remain available to visitors with the previous HTML cached.
-  if [[ "$LANDER_INCLUDE_QUIZ_IMAGES" == "1" ]]; then
+    --user "$FTP_USER:$FTP_PASSWORD" --upload-file "$file" \
+    "ftp://$FTP_HOST/$FTP_REMOTE_DIR/$relative_path"
+}
+
+if [[ "$preview_topics" == 1 ]]; then
+  # Add preview dependencies first. Do not replace the live homepage, guides,
+  # privacy, sitemap, robots or root server rules before the owner launch gate.
+  while IFS= read -r -d '' file; do
+    upload "$file" "${file#$DIST_DIR/}"
+  done < <(find "$DIST_DIR/assets" -type f -print0)
+  upload "$DIST_DIR/404.html" study/404.html
+  rules=$(mktemp)
+  trap 'rm -f "$rules"' EXIT
+  printf 'ErrorDocument 404 /study/404.html\n' > "$rules"
+  upload "$rules" study/.htaccess
+  while IFS= read -r -d '' file; do
+    upload "$file" "${file#$DIST_DIR/}"
+  done < <(find "$DIST_DIR/study" -type f -name '*.html' -print0)
+else
+  # Keep old fingerprinted files for cached HTML. Publish the homepage last.
+  while IFS= read -r -d '' file; do
+    upload "$file" "${file#$DIST_DIR/}"
+  done < <(
     find "$DIST_DIR" -type f ! -name '*.html' -print0
-  else
-    find "$DIST_DIR" -path "$DIST_DIR/quiz-assets/images" -prune -o -type f ! -name '*.html' -print0
-  fi
-  find "$DIST_DIR" -type f -name '*.html' -print0
-)
+    find "$DIST_DIR" -type f -name '*.html' ! -path "$DIST_DIR/index.html" -print0
+  )
+  upload "$DIST_DIR/index.html" index.html
+fi
 
 echo "Lander deployed."

@@ -6,10 +6,11 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { PrimaryButton } from "@/app/components";
 import { Illustration } from "@/app/components/Illustration";
+import { MobileAppLinks } from "@/app/components/MobileAppLinks";
 import { usePremiumOffer } from "@/app/hooks/usePremiumOffer";
 import PurchaseModal from "@/app/modals/PurchaseModal";
 import type { RootState } from "@/state";
-import { accessModelSelector } from "@/state/access";
+import { showsMobileAppLinksSelector } from "@/state/access";
 import { canPurchaseSelector, ownedSelector, purchaseSelector } from "@/state/purchase";
 import { Section, SectionTitle } from "./";
 
@@ -18,7 +19,7 @@ type Props = PropsFromState;
 const PurchaseComponent: React.FC<Props> = (props) => {
   const offer = usePremiumOffer("profile");
 
-  if (props.isFreeWeb) return null;
+  if (props.showMobileLinks) return <MobileAppLinks placement="profile" />;
 
   return (
     <Section>
@@ -117,7 +118,7 @@ const PremiumButtonWrap = styled.div`
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
   return {
-    isFreeWeb: accessModelSelector(state) === "free_web",
+    showMobileLinks: showsMobileAppLinksSelector(state),
     purchase: purchaseSelector(state),
     hasFullAccess: ownedSelector(state),
     canPurchase: canPurchaseSelector(state),
