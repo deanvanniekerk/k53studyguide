@@ -3,6 +3,7 @@ import { type NotificationsState, reducer } from "./reducer";
 describe("state > notifications > reducer", () => {
   const defaultState: NotificationsState = {
     notifications: {
+      webProgress: { seen: false },
       studyInfo: {
         seen: false,
       },

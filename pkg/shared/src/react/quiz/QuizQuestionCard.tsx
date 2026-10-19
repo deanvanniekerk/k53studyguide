@@ -1,6 +1,7 @@
 import { IonIcon } from "@ionic/react";
 import { checkmarkCircle, checkmarkCircleOutline, closeCircle, radioButtonOff, radioButtonOn } from "ionicons/icons";
 import type React from "react";
+import type { ComponentType, ImgHTMLAttributes } from "react";
 import { Translate } from "../../translation";
 import styled from "styled-components";
 import type { QuestionItem, QuestionOption } from "../../data";
@@ -11,6 +12,7 @@ type Props = {
   answer: string | null;
   showResult?: boolean;
   imageAssetBaseUrl?: string;
+  ImageComponent?: ComponentType<ImgHTMLAttributes<HTMLImageElement>>;
   onOptionClicked?: (questionId: string, option: QuestionOption) => void;
 };
 
@@ -21,6 +23,7 @@ const QuizQuestionCard: React.FC<Props> = ({
   answer,
   showResult,
   imageAssetBaseUrl = "assets/images",
+  ImageComponent,
   onOptionClicked,
 }) => {
   const getIcon = (option: QuestionOption): string => {
@@ -48,8 +51,8 @@ const QuizQuestionCard: React.FC<Props> = ({
       </QuestionCopy>
       {(question.image || question.image2) && (
         <ImageFrame>
-          {question.image && <QuestionImage alt="" src={imageUrl(question.image)} />}
-          {question.image2 && <QuestionImage alt="" src={imageUrl(question.image2)} />}
+          {question.image && <QuestionImage as={ImageComponent} alt="" src={imageUrl(question.image)} />}
+          {question.image2 && <QuestionImage as={ImageComponent} alt="" src={imageUrl(question.image2)} />}
         </ImageFrame>
       )}
       <Options>

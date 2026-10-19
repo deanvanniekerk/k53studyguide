@@ -27,6 +27,7 @@ export const migrateLegacyNotifications = (state: PersistedState): Promise<Persi
   return Promise.resolve({
     _persist: legacyState?._persist ?? { version: -1, rehydrated: false },
     notifications: {
+      webProgress: legacyState?.notifications?.webProgress ?? { seen: false },
       studyInfo: legacyState?.notifications?.studyInfo ?? { seen: false },
       quizInfo: legacyState?.notifications?.quizInfo ??
         legacyState?.notifications?.[legacyQuizInfoKey] ?? { seen: false },

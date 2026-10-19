@@ -23,6 +23,7 @@ import StudyPage from "./pages/study/StudyPage";
 import TestResultPage from "./pages/test/results/TestResultPage";
 import TestSessionPage from "./pages/test/session/TestPage";
 import TestPage from "./pages/test/TestPage";
+import { WebRuntimeProvider } from "./WebRuntimeProvider";
 import WelcomeGate from "./WelcomeGate";
 
 type Props = PropsFromState;
@@ -170,11 +171,13 @@ const AppTabs: React.FC<AnalyticsRouteTrackerProps> = (props) => {
 const Router: React.FC<Props> = (props) => {
   return (
     <TranslationProvider language={props.language} translation={translations}>
-      <IonReactRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-        <WelcomeGate>
-          <AppTabs language={props.language} theme={props.theme} hasFullAccess={props.hasFullAccess} />
-        </WelcomeGate>
-      </IonReactRouter>
+      <WebRuntimeProvider>
+        <IonReactRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+          <WelcomeGate>
+            <AppTabs language={props.language} theme={props.theme} hasFullAccess={props.hasFullAccess} />
+          </WelcomeGate>
+        </IonReactRouter>
+      </WebRuntimeProvider>
     </TranslationProvider>
   );
 };

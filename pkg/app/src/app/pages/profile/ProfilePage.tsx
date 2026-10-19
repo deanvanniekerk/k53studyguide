@@ -4,6 +4,7 @@ import type React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { PageContent, PageHeader } from "@/app/components";
+import { BrowserProgress } from "@/app/components/BrowserProgress";
 import { SettingsOutlineIcon } from "@/app/components/icons";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { watermarkStyle } from "@/app/styles";
@@ -21,6 +22,7 @@ const ProfilePage: React.FC = () => {
       <Watermark />
       <Content>
         {isBrowserPreview && model === "mobile" && <BrowserPurchasePreview />}
+        <BrowserProgress />
         <Checklist />
         <History />
         <Purchase />

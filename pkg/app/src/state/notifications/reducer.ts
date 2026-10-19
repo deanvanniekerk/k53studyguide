@@ -6,6 +6,7 @@ export type NotificationsState = {
 
 export const defaultState: NotificationsState = {
   notifications: {
+    webProgress: { seen: false },
     studyInfo: {
       seen: false,
     },
