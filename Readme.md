@@ -194,7 +194,9 @@ pnpm lander:build
 Deploy the normal landing site build:
 
 ```bash
-pnpm lander:deploy
+pnpm lander:deploy:preview
+# After owner launch approval (#55):
+WEB_LAUNCH_APPROVED=1 TOPIC_PREVIEW=0 pnpm lander:deploy
 ```
 
 The website links to the full free web app. Generated English study topics reuse its image assets. See [content maintenance](docs/maintenance/content.md) for preview and launch build settings.

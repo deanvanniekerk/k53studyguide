@@ -49,8 +49,6 @@ h1 span { color: var(--site-accent); }
 .store-badge span { font-size: .63rem; line-height: 1.5; }
 .store-badge strong { font-size: 1.02rem; line-height: 1.6; }
 .store-badge:hover { transform: translateY(-3px); }
-.text-action { border: 0; padding: 12px 0; margin-top: 12px; background: none; color: var(--site-accent); cursor: pointer; font-size: .92rem; font-weight: 600; }
-.text-action span { padding-left: 12px; }
 .hero-visual { position: relative; height: clamp(410px, 43vw, 555px); max-width: 530px; width: 100%; margin-inline: auto; }
 .phone { display: block; border-radius: 18px; border: 1px solid #707495; box-shadow: 0 22px 46px #07071650; }
 .hero-study { width: 45%; position: absolute; left: 2%; top: 0; transform: rotate(-5deg); }

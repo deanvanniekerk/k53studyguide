@@ -362,7 +362,7 @@ it.each(["profile", "quiz_results", "test_results"])(
         expect(new URLSearchParams(destination.searchParams.get("referrer")).get("utm_medium")).toBe(location);
       } else {
         expect(destination.pathname).toBe("/us/app/k53-study-guide/id6784718443");
-        expect(destination.searchParams.get("ct")).toBe(`web_app_${location}`);
+        expect(destination.searchParams.get("ct")).toBe(location);
       }
       link.addEventListener("click", (event) => event.preventDefault());
       fireEvent.click(link);

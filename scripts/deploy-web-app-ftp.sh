@@ -16,6 +16,10 @@ case "$WEB_APP_MOUNT" in
   app | app-preview) ;;
   *) echo "WEB_APP_MOUNT must be app or app-preview."; exit 1 ;;
 esac
+if [[ "$WEB_APP_MOUNT" == "app" && "${WEB_LAUNCH_APPROVED:-}" != 1 ]]; then
+  echo "Production /app/ publishing requires owner launch approval (#55): WEB_LAUNCH_APPROVED=1." >&2
+  exit 1
+fi
 if [[ -z "${FTP_PASSWORD:-}" ]]; then
   echo "Missing FTP_PASSWORD. Add it to .dev.env."
   exit 1

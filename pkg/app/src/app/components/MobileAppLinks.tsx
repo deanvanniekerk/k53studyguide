@@ -23,7 +23,7 @@ export function MobileAppLinks({ placement }: { placement: Placement }) {
           const href =
             platform === "android"
               ? `https://play.google.com/store/apps/details?id=deanvniekerk.k53studyguide.app&hl=en&referrer=${encodeURIComponent(`utm_source=web_app&utm_medium=${location}&utm_campaign=organic_web`)}`
-              : `https://apps.apple.com/us/app/k53-study-guide/id6784718443?ct=web_app_${location}`;
+              : `https://apps.apple.com/us/app/k53-study-guide/id6784718443?ct=${location}`;
           return (
             <a
               key={platform}

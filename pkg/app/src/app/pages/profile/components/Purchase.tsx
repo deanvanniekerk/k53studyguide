@@ -10,7 +10,7 @@ import { MobileAppLinks } from "@/app/components/MobileAppLinks";
 import { usePremiumOffer } from "@/app/hooks/usePremiumOffer";
 import PurchaseModal from "@/app/modals/PurchaseModal";
 import type { RootState } from "@/state";
-import { accessModelSelector, showsMobileAppLinksSelector } from "@/state/access";
+import { showsMobileAppLinksSelector } from "@/state/access";
 import { canPurchaseSelector, ownedSelector, purchaseSelector } from "@/state/purchase";
 import { Section, SectionTitle } from "./";
 
@@ -20,7 +20,6 @@ const PurchaseComponent: React.FC<Props> = (props) => {
   const offer = usePremiumOffer("profile");
 
   if (props.showMobileLinks) return <MobileAppLinks placement="profile" />;
-  if (props.isFreeWeb) return null;
 
   return (
     <Section>
@@ -120,7 +119,6 @@ type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
   return {
     showMobileLinks: showsMobileAppLinksSelector(state),
-    isFreeWeb: accessModelSelector(state) === "free_web",
     purchase: purchaseSelector(state),
     hasFullAccess: ownedSelector(state),
     canPurchase: canPurchaseSelector(state),

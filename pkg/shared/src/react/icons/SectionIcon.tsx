@@ -1,4 +1,4 @@
-// Bundled URLs keep the same artwork available in the app and landing-page demo.
+// Bundled URLs keep the same artwork available in the app and shared quiz UI.
 export const sectionIllustrations = {
   "vehicle-controls": new URL("./illustrations/vehicle-controls.webp", import.meta.url).href,
   "road-rules": new URL("./illustrations/road-rules.webp", import.meta.url).href,
