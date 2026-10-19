@@ -1,6 +1,7 @@
 import type React from "react";
 import styled from "styled-components";
 import { assetUrl } from "@/app/assetUrl";
+import { RetryableImage } from "@/app/components/RetryableImage";
 import type { QuestionItem } from "@/data";
 
 type Props = {
@@ -12,12 +13,12 @@ const ImageList: React.FC<Props> = ({ question }) => {
     <>
       {question.image && (
         <ImageWrapper>
-          <img alt="" src={assetUrl(`images/${question.image}`)} style={{ maxWidth: "100%" }} />
+          <RetryableImage alt="" src={assetUrl(`images/${question.image}`)} style={{ maxWidth: "100%" }} />
         </ImageWrapper>
       )}
       {question.image2 && (
         <ImageWrapper>
-          <img alt="" src={assetUrl(`images/${question.image2}`)} style={{ maxWidth: "100%" }} />
+          <RetryableImage alt="" src={assetUrl(`images/${question.image2}`)} style={{ maxWidth: "100%" }} />
         </ImageWrapper>
       )}
     </>

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import { PageContent, PageHeader, PageHeaderInfoIcon } from "@/app/components";
+import { BrowserProgress } from "@/app/components/BrowserProgress";
 import { BookOutlineIcon } from "@/app/components/icons";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { useStudyDisplayMode } from "@/app/hooks/useStudyDisplayMode";
@@ -58,6 +59,7 @@ const StudyPage: React.FC<Props> = (props) => {
       <PageHeader title="study" page="study" rightSection={<PageHeaderInfoIcon onClick={() => showInfoModal()} />} />
       <Watermark />
       <Content ref={setContent}>
+        <BrowserProgress firstVisit />
         <div ref={layout}>
           <Header onNavigationItemClicked={onNavigationItemClicked} />
           <TopicList>

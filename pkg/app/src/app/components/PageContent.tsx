@@ -1,6 +1,7 @@
 import { IonContent } from "@ionic/react";
 import { getScrollActionTarget, ScrollFade } from "@k53studyguide/shared/react";
 import { type ComponentPropsWithoutRef, forwardRef, useCallback, useState } from "react";
+import { WebFeedback } from "./WebFeedback";
 
 type Props = ComponentPropsWithoutRef<typeof IonContent> & { scrollHint?: boolean };
 
@@ -34,6 +35,7 @@ export const PageContent = forwardRef<HTMLIonContentElement, Props>(function Pag
 
   return (
     <IonContent {...props} ref={attachContent}>
+      <WebFeedback />
       {children}
       <ScrollFade
         slot="fixed"

@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
 import { assetUrl } from "@/app/assetUrl";
+import { RetryableImage } from "@/app/components/RetryableImage";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { ContentItem } from "@/data";
 import { recieveSeenContentKey } from "@/state/study/log";
@@ -50,7 +51,7 @@ const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenCon
       </CardHeader>
       {item.imageName && (
         <ImageFrame>
-          <img src={assetUrl(`images/${item.imageName}`)} alt="" />
+          <RetryableImage src={assetUrl(`images/${item.imageName}`)} alt="" />
         </ImageFrame>
       )}
       <Description className="content-html">
