@@ -52,10 +52,14 @@ upload() {
 
 if [[ "$preview_topics" == 1 ]]; then
   # Add preview dependencies first. Do not replace the live homepage, guides,
-  # privacy, sitemap, robots or root server rules before the owner launch gate.
+  # privacy or sitemap before the owner launch gate. Root preview routing and
+  # crawler exclusions are shared by preview and production.
   while IFS= read -r -d '' file; do
     upload "$file" "${file#$DIST_DIR/}"
   done < <(find "$DIST_DIR/assets" -type f -print0)
+  upload "$DIST_DIR/404.html" 404.html
+  upload "$DIST_DIR/.htaccess" .htaccess
+  upload "$DIST_DIR/robots.txt" robots.txt
   upload "$DIST_DIR/404.html" study/404.html
   rules=$(mktemp)
   trap 'rm -f "$rules"' EXIT

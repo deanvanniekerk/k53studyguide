@@ -37,6 +37,9 @@ test("preview publishing uploads additive topic files without changing live entr
   const uploads = readFileSync(join(root, "uploads"), "utf8").trim().split("\n").map(line => line.split(" ").at(-1));
   expect(uploads).toEqual([
     "ftp://ftp.k53studyguide.online/./assets/site.css",
+    "ftp://ftp.k53studyguide.online/./404.html",
+    "ftp://ftp.k53studyguide.online/./.htaccess",
+    "ftp://ftp.k53studyguide.online/./robots.txt",
     "ftp://ftp.k53studyguide.online/./study/404.html",
     "ftp://ftp.k53studyguide.online/./study/.htaccess",
     expect.stringMatching(/\/study\/(?:topic\/)?index.html$/),
