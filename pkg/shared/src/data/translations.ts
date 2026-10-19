@@ -77,6 +77,8 @@ const translations: Translations = {
   infoTestFocusTitle: { en: "Focus on what needs practice" },
   infoTestFocusBody: { en: "Questions you haven’t answered correctly take priority, helping you work on gaps in your knowledge." },
   infoTestResetBody: { en: "With Premium, clear your test history in Profile to reset your passed-test count and question history." },
+  freeWebTestIntro: { en: "Mock tests bring all 3 sections together, with a score and pass mark for each." },
+  freeWebHistoryReset: { en: "Clear your study, quiz or test history in Profile whenever you want a fresh start. Web access is free." },
   premiumOneTime: { en: "Pay once. No subscription." },
   unlockMockTests: { en: "Unlock mock tests" },
   premiumOfferTitle: { en: "Practise for the full test" },

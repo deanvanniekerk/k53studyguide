@@ -6,14 +6,15 @@ import type { Action, Dispatch } from "redux";
 import styled from "styled-components";
 import { usePremiumOffer } from "@/app/hooks/usePremiumOffer";
 import PurchaseModal from "@/app/modals/PurchaseModal";
-import { ownedSelector } from "@/state/purchase";
+import { accessModelSelector, showsPremiumOffersSelector } from "@/state/access";
 import { dismissQuizHomePremium, quizHomePremiumDismissedSelector } from "@/state/settings";
 import { PrimaryButton } from "./PrimaryButton";
 
 type Props = { origin: "quiz_home" | "quiz_results"; needsPractice?: boolean; enabled?: boolean };
 
 export function PremiumInvitation({ origin, needsPractice = false, enabled = true }: Props) {
-  const owned = useSelector(ownedSelector);
+  const showsOffers = useSelector(showsPremiumOffersSelector);
+  const isMobile = useSelector(accessModelSelector) === "mobile";
   const dismissed = useSelector(quizHomePremiumDismissedSelector);
   const dispatch = useDispatch<Dispatch<Action>>();
   const dismissible = origin === "quiz_home";
@@ -26,7 +27,7 @@ export function PremiumInvitation({ origin, needsPractice = false, enabled = tru
 
   return (
     <>
-      {showInvitation && !owned && (
+      {showInvitation && showsOffers && (
         <Card ref={offer.invitationRef}>
           {dismissible && (
             <Translator>
@@ -57,7 +58,7 @@ export function PremiumInvitation({ origin, needsPractice = false, enabled = tru
           </Note>
         </Card>
       )}
-      <PurchaseModal origin={origin} isOpen={offer.isOpen} onDidDismiss={offer.dismiss} />
+      {isMobile && <PurchaseModal origin={origin} isOpen={offer.isOpen} onDidDismiss={offer.dismiss} />}
     </>
   );
 }

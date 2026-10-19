@@ -1,3 +1,4 @@
+import { Capacitor } from "@capacitor/core";
 import { Preferences } from "@capacitor/preferences";
 import { useCallback } from "react";
 import { useAppRate } from "./useAppRate";
@@ -70,6 +71,7 @@ export const useSuccessfulQuizReviewPrompt = () => {
 
   return useCallback(
     (quizId: string) => {
+      if (Capacitor.getPlatform() === "web") return;
       void recordSuccessfulQuizForReviewPrompt(quizId)
         .then((shouldRequestReview) => {
           if (shouldRequestReview) void appRate.requestReview({ fallbackToStore: false });

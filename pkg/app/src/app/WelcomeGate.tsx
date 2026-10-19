@@ -8,6 +8,7 @@ import { type ReactNode, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import type { Dispatch } from "redux";
 import styled from "styled-components";
+import { assetUrl } from "@/app/assetUrl";
 import {
   completeWelcome,
   hasSavedLanguageSelector,
@@ -55,7 +56,7 @@ export default function WelcomeGate({ children }: { children: ReactNode }) {
         <Content>
           <Welcome>
             <Illustration
-              src="/assets/images/premium/open-road.webp"
+              src={assetUrl("images/premium/open-road.webp")}
               alt=""
               width={1536}
               height={1024}

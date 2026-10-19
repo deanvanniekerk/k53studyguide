@@ -2,16 +2,18 @@ import { App } from "@capacitor/app";
 import type { PluginListenerHandle } from "@capacitor/core";
 import { Network } from "@capacitor/network";
 import { useEffect } from "react";
-import { useStore } from "react-redux";
+import { useSelector, useStore } from "react-redux";
 import type { PurchaseService } from "@/services";
 import type { RootState } from "@/state";
+import { accessModelSelector } from "@/state/access";
 
 /** One recovery listener for the app, including while Ionic pages are cached. */
 export function usePurchaseRecovery(service: PurchaseService | null) {
   const store = useStore<RootState>();
+  const model = useSelector(accessModelSelector);
 
   useEffect(() => {
-    if (!service) return;
+    if (!service || model === "free_web") return;
     let disposed = false;
     let recovering = false;
     let recoveryRequested = false;
@@ -58,5 +60,5 @@ export function usePurchaseRecovery(service: PurchaseService | null) {
       disposed = true;
       for (const listener of listeners) void listener.remove().catch(() => {});
     };
-  }, [service, store]);
+  }, [service, store, model]);
 }

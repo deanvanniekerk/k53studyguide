@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { bindActionCreators, type Dispatch } from "redux";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { RootState } from "@/state";
-import { ownedSelector } from "@/state/purchase";
+import { canResetHistorySelector } from "@/state/access";
 import { clearQuesionSuccesfullyAnsweredDates as clearQuizQuesionSuccesfullyAnsweredDates } from "@/state/quiz/log";
 import { clearSeenContent } from "@/state/study/log";
 import {
@@ -142,7 +142,7 @@ const HistoryComponent: React.FC<Props> = (props) => {
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
   return {
-    hasFullAccess: ownedSelector(state),
+    hasFullAccess: canResetHistorySelector(state),
   };
 };
 
