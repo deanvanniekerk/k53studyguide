@@ -66,5 +66,5 @@ const Links = styled.div`
   flex-wrap: wrap;
   gap: 12px 24px;
   margin-top: 16px;
-  a { color: var(--app-question-accent, var(--app-text-primary)); padding-block: 8px; text-underline-offset: 4px; }
+  a { color: var(--app-text-primary); padding-block: 8px; text-underline-offset: 4px; }
 `;
