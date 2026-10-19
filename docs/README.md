@@ -6,13 +6,14 @@ Our next priority is to understand how learners use the app and increase confirm
 | --- | --- |
 | [Premium sales plan](growth/premium-sales.md) | Priorities, weekly scorecard and experiment decisions |
 | [Paid acquisition pilot](growth/paid-acquisition.md) | Channel choice, creative brief, proposed budget and success rules |
+| [Free web launch](growth/web-launch.md) | Agreed scope, implementation decisions and release gates for free web access |
 | [Analytics reporting](analytics/README.md) | Sources, denominators, exclusions and cohort rules |
 | [Event reference](analytics/events.md) | What the app and website actually measure |
 | [Analytics access](analytics/access.md) | Account identities and repeatable read-only reporting |
 | [Release and validation](maintenance/release.md) | Repeatable checks and unresolved technical limitations |
 | [Content and artwork](maintenance/content.md) | Translation maintenance and approved creative sources |
 
-Use [Readme.md](../Readme.md) for development/build commands and [GLOSSARY.md](../GLOSSARY.md) for product vocabulary. GitHub Issues hold actionable work; these docs explain how to operate and measure the product. Completed setup walkthroughs, old proposals and per-build QA diaries belong in Git history, rather than a second archive folder.
+Use [Readme.md](../Readme.md) for development/build commands, [GLOSSARY.md](../GLOSSARY.md) for product vocabulary and [docs/adr](adr/) for recorded architectural decisions. GitHub Issues hold actionable work; these docs explain how to operate and measure the product. Completed setup walkthroughs, old proposals and per-build QA diaries belong in Git history, rather than a second archive folder.
 
 ## Current starting point
 
