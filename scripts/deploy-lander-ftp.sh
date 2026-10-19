@@ -42,6 +42,25 @@ if [[ ! -d "$DIST_DIR" ]]; then
   exit 1
 fi
 
+# Refuse to replace unknown host configuration, even during a preview refresh.
+# Merge owner rules into public/.htaccess and rebuild before retrying.
+existing_rules=$(mktemp)
+scoped_rules=$(mktemp)
+trap 'rm -f "$existing_rules" "$scoped_rules"' EXIT
+if curl --fail --silent --show-error --user "$FTP_USER:$FTP_PASSWORD" \
+  "ftp://$FTP_HOST/$FTP_REMOTE_DIR/.htaccess" --output "$existing_rules"; then
+  if ! cmp -s "$existing_rules" "$DIST_DIR/.htaccess"; then
+    echo "Refusing to replace existing root .htaccess; merge its rules into pkg/lander/public/.htaccess before publishing." >&2
+    exit 1
+  fi
+else
+  status=$?
+  if [[ "$status" != 78 ]]; then
+    echo "Could not verify existing root .htaccess (curl $status); no files uploaded." >&2
+    exit 1
+  fi
+fi
+
 upload() {
   local file="$1" relative_path="$2"
   echo "Uploading $relative_path"
@@ -61,10 +80,8 @@ if [[ "$preview_topics" == 1 ]]; then
   upload "$DIST_DIR/.htaccess" .htaccess
   upload "$DIST_DIR/robots.txt" robots.txt
   upload "$DIST_DIR/404.html" study/404.html
-  rules=$(mktemp)
-  trap 'rm -f "$rules"' EXIT
-  printf 'ErrorDocument 404 /study/404.html\n' > "$rules"
-  upload "$rules" study/.htaccess
+  printf 'ErrorDocument 404 /study/404.html\n' > "$scoped_rules"
+  upload "$scoped_rules" study/.htaccess
   while IFS= read -r -d '' file; do
     upload "$file" "${file#$DIST_DIR/}"
   done < <(find "$DIST_DIR/study" -type f -name '*.html' -print0)
