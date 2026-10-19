@@ -1,9 +1,4 @@
 import { readFileSync } from "node:fs";
-import { cleanup, fireEvent, render, within } from "@testing-library/react";
-import { Provider as TranslationProvider } from "@k53studyguide/shared/translation";
-import { StyleSheetManager } from "styled-components";
-import { translations } from "@k53studyguide/shared/data";
-import { QuizDemoDialog } from "../src/quiz-demo/QuizDemoDialog";
 import { afterEach, expect, test, vi } from "vitest";
 
 const html = readFileSync("index.html", "utf8");
@@ -37,7 +32,7 @@ const loadWebsite = (url: string, page = html) => {
   return { posthog, gaEvents, posthogEvents };
 };
 
-afterEach(() => { cleanup(); vi.unstubAllGlobals(); });
+afterEach(() => { vi.unstubAllGlobals(); });
 
 test.each(["http://localhost:5173/", "https://preview.example.com/"])(
   "store links still open on %s without starting production collectors",
@@ -107,46 +102,6 @@ test.each(["analytics_test=true", "utm_source=qa", "utm_campaign=issue7"])(
 );
 
 test.each([
-  { url: "https://www.k53studyguide.online/", isTest: false, collected: true },
-  { url: "https://www.k53studyguide.online/?analytics_test=true", isTest: true, collected: true },
-  { url: "http://localhost:5173/", isTest: false, collected: false },
-])("demo store links preserve all six destinations and collection labels at $url", ({ url, isTest, collected }) => {
-  const { gaEvents, posthogEvents } = loadWebsite(url);
-  HTMLElement.prototype.scrollTo = vi.fn();
-  render(
-    <StyleSheetManager target={document.createElement("div")}>
-      <TranslationProvider language="en" translation={translations}>
-        <QuizDemoDialog />
-      </TranslationProvider>
-    </StyleSheetManager>,
-    { container: document.getElementById("quiz-demo-root")! },
-  );
-  fireEvent.click(document.querySelector("[data-quiz-demo-open]")!);
-  for (const tab of ["Study", "Test", "Profile"]) {
-    fireEvent.click(within(document.body).getByRole("button", { name: tab, exact: true }));
-    const preview = within(document.body).getByRole("region", { name: `${tab} preview` });
-    const android = within(preview).getByRole("link", { name: /Google Play/ }) as HTMLAnchorElement;
-    const ios = within(preview).getByRole("link", { name: /App Store/ }) as HTMLAnchorElement;
-    expect(new URL(android.href).searchParams.get("id")).toBe("deanvniekerk.k53studyguide.app");
-    expect(new URL(ios.href).pathname).toBe("/us/app/k53-study-guide/id6784718443");
-    for (const link of [android, ios]) {
-      expect(link.target).toBe("_blank");
-      expect(link.rel).toContain("noopener");
-      fireEvent.click(link);
-    }
-  }
-  const expected = [
-    ["quiz_demo_locked_study_android", "android"], ["quiz_demo_locked_study_ios", "ios"],
-    ["quiz_demo_locked_test_android", "android"], ["quiz_demo_locked_test_ios", "ios"],
-    ["quiz_demo_locked_profile_android", "android"], ["quiz_demo_locked_profile_ios", "ios"],
-  ].map(([cta_location, store_platform]) => ({
-    cta_location, store_platform, analytics_environment: "production", analytics_test: isTest,
-  }));
-  expect(gaEvents()).toEqual(collected ? expected : []);
-  expect(posthogEvents()).toEqual(collected ? expected : []);
-});
-
-test.each([
   ["k53-road-signs", "road_signs"],
   ["vehicle-controls", "vehicle_controls"],
   ["k53-practice-questions", "practice_questions"],
@@ -176,4 +131,16 @@ test.each([
     expect(gaEvents()).toEqual(expected);
     expect(posthogEvents()).toEqual(expected);
   }
+});
+
+test("opens full free web study from the homepage without a store referral", () => {
+  const { gaEvents, posthogEvents } = loadWebsite("https://www.k53studyguide.online/");
+  const link = document.querySelector<HTMLAnchorElement>('a[data-analytics-location="hero_start_free"]');
+  expect(link?.textContent).toContain("Start studying free");
+  expect(link?.getAttribute("href")).toBe("/app/");
+  link!.addEventListener("click", event => event.preventDefault());
+  link!.click();
+  expect(gaEvents()).toEqual([]);
+  expect(posthogEvents()).toEqual([]);
+  expect(document.querySelector("[data-quiz-demo-open], #quiz-demo-root")).toBeNull();
 });

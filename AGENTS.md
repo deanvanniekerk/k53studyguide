@@ -51,14 +51,15 @@ pnpm cap-open-ios
 
 ## `pkg/lander`
 
-Static landing website for the app.
+Static landing website and generated English study topics for the app.
 
 - Main file: `pkg/lander/index.html`
 - Assets: `pkg/lander/assets`
 - Uses Vite directly; no framework app structure.
 - Store CTAs send Google Play and App Store links to the live store listings in a new tab.
 - Root scripts use the `lander:*` namespace.
-- Default deploy skips the large quiz image asset tree; use the full deploy only when those assets need to be uploaded.
+- Topic HTML is generated from shared content; images use the app asset tree.
+- The website links to the full web app; shared quiz UI remains used by the app.
 
 Common commands:
 
@@ -66,7 +67,6 @@ Common commands:
 pnpm lander:start
 pnpm lander:build
 pnpm lander:deploy
-pnpm lander:deploy:full
 ```
 
 ## Agent skills

@@ -5,6 +5,7 @@ import type React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Illustration } from "@/app/components/Illustration";
+import { MobileAppLinks } from "@/app/components/MobileAppLinks";
 import type { RootState } from "@/state";
 import {
   passedSelector,
@@ -61,6 +62,7 @@ const HeaderComponent: React.FC<Props> = ({ testResults, sectionAPassed, section
           <ResultStatusIcon success={sectionCPassed} />
         </SectionResultRow>
       </SectionCard>
+      <MobileAppLinks placement="test_results" />
     </>
   );
 };

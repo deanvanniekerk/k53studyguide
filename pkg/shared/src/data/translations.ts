@@ -24,6 +24,9 @@ const translations: Translations = {
   debugNoLogMessagesYet: { en: "No log messages yet." },
 
   studySectionsComplete: { en: "{completed} of {total} sections complete" },
+  mobileAppTitle: { en: "Get the mobile app" },
+  mobileAppResults: { en: "Also on Android and iOS" },
+  mobileAppHonesty: { en: "Mobile Premium is a separate one-time purchase. Your web progress stays in this browser." },
   appearance: { en: "Appearance" },
   systemDefault: { en: "System default" },
   lightTheme: { en: "Light" },

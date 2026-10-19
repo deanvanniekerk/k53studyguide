@@ -18,6 +18,7 @@ import QuizPage from "./pages/quiz/QuizPage";
 import QuizResultPage from "./pages/quiz/results/TestResultPage";
 import QuizSessionPage from "./pages/quiz/session/TestPage";
 import StudyPage from "./pages/study/StudyPage";
+import MockTestResultPage from "./pages/test/results/TestResultPage";
 import TestPage from "./pages/test/TestPage";
 import { WebRuntimeProvider } from "./WebRuntimeProvider";
 
@@ -122,6 +123,7 @@ function journey(model, preloaded, entry = "study") {
             <Route path="/quiz/session" element={<QuizSessionPage />} />
             <Route path="/quiz/results" element={<QuizResultPage />} />
             <Route path="/test" element={<TestPage />} />
+            <Route path="/test/results" element={<MockTestResultPage />} />
             <Route
               path="/profile"
               element={
@@ -174,6 +176,7 @@ it("lets a browser learner study, finish practice and access mock tests and rese
 it("keeps mock tests and history reset locked for a free mobile learner", () => {
   const store = journey("mobile");
   finishPractice(store);
+  expect(screen.queryByRole("link", { name: "Google Play" })).toBeNull();
   fireEvent.click(screen.getByRole("link", { name: "Mock tests" }));
   expect(screen.getByRole("button", { name: "unlockMockTests" })).toBeTruthy();
   fireEvent.click(screen.getByRole("link", { name: "History" }));
@@ -318,3 +321,59 @@ it("keeps Study usable and warns when a browser save fails", async () => {
   expect(store.getState().purchase.owned).toBe(false);
   setItem.mockRestore();
 });
+
+it.each(["profile", "quiz_results", "test_results"])(
+  "offers optional mobile referrals from web %s",
+  async (placement) => {
+    if (placement === "quiz_results") {
+      finishPractice(journey("free_web"));
+    } else if (placement === "test_results") {
+      const reducer = createRootReducer("free_web");
+      const state = reducer(undefined, { type: "@@test/init" });
+      const answer = {
+        section: "A",
+        answer: "A",
+        question: { id: "sign", text: "Sign fixture", answer: "A", option: [{ id: "A", value: "Stop" }] },
+      };
+      journey(
+        "free_web",
+        {
+          ...state,
+          test: { ...state.test, session: { ...state.test.session, questionAnswers: [answer], completedAt: 1 } },
+        },
+        "test/results",
+      );
+    } else {
+      journey("free_web", undefined, "profile");
+    }
+    expect(screen.getByText("mobileAppHonesty")).toBeTruthy();
+    const referrals = [];
+    for (const [name, platform] of [
+      ["Google Play", "android"],
+      ["App Store", "ios"],
+    ]) {
+      const link = screen.getByRole("link", { name });
+      expect(link.target).toBe("_blank");
+      expect(link.rel).toContain("noopener");
+      const destination = new URL(link.href);
+      const location = `web_app_${placement}_${platform}`;
+      if (platform === "android") {
+        expect(destination.searchParams.get("id")).toBe("deanvniekerk.k53studyguide.app");
+        expect(new URLSearchParams(destination.searchParams.get("referrer")).get("utm_medium")).toBe(location);
+      } else {
+        expect(destination.pathname).toBe("/us/app/k53-study-guide/id6784718443");
+        expect(destination.searchParams.get("ct")).toBe(`web_app_${location}`);
+      }
+      link.addEventListener("click", (event) => event.preventDefault());
+      fireEvent.click(link);
+      referrals.push({ name: "select_store_cta", params: { cta_location: location, store_platform: platform } });
+    }
+    await Promise.resolve();
+    expect(
+      FirebaseAnalytics.logEvent.mock.calls
+        .map(([event]) => event)
+        .filter((event) => event.name === "select_store_cta"),
+    ).toEqual(referrals);
+    expect(screen.queryByText("goPremium")).toBeNull();
+  },
+);

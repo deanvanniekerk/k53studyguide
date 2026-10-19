@@ -26,7 +26,6 @@
     "lander:start": "pnpm --filter lander start",
     "lander:build": "pnpm --filter lander build",
     "lander:deploy": "bash scripts/deploy-lander-ftp.sh",
-    "lander:deploy:full": "LANDER_INCLUDE_QUIZ_IMAGES=1 bash scripts/deploy-lander-ftp.sh",
     "translator:check": "pnpm --dir tools/translator check",
     "translations:generate": "node tools/translator/main.js",
     "translations:check": "node tools/translator/check.mjs --complete",

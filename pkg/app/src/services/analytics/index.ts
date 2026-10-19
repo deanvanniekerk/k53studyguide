@@ -5,6 +5,7 @@ import { isBrowserPreview } from "./browserPreview";
 export type PremiumStatus = "free" | "premium";
 
 export type AnalyticsEventName =
+  | "select_store_cta"
   | "app_open"
   | "onboarding_info_view"
   | "study_content_view"
