@@ -4,12 +4,13 @@
   "private": true,
   "description": "K53 Study Guide website and interactive quiz demo",
   "scripts": {
-    "start": "vite --host 0.0.0.0",
+    "start": "pnpm generate:topics && vite --host 0.0.0.0",
     "dev": "pnpm start",
     "preview": "vite preview --host 0.0.0.0",
-    "build": "vite build",
-    "test": "vitest run",
-    "tsc": "tsc"
+    "build": "pnpm generate:topics && vite build",
+    "test": "pnpm build && vitest run && node scripts/check-links.ts",
+    "tsc": "tsc",
+    "generate:topics": "node scripts/generate-topics.ts"
   },
   "dependencies": {
     "@ionic/react": "9.0.6",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "16.3.3",
+    "@types/jsdom": "30.0.0",
     "@types/node": "26.6.4",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
@@ -29,5 +31,6 @@
     "typescript": "7.0.2",
     "vite": "8.3.3",
     "vitest": "5.0.3"
-  }
+  },
+  "type": "module"
 }

@@ -1,7 +1,7 @@
-import { createReadStream, existsSync, mkdirSync, readdirSync, statSync, copyFileSync } from "node:fs";
+import { copyFileSync, createReadStream, existsSync, globSync, mkdirSync, readdirSync, statSync } from "node:fs";
 import { dirname, extname, join, normalize, resolve } from "node:path";
-import { defineConfig, type Plugin, type ViteDevServer } from "vite";
 import react from "@vitejs/plugin-react";
+import { defineConfig, type Plugin, type ViteDevServer } from "vite";
 
 const appQuestionImagesRoot = resolve(__dirname, "../app/public/assets/images");
 const quizQuestionImagesPath = "/quiz-assets/images";
@@ -71,6 +71,10 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: resolve(__dirname, "index.html"),
+        "404": resolve(__dirname, "404.html"),
+        ...Object.fromEntries(
+          globSync("study/**/index.html", { cwd: __dirname }).map((path) => [path, resolve(__dirname, path)]),
+        ),
         "k53-road-signs": resolve(__dirname, "k53-road-signs.html"),
         "vehicle-controls": resolve(__dirname, "vehicle-controls.html"),
         "k53-practice-questions": resolve(__dirname, "k53-practice-questions.html"),

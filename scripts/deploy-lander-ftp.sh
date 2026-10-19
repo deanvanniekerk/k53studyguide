@@ -30,7 +30,7 @@ if [[ -z "${FTP_PASSWORD:-}" ]]; then
 fi
 
 echo "Building lander..."
-pnpm --dir pkg/lander exec vite build
+pnpm --filter lander build
 
 if [[ ! -d "$DIST_DIR" ]]; then
   echo "Build output not found at $DIST_DIR"
