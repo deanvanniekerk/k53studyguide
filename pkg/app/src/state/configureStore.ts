@@ -44,7 +44,7 @@ export const configureStore = () => {
   const purchaseStore = store as unknown as PurchaseStore;
   let purchaseService = createPurchaseService(LocalPurchaseService, purchaseStore);
 
-  if (shouldUseRevenueCatPurchaseService(__ENVIRONMENT__, Capacitor.getPlatform()))
+  if (shouldUseRevenueCatPurchaseService(__ENVIRONMENT__, platform))
     purchaseService = createPurchaseService(RevenueCatPurchaseService, purchaseStore);
 
   if (__ENVIRONMENT__ === "production" && platform === "web")
