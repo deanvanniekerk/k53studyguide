@@ -465,6 +465,22 @@
       "reasoningEffort": "medium",
       "promptVersion": "k53-v1"
     },
+    "freeWebHistoryReset": {
+      "text": "Sula umlando wakho wokufunda, wemibuzo yokuzihlola noma wezivivinyo kokuthi Iphrofayela noma nini lapho ufuna ukuqala kabusha. Ukusebenzisa iwebhu kumahhala.",
+      "sourceHash": "7fa44e4da010cf084a3eb32804ff84785dc4aff6439a3e208b83bf591fae86a6",
+      "generatedHash": "faec707f6ea4639159742096c09b4feaab01518a59cbb2cf9c5f8bfaa2b3d416",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "freeWebTestIntro": {
+      "text": "Izivivinyo zokuzilolonga zihlanganisa zonke izigaba ezingu-3, kube namaphuzu atholiwe namaphuzu adingekayo ukuze uphumelele esigabeni ngasinye.",
+      "sourceHash": "634095a0241c3db0fbf874b99796b53f4b4d2d640ca0c1037ea3c7ffee03e296",
+      "generatedHash": "636c119bf94f36005d55881992d9ab19806d091560979bf88f50ba3f8f631e8a",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
     "getPremium": {
       "text": "Thola i-Premium",
       "sourceHash": "83499f3516ecfecf2ad54ced493c52e645de82cab7b46c3117c707a7753f2c0c",
@@ -797,6 +813,30 @@
       "text": "Inani Eliphezulu Lemibuzo",
       "sourceHash": "75f9b6f92be1c0ded02b878110e3ad63ba8440e3bcf1d3c044e387e3d074f9c8",
       "generatedHash": "a83fec7fc4357808d976a07fc352f5fdb7cd5d27661a5172751e6dc522ff90ed",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "mobileAppHonesty": {
+      "text": "I-Mobile Premium ithengwa ngokwehlukana, ukhokha kanye kuphela. Inqubekelaphambili yakho kuwebhu ihlala kulesi siphequluli.",
+      "sourceHash": "fe16ea753c4755fead21064e4c26b370ed5e9c516dcc37c8b6cb2bb08fec687c",
+      "generatedHash": "79b7dfa0e5443665f2b8838478c10b3d48cc7c8a6a2e70b0711abd118af915e3",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "mobileAppResults": {
+      "text": "Luyatholakala naku-Android naku-iOS",
+      "sourceHash": "f3c7b167d0a13485b3caba8e0602face8da116d357180e40443885a42c047a37",
+      "generatedHash": "80b753f8c1fe6e420c7dcc18ee44631411fd14812351b264bf381e0fd25bde44",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "mobileAppTitle": {
+      "text": "Thola uhlelo lokusebenza lweselula",
+      "sourceHash": "c7a747b8335a477736aa5bc825b443089568c11156661281a50d8b11257c11b0",
+      "generatedHash": "dfdef37685b0c4615008dcb11ab7190f37dfd7f33d2ff7b275e1578ed8907303",
       "model": "gpt-6.1-sol",
       "reasoningEffort": "medium",
       "promptVersion": "k53-v1"
@@ -25521,6 +25561,14 @@
       "reasoningEffort": "medium",
       "promptVersion": "k53-v1"
     },
+    "studySectionsComplete": {
+      "text": "Kuqedwe izigaba ezingu-{completed} kwezingu-{total}",
+      "sourceHash": "b74ba887330be458f3e9cd399e81228bd9a5f0bad13ee184d22e812b63efe687",
+      "generatedHash": "f61be99b5cabb583a21b3f08508b847d5a719eea4e60cdcce7943c97c727dff8",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
     "submit": {
       "text": "Thumela",
       "sourceHash": "155f816c0407310c0dab222493370773e045ee7fe04e6c9a951b07f495531264",
@@ -25717,6 +25765,78 @@
       "text": "Sebenzisa Lesi Sigaba",
       "sourceHash": "5eb2cfb78696dbdd8ba3c9e692445790f0d423c1b603733fb473632c99f982c5",
       "generatedHash": "71db34e9d1dfa6502c32c418a33d56194f6a77b1fbf605aa6b1f672f014fcd53",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webChunkFailed": {
+      "text": "Isibuyekezo sezinto zokufunda asikwazanga ukulayishwa. Hlola uxhumano lwakho bese ulayisha kabusha ukuze uzame futhi. Inqubekelaphambili esivele ilondoloziwe kulesi siphequluli iyagcinwa.",
+      "sourceHash": "95de73eb79688914c25063cda790fd9bcd6876790d8eccad010dc263d8ebcd38",
+      "generatedHash": "a0790c476b8b11a59c9e9b07d309893929040707fbf3b08ce30f216e2fd52646",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webImageFailed": {
+      "text": "Lesi sithombe asikwazanga ukulayishwa. Hlola uxhumano lwakho bese uzama futhi.",
+      "sourceHash": "a8201b87a30b21d7d91f08ee02a2145d0d689aa8a926987452f88a9a88e888da",
+      "generatedHash": "2fb456a3348bac09102affe74a29c18184b8bc41eb325baf3ebd59b079c9be5d",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webImageRetry": {
+      "text": "Zama ukulayisha isithombe futhi",
+      "sourceHash": "3d4306798ac5f42437722cade74c692354bf71ce996d72103bdd19b4b291652e",
+      "generatedHash": "c17fcca27d1559f3b39f94b043b08ece9ef18a78af4835b6a63785644312e5a9",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webOffline": {
+      "text": "Awuxhunyiwe ku-inthanethi. Inqubekelaphambili esivele ilondoloziwe kulesi siphequluli iyagcinwa. Izithombe zingazama ukulayishwa futhi lapho usuxhumekile.",
+      "sourceHash": "73a602e74098e22d69c833007bfa2123e03662a7aa355ead3185ae8e757dbaf9",
+      "generatedHash": "0b948dd3816d11299b94fbcddb6d7bde4f7a245b8e63dde890a6a674f651d81b",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webProgressBody": {
+      "text": "Inqubekelaphambili ilondolozwa kulesi siphequluli kuphela, uma isitoreji sesayithi sitholakala. Ukusula idatha yesiphequluli kungayisusa. Ayidluliselwa kwesinye isiphequluli, kwenye idivayisi noma ohlelweni lokusebenza lweselula. Ukusebenzisa iwebhu mahhala akudingi i-akhawunti.",
+      "sourceHash": "f65f2d3089e631cd3e720ff9885718957d60be50226e639ce0f769c791cb87dd",
+      "generatedHash": "5a2ee5777c5cf91fdb413f9da2cf508985205580f66e2853f91dccce0fb01272",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webProgressDismiss": {
+      "text": "Ngiyakuqonda",
+      "sourceHash": "5ad3dbd1242a4cea217e8b68a9fd2c8187f2c337258279193f6d9a31a9f1a69c",
+      "generatedHash": "c3bd83c70f1763d2821639f572e19780c2112244a6fc5875e71028b186acabd2",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webProgressTitle": {
+      "text": "Inqubekelaphambili yakho",
+      "sourceHash": "433a720b7e1d3cf6c54170cf42434922c2cd7b489b4bb596f950e1ca83aca9d1",
+      "generatedHash": "65182911885e4316ad706250ae6e584a30bad693447da22b9ade0c83415eba31",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webReload": {
+      "text": "Layisha kabusha uhlelo lokufunda",
+      "sourceHash": "234460a94d97fd327af3679706a7a3e1a16528748520eac13f3d775bd279c0b3",
+      "generatedHash": "e6b1bd304a694621ca255483d6086753faa210264681efdf37fb60e7c8b0b332",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webStorageUnavailable": {
+      "text": "Lesi siphequluli asikwazi ukulondoloza inqubekelaphambili yakho. Ungaqhubeka nokufunda, kodwa inqubekelaphambili entsha ingase ilahleke lapho uvala noma ulayisha kabusha leli khasi. Vumela ukusetshenziswa kwesitoreji sesayithi noma uzame esinye isiphequluli.",
+      "sourceHash": "1b43af5cc672bbee0f2d8f2baa507cfcd8acb040ce321100d1b2877ab11bef3c",
+      "generatedHash": "d8cc179bac3eb5ce3a7ce87a400397db50b5314cf433af6a6185ed88513fbad4",
       "model": "gpt-6.1-sol",
       "reasoningEffort": "medium",
       "promptVersion": "k53-v1"
