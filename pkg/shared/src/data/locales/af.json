@@ -465,6 +465,22 @@
       "reasoningEffort": "medium",
       "promptVersion": "k53-v1"
     },
+    "freeWebHistoryReset": {
+      "text": "Vee jou studie-, vasvra- of toetsgeskiedenis in Profiel uit wanneer jy ook al van voor af wil begin. Webtoegang is gratis.",
+      "sourceHash": "7fa44e4da010cf084a3eb32804ff84785dc4aff6439a3e208b83bf591fae86a6",
+      "generatedHash": "b99df6fd0a3a17a200e6df57beb86105724c0cb7d6e33f31eb87741f7c83c718",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "freeWebTestIntro": {
+      "text": "Oefentoetse kombineer al 3 afdelings, met ’n punt en slaagpunt vir elkeen.",
+      "sourceHash": "634095a0241c3db0fbf874b99796b53f4b4d2d640ca0c1037ea3c7ffee03e296",
+      "generatedHash": "b28fc6efac51d079cec8248838e94d4510409a5575d1ed0bfe937e94ff2c63c7",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
     "getPremium": {
       "text": "Kry Premium",
       "sourceHash": "83499f3516ecfecf2ad54ced493c52e645de82cab7b46c3117c707a7753f2c0c",
@@ -797,6 +813,30 @@
       "text": "Maksimum aantal vrae",
       "sourceHash": "75f9b6f92be1c0ded02b878110e3ad63ba8440e3bcf1d3c044e387e3d074f9c8",
       "generatedHash": "82dae82dc7ffb0a83d7bdccf3459fc88f17b3bed98e777a7cf6c694b105d799f",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "mobileAppHonesty": {
+      "text": "Mobile Premium is ’n afsonderlike eenmalige aankoop. Jou webvordering bly in hierdie blaaier.",
+      "sourceHash": "fe16ea753c4755fead21064e4c26b370ed5e9c516dcc37c8b6cb2bb08fec687c",
+      "generatedHash": "be72defea36fe5f5a7f5bcf98552a9e32bbb981a28622a6216f4f45e678fb1c7",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "mobileAppResults": {
+      "text": "Ook op Android en iOS",
+      "sourceHash": "f3c7b167d0a13485b3caba8e0602face8da116d357180e40443885a42c047a37",
+      "generatedHash": "b840ee059784ef8feab43d29f073921060c1cc48b90415e2a94ec70e60cc3afd",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "mobileAppTitle": {
+      "text": "Kry die mobiele toepassing",
+      "sourceHash": "c7a747b8335a477736aa5bc825b443089568c11156661281a50d8b11257c11b0",
+      "generatedHash": "f129688b79a3b203f9198698130a5d3fd13689a5d3c2c56714bea529006a56ff",
       "model": "gpt-6.1-sol",
       "reasoningEffort": "medium",
       "promptVersion": "k53-v1"
@@ -25521,6 +25561,14 @@
       "reasoningEffort": "medium",
       "promptVersion": "k53-v1"
     },
+    "studySectionsComplete": {
+      "text": "{completed} van {total} afdelings voltooi",
+      "sourceHash": "b74ba887330be458f3e9cd399e81228bd9a5f0bad13ee184d22e812b63efe687",
+      "generatedHash": "4a6ba01a55056101de164b838ff66add5c3077684ca1432cdf010ac004b60991",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
     "submit": {
       "text": "Dien in",
       "sourceHash": "155f816c0407310c0dab222493370773e045ee7fe04e6c9a951b07f495531264",
@@ -25717,6 +25765,78 @@
       "text": "Gebruik hierdie afdeling",
       "sourceHash": "5eb2cfb78696dbdd8ba3c9e692445790f0d423c1b603733fb473632c99f982c5",
       "generatedHash": "c3e6af9382dac15da44ae307de8744d8892283fa7a146cdd62b52ed5953f4da8",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webChunkFailed": {
+      "text": "’n Studieopdatering kon nie laai nie. Gaan jou verbinding na en herlaai om weer te probeer. Vordering wat reeds in hierdie blaaier gestoor is, word behou.",
+      "sourceHash": "95de73eb79688914c25063cda790fd9bcd6876790d8eccad010dc263d8ebcd38",
+      "generatedHash": "e72adf04984f2a6e7e8bba943c1b94b391d260585cffe0b3110da803a6270592",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webImageFailed": {
+      "text": "Hierdie prent kon nie laai nie. Gaan jou verbinding na en probeer weer.",
+      "sourceHash": "a8201b87a30b21d7d91f08ee02a2145d0d689aa8a926987452f88a9a88e888da",
+      "generatedHash": "2485330963446bbb058920348dd6498276605049c08529f09450fd2cc8913384",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webImageRetry": {
+      "text": "Probeer die prent weer laai",
+      "sourceHash": "3d4306798ac5f42437722cade74c692354bf71ce996d72103bdd19b4b291652e",
+      "generatedHash": "48ffb71314f82ab7965ce08f7f4ae3e49fa02cd91bc68f683ccaf1c40814cf0b",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webOffline": {
+      "text": "Jy is vanlyn. Vordering wat reeds in hierdie blaaier gestoor is, word behou. Prente kan weer probeer laai wanneer jy weer verbind is.",
+      "sourceHash": "73a602e74098e22d69c833007bfa2123e03662a7aa355ead3185ae8e757dbaf9",
+      "generatedHash": "3cd128eebed3fd475485ee3c9d7530f73f1fa936b608b67327ac75b7dbe0f239",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webProgressBody": {
+      "text": "Vordering word slegs in hierdie blaaier gestoor, wanneer berging vir die webwerf beskikbaar is. As jy blaaierdata uitvee, kan jou vordering ook uitgevee word. Dit word nie na ’n ander blaaier, toestel of die mobiele toepassing oorgedra nie. Gratis webtoegang vereis geen rekening nie.",
+      "sourceHash": "f65f2d3089e631cd3e720ff9885718957d60be50226e639ce0f769c791cb87dd",
+      "generatedHash": "dbf25dada1d8a44cad8f5a35cd9461416ee92241dad7e3ed201374af5cc80570",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webProgressDismiss": {
+      "text": "Ek verstaan",
+      "sourceHash": "5ad3dbd1242a4cea217e8b68a9fd2c8187f2c337258279193f6d9a31a9f1a69c",
+      "generatedHash": "e632959b780956c87af163e359fa76a8b6ac551981090be970dc709586155544",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webProgressTitle": {
+      "text": "Jou vordering",
+      "sourceHash": "433a720b7e1d3cf6c54170cf42434922c2cd7b489b4bb596f950e1ca83aca9d1",
+      "generatedHash": "f41d37cb261125be114192494bb06eac4c09d93acba680a459dad25c0424834b",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webReload": {
+      "text": "Herlaai die studietoepassing",
+      "sourceHash": "234460a94d97fd327af3679706a7a3e1a16528748520eac13f3d775bd279c0b3",
+      "generatedHash": "b3db1d0c9002e04f6cd4b5686941d1f4fa0d4cf3e2fd44065e695b8b77594be7",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "webStorageUnavailable": {
+      "text": "Hierdie blaaier kan nie jou vordering stoor nie. Jy kan aanhou studeer, maar nuwe vordering kan verlore gaan wanneer jy hierdie bladsy sluit of herlaai. Laat berging vir die webwerf toe of probeer ’n ander blaaier.",
+      "sourceHash": "1b43af5cc672bbee0f2d8f2baa507cfcd8acb040ce321100d1b2877ab11bef3c",
+      "generatedHash": "0f7aa3c07d50fed3baa103b58387d87a9ee0906ec87f33bbfb8165c253f2b751",
       "model": "gpt-6.1-sol",
       "reasoningEffort": "medium",
       "promptVersion": "k53-v1"
