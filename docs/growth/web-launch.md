@@ -37,13 +37,4 @@ Provide a working preview for the owner's review before production. Verify:
 
 ## Implementation decisions
 
-Resolved in the 19 October 2026 ticket review (recorded in [#48](https://github.com/deanvanniekerk/k53studyguide/issues/48)):
-
-- The interactive app is served from `/app/` on the existing host, with `/app-preview/` as the private preview mount; search-readable topic pages live under `/study/…`. The website keeps `/` and its existing URLs.
-- The existing browser purchase service is a simulator, not a free production access policy. #49 introduces an access model that separates free web access from the Premium entitlement; web builds never run the simulator.
-- Web analytics use a Firebase web data stream in the existing project, sharing the native GA4 property and event vocabulary; `premium_status` stays `free` on web (#54).
-- The embedded website quiz demo is retired in favour of links into the real web app (#53).
-- The 6 MB single-chunk web bundle is reduced in #51 by loading the selected locale dictionary on demand.
-- New app copy needs generated translations through the maintainer's Codex CLI before launch; this is an owner step, not agent work.
-
-These are implementation decisions, not evidence that the release gates have passed.
+The interactive app is served from `/app/` on the existing host and search-readable topic pages live under `/study/…`; the website keeps `/` and its existing URLs. The remaining implementation decisions from the 19 October 2026 ticket review (access model, web analytics collector, retirement of the website quiz demo, bundle reduction, translation owner steps) are recorded in [#48](https://github.com/deanvanniekerk/k53studyguide/issues/48) and the sub-issues, which stay the single source of truth for implementation detail. These are decisions, not evidence that the release gates have passed.
