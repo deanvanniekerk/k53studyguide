@@ -6,8 +6,9 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
+import { assetUrl } from "@/app/assetUrl";
 import type { RootState } from "@/state";
-import { ownedSelector } from "@/state/purchase";
+import { canTakeMockTestsSelector } from "@/state/access";
 import { testsPassedSelector } from "@/state/test/log";
 import { recieveCurrentSection, recieveQuestionAnswers, testInProgressSelector } from "@/state/test/session";
 
@@ -21,7 +22,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
       {props.hasFullAccess && (
         <PracticeCard>
           <OpenRoadIllustration
-            src="/assets/images/premium/open-road.webp"
+            src={assetUrl("images/premium/open-road.webp")}
             alt=""
             width={1536}
             height={1024}
@@ -51,7 +52,7 @@ const HeaderComponent: React.FC<Props> = (props) => {
       {!props.hasFullAccess && (
         <UnlockCard>
           <OpenRoadIllustration
-            src="/assets/images/premium/open-road.webp"
+            src={assetUrl("images/premium/open-road.webp")}
             alt=""
             width={1536}
             height={1024}
@@ -245,7 +246,7 @@ const ResetButton = styled(IonButton)`
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
   return {
-    hasFullAccess: ownedSelector(state),
+    hasFullAccess: canTakeMockTestsSelector(state),
     testsPassed: testsPassedSelector(state),
     testInProgress: testInProgressSelector(state),
   };

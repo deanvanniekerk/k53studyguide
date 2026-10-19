@@ -13,6 +13,7 @@ import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { usePremiumOffer } from "@/app/hooks/usePremiumOffer";
 import PurchaseModal from "@/app/modals/PurchaseModal";
 import type { RootState } from "@/state";
+import { accessModelSelector, canTakeMockTestsSelector, showsPremiumOffersSelector } from "@/state/access";
 import { notificationsSelector, recieveRecieveNotificationState } from "@/state/notifications";
 import { loadQuestionAnswers, testInProgressSelector } from "@/state/test/session";
 import { Header } from "./components";
@@ -68,20 +69,20 @@ const TestPage: React.FC<Props> = (props) => {
       </Content>
       <Actions className="ion-no-border">
         <ActionContent ref={offer.invitationRef}>
-          {!offer.purchase.owned && (
+          {props.showsOffers && (
             <ActionNote>
               <Translate text="premiumOneTime" />
             </ActionNote>
           )}
           <PrimaryButton
             section="test"
-            text={offer.purchase.owned ? (props.testInProgress ? "continueTest" : "enterTest") : "unlockMockTests"}
+            text={props.canTakeMockTests ? (props.testInProgress ? "continueTest" : "enterTest") : "unlockMockTests"}
             rightIcon={caretForward}
-            onClick={offer.purchase.owned ? onStartTestClicked : offer.open}
+            onClick={props.canTakeMockTests ? onStartTestClicked : offer.open}
           />
         </ActionContent>
       </Actions>
-      <PurchaseModal origin="mock_test" isOpen={offer.isOpen} onDidDismiss={offer.dismiss} />
+      {props.isMobile && <PurchaseModal origin="mock_test" isOpen={offer.isOpen} onDidDismiss={offer.dismiss} />}
     </Page>
   );
 };
@@ -115,6 +116,9 @@ const Page = styled(IonPage)`
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
   return {
+    isMobile: accessModelSelector(state) === "mobile",
+    canTakeMockTests: canTakeMockTestsSelector(state),
+    showsOffers: showsPremiumOffersSelector(state),
     testInProgress: testInProgressSelector(state),
     infoSeen: notificationsSelector(state).testInfo.seen,
   };

@@ -22,7 +22,8 @@
     "cap-sync-ios": "cap sync ios",
     "cap-copy-ios": "cap copy ios",
     "cap-open-ios": "cap open ios",
-    "svg-to-component": "pnpm exec svgr --icon"
+    "svg-to-component": "pnpm exec svgr --icon",
+    "build:web": "WEB_APP_BASE=${WEB_APP_BASE:-/app/} vite build"
   },
   "browserslist": {
     "production": [

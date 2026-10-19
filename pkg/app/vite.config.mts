@@ -32,6 +32,7 @@ const getBoolConfig = (key: string, environmentVariable: string, fallback: boole
 };
 
 export default defineConfig(({ mode }) => ({
+  base: process.env.WEB_APP_BASE ?? "/",
   plugins: [
     react(),
     mode === "analyze" &&

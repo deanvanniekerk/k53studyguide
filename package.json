@@ -29,7 +29,10 @@
     "lander:deploy:full": "LANDER_INCLUDE_QUIZ_IMAGES=1 bash scripts/deploy-lander-ftp.sh",
     "translator:check": "pnpm --dir tools/translator check",
     "translations:generate": "node tools/translator/main.js",
-    "translations:check": "node tools/translator/check.mjs --complete"
+    "translations:check": "node tools/translator/check.mjs --complete",
+    "web:build": "pnpm --filter app build:web",
+    "web:deploy": "bash scripts/deploy-web-app-ftp.sh",
+    "web:deploy:preview": "WEB_APP_MOUNT=app-preview bash scripts/deploy-web-app-ftp.sh"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.15"

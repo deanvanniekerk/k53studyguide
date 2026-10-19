@@ -97,7 +97,7 @@ function CachedResult({ kind }) {
   );
 }
 
-function renderResult(kind, completed = true) {
+function renderResult(kind, completed = true, basename = "/") {
   const store = createStore(createRootReducer(), applyMiddleware(thunk));
   if (completed) {
     const answer = {
@@ -119,7 +119,8 @@ function renderResult(kind, completed = true) {
   render(
     <Provider store={store}>
       <MemoryRouter
-        initialEntries={[`/${kind}/results`]}
+        basename={basename === "/" ? undefined : basename}
+        initialEntries={[`${basename === "/" ? "" : basename}/${kind}/results`]}
         future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
       >
         <CachedResult kind={kind} />
@@ -163,4 +164,9 @@ it.each(["quiz", "test"])("does not redirect away from Study when a cached %s re
   expect(screen.getByLabelText("route").textContent).toBe("/study");
   fireEvent.click(screen.getByRole("button", { name: "Return to assessment tab" }));
   expect(screen.getByLabelText("route").textContent).toBe(`/${kind}`);
+});
+
+it.each(["/app", "/app-preview"])("recovers an empty quiz result direct link under %s", (basename) => {
+  renderResult("quiz", false, basename);
+  expect(screen.getByLabelText("route").textContent).toBe("/quiz");
 });

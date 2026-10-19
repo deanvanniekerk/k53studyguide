@@ -170,7 +170,7 @@ const AppTabs: React.FC<AnalyticsRouteTrackerProps> = (props) => {
 const Router: React.FC<Props> = (props) => {
   return (
     <TranslationProvider language={props.language} translation={translations}>
-      <IonReactRouter>
+      <IonReactRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
         <WelcomeGate>
           <AppTabs language={props.language} theme={props.theme} hasFullAccess={props.hasFullAccess} />
         </WelcomeGate>

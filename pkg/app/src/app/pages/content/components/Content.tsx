@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, type Dispatch } from "redux";
 import styled from "styled-components";
+import { assetUrl } from "@/app/assetUrl";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import type { ContentItem } from "@/data";
 import { recieveSeenContentKey } from "@/state/study/log";
@@ -49,7 +50,7 @@ const ContentComponent: React.FC<Props> = ({ item, navigationKey, recieveSeenCon
       </CardHeader>
       {item.imageName && (
         <ImageFrame>
-          <img src={`assets/images/${item.imageName}`} alt="" />
+          <img src={assetUrl(`images/${item.imageName}`)} alt="" />
         </ImageFrame>
       )}
       <Description className="content-html">

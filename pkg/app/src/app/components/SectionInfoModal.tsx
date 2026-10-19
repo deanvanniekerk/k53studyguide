@@ -1,7 +1,9 @@
 import { IonContent, IonFooter, IonModal } from "@ionic/react";
 import { Translate } from "@k53studyguide/shared/translation";
 import { arrowForward } from "ionicons/icons";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { accessModelSelector } from "@/state/access";
 import { Illustration, type IllustrationName } from "./Illustration";
 import { PrimaryButton } from "./PrimaryButton";
 
@@ -45,6 +47,7 @@ const introductions: Record<Section, SectionIntroduction> = {
 };
 
 export const SectionInfoModal = ({ section, isOpen, onDidDismiss }: InfoModalProps & { section: Section }) => {
+  const isFreeWeb = useSelector(accessModelSelector) === "free_web";
   const introduction = introductions[section];
   const titleId = `${section}-intro-title`;
 
@@ -63,7 +66,7 @@ export const SectionInfoModal = ({ section, isOpen, onDidDismiss }: InfoModalPro
               <Translate text={`info${section}Title`} />
             </Heading>
             <Introduction>
-              <Translate text={`info${section}Body`} />
+              <Translate text={isFreeWeb && section === "test" ? "freeWebTestIntro" : `info${section}Body`} />
             </Introduction>
           </Hero>
           <Cards>
@@ -77,7 +80,9 @@ export const SectionInfoModal = ({ section, isOpen, onDidDismiss }: InfoModalPro
                     <Translate text={card.title} />
                   </CardTitle>
                   <CardText>
-                    <Translate text={card.body} />
+                    <Translate
+                      text={isFreeWeb && card.title === "infoResetTitle" ? "freeWebHistoryReset" : card.body}
+                    />
                   </CardText>
                 </CardCopy>
               </Card>

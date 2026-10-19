@@ -1,4 +1,5 @@
 import { type SectionIllustrationName, sectionIllustrations } from "@k53studyguide/shared/react";
+import { assetUrl } from "@/app/assetUrl";
 
 export type IllustrationName =
   | SectionIllustrationName
@@ -24,7 +25,7 @@ const sharedIllustrations: Partial<Record<IllustrationName, string>> = sectionIl
 // Decorative artwork: the adjacent heading supplies the accessible label.
 export const Illustration = ({ name, size }: { name: IllustrationName; size: number }) => (
   <img
-    src={sharedIllustrations[name] ?? `/assets/images/illustrations/${name}.webp`}
+    src={sharedIllustrations[name] ?? assetUrl(`images/illustrations/${name}.webp`)}
     alt=""
     width={size}
     height={size}

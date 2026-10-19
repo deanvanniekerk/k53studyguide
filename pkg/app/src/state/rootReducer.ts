@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { type PersistConfig, persistReducer } from "redux-persist";
 import { createStorage } from "@/store/store";
+import type { AccessModel } from "./access";
 import { reducer as content } from "./content";
 import { migrateLegacyNotifications } from "./legacyCompatibility";
 import { reducer as log } from "./log";
@@ -33,22 +34,22 @@ const notificationConfig: PersistConfig<NotificationsState> = {
   migrate: migrateLegacyNotifications,
 };
 
-const rootReducer = combineReducers({
-  study: study,
-  translations: translations,
-  navigation: navigation,
-  content: content,
-  log: log,
-  questions: questions,
-  quiz: quiz,
-  test: test,
-  settings: persistReducer(settingsConfig, settings),
-  purchase: persistReducer(purchaseConfig, purchase),
-  notifications: persistReducer(notificationConfig, notifications),
-});
+const createRootReducer = (model: AccessModel = "mobile") =>
+  combineReducers({
+    access: (state = { model }) => state,
+    study: study,
+    translations: translations,
+    navigation: navigation,
+    content: content,
+    log: log,
+    questions: questions,
+    quiz: quiz,
+    test: test,
+    settings: persistReducer(settingsConfig, settings),
+    purchase: persistReducer(purchaseConfig, purchase),
+    notifications: persistReducer(notificationConfig, notifications),
+  });
 
-const createRootReducer = () => rootReducer;
-
-export type RootState = ReturnType<typeof rootReducer>;
+export type RootState = ReturnType<ReturnType<typeof createRootReducer>>;
 
 export default createRootReducer;

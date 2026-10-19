@@ -1,27 +1,31 @@
+import { Capacitor } from "@capacitor/core";
 import { IonPage } from "@ionic/react";
 import type React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { PageContent, PageHeader } from "@/app/components";
 import { SettingsOutlineIcon } from "@/app/components/icons";
 import { useAnalytics } from "@/app/hooks/useAnalytics";
 import { watermarkStyle } from "@/app/styles";
 import { isBrowserPreview } from "@/services/analytics/browserPreview";
+import { accessModelSelector } from "@/state/access";
 import { Checklist, Debug, History, Legal, Purchase, RateApp, Settings } from "./components";
 import { BrowserPurchasePreview } from "./components/BrowserPurchasePreview";
 
 const ProfilePage: React.FC = () => {
   useAnalytics("ProfilePage");
+  const model = useSelector(accessModelSelector);
   return (
     <Page>
       <PageHeader title="profile" page="profile" />
       <Watermark />
       <Content>
-        {isBrowserPreview && <BrowserPurchasePreview />}
+        {isBrowserPreview && model === "mobile" && <BrowserPurchasePreview />}
         <Checklist />
         <History />
         <Purchase />
         <Settings />
-        <RateApp />
+        {Capacitor.getPlatform() !== "web" && <RateApp />}
         <Legal />
         {__SHOW_DEBUG__ && !isBrowserPreview && <Debug />}
       </Content>
