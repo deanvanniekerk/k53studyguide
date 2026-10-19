@@ -55,6 +55,7 @@ it.each([
   ["https://www.k53studyguide.online/app/", "", true, false],
   ["http://localhost:3000/app/", "production", true, false],
   ["https://preview.example.com/app/", "production", true, false],
+  ["https://www.k53studyguide.online/staging/", "production", true, false],
   ["https://www.k53studyguide.online/app-preview/", "production", true, false],
   ["https://www.k53studyguide.online/app/", "production", false, false],
   ["https://www.k53studyguide.online/app-preview/?analytics_test=true", "", true, true],

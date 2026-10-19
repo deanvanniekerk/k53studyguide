@@ -32,7 +32,13 @@ function policy() {
   const host = ["www.k53studyguide.online", "k53studyguide.online"].includes(window.location.hostname);
   const preview =
     import.meta.env.BASE_URL.startsWith("/app-preview/") || window.location.pathname.startsWith("/app-preview/");
-  return { config, qa, enabled: Boolean(config && (qa || (production && host && !preview))) };
+  return {
+    config,
+    qa,
+    enabled: Boolean(
+      config && (qa || (production && host && window.location.pathname.startsWith("/app/") && !preview)),
+    ),
+  };
 }
 const context = policy();
 export const isWebCollectionEnabled = () => web && context.enabled;
