@@ -51,9 +51,9 @@ let initialization: Promise<boolean> | undefined;
 
 function safe(operation: () => Promise<void> | void) {
   try {
-    void Promise.resolve(operation()).catch(() => console.warn("Firebase analytics delivery failed"));
-  } catch {
-    console.warn("Firebase analytics delivery failed");
+    void Promise.resolve(operation()).catch((error) => console.warn("Firebase analytics call failed", error));
+  } catch (error) {
+    console.warn("Firebase analytics call failed", error);
   }
 }
 async function initializeWeb() {
@@ -95,7 +95,7 @@ export const analyticsCollector = {
     if (web && purchaseSignal.test(name)) return;
     const values = web ? { ...params, ...tags() } : params;
     if (web && !isWebCollectionEnabled()) {
-      console.info("[Analytics preview]", name, values);
+      if (import.meta.env.DEV) console.info("[Analytics preview]", name, values);
       return;
     }
     send(() => FirebaseAnalytics.logEvent({ name, ...(values ? { params: values } : {}) }));

@@ -21,6 +21,7 @@ import StudyPage from "./pages/study/StudyPage";
 import MockTestResultPage from "./pages/test/results/TestResultPage";
 import MockTestSessionPage from "./pages/test/session/TestPage";
 import TestPage from "./pages/test/TestPage";
+import Startup from "./Startup";
 import { WebRuntimeProvider } from "./WebRuntimeProvider";
 
 // Substitute external browser/platform and collector inputs; keep app state/routing real.
@@ -40,6 +41,10 @@ vi.mock("firebase/app", () => ({ initializeApp: () => ({ name: "[DEFAULT]" }), g
 vi.mock("firebase/analytics", () => ({ initializeAnalytics: () => {} }));
 afterAll(() => vi.unstubAllGlobals());
 
+vi.mock("@ionic/react-router", () => ({
+  IonReactRouter: ({ children }) => <MemoryRouter initialEntries={["/study"]}>{children}</MemoryRouter>,
+}));
+
 // Substitute only the Ionic host widgets, keeping routing, content, UI and Redux real.
 vi.mock("@ionic/react", async (original) => {
   const actual = await original();
@@ -57,6 +62,8 @@ vi.mock("@ionic/react", async (original) => {
     ...actual,
     ...widgets,
     IonIcon: () => null,
+    IonRouterOutlet: ({ children }) => <Routes>{children}</Routes>,
+    IonTabButton: ({ children, href }) => <Link to={href}>{children}</Link>,
     IonButton: ({ children, onClick, disabled, className }) => (
       <button type="button" className={className} disabled={disabled} onClick={onClick}>
         {children}
@@ -479,6 +486,98 @@ it("counts one completed web mock test through result reload and reconnect witho
   expect(
     events.some((name) =>
       /^(premium_|view_promotion|select_promotion|begin_checkout|checkout_outcome|restore_|purchase_)/.test(name),
+    ),
+  ).toBe(false);
+});
+
+it("sends the ordered free web event journey from startup through study, quiz and a full mock test", async () => {
+  vi.stubGlobal("matchMedia", () => ({ matches: false, addEventListener() {}, removeEventListener() {} }));
+  let observed = false;
+  vi.stubGlobal(
+    "IntersectionObserver",
+    class {
+      constructor(callback) {
+        this.callback = callback;
+      }
+      observe() {
+        if (!observed) {
+          observed = true;
+          this.callback([{ isIntersecting: true }]);
+        }
+      }
+      disconnect() {}
+    },
+  );
+  const reducer = createRootReducer("free_web");
+  const initial = reducer(undefined, { type: "@@test/init" });
+  const store = createStore(
+    reducer,
+    {
+      ...initial,
+      settings: { ...initial.settings, welcomeCompleted: true },
+      notifications: {
+        notifications: Object.fromEntries(
+          Object.keys(initial.notifications.notifications).map((key) => [key, { seen: true }]),
+        ),
+      },
+    },
+    applyMiddleware(thunk),
+  );
+  store.dispatch(recieveMaxQuestions(1));
+  render(
+    <Provider store={store}>
+      <Startup />
+    </Provider>,
+  );
+  fireEvent.click(screen.getByRole("button", { name: /nav.vehicleControls/ }));
+  fireEvent.click(screen.getByRole("link", { name: "quiz" }));
+  fireEvent.click(screen.getByRole("button", { name: "startTest" }));
+  const quizQuestion = store.getState().quiz.session.questionAnswers[0].question;
+  fireEvent.click(screen.getByText(quizQuestion.option[0].value));
+  fireEvent.click(screen.getByRole("button", { name: "submit" }));
+  fireEvent.click(screen.getByRole("link", { name: "test" }));
+  fireEvent.click(screen.getByRole("button", { name: "enterTest" }));
+  const questions = store.getState().test.session.questionAnswers;
+  expect(questions).toHaveLength(64);
+  for (const [index, { question }] of questions.entries()) {
+    fireEvent.click(screen.getByText(question.option[0].value));
+    fireEvent.click(screen.getByRole("button", { name: index === questions.length - 1 ? "submit" : "continue" }));
+  }
+  await vi.waitFor(() =>
+    expect(FirebaseAnalytics.logEvent.mock.calls.some(([event]) => event.name === "mock_test_complete")).toBe(true),
+  );
+  const events = FirebaseAnalytics.logEvent.mock.calls.map(([event]) => event);
+  expect(
+    events
+      .filter((event) =>
+        ["study_content_view", "quiz_start", "quiz_complete", "mock_test_start", "mock_test_complete"].includes(
+          event.name,
+        ),
+      )
+      .map((event) => event.name),
+  ).toEqual(["study_content_view", "quiz_start", "quiz_complete", "mock_test_start", "mock_test_complete"]);
+  expect(events.filter((event) => event.name === "screen_view").map((event) => event.params.firebase_screen)).toEqual([
+    "StudyPage",
+    "ContentPage",
+    "QuizPage",
+    "QuizPage:TestPage",
+    "QuizPage:TestResultPage",
+    "TestPage",
+    "TestPage:TestPage",
+    "TestPage:TestResultPage",
+  ]);
+  expect(events.filter((event) => event.name === "app_open")).toHaveLength(1);
+  expect(
+    events.every(
+      (event) =>
+        event.params.premium_status === "free" &&
+        event.params.analytics_test === "true" &&
+        event.params.analytics_schema_version === "v2",
+    ),
+  ).toBe(true);
+  expect(
+    events.some((event) =>
+      /^(premium_|view_promotion|select_promotion|begin_checkout|checkout_outcome|restore_|purchase_)/.test(event.name),
     ),
   ).toBe(false);
 });
