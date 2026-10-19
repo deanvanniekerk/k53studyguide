@@ -182,6 +182,9 @@ it("keeps mock tests and history reset locked for a free mobile learner", () => 
 it("reports connection loss and recovery without changing saved work or emitting a completion", async () => {
   const store = journey("free_web");
   await act(async () => {});
+  finishPractice(store);
+  await createStorage().setItem("persist:quiz-session", JSON.stringify(store.getState().quiz.session));
+  const savedStorage = Object.fromEntries(Object.entries(localStorage));
   const before = JSON.stringify(store.getState());
   const events = FirebaseAnalytics.logEvent.mock.calls.length;
   await act(async () => {
@@ -193,6 +196,7 @@ it("reports connection loss and recovery without changing saved work or emitting
   });
   expect(screen.queryByText("webOffline")).toBeNull();
   expect(JSON.stringify(store.getState())).toBe(before);
+  expect(Object.fromEntries(Object.entries(localStorage))).toEqual(savedStorage);
   expect(FirebaseAnalytics.logEvent.mock.calls.length).toBe(events);
 });
 
