@@ -30,6 +30,15 @@ const plain = (value: string) =>
     .replace(/<[^>]*>/g, " ")
     .replace(/\s+/g, " ")
     .trim();
+function excerpt(value: string, limit: number): string {
+  const normalized = plain(value);
+  if (normalized.length <= limit) return normalized;
+  const candidate = normalized.slice(0, limit - 1);
+  const sentence = candidate.lastIndexOf(". ");
+  if (sentence >= 60) return candidate.slice(0, sentence + 1);
+  const word = candidate.lastIndexOf(" ");
+  return `${candidate.slice(0, word > 0 ? word : candidate.length).trimEnd()}…`;
+}
 const slug = (value: string) => value.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
 type Topic = { key: string; name: string; path: string; children: Topic[]; published: boolean };
 type Options = { outputDir: string; preview?: boolean; appBase?: string; imageBase?: string };
@@ -95,7 +104,7 @@ export function generateTopics({
       topic.children
         .map((child) =>
           child.published
-            ? `<section><h${heading}><a href="${child.path}">${escapeHtml(child.name)}</a></h${heading}><p>${escapeHtml(plain(text(allItems(child)[0]?.description ?? "")).slice(0, 220))}</p></section>`
+            ? `<section><h${heading}><a href="${child.path}">${escapeHtml(child.name)}</a></h${heading}><p>${escapeHtml(excerpt(text(allItems(child)[0]?.description ?? ""), 220))}</p></section>`
             : `<section id="${slug(child.key.split(".").at(-1)!)}"><h${heading}>${escapeHtml(child.name)}</h${heading}>${content(child, heading + 1)}</section>`,
         )
         .join("\n")
@@ -111,10 +120,10 @@ export function generateTopics({
       page,
     ];
     const title = [page.name, ...(area && area !== page ? [area.name] : []), "K53 Study Guide"].join(" | ");
-    const description = (
-      plain(text(allItems(page)[0]?.description ?? "")) ||
-      "Study road signs, rules of the road and vehicle controls. Read each section and practise in the free K53 Study Guide web app."
-    ).slice(0, 155);
+    const description = excerpt(
+      `${page.name}: ${plain(text(allItems(page)[0]?.description ?? "")) || "Read the K53 study material and practise in the free web app. Explore road signs, rules of the road and vehicle controls."}`,
+      155,
+    );
     const canonical = host + page.path;
     const structured = {
       "@context": "https://schema.org",

@@ -37,6 +37,7 @@ test("publishes stable substantive sections, complete metadata and a production-
     .window.document;
   expect(driver.body.textContent).toContain("You may not drive while holding a cellphone");
   const titles = new Set();
+  const descriptions = new Set();
   for (const path of paths) {
     const document = new JSDOM(readFileSync(join(outputDir, `.${path}`, "index.html"), "utf8")).window.document;
     expect(document.documentElement.lang).toBe("en-ZA");
@@ -46,6 +47,8 @@ test("publishes stable substantive sections, complete metadata and a production-
     );
     const description = document.querySelector('meta[name="description"]')!.getAttribute("content")!;
     expect(description.length).toBeGreaterThan(20);
+    expect(descriptions.has(description)).toBe(false);
+    descriptions.add(description);
     expect(description.length).toBeLessThanOrEqual(155);
     expect(document.querySelector('nav[aria-label="Breadcrumb"]')).not.toBeNull();
     const data = JSON.parse(document.querySelector('script[type="application/ld+json"]')!.textContent!)["@graph"];
