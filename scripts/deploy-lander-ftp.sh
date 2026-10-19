@@ -42,20 +42,29 @@ if [[ ! -d "$DIST_DIR" ]]; then
   exit 1
 fi
 
-# Refuse to replace unknown host configuration, even during a preview refresh.
-# Merge owner rules into public/.htaccess and rebuild before retrying.
+# Refuse unknown host drift. An intentional source update needs an exact
+# privately captured remote baseline; a stale baseline cannot overwrite new edits.
+if [[ ! -f "$DIST_DIR/.htaccess" ]]; then
+  echo "Build output missing $DIST_DIR/.htaccess; no files uploaded." >&2
+  exit 1
+fi
 existing_rules=$(mktemp)
 scoped_rules=$(mktemp)
-trap 'rm -f "$existing_rules" "$scoped_rules"' EXIT
+read_error=$(mktemp)
+trap 'rm -f "$existing_rules" "$scoped_rules" "$read_error"' EXIT
 if curl --fail --silent --show-error --user "$FTP_USER:$FTP_PASSWORD" \
-  "ftp://$FTP_HOST/$FTP_REMOTE_DIR/.htaccess" --output "$existing_rules"; then
+  "ftp://$FTP_HOST/$FTP_REMOTE_DIR/.htaccess" --output "$existing_rules" 2> "$read_error"; then
   if ! cmp -s "$existing_rules" "$DIST_DIR/.htaccess"; then
-    echo "Refusing to replace existing root .htaccess; merge its rules into pkg/lander/public/.htaccess before publishing." >&2
-    exit 1
+    if [[ -z "${FTP_EXPECTED_ROOT_RULES:-}" || ! -f "$FTP_EXPECTED_ROOT_RULES" ]] ||
+      ! cmp -s "$existing_rules" "$FTP_EXPECTED_ROOT_RULES"; then
+      echo "Refusing to replace existing root .htaccess; preserve its rules in source and supply FTP_EXPECTED_ROOT_RULES pointing to the reviewed remote baseline." >&2
+      exit 1
+    fi
   fi
 else
   status=$?
   if [[ "$status" != 78 ]]; then
+    cat "$read_error" >&2
     echo "Could not verify existing root .htaccess (curl $status); no files uploaded." >&2
     exit 1
   fi

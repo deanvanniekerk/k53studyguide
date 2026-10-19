@@ -79,3 +79,14 @@ test("preview publishing stops before any upload when host rules would be replac
   expect(result.stderr).toContain("existing root .htaccess");
   expect(() => readFileSync(join(root, "uploads"))).toThrow();
 });
+
+
+test.each([false, true])("publishes matching root rules or an intentional update against a captured baseline (update=%s)", (update) => {
+  const { root, env } = fixture();
+  const existing = join(root, "captured.htaccess");
+  writeFileSync(existing, ".htaccess");
+  if (update) writeFileSync(join(root, "pkg/lander/dist/.htaccess"), "ErrorDocument 404 /404.html\n# reviewed new rule\n");
+  const result = spawnSync("bash", [script, "--preview-topics"], { cwd: root, env: { ...env, EXISTING_RULES: existing, ...(update ? { FTP_EXPECTED_ROOT_RULES: existing } : {}) }, encoding: "utf8" });
+  expect(result.status, result.stderr).toBe(0);
+  expect(readFileSync(join(root, "uploads"), "utf8")).toContain("/./.htaccess");
+});
