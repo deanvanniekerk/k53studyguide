@@ -34,6 +34,8 @@ variables:
     iosProvisioningProfileName: "K53StudyGuide_AppStore"
 
 steps:
+    - checkout: self
+      fetchDepth: 0 # Static topic lastmod uses shared-content history.
     - task: UseNode@1
       inputs:
           version: "26.10.0"

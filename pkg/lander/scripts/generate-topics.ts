@@ -41,7 +41,13 @@ function excerpt(value: string, limit: number): string {
 }
 const slug = (value: string) => value.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
 type Topic = { key: string; name: string; path: string; children: Topic[]; published: boolean };
-type Options = { outputDir: string; preview?: boolean; appBase?: string; imageBase?: string };
+type Options = {
+  outputDir: string;
+  preview?: boolean;
+  appBase?: string;
+  imageBase?: string;
+  publishedPaths?: string[];
+};
 
 function tree(key: string, path: string, area = false): Topic {
   const children = (navigationData[key] ?? []).map((child) => tree(child, `${path}${slug(child.split(".").at(-1)!)}/`));
@@ -63,6 +69,7 @@ export function generateTopics({
   preview = false,
   appBase = "/app/",
   imageBase = "/app/assets/images",
+  publishedPaths = JSON.parse(readFileSync(resolve(lander, "scripts/published-topic-urls.json"), "utf8")),
 }: Options): string[] {
   const base = `${appBase.replace(/\/$/, "")}/`;
   const imageRoot = imageBase.replace(/\/$/, "");
@@ -84,6 +91,7 @@ export function generateTopics({
     ],
     { cwd: resolve(lander, "../.."), encoding: "utf8" },
   ).trim();
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(lastmod)) throw new Error("Topic lastmod needs shared-content Git history. Fetch full history before building.");
   const guide = readFileSync(resolve(lander, "k53-road-signs.html"), "utf8");
   const shell = (tag: string) =>
     guide
@@ -119,6 +127,7 @@ export function generateTopics({
       ...ancestors.map(({ name, path }) => ({ name, path })),
       page,
     ];
+    const siblings = ancestors.at(-1)?.children.filter((child) => child.published) ?? roots;
     const title = [page.name, ...(area && area !== page ? [area.name] : []), "K53 Study Guide"].join(" | ");
     const description = excerpt(
       `${page.name}: ${plain(text(allItems(page)[0]?.description ?? "")) || "Read the K53 study material and practise in the free web app. Explore road signs, rules of the road and vehicle controls."}`,
@@ -176,10 +185,28 @@ ${preview ? "" : '<script type="module" src="/src/analytics.js"></script>'}
 </head><body><a class="skip-link" href="#main">Skip to content</a>${nav}
 <main id="main"><header class="guide-header container"><nav aria-label="Breadcrumb" class="topic-breadcrumb">${breadcrumbs.map((crumb) => `<a href="${crumb.path}"${crumb.path === page.path ? ' aria-current="page"' : ""}>${escapeHtml(crumb.name)}</a>`).join(" / ")}</nav><h1>${escapeHtml(page.name)}</h1><p class="guide-intro">${escapeHtml(description)}</p><p class="guide-byline">By K53 Study Guide · Updated <time datetime="${lastmod}">${lastmod}</time></p></header>
 <div class="guide-layout container"><article class="guide-body">${content(page)}<nav class="topic-pagination" aria-label="Adjacent sections">${adjacent}</nav></article>
-<aside class="guide-aside" aria-label="More study resources"><p class="eyebrow">Browse topics</p><div class="guide-related">${roots.map((root) => `<a href="${root.path}">${escapeHtml(root.name)}</a>`).join("")}</div><div class="guide-app"><h2>Put your knowledge into practice.</h2><p>Study and practise for free in your browser. Your progress stays in this browser.</p><a class="button" href="${escapeHtml(studyHref)}">Study this in the free web app</a><a class="button" href="${escapeHtml(practiceHref)}">Practise this topic</a></div></aside></div></main>${footer}</body></html>`;
+<aside class="guide-aside" aria-label="More study resources"><p class="eyebrow">Browse topics</p><div class="guide-related">${siblings.map((sibling) => `<a href="${sibling.path}"${sibling.path === page.path ? ' aria-current="page"' : ""}>${escapeHtml(sibling.name)}</a>`).join("")}</div><div class="guide-app"><h2>Put your knowledge into practice.</h2><p>Study and practise for free in your browser. Your progress stays in this browser.</p><a class="button" href="${escapeHtml(studyHref)}">Study this in the free web app</a><a class="button" href="${escapeHtml(practiceHref)}">Practise this topic</a></div></aside></div></main>${footer}</body></html>`;
     const target = resolve(outputDir, `.${page.path}`, "index.html");
     mkdirSync(dirname(target), { recursive: true });
     writeFileSync(target, html);
+  }
+  // FTP uploads do not remove old files. Overwrite retired URLs with noindex
+  // replacement pages on every build; the published-route record only grows.
+  const activePaths = new Set(pages.map((page) => page.path));
+  for (const retired of publishedPaths) {
+    if (!/^\/study\/(?:[a-z0-9-]+\/)*$/.test(retired)) throw new Error(`Invalid published topic path: ${retired}`);
+    if (activePaths.has(retired)) continue;
+    const parent = [...pages].reverse().find((page) => retired.startsWith(page.path)) ?? hub;
+    const tombstone = readFileSync(resolve(lander, "404.html"), "utf8")
+      .replace("Page not found | K53 Study Guide", "Study section moved | K53 Study Guide")
+      .replace("That page could not be found.", "This study section has moved")
+      .replace(
+        "</h1>",
+        `</h1><p class="guide-intro"><a href="${parent.path}">Continue with ${escapeHtml(parent.name)}</a>.</p>`,
+      );
+    const target = resolve(outputDir, `.${retired}`, "index.html");
+    mkdirSync(dirname(target), { recursive: true });
+    writeFileSync(target, tombstone);
   }
   const originalSitemap = readFileSync(resolve(lander, "scripts/sitemap-base.xml"), "utf8");
   const added = preview
