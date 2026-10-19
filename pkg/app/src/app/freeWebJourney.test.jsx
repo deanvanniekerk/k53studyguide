@@ -19,8 +19,26 @@ import QuizResultPage from "./pages/quiz/results/TestResultPage";
 import QuizSessionPage from "./pages/quiz/session/TestPage";
 import StudyPage from "./pages/study/StudyPage";
 import MockTestResultPage from "./pages/test/results/TestResultPage";
+import MockTestSessionPage from "./pages/test/session/TestPage";
 import TestPage from "./pages/test/TestPage";
 import { WebRuntimeProvider } from "./WebRuntimeProvider";
+
+// Substitute external browser/platform and collector inputs; keep app state/routing real.
+vi.hoisted(() => {
+  vi.stubGlobal(
+    "__FIREBASE_WEB_CONFIG__",
+    JSON.stringify({ apiKey: "fixture", projectId: "fixture", appId: "fixture", measurementId: "G-FIXTURE" }),
+  );
+  vi.stubGlobal("__WEB_ANALYTICS__", "");
+  globalThis.jsdom.reconfigure({ url: "https://www.k53studyguide.online/app-preview/?analytics_test=true" });
+});
+vi.mock("@capacitor/core", async (original) => ({
+  ...(await original()),
+  Capacitor: { ...(await original()).Capacitor, getPlatform: () => "web", isNativePlatform: () => false },
+}));
+vi.mock("firebase/app", () => ({ initializeApp: () => ({ name: "[DEFAULT]" }), getApps: () => [] }));
+vi.mock("firebase/analytics", () => ({ initializeAnalytics: () => {} }));
+afterAll(() => vi.unstubAllGlobals());
 
 // Substitute only the Ionic host widgets, keeping routing, content, UI and Redux real.
 vi.mock("@ionic/react", async (original) => {
@@ -124,6 +142,7 @@ function journey(model, preloaded, entry = "study") {
             <Route path="/quiz/results" element={<QuizResultPage />} />
             <Route path="/test" element={<TestPage />} />
             <Route path="/test/results" element={<MockTestResultPage />} />
+            <Route path="/test/session" element={<MockTestSessionPage />} />
             <Route
               path="/profile"
               element={
@@ -167,7 +186,9 @@ it("lets a browser learner study, finish practice and access mock tests and rese
   expect(screen.getByRole("alert").textContent).toContain("historyCleanSeenConfirm");
   expect(screen.queryByText("goPremium")).toBeNull();
   expect(store.getState().purchase.owned).toBe(false);
-  await Promise.resolve();
+  await vi.waitFor(() =>
+    expect(FirebaseAnalytics.logEvent.mock.calls.some(([event]) => event.name === "quiz_complete")).toBe(true),
+  );
   const events = FirebaseAnalytics.logEvent.mock.calls.map(([event]) => event.name);
   expect(events).toContain("quiz_complete");
   expect(events.some((event) => /^(begin_checkout|checkout_outcome|premium_invitation_)/.test(event))).toBe(false);
@@ -189,6 +210,9 @@ it("reports connection loss and recovery without changing saved work or emitting
   const store = journey("free_web");
   await act(async () => {});
   finishPractice(store);
+  await vi.waitFor(() =>
+    expect(FirebaseAnalytics.logEvent.mock.calls.some(([event]) => event.name === "quiz_complete")).toBe(true),
+  );
   await createStorage().setItem("persist:quiz-session", JSON.stringify(store.getState().quiz.session));
   const savedStorage = Object.fromEntries(Object.entries(localStorage));
   const before = JSON.stringify(store.getState());
@@ -206,12 +230,17 @@ it("reports connection loss and recovery without changing saved work or emitting
   expect(FirebaseAnalytics.logEvent.mock.calls.length).toBe(events);
 });
 
-it("preserves completed practice through reload and deliberately clears history without changing settings", () => {
+it("preserves completed practice through reload and deliberately clears history without changing settings", async () => {
   const store = journey("free_web");
   finishPractice(store);
+  await vi.waitFor(() =>
+    expect(FirebaseAnalytics.logEvent.mock.calls.filter(([event]) => event.name === "quiz_complete")).toHaveLength(1),
+  );
   const saved = JSON.parse(JSON.stringify(store.getState()));
   cleanup();
   const reloaded = journey("free_web", saved, "quiz/results");
+  await act(async () => {});
+  expect(FirebaseAnalytics.logEvent.mock.calls.filter(([event]) => event.name === "quiz_complete")).toHaveLength(1);
   expect(screen.getByRole("heading", { name: "result: 1 / 1" })).toBeTruthy();
   fireEvent.click(screen.getByRole("link", { name: "History" }));
   fireEvent.click(screen.getByRole("button", { name: "clearQuizHistory" }));
@@ -366,7 +395,16 @@ it.each(["profile", "quiz_results", "test_results"])(
       }
       link.addEventListener("click", (event) => event.preventDefault());
       fireEvent.click(link);
-      referrals.push({ name: "select_store_cta", params: { cta_location: location, store_platform: platform } });
+      referrals.push({
+        name: "select_store_cta",
+        params: {
+          cta_location: location,
+          store_platform: platform,
+          premium_status: "free",
+          analytics_schema_version: "v2",
+          analytics_test: "true",
+        },
+      });
     }
     await Promise.resolve();
     expect(
@@ -377,3 +415,70 @@ it.each(["profile", "quiz_results", "test_results"])(
     expect(screen.queryByText("goPremium")).toBeNull();
   },
 );
+
+it("counts one completed web mock test through result reload and reconnect without purchase signals", async () => {
+  const reducer = createRootReducer("free_web");
+  const initial = reducer(undefined, { type: "@@test/init" });
+  const answers = ["A", "B", "C"].map((section) => ({
+    section,
+    answer: null,
+    question: {
+      id: section,
+      text: `Question ${section}`,
+      answer: "yes",
+      option: [{ id: "yes", value: `Answer ${section}` }],
+    },
+  }));
+  const store = journey(
+    "free_web",
+    {
+      ...initial,
+      test: {
+        ...initial.test,
+        session: {
+          ...initial.test.session,
+          questionAnswers: answers,
+          completionAnalyticsVersion: 2,
+          completedAt: null,
+        },
+      },
+    },
+    "test/session",
+  );
+  for (const section of ["A", "B", "C"]) {
+    fireEvent.click(screen.getByRole("button", { name: `Answer ${section}` }));
+    fireEvent.click(screen.getByRole("button", { name: section === "C" ? "submit" : "continue" }));
+  }
+  const completions = () =>
+    FirebaseAnalytics.logEvent.mock.calls
+      .map(([event]) => event)
+      .filter((event) => event.name === "mock_test_complete");
+  await vi.waitFor(() => expect(completions()).toHaveLength(1));
+  expect(completions()[0].params).toMatchObject({
+    question_count: 3,
+    section_a_total: 1,
+    section_b_total: 1,
+    section_c_total: 1,
+    premium_status: "free",
+    analytics_schema_version: "v2",
+    analytics_test: "true",
+  });
+  const saved = JSON.parse(JSON.stringify(store.getState()));
+  cleanup();
+  journey("free_web", saved, "test/results");
+  await act(async () => {});
+  await act(async () => {
+    for (const listener of networkListeners) listener({ connected: false });
+  });
+  await act(async () => {
+    for (const listener of networkListeners) listener({ connected: true });
+  });
+  expect(screen.getByText("mobileAppResults")).toBeTruthy();
+  expect(completions()).toHaveLength(1);
+  const events = FirebaseAnalytics.logEvent.mock.calls.map(([event]) => event.name);
+  expect(
+    events.some((name) =>
+      /^(premium_|view_promotion|select_promotion|begin_checkout|checkout_outcome|restore_|purchase_)/.test(name),
+    ),
+  ).toBe(false);
+});

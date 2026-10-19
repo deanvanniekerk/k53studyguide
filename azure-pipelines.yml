@@ -61,6 +61,16 @@ steps:
           REVENUECAT_IOS_API_KEY: $(REVENUECAT_IOS_API_KEY)
           SHOW_DEBUG: ${{ parameters.showDebug }}
 
+    - script: |
+          set -euo pipefail
+          pnpm web:build
+      displayName: "Web App > Build"
+      env:
+          # Supply these in Azure variables; production enablement is a #55 owner gate.
+          WEB_APP_OUT_DIR: build-web
+          FIREBASE_WEB_CONFIG: $(FIREBASE_WEB_CONFIG)
+          WEB_ANALYTICS: $(WEB_ANALYTICS)
+
     - task: DownloadSecureFile@1
       name: androidGoogleServices
       inputs:
