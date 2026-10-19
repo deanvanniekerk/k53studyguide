@@ -59,6 +59,8 @@ test("publishes stable substantive sections, complete metadata and a production-
     expect(description.length).toBeLessThanOrEqual(155);
     expect(document.querySelector('nav[aria-label="Breadcrumb"]')).not.toBeNull();
     const data = JSON.parse(document.querySelector('script[type="application/ld+json"]')!.textContent!)["@graph"];
+    expect(data[0].dateModified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(document.querySelector("time")?.getAttribute("datetime")).toBe(data[0].dateModified);
     expect(data[0].url).toBe(`https://www.k53studyguide.online${path}`);
     expect(data[1].itemListElement.at(-1).item).toBe(data[0].url);
     expect(titles.has(document.title)).toBe(false);

@@ -91,6 +91,7 @@ export function generateTopics({
     ],
     { cwd: resolve(lander, "../.."), encoding: "utf8" },
   ).trim();
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(lastmod)) throw new Error("Topic lastmod needs shared-content Git history. Fetch full history before building.");
   const guide = readFileSync(resolve(lander, "k53-road-signs.html"), "utf8");
   const shell = (tag: string) =>
     guide
