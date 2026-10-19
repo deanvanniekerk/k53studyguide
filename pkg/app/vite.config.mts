@@ -45,9 +45,16 @@ export default defineConfig(({ mode }) => ({
   build: {
     assetsDir: "dist",
     cssMinify: "esbuild",
-    outDir: "build",
+    outDir: process.env.WEB_APP_OUT_DIR ?? "build",
   },
   define: {
+    // Tests substitute these build inputs with vi.stubGlobal at the collector seam.
+    ...(mode === "test"
+      ? {}
+      : {
+          __FIREBASE_WEB_CONFIG__: JSON.stringify(getSecretConfig("firebase.webConfig", "FIREBASE_WEB_CONFIG")),
+          __WEB_ANALYTICS__: JSON.stringify(getSecretConfig("webAnalytics", "WEB_ANALYTICS")),
+        }),
     __ENVIRONMENT__: JSON.stringify(getConfig("environment", mode === "production" ? "production" : "development")),
     __LOG_LEVEL__: JSON.stringify(getConfig("logLevel", "INFO")),
     __REVENUECAT_ANDROID_API_KEY__: JSON.stringify(
@@ -68,6 +75,7 @@ export default defineConfig(({ mode }) => ({
   test: {
     environment: "node",
     globals: true,
+    setupFiles: ["./src/testPlatform.ts"],
     include: ["src/**/*.{test,spec}.{ts,tsx,js,jsx}"],
   },
 }));

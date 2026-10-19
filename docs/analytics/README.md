@@ -75,3 +75,12 @@ Previously registered; verify usable values on the released build instead of cre
 | Event: website | `store_platform`, `cta_location`, `analytics_environment`, `analytics_test` |
 
 Use built-in platform, app version, event name and acquisition fields. Keep attempt IDs and other high-cardinality identifiers out of ordinary GA4 custom dimensions. Registration does not backfill old breakdowns; retain separate measurement periods for legacy events and `v2` assessments.
+
+
+## Free web rollout
+
+The Firebase web app must belong to the existing `k53-study-guide` project and its web stream to the native app's verified GA4 property. Build config is environment-only; defaults suppress browser collection. The [collector contract](events.md#free-web-collection) separates free web use from native Premium behavior and the [28-complete-day scorecard](../growth/web-launch.md#evaluation) defines the queries and QA exclusions.
+
+Owner setup remains a launch gate: register/confirm the Firebase web app, copy `FIREBASE_WEB_CONFIG` into ignored `.dev.env` and Azure variables, verify the stream/property association, review enhanced measurement (manual route screen views own app navigation), and approve `WEB_ANALYTICS=production` for launch only. Use Firebase's [web setup](https://github.com/capawesome-team/capacitor-firebase/blob/main/docs/firebase-setup.md#web) and [Analytics initialization options](https://firebase.google.com/docs/reference/js/analytics.md#initializeanalytics). Keep stream settings/config out of public commits. Native output remains `pkg/app/build`; the Azure web build uses `pkg/app/build-web` so Capacitor copy cannot receive the web bundle.
+
+On 19 October 2026, live setup could not be verified: the Firebase connector identity exposes the obsolete `k53-ninja` project, GA read-only authorization returns `invalid_grant`, and Safari requires the owner's Google sign-in for `k53-study-guide`. No app was created in the wrong project, no permissions were broadened, and no production collection flag was enabled. Complete authentication/configuration and verify one tagged quiz completion in DebugView/Realtime before declaring #54 complete. Code tests establish SDK-boundary behavior; they are not evidence of live receipt.

@@ -1,6 +1,5 @@
-import { FirebaseAnalytics } from "@capacitor-firebase/analytics";
 import type { OrderState } from "@/state/purchase";
-import { isBrowserPreview } from "./browserPreview";
+import { analyticsCollector } from "./collection";
 
 export type PremiumStatus = "free" | "premium";
 
@@ -99,37 +98,17 @@ const purchaseParams = (params: PurchaseParams): AnalyticsParams => ({
   execution_context: params.execution_context,
 });
 
-const runNativeAnalytics = (operation: Promise<void> | void) => {
-  void Promise.resolve(operation).catch((error) => {
-    console.warn("Firebase analytics call failed", error);
-  });
-};
-
 export const analytics = {
   setCurrentScreen(screenName: string) {
-    if (isBrowserPreview) return;
-    runNativeAnalytics(FirebaseAnalytics.setCurrentScreen({ screenName }));
+    analyticsCollector.setCurrentScreen(screenName);
   },
 
   setUserProperties(properties: UserProperties) {
-    if (isBrowserPreview) return;
-    Object.entries(properties).forEach(([name, value]) => {
-      if (value) runNativeAnalytics(FirebaseAnalytics.setUserProperty({ key: name, value }));
-    });
+    analyticsCollector.setUserProperties(properties);
   },
 
   logEvent(eventName: AnalyticsEventName | LegacyAnalyticsEventName, params?: AnalyticsParams) {
-    const normalizedParams = normalizeParams(params);
-    if (isBrowserPreview) {
-      console.info("[Analytics preview]", eventName, normalizedParams);
-      return;
-    }
-    runNativeAnalytics(
-      FirebaseAnalytics.logEvent({
-        name: eventName,
-        ...(normalizedParams ? { params: normalizedParams } : {}),
-      }),
-    );
+    analyticsCollector.logEvent(eventName, normalizeParams(params));
   },
 
   trackAppOpen(params: { language: string; theme: string; premium_status: PremiumStatus }) {

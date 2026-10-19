@@ -74,3 +74,14 @@ The optional mobile links in free web access emit `select_store_cta` through the
 | Mock-test results | `web_app_test_results_{android,ios}` | Matching destination |
 
 These six combinations are shown only with free web access and open the store in a new tab. Native purchase invitations remain on their existing surfaces. The retired embedded quiz demo has no event placements. The app's collector enablement and QA rules are separate from the unchanged lander collector rules above.
+
+
+## Free web collection
+
+The app collector initializes Firebase before sending web events. Config comes from `FIREBASE_WEB_CONFIG` (JSON); `WEB_ANALYTICS=production` enables only the approved apex/www host and production mount. Missing/malformed config, other hosts and `/app-preview/` suppress collection. A URL marker `analytics_test=true` or `utm_source=qa`, persisted in tab session storage where available, explicitly enables tagged QA on any host with config. Preview deployments clear the production flag. A disabled collector logs local previews only; initialization/delivery errors never block studying.
+
+Every manual web event carries `premium_status=free`, `analytics_schema_version=v2` and string `analytics_test=true/false`; screen routing emits tagged `screen_view` with `firebase_screen`. Automatic initial page views are disabled to avoid an untagged duplicate. Do not count this route event plus another automatic page-view collector as two visits. Owner stream settings must avoid automatic history page changes/outbound/scroll/file events if they would duplicate manual measurement. Verify any remaining automatic events separately.
+
+The collector blocks Premium invitations/offers, promotions, checkout, restore and purchase-family events on web. Native SDK calls retain their existing payloads and immediate delivery behavior. Existing assessment submission guards apply to both platforms: result revisits, serialized reloads and offline/online cycles do not resubmit a completed attempt. This is application deduplication, not guaranteed network delivery.
+
+The [launch scorecard](../growth/web-launch.md#evaluation) defines production QA exclusions, reporting windows and source queries. No email, account ID or cross-device identity link is introduced.
