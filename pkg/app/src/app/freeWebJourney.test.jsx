@@ -1,9 +1,8 @@
-import userEvent from "@testing-library/user-event";
-import ContentPage from "./pages/content/ContentPage";
 // @vitest-environment jsdom
 
 import { FirebaseAnalytics } from "@capacitor-firebase/analytics";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { act, lazy, Suspense } from "react";
 import { Provider } from "react-redux";
 import { Link, MemoryRouter, Route, Routes } from "react-router-dom";
@@ -13,6 +12,7 @@ import { recieveMaxQuestions } from "@/state/quiz/session";
 import createRootReducer from "@/state/rootReducer";
 import { createStorage } from "@/store/store";
 import { RetryableImage } from "./components/RetryableImage";
+import ContentPage from "./pages/content/ContentPage";
 import { History, Purchase } from "./pages/profile/components";
 import QuizPage from "./pages/quiz/QuizPage";
 import QuizResultPage from "./pages/quiz/results/TestResultPage";

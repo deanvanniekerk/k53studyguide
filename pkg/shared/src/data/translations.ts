@@ -23,6 +23,7 @@ const translations: Translations = {
   debugLogs: { en: "Logs" },
   debugNoLogMessagesYet: { en: "No log messages yet." },
 
+  studySectionsComplete: { en: "{completed} of {total} sections complete" },
   appearance: { en: "Appearance" },
   systemDefault: { en: "System default" },
   lightTheme: { en: "Light" },
