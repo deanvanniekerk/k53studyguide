@@ -36,6 +36,8 @@ test("publishes stable substantive sections, complete metadata and a production-
   const driver = new JSDOM(readFileSync(join(outputDir, "study/rules-of-the-road/the-driver/index.html"), "utf8"))
     .window.document;
   expect(driver.body.textContent).toContain("You may not drive while holding a cellphone");
+  const robots = readFileSync("public/robots.txt", "utf8");
+  const crawlRules = [...robots.matchAll(/^(Allow|Disallow):\s*(.*)$/gm)].map((match) => ({ allow: match[1] === "Allow", path: match[2].trim() }));
   const titles = new Set();
   const descriptions = new Set();
   for (const path of paths) {
@@ -59,6 +61,8 @@ test("publishes stable substantive sections, complete metadata and a production-
     for (const image of document.querySelectorAll("article img")) {
       const src = image.getAttribute("src")!;
       expect(src.startsWith("/app/assets/images/")).toBe(true);
+      const applicable = crawlRules.filter((rule) => src.startsWith(rule.path)).sort((a, b) => b.path.length - a.path.length);
+      expect(applicable[0]?.allow, `crawlable image: ${src}`).toBe(true);
       expect(() => readFileSync(join("../app/public", src.slice(4)))).not.toThrow();
     }
     for (const link of document.querySelectorAll<HTMLAnchorElement>('a[href^="/study/"]')) {

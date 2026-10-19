@@ -119,6 +119,7 @@ export function generateTopics({
       ...ancestors.map(({ name, path }) => ({ name, path })),
       page,
     ];
+    const siblings = ancestors.at(-1)?.children.filter((child) => child.published) ?? roots;
     const title = [page.name, ...(area && area !== page ? [area.name] : []), "K53 Study Guide"].join(" | ");
     const description = excerpt(
       `${page.name}: ${plain(text(allItems(page)[0]?.description ?? "")) || "Read the K53 study material and practise in the free web app. Explore road signs, rules of the road and vehicle controls."}`,
@@ -176,7 +177,7 @@ ${preview ? "" : '<script type="module" src="/src/analytics.js"></script>'}
 </head><body><a class="skip-link" href="#main">Skip to content</a>${nav}
 <main id="main"><header class="guide-header container"><nav aria-label="Breadcrumb" class="topic-breadcrumb">${breadcrumbs.map((crumb) => `<a href="${crumb.path}"${crumb.path === page.path ? ' aria-current="page"' : ""}>${escapeHtml(crumb.name)}</a>`).join(" / ")}</nav><h1>${escapeHtml(page.name)}</h1><p class="guide-intro">${escapeHtml(description)}</p><p class="guide-byline">By K53 Study Guide · Updated <time datetime="${lastmod}">${lastmod}</time></p></header>
 <div class="guide-layout container"><article class="guide-body">${content(page)}<nav class="topic-pagination" aria-label="Adjacent sections">${adjacent}</nav></article>
-<aside class="guide-aside" aria-label="More study resources"><p class="eyebrow">Browse topics</p><div class="guide-related">${roots.map((root) => `<a href="${root.path}">${escapeHtml(root.name)}</a>`).join("")}</div><div class="guide-app"><h2>Put your knowledge into practice.</h2><p>Study and practise for free in your browser. Your progress stays in this browser.</p><a class="button" href="${escapeHtml(studyHref)}">Study this in the free web app</a><a class="button" href="${escapeHtml(practiceHref)}">Practise this topic</a></div></aside></div></main>${footer}</body></html>`;
+<aside class="guide-aside" aria-label="More study resources"><p class="eyebrow">Browse topics</p><div class="guide-related">${siblings.map((sibling) => `<a href="${sibling.path}"${sibling.path === page.path ? ' aria-current="page"' : ""}>${escapeHtml(sibling.name)}</a>`).join("")}</div><div class="guide-app"><h2>Put your knowledge into practice.</h2><p>Study and practise for free in your browser. Your progress stays in this browser.</p><a class="button" href="${escapeHtml(studyHref)}">Study this in the free web app</a><a class="button" href="${escapeHtml(practiceHref)}">Practise this topic</a></div></aside></div></main>${footer}</body></html>`;
     const target = resolve(outputDir, `.${page.path}`, "index.html");
     mkdirSync(dirname(target), { recursive: true });
     writeFileSync(target, html);
