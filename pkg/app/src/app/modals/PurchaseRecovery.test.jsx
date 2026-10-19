@@ -5,7 +5,8 @@ import { Network } from "@capacitor/network";
 import { Purchases } from "@revenuecat/purchases-capacitor";
 import { Provider } from "react-redux";
 import { act, create } from "react-test-renderer";
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import { thunk } from "redux-thunk";
 import Startup from "@/app/Startup";
 import { PurchaseContext } from "@/context";
 import { ANDROID_PREMIUM_PRODUCT_ID, IOS_PREMIUM_PRODUCT_ID } from "@/services/purchase/productIds";
@@ -120,6 +121,7 @@ const click = async (page, label) => {
 const setupCheckout = async () => {
   const store = createStore(
     combineReducers({ purchase: reducer, settings: () => ({ theme: "light", language: "en" }) }),
+    applyMiddleware(thunk),
   );
   const service = new RevenueCatPurchaseService(store);
   const mount = async (origin, isOpen = true, onDidDismiss = () => {}) => {

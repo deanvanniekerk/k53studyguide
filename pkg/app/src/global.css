@@ -223,3 +223,23 @@ ion-button {
 .text-xs {
   font-size: var(--app-font-size-xs);
 }
+
+/* Web pages stay readable on a wide screen; fixed descendants stay in this column. */
+@media (min-width: 900px) {
+  html[data-platform="web"] ion-app {
+    max-width: 720px;
+    margin-inline: auto;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.12);
+    transform: translateZ(0);
+  }
+}
+html[data-platform="web"] :is(button, a, input, select):focus-visible {
+  outline: 3px solid var(--app-question-accent);
+  outline-offset: 3px;
+}
+html[data-platform="web"] ion-tab-button:focus-within {
+  outline: 3px solid var(--app-question-accent);
+  outline-offset: -4px;
+}

@@ -1,3 +1,5 @@
+import userEvent from "@testing-library/user-event";
+import ContentPage from "./pages/content/ContentPage";
 // @vitest-environment jsdom
 
 import { FirebaseAnalytics } from "@capacitor-firebase/analytics";
@@ -115,6 +117,7 @@ function journey(model, preloaded, entry = "study") {
           </nav>
           <Routes>
             <Route path="/study" element={<StudyPage />} />
+            <Route path="/content" element={<ContentPage />} />
             <Route path="/quiz" element={<QuizPage />} />
             <Route path="/quiz/session" element={<QuizSessionPage />} />
             <Route path="/quiz/results" element={<QuizResultPage />} />
@@ -290,6 +293,14 @@ it("keeps a failed lazy route recoverable without losing the saved learner state
   expect(screen.getByRole("button", { name: "webReload" })).toBeTruthy();
   expect(JSON.stringify(store.getState())).toBe(before);
   errors.mockRestore();
+});
+
+it("opens a study topic using the keyboard", async () => {
+  journey("free_web");
+  const topic = screen.getByRole("button", { name: /nav.vehicleControls/ });
+  topic.focus();
+  await userEvent.keyboard("{Enter}");
+  expect(screen.getByText("nav.vehicleControls.0.heading")).toBeTruthy();
 });
 
 it("keeps Study usable and warns when a browser save fails", async () => {
