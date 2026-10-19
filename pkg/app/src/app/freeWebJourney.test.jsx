@@ -2,6 +2,7 @@
 
 import { FirebaseAnalytics } from "@capacitor-firebase/analytics";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { act, lazy, Suspense } from "react";
 import { Provider } from "react-redux";
 import { Link, MemoryRouter, Route, Routes } from "react-router-dom";
@@ -11,6 +12,7 @@ import { recieveMaxQuestions } from "@/state/quiz/session";
 import createRootReducer from "@/state/rootReducer";
 import { createStorage } from "@/store/store";
 import { RetryableImage } from "./components/RetryableImage";
+import ContentPage from "./pages/content/ContentPage";
 import { History, Purchase } from "./pages/profile/components";
 import QuizPage from "./pages/quiz/QuizPage";
 import QuizResultPage from "./pages/quiz/results/TestResultPage";
@@ -115,6 +117,7 @@ function journey(model, preloaded, entry = "study") {
           </nav>
           <Routes>
             <Route path="/study" element={<StudyPage />} />
+            <Route path="/content" element={<ContentPage />} />
             <Route path="/quiz" element={<QuizPage />} />
             <Route path="/quiz/session" element={<QuizSessionPage />} />
             <Route path="/quiz/results" element={<QuizResultPage />} />
@@ -290,6 +293,14 @@ it("keeps a failed lazy route recoverable without losing the saved learner state
   expect(screen.getByRole("button", { name: "webReload" })).toBeTruthy();
   expect(JSON.stringify(store.getState())).toBe(before);
   errors.mockRestore();
+});
+
+it("opens a study topic using the keyboard", async () => {
+  journey("free_web");
+  const topic = screen.getByRole("button", { name: /nav.vehicleControls/ });
+  topic.focus();
+  await userEvent.keyboard("{Enter}");
+  expect(screen.getByText("nav.vehicleControls.0.heading")).toBeTruthy();
 });
 
 it("keeps Study usable and warns when a browser save fails", async () => {

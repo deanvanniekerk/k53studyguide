@@ -25,7 +25,8 @@ const HeaderComponent: React.FC<Props> = (props) => {
         <Translate text={props.lastSeenParentContentKey} />
       </Title>
       <SubTitle>
-        <Translate text="study" /> &middot; {completedSections} of {totalSections} sections complete
+        <Translate text="study" /> &middot;{" "}
+        <Translate text="studySectionsComplete" data={{ completed: completedSections, total: totalSections }} />
       </SubTitle>
       <ButtonWrap>
         <PrimaryButton

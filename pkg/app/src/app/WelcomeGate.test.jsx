@@ -104,3 +104,15 @@ it("falls back to English when native language detection fails", async () => {
   await act(async () => {});
   expect(screen.getByRole("radio", { name: "English" }).checked).toBe(true);
 });
+
+it.each([
+  ["English", "Welcome to K53 Study Guide", "Continue"],
+  ["Afrikaans", "Welkom by K53 Study Guide", "Gaan voort"],
+  ["isiZulu", "Siyakwamukela ku-K53 Study Guide", "Qhubeka"],
+  ["isiXhosa", "Wamkelekile kwi-K53 Study Guide", "Qhubeka"],
+])("shows %s welcome copy before a locale chunk loads", (language, title, next) => {
+  setup();
+  fireEvent.click(screen.getByRole("radio", { name: language }));
+  expect(screen.getByRole("heading", { name: title })).toBeTruthy();
+  expect(screen.getByRole("button", { name: next })).toBeTruthy();
+});

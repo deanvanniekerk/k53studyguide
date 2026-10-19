@@ -47,7 +47,12 @@ const NavigationItemComponent: React.FC<Props> = (props) => {
         toValue: "translateY(0px)",
       }}
     >
-      <div className="root-navigation-item" style={itemStyle} onClick={() => props.onClick(props.navigationItemKey)}>
+      <button
+        type="button"
+        className="root-navigation-item"
+        style={itemStyle}
+        onClick={() => props.onClick(props.navigationItemKey)}
+      >
         <div className="root-navigation-icon-tile">
           <SectionIcon navigationItemKey={props.navigationItemKey} size={52} />
         </div>
@@ -70,7 +75,7 @@ const NavigationItemComponent: React.FC<Props> = (props) => {
           <span>{seenProgress}%</span>
         </div>
         <IonIcon icon={chevronBackOutline} className="root-navigation-chevron" />
-      </div>
+      </button>
     </CreateAnimation>
   );
 };

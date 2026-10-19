@@ -15,3 +15,33 @@ it("releases exactly the four languages and matches supported regional device ta
   expect(matchDeviceLocale([])).toBe("en");
   expect(resolveLocale("invalid")).toBe("en");
 });
+
+it("loads the selected locale over English without requiring the other dictionaries", async () => {
+  const { loadLocale, translations } = await import("@k53studyguide/shared/data");
+  expect(translations.study.af).toBeUndefined();
+  const af = await loadLocale("af");
+  expect(af.study.af).toBe("Studeer");
+  expect(af.quiz.af).toBe("Vasvra");
+  expect(af.study.zu).toBeUndefined();
+  expect((await loadLocale("zu")).quiz.zu).toBe("Imibuzo");
+  expect((await loadLocale("xh")).quiz.xh).toBe("Ikhwizi");
+  expect((await loadLocale("invalid")).study.en).toBe("Study");
+});
+
+it("keeps eager welcome and recovery copies in sync with the generated dictionaries", async () => {
+  const { loadLocale, translations } = await import("@k53studyguide/shared/data");
+  for (const locale of ["af", "zu", "xh"] as const) {
+    const loaded = await loadLocale(locale);
+    for (const key of [
+      "welcomeTitle",
+      "welcomeBody",
+      "welcomeLanguage",
+      "welcomeChangeLanguage",
+      "welcomeContinue",
+      "crashTitle",
+      "restart",
+    ]) {
+      expect(translations[key][locale], `${key}.${locale}`).toBe(loaded[key][locale]);
+    }
+  }
+});

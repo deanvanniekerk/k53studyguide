@@ -6,12 +6,12 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Navigate, Route, useLocation } from "react-router-dom";
 import { BookIcon, QuizIcon, SettingsIcon, TestPenIcon } from "@/app/components/icons";
-import { translations } from "@/data";
 import { analytics } from "@/services/analytics";
 import type { RootState } from "@/state";
 import { ownedSelector } from "@/state/purchase";
 import { languageSelector } from "@/state/settings";
 import { themeSelector } from "@/state/settings/selectors";
+import { translationsSelector } from "@/state/translations";
 import { legacyRouteRedirects } from "./legacyCompatibility";
 import ContentPage from "./pages/content/ContentPage";
 import ProfilePage from "./pages/profile/ProfilePage";
@@ -170,7 +170,7 @@ const AppTabs: React.FC<AnalyticsRouteTrackerProps> = (props) => {
 
 const Router: React.FC<Props> = (props) => {
   return (
-    <TranslationProvider language={props.language} translation={translations}>
+    <TranslationProvider language={props.language} translation={props.translations}>
       <WebRuntimeProvider>
         <IonReactRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
           <WelcomeGate>
@@ -185,6 +185,7 @@ const Router: React.FC<Props> = (props) => {
 type PropsFromState = ReturnType<typeof mapStateToProps>;
 const mapStateToProps = (state: RootState) => {
   return {
+    translations: translationsSelector(state),
     language: languageSelector(state),
     theme: themeSelector(state),
     hasFullAccess: ownedSelector(state),
