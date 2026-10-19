@@ -6,6 +6,8 @@ import { applyMiddleware, createStore } from "redux";
 import { thunk } from "redux-thunk";
 import createRootReducer from "@/state/rootReducer";
 import { recieveLanguage, setTheme } from "@/state/settings";
+import { ensureLocale } from "@/state/translations/actions";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 import Startup from "./Startup";
 
 const environment = vi.hoisted(() => ({ platform: "web", path: "/quiz/session" }));
@@ -152,4 +154,33 @@ it("keeps native viewport behavior", async () => {
   await act(async () => {});
   expect(document.documentElement.dataset.platform).toBe("native");
   expect(document.querySelector('meta[name="viewport"]').content).toContain("user-scalable=no");
+});
+
+it.each([
+  ["af", "Herbegin"],
+  ["zu", "Qala kabusha"],
+  ["xh", "Qalisa kwakhona"],
+])("keeps crash recovery in the loaded %s language", async (language, restart) => {
+  const store = mount();
+  await act(async () => {
+    store.dispatch(recieveLanguage(language));
+    await store.dispatch(ensureLocale(language));
+  });
+  cleanup();
+  const errorOutput = vi.spyOn(console, "error").mockImplementation(() => {});
+  function BrokenPage() {
+    throw new Error("Crash recovery fixture");
+  }
+  try {
+    render(
+      <Provider store={store}>
+        <ErrorBoundary>
+          <BrokenPage />
+        </ErrorBoundary>
+      </Provider>,
+    );
+    expect(screen.getByRole("button", { name: restart })).toBeTruthy();
+  } finally {
+    errorOutput.mockRestore();
+  }
 });

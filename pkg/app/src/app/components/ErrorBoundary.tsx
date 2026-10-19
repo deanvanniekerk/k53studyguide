@@ -1,5 +1,5 @@
 import { IonButton, IonContent, IonIcon, IonPage } from "@ionic/react";
-import { translations } from "@k53studyguide/shared/data";
+import type { Translations } from "@k53studyguide/shared/data";
 import { Translate, Provider as TranslationProvider } from "@k53studyguide/shared/translation";
 import { reload } from "ionicons/icons";
 import React from "react";
@@ -9,6 +9,7 @@ import styled from "styled-components";
 import type { RootState } from "@/state";
 import { recieveLogMessage } from "@/state/log";
 import { languageSelector } from "@/state/settings";
+import { translationsSelector } from "@/state/translations/selectors";
 import { TestFailedIcon } from "./icons";
 
 type State = {
@@ -18,6 +19,7 @@ type State = {
 type Props = {
   children: React.ReactNode;
   language?: string;
+  translations: Translations;
 } & PropsFromDispatch;
 
 export class ErrorBoundaryComponent extends React.Component<Props, State> {
@@ -46,7 +48,7 @@ export class ErrorBoundaryComponent extends React.Component<Props, State> {
     if (this.state.hasError) {
       // You can render any custom fallback UI
       return (
-        <TranslationProvider language={this.props.language ?? "en"} translation={translations}>
+        <TranslationProvider language={this.props.language ?? "en"} translation={this.props.translations}>
           <Page>
             <Content>
               <Icon>
@@ -117,7 +119,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 };
 
 const ErrorBoundary = connect(
-  (state: RootState) => ({ language: languageSelector(state) }),
+  (state: RootState) => ({ language: languageSelector(state), translations: translationsSelector(state) }),
   mapDispatchToProps,
 )(ErrorBoundaryComponent);
 
