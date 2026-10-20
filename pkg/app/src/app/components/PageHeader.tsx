@@ -2,7 +2,9 @@ import { IonIcon } from "@ionic/react";
 import { Translate, useTranslate } from "@k53studyguide/shared/translation";
 import { arrowBackOutline } from "ionicons/icons";
 import type React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { accessModelSelector } from "@/state/access";
 
 export type PageSection = "study" | "quiz" | "test" | "profile";
 
@@ -24,10 +26,23 @@ const gradients: Record<PageSection, string> = {
 
 const PageHeader: React.FC<Props> = ({ title, subTitle, page, compact = false, onBackClick, rightSection }) => {
   const translate = useTranslate();
+  const showWebsiteLink = useSelector(accessModelSelector) === "free_web" && !onBackClick;
   return (
     <Shell $gradient={gradients[page]} $compact={compact}>
-      <Bar $hasSubtitle={Boolean(subTitle)} $compact={compact}>
+      <Bar $hasSubtitle={Boolean(subTitle)} $compact={compact} $hasWebsiteLink={showWebsiteLink}>
         <Col1>
+          {showWebsiteLink && (
+            <WebsiteLink
+              href="/"
+              aria-label={translate({ text: "backToWebsite" })}
+              title={translate({ text: "backToWebsite" })}
+            >
+              <IonIcon icon={arrowBackOutline} aria-hidden="true" />
+              <span>
+                <Translate text="website" />
+              </span>
+            </WebsiteLink>
+          )}
           {onBackClick && (
             <BackBtn type="button" aria-label={translate({ text: "goBack" })} onClick={onBackClick}>
               <IonIcon icon={arrowBackOutline} />
@@ -64,7 +79,7 @@ const Shell = styled.div<{ $gradient: string; $compact: boolean }>`
   transition: height 180ms ease;
 `;
 
-const Bar = styled.div<{ $hasSubtitle: boolean; $compact: boolean }>`
+const Bar = styled.div<{ $hasSubtitle: boolean; $compact: boolean; $hasWebsiteLink: boolean }>`
   display: grid;
   grid-template-columns: 44px minmax(0, 1fr) 44px;
   align-items: center;
@@ -83,6 +98,10 @@ const Bar = styled.div<{ $hasSubtitle: boolean; $compact: boolean }>`
   text-align: center;
   box-sizing: border-box;
   transition: height 180ms ease;
+
+  @media (min-width: 768px) {
+    grid-template-columns: ${(p) => (p.$hasWebsiteLink ? "120px minmax(0, 1fr) 120px" : "44px minmax(0, 1fr) 44px")};
+  }
 `;
 
 const Col1 = styled.div`
@@ -113,6 +132,32 @@ const Col3 = styled.div`
   pointer-events: auto;
   display: flex;
   justify-content: flex-end;
+`;
+
+const WebsiteLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 6px;
+  border: var(--app-card-border);
+  border-radius: 10px;
+  background: var(--app-card-background);
+  color: var(--app-text-primary);
+  font-size: 12px;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: none;
+
+  ion-icon { font-size: 20px; }
+  span { display: none; }
+
+  @media (min-width: 768px) {
+    padding-inline: 10px;
+    span { display: inline; }
+  }
 `;
 
 const BackBtn = styled.button`
