@@ -13,7 +13,7 @@ import createRootReducer from "@/state/rootReducer";
 import { createStorage } from "@/store/store";
 import { RetryableImage } from "./components/RetryableImage";
 import ContentPage from "./pages/content/ContentPage";
-import { History, Purchase } from "./pages/profile/components";
+import ProfilePage from "./pages/profile/ProfilePage";
 import QuizPage from "./pages/quiz/QuizPage";
 import QuizResultPage from "./pages/quiz/results/TestResultPage";
 import QuizSessionPage from "./pages/quiz/session/TestPage";
@@ -31,6 +31,7 @@ vi.hoisted(() => {
     JSON.stringify({ apiKey: "fixture", projectId: "fixture", appId: "fixture", measurementId: "G-FIXTURE" }),
   );
   vi.stubGlobal("__WEB_ANALYTICS__", "");
+  vi.stubGlobal("__SHOW_DEBUG__", false);
   globalThis.jsdom.reconfigure({ url: "https://www.k53studyguide.online/app-preview/?analytics_test=true" });
 });
 vi.mock("@capacitor/core", async (original) => ({
@@ -150,15 +151,7 @@ function journey(model, preloaded, entry = "study") {
             <Route path="/test" element={<TestPage />} />
             <Route path="/test/results" element={<MockTestResultPage />} />
             <Route path="/test/session" element={<MockTestSessionPage />} />
-            <Route
-              path="/profile"
-              element={
-                <>
-                  <History />
-                  <Purchase />
-                </>
-              }
-            />
+            <Route path="/profile" element={<ProfilePage />} />
           </Routes>
         </MemoryRouter>
       </WebRuntimeProvider>
@@ -178,8 +171,6 @@ function finishPractice(store) {
 it("lets a browser learner study, finish practice and access mock tests and reset without a purchase", async () => {
   const store = journey("free_web");
   expect(screen.getByText("allTopics")).toBeTruthy();
-  expect(screen.getByText("webProgressBody")).toBeTruthy();
-  fireEvent.click(screen.getByRole("button", { name: "webProgressDismiss" }));
   expect(screen.queryByText("webProgressBody")).toBeNull();
   expect(screen.queryByText("infoStudyResetBody")).toBeNull();
   finishPractice(store);
@@ -189,6 +180,8 @@ it("lets a browser learner study, finish practice and access mock tests and rese
   expect(screen.getByRole("button", { name: "enterTest" })).toBeTruthy();
   expect(screen.queryByText("premiumOneTime")).toBeNull();
   fireEvent.click(screen.getByRole("link", { name: "History" }));
+  expect(screen.getByRole("heading", { name: "webProgressTitle" })).toBeTruthy();
+  expect(screen.getByText("webProgressBody")).toBeTruthy();
   fireEvent.click(screen.getByRole("button", { name: "clearSeenHistory" }));
   expect(screen.getByRole("alert").textContent).toContain("historyCleanSeenConfirm");
   expect(screen.queryByText("goPremium")).toBeNull();
@@ -208,6 +201,7 @@ it("keeps mock tests and history reset locked for a free mobile learner", () => 
   fireEvent.click(screen.getByRole("link", { name: "Mock tests" }));
   expect(screen.getByRole("button", { name: "unlockMockTests" })).toBeTruthy();
   fireEvent.click(screen.getByRole("link", { name: "History" }));
+  expect(screen.queryByText("webProgressBody")).toBeNull();
   fireEvent.click(screen.getByRole("button", { name: "clearSeenHistory" }));
   expect(screen.getByRole("alert").textContent).toContain("premiumPackageRequired");
   expect(screen.getByRole("button", { name: "goPremium" })).toBeTruthy();
@@ -293,15 +287,6 @@ it("offers recovery when a lazy application update cannot load", async () => {
   expect(screen.getByText("webChunkFailed")).toBeTruthy();
   expect(screen.getByRole("button", { name: "webReload" })).toBeTruthy();
   expect(screen.getByText("allTopics")).toBeTruthy();
-});
-
-it("remembers dismissal of the first browser progress notice after reload", () => {
-  const store = journey("free_web");
-  fireEvent.click(screen.getByRole("button", { name: "webProgressDismiss" }));
-  const saved = JSON.parse(JSON.stringify(store.getState()));
-  cleanup();
-  journey("free_web", saved);
-  expect(screen.queryByText("webProgressBody")).toBeNull();
 });
 
 it("keeps a failed lazy route recoverable without losing the saved learner state", async () => {
