@@ -57,7 +57,7 @@ Keep compatible parent graphs and lockfiles together; limited call-site exposure
 
 ## Web release
 
-Production is not launched. The preview is <https://www.k53studyguide.online/app-preview/>; generated noindex topics start at <https://www.k53studyguide.online/study/>. The live homepage/guides remain the previous release. Review new homepage/guide CTAs locally with `pnpm lander:start`; publishing those HTML files is the launch, not a hidden preview.
+Production launched on 20 October 2026 at 07:40:45 SAST: <https://www.k53studyguide.online/app/>. The homepage/guides link to the free app and `/study/` topics are indexable. See the [launch record and remaining coverage](../growth/web-launch.md#launch-record--20-october-2026). The noindex app preview remains at <https://www.k53studyguide.online/app-preview/> for the documented retention period. For subsequent releases, review homepage/guide CTAs locally with `pnpm lander:start`; publishing those HTML files changes the live site.
 
 ### Preconditions and evidence
 
@@ -103,6 +103,8 @@ curl -sSI https://k53studyguide.online/
 ```
 
 Read actual fingerprint/image paths from delivered HTML/content; placeholders above are not URLs to test. Expect app deep links 200 with the same noindex shell, JS 200 with a JavaScript content type, CSS/image types matching their content, topics 200 with substantive HTML, and missing topic/root URLs 404 with custom helpful HTML. Expect crawler exclusions for both app mounts and an image exception for production topic illustrations. App navigation paths are rewritten; missing fingerprinted files must still produce a recoverable opening failure. If rewrite is ignored, stop and ask the owner to enable it in cPanel; do not silently switch to hash routing.
+
+Verify cache headers too: app/root/topic HTML and custom HTML 404 responses must return `Cache-Control: no-cache` without Expires. Fingerprinted JS/CSS retain the host's long cache lifetime (seven days at launch). Preserve these HTML rules when merging existing host configuration; they prevent newly fetched entry pages from retaining a superseded release. Previously cached HTML can remain fresh until its old expiry.
 
 Canonical tags point at `https://www.k53studyguide.online`. On 19 October, HTTP and apex URLs returned 200 rather than redirecting. Record this host configuration gap for owner/cPanel correction; the canonical tag is not a redirect. Repeat the checks after any change.
 

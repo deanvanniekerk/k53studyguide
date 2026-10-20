@@ -1,6 +1,6 @@
 # Free web launch
 
-All scope questions and release gates were agreed during the 19 October 2026 design interview, and the owner confirmed the consolidated scope, testing boundaries and ticket breakdown. The [spec (#48)](https://github.com/deanvanniekerk/k53studyguide/issues/48) and seven sub-issues (#49–#55) are published with native GitHub blocking dependencies; the sub-issues carry the implementation notes, tests and owner steps for each slice. The free web implementation is available on the noindex preview; production has not launched. Production launch requires owner review of that preview and the release gates below.
+All scope questions and release gates were agreed during the 19 October 2026 design interview, and the owner confirmed the consolidated scope, testing boundaries and ticket breakdown. The [spec (#48)](https://github.com/deanvanniekerk/k53studyguide/issues/48) and seven sub-issues (#49–#55) carry the implementation notes, tests and owner steps. The owner approved the preview and production analytics enablement on 20 October. Free web study launched that morning at <https://www.k53studyguide.online/app/>; the launch record below distinguishes verified coverage from remaining checks.
 
 ## Objective
 
@@ -22,9 +22,30 @@ Free web feature access is not paid ownership or a mobile Premium entitlement. R
 
 Use completed practice as the primary engagement measure. Returning browser users, search discovery, mobile sales and reliability give context; page views or starts are not completions. Browser identities are not distinct people across devices. There is no agreed numeric growth target or causal attribution from web use to mobile sales.
 
+### Launch record — 20 October 2026
+
+Production website publication finished at **07:40:45 SAST (UTC+02:00)**, or `2026-10-20T05:40:45.603155Z`. The release source is `dfa592b02e380654828608857dc3e0b731b13a17` ([cache fix #66](https://github.com/deanvanniekerk/k53studyguide/pull/66)); [written owner approval](https://github.com/deanvanniekerk/k53studyguide/issues/55#issuecomment-6283938924) preceded publication. `/app/` became available at 07:39:28 SAST, approximately 78 seconds before the homepage switched. Dependencies preceded entry HTML; the app transfer resumed from the same checksummed build using persistent FTP connections. The prior hosted files/rules and the released artifacts/checksums are preserved privately for rollback. No destructive rollback was performed.
+
+Verification: 291 app, 21 lander and 18 translator tests passed, along with lint/typechecks, native/web/lander builds and both translation checks. All three translated locales have 3237/3237 entries with no missing or stale keys. Live checks passed for the homepage CTA into `/app/`, app/result deep links, JavaScript/CSS and sampled images, custom 404s, crawler exclusions and all 45 indexable topic pages with their canonical URLs. The sitemap has 51 unique URLs and was submitted to the verified Search Console domain property at 07:41 SAST; submission was accepted and is pending processing, not proof of indexing. HTML returns `Cache-Control: no-cache` without Expires; fingerprinted JS/CSS retain the host's seven-day cache policy. Existing cached HTML can remain fresh until its former expiry. HTTP and apex hosts still return 200 rather than redirecting to canonical HTTPS `www`; this existing host configuration gap remains recorded for correction.
+
+Analytics: the existing app property `269952161` has the verified Firebase web stream `16161816438`. The owner's marked preview quiz reached GA4 as 3/10 (30%), `analytics_schema_version=v2`, `premium_status=free`, `analytics_test=true`, with the preview web result page location. GA4 showed one start, ten answers and exactly one completion after the owner revisited/reloaded; no purchase-family events appeared in the marked session. The production build enables the configured collector only under the agreed host/mount rules. A Mac production quiz scored 2/10 and survived reload, but its automated events have not appeared in GA4; the owner's final production phone receipt check is pending. Exact QA windows, raw screenshots and configuration remain private. The reporting connector needs renewed authorization before scorecard queries; do not treat missing data as zero or assume DebugView events are excluded automatically. Apply the QA exclusions below before publishing production counts.
+
+Browser coverage includes the owner's physical iPhone Safari evidence and approval, responsive Safari at 375×812 and 430×932, sampled desktop Safari/Chromium journeys, all four languages across sampled journeys, themes, keyboard/zoom, Slow 4G, reload and recovery checks. The full device/theme/language cross-product was not completed: physical Android Chrome and Firefox coverage remain missing. Native purchase/restore checks were SDK-mocked; no native device store smoke or new TestFlight submission occurred. The owner plans device checks with a separate iOS build. Preview approval authorized this web launch; it does not certify the missing matrix cells or a native release.
+
+Exclude the partial launch day. The first evaluation is **[21 October 2026 00:00, 18 November 2026 00:00) SAST**, with the final review no earlier than **20 November 2026 00:00 SAST** after the processing buffer. The eight-week mobile baseline is **[25 August 2026 00:00, 20 October 2026 00:00) SAST**.
+
+| Week | Complete SAST interval (end exclusive) | Review after 48 hours |
+| --- | --- | --- |
+| 1 | 21–28 October 2026 | 30 October 2026 |
+| 2 | 28 October–4 November 2026 | 6 November 2026 |
+| 3 | 4–11 November 2026 | 13 November 2026 |
+| 4 | 11–18 November 2026 | 20 November 2026 |
+
+These dates document the weekly hosting/GA/Search Console/mobile-sales checks and final evaluation; no automation was created. Retain `/app-preview/` at least until 27 October 2026 07:40:45 SAST, and remove it only after successful live verification and owner confirmation. Its crawler exclusion remains in place.
+
 ### Reporting windows and evidence
 
-Record the actual production launch timestamp `L` in SAST (`UTC+02:00`) after deployment, never the merge date. Let `D` be the next SAST midnight after `L`; exclude the partial launch day. The first evaluation covers `[D, D + 28 days)`, with four seven-day windows. Compare mobile sales with the eight complete seven-day windows ending at the midnight before the partial launch day. Review each closed week after a 48-hour processing buffer; wait 48 hours after day 28 for the final scorecard. Dates remain unassigned until launch. #55 owns recording those dates and any requested reminders.
+Record the actual production launch timestamp `L` in SAST (`UTC+02:00`) after deployment, never the merge date. Let `D` be the next SAST midnight after `L`; exclude the partial launch day. The first evaluation covers `[D, D + 28 days)`, with four seven-day windows. Compare mobile sales with the eight complete seven-day windows ending at the midnight before the partial launch day. Review each closed week after a 48-hour processing buffer; wait 48 hours after day 28 for the final scorecard. The initial launch dates are recorded above. #55 owns recording any requested reminders.
 
 Re-read GA4 property timezone/currency, stream mapping, custom-dimension metadata and retention before reporting. The previous snapshot was UTC+02:00 with two-month event retention and no BigQuery link; it is not a current configuration guarantee. Export weekly aggregate results to a private note. Keep exact requests, responses, filters, fetch timestamps, excluded QA windows and source coverage privately. Search Console uses Pacific date boundaries; retain its own dates rather than pretending they match SAST. Store reports retain their own timezone and settlement coverage.
 
