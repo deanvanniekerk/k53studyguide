@@ -57,7 +57,7 @@ Keep compatible parent graphs and lockfiles together; limited call-site exposure
 
 ## Web release
 
-Production is not launched. The preview is <https://www.k53studyguide.online/app-preview/>; generated noindex topics start at <https://www.k53studyguide.online/study/>. The live homepage/guides remain the previous release. Review new homepage/guide CTAs locally with `pnpm lander:start`; publishing those HTML files is the launch, not a hidden preview.
+Production launched on 20 October 2026 at 07:40:45 SAST: <https://www.k53studyguide.online/app/>. The homepage/guides link to the free app and `/study/` topics are indexable. See the [launch record and remaining coverage](../growth/web-launch.md#launch-record--20-october-2026). The noindex app preview remains at <https://www.k53studyguide.online/app-preview/> for the documented retention period. For subsequent releases, review homepage/guide CTAs locally with `pnpm lander:start`; publishing those HTML files changes the live site.
 
 ### Preconditions and evidence
 
@@ -77,7 +77,7 @@ Use Node 26.10+ within the pinned major and the lockfile's pnpm version. Do not 
 
 Verify Firebase web config in the existing `k53-study-guide` project and its GA4 stream/property association, tagged QA receipt and the production enablement decision. Keep config in ignored `.dev.env` and Azure variables. Capture the prior deployed website/app artifacts, current `.htaccess`/robots and checksums privately before a launch; Git history alone does not prove which files are live. FTP uploads have no atomic swap. Keep earlier fingerprinted assets available for cached clients.
 
-The owner must approve this preview in writing on #55 before production publishing. `WEB_LAUNCH_APPROVED=1` records that prerequisite for the deploy helpers; setting a variable is not a substitute for approval. A merge authorizes code integration, not production launch. Native release remains a separate decision.
+The owner must approve the release's preview in writing on its release issue before production publishing (#55 for the initial launch). `WEB_LAUNCH_APPROVED=1` records that prerequisite for the deploy helpers; setting a variable is not a substitute for approval. A merge authorizes code integration, not production launch. Native release remains a separate decision.
 
 ### Repeatable preview deployment
 
@@ -104,6 +104,8 @@ curl -sSI https://k53studyguide.online/
 
 Read actual fingerprint/image paths from delivered HTML/content; placeholders above are not URLs to test. Expect app deep links 200 with the same noindex shell, JS 200 with a JavaScript content type, CSS/image types matching their content, topics 200 with substantive HTML, and missing topic/root URLs 404 with custom helpful HTML. Expect crawler exclusions for both app mounts and an image exception for production topic illustrations. App navigation paths are rewritten; missing fingerprinted files must still produce a recoverable opening failure. If rewrite is ignored, stop and ask the owner to enable it in cPanel; do not silently switch to hash routing.
 
+Verify cache headers too: app/root/topic HTML and custom HTML 404 responses must return `Cache-Control: no-cache` without Expires. Fingerprinted JS/CSS retain the host's long cache lifetime (seven days at launch). Preserve these HTML rules when merging existing host configuration; they prevent newly fetched entry pages from retaining a superseded release. Previously cached HTML can remain fresh until its old expiry.
+
 Canonical tags point at `https://www.k53studyguide.online`. On 19 October, HTTP and apex URLs returned 200 rather than redirecting. Record this host configuration gap for owner/cPanel correction; the canonical tag is not a redirect. Repeat the checks after any change.
 
 Exercise topic → app study → quiz → results → mock test → results → optional store link. Verify score/history after reload, deliberate history reset without settings loss, direct study/quiz/result links, browser Back/Forward, failed-image retry, lost connection and recovery. Confirm free web access never sets paid ownership or shows checkout/restore. Confirm mobile links explain separate Premium and browser-local progress. In a marked QA tab, complete an attempt, revisit/reload/reconnect and confirm one received completion, web platform, free status and no purchase-family events. Open a separate unmarked preview tab and verify no production receipt; close QA tabs afterward and retain windows privately.
@@ -114,7 +116,7 @@ Native shared UI changed in #49: `app/Router.tsx`, `app/Startup.tsx`, `app/pages
 
 ### Approved production deployment
 
-After written owner approval and completed translation/config/receipt gates:
+For each release, after written owner preview approval and completed translation/config/receipt gates:
 
 1. Save current host artifacts privately and record their checksums and source provenance. Set `FIREBASE_WEB_CONFIG` in the ignored environment and approve `WEB_ANALYTICS=production`. Build/check the launch app and topics; use explicit `TOPIC_PREVIEW=0` because the safe default is preview. Example preparation:
 
