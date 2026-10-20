@@ -17,7 +17,9 @@ Use [Readme.md](../Readme.md) for development/build commands, [GLOSSARY.md](../G
 
 ## Current starting point
 
-Last release observation: **8 October 2026**. Version **1.40 (41)**, including the result-navigation fix and approved storefront refresh, was built from `main` in [Azure run 1808](https://deanvniekerk.visualstudio.com/K53%20Study%20Guide/_build/results?buildId=1808&view=results).
+Free web study launched on **20 October 2026 at 07:40:45 SAST**. The [web launch record](growth/web-launch.md#launch-record--20-october-2026) holds the evaluation dates and unresolved measurement/coverage limits; dated verification evidence lives in [#55](https://github.com/deanvanniekerk/k53studyguide/issues/55#issuecomment-6284378559).
+
+Last native release observation: **8 October 2026**. Version **1.40 (41)**, including the result-navigation fix and approved storefront refresh, was built from `main` in [Azure run 1808](https://deanvniekerk.visualstudio.com/K53%20Study%20Guide/_build/results?buildId=1808&view=results).
 
 - Apple: submitted, Waiting for Review; manual release after approval.
 - Google Play: eight release/listing changes submitted; automated checks were running. Managed publishing was off, with 100% rollout to the existing targeted country after approval.
