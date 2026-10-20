@@ -77,7 +77,7 @@ Use Node 26.10+ within the pinned major and the lockfile's pnpm version. Do not 
 
 Verify Firebase web config in the existing `k53-study-guide` project and its GA4 stream/property association, tagged QA receipt and the production enablement decision. Keep config in ignored `.dev.env` and Azure variables. Capture the prior deployed website/app artifacts, current `.htaccess`/robots and checksums privately before a launch; Git history alone does not prove which files are live. FTP uploads have no atomic swap. Keep earlier fingerprinted assets available for cached clients.
 
-The owner must approve this preview in writing on #55 before production publishing. `WEB_LAUNCH_APPROVED=1` records that prerequisite for the deploy helpers; setting a variable is not a substitute for approval. A merge authorizes code integration, not production launch. Native release remains a separate decision.
+The owner must approve the release's preview in writing on its release issue before production publishing (#55 for the initial launch). `WEB_LAUNCH_APPROVED=1` records that prerequisite for the deploy helpers; setting a variable is not a substitute for approval. A merge authorizes code integration, not production launch. Native release remains a separate decision.
 
 ### Repeatable preview deployment
 
@@ -116,7 +116,7 @@ Native shared UI changed in #49: `app/Router.tsx`, `app/Startup.tsx`, `app/pages
 
 ### Approved production deployment
 
-After written owner approval and completed translation/config/receipt gates:
+For each release, after written owner preview approval and completed translation/config/receipt gates:
 
 1. Save current host artifacts privately and record their checksums and source provenance. Set `FIREBASE_WEB_CONFIG` in the ignored environment and approve `WEB_ANALYTICS=production`. Build/check the launch app and topics; use explicit `TOPIC_PREVIEW=0` because the safe default is preview. Example preparation:
 
