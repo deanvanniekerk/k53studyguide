@@ -34,7 +34,7 @@ const PageHeader: React.FC<Props> = ({ title, subTitle, page, compact = false, o
           {showWebsiteLink && (
             <WebsiteLink
               href="/"
-              aria-label={translate({ text: "backToWebsite" })}
+              aria-label={`${translate({ text: "website" })}: ${translate({ text: "backToWebsite" })}`}
               title={translate({ text: "backToWebsite" })}
             >
               <IonIcon icon={arrowBackOutline} aria-hidden="true" />
