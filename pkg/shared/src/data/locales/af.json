@@ -73,6 +73,14 @@
       "reasoningEffort": "medium",
       "promptVersion": "k53-v1"
     },
+    "backToWebsite": {
+      "text": "Terug na die K53-webwerf",
+      "sourceHash": "3afd113e17b7ad3e35841307b6041ab617c1d7a26eec9315958cfc7d9bf18690",
+      "generatedHash": "a1ef4d34e6020bf9bce204b43d7c10e3c9f7a79b365b7f282bc58ff73986427b",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
     "browserPaymentNote": {
       "text": "Blaaiervoorskou · gesimuleerde prys en aankoop",
       "sourceHash": "60e38011c4b85a10e805147e4e4caf03c346d4efc922cc0918072e0c36afa573",
@@ -25829,6 +25837,14 @@
       "text": "Herlaai die studietoepassing",
       "sourceHash": "234460a94d97fd327af3679706a7a3e1a16528748520eac13f3d775bd279c0b3",
       "generatedHash": "b3db1d0c9002e04f6cd4b5686941d1f4fa0d4cf3e2fd44065e695b8b77594be7",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "website": {
+      "text": "Webwerf",
+      "sourceHash": "b5a229ac8becc6035511f432ca6018f581f0627233eada6ae8e12b505d44af7f",
+      "generatedHash": "137765c379961be3e47628cb4f603581bf8b221ed7419692fd3db823ec6a6517",
       "model": "gpt-6.1-sol",
       "reasoningEffort": "medium",
       "promptVersion": "k53-v1"

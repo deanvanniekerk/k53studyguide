@@ -73,6 +73,14 @@
       "reasoningEffort": "medium",
       "promptVersion": "k53-v1"
     },
+    "backToWebsite": {
+      "text": "Buyela kuwebhusayithi ye-K53",
+      "sourceHash": "3afd113e17b7ad3e35841307b6041ab617c1d7a26eec9315958cfc7d9bf18690",
+      "generatedHash": "6fe645a637520040b33acd00262ae252c8c049739611708f0126c37750ce4fa1",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
     "browserPaymentNote": {
       "text": "Ukubuka kuqala esipheqululini · intengo nokuthenga okulingiswayo",
       "sourceHash": "60e38011c4b85a10e805147e4e4caf03c346d4efc922cc0918072e0c36afa573",
@@ -25829,6 +25837,14 @@
       "text": "Layisha kabusha uhlelo lokufunda",
       "sourceHash": "234460a94d97fd327af3679706a7a3e1a16528748520eac13f3d775bd279c0b3",
       "generatedHash": "e6b1bd304a694621ca255483d6086753faa210264681efdf37fb60e7c8b0b332",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "medium",
+      "promptVersion": "k53-v1"
+    },
+    "website": {
+      "text": "Iwebhusayithi",
+      "sourceHash": "b5a229ac8becc6035511f432ca6018f581f0627233eada6ae8e12b505d44af7f",
+      "generatedHash": "ae230ee9fae5d2fbdd666a408ab4942ed63c5a377ff7d8866050cdf24d9706f0",
       "model": "gpt-6.1-sol",
       "reasoningEffort": "medium",
       "promptVersion": "k53-v1"

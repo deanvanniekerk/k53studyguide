@@ -35,6 +35,8 @@ const translations: Translations = {
   compactDisplay: { en: "Compact" },
   comfortableDisplay: { en: "Comfortable" },
   goBack: { en: "Go back" },
+  website: { en: "Website" },
+  backToWebsite: { en: "Back to K53 website" },
   close: { en: "Close" },
   showInformation: { en: "Show information" },
   startSectionQuiz: { en: "Start quiz for this section" },

@@ -168,6 +168,19 @@ function finishPractice(store) {
   fireEvent.click(screen.getByRole("button", { name: "submit" }));
 }
 
+it("returns from each main web screen to the website while keeping assessment Back navigation", () => {
+  journey("free_web");
+  for (const destination of [null, "Practice", "Mock tests", "History"]) {
+    if (destination) fireEvent.click(screen.getByRole("link", { name: destination }));
+    expect(screen.getByRole("link", { name: "website: backToWebsite" }).getAttribute("href")).toBe("/");
+  }
+  fireEvent.click(screen.getByRole("link", { name: "Practice" }));
+  fireEvent.click(screen.getByRole("button", { name: "startTest" }));
+  expect(screen.queryByRole("link", { name: "website: backToWebsite" })).toBeNull();
+  fireEvent.click(screen.getByRole("button", { name: "goBack" }));
+  expect(screen.getByRole("link", { name: "website: backToWebsite" }).getAttribute("href")).toBe("/");
+});
+
 it("lets a browser learner study, finish practice and access mock tests and reset without a purchase", async () => {
   const store = journey("free_web");
   expect(screen.getByText("allTopics")).toBeTruthy();
@@ -196,6 +209,7 @@ it("lets a browser learner study, finish practice and access mock tests and rese
 
 it("keeps mock tests and history reset locked for a free mobile learner", () => {
   const store = journey("mobile");
+  expect(screen.queryByRole("link", { name: "website: backToWebsite" })).toBeNull();
   finishPractice(store);
   expect(screen.queryByRole("link", { name: "Google Play" })).toBeNull();
   fireEvent.click(screen.getByRole("link", { name: "Mock tests" }));
