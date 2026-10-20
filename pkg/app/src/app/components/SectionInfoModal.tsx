@@ -102,6 +102,11 @@ export const SectionInfoModal = ({ section, isOpen, onDidDismiss }: InfoModalPro
 const Modal = styled(IonModal)<{ $section: Section }>`
   --background: ${(props) => `var(--app-${props.$section}-background)`};
   color: var(--app-text-primary);
+
+  @media (min-width: 768px) {
+    --height: auto;
+    --max-height: calc(100% - 48px);
+  }
 `;
 const Content = styled(IonContent)`--background: transparent;`;
 const Container = styled.div`
