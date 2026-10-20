@@ -103,7 +103,7 @@ const Modal = styled(IonModal)<{ $section: Section }>`
   --background: ${(props) => `var(--app-${props.$section}-background)`};
   color: var(--app-text-primary);
 
-  @media (min-width: 768px) {
+  @media (min-width: 768px) and (min-height: 600px) {
     --height: auto;
     --max-height: calc(100% - 48px);
   }
