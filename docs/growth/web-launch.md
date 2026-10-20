@@ -28,7 +28,7 @@ Production website publication finished at **07:40:45 SAST (UTC+02:00)**, or `20
 
 [Release evidence in #55](https://github.com/deanvanniekerk/k53studyguide/issues/55#issuecomment-6284378559) records the dated checks, browser runs, receipt verification and private rollback capture. The launch sitemap contains 51 unique URLs, including 45 topic pages; Search Console accepted submission at 07:41 SAST, with processing/indexing pending.
 
-Measurement uses app property `269952161` and verified Firebase web stream `16161816438` (the `platform=web` reporting population). Tagged preview receipt passed before launch; the final production phone receipt check remains pending. Exact QA windows and raw receipt evidence stay private. Renew the reporting connector authorization and apply the QA exclusions below before publishing scorecard counts.
+Measurement uses app property `269952161` and verified Firebase web stream `16161816438` (the `platform=web` reporting population). Tagged preview receipt passed before launch; [tagged production receipt is also verified](https://github.com/deanvanniekerk/k53studyguide/issues/55#issuecomment-6284633763). Exact QA windows and raw receipt evidence stay private. Renew the reporting connector authorization and apply the QA exclusions below before publishing scorecard counts.
 
 Coverage limits remain: physical Android Chrome, Firefox and native-device store smoke were not completed. Native purchase/recovery verification is SDK-mocked; the owner's approved web preview does not certify a native release. See the [release runbook](../maintenance/release.md#hosting-and-journey-checks) for the unresolved canonical-host redirect gap and cache limitations.
 
