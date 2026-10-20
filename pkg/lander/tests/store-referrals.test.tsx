@@ -51,8 +51,8 @@ test.each(["http://localhost:5173/", "https://preview.example.com/"])(
 
 const staticReferrals = [
   ["nav_cta", "android"],
-  ["hero_cta", "android"],
   ["hero_ios_cta", "ios"],
+  ["hero_cta", "android"],
   ["footer_ios_cta", "ios"],
   ["footer_cta", "android"],
 ];
