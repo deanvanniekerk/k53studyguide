@@ -6,7 +6,7 @@ relative symlinks in `.claude/skills/`. Keep each skill and all of its supportin
 - `generate-report`: the shared K53 reporting skill.
 
 Shared engineering skills (Matt Pocock's workflows, the owner's personal skills from
-[deanvanniekerk/skills](https://github.com/deanvanniekerk/skills), `babysit`, and the thermonuclear
+[deanvanniekerk/skills](https://github.com/deanvanniekerk/skills), and the thermonuclear
 review) are installed globally with the Skills CLI in `~/.agents/skills/`, linked into
 `~/.claude/skills/`. Update them with `npx skills update -g`.
 
